@@ -1,0 +1,50 @@
+version: 2.1
+
+orbs:
+  gradle: circleci/gradle@3.0.0
+
+parameters:
+  artifact-name:
+    type: string
+    default: aether-genesis
+  allow-build:
+    type: boolean
+    default: false
+
+jobs:
+  build:
+    machine:
+      image: ubuntu-2204:2023.02.1
+    resource_class: medium
+    environment:
+      _JAVA_OPTIONS: -Xmx3200m
+      GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.logging.level=info
+    steps:
+      - when:
+          condition: <<pipeline.parameters.allow-build>>
+          steps:
+            - setup
+            - persist_to_workspace:
+                root: ~/project/build/libs
+                paths:
+                  - << pipeline.parameters.artifact-name >>-*.jar
+      - unless:
+         condition: <<pipeline.parameters.allow-build>>
+         steps:
+           - run: echo "Condition not met."
+
+commands:
+  setup:
+    steps:
+      - checkout
+      - gradle/with_cache:
+          cache_key: 'v1'
+          steps:
+            - run: gradle build --parallel --build-cache --console=plain
+      - store_artifacts:
+          path: ~/project/build/libs
+
+workflows:
+  build:
+    jobs:
+      - build
