@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "genesis:block/natural/purple_crystal_tree_sapling"
+  }
+}

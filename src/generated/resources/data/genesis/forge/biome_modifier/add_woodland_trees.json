@@ -1,0 +1,14 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#genesis:has_woodland_trees",
+  "features": [
+    "genesis:skyroot_woodland_blue_skyroot_trees",
+    "genesis:skyroot_woodland_large_green_skyroot_trees",
+    "genesis:skyroot_woodland_blue_skyroot_pines",
+    "genesis:skyroot_woodland_green_skyroot_pines",
+    "genesis:skyroot_woodland_dark_blue_hooked_skyroots",
+    "genesis:skyroot_woodland_green_hooked_skyroots",
+    "genesis:skyroot_woodland_purple_crystal_trees"
+  ],
+  "step": "vegetal_decoration"
+}

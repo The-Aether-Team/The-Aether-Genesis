@@ -1,0 +1,8 @@
+// 1.19.4	2023-04-16T23:01:44.5111398	Tags for minecraft:item mod id genesis
+2ed240c5816dd0f4789d165a139fbafacff9ca2a data/aether/tags/items/crafts_skyroot_planks.json
+a2cc63732a578b44db5f5336a20a17e8c7043a66 data/aether/tags/items/deployable_parachutes.json
+9fb6c82e064b80b52966f1025772937af48e5982 data/aether/tags/items/swet_balls.json
+2ed240c5816dd0f4789d165a139fbafacff9ca2a data/genesis/tags/items/log_walls.json
+1e3988000ed568e207647079a5ddd65f729586c2 data/minecraft/tags/items/leaves.json
+84b74a16c670459056db39537ff69bcda76009c6 data/minecraft/tags/items/saplings.json
+2ed240c5816dd0f4789d165a139fbafacff9ca2a data/minecraft/tags/items/walls.json

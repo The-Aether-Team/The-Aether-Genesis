@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#genesis:has_meadow_trees",
+  "features": [
+    "genesis:skyroot_meadow_blue_skyroot_trees",
+    "genesis:skyroot_meadow_large_green_skyroot_trees"
+  ],
+  "step": "vegetal_decoration"
+}

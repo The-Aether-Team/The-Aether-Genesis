@@ -1,0 +1,4 @@
+// 1.19.4	2023-04-16T17:57:07.9743004	Global Loot Modifiers : genesis
+933e9f189668a740439478419ab07bb5c03bc93b data/forge/loot_modifiers/global_loot_modifiers.json
+1b315647af3c71b627bc8726aa4ebb917d2244ef data/genesis/loot_modifiers/golden_swet_ball.json
+eb8cba628eca363d84414f9af9c2c1cd88b564b4 data/genesis/loot_modifiers/swet_sugar.json

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "genesis:block/storm_aercloud"
+    }
+  }
+}

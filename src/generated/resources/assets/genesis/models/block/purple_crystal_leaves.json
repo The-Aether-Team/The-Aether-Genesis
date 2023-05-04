@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "genesis:block/natural/purple_crystal_leaves"
+  }
+}

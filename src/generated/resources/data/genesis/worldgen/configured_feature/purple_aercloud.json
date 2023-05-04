@@ -1,0 +1,16 @@
+{
+  "type": "aether:aercloud",
+  "config": {
+    "blocks": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "genesis:purple_aercloud",
+        "Properties": {
+          "double_drops": "true",
+          "facing": "south"
+        }
+      }
+    },
+    "bounds": 4
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#genesis:has_grove_trees",
+  "features": [
+    "genesis:skyroot_grove_blue_skyroot_trees",
+    "genesis:skyroot_grove_large_green_skyroot_trees",
+    "genesis:skyroot_grove_blue_skyroot_pines",
+    "genesis:skyroot_grove_green_skyroot_pines"
+  ],
+  "step": "vegetal_decoration"
+}

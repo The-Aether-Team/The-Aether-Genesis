@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "bottom": "genesis:block/natural/purple_aercloud_back",
+    "side": "genesis:block/natural/purple_aercloud_left",
+    "top": "genesis:block/natural/purple_aercloud_front"
+  }
+}
