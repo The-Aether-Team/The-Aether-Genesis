@@ -23,7 +23,7 @@ commands:
   setup:
     steps:
       - checkout
-      - gradle/build:
+      - gradle/run:
           cache_key: 'v1'
           steps:
             - run: gradle build --console=plain
