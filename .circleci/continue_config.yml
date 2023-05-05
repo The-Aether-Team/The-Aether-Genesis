@@ -6,7 +6,7 @@ orbs:
 parameters:
   artifact-name:
     type: string
-    default: aether-genesis
+    default: aether_genesis
   allow-build:
     type: boolean
     default: false
