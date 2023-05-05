@@ -97,7 +97,7 @@ Not sure what to help with? Take a look at our issue tracker for some ideas! [He
 
 If you're wanting to create a gameplay video/review, extension or addon, parody, or any other fan work of your own for The Aether: Genesis, go for it! We love seeing the content our community creates, and we hope to make it as welcoming as possible for everyone. We ask however that you please don't advertise using our brand (our specific logo assets, team name, official social media posts).
 
-If you are thinking about using The Aether: Genesis' project code or assets, please note our licensing. **All assets of The Aether: Genesis are unlicensed and all rights are reserved to them by The Aether Team and their respective authors.** The source code of The Aether: Genesis mod for Minecraft 1.19.4+ is under the LGPL v3.0 license. Any previous versions' source code is unlicensed and all rights are reserved to it by The Aether Team.
+If you are thinking about using The Aether: Genesis' project code or assets, please note our licensing. **All assets of The Aether: Genesis are unlicensed and all rights are reserved to them by The Aether Team and their respective authors.** The source code of The Aether: Genesis mod is under the LGPL v3.0 license.
 
 If you have a reason that you wish to use our brand or any unlicensed material, please [get in contact with Oz#1986 on the Aether Community Discord](https://discord.gg/aethermod) for details.
 
