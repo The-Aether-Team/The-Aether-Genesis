@@ -45,13 +45,10 @@ public class GenesisBlocks {
 
     public static final RegistryObject<SaplingBlock> BLUE_SKYROOT_SAPLING = register("blue_skyroot_sapling", () -> new SaplingBlock(new BlueSkyrootTree(), Block.Properties.copy(Blocks.OAK_SAPLING)));
     public static final RegistryObject<SaplingBlock> DARK_BLUE_SKYROOT_SAPLING = register("dark_blue_skyroot_sapling", () -> new SaplingBlock(new DarkBlueSkyrootTree(), Block.Properties.copy(Blocks.OAK_SAPLING)));
-    public static final RegistryObject<SaplingBlock> CRYSTAL_TREE_SAPLING = register("crystal_tree_sapling", () -> new SaplingBlock(new CrystalTree(), Block.Properties.copy(Blocks.OAK_SAPLING)));
     public static final RegistryObject<SaplingBlock> PURPLE_CRYSTAL_TREE_SAPLING = register("purple_crystal_tree_sapling", () -> new SaplingBlock(new PurpleCrystalTree(), Block.Properties.copy(Blocks.OAK_SAPLING)));
     public static final RegistryObject<FlowerPotBlock> POTTED_BLUE_SKYROOT_SAPLING = BLOCKS.register("potted_blue_skyroot_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLUE_SKYROOT_SAPLING, Block.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistryObject<FlowerPotBlock> POTTED_DARK_BLUE_SKYROOT_SAPLING = BLOCKS.register("potted_dark_blue_skyroot_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, DARK_BLUE_SKYROOT_SAPLING, Block.Properties.copy(Blocks.FLOWER_POT)));
-    public static final RegistryObject<FlowerPotBlock> POTTED_CRYSTAL_TREE_SAPLING = BLOCKS.register("potted_crystal_tree_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, CRYSTAL_TREE_SAPLING, Block.Properties.copy(Blocks.FLOWER_POT)));
     public static final RegistryObject<FlowerPotBlock> POTTED_PURPLE_CRYSTAL_TREE_SAPLING = BLOCKS.register("potted_purple_crystal_tree_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, PURPLE_CRYSTAL_TREE_SAPLING, Block.Properties.copy(Blocks.FLOWER_POT)));
-//todo make crystal saplings drop from leaves.
 
     public static final RegistryObject<WallBlock> SKYROOT_LOG_WALL = register("skyroot_log_wall", () -> new GenesisDoubleDropsWall(Block.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<WallBlock> STRIPPED_SKYROOT_LOG_WALL = register("stripped_skyroot_log_wall", () -> new WallBlock(Block.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD)));
@@ -62,7 +59,6 @@ public class GenesisBlocks {
         FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
         pot.addPlant(GenesisBlocks.BLUE_SKYROOT_SAPLING.getId(), GenesisBlocks.POTTED_BLUE_SKYROOT_SAPLING);
         pot.addPlant(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.getId(), GenesisBlocks.POTTED_DARK_BLUE_SKYROOT_SAPLING);
-        pot.addPlant(GenesisBlocks.CRYSTAL_TREE_SAPLING.getId(), GenesisBlocks.POTTED_CRYSTAL_TREE_SAPLING);
         pot.addPlant(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.getId(), GenesisBlocks.POTTED_PURPLE_CRYSTAL_TREE_SAPLING);
     }
 

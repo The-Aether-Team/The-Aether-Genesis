@@ -35,11 +35,9 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
                 (leaves) -> droppingWithFruitAndSkyrootSticks(leaves, AetherItems.WHITE_APPLE.get()));
         this.dropSelf(GenesisBlocks.BLUE_SKYROOT_SAPLING.get());
         this.dropSelf(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get());
-        this.dropSelf(GenesisBlocks.CRYSTAL_TREE_SAPLING.get());
         this.dropSelf(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get());
         this.dropPottedContents(GenesisBlocks.POTTED_BLUE_SKYROOT_SAPLING.get());
         this.dropPottedContents(GenesisBlocks.POTTED_DARK_BLUE_SKYROOT_SAPLING.get());
-        this.dropPottedContents(GenesisBlocks.POTTED_CRYSTAL_TREE_SAPLING.get());
         this.dropPottedContents(GenesisBlocks.POTTED_PURPLE_CRYSTAL_TREE_SAPLING.get());
         this.dropSelfDouble(GenesisBlocks.SKYROOT_LOG_WALL.get());
         this.dropSelf(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get());

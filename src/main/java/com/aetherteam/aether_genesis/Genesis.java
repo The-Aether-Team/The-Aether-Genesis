@@ -109,7 +109,6 @@ public class Genesis {
         this.addCompost(0.3F, GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get().asItem());
         this.addCompost(0.3F, GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get());
         this.addCompost(0.3F, GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get());
-        this.addCompost(0.3F, GenesisBlocks.CRYSTAL_TREE_SAPLING.get());
     }
 
     /**

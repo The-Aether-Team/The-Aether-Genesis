@@ -33,8 +33,7 @@ public class GenesisCreativeTabs {
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.BLUE_SKYROOT_SAPLING.get()), new ItemStack(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(AetherBlocks.CRYSTAL_FRUIT_LEAVES.get()), new ItemStack(GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get()), new ItemStack(GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(AetherBlocks.GOLDEN_OAK_SAPLING.get()), new ItemStack(GenesisBlocks.CRYSTAL_TREE_SAPLING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(GenesisBlocks.CRYSTAL_TREE_SAPLING.get()), new ItemStack(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(AetherBlocks.GOLDEN_OAK_SAPLING.get()), new ItemStack(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (tab == AetherCreativeTabs.AETHER_EQUIPMENT_AND_UTILITIES) {
             event.getEntries().putAfter(new ItemStack(AetherItems.GOLDEN_PARACHUTE.get()), new ItemStack(GenesisItems.BLUE_PARACHUTE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

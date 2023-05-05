@@ -40,7 +40,6 @@ public class GenesisBlockTagData extends BlockTagsProvider {
         this.tag(BlockTags.SAPLINGS).add(
                 GenesisBlocks.BLUE_SKYROOT_SAPLING.get(),
                 GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get(),
-                GenesisBlocks.CRYSTAL_TREE_SAPLING.get(),
                 GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get());
         this.tag(BlockTags.LEAVES).add(
                 GenesisBlocks.BLUE_SKYROOT_LEAVES.get(),

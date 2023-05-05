@@ -40,7 +40,6 @@ public class GenesisItemTagData extends ItemTagsProvider {
         this.tag(ItemTags.SAPLINGS).add(
                 GenesisBlocks.BLUE_SKYROOT_SAPLING.get().asItem(),
                 GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get().asItem(),
-                GenesisBlocks.CRYSTAL_TREE_SAPLING.get().asItem(),
                 GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get().asItem());
         this.tag(ItemTags.LEAVES).add(
                 GenesisBlocks.BLUE_SKYROOT_LEAVES.get().asItem(),

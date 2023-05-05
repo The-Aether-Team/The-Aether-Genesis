@@ -39,7 +39,6 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.itemBlock(GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get());
         this.itemBlockFlat(GenesisBlocks.BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.itemBlockFlat(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get(), "natural/");
-        this.itemBlockFlat(GenesisBlocks.CRYSTAL_TREE_SAPLING.get(), "natural/");
         this.itemBlockFlat(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), "natural/");
 
         this.itemLogWallBlock(GenesisBlocks.SKYROOT_LOG_WALL.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/", Aether.MODID);

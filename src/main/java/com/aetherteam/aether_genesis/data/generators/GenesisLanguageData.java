@@ -23,7 +23,6 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addBlock(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING, "Dark Blue Skyroot Sapling");
         this.addBlock(GenesisBlocks.PURPLE_CRYSTAL_LEAVES, "Purple Crystal Leaves");
         this.addBlock(GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES, "Purple Crystal Fruit Leaves");
-        this.addBlock(GenesisBlocks.CRYSTAL_TREE_SAPLING, "Crystal Tree Sapling");
         this.addBlock(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING, "Purple Crystal Tree Sapling");
         this.addBlock(GenesisBlocks.SKYROOT_LOG_WALL, "Skyroot Log Wall");
         this.addBlock(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL, "Stripped Skyroot Log Wall");
