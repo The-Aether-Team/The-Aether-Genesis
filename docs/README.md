@@ -104,7 +104,7 @@ If you have a reason that you wish to use our brand or any unlicensed material, 
 ## :star2: Special mentions
 ### :speech_balloon: Translations
 
-*Coming soon...*
+*Work in progress...*
 
 ### :hammer: Contributions
 All of our code contribution credits can be found [here](https://github.com/The-Aether-Team/The-Aether-Genesis/blob/1.19.4-develop/docs/CREDITS.txt). If you contributed to the project and do not see your name, please contact us.
