@@ -1,7 +1,7 @@
 {
   "values": [
-    "genesis:green_aercloud",
-    "genesis:purple_aercloud",
-    "genesis:storm_aercloud"
+    "aether_genesis:green_aercloud",
+    "aether_genesis:purple_aercloud",
+    "aether_genesis:storm_aercloud"
   ]
 }

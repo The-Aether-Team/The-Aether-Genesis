@@ -9,7 +9,7 @@ plugins {
 }
 
 version = "${project.mc_version}-${project.mod_version}-forge"
-group = 'com.aetherteam.genesis' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'com.aetherteam.aether_genesis' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = project.mod_id
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17) // Mojang ships Java 8 to end users, so your mod should target Java 8.

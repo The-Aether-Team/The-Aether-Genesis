@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "aether_genesis:block/natural/blue_skyroot_leaves"
+  }
+}

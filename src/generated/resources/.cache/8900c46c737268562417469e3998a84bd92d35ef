@@ -1,0 +1,13 @@
+// 1.19.4	2023-05-04T22:09:57.0258499	Tags for minecraft:block mod id aether_genesis
+614013f20fac83eb129749507a06df0b994edde0 data/aether/tags/blocks/aerclouds.json
+b766ba39bfeb172795926a01996b1b1fcc58281f data/aether/tags/blocks/aether_portal_blacklist.json
+1d7eabfa746881c14275fb87c139d44dd7a797ac data/aether_genesis/tags/blocks/log_walls.json
+c4eec11b53db7c40550cdb9130c8e11bedc28403 data/minecraft/tags/blocks/flower_pots.json
+beac0a1e118252eaf09f2d527230162fdb9a1a72 data/minecraft/tags/blocks/leaves.json
+21ba05af990cf6d402d13ff2f1286d2126ff491a data/minecraft/tags/blocks/logs.json
+21ba05af990cf6d402d13ff2f1286d2126ff491a data/minecraft/tags/blocks/logs_that_burn.json
+1d7eabfa746881c14275fb87c139d44dd7a797ac data/minecraft/tags/blocks/mineable/axe.json
+cea6d7bbc9b1689bfccc99251296b1173ca24879 data/minecraft/tags/blocks/mineable/hoe.json
+4e5f9215988fd48f6896346b7f97bc2184ed0fe6 data/minecraft/tags/blocks/saplings.json
+21ba05af990cf6d402d13ff2f1286d2126ff491a data/minecraft/tags/blocks/snaps_goat_horn.json
+1d7eabfa746881c14275fb87c139d44dd7a797ac data/minecraft/tags/blocks/walls.json

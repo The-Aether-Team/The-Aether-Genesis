@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "aether_genesis:block/crystal_tree_sapling"
+    }
+  }
+}

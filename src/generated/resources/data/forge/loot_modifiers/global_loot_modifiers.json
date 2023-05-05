@@ -1,7 +1,7 @@
 {
   "entries": [
-    "genesis:swet_sugar",
-    "genesis:golden_swet_ball"
+    "aether_genesis:swet_sugar",
+    "aether_genesis:golden_swet_ball"
   ],
   "replace": false
 }

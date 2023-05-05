@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "render_type": "minecraft:cutout",
-  "textures": {
-    "cross": "genesis:block/natural/dark_blue_skyroot_sapling"
-  }
-}

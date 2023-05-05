@@ -1,8 +1,8 @@
 {
   "values": [
-    "genesis:blue_skyroot_leaves",
-    "genesis:dark_blue_skyroot_leaves",
-    "genesis:purple_crystal_leaves",
-    "genesis:purple_crystal_fruit_leaves"
+    "aether_genesis:blue_skyroot_leaves",
+    "aether_genesis:dark_blue_skyroot_leaves",
+    "aether_genesis:purple_crystal_leaves",
+    "aether_genesis:purple_crystal_fruit_leaves"
   ]
 }

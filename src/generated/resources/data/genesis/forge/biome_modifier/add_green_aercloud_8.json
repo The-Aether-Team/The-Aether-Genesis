@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#genesis:has_green_aerclouds",
-  "features": "genesis:green_aercloud_8",
-  "step": "top_layer_modification"
-}

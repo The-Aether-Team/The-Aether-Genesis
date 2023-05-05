@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#genesis:has_storm_aerclouds",
-  "features": "genesis:storm_aercloud",
-  "step": "top_layer_modification"
-}
