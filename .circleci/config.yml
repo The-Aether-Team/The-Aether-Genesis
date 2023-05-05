@@ -24,7 +24,6 @@ commands:
     steps:
       - checkout
       - gradle/run:
-          cache_key: 'v1'
           steps:
             - run: gradle build --console=plain
       - store_artifacts:
