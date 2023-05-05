@@ -23,7 +23,7 @@ commands:
   setup:
     steps:
       - checkout
-      - gradle/run:
+      - gradle:
           steps:
             - run: gradle build --console=plain
       - store_artifacts:
