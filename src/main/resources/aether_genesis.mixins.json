@@ -3,7 +3,7 @@
   "package": "com.aetherteam.genesis.mixin.mixins",
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "genesis.refmap.json",
+  "refmap": "aether_genesis.refmap.json",
   "mixins": [
     "common.accessor.WallBlockAccessor"
   ],
