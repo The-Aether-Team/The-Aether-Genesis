@@ -23,10 +23,10 @@ commands:
   setup:
     steps:
       - checkout
-      - gradle/with_cache:
+      - gradle/build:
           cache_key: 'v1'
           steps:
-            - run: gradle build --build-cache --console=plain
+            - run: gradle build --console=plain
       - store_artifacts:
           path: ~/project/build/libs
 
