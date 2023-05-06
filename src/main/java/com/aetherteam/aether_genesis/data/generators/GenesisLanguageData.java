@@ -42,6 +42,8 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
 
+        this.addCommonConfig("gameplay", "gold_aercloud_ability", "Changes Gold Aercloud and respective parachute behavior to launch entities downwards");
+
         this.addPackDescription("mod", "Genesis Resources");
 
         //todo: lore
