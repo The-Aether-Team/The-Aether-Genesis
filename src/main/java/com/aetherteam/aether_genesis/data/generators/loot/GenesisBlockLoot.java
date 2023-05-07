@@ -30,9 +30,9 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
         this.add(GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get(),
                 (leaves) -> droppingWithChancesAndSkyrootSticks(leaves, GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get(), BlockLootAccessor.aether$getNormalLeavesSaplingChances()));
         this.add(GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get(),
-                this::droppingWithSkyrootSticks);
+                (leaves) -> droppingWithChancesAndSkyrootSticks(leaves, GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), BlockLootAccessor.aether$getNormalLeavesSaplingChances()));
         this.add(GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get(),
-                (leaves) -> droppingWithFruitAndSkyrootSticks(leaves, AetherItems.WHITE_APPLE.get()));
+                (leaves) -> droppingWithChancesAndFruitAndSkyrootSticks(leaves, GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), AetherItems.WHITE_APPLE.get(), BlockLootAccessor.aether$getNormalLeavesSaplingChances()));
         this.dropSelf(GenesisBlocks.BLUE_SKYROOT_SAPLING.get());
         this.dropSelf(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get());
         this.dropSelf(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get());
