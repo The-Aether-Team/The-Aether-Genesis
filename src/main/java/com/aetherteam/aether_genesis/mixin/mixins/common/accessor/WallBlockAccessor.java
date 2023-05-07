@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 import java.util.Map;
 
 @Mixin(WallBlock.class)
-public interface WallBlockAccessor {
+public interface WallBlockAccessor { //todo rename
     @Accessor
     Map<BlockState, VoxelShape> getShapeByIndex();
 
