@@ -37,8 +37,6 @@ public class SkinnyHookedTrunkPlacer extends BaseHookedTrunkPlacer {
     public List<FoliagePlacer.FoliageAttachment> placeTrunk(LevelSimulatedReader level, BiConsumer<BlockPos, BlockState> blockSetter, RandomSource random, int height, BlockPos pos, TreeConfiguration config) {
         List<FoliagePlacer.FoliageAttachment> list = Lists.newArrayList();
 
-        setDirtAt(level, blockSetter, random, pos.below(), config);
-
         list.addAll(this.placeVerticalTrunk(level, blockSetter, random, height, pos, this.skinnyTrunkProvider));
         list.addAll(this.placeBranches(level, blockSetter, random, height, pos, config));
 
