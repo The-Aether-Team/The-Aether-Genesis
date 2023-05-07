@@ -22,15 +22,15 @@
         "stream": true
       },
       {
-        "name": "aether:music/aether6",
+        "name": "aether_genesis:music/aether6",
         "stream": true
       },
       {
-        "name": "aether:music/aether7",
+        "name": "aether_genesis:music/aether7",
         "stream": true
       },
       {
-        "name": "aether:music/aether8",
+        "name": "aether_genesis:music/aether8",
         "stream": true
       }
     ]
