@@ -75,7 +75,7 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
                 .face(Direction.EAST).texture("#side").end().end();
         ModelFile sideTall = models().withExistingParent(baseName + "_side_tall", this.mcLoc("block/block"))
                 .texture("particle", texture).texture("top", texture + "_top").texture("side", texture)
-                .element().from(5.0F, 0.0F, 0.0F).to(11.0F, 14.0F, 8.0F)
+                .element().from(5.0F, 0.0F, 0.0F).to(11.0F, 16.0F, 8.0F)
                 .face(Direction.DOWN).texture("#top").cullface(Direction.DOWN).end()
                 .face(Direction.UP).texture("#top").cullface(Direction.UP).end()
                 .face(Direction.NORTH).texture("#side").cullface(Direction.NORTH).end()
