@@ -35,6 +35,21 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.BLUE_SWET_JELLY, "Blue Swet Jelly");
         this.addItem(GenesisItems.GOLDEN_SWET_JELLY, "Golden Swet Jelly");
         this.addItem(GenesisItems.DARK_SWET_JELLY, "Dark Swet Jelly");
+        this.addItem(GenesisItems.ICESTONE_POPROCKS, "Icestone Poprocks");
+        this.addItem(GenesisItems.COCOATRICE, "Cocoatrice");
+        this.addItem(GenesisItems.WARPED_CHOCOLATES, "Warped Chocolate");
+        this.addItem(GenesisItems.BLUEBERRY_LOLLIPOP, "Blueberry Lollipop");
+        this.addItem(GenesisItems.ORANGE_LOLLIPOP, "Orange Lollipop");
+        this.addItem(GenesisItems.PINK_SWET_LOLLIPOP, "Stomper Pop");
+        this.addItem(GenesisItems.ORANGE, "Orange");
+        this.addItem(GenesisItems.WYNDBERRY, "Wyndberry");
+        this.addItem(GenesisItems.JELLY_PUMPKIN, "Jelly Pumpkin");
+        this.addItem(GenesisItems.CANDY_CORN, "Candy Corn");
+        this.addItem(GenesisItems.RAINBOW_STRAWBERRY, "Rainbow Strawberry");
+
+        this.addItem(GenesisItems.SKYROOT_BOWL, "Skyroot Bowl");
+        this.addItem(GenesisItems.CORNSTARCH_BOWL, "Cornstarch Bowl");
+
         this.addItem(GenesisItems.DARK_SWET_SPAWN_EGG, "Dark Swet Spawn Egg");
         this.addItem(GenesisItems.BLUE_PARACHUTE, "Blue Parachute");
         this.addItem(GenesisItems.GREEN_PARACHUTE, "Green Parachute");

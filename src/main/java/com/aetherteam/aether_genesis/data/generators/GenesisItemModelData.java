@@ -28,6 +28,21 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.GREEN_PARACHUTE.get(), "miscellaneous/");
         this.item(GenesisItems.PURPLE_PARACHUTE.get(), "miscellaneous/");
 
+        this.item(GenesisItems.ICESTONE_POPROCKS.get(), "food/");
+        this.item(GenesisItems.COCOATRICE.get(), "food/");
+        this.item(GenesisItems.WARPED_CHOCOLATES.get(), "food/");
+        this.item(GenesisItems.BLUEBERRY_LOLLIPOP.get(), "food/");
+        this.item(GenesisItems.ORANGE_LOLLIPOP.get(), "food/");
+        this.item(GenesisItems.PINK_SWET_LOLLIPOP.get(), "food/");
+        this.item(GenesisItems.ORANGE .get(), "food/");
+        this.item(GenesisItems.WYNDBERRY.get(), "food/");
+        this.item(GenesisItems.JELLY_PUMPKIN.get(), "food/");
+        this.item(GenesisItems.CANDY_CORN.get(), "food/");
+        this.item(GenesisItems.RAINBOW_STRAWBERRY.get(), "food/");
+
+        this.item(GenesisItems.SKYROOT_BOWL.get(), "miscellaneous/");
+        this.item(GenesisItems.CORNSTARCH_BOWL.get(), "miscellaneous/");
+
         this.eggItem(GenesisItems.DARK_SWET_SPAWN_EGG.get());
 
         this.itemBlock(GenesisBlocks.GREEN_AERCLOUD.get());
