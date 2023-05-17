@@ -46,6 +46,9 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addPackDescription("mod", "Genesis Resources");
 
+        this.addBlock(GenesisBlocks.AETHER_CRAFTING_TABLE, "Skyroot WorkBench");
+
+        this.addBlock(GenesisBlocks.HOLYSTONE_FURNACE, "Holystone Furnace");
         //todo: lore
     }
 }

@@ -45,5 +45,8 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.itemLogWallBlock(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/", Aether.MODID);
         this.itemWoodWallBlock(GenesisBlocks.SKYROOT_WOOD_WALL.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/", Aether.MODID);
         this.itemWoodWallBlock(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/", Aether.MODID);
+
+        this.itemBlock(GenesisBlocks.AETHER_CRAFTING_TABLE.get());
+        this.itemBlock(GenesisBlocks.HOLYSTONE_FURNACE.get());
     }
 }
