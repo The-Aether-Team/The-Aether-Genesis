@@ -1,14 +1,18 @@
 package com.aetherteam.aether_genesis.data.generators;
 
+import com.aetherteam.aether.AetherTags;
+import com.aetherteam.aether.block.AetherBlocks;
+import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.data.providers.GenesisRecipeProvider;
 import com.aetherteam.aether_genesis.item.GenesisItems;
-import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.item.AetherItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.Consumer;
 
@@ -30,5 +34,8 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
         wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_WOOD_WALL.get(), AetherBlocks.SKYROOT_WOOD.get());
         wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get());
         wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_WOOD.get());
+
+        twoByTwoPacker(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.AETHER_CRAFTING_TABLE.get(), AetherBlocks.SKYROOT_PLANKS.get());
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_FURNACE.get()).define('#', AetherBlocks.HOLYSTONE.get()).pattern("###").pattern("# #").pattern("###").unlockedBy(getHasName(GenesisBlocks.HOLYSTONE_FURNACE.get()), has(AetherBlocks.HOLYSTONE.get())).save(consumer);
     }
 }
