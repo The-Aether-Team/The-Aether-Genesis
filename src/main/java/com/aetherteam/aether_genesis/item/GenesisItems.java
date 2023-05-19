@@ -2,6 +2,8 @@ package com.aetherteam.aether_genesis.item;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
+import com.aetherteam.aether_genesis.item.accessories.BoneRing;
+import com.aetherteam.aether_genesis.item.accessories.CrystalBottleItem;
 import com.aetherteam.aether_genesis.item.food.GenesisFoods;
 import com.aetherteam.aether.item.food.GummySwetItem;
 import com.aetherteam.aether.item.materials.SwetBallItem;
@@ -41,6 +43,7 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> CRYSTAL_EXP_BOTTLE = ITEMS.register("crystal_exp_bottle", () -> new CrystalBottleItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> MOUSE_EAR = ITEMS.register("mouse_ear", () -> new MouseEarItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final RegistryObject<Item> BONE_RING = ITEMS.register("bone_ring", () -> new BoneRing(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
 
     public static final RegistryObject<Item> BLUE_PARACHUTE = ITEMS.register("blue_parachute", () -> new ParachuteItem(GenesisEntityTypes.BLUE_PARACHUTE, new Item.Properties().durability(1)));
     public static final RegistryObject<Item> GREEN_PARACHUTE = ITEMS.register("green_parachute", () -> new ParachuteItem(GenesisEntityTypes.GREEN_PARACHUTE, new Item.Properties().durability(1)));

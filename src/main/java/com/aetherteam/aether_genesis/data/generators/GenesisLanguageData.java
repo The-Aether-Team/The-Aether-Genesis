@@ -50,6 +50,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.SKYROOT_BOWL, "Skyroot Bowl");
         this.addItem(GenesisItems.CORNSTARCH_BOWL, "Cornstarch Bowl");
         this.addItem(GenesisItems.CRYSTAL_EXP_BOTTLE, "Crystal Exp Bottle");
+        this.addItem(GenesisItems.BONE_RING, "Bone Ring");
 
         this.addItem(GenesisItems.DARK_SWET_SPAWN_EGG, "Dark Swet Spawn Egg");
         this.addItem(GenesisItems.BLUE_PARACHUTE, "Blue Parachute");
