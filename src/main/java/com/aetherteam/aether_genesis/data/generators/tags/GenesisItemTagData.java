@@ -51,5 +51,7 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get().asItem(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get().asItem(),
                 GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get().asItem());
+        this.tag(AetherTags.Items.AETHER_ACCESSORY).add(
+                GenesisItems.CRYSTAL_EXP_BOTTLE.get());
     }
 }

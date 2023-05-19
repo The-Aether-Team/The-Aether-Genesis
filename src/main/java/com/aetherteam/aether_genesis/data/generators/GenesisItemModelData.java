@@ -42,6 +42,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
 
         this.item(GenesisItems.SKYROOT_BOWL.get(), "miscellaneous/");
         this.item(GenesisItems.CORNSTARCH_BOWL.get(), "miscellaneous/");
+        this.item(GenesisItems.CRYSTAL_EXP_BOTTLE.get(), "miscellaneous/");
 
         this.eggItem(GenesisItems.DARK_SWET_SPAWN_EGG.get());
 
