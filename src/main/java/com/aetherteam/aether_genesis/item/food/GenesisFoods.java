@@ -9,7 +9,7 @@ public class GenesisFoods {
     public static final FoodProperties SWET_JELLY = new FoodProperties.Builder().fast().nutrition(5).saturationMod(0.2F).build();
     public static final FoodProperties ICESTONE_POPROCKS = new FoodProperties.Builder().fast().nutrition(5).saturationMod(0.2F).build();
     public static final FoodProperties COCOATRICE = new FoodProperties.Builder().fast().nutrition(12).saturationMod(0.48F).build();
-    public static final FoodProperties WARPPED_CHOCOLATES = new FoodProperties.Builder().fast().nutrition(12).saturationMod(0.48F).build();
+    public static final FoodProperties WRAPPED_CHOCOLATES = new FoodProperties.Builder().fast().nutrition(12).saturationMod(0.48F).build();
     public static final FoodProperties BLUEBERRY_LOLLIPOP = new FoodProperties.Builder().fast().nutrition(10).saturationMod(0.4F).build();
     public static final FoodProperties ORANGE_LOLLIPOP = new FoodProperties.Builder().fast().nutrition(8).saturationMod(0.32F).build();
     public static final FoodProperties STOMPER_POP = new FoodProperties.Builder().fast().nutrition(20).saturationMod(0.8F).build();
