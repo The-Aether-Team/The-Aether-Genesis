@@ -17,6 +17,7 @@
   "block.aether_genesis.stripped_skyroot_wood_wall": "Stripped Skyroot Wood Wall",
   "config.aether.common.gameplay.gold_aercloud_ability": "Changes Gold Aercloud and respective parachute behavior to launch entities downwards",
   "entity.aether_genesis.dark_swet": "Dark Swet",
+  "entity.aether_genesis.tempest": "Tempest",
   "item.aether_genesis.blue_parachute": "Blue Parachute",
   "item.aether_genesis.blue_swet_jelly": "Blue Swet Jelly",
   "item.aether_genesis.blueberry_lollipop": "Blueberry Lollipop",
@@ -40,6 +41,7 @@
   "item.aether_genesis.rainbow_strawberry": "Rainbow Strawberry",
   "item.aether_genesis.skyroot_bowl": "Skyroot Bowl",
   "item.aether_genesis.stomper_pop": "Stomper Pop",
+  "item.aether_genesis.tempest_spawn_egg": "Tempest Spawn Egg",
   "item.aether_genesis.warped_chocolates": "Warped Chocolate",
   "item.aether_genesis.wyndberry": "Wyndberry",
   "pack.aether.mod.description": "Genesis Resources"

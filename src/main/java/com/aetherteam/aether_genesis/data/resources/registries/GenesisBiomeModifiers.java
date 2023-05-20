@@ -27,6 +27,7 @@ public class GenesisBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_FOREST_TREES = createKey("add_forest_trees");
 
     public static final ResourceKey<BiomeModifier> SPAWN_DARK_SWET = createKey("spawn_dark_swet");
+    public static final ResourceKey<BiomeModifier> SPAWN_TEMPEST = createKey("spawn_tempest");
 
     private static ResourceKey<BiomeModifier> createKey(String name) {
         return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(Genesis.MODID, name));
@@ -96,6 +97,10 @@ public class GenesisBiomeModifiers {
 
         context.register(SPAWN_DARK_SWET, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_DARK_SWET),
-                List.of(new MobSpawnSettings.SpawnerData(GenesisEntityTypes.DARK_SWET.get(), 1, 1, 3)))); //todo charges and balances
+                List.of(new MobSpawnSettings.SpawnerData(GenesisEntityTypes.DARK_SWET.get(), 5, 1, 1)))); //todo charges and balances
+
+        context.register(SPAWN_TEMPEST, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
+                context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_TEMPEST),
+                List.of(new MobSpawnSettings.SpawnerData(GenesisEntityTypes.TEMPEST.get(), 16, 1, 1))));
     }
 }

@@ -46,6 +46,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.BONE_RING.get(), "miscellaneous/");
 
         this.eggItem(GenesisItems.DARK_SWET_SPAWN_EGG.get());
+        this.eggItem(GenesisItems.TEMPEST_SPAWN_EGG.get());
 
         this.itemBlock(GenesisBlocks.GREEN_AERCLOUD.get());
         this.itemBlock(GenesisBlocks.PURPLE_AERCLOUD.get());
