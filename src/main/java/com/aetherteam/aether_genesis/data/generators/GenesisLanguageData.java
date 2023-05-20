@@ -30,6 +30,10 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addBlock(GenesisBlocks.SKYROOT_WOOD_WALL, "Skyroot Wood Wall");
         this.addBlock(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL, "Stripped Skyroot Wood Wall");
 
+
+        this.addBlock(GenesisBlocks.AETHER_CRAFTING_TABLE, "Skyroot WorkBench");
+        this.addBlock(GenesisBlocks.HOLYSTONE_FURNACE, "Holystone Furnace");
+
         this.addItem(GenesisItems.GOLDEN_SWET_BALL, "Golden Swet Ball");
         this.addItem(GenesisItems.DARK_SWET_BALL, "Dark Swet Ball");
         this.addItem(GenesisItems.DARK_GUMMY_SWET, "Dark Gummy Swet");
@@ -65,10 +69,6 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addCommonConfig("gameplay", "gold_aercloud_ability", "Changes Gold Aercloud and respective parachute behavior to launch entities downwards");
 
         this.addPackDescription("mod", "Genesis Resources");
-
-        this.addBlock(GenesisBlocks.AETHER_CRAFTING_TABLE, "Skyroot WorkBench");
-
-        this.addBlock(GenesisBlocks.HOLYSTONE_FURNACE, "Holystone Furnace");
         //todo: lore
     }
 }
