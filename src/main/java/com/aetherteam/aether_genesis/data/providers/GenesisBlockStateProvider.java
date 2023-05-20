@@ -133,7 +133,7 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
         ModelFile lit = this.models().orientable(blockName + "_on", side, front_on, top);
         this.getVariantBuilder(block).forAllStatesExcept((state) -> {
             Direction direction = state.getValue(AbstractFurnaceBlock.FACING);
-            if(state.getValue(AbstractFurnaceBlock.LIT))
+            if (state.getValue(AbstractFurnaceBlock.LIT))
             switch (direction) {
                 case NORTH -> {
                     return ConfiguredModel.builder().modelFile(lit).build();

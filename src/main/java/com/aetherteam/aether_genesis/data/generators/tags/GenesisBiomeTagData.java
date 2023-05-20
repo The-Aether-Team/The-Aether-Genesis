@@ -46,5 +46,10 @@ public class GenesisBiomeTagData extends BiomeTagsProvider {
                 .addOptional(AetherBiomes.SKYROOT_GROVE.location())
                 .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
                 .addOptional(AetherBiomes.SKYROOT_FOREST.location());
+        this.tag(GenesisTags.Biomes.HAS_TEMPEST)
+                .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
+                .addOptional(AetherBiomes.SKYROOT_GROVE.location())
+                .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
+                .addOptional(AetherBiomes.SKYROOT_FOREST.location());
     }
 }

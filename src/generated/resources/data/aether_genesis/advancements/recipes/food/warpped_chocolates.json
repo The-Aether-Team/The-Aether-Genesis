@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "aether_genesis:warped_chocolates"
+        "recipe": "aether_genesis:warpped_chocolates"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "aether_genesis:warped_chocolates"
+      "aether_genesis:warpped_chocolates"
     ]
   }
 }

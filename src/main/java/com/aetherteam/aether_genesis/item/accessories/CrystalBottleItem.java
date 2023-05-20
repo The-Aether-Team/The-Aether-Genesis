@@ -21,29 +21,30 @@ public class CrystalBottleItem extends AccessoryItem {
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)  {
         ItemStack heldItem = player.getItemInHand(hand);
-        AetherPlayer.get(player).ifPresent(aetherPlayer -> {
-                float exp = heldItem.getOrCreateTag().getFloat("Experience");
-                if (player.isShiftKeyDown()) {
-                    if (player.experienceProgress > 0.0F) {
-                        heldItem.getOrCreateTag().putFloat("Experience", exp + 0.1F);
-                        player.experienceProgress -= 0.1F;
-                    } else if (player.experienceLevel > 0) {
-                        heldItem.getOrCreateTag().putFloat("Experience", exp + 1.0F);
-                        player.experienceLevel--;
-                        player.experienceProgress = 1;
-                    }
-                } else if (exp > 0.0F) {
-                    if (player.experienceProgress < 1.0F) {
-                        heldItem.getOrCreateTag().putFloat("Experience", exp - 0.1F);
-                        player.experienceProgress += 0.1F;
-                    } else {
-                        heldItem.getOrCreateTag().putFloat("Experience", exp - 1.0F);
-                        player.experienceLevel = (int) (player.experienceLevel + 1.0F);
-                        player.experienceProgress = 0;
-                    }
-                }
-        });
-        return InteractionResultHolder.success(heldItem);
+        float exp = heldItem.getOrCreateTag().getFloat("Experience");
+        if (player.isShiftKeyDown()) {
+            if (player.experienceProgress > 0.0F) {
+                heldItem.getOrCreateTag().putFloat("Experience", exp + 0.1F);
+                player.experienceProgress -= 0.1F;
+            } else if (player.experienceLevel > 0) {
+                heldItem.getOrCreateTag().putFloat("Experience", exp + 1.0F);
+                player.experienceLevel--;
+                player.experienceProgress = 1;
+            }
+            return InteractionResultHolder.success(heldItem);
+        } else if (exp > 0.0F) {
+            if (player.experienceProgress < 1.0F) {
+                heldItem.getOrCreateTag().putFloat("Experience", exp - 0.1F);
+                player.experienceProgress += 0.1F;
+            } else {
+                heldItem.getOrCreateTag().putFloat("Experience", exp - 1.0F);
+                player.experienceLevel = (int) (player.experienceLevel + 1.0F);
+                player.experienceProgress = 0;
+            }
+            return InteractionResultHolder.success(heldItem);
+        }
+
+        return InteractionResultHolder.pass(heldItem);
     }
 
     public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
@@ -52,6 +53,7 @@ public class CrystalBottleItem extends AccessoryItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
+        if(stack.getTag() != null)
         components.add(Component.literal("Experience" + (stack.hasTag() ? (" (" + (int)stack.getTag().getFloat("Experience") + " inside)") : "")));
         super.appendHoverText(stack, level, components, flag);
     }

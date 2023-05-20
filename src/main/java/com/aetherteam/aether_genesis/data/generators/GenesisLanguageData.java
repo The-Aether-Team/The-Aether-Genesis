@@ -31,7 +31,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addBlock(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL, "Stripped Skyroot Wood Wall");
 
 
-        this.addBlock(GenesisBlocks.AETHER_CRAFTING_TABLE, "Skyroot WorkBench");
+        this.addBlock(GenesisBlocks.AETHER_CRAFTING_TABLE, "Skyroot Crafting Table");
         this.addBlock(GenesisBlocks.HOLYSTONE_FURNACE, "Holystone Furnace");
 
         this.addItem(GenesisItems.GOLDEN_SWET_BALL, "Golden Swet Ball");
@@ -42,10 +42,10 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.DARK_SWET_JELLY, "Dark Swet Jelly");
         this.addItem(GenesisItems.ICESTONE_POPROCKS, "Icestone Poprocks");
         this.addItem(GenesisItems.COCOATRICE, "Cocoatrice");
-        this.addItem(GenesisItems.WARPED_CHOCOLATES, "Warped Chocolate");
+        this.addItem(GenesisItems.WARPPED_CHOCOLATES, "Warpped Chocolate");
         this.addItem(GenesisItems.BLUEBERRY_LOLLIPOP, "Blueberry Lollipop");
         this.addItem(GenesisItems.ORANGE_LOLLIPOP, "Orange Lollipop");
-        this.addItem(GenesisItems.PINK_SWET_LOLLIPOP, "Stomper Pop");
+        this.addItem(GenesisItems.STOMPER_POP, "Stomper Pop");
         this.addItem(GenesisItems.ORANGE, "Orange");
         this.addItem(GenesisItems.WYNDBERRY, "Wyndberry");
         this.addItem(GenesisItems.JELLY_PUMPKIN, "Jelly Pumpkin");

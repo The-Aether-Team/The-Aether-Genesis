@@ -30,10 +30,10 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
 
         this.item(GenesisItems.ICESTONE_POPROCKS.get(), "food/");
         this.item(GenesisItems.COCOATRICE.get(), "food/");
-        this.item(GenesisItems.WARPED_CHOCOLATES.get(), "food/");
+        this.item(GenesisItems.WARPPED_CHOCOLATES.get(), "food/");
         this.item(GenesisItems.BLUEBERRY_LOLLIPOP.get(), "food/");
         this.item(GenesisItems.ORANGE_LOLLIPOP.get(), "food/");
-        this.item(GenesisItems.PINK_SWET_LOLLIPOP.get(), "food/");
+        this.item(GenesisItems.STOMPER_POP.get(), "food/");
         this.item(GenesisItems.ORANGE .get(), "food/");
         this.item(GenesisItems.WYNDBERRY.get(), "food/");
         this.item(GenesisItems.JELLY_PUMPKIN.get(), "food/");

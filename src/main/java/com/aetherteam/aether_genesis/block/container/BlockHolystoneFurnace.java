@@ -1,9 +1,7 @@
 package com.aetherteam.aether_genesis.block.container;
 
-import com.aetherteam.aether.blockentity.AbstractAetherFurnaceBlockEntity;
-import com.aetherteam.aether.blockentity.AetherBlockEntityTypes;
 import com.aetherteam.aether_genesis.blockTileEntity.GenesisBlockEntityTypes;
-import com.aetherteam.aether_genesis.blockTileEntity.HolyFurnaceBlockEntity;
+import com.aetherteam.aether_genesis.blockTileEntity.HolystoneFurnaceBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -35,7 +33,7 @@ public class BlockHolystoneFurnace extends AbstractFurnaceBlock {
     protected void openContainer(Level level, BlockPos pos, Player player) {
         if (!level.isClientSide()) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof HolyFurnaceBlockEntity furnaceBlockEntity) {
+            if (blockEntity instanceof HolystoneFurnaceBlockEntity furnaceBlockEntity) {
                 player.openMenu(furnaceBlockEntity);
             }
         }
@@ -44,7 +42,7 @@ public class BlockHolystoneFurnace extends AbstractFurnaceBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new HolyFurnaceBlockEntity(pos, state);
+        return new HolystoneFurnaceBlockEntity(pos, state);
     }
 
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {

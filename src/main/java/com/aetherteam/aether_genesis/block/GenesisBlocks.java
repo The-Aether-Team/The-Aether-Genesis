@@ -74,7 +74,6 @@ public class GenesisBlocks {
         fireBlockAccessor.callSetFlammable(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(), 5, 5);
         fireBlockAccessor.callSetFlammable(GenesisBlocks.SKYROOT_WOOD_WALL.get(), 5, 5);
         fireBlockAccessor.callSetFlammable(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(), 5, 5);
-        fireBlockAccessor.callSetFlammable(GenesisBlocks.AETHER_CRAFTING_TABLE.get(), 5, 5);
     }
 
     private static <T extends Block> RegistryObject<T> baseRegister(String name, Supplier<? extends T> block, Function<RegistryObject<T>, Supplier<? extends Item>> item) {

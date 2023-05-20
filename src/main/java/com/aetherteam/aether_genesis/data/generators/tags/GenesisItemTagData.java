@@ -55,5 +55,9 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.CRYSTAL_EXP_BOTTLE.get());
         this.tag(AetherTags.Items.AETHER_RING).add(
                 GenesisItems.BONE_RING.get());
+        this.tag(GenesisTags.Items.JELLY).add(
+                GenesisItems.BLUE_SWET_JELLY.get(),
+                GenesisItems.DARK_SWET_JELLY.get(),
+                GenesisItems.GOLDEN_SWET_JELLY.get());
     }
 }

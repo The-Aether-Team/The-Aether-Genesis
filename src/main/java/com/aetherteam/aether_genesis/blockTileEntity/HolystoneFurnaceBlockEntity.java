@@ -9,16 +9,16 @@ import net.minecraft.world.inventory.FurnaceMenu;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class HolyFurnaceBlockEntity extends AbstractAetherFurnaceBlockEntity {
-    public HolyFurnaceBlockEntity(BlockPos pPos, BlockState pBlockState) {
+public class HolystoneFurnaceBlockEntity extends AbstractAetherFurnaceBlockEntity {
+    public HolystoneFurnaceBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(GenesisBlockEntityTypes.HOLYSTONE_FURNACE.get(), pPos, pBlockState, RecipeType.SMELTING);
     }
 
     protected Component getDefaultName() {
-        return Component.translatable("container.furnace");
+        return Component.translatable("container.holystone.furnace");
     }
 
     protected AbstractContainerMenu createMenu(int pId, Inventory pPlayer) {
-        return new FurnaceMenu(pId, pPlayer, this, this.dataAccess);
+        return new HolystoneFurnaceMenu(pId, pPlayer, this, this.dataAccess);
     }
 }

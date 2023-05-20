@@ -18,6 +18,7 @@ public class GenesisTags {
 
     public static class Items {
         public static final TagKey<Item> LOG_WALLS = tag("log_walls");
+        public static final TagKey<Item> JELLY = tag("jelly");
 
         private static TagKey<Item> tag(String name) {
             return TagKey.create(Registries.ITEM, new ResourceLocation(Genesis.MODID, name));
@@ -33,7 +34,7 @@ public class GenesisTags {
         public static final TagKey<Biome> HAS_WOODLAND_TREES = tag("has_woodland_trees");
         public static final TagKey<Biome> HAS_FOREST_TREES = tag("has_forest_trees");
         public static final TagKey<Biome> HAS_DARK_SWET = tag("has_dark_swet");
-        public static final TagKey<Biome> HAS_TEMPEST = tag("tempest");
+        public static final TagKey<Biome> HAS_TEMPEST = tag("has_tempest");
 
         private static TagKey<Biome> tag(String name) {
             return TagKey.create(Registries.BIOME, new ResourceLocation(Genesis.MODID, name));

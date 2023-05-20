@@ -1,6 +1,7 @@
 package com.aetherteam.aether_genesis.client.renderer;
 
 import com.aetherteam.aether.block.AetherBlocks;
+import com.aetherteam.aether.client.renderer.entity.IceCrystalRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
@@ -8,7 +9,6 @@ import com.aetherteam.aether_genesis.client.renderer.entity.DarkSwetRenderer;
 import com.aetherteam.aether_genesis.client.renderer.entity.TempestRenderer;
 import com.aetherteam.aether_genesis.client.renderer.model.TempestModel;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -25,7 +25,7 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.GREEN_PARACHUTE.get(), (context) -> new ParachuteRenderer(context, GenesisBlocks.GREEN_AERCLOUD));
         event.registerEntityRenderer(GenesisEntityTypes.PURPLE_PARACHUTE.get(), (context) -> new ParachuteRenderer(context, GenesisBlocks.PURPLE_AERCLOUD));
 
-        event.registerEntityRenderer(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), (context) -> new ThrownItemRenderer<>(context, 3.0F, true));
+        event.registerEntityRenderer(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), IceCrystalRenderer::new);
     }
 
     @SubscribeEvent

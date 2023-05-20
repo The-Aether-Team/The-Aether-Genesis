@@ -2,6 +2,7 @@ package com.aetherteam.aether_genesis;
 
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockTileEntity.GenesisBlockEntityTypes;
+import com.aetherteam.aether_genesis.blockTileEntity.GenesisMenuTypes;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.data.generators.*;
 import com.aetherteam.aether_genesis.data.generators.tags.GenesisBiomeTagData;
@@ -54,6 +55,7 @@ public class Genesis {
                 GenesisBlocks.BLOCKS,
                 GenesisItems.ITEMS,
                 GenesisEntityTypes.ENTITY_TYPES,
+                GenesisMenuTypes.MENU_TYPES,
                 GenesisBlockEntityTypes.BLOCK_ENTITY_TYPES,
                 GenesisLootModifiers.GLOBAL_LOOT_MODIFIERS,
                 GenesisFoliagePlacerTypes.FOLIAGE_PLACERS,

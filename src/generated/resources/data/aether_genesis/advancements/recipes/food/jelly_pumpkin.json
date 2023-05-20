@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "aether_genesis:dark_jelly_pumpkin"
+        "recipe": "aether_genesis:jelly_pumpkin"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "aether_genesis:dark_jelly_pumpkin"
+      "aether_genesis:jelly_pumpkin"
     ]
   }
 }

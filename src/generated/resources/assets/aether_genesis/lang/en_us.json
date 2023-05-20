@@ -9,7 +9,7 @@
   "block.aether_genesis.purple_crystal_fruit_leaves": "Purple Crystal Fruit Leaves",
   "block.aether_genesis.purple_crystal_leaves": "Purple Crystal Leaves",
   "block.aether_genesis.purple_crystal_tree_sapling": "Purple Crystal Tree Sapling",
-  "block.aether_genesis.skyroot_crafting_table": "Skyroot WorkBench",
+  "block.aether_genesis.skyroot_crafting_table": "Skyroot Crafting Table",
   "block.aether_genesis.skyroot_log_wall": "Skyroot Log Wall",
   "block.aether_genesis.skyroot_wood_wall": "Skyroot Wood Wall",
   "block.aether_genesis.storm_aercloud": "Storm Aercloud",
@@ -42,7 +42,7 @@
   "item.aether_genesis.skyroot_bowl": "Skyroot Bowl",
   "item.aether_genesis.stomper_pop": "Stomper Pop",
   "item.aether_genesis.tempest_spawn_egg": "Tempest Spawn Egg",
-  "item.aether_genesis.warped_chocolates": "Warped Chocolate",
+  "item.aether_genesis.warpped_chocolates": "Warpped Chocolate",
   "item.aether_genesis.wyndberry": "Wyndberry",
   "pack.aether.mod.description": "Genesis Resources"
 }
