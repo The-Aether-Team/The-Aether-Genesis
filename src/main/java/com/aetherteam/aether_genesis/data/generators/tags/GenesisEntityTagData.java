@@ -1,11 +1,14 @@
 package com.aetherteam.aether_genesis.data.generators.tags;
 
+import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether.AetherTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
+import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nullable;
@@ -18,8 +21,15 @@ public class GenesisEntityTagData extends EntityTypeTagsProvider {
 
     @Override
     public void addTags(HolderLookup.Provider provider) {
+        this.tag(AetherTags.Entities.DEFLECTABLE_PROJECTILES)
+                .addTag(EntityTypeTags.ARROWS)
+                .add(
+                        GenesisEntityTypes.TEMPEST_THUNDERBALL.get());
         this.tag(AetherTags.Entities.SWETS).add(
                 GenesisEntityTypes.DARK_SWET.get()
+        );
+        this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(
+                GenesisEntityTypes.TEMPEST.get()
         );
     }
 }

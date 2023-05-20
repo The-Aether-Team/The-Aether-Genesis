@@ -49,11 +49,15 @@ public class GenesisBlockTagData extends BlockTagsProvider {
         this.tag(BlockTags.FLOWER_POTS).add(
                 GenesisBlocks.POTTED_BLUE_SKYROOT_SAPLING.get(),
                 GenesisBlocks.POTTED_DARK_BLUE_SKYROOT_SAPLING.get());
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
+                GenesisBlocks.HOLYSTONE_FURNACE.get()
+        );
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(
                 GenesisBlocks.SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get(),
-                GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get());
+                GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(),
+                GenesisBlocks.AETHER_CRAFTING_TABLE.get());
         this.tag(BlockTags.MINEABLE_WITH_HOE).add(
                 GenesisBlocks.GREEN_AERCLOUD.get(),
                 GenesisBlocks.PURPLE_AERCLOUD.get(),

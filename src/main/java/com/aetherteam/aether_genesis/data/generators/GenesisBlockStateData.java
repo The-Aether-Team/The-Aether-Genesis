@@ -6,6 +6,7 @@ import com.aetherteam.aether_genesis.data.providers.GenesisBlockStateProvider;
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlocks;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class GenesisBlockStateData extends GenesisBlockStateProvider {
@@ -31,5 +32,7 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
         this.logWallBlock(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/", Aether.MODID);
         this.woodWallBlock(GenesisBlocks.SKYROOT_WOOD_WALL.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/", Aether.MODID);
         this.woodWallBlock(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/", Aether.MODID);
+        this.skyrootCraftingTable(GenesisBlocks.AETHER_CRAFTING_TABLE.get());
+        this.furnace(GenesisBlocks.HOLYSTONE_FURNACE.get());
     }
 }

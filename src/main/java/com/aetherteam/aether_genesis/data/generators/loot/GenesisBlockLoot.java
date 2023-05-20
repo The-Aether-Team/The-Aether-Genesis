@@ -43,6 +43,8 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
         this.dropSelf(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get());
         this.dropSelfDouble(GenesisBlocks.SKYROOT_WOOD_WALL.get());
         this.dropSelf(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get());
+        this.dropSelf(GenesisBlocks.AETHER_CRAFTING_TABLE.get());
+        this.dropSelf(GenesisBlocks.HOLYSTONE_FURNACE.get());
     }
 
     @Override

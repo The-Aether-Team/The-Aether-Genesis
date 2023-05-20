@@ -7,6 +7,7 @@
   "mixins": [
     "common.AercloudBlockMixin",
     "common.ItemMixin",
+    "common.ZephyrMixin",
     "common.ParachuteMixin",
     "common.accessor.WallBlockAccessor"
   ],

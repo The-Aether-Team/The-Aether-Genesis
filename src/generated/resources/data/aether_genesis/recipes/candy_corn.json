@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "aether_genesis:cornstarch_bowl"
+    },
+    {
+      "item": "aether:skyroot_milk_bucket"
+    },
+    {
+      "item": "aether:skyroot_water_bucket"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "count": 5,
+    "item": "aether_genesis:candy_corn"
+  }
+}
