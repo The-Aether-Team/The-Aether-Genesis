@@ -18,9 +18,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class BlockHolystoneFurnace extends AbstractFurnaceBlock {
+public class HolystoneFurnaceBlock extends AbstractFurnaceBlock {
 
-    public BlockHolystoneFurnace(Properties pProperties) {
+    public HolystoneFurnaceBlock(Properties pProperties) {
         super(pProperties);
     }
 

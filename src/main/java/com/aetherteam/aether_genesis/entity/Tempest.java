@@ -109,6 +109,10 @@ public class Tempest extends FlyingMob implements Enemy {
         this.entityData.set(DATA_ATTACK_CHARGE_ID, Math.max(attackTimer, 0));
     }
 
+    public boolean fireImmune() {
+        return true;
+    }
+
     @Override
     protected float getSoundVolume() {
         return 3.0F;

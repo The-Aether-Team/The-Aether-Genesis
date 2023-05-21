@@ -17,11 +17,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.NotNull;
 
-public class BlockAetherCraftingTable extends CraftingTableBlock
+public class AetherCraftingTableBlock extends CraftingTableBlock
 {
 	private static final Component CONTAINER_TITLE = Component.translatable("container.crafting");
 
-	public BlockAetherCraftingTable(BlockBehaviour.Properties pProperties) {
+	public AetherCraftingTableBlock(BlockBehaviour.Properties pProperties) {
 		super(pProperties);
 	}
 

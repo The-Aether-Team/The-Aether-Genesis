@@ -5,8 +5,8 @@ import com.aetherteam.aether.block.natural.AetherDoubleDropsLeaves;
 import com.aetherteam.aether.block.natural.LeavesWithParticlesBlock;
 import com.aetherteam.aether.mixin.mixins.common.accessor.FireBlockAccessor;
 import com.aetherteam.aether_genesis.Genesis;
-import com.aetherteam.aether_genesis.block.container.BlockAetherCraftingTable;
-import com.aetherteam.aether_genesis.block.container.BlockHolystoneFurnace;
+import com.aetherteam.aether_genesis.block.container.AetherCraftingTableBlock;
+import com.aetherteam.aether_genesis.block.container.HolystoneFurnaceBlock;
 import com.aetherteam.aether_genesis.block.natural.GenesisDoubleDropsWall;
 import com.aetherteam.aether_genesis.block.natural.GreenAercloudBlock;
 import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
@@ -56,8 +56,8 @@ public class GenesisBlocks {
     public static final RegistryObject<WallBlock> SKYROOT_WOOD_WALL = register("skyroot_wood_wall", () -> new GenesisDoubleDropsWall(Block.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD)));
     public static final RegistryObject<WallBlock> STRIPPED_SKYROOT_WOOD_WALL = register("stripped_skyroot_wood_wall", () -> new WallBlock(Block.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F).sound(SoundType.WOOD)));
 
-    public static final RegistryObject<Block> AETHER_CRAFTING_TABLE = register("skyroot_crafting_table", () -> new BlockAetherCraftingTable(Block.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD)));
-    public static final RegistryObject<Block> HOLYSTONE_FURNACE = register("holystone_furnace", () -> new BlockHolystoneFurnace(Block.Properties.of(Material.STONE).strength(3.5F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> AETHER_CRAFTING_TABLE = register("skyroot_crafting_table", () -> new AetherCraftingTableBlock(Block.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> HOLYSTONE_FURNACE = register("holystone_furnace", () -> new HolystoneFurnaceBlock(Block.Properties.of(Material.STONE).strength(3.5F).requiresCorrectToolForDrops()));
 
     public static void registerPots() {
         FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
