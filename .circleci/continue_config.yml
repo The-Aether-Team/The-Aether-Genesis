@@ -37,7 +37,7 @@ commands:
   setup:
     steps:
       - checkout
-      - run: gradle build --parallel --build-cache --console=plain
+      - run: gradle build --console=plain
       - store_artifacts:
           path: ~/project/build/libs
 
