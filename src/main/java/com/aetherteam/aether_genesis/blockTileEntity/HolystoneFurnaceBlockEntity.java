@@ -15,7 +15,7 @@ public class HolystoneFurnaceBlockEntity extends AbstractAetherFurnaceBlockEntit
     }
 
     protected Component getDefaultName() {
-        return Component.translatable("container.holystone_furnace");
+        return Component.translatable("menu.aether_genesis.holystone_furnace");
     }
 
     protected AbstractContainerMenu createMenu(int pId, Inventory pPlayer) {

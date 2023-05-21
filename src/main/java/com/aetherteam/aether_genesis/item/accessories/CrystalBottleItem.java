@@ -26,12 +26,13 @@ public class CrystalBottleItem extends AccessoryItem {
             if (player.experienceProgress > 0.0F) {
                 heldItem.getOrCreateTag().putFloat("Experience", exp + 0.1F);
                 player.experienceProgress -= 0.1F;
+                return InteractionResultHolder.success(heldItem);
             } else if (player.experienceLevel > 0) {
                 heldItem.getOrCreateTag().putFloat("Experience", exp + 1.0F);
                 player.experienceLevel--;
                 player.experienceProgress = 1;
+                return InteractionResultHolder.success(heldItem);
             }
-            return InteractionResultHolder.success(heldItem);
         } else if (exp > 0.0F) {
             if (player.experienceProgress < 1.0F) {
                 heldItem.getOrCreateTag().putFloat("Experience", exp - 0.1F);
@@ -48,7 +49,7 @@ public class CrystalBottleItem extends AccessoryItem {
     }
 
     public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
-        return false;
+        return stack.getTag() == null || stack.getTag().getFloat("Experience") <= 0;
     }
 
     @Override

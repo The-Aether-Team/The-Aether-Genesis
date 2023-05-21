@@ -1,13 +1,13 @@
 package com.aetherteam.aether_genesis.blockTileEntity;
 
-import com.aetherteam.aether.client.gui.screen.inventory.AbstractAetherFurnaceScreen;
 import com.aetherteam.aether_genesis.Genesis;
+import net.minecraft.client.gui.screens.inventory.AbstractFurnaceScreen;
 import net.minecraft.client.gui.screens.recipebook.SmeltingRecipeBookComponent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
-public class HolystoneFurnaceScreen extends AbstractAetherFurnaceScreen<HolystoneFurnaceMenu> {
+public class HolystoneFurnaceScreen extends AbstractFurnaceScreen<HolystoneFurnaceMenu> {
 	private static final ResourceLocation FURNACE_GUI_TEXTURES = new ResourceLocation(Genesis.MODID, "textures/gui/menu/holystone_furnace.png");
 
 	public HolystoneFurnaceScreen(HolystoneFurnaceMenu container, Inventory inventory, Component title) {
