@@ -1,13 +1,13 @@
 package com.aetherteam.aether_genesis.item;
 
+import com.aetherteam.aether.item.food.GummySwetItem;
+import com.aetherteam.aether.item.materials.SwetBallItem;
+import com.aetherteam.aether.item.miscellaneous.ParachuteItem;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.accessories.BoneRing;
 import com.aetherteam.aether_genesis.item.accessories.CrystalBottleItem;
 import com.aetherteam.aether_genesis.item.food.GenesisFoods;
-import com.aetherteam.aether.item.food.GummySwetItem;
-import com.aetherteam.aether.item.materials.SwetBallItem;
-import com.aetherteam.aether.item.miscellaneous.ParachuteItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraftforge.common.ForgeSpawnEggItem;

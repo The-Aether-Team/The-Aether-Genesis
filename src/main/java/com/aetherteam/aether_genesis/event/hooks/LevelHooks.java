@@ -1,7 +1,7 @@
 package com.aetherteam.aether_genesis.event.hooks;
 
-import com.aetherteam.aether_genesis.data.resources.registries.GenesisConfiguredFeatures;
 import com.aetherteam.aether.data.resources.registries.AetherConfiguredFeatures;
+import com.aetherteam.aether_genesis.data.resources.registries.GenesisConfiguredFeatures;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;

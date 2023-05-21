@@ -1,8 +1,8 @@
 package com.aetherteam.aether_genesis.client.renderer.entity;
 
-import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether.client.renderer.entity.SwetRenderer;
 import com.aetherteam.aether.entity.monster.Swet;
+import com.aetherteam.aether_genesis.Genesis;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 

@@ -1,6 +1,5 @@
 package com.aetherteam.aether_genesis.item.accessories;
 
-import com.aetherteam.aether.capability.player.AetherPlayer;
 import com.aetherteam.aether.item.accessories.AccessoryItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -49,7 +48,7 @@ public class CrystalBottleItem extends AccessoryItem {
     }
 
     public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
-        return stack.getTag() == null || stack.getTag().getFloat("Experience") <= 0;
+        return false;
     }
 
     @Override

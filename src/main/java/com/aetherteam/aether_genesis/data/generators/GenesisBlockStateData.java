@@ -1,12 +1,11 @@
 package com.aetherteam.aether_genesis.data.generators;
 
+import com.aetherteam.aether.Aether;
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.data.providers.GenesisBlockStateProvider;
-import com.aetherteam.aether.Aether;
-import com.aetherteam.aether.block.AetherBlocks;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class GenesisBlockStateData extends GenesisBlockStateProvider {

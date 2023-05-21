@@ -7,8 +7,8 @@
   "mixins": [
     "common.AercloudBlockMixin",
     "common.ItemMixin",
-    "common.ZephyrMixin",
     "common.ParachuteMixin",
+    "common.ZephyrMixin",
     "common.accessor.WallBlockAccessor"
   ],
   "injectors": {

@@ -1,5 +1,10 @@
 package com.aetherteam.aether_genesis.data.resources.registries;
 
+import com.aetherteam.aether.data.resources.AetherFeatureStates;
+import com.aetherteam.aether.data.resources.builders.AetherConfiguredFeatureBuilders;
+import com.aetherteam.aether.world.feature.AetherFeatures;
+import com.aetherteam.aether.world.foliageplacer.GoldenOakFoliagePlacer;
+import com.aetherteam.aether.world.trunkplacer.GoldenOakTrunkPlacer;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.data.resources.GenesisFeatureStates;
 import com.aetherteam.aether_genesis.world.foliageplacer.AetherPineFoliagePlacer;
@@ -7,11 +12,6 @@ import com.aetherteam.aether_genesis.world.foliageplacer.HookedFoliagePlacer;
 import com.aetherteam.aether_genesis.world.treedecorator.TrunkDecorator;
 import com.aetherteam.aether_genesis.world.trunkplacer.HookedTrunkPlacer;
 import com.aetherteam.aether_genesis.world.trunkplacer.SkinnyHookedTrunkPlacer;
-import com.aetherteam.aether.data.resources.AetherFeatureStates;
-import com.aetherteam.aether.data.resources.builders.AetherConfiguredFeatureBuilders;
-import com.aetherteam.aether.world.feature.AetherFeatures;
-import com.aetherteam.aether.world.foliageplacer.GoldenOakFoliagePlacer;
-import com.aetherteam.aether.world.trunkplacer.GoldenOakTrunkPlacer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
