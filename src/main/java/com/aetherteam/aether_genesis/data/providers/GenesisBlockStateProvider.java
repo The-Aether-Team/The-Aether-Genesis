@@ -1,11 +1,13 @@
 package com.aetherteam.aether_genesis.data.providers;
 
-import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
+import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlockStateProperties;
 import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
+import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WallBlock;
 import net.minecraft.world.level.block.state.properties.Property;
@@ -108,5 +110,60 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
 
     public void woodWallBlock(WallBlock block, Block baseBlock, String location, String modid) {
         this.wallBlockInternal(block, this.name(block), new ResourceLocation(modid, "block/" + location + this.name(baseBlock)));
+    }
+
+    public void skyrootCraftingTable(Block block) {
+        ModelFile workbench = this.models().cube(this.name(block),
+                new ResourceLocation(Aether.MODID, "block/construction/skyroot_planks"),
+                this.extend(this.texture(this.name(block), "utility/"), "_top"),
+                this.extend(this.texture(this.name(block), "utility/"), "_front"),
+                this.extend(this.texture(this.name(block), "utility/"), "_side"),
+                this.extend(this.texture(this.name(block), "utility/"), "_front"),
+                this.extend(this.texture(this.name(block), "utility/"), "_side"));
+        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(workbench));
+    }
+
+    public void furnace(Block block) {
+        String blockName = this.name(block);
+        ResourceLocation side = this.extend(this.texture(this.name(block), "utility/"), "_side");
+        ResourceLocation front_on =  this.extend(this.texture(this.name(block), "utility/"), "_front_on");
+        ResourceLocation front =  this.extend(this.texture(this.name(block), "utility/"), "_front");
+        ResourceLocation top = this.extend(this.texture(this.name(block), "utility/"), "_top");
+        ModelFile normal = this.models().orientable(blockName, side, front, top);
+        ModelFile lit = this.models().orientable(blockName + "_on", side, front_on, top);
+        this.getVariantBuilder(block).forAllStatesExcept((state) -> {
+            Direction direction = state.getValue(AbstractFurnaceBlock.FACING);
+            if (state.getValue(AbstractFurnaceBlock.LIT))
+            switch (direction) {
+                case NORTH -> {
+                    return ConfiguredModel.builder().modelFile(lit).build();
+                }
+                case SOUTH -> {
+                    return ConfiguredModel.builder().modelFile(lit).rotationY(180).build();
+                }
+                case WEST -> {
+                    return ConfiguredModel.builder().modelFile(lit).rotationY(270).build();
+                }
+                case EAST -> {
+                    return ConfiguredModel.builder().modelFile(lit).rotationY(90).build();
+                }
+            }
+            else
+                switch (direction) {
+                    case NORTH -> {
+                        return ConfiguredModel.builder().modelFile(normal).build();
+                    }
+                    case SOUTH -> {
+                        return ConfiguredModel.builder().modelFile(normal).rotationY(180).build();
+                    }
+                    case WEST -> {
+                        return ConfiguredModel.builder().modelFile(normal).rotationY(270).build();
+                    }
+                    case EAST -> {
+                        return ConfiguredModel.builder().modelFile(normal).rotationY(90).build();
+                    }
+                }
+            return ConfiguredModel.builder().build();
+        });
     }
 }

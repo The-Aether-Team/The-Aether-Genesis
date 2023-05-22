@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "#aether_genesis:has_tempest",
+  "spawners": {
+    "type": "aether_genesis:tempest",
+    "maxCount": 1,
+    "minCount": 1,
+    "weight": 16
+  }
+}

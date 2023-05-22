@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "aether:blue_berry"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "aether:skyroot_stick"
+    }
+  ],
+  "result": {
+    "item": "aether_genesis:blueberry_lollipop"
+  }
+}

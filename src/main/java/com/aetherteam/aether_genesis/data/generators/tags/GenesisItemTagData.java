@@ -1,10 +1,10 @@
 package com.aetherteam.aether_genesis.data.generators.tags;
 
+import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.GenesisTags;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.item.GenesisItems;
-import com.aetherteam.aether.AetherTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -51,5 +51,13 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get().asItem(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get().asItem(),
                 GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get().asItem());
+        this.tag(AetherTags.Items.AETHER_ACCESSORY).add(
+                GenesisItems.CRYSTAL_EXP_BOTTLE.get());
+        this.tag(AetherTags.Items.AETHER_RING).add(
+                GenesisItems.BONE_RING.get());
+        this.tag(GenesisTags.Items.SWET_JELLY).add(
+                GenesisItems.BLUE_SWET_JELLY.get(),
+                GenesisItems.DARK_SWET_JELLY.get(),
+                GenesisItems.GOLDEN_SWET_JELLY.get());
     }
 }

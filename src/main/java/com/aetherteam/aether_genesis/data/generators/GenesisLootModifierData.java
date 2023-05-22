@@ -1,10 +1,10 @@
 package com.aetherteam.aether_genesis.data.generators;
 
+import com.aetherteam.aether.AetherTags;
+import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.loot.modifiers.AddEntityDropsModifier;
-import com.aetherteam.aether.AetherTags;
-import com.aetherteam.aether.entity.AetherEntityTypes;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.ItemStack;
@@ -13,7 +13,8 @@ import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.functions.LootingEnchantFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.predicates.*;
+import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 
