@@ -1,3 +1,6 @@
+darksonic300
+- Improvement of the Tempest class to extend the Zephyr class.
+
 KELETU66666
 - Implementation of food items.
 - Implementation of Skyroot Crafting Table.
