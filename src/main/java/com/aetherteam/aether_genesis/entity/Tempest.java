@@ -1,23 +1,21 @@
 package com.aetherteam.aether_genesis.entity;
 
-import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether_genesis.entity.miscellaneous.TempestThunderBall;
+import com.aetherteam.aether.client.AetherSoundEvents;
+import com.aetherteam.aether.entity.monster.Zephyr;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -27,12 +25,8 @@ import net.minecraft.world.phys.Vec3;
 import javax.annotation.Nonnull;
 import java.util.EnumSet;
 
-public class Tempest extends FlyingMob implements Enemy {
+public class Tempest extends Zephyr {
     public static final EntityDataAccessor<Integer> DATA_ATTACK_CHARGE_ID = SynchedEntityData.defineId(Tempest.class, EntityDataSerializers.INT);
-    public int scale;
-    public int scaleAdd;
-    public float tailRot;
-    public float tailRotAdd;
 
     public Tempest(EntityType<? extends Tempest> type, Level level) {
         super(type, level);
@@ -44,7 +38,7 @@ public class Tempest extends FlyingMob implements Enemy {
     protected void registerGoals() {
         this.goalSelector.addGoal(5, new Tempest.RandomFlyGoal(this));
         this.goalSelector.addGoal(7, new Tempest.LookAroundGoal(this));
-        this.goalSelector.addGoal(5, new Tempest.SnowballAttackGoal(this));
+        this.goalSelector.addGoal(5, new Tempest.ThunderballAttackGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
     }
 
@@ -69,80 +63,11 @@ public class Tempest extends FlyingMob implements Enemy {
         return !(level.getSkyDarken() < 4) && !level.dimensionType().hasFixedTime();
     }
 
-    @Override
-    public void aiStep() {
-        super.aiStep();
-        if (this.getY() < this.level.getMinBuildHeight() - 2 || this.getY() > this.level.getMaxBuildHeight()) {
-            this.discard();
-        }
-        this.scale += this.scaleAdd;
-        this.tailRot += this.tailRotAdd;
-        if (this.getAttackCharge() > 0 && this.scale < 40) {
-            this.scaleAdd = 1;
-        } else {
-            this.scaleAdd = 0;
-            this.scale = 0;
-        }
-        this.tailRotAdd = 0.015F;
-        if (this.tailRot >= Mth.TWO_PI) {
-            this.tailRot -= Mth.TWO_PI;
-        }
-        if (this.isAlive() && this.level.isDay() && !this.level.isClientSide)
-            this.setHealth(0);
-    }
-
-    @Override
-    public boolean removeWhenFarAway(double distanceToClosestPlayer) {
-        return true;
-    }
-
-    public int getAttackCharge() {
-        return this.entityData.get(DATA_ATTACK_CHARGE_ID);
-    }
-
-    /**
-     * Sets the value of the attack charge for the purposes of rendering on the
-     * client. This only sets the value if it's above 0 because that's when the
-     * tempest begins to wind up for an attack.
-     */
-    public void setAttackCharge(int attackTimer) {
-        this.entityData.set(DATA_ATTACK_CHARGE_ID, Math.max(attackTimer, 0));
-    }
-
-    public boolean fireImmune() {
-        return true;
-    }
-
-    @Override
-    protected float getSoundVolume() {
-        return 3.0F;
-    }
-
-    @Override
-    protected SoundEvent getAmbientSound() {
-        return AetherSoundEvents.ENTITY_ZEPHYR_AMBIENT.get();
-    }
-
-    @Override
-    protected SoundEvent getHurtSound(@Nonnull DamageSource damageSource) {
-        return AetherSoundEvents.ENTITY_ZEPHYR_HURT.get();
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return AetherSoundEvents.ENTITY_ZEPHYR_DEATH.get();
-    }
-
-    @Override
-    protected boolean shouldDespawnInPeaceful() {
-        return true;
-    }
-
-    static class SnowballAttackGoal extends Goal {
+    static class ThunderballAttackGoal extends Goal {
         private final Tempest parentEntity;
         public int attackTimer;
 
-        public SnowballAttackGoal(Tempest tempest) {
+        public ThunderballAttackGoal(Tempest tempest) {
             this.parentEntity = tempest;
         }
 
@@ -189,10 +114,10 @@ public class Tempest extends FlyingMob implements Enemy {
                     double accelY = target.getY(0.5) - (0.5 + this.parentEntity.getY(0.5));
                     double accelZ = target.getZ() - (this.parentEntity.getZ() + look.z * 4.0);
                     this.parentEntity.playSound(AetherSoundEvents.ENTITY_ZEPHYR_SHOOT.get(), 3.0F, (level.random.nextFloat() - level.random.nextFloat()) * 0.2F + 1.0F);
-                    TempestThunderBall snowball = new TempestThunderBall(level);
-                    snowball.setPos(this.parentEntity.getX() + look.x * 4.0, this.parentEntity.getY(0.5) + 0.5, this.parentEntity.getZ() + look.z * 4.0);
-                    snowball.shoot(accelX, accelY, accelZ, 1.0F, 1.0F);
-                    level.addFreshEntity(snowball);
+                    TempestThunderBall thunderBall = new TempestThunderBall(level);
+                    thunderBall.setPos(this.parentEntity.getX() + look.x * 4.0, this.parentEntity.getY(0.5) + 0.5, this.parentEntity.getZ() + look.z * 4.0);
+                    thunderBall.shoot(accelX, accelY, accelZ, 1.0F, 1.0F);
+                    level.addFreshEntity(thunderBall);
                     this.attackTimer = -40;
                 }
             } else if (this.attackTimer > 0) {
