@@ -43,6 +43,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
 
         this.addCommonConfig("gameplay", "gold_aercloud_ability", "Changes Gold Aercloud and respective parachute behavior to launch entities downwards");
+        this.addClientConfig("client", "night_music_tracks", "Adds some nice night tracks to the Aether's music selection. Also disables the default music manager for the Aether, to preveent overlap");
 
         this.addPackDescription("mod", "Genesis Resources");
 

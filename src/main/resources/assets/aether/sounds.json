@@ -1,8 +1,9 @@
 {
   "music.aether": {
+    "replace": true,
     "sounds": [
       {
-        "name": "aether:music/aether1",
+        "name": "aether_genesis:music/aether1_lowpitch",
         "stream": true
       },
       {
@@ -23,14 +24,6 @@
       },
       {
         "name": "aether_genesis:music/aether6",
-        "stream": true
-      },
-      {
-        "name": "aether_genesis:music/aether7",
-        "stream": true
-      },
-      {
-        "name": "aether_genesis:music/aether8",
         "stream": true
       }
     ]

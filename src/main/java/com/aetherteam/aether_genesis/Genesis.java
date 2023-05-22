@@ -1,6 +1,8 @@
 package com.aetherteam.aether_genesis;
 
+import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
+import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.data.generators.*;
 import com.aetherteam.aether_genesis.data.generators.tags.GenesisBiomeTagData;
@@ -30,6 +32,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -48,6 +51,7 @@ public class Genesis {
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::dataSetup);
+        modEventBus.addListener(this::clientSetup);
 
         DeferredRegister<?>[] registers = {
                 GenesisBlocks.BLOCKS,
@@ -57,7 +61,8 @@ public class Genesis {
                 GenesisFoliagePlacerTypes.FOLIAGE_PLACERS,
                 GenesisTrunkPlacerTypes.TRUNK_PLACERS,
                 GenesisTreeDecoratorTypes.TREE_DECORATORS,
-                GenesisParticleTypes.PARTICLES
+                GenesisParticleTypes.PARTICLES,
+                GenesisSoundEvents.SOUNDS
         };
 
         for (DeferredRegister<?> register : registers) {
@@ -77,6 +82,15 @@ public class Genesis {
         });
     }
 
+    public void clientSetup(FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            if (GenesisConfig.CLIENT.night_music_tracks.get())
+            {
+                AetherConfig.CLIENT.disable_music_manager.set(true);
+            }
+        });
+    }
+
     public void dataSetup(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
@@ -87,6 +101,7 @@ public class Genesis {
         generator.addProvider(event.includeClient(), new GenesisBlockStateData(packOutput, fileHelper));
         generator.addProvider(event.includeClient(), new GenesisItemModelData(packOutput, fileHelper));
         generator.addProvider(event.includeClient(), new GenesisLanguageData(packOutput));
+        generator.addProvider(event.includeClient(), new GenesisSoundData(packOutput, fileHelper));
 
         // Server Data
         generator.addProvider(event.includeServer(), new GenesisRegistrySets(packOutput, lookupProvider));
