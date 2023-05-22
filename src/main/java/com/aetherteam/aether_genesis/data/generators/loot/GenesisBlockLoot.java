@@ -1,9 +1,9 @@
 package com.aetherteam.aether_genesis.data.generators.loot;
 
-import com.aetherteam.aether_genesis.block.GenesisBlocks;
-import com.aetherteam.aether_genesis.data.providers.GenesisBlockLootSubProvider;
 import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.mixin.mixins.common.accessor.BlockLootAccessor;
+import com.aetherteam.aether_genesis.block.GenesisBlocks;
+import com.aetherteam.aether_genesis.data.providers.GenesisBlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -43,6 +43,8 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
         this.dropSelf(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get());
         this.dropSelfDouble(GenesisBlocks.SKYROOT_WOOD_WALL.get());
         this.dropSelf(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get());
+        this.dropSelf(GenesisBlocks.AETHER_CRAFTING_TABLE.get());
+        this.dropSelf(GenesisBlocks.HOLYSTONE_FURNACE.get());
     }
 
     @Override

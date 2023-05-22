@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "aether_genesis:orange"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "aether:skyroot_stick"
+    }
+  ],
+  "result": {
+    "item": "aether_genesis:orange_lollipop"
+  }
+}

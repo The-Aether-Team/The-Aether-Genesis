@@ -1,8 +1,8 @@
 package com.aetherteam.aether_genesis.data.generators.tags;
 
+import com.aetherteam.aether.data.resources.registries.AetherBiomes;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.GenesisTags;
-import com.aetherteam.aether.data.resources.registries.AetherBiomes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
@@ -42,6 +42,11 @@ public class GenesisBiomeTagData extends BiomeTagsProvider {
         this.tag(GenesisTags.Biomes.HAS_FOREST_TREES)
                 .addOptional(AetherBiomes.SKYROOT_FOREST.location());
         this.tag(GenesisTags.Biomes.HAS_DARK_SWET)
+                .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
+                .addOptional(AetherBiomes.SKYROOT_GROVE.location())
+                .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
+                .addOptional(AetherBiomes.SKYROOT_FOREST.location());
+        this.tag(GenesisTags.Biomes.HAS_TEMPEST)
                 .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
                 .addOptional(AetherBiomes.SKYROOT_GROVE.location())
                 .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())

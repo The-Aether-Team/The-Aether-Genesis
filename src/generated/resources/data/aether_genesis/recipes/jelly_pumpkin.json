@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "aether_genesis:orange"
+    },
+    {
+      "tag": "aether_genesis:swet_jelly"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "aether_genesis:jelly_pumpkin"
+  }
+}

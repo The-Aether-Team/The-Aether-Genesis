@@ -1,9 +1,9 @@
 package com.aetherteam.aether_genesis.data.generators.tags;
 
+import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.GenesisTags;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
-import com.aetherteam.aether.AetherTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -49,11 +49,15 @@ public class GenesisBlockTagData extends BlockTagsProvider {
         this.tag(BlockTags.FLOWER_POTS).add(
                 GenesisBlocks.POTTED_BLUE_SKYROOT_SAPLING.get(),
                 GenesisBlocks.POTTED_DARK_BLUE_SKYROOT_SAPLING.get());
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
+                GenesisBlocks.HOLYSTONE_FURNACE.get()
+        );
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(
                 GenesisBlocks.SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get(),
-                GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get());
+                GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(),
+                GenesisBlocks.AETHER_CRAFTING_TABLE.get());
         this.tag(BlockTags.MINEABLE_WITH_HOE).add(
                 GenesisBlocks.GREEN_AERCLOUD.get(),
                 GenesisBlocks.PURPLE_AERCLOUD.get(),
