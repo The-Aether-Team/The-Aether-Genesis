@@ -1,7 +1,7 @@
 package com.aetherteam.aether_genesis.data.resources;
 
-import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether.block.AetherBlockStateProperties;
+import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class GenesisFeatureStates {

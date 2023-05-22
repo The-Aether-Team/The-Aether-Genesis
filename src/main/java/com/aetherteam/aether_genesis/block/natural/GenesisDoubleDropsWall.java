@@ -1,7 +1,7 @@
 package com.aetherteam.aether_genesis.block.natural;
 
-import com.aetherteam.aether_genesis.mixin.mixins.common.accessor.WallBlockAccessor;
 import com.aetherteam.aether.block.AetherBlockStateProperties;
+import com.aetherteam.aether_genesis.mixin.mixins.common.accessor.WallBlockAccessor;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WallBlock;
