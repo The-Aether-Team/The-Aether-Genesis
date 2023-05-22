@@ -1,6 +1,7 @@
 package com.aetherteam.aether_genesis;
 
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
+import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.data.generators.*;
 import com.aetherteam.aether_genesis.data.generators.tags.GenesisBiomeTagData;
@@ -57,7 +58,8 @@ public class Genesis {
                 GenesisFoliagePlacerTypes.FOLIAGE_PLACERS,
                 GenesisTrunkPlacerTypes.TRUNK_PLACERS,
                 GenesisTreeDecoratorTypes.TREE_DECORATORS,
-                GenesisParticleTypes.PARTICLES
+                GenesisParticleTypes.PARTICLES,
+                GenesisSoundEvents.SOUNDS
         };
 
         for (DeferredRegister<?> register : registers) {
@@ -87,6 +89,7 @@ public class Genesis {
         generator.addProvider(event.includeClient(), new GenesisBlockStateData(packOutput, fileHelper));
         generator.addProvider(event.includeClient(), new GenesisItemModelData(packOutput, fileHelper));
         generator.addProvider(event.includeClient(), new GenesisLanguageData(packOutput));
+        generator.addProvider(event.includeClient(), new GenesisSoundData(packOutput, fileHelper));
 
         // Server Data
         generator.addProvider(event.includeServer(), new GenesisRegistrySets(packOutput, lookupProvider));

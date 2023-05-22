@@ -1,0 +1,14 @@
+{
+  "music.aether_night": {
+    "sounds": [
+      {
+        "name": "aether_genesis:music/aether_night1",
+        "stream": true
+      },
+      {
+        "name": "aether_genesis:music/aether_night2",
+        "stream": true
+      }
+    ]
+  }
+}
