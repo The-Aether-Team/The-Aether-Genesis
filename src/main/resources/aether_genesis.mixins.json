@@ -8,7 +8,6 @@
     "common.AercloudBlockMixin",
     "common.ItemMixin",
     "common.ParachuteMixin",
-    "common.ZephyrMixin",
     "common.accessor.WallBlockAccessor"
   ],
   "injectors": {
