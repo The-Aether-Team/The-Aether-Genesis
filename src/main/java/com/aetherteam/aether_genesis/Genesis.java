@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis;
 
+import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
@@ -31,6 +32,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -49,6 +51,7 @@ public class Genesis {
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::dataSetup);
+        modEventBus.addListener(this::clientSetup);
 
         DeferredRegister<?>[] registers = {
                 GenesisBlocks.BLOCKS,
@@ -76,6 +79,15 @@ public class Genesis {
             GenesisBlocks.registerFlammability();
 
             this.registerComposting();
+        });
+    }
+
+    public void clientSetup(FMLClientSetupEvent event) {
+        event.enqueueWork(() -> {
+            if (GenesisConfig.CLIENT.night_music_tracks.get())
+            {
+                AetherConfig.CLIENT.disable_music_manager.set(true);
+            }
         });
     }
 

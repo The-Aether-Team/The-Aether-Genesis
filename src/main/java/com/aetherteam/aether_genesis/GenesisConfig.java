@@ -18,8 +18,14 @@ public class GenesisConfig {
     }
 
     public static class Client {
+        public final ForgeConfigSpec.ConfigValue<Boolean> night_music_tracks;
         public Client(ForgeConfigSpec.Builder builder) {
-
+            builder.push("Audio");
+            night_music_tracks = builder
+                    .comment("Adds some nice night tracks to the Aether's music selection. Also disables the default music manager for the Aether, to preveent overlap")
+                    .translation("config.aether_genesis.client.audio.night_music_tracks")
+                    .define("Nighttime Music Tracks", true);
+            builder.pop();
         }
     }
 
