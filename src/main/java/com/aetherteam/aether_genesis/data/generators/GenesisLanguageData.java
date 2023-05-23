@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.data.generators;
 
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockentity.GenesisMenuTypes;
@@ -15,6 +16,13 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
     @Override
     protected void addTranslations() {
+        this.add("block.lost_aether_content.crystal_sapling", "Blue Crystal Sapling");
+
+        this.addBlock(AetherBlocks.CRYSTAL_FRUIT_LEAVES, "Blue Crystal Fruit Leaves");
+        this.addBlock(AetherBlocks.CRYSTAL_LEAVES, "Blue Crystal Leaves");
+        this.addBlock(AetherBlocks.SKYROOT_LEAVES, "Green Skyroot Leaves");
+        this.addBlock(AetherBlocks.SKYROOT_SAPLING, "Green Skyroot Sapling");
+
         this.addBlock(GenesisBlocks.GREEN_AERCLOUD, "Green Aercloud");
         this.addBlock(GenesisBlocks.PURPLE_AERCLOUD, "Purple Aercloud");
         this.addBlock(GenesisBlocks.STORM_AERCLOUD, "Storm Aercloud");
