@@ -11,6 +11,7 @@ public class GenesisSoundEvents {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Genesis.MODID);
 
     public static final RegistryObject<SoundEvent> MUSIC_AETHER_NIGHT = register("music.aether_night");
+    public static  RegistryObject<SoundEvent> BLUE_AERCLOUD_BOUNCE = register("block.aercloud.blue_aercloud_bounce");
 
     private static RegistryObject<SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(Genesis.MODID, name)));
