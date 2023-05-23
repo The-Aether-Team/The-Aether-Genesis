@@ -18,10 +18,13 @@ public class GenesisAudioListener {
     @SubscribeEvent
     public static void onPlaySound(PlaySoundEvent event) {
         SoundInstance sound = event.getOriginalSound();
-        if (GenesisAudioHooks.shouldCancelSound(sound)) {
+        if (GenesisAudioHooks.shouldCancelMusic(sound)) {
             event.setSound(null);
         }
-
+        if (GenesisAudioHooks.shouldCancelAercloudBounceSound(sound));
+        {
+            event.setSound(null);
+        }
     }
 
     @SubscribeEvent
