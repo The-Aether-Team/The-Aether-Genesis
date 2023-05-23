@@ -29,7 +29,7 @@ public class GenesisConfig {
                     .define("Nighttime Music Tracks", true);
             blue_aercloud_bounce_sfx = builder
                     .comment("Makes Blue Aerclouds have their wobbly sounds that play when bouncing on them")
-                    .translation("config.aether_genesis.common.gameplay.blue_aercloud_bounce_sfx")
+                    .translation("config.aether_genesis.client.audio.blue_aercloud_bounce_sfx")
                     .define("Blue Aercloud Bouncing Sounds", true);
             builder.pop();
         }
