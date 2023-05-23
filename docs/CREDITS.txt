@@ -11,3 +11,4 @@ KELETU66666
 
 Zepalesque
 - Implementation of a custom music manager for nighttime tracks.
+- Implementation of the bounce sound for Blue Aerclouds.
