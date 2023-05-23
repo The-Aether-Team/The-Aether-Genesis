@@ -21,7 +21,7 @@ public class GenesisAudioListener {
         if (GenesisAudioHooks.shouldCancelMusic(sound)) {
             event.setSound(null);
         }
-        if (GenesisAudioHooks.shouldCancelAercloudBounceSound(sound));
+        if (GenesisAudioHooks.shouldCancelAercloudBounceSound(sound))
         {
             event.setSound(null);
         }
