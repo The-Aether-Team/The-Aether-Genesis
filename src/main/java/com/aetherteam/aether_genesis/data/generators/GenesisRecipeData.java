@@ -43,6 +43,6 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
         wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get());
         wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_WOOD.get());
 
-        twoByTwoPacker(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.AETHER_CRAFTING_TABLE.get(), AetherBlocks.SKYROOT_PLANKS.get());
+        twoByTwoPacker(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_CRAFTING_TABLE.get(), AetherBlocks.SKYROOT_PLANKS.get());
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_FURNACE.get()).define('#', AetherBlocks.HOLYSTONE.get()).pattern("###").pattern("# #").pattern("###").unlockedBy(getHasName(GenesisBlocks.HOLYSTONE_FURNACE.get()), has(AetherBlocks.HOLYSTONE.get())).save(consumer);}
 }

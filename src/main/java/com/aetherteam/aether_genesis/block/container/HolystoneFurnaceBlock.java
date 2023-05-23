@@ -1,7 +1,7 @@
 package com.aetherteam.aether_genesis.block.container;
 
-import com.aetherteam.aether_genesis.blockTileEntity.GenesisBlockEntityTypes;
-import com.aetherteam.aether_genesis.blockTileEntity.HolystoneFurnaceBlockEntity;
+import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
+import com.aetherteam.aether_genesis.blockentity.HolystoneFurnaceBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;

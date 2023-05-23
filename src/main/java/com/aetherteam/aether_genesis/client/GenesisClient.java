@@ -1,8 +1,8 @@
 package com.aetherteam.aether_genesis.client;
 
 import com.aetherteam.aether_genesis.Genesis;
-import com.aetherteam.aether_genesis.blockTileEntity.GenesisMenuTypes;
-import com.aetherteam.aether_genesis.blockTileEntity.HolystoneFurnaceScreen;
+import com.aetherteam.aether_genesis.blockentity.GenesisMenuTypes;
+import com.aetherteam.aether_genesis.blockentity.HolystoneFurnaceScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

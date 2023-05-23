@@ -4,6 +4,7 @@
     "down": "aether:block/construction/skyroot_planks",
     "east": "aether_genesis:block/utility/skyroot_crafting_table_front",
     "north": "aether_genesis:block/utility/skyroot_crafting_table_front",
+    "particle": "aether:block/construction/skyroot_planks",
     "south": "aether_genesis:block/utility/skyroot_crafting_table_side",
     "up": "aether_genesis:block/utility/skyroot_crafting_table_top",
     "west": "aether_genesis:block/utility/skyroot_crafting_table_side"

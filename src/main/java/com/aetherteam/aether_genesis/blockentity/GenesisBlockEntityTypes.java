@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.blockTileEntity;
+package com.aetherteam.aether_genesis.blockentity;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;

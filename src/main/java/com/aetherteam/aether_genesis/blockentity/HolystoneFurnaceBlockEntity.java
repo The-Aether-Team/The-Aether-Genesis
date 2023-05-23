@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.blockTileEntity;
+package com.aetherteam.aether_genesis.blockentity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
