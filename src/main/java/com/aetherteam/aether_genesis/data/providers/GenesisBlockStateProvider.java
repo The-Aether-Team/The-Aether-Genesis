@@ -112,14 +112,16 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
         this.wallBlockInternal(block, this.name(block), new ResourceLocation(modid, "block/" + location + this.name(baseBlock)));
     }
 
-    public void skyrootCraftingTable(Block block) {
+    public void skyrootCraftingTable(Block block, Block baseBlock, String location, String modid) {
+        ResourceLocation baseTexture = new ResourceLocation(modid, "block/" + location + this.name(baseBlock));
         ModelFile workbench = this.models().cube(this.name(block),
-                new ResourceLocation(Aether.MODID, "block/construction/skyroot_planks"),
+                baseTexture,
                 this.extend(this.texture(this.name(block), "utility/"), "_top"),
                 this.extend(this.texture(this.name(block), "utility/"), "_front"),
                 this.extend(this.texture(this.name(block), "utility/"), "_side"),
                 this.extend(this.texture(this.name(block), "utility/"), "_front"),
-                this.extend(this.texture(this.name(block), "utility/"), "_side"));
+                this.extend(this.texture(this.name(block), "utility/"), "_side"))
+                .texture("particle", baseTexture);
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(workbench));
     }
 

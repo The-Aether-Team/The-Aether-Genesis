@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.blockTileEntity;
+package com.aetherteam.aether_genesis.blockentity;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;

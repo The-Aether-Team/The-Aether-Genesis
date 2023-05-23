@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.data.generators;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
-import com.aetherteam.aether_genesis.blockTileEntity.GenesisMenuTypes;
+import com.aetherteam.aether_genesis.blockentity.GenesisMenuTypes;
 import com.aetherteam.aether_genesis.data.providers.GenesisLanguageProvider;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
@@ -31,7 +31,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addBlock(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL, "Stripped Skyroot Wood Wall");
 
 
-        this.addBlock(GenesisBlocks.AETHER_CRAFTING_TABLE, "Skyroot Crafting Table");
+        this.addBlock(GenesisBlocks.SKYROOT_CRAFTING_TABLE, "Skyroot Crafting Table");
         this.addBlock(GenesisBlocks.HOLYSTONE_FURNACE, "Holystone Furnace");
 
         this.addItem(GenesisItems.GOLDEN_SWET_BALL, "Golden Swet Ball");
