@@ -31,15 +31,4 @@ public class TempestTransparencyGlowLayer extends EyesLayer<Tempest, TempestMode
     public RenderType renderType() {
         return LAYER_GLOW;
     }
-
-    /*    @Override
-    public void render(@Nonnull PoseStack poseStack, @Nonnull MultiBufferSource buffer, int packedLight, @Nonnull Tempest tempest, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-        if (this.getParentModel() instanceof TempestModel && !tempest.isInvisible()) {
-            this.getParentModel().copyPropertiesTo(this.transparency);
-            this.transparency.prepareMobModel(tempest, limbSwing, limbSwingAmount, partialTicks);
-            this.transparency.setupAnim(tempest, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-            VertexConsumer consumer = buffer.getBuffer(LAYER_GLOW);
-            this.transparency.renderToBuffer(poseStack, consumer, packedLight, LivingEntityRenderer.getOverlayCoords(tempest, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
-        }
-    }*/
 }
