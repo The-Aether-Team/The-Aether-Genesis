@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-22T20:51:29.4792217	Recipes
+// 1.19.4	2023-05-23T23:46:14.754095	Recipes
 62887d15e1a64c23ae4fb8930c9479da57d62bb8 data/aether_genesis/advancements/recipes/decorations/holystone_furnace.json
 bfe2d42513191b3a3d9c84366db4100147e3dba7 data/aether_genesis/advancements/recipes/decorations/skyroot_crafting_table.json
 34b636447d3353084bf6028bb318ceea2e20dc41 data/aether_genesis/advancements/recipes/decorations/skyroot_log_wall.json
@@ -37,3 +37,7 @@ d426d840b475a1491b355b6bdc69d8296204aa4b data/aether_genesis/recipes/skyroot_woo
 6a6da3f3cbfe02ac65eb43c5e6ea66cf1e89f355 data/aether_genesis/recipes/stripped_skyroot_log_wall.json
 4bc07f4f356bf0c13aaef5027169beaaf6b474a7 data/aether_genesis/recipes/stripped_skyroot_wood_wall.json
 0af78191d0f2009588ff50b718121bb3c6ce696c data/aether_genesis/recipes/wrapped_chocolates.json
+db535bb232a7e998b799f670f196d6ad055773cd data/minecraft/advancements/recipes/decorations/holystone_blast_furnace.json
+9c8908289df04c37cbed0aabe9896740c9c2c83c data/minecraft/advancements/recipes/decorations/holystone_smoker.json
+bd3cd7895735d33138027a6afa33a7a4fa3e77d0 data/minecraft/recipes/holystone_blast_furnace.json
+d3c47f8a04fb5290a893d9201801f1da953cdf53 data/minecraft/recipes/holystone_smoker.json
