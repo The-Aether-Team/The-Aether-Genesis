@@ -6,6 +6,7 @@ import com.aetherteam.aether_genesis.entity.miscellaneous.BlueParachute;
 import com.aetherteam.aether_genesis.entity.miscellaneous.GreenParachute;
 import com.aetherteam.aether_genesis.entity.miscellaneous.PurpleParachute;
 import com.aetherteam.aether_genesis.entity.miscellaneous.TempestThunderBall;
+import com.aetherteam.aether_genesis.entity.monster.Tempest;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;

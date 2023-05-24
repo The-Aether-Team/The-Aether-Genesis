@@ -1,9 +1,12 @@
-package com.aetherteam.aether_genesis.entity;
+package com.aetherteam.aether_genesis.entity.monster;
 
+import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether_genesis.entity.miscellaneous.TempestThunderBall;
 import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.entity.monster.Zephyr;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -21,12 +24,15 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import org.joml.Vector3f;
 
 import javax.annotation.Nonnull;
 import java.util.EnumSet;
 
 public class Tempest extends Zephyr {
     public static final EntityDataAccessor<Integer> DATA_ATTACK_CHARGE_ID = SynchedEntityData.defineId(Tempest.class, EntityDataSerializers.INT);
+    public static final Vector3f TEMPEST_PARTICLE_COLOR = Vec3.fromRGB24(16777215).toVector3f();
+    public static final DustParticleOptions TEMPEST_PARTICLES = new DustParticleOptions(TEMPEST_PARTICLE_COLOR, 1.0F);
 
     public Tempest(EntityType<? extends Tempest> type, Level level) {
         super(type, level);
@@ -61,6 +67,21 @@ public class Tempest extends Zephyr {
 
     private static boolean isNight(LevelAccessor level){
         return !(level.getSkyDarken() < 4) && !level.dimensionType().hasFixedTime();
+    }
+
+    @Override
+    public void tick() {
+        if (!this.level.isClientSide() && !isNight(this.level))
+        {
+            this.setHealth(0);
+        }
+        for(int count = 0; count < 3; ++count) {
+            double xOffset = this.position().x() + (level.getRandom().nextDouble() * 1.5) - 0.75;
+            double yOffset = this.position().y() + (level.getRandom().nextDouble() * 2) - 0.5;
+            double zOffset = this.position().z() + (level.getRandom().nextDouble() * 1.5) - 0.75;
+            level.addParticle(TEMPEST_PARTICLES, xOffset, yOffset, zOffset, 0.0, 0.0, 0.0);
+        }
+        super.tick();
     }
 
     static class ThunderballAttackGoal extends Goal {
