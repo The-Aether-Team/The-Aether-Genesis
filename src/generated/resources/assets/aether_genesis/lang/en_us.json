@@ -19,9 +19,7 @@
   "block.aether_genesis.storm_aercloud": "Storm Aercloud",
   "block.aether_genesis.stripped_skyroot_log_wall": "Stripped Skyroot Log Wall",
   "block.aether_genesis.stripped_skyroot_wood_wall": "Stripped Skyroot Wood Wall",
-
   "block.lost_aether_content.crystal_sapling": "Blue Crystal Sapling",
-
   "config.aether.client.audio.blue_aercloud_bounce_sfx": "Makes Blue Aerclouds have their wobbly sounds that play when bouncing on them",
   "config.aether.client.audio.night_music_tracks": "Adds some nice night tracks to the Aether's music selection. Also disables the default music manager for the Aether, to prevent overlap",
   "config.aether.common.gameplay.gold_aercloud_ability": "Changes Gold Aercloud and respective parachute behavior to launch entities downwards",

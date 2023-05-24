@@ -38,7 +38,6 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addBlock(GenesisBlocks.SKYROOT_WOOD_WALL, "Skyroot Wood Wall");
         this.addBlock(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL, "Stripped Skyroot Wood Wall");
 
-
         this.addBlock(GenesisBlocks.SKYROOT_CRAFTING_TABLE, "Skyroot Crafting Table");
         this.addBlock(GenesisBlocks.HOLYSTONE_FURNACE, "Holystone Furnace");
 
