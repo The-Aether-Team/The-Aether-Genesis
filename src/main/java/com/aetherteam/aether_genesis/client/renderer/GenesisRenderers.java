@@ -1,6 +1,7 @@
 package com.aetherteam.aether_genesis.client.renderer;
 
 import com.aetherteam.aether.block.AetherBlocks;
+import com.aetherteam.aether.client.renderer.entity.GoldenDartRenderer;
 import com.aetherteam.aether.client.renderer.entity.IceCrystalRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
 import com.aetherteam.aether_genesis.Genesis;
@@ -9,6 +10,9 @@ import com.aetherteam.aether_genesis.client.renderer.entity.DarkSwetRenderer;
 import com.aetherteam.aether_genesis.client.renderer.entity.TempestRenderer;
 import com.aetherteam.aether_genesis.client.renderer.model.TempestModel;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -26,11 +30,24 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.PURPLE_PARACHUTE.get(), (context) -> new ParachuteRenderer(context, GenesisBlocks.PURPLE_AERCLOUD));
 
         event.registerEntityRenderer(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), IceCrystalRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.PHOENIX_DART.get(), GoldenDartRenderer::new);
     }
 
     @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(GenesisModelLayers.TEMPEST, TempestModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.TEMPEST_TRANSPARENCY, TempestModel::createBodyLayer);
+    }
+
+    @SubscribeEvent
+    public static void addPlayerLayers(EntityRenderersEvent.AddLayers event) {
+        EntityRenderDispatcher renderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
+        String[] types = new String[]{"default", "slim"};
+        for (String type : types) {
+            PlayerRenderer playerRenderer = event.getSkin(type);
+            if (playerRenderer != null) {
+                playerRenderer.addLayer(new PhoenixDartLayer(renderDispatcher, playerRenderer));
+            }
+        }
     }
 }

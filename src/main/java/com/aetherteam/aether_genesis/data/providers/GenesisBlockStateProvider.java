@@ -1,7 +1,10 @@
 package com.aetherteam.aether_genesis.data.providers;
 
+import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlockStateProperties;
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
+import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.block.natural.OrangeTreeBlock;
 import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
 import net.minecraft.core.Direction;
@@ -192,6 +195,9 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
     }
 
     public void brick(RotatedPillarBlock block) {
-        this.axisBlock(block, this.texture(this.name(block), "construction/"), this.extend(this.texture(this.name(block), "construction/"), "_top"));
+        ResourceLocation side = this.texture(this.name(block), "construction/");
+        if(block == GenesisBlocks.HOLYSTONE_HEADSTONE.get())
+            side = new ResourceLocation(Aether.MODID, "block/construction/" + this.name(AetherBlocks.HOLYSTONE_BRICKS.get()));
+        this.axisBlock(block, side, this.extend(this.texture(this.name(block), "construction/"), "_top"));
     }
 }

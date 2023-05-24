@@ -1,6 +1,7 @@
 package com.aetherteam.aether_genesis.data.generators.tags;
 
 import com.aetherteam.aether.AetherTags;
+import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.GenesisTags;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
@@ -59,5 +60,9 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.BLUE_SWET_JELLY.get(),
                 GenesisItems.DARK_SWET_JELLY.get(),
                 GenesisItems.GOLDEN_SWET_JELLY.get());
+        this.tag(GenesisTags.Items.DARTS).add(
+                AetherItems.GOLDEN_DART.get(),
+                AetherItems.POISON_DART.get(),
+                AetherItems.ENCHANTED_DART.get());
     }
 }

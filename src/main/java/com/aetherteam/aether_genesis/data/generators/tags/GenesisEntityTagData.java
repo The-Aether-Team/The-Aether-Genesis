@@ -22,6 +22,7 @@ public class GenesisEntityTagData extends EntityTypeTagsProvider {
         this.tag(AetherTags.Entities.DEFLECTABLE_PROJECTILES)
                 .addTag(EntityTypeTags.ARROWS)
                 .add(
+                        GenesisEntityTypes.PHOENIX_DART.get(),
                         GenesisEntityTypes.TEMPEST_THUNDERBALL.get());
         this.tag(AetherTags.Entities.SWETS).add(
                 GenesisEntityTypes.DARK_SWET.get()
@@ -29,5 +30,8 @@ public class GenesisEntityTagData extends EntityTypeTagsProvider {
         this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(
                 GenesisEntityTypes.TEMPEST.get()
         );
+
+        this.tag(EntityTypeTags.IMPACT_PROJECTILES).add(
+                GenesisEntityTypes.PHOENIX_DART.get());
     }
 }

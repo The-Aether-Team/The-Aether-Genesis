@@ -26,9 +26,9 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
         this.dropSelfDouble(GenesisBlocks.GREEN_AERCLOUD.get());
         this.dropSelfDouble(GenesisBlocks.PURPLE_AERCLOUD.get());
         this.dropSelfDouble(GenesisBlocks.STORM_AERCLOUD.get());
-        this.dropSelfDouble(GenesisBlocks.HOLYSTONE_HEADSTONE.get());
-        this.dropSelfDouble(GenesisBlocks.HOLYSTONE_KEYSTONE.get());
-        this.dropSelfDouble(GenesisBlocks.HOLYSTONE_HIGHLIGHT.get());
+        this.dropSelf(GenesisBlocks.HOLYSTONE_HEADSTONE.get());
+        this.dropSelf(GenesisBlocks.HOLYSTONE_KEYSTONE.get());
+        this.dropSelf(GenesisBlocks.HOLYSTONE_HIGHLIGHT.get());
         this.add(GenesisBlocks.BLUE_SKYROOT_LEAVES.get(),
                 (leaves) -> droppingWithChancesAndSkyrootSticks(leaves, GenesisBlocks.BLUE_SKYROOT_SAPLING.get(), BlockLootAccessor.aether$getNormalLeavesSaplingChances()));
         this.add(GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get(),
