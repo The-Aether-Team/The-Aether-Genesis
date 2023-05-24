@@ -38,10 +38,6 @@ public class Tempest extends Zephyr {
         this.xpReward = 20;
     }
 
-    public boolean fireImmune() {
-        return true;
-    }
-
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(5, new Tempest.RandomFlyGoal(this));

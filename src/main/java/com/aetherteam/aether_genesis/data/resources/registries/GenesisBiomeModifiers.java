@@ -103,7 +103,7 @@ public class GenesisBiomeModifiers {
 
         context.register(SPAWN_DARK_SWET, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_DARK_SWET),
-                List.of(new MobSpawnSettings.SpawnerData(GenesisEntityTypes.DARK_SWET.get(), 5, 1, 1)))); //todo charges and balances
+                List.of(new MobSpawnSettings.SpawnerData(GenesisEntityTypes.DARK_SWET.get(), 10, 1, 1)))); //todo charges and balances
 
         context.register(SPAWN_TEMPEST, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_TEMPEST),
