@@ -1,8 +1,8 @@
 package com.aetherteam.aether_genesis.data.providers;
 
-import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlockStateProperties;
 import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
+import com.aetherteam.aether_genesis.block.natural.OrangeTreeBlock;
 import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
@@ -10,11 +10,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WallBlock;
-import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.block.state.properties.WallSide;
-import net.minecraftforge.client.model.generators.ConfiguredModel;
-import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
+import net.minecraft.world.level.block.state.properties.*;
+import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.Map;
@@ -50,6 +47,26 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
             }
             return ConfiguredModel.builder().build();
         }, AetherBlockStateProperties.DOUBLE_DROPS);
+    }
+
+    public void orangeTree(Block block) {
+        String blockName = this.name(block);
+        this.getVariantBuilder(block).forAllStatesExcept((state) -> {
+            DoubleBlockHalf halfProperty = state.getValue(OrangeTreeBlock.HALF);
+            int age = state.getValue(OrangeTreeBlock.AGE);
+            boolean lower = halfProperty == DoubleBlockHalf.LOWER;
+            int bottomAge = age == 3 ? 2 : age;
+            int topAge = Math.max(age, 2);
+            String halfString = lower ? "_bottom_" : "_top_";
+            ResourceLocation location = lower ? this.extend(this.texture(blockName, "natural/"), halfString + bottomAge) : this.extend(this.texture(blockName, "natural/"), halfString + topAge);
+            ModelFile model = this.models().cross(blockName + (lower ? (halfString + bottomAge) : (halfString + topAge)), location).renderType(new ResourceLocation("cutout"));
+            return ConfiguredModel.builder().modelFile(model).build();
+        }, AetherBlockStateProperties.DOUBLE_DROPS);
+    }
+
+    public void pottedOrangeTree(Block block, Block tree) {
+        ModelFile pot = this.models().withExistingParent(this.name(block), this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/natural/" + this.name(tree) + "_bottom_0")).renderType(new ResourceLocation("cutout"));
+        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
 
     public void logWallBlock(WallBlock block, Block baseBlock, String location, String modid) {

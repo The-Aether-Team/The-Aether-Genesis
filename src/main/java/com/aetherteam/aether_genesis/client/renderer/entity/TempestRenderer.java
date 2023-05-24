@@ -3,7 +3,7 @@ package com.aetherteam.aether_genesis.client.renderer.entity;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.aether_genesis.client.renderer.model.TempestModel;
-import com.aetherteam.aether_genesis.entity.Tempest;
+import com.aetherteam.aether_genesis.entity.monster.Tempest;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -19,6 +19,7 @@ public class TempestRenderer extends MobRenderer<Tempest, TempestModel<Tempest>>
         super(context, new TempestModel(context.bakeLayer(GenesisModelLayers.TEMPEST)), 0.5F);
         this.addLayer(new TempestMarkingsLayer<>(this));
         this.addLayer(new TempestTransparencyLayer(this, new TempestModel(context.getModelSet().bakeLayer(GenesisModelLayers.TEMPEST_TRANSPARENCY))));
+        this.addLayer(new TempestTransparencyGlowLayer(this, new TempestModel(context.getModelSet().bakeLayer(GenesisModelLayers.TEMPEST_TRANSPARENCY))));
     }
 
     @Override
@@ -42,7 +43,8 @@ public class TempestRenderer extends MobRenderer<Tempest, TempestModel<Tempest>>
             poseStack.scale(0.8F, 0.8F, 0.8F);
             poseStack.translate(0.0D, -0.1D, 0.0D);
         }
-
+        float sin = Mth.sin((tempest.tickCount + partialTickTime) / 6);
+        poseStack.translate(0.0D, sin / 15, 0.0D);
     }
 
     protected float getBob(@Nonnull Tempest tempest, float partialTicks) {

@@ -21,6 +21,7 @@ public class GenesisBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_GREEN_AERCLOUD_8 = createKey("add_green_aercloud_8");
     public static final ResourceKey<BiomeModifier> ADD_PURPLE_AERCLOUD = createKey("add_purple_aercloud");
     public static final ResourceKey<BiomeModifier> ADD_STORM_AERCLOUD = createKey("add_storm_aercloud");
+    public static final ResourceKey<BiomeModifier> ADD_ORANGE_TREES = createKey("add_orange_trees");
     public static final ResourceKey<BiomeModifier> ADD_MEADOW_TREES = createKey("add_meadow_trees");
     public static final ResourceKey<BiomeModifier> ADD_GROVE_TREES = createKey("add_grove_trees");
     public static final ResourceKey<BiomeModifier> ADD_WOODLAND_TREES = createKey("add_woodland_trees");
@@ -53,6 +54,11 @@ public class GenesisBiomeModifiers {
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_STORM_AERCLOUDS),
                 HolderSet.direct(context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.STORM_AERCLOUD_PLACEMENT)),
                 GenerationStep.Decoration.TOP_LAYER_MODIFICATION
+        ));
+        context.register(ADD_ORANGE_TREES, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_ORANGE_TREES),
+                HolderSet.direct(context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.ORANGE_TREE_PATCH_PLACEMENT)),
+                GenerationStep.Decoration.VEGETAL_DECORATION
         ));
         context.register(ADD_MEADOW_TREES, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_MEADOW_TREES),

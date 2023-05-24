@@ -1,6 +1,8 @@
 {
   "values": [
     "aether_genesis:potted_blue_skyroot_sapling",
-    "aether_genesis:potted_dark_blue_skyroot_sapling"
+    "aether_genesis:potted_dark_blue_skyroot_sapling",
+    "aether_genesis:potted_purple_crystal_tree_sapling",
+    "aether_genesis:potted_orange_tree"
   ]
 }

@@ -22,6 +22,8 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
         this.block(GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get(), "natural/");
         this.block(GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get(), "natural/");
         this.block(GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get(), "natural/");
+        this.orangeTree(GenesisBlocks.ORANGE_TREE.get());
+        this.pottedOrangeTree(GenesisBlocks.POTTED_ORANGE_TREE.get(), GenesisBlocks.ORANGE_TREE.get());
         this.saplingBlock(GenesisBlocks.BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.saplingBlock(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.saplingBlock(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), "natural/");

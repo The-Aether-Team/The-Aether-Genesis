@@ -2,6 +2,8 @@ package com.aetherteam.aether_genesis.data.resources.registries;
 
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.resources.builders.AetherPlacedFeatureBuilders;
+import com.aetherteam.aether.data.resources.registries.AetherConfiguredFeatures;
+import com.aetherteam.aether.world.placementmodifier.ImprovedLayerPlacementModifier;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.data.resources.builders.GenesisPlacedFeatureBuilders;
@@ -12,7 +14,10 @@ import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
@@ -24,6 +29,8 @@ public class GenesisPlacedFeatures {
     public static final ResourceKey<PlacedFeature> GREEN_AERCLOUD_8_PLACEMENT = createKey("green_aercloud_8");
     public static final ResourceKey<PlacedFeature> PURPLE_AERCLOUD_PLACEMENT = createKey("purple_aercloud");
     public static final ResourceKey<PlacedFeature> STORM_AERCLOUD_PLACEMENT = createKey("storm_aercloud");
+
+    public static final ResourceKey<PlacedFeature> ORANGE_TREE_PATCH_PLACEMENT = createKey("orange_tree_patch");
 
     public static final ResourceKey<PlacedFeature> SKYROOT_MEADOW_BLUE_SKYROOT_TREES_PLACEMENT = createKey("skyroot_meadow_blue_skyroot_trees");
     public static final ResourceKey<PlacedFeature> SKYROOT_MEADOW_LARGE_GREEN_SKYROOT_TREES_PLACEMENT = createKey("skyroot_meadow_large_green_skyroot_trees");
@@ -59,6 +66,11 @@ public class GenesisPlacedFeatures {
         register(context, GREEN_AERCLOUD_8_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.GREEN_AERCLOUD_8_CONFIGURATION), AetherPlacedFeatureBuilders.aercloudPlacement(32, 64, 7));
         register(context, PURPLE_AERCLOUD_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.PURPLE_AERCLOUD_CONFIGURATION), AetherPlacedFeatureBuilders.aercloudPlacement(0, 32, 24));
         register(context, STORM_AERCLOUD_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.STORM_AERCLOUD_CONFIGURATION), AetherPlacedFeatureBuilders.aercloudPlacement(0, 32, 24));
+
+        register(context, ORANGE_TREE_PATCH_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.ORANGE_TREE_PATCH_CONFIGURATION),
+                RarityFilter.onAverageOnceEvery(16),
+                ImprovedLayerPlacementModifier.of(Heightmap.Types.MOTION_BLOCKING, UniformInt.of(0, 1), 4),
+                BiomeFilter.biome());
 
         register(context, SKYROOT_MEADOW_BLUE_SKYROOT_TREES_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.BLUE_SKYROOT_TREE_CONFIGURATION),
                 GenesisPlacedFeatureBuilders.treePlacement(RarityFilter.onAverageOnceEvery(2), GenesisBlocks.BLUE_SKYROOT_SAPLING.get()));
@@ -107,5 +119,9 @@ public class GenesisPlacedFeatures {
 
     private static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers) {
         context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
+    }
+
+    private static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers) {
+        register(context, key, configuration, List.of(modifiers));
     }
 }

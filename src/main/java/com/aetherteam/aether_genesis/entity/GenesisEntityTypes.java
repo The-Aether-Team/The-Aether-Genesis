@@ -6,6 +6,7 @@ import com.aetherteam.aether_genesis.entity.miscellaneous.BlueParachute;
 import com.aetherteam.aether_genesis.entity.miscellaneous.GreenParachute;
 import com.aetherteam.aether_genesis.entity.miscellaneous.PurpleParachute;
 import com.aetherteam.aether_genesis.entity.miscellaneous.TempestThunderBall;
+import com.aetherteam.aether_genesis.entity.monster.Tempest;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
@@ -26,7 +27,7 @@ public class GenesisEntityTypes {
     public static final RegistryObject<EntityType<Swet>> DARK_SWET = ENTITY_TYPES.register("dark_swet",
             () -> EntityType.Builder.of(Swet::new, MobCategory.MONSTER).sized(0.9F, 0.95F).clientTrackingRange(10).build("dark_swet"));
     public static final RegistryObject<EntityType<Tempest>> TEMPEST = ENTITY_TYPES.register("tempest",
-            () -> EntityType.Builder.of(Tempest::new, MobCategory.MONSTER).sized(4.5F, 3.5F).clientTrackingRange(10).build("tempest"));
+            () -> EntityType.Builder.of(Tempest::new, MobCategory.MONSTER).sized(4.5F, 3.5F).fireImmune().clientTrackingRange(10).build("tempest"));
 
     // Miscellaneous
     public static final RegistryObject<EntityType<BlueParachute>> BLUE_PARACHUTE = ENTITY_TYPES.register("blue_parachute",

@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.client.renderer.entity;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.model.TempestModel;
-import com.aetherteam.aether_genesis.entity.Tempest;
+import com.aetherteam.aether_genesis.entity.monster.Tempest;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.MultiBufferSource;

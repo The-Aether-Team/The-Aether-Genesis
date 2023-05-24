@@ -48,10 +48,11 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get());
         this.tag(BlockTags.FLOWER_POTS).add(
                 GenesisBlocks.POTTED_BLUE_SKYROOT_SAPLING.get(),
-                GenesisBlocks.POTTED_DARK_BLUE_SKYROOT_SAPLING.get());
+                GenesisBlocks.POTTED_DARK_BLUE_SKYROOT_SAPLING.get(),
+                GenesisBlocks.POTTED_PURPLE_CRYSTAL_TREE_SAPLING.get(),
+                GenesisBlocks.POTTED_ORANGE_TREE.get());
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
-                GenesisBlocks.HOLYSTONE_FURNACE.get()
-        );
+                GenesisBlocks.HOLYSTONE_FURNACE.get());
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(
                 GenesisBlocks.SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(),
@@ -65,7 +66,8 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.BLUE_SKYROOT_LEAVES.get(),
                 GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get(),
                 GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get(),
-                GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get());
+                GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get(),
+                GenesisBlocks.ORANGE_TREE.get());
         this.tag(BlockTags.WALLS).add(
                 GenesisBlocks.SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(),

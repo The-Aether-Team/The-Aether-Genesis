@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.client.renderer.entity;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.model.TempestModel;
-import com.aetherteam.aether_genesis.entity.Tempest;
+import com.aetherteam.aether_genesis.entity.monster.Tempest;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;

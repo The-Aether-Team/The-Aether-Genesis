@@ -55,6 +55,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.itemBlock(GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get());
         this.itemBlock(GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get());
         this.itemBlock(GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get());
+        this.orangeTree(GenesisBlocks.ORANGE_TREE.get());
         this.itemBlockFlat(GenesisBlocks.BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.itemBlockFlat(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.itemBlockFlat(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), "natural/");
