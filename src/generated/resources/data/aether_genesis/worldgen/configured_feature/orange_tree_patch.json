@@ -1,0 +1,51 @@
+{
+  "type": "minecraft:flower",
+  "config": {
+    "feature": {
+      "feature": {
+        "type": "aether_genesis:orange_tree",
+        "config": {
+          "to_place": {
+            "type": "minecraft:weighted_state_provider",
+            "entries": [
+              {
+                "data": {
+                  "Name": "aether_genesis:orange_tree",
+                  "Properties": {
+                    "age": "3",
+                    "double_drops": "true",
+                    "half": "lower"
+                  }
+                },
+                "weight": 1
+              },
+              {
+                "data": {
+                  "Name": "aether_genesis:orange_tree",
+                  "Properties": {
+                    "age": "4",
+                    "double_drops": "true",
+                    "half": "lower"
+                  }
+                },
+                "weight": 1
+              }
+            ]
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          }
+        }
+      ]
+    },
+    "tries": 16,
+    "xz_spread": 7,
+    "y_spread": 3
+  }
+}

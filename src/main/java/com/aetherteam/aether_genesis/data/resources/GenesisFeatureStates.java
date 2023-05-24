@@ -2,12 +2,16 @@ package com.aetherteam.aether_genesis.data.resources;
 
 import com.aetherteam.aether.block.AetherBlockStateProperties;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
+import com.aetherteam.aether_genesis.block.natural.OrangeTreeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class GenesisFeatureStates {
     public static final BlockState GREEN_AERCLOUD = GenesisBlocks.GREEN_AERCLOUD.get().defaultBlockState().setValue(AetherBlockStateProperties.DOUBLE_DROPS, true);
     public static final BlockState PURPLE_AERCLOUD = GenesisBlocks.PURPLE_AERCLOUD.get().defaultBlockState().setValue(AetherBlockStateProperties.DOUBLE_DROPS, true);
     public static final BlockState STORM_AERCLOUD = GenesisBlocks.STORM_AERCLOUD.get().defaultBlockState().setValue(AetherBlockStateProperties.DOUBLE_DROPS, true);
+
+    public static final BlockState ORANGE_TREE_WITHOUT_ORANGES = GenesisBlocks.ORANGE_TREE.get().defaultBlockState().setValue(AetherBlockStateProperties.DOUBLE_DROPS, true).setValue(OrangeTreeBlock.AGE, 3);
+    public static final BlockState ORANGE_TREE_WITH_ORANGES = GenesisBlocks.ORANGE_TREE.get().defaultBlockState().setValue(AetherBlockStateProperties.DOUBLE_DROPS, true).setValue(OrangeTreeBlock.AGE, 4);
 
     public static final BlockState SKYROOT_LOG_WALL = GenesisBlocks.SKYROOT_LOG_WALL.get().defaultBlockState().setValue(AetherBlockStateProperties.DOUBLE_DROPS, true);
 

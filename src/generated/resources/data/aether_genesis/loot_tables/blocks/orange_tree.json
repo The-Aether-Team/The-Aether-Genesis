@@ -1,0 +1,125 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "aether_genesis:orange_tree",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "age": "4"
+          }
+        },
+        {
+          "block": "aether_genesis:orange_tree",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "half": "lower"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "minecraft:explosion_decay"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "condition": "minecraft:inverted",
+                  "term": {
+                    "condition": "minecraft:location_check",
+                    "offsetY": -1,
+                    "predicate": {
+                      "block": {
+                        "blocks": [
+                          "aether:enchanted_aether_grass_block"
+                        ]
+                      }
+                    }
+                  }
+                }
+              ],
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 2.0
+              },
+              "function": "minecraft:set_count"
+            },
+            {
+              "add": false,
+              "conditions": [
+                {
+                  "condition": "minecraft:location_check",
+                  "offsetY": -1,
+                  "predicate": {
+                    "block": {
+                      "blocks": [
+                        "aether:enchanted_aether_grass_block"
+                      ]
+                    }
+                  }
+                }
+              ],
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 4.0,
+                "min": 2.0
+              },
+              "function": "minecraft:set_count"
+            },
+            {
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:uniform_bonus_count",
+              "function": "minecraft:apply_bonus",
+              "parameters": {
+                "bonusMultiplier": 1
+              }
+            }
+          ],
+          "name": "aether_genesis:orange"
+        }
+      ],
+      "functions": [
+        {
+          "function": "aether:double_drops"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "aether_genesis:orange_tree",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "half": "lower"
+          }
+        },
+        {
+          "condition": "minecraft:inverted",
+          "term": {
+            "block": "aether_genesis:orange_tree",
+            "condition": "minecraft:block_state_property",
+            "properties": {
+              "age": "4"
+            }
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:orange_tree"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

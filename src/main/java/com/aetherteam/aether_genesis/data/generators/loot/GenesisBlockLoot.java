@@ -4,6 +4,7 @@ import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.mixin.mixins.common.accessor.BlockLootAccessor;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.data.providers.GenesisBlockLootSubProvider;
+import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -33,6 +34,8 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
                 (leaves) -> droppingWithChancesAndSkyrootSticks(leaves, GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), BlockLootAccessor.aether$getNormalLeavesSaplingChances()));
         this.add(GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get(),
                 (leaves) -> droppingWithChancesAndFruitAndSkyrootSticks(leaves, GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), AetherItems.WHITE_APPLE.get(), BlockLootAccessor.aether$getNormalLeavesSaplingChances()));
+        this.add(GenesisBlocks.ORANGE_TREE.get(), (tree) -> this.droppingOrangeTree(tree, GenesisItems.ORANGE.get()));
+        this.dropPottedContents(GenesisBlocks.POTTED_ORANGE_TREE.get());
         this.dropSelf(GenesisBlocks.BLUE_SKYROOT_SAPLING.get());
         this.dropSelf(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get());
         this.dropSelf(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get());

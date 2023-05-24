@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#aether_genesis:has_orange_trees",
+  "features": "aether_genesis:orange_tree_patch",
+  "step": "vegetal_decoration"
+}

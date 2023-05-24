@@ -14,6 +14,7 @@ import com.aetherteam.aether_genesis.data.generators.tags.GenesisItemTagData;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.loot.modifiers.GenesisLootModifiers;
+import com.aetherteam.aether_genesis.world.feature.GenesisFeatures;
 import com.aetherteam.aether_genesis.world.foliageplacer.GenesisFoliagePlacerTypes;
 import com.aetherteam.aether_genesis.world.treedecorator.GenesisTreeDecoratorTypes;
 import com.aetherteam.aether_genesis.world.trunkplacer.GenesisTrunkPlacerTypes;
@@ -62,6 +63,7 @@ public class Genesis {
                 GenesisMenuTypes.MENU_TYPES,
                 GenesisBlockEntityTypes.BLOCK_ENTITY_TYPES,
                 GenesisLootModifiers.GLOBAL_LOOT_MODIFIERS,
+                GenesisFeatures.FEATURES,
                 GenesisFoliagePlacerTypes.FOLIAGE_PLACERS,
                 GenesisTrunkPlacerTypes.TRUNK_PLACERS,
                 GenesisTreeDecoratorTypes.TREE_DECORATORS,

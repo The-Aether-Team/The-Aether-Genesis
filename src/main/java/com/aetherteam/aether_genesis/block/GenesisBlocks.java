@@ -9,6 +9,7 @@ import com.aetherteam.aether_genesis.block.container.AetherCraftingTableBlock;
 import com.aetherteam.aether_genesis.block.container.HolystoneFurnaceBlock;
 import com.aetherteam.aether_genesis.block.natural.GenesisDoubleDropsWall;
 import com.aetherteam.aether_genesis.block.natural.GreenAercloudBlock;
+import com.aetherteam.aether_genesis.block.natural.OrangeTreeBlock;
 import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
@@ -21,6 +22,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
@@ -44,6 +46,9 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> PURPLE_CRYSTAL_LEAVES = register("purple_crystal_leaves", () -> new LeavesWithParticlesBlock(GenesisParticleTypes.PURPLE_CRYSTAL_LEAVES, Block.Properties.of(Material.LEAVES, MaterialColor.COLOR_PURPLE).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(GenesisBlocks::ocelotOrParrot).isSuffocating(GenesisBlocks::never).isViewBlocking(GenesisBlocks::never)));
     public static final RegistryObject<Block> PURPLE_CRYSTAL_FRUIT_LEAVES = register("purple_crystal_fruit_leaves", () -> new LeavesWithParticlesBlock(GenesisParticleTypes.PURPLE_CRYSTAL_LEAVES, Block.Properties.of(Material.LEAVES, MaterialColor.COLOR_PURPLE).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(GenesisBlocks::ocelotOrParrot).isSuffocating(GenesisBlocks::never).isViewBlocking(GenesisBlocks::never)));
 
+    public static final RegistryObject<Block> ORANGE_TREE = register("orange_tree", () -> new OrangeTreeBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.GRASS).noCollission().strength(0.2F).sound(SoundType.GRASS)));
+    public static final RegistryObject<FlowerPotBlock> POTTED_ORANGE_TREE = BLOCKS.register("potted_orange_tree", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, ORANGE_TREE, BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().strength(0.2F).sound(SoundType.GRASS)));
+
     public static final RegistryObject<SaplingBlock> BLUE_SKYROOT_SAPLING = register("blue_skyroot_sapling", () -> new SaplingBlock(new BlueSkyrootTree(), Block.Properties.copy(Blocks.OAK_SAPLING)));
     public static final RegistryObject<SaplingBlock> DARK_BLUE_SKYROOT_SAPLING = register("dark_blue_skyroot_sapling", () -> new SaplingBlock(new DarkBlueSkyrootTree(), Block.Properties.copy(Blocks.OAK_SAPLING)));
     public static final RegistryObject<SaplingBlock> PURPLE_CRYSTAL_TREE_SAPLING = register("purple_crystal_tree_sapling", () -> new SaplingBlock(new PurpleCrystalTree(), Block.Properties.copy(Blocks.OAK_SAPLING)));
@@ -64,6 +69,7 @@ public class GenesisBlocks {
         pot.addPlant(GenesisBlocks.BLUE_SKYROOT_SAPLING.getId(), GenesisBlocks.POTTED_BLUE_SKYROOT_SAPLING);
         pot.addPlant(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.getId(), GenesisBlocks.POTTED_DARK_BLUE_SKYROOT_SAPLING);
         pot.addPlant(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.getId(), GenesisBlocks.POTTED_PURPLE_CRYSTAL_TREE_SAPLING);
+        pot.addPlant(GenesisBlocks.ORANGE_TREE.getId(), GenesisBlocks.POTTED_ORANGE_TREE);
     }
 
     public static void registerFlammability() {

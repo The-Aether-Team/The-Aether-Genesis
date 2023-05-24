@@ -7,6 +7,7 @@ import com.aetherteam.aether.world.foliageplacer.GoldenOakFoliagePlacer;
 import com.aetherteam.aether.world.trunkplacer.GoldenOakTrunkPlacer;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.data.resources.GenesisFeatureStates;
+import com.aetherteam.aether_genesis.world.feature.GenesisFeatures;
 import com.aetherteam.aether_genesis.world.foliageplacer.AetherPineFoliagePlacer;
 import com.aetherteam.aether_genesis.world.foliageplacer.HookedFoliagePlacer;
 import com.aetherteam.aether_genesis.world.treedecorator.TrunkDecorator;
@@ -14,6 +15,8 @@ import com.aetherteam.aether_genesis.world.trunkplacer.HookedTrunkPlacer;
 import com.aetherteam.aether_genesis.world.trunkplacer.SkinnyHookedTrunkPlacer;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.features.FeatureUtils;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.random.SimpleWeightedRandomList;
@@ -22,6 +25,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
 import net.minecraft.world.level.levelgen.feature.featuresize.TwoLayersFeatureSize;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.BlobFoliagePlacer;
@@ -37,6 +41,7 @@ public class GenesisConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> GREEN_AERCLOUD_8_CONFIGURATION = createKey("green_aercloud_8");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PURPLE_AERCLOUD_CONFIGURATION = createKey("purple_aercloud");
     public static final ResourceKey<ConfiguredFeature<?, ?>> STORM_AERCLOUD_CONFIGURATION = createKey("storm_aercloud");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> ORANGE_TREE_PATCH_CONFIGURATION = createKey("orange_tree_patch");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LARGE_GREEN_SKYROOT_TREE_CONFIGURATION = createKey("large_green_skyroot_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BLUE_SKYROOT_TREE_CONFIGURATION = createKey("blue_skyroot_tree");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GREEN_SKYROOT_PINE_CONFIGURATION = createKey("green_skyroot_pine");
@@ -54,6 +59,8 @@ public class GenesisConfiguredFeatures {
         register(context, GREEN_AERCLOUD_8_CONFIGURATION, AetherFeatures.AERCLOUD.get(), AetherConfiguredFeatureBuilders.aercloud(8, GenesisFeatureStates.GREEN_AERCLOUD));
         register(context, PURPLE_AERCLOUD_CONFIGURATION, AetherFeatures.AERCLOUD.get(), AetherConfiguredFeatureBuilders.aercloud(4, GenesisFeatureStates.PURPLE_AERCLOUD));
         register(context, STORM_AERCLOUD_CONFIGURATION, AetherFeatures.AERCLOUD.get(), AetherConfiguredFeatureBuilders.aercloud(4, GenesisFeatureStates.STORM_AERCLOUD));
+        register(context, ORANGE_TREE_PATCH_CONFIGURATION, Feature.FLOWER,
+                FeatureUtils.simpleRandomPatchConfiguration(16, PlacementUtils.onlyWhenEmpty(GenesisFeatures.ORANGE_TREE.get(), new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(GenesisFeatureStates.ORANGE_TREE_WITHOUT_ORANGES, 1).add(GenesisFeatureStates.ORANGE_TREE_WITH_ORANGES, 1))))));
         register(context, LARGE_GREEN_SKYROOT_TREE_CONFIGURATION, Feature.TREE,
                 new TreeConfiguration.TreeConfigurationBuilder(
                         BlockStateProvider.simple(AetherFeatureStates.SKYROOT_LOG),
