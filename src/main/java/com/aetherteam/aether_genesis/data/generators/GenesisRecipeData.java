@@ -12,7 +12,9 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.Consumer;
 
@@ -44,5 +46,32 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
         wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_WOOD.get());
 
         twoByTwoPacker(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_CRAFTING_TABLE.get(), AetherBlocks.SKYROOT_PLANKS.get());
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_FURNACE.get()).define('#', AetherBlocks.HOLYSTONE.get()).pattern("###").pattern("# #").pattern("###").unlockedBy(getHasName(GenesisBlocks.HOLYSTONE_FURNACE.get()), has(AetherBlocks.HOLYSTONE.get())).save(consumer);}
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_FURNACE.get())
+                .define('#', AetherBlocks.HOLYSTONE.get())
+                .pattern("###")
+                .pattern("# #")
+                .pattern("###")
+                .unlockedBy(getHasName(GenesisBlocks.HOLYSTONE_FURNACE.get()), has(AetherBlocks.HOLYSTONE.get()))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.BLAST_FURNACE)
+                .group("minecraft:blast_furnace")
+                .define('#', Blocks.SMOOTH_STONE)
+                .define('X', GenesisBlocks.HOLYSTONE_FURNACE.get())
+                .define('I', Items.IRON_INGOT)
+                .pattern("III")
+                .pattern("IXI")
+                .pattern("###")
+                .unlockedBy("has_smooth_stone", has(Blocks.SMOOTH_STONE))
+                .save(consumer, "holystone_blast_furnace");
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.SMOKER)
+                .group("minecraft:smoker")
+                .define('#', ItemTags.LOGS)
+                .define('X', GenesisBlocks.HOLYSTONE_FURNACE.get())
+                .pattern(" # ")
+                .pattern("#X#")
+                .pattern(" # ")
+                .unlockedBy(getHasName(GenesisBlocks.HOLYSTONE_FURNACE.get()), has(GenesisBlocks.HOLYSTONE_FURNACE.get()))
+                .save(consumer, "holystone_smoker");
+    }
 }

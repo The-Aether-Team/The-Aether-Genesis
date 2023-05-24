@@ -3,6 +3,7 @@ package com.aetherteam.aether_genesis.block;
 import com.aetherteam.aether.block.natural.AercloudBlock;
 import com.aetherteam.aether.block.natural.AetherDoubleDropsLeaves;
 import com.aetherteam.aether.block.natural.LeavesWithParticlesBlock;
+import com.aetherteam.aether.item.block.AmbrosiumBlockItem;
 import com.aetherteam.aether.mixin.mixins.common.accessor.FireBlockAccessor;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.container.AetherCraftingTableBlock;
@@ -13,6 +14,7 @@ import com.aetherteam.aether_genesis.block.natural.OrangeTreeBlock;
 import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
+import com.aetherteam.aether_genesis.item.block.SkyrootCraftingTableBlockItem;
 import com.aetherteam.aether_genesis.world.treegrower.BlueSkyrootTree;
 import com.aetherteam.aether_genesis.world.treegrower.DarkBlueSkyrootTree;
 import com.aetherteam.aether_genesis.world.treegrower.PurpleCrystalTree;
@@ -96,7 +98,11 @@ public class GenesisBlocks {
     private static <B extends Block> Supplier<BlockItem> registerBlockItem(final RegistryObject<B> blockRegistryObject) {
         return () -> {
             B block = Objects.requireNonNull(blockRegistryObject.get());
-            return new BlockItem(block, new Item.Properties());
+            if (block == SKYROOT_CRAFTING_TABLE.get()) {
+                return new SkyrootCraftingTableBlockItem(block, new Item.Properties());
+            } else {
+                return new BlockItem(block, new Item.Properties());
+            }
         };
     }
 
