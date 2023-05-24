@@ -32,8 +32,6 @@ workflows:
     jobs:
       - path-filtering/filter:
           name: filter
-          mapping: |
-            ^((?!docs|.github).)*$ allow-build true
           base-revision: << pipeline.git.branch >>
           config-path: .circleci/continue_config.yml
   publish:

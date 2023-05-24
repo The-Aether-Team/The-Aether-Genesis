@@ -7,9 +7,6 @@ parameters:
   artifact-name:
     type: string
     default: aether_genesis
-  allow-build:
-    type: boolean
-    default: false
 
 jobs:
   build:
@@ -20,18 +17,11 @@ jobs:
       _JAVA_OPTIONS: -Xmx3200m
       GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.logging.level=info
     steps:
-      - when:
-          condition: <<pipeline.parameters.allow-build>>
-          steps:
-            - setup
-            - persist_to_workspace:
-                root: ~/project/build/libs
-                paths:
-                  - << pipeline.parameters.artifact-name >>-*.jar
-      - unless:
-         condition: <<pipeline.parameters.allow-build>>
-         steps:
-           - run: echo "Condition not met."
+      - setup
+      - persist_to_workspace:
+          root: ~/project/build/libs
+          paths:
+            - << pipeline.parameters.artifact-name >>-*.jar
 
 commands:
   setup:
