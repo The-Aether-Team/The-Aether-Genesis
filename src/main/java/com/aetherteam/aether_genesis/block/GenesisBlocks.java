@@ -3,7 +3,6 @@ package com.aetherteam.aether_genesis.block;
 import com.aetherteam.aether.block.natural.AercloudBlock;
 import com.aetherteam.aether.block.natural.AetherDoubleDropsLeaves;
 import com.aetherteam.aether.block.natural.LeavesWithParticlesBlock;
-import com.aetherteam.aether.item.block.AmbrosiumBlockItem;
 import com.aetherteam.aether.mixin.mixins.common.accessor.FireBlockAccessor;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.container.AetherCraftingTableBlock;
@@ -50,6 +49,10 @@ public class GenesisBlocks {
 
     public static final RegistryObject<Block> ORANGE_TREE = register("orange_tree", () -> new OrangeTreeBlock(BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.GRASS).noCollission().strength(0.2F).sound(SoundType.GRASS)));
     public static final RegistryObject<FlowerPotBlock> POTTED_ORANGE_TREE = BLOCKS.register("potted_orange_tree", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, ORANGE_TREE, BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().strength(0.2F).sound(SoundType.GRASS)));
+
+    public static final RegistryObject<RotatedPillarBlock> HOLYSTONE_HEADSTONE = register("holystone_headstone", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE, MaterialColor.WOOL).strength(2.0F, 10.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<RotatedPillarBlock> HOLYSTONE_KEYSTONE = register("holystone_keystone", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE, MaterialColor.WOOL).strength(2.0F, 10.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<RotatedPillarBlock> HOLYSTONE_HIGHLIGHT = register("holystone_highlight", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE, MaterialColor.WOOL).strength(2.0F, 10.0F).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<SaplingBlock> BLUE_SKYROOT_SAPLING = register("blue_skyroot_sapling", () -> new SaplingBlock(new BlueSkyrootTree(), Block.Properties.copy(Blocks.OAK_SAPLING)));
     public static final RegistryObject<SaplingBlock> DARK_BLUE_SKYROOT_SAPLING = register("dark_blue_skyroot_sapling", () -> new SaplingBlock(new DarkBlueSkyrootTree(), Block.Properties.copy(Blocks.OAK_SAPLING)));

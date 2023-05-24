@@ -2,9 +2,9 @@ package com.aetherteam.aether_genesis;
 
 import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
-import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.blockentity.GenesisMenuTypes;
+import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.data.generators.*;
 import com.aetherteam.aether_genesis.data.generators.tags.GenesisBiomeTagData;

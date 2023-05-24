@@ -9,9 +9,14 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.WallBlock;
-import net.minecraft.world.level.block.state.properties.*;
-import net.minecraftforge.client.model.generators.*;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.block.state.properties.WallSide;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.Map;
@@ -184,5 +189,9 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
                 }
             return ConfiguredModel.builder().build();
         });
+    }
+
+    public void brick(RotatedPillarBlock block) {
+        this.axisBlock(block, this.texture(this.name(block), "construction/"), this.extend(this.texture(this.name(block), "construction/"), "_top"));
     }
 }

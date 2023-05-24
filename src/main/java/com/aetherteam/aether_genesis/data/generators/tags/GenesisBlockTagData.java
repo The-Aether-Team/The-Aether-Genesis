@@ -52,7 +52,11 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.POTTED_PURPLE_CRYSTAL_TREE_SAPLING.get(),
                 GenesisBlocks.POTTED_ORANGE_TREE.get());
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
-                GenesisBlocks.HOLYSTONE_FURNACE.get());
+                GenesisBlocks.HOLYSTONE_FURNACE.get(),
+                GenesisBlocks.HOLYSTONE_HEADSTONE.get(),
+                GenesisBlocks.HOLYSTONE_KEYSTONE.get(),
+                GenesisBlocks.HOLYSTONE_HIGHLIGHT.get()
+        );
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(
                 GenesisBlocks.SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(),

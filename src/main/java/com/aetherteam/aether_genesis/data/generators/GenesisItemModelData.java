@@ -60,6 +60,10 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.itemBlockFlat(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.itemBlockFlat(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), "natural/");
 
+        this.itemBlock(GenesisBlocks.HOLYSTONE_HEADSTONE.get());
+        this.itemBlock(GenesisBlocks.HOLYSTONE_KEYSTONE.get());
+        this.itemBlock(GenesisBlocks.HOLYSTONE_HIGHLIGHT.get());
+
         this.itemLogWallBlock(GenesisBlocks.SKYROOT_LOG_WALL.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/", Aether.MODID);
         this.itemLogWallBlock(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/", Aether.MODID);
         this.itemWoodWallBlock(GenesisBlocks.SKYROOT_WOOD_WALL.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/", Aether.MODID);

@@ -1,8 +1,6 @@
 package com.aetherteam.aether_genesis.event.listeners;
 
 import com.aetherteam.aether.entity.AetherEntityTypes;
-import com.aetherteam.aether.entity.monster.Zephyr;
-import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.MobSpawnEvent;

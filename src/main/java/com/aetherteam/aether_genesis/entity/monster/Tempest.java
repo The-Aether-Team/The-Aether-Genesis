@@ -1,12 +1,10 @@
 package com.aetherteam.aether_genesis.entity.monster;
 
-import com.aetherteam.aether.entity.AetherEntityTypes;
-import com.aetherteam.aether_genesis.entity.miscellaneous.TempestThunderBall;
 import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.entity.monster.Zephyr;
+import com.aetherteam.aether_genesis.entity.miscellaneous.TempestThunderBall;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -38,6 +36,10 @@ public class Tempest extends Zephyr {
         super(type, level);
         this.moveControl = new MoveHelperController(this);
         this.xpReward = 20;
+    }
+
+    public boolean fireImmune() {
+        return true;
     }
 
     @Override
