@@ -21,13 +21,13 @@ public class GenesisEntityTagData extends EntityTypeTagsProvider {
     public void addTags(HolderLookup.Provider provider) {
         this.tag(AetherTags.Entities.DEFLECTABLE_PROJECTILES)
                 .addTag(EntityTypeTags.ARROWS)
-                .add(
-                        GenesisEntityTypes.TEMPEST_THUNDERBALL.get());
+                .add(GenesisEntityTypes.TEMPEST_THUNDERBALL.get());
         this.tag(AetherTags.Entities.SWETS).add(
-                GenesisEntityTypes.DARK_SWET.get()
-        );
+                GenesisEntityTypes.DARK_SWET.get());
+        this.tag(AetherTags.Entities.TREATED_AS_AETHER_ENTITY).add(
+                GenesisEntityTypes.DARK_SWET.get(),
+                GenesisEntityTypes.TEMPEST.get());
         this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(
-                GenesisEntityTypes.TEMPEST.get()
-        );
+                GenesisEntityTypes.TEMPEST.get());
     }
 }
