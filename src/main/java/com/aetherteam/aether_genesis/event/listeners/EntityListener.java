@@ -13,10 +13,8 @@ import net.minecraftforge.fml.common.Mod;
 public class EntityListener {
     @SubscribeEvent
     public static void DisabledNightSpawn(MobSpawnEvent.FinalizeSpawn event){
-        LivingEntity entity = event.getEntity();
-        if(entity.getType() == AetherEntityTypes.ZEPHYR.get() && !entity.getLevel().isClientSide && entity.getLevel().isNight())
-            event.setSpawnCancelled(true);
-        if(entity.getType() == GenesisEntityTypes.TEMPEST.get() && !entity.getLevel().isClientSide && !entity.getLevel().isNight())
+        LivingEntity zephyr = event.getEntity();
+        if(zephyr.getType() == AetherEntityTypes.ZEPHYR.get() && !zephyr.getLevel().isClientSide && zephyr.getLevel().isNight())
             event.setSpawnCancelled(true);
     }
 
