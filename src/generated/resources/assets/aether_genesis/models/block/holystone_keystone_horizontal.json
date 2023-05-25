@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column_horizontal",
+  "textures": {
+    "end": "aether_genesis:block/construction/holystone_keystone_top",
+    "side": "aether_genesis:block/construction/holystone_keystone"
+  }
+}

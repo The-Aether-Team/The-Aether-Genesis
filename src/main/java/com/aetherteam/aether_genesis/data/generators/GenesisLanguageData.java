@@ -31,6 +31,9 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addBlock(GenesisBlocks.SKYROOT_WOOD_WALL, "Skyroot Wood Wall");
         this.addBlock(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL, "Stripped Skyroot Wood Wall");
 
+        this.addBlock(GenesisBlocks.HOLYSTONE_HEADSTONE, "Holystone Headstone");
+        this.addBlock(GenesisBlocks.HOLYSTONE_KEYSTONE, "Holystone Keystone");
+        this.addBlock(GenesisBlocks.HOLYSTONE_HIGHLIGHT, "Holystone Highlight");
 
         this.addBlock(GenesisBlocks.SKYROOT_CRAFTING_TABLE, "Skyroot Crafting Table");
         this.addBlock(GenesisBlocks.HOLYSTONE_FURNACE, "Holystone Furnace");
@@ -57,6 +60,8 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.CORNSTARCH_BOWL, "Cornstarch Bowl");
         this.addItem(GenesisItems.CRYSTAL_EXP_BOTTLE, "Crystal Exp Bottle");
         this.addItem(GenesisItems.BONE_RING, "Bone Ring");
+
+        this.addItem(GenesisItems.PHOENIX_DART_SHOOTER, "Phoenix Dart Shooter");
 
         this.addItem(GenesisItems.DARK_SWET_SPAWN_EGG, "Dark Swet Spawn Egg");
         this.addItem(GenesisItems.TEMPEST_SPAWN_EGG, "Tempest Spawn Egg");
