@@ -1,5 +1,6 @@
 darksonic300
 - Improvement of the Tempest class to extend the Zephyr class.
+- Improvement of Thunderballs to have particles.
 
 KELETU66666
 - Implementation of food items.
@@ -10,6 +11,9 @@ KELETU66666
 - Implementation of Phoenix Dart Shooter
 - Implementation of Crystal EXP Bottle.
 - Implementation of Bone Ring.
+
+sunsette
+- Compression of aether1_lowpitch, aether6, aether_night1, and aether_night2.
 
 Zepalesque
 - Implementation of a custom music manager for nighttime tracks.
