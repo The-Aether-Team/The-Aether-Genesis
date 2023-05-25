@@ -1,7 +1,10 @@
 package com.aetherteam.aether_genesis.data.providers;
 
+import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlockStateProperties;
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
+import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.block.natural.OrangeTreeBlock;
 import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
 import net.minecraft.core.Direction;
@@ -9,9 +12,14 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.AbstractFurnaceBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.WallBlock;
-import net.minecraft.world.level.block.state.properties.*;
-import net.minecraftforge.client.model.generators.*;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import net.minecraft.world.level.block.state.properties.Property;
+import net.minecraft.world.level.block.state.properties.WallSide;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import java.util.Map;
@@ -138,7 +146,7 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
                 this.extend(this.texture(this.name(block), "utility/"), "_side"),
                 this.extend(this.texture(this.name(block), "utility/"), "_front"),
                 this.extend(this.texture(this.name(block), "utility/"), "_side"))
-                .texture("particle", baseTexture);
+                .texture("particle", this.extend(this.texture(this.name(block), "utility/"), "_front"));
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(workbench));
     }
 
@@ -184,5 +192,12 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
                 }
             return ConfiguredModel.builder().build();
         });
+    }
+
+    public void brick(RotatedPillarBlock block) {
+        ResourceLocation side = this.texture(this.name(block), "construction/");
+        if(block == GenesisBlocks.HOLYSTONE_HEADSTONE.get())
+            side = new ResourceLocation(Aether.MODID, "block/construction/" + this.name(AetherBlocks.HOLYSTONE_BRICKS.get()));
+        this.axisBlock(block, side, this.extend(this.texture(this.name(block), "construction/"), "_top"));
     }
 }

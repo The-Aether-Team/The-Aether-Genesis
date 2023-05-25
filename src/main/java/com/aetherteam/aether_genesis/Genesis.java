@@ -1,10 +1,11 @@
 package com.aetherteam.aether_genesis;
 
 import com.aetherteam.aether.AetherConfig;
+import com.aetherteam.aether.network.AetherPacketHandler;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
-import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.blockentity.GenesisMenuTypes;
+import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.data.generators.*;
 import com.aetherteam.aether_genesis.data.generators.tags.GenesisBiomeTagData;
@@ -14,6 +15,8 @@ import com.aetherteam.aether_genesis.data.generators.tags.GenesisItemTagData;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.loot.modifiers.GenesisLootModifiers;
+import com.aetherteam.aether_genesis.network.GenesisPacketHandler;
+import com.aetherteam.aether_genesis.world.biomemodifier.GenesisBiomeModifierSerializers;
 import com.aetherteam.aether_genesis.world.feature.GenesisFeatures;
 import com.aetherteam.aether_genesis.world.foliageplacer.GenesisFoliagePlacerTypes;
 import com.aetherteam.aether_genesis.world.treedecorator.GenesisTreeDecoratorTypes;
@@ -68,7 +71,8 @@ public class Genesis {
                 GenesisTrunkPlacerTypes.TRUNK_PLACERS,
                 GenesisTreeDecoratorTypes.TREE_DECORATORS,
                 GenesisParticleTypes.PARTICLES,
-                GenesisSoundEvents.SOUNDS
+                GenesisSoundEvents.SOUNDS,
+                GenesisBiomeModifierSerializers.BIOME_MODIFIER_SERIALIZERS
         };
 
         for (DeferredRegister<?> register : registers) {
@@ -80,6 +84,8 @@ public class Genesis {
     }
 
     public void commonSetup(FMLCommonSetupEvent event) {
+        GenesisPacketHandler.register();
+
         event.enqueueWork(() -> {
             GenesisBlocks.registerPots();
             GenesisBlocks.registerFlammability();

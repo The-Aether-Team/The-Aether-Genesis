@@ -7,6 +7,7 @@ import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.accessories.BoneRing;
 import com.aetherteam.aether_genesis.item.accessories.CrystalBottleItem;
+import com.aetherteam.aether_genesis.item.combat.PhoenixDartShooterItem;
 import com.aetherteam.aether_genesis.item.food.GenesisFoods;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
@@ -16,6 +17,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static com.aetherteam.aether.item.AetherItems.AETHER_LOOT;
+import static com.aetherteam.aether.item.AetherItems.GOLDEN_DART;
 
 public class GenesisItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Genesis.MODID);
@@ -44,6 +46,8 @@ public class GenesisItems {
     public static final RegistryObject<Item> CRYSTAL_EXP_BOTTLE = ITEMS.register("crystal_exp_bottle", () -> new CrystalBottleItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> MOUSE_EAR = ITEMS.register("mouse_ear", () -> new MouseEarItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> BONE_RING = ITEMS.register("bone_ring", () -> new BoneRing(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+
+    public static final RegistryObject<Item> PHOENIX_DART_SHOOTER = ITEMS.register("phoenix_dart_shooter", () -> new PhoenixDartShooterItem(GOLDEN_DART, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
 
     public static final RegistryObject<Item> BLUE_PARACHUTE = ITEMS.register("blue_parachute", () -> new ParachuteItem(GenesisEntityTypes.BLUE_PARACHUTE, new Item.Properties().durability(1)));
     public static final RegistryObject<Item> GREEN_PARACHUTE = ITEMS.register("green_parachute", () -> new ParachuteItem(GenesisEntityTypes.GREEN_PARACHUTE, new Item.Properties().durability(1)));

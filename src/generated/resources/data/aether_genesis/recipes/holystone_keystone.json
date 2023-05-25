@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "item": "aether:holystone_bricks"
+    },
+    "H": {
+      "item": "aether:holystone"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "HHH"
+  ],
+  "result": {
+    "count": 9,
+    "item": "aether_genesis:holystone_keystone"
+  },
+  "show_notification": true
+}

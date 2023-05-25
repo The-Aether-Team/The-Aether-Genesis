@@ -19,6 +19,7 @@ public class GenesisTags {
     public static class Items {
         public static final TagKey<Item> LOG_WALLS = tag("log_walls");
         public static final TagKey<Item> SWET_JELLY = tag("swet_jelly");
+        public static final TagKey<Item> DARTS = tag("darts");
 
         private static TagKey<Item> tag(String name) {
             return TagKey.create(Registries.ITEM, new ResourceLocation(Genesis.MODID, name));

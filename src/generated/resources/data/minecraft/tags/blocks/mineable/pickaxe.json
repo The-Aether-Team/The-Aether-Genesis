@@ -1,5 +1,8 @@
 {
   "values": [
-    "aether_genesis:holystone_furnace"
+    "aether_genesis:holystone_furnace",
+    "aether_genesis:holystone_headstone",
+    "aether_genesis:holystone_keystone",
+    "aether_genesis:holystone_highlight"
   ]
 }

@@ -45,6 +45,8 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.CRYSTAL_EXP_BOTTLE.get(), "miscellaneous/");
         this.item(GenesisItems.BONE_RING.get(), "miscellaneous/");
 
+        this.dartShooterItem(GenesisItems.PHOENIX_DART_SHOOTER.get(), "combat/");
+
         this.eggItem(GenesisItems.DARK_SWET_SPAWN_EGG.get());
         this.eggItem(GenesisItems.TEMPEST_SPAWN_EGG.get());
 
@@ -59,6 +61,10 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.itemBlockFlat(GenesisBlocks.BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.itemBlockFlat(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.itemBlockFlat(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), "natural/");
+
+        this.itemBlock(GenesisBlocks.HOLYSTONE_HEADSTONE.get());
+        this.itemBlock(GenesisBlocks.HOLYSTONE_KEYSTONE.get());
+        this.itemBlock(GenesisBlocks.HOLYSTONE_HIGHLIGHT.get());
 
         this.itemLogWallBlock(GenesisBlocks.SKYROOT_LOG_WALL.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/", Aether.MODID);
         this.itemLogWallBlock(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/", Aether.MODID);
