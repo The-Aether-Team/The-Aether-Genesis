@@ -1,5 +1,0 @@
-// 1.19.4	2023-05-25T00:44:05.7163445	Tags for minecraft:entity_type mod id aether_genesis
-de42bd03516d6ce96417d52bf294d2e7e678456b data/aether/tags/entity_types/deflectable_projectiles.json
-d320098398784bc4b5bd20f3857af4b83db9dbdc data/aether/tags/entity_types/swets.json
-1a9d99331bc363033acfb3b5a1458324acbcf309 data/minecraft/tags/entity_types/fall_damage_immune.json
-21dfb6552780315aab68eaf860448c7b871bf61c data/minecraft/tags/entity_types/impact_projectiles.json
