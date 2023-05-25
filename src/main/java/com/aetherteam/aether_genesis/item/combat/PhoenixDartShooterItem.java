@@ -43,7 +43,7 @@ public class PhoenixDartShooterItem extends DartShooterItem {
                 ForgeEventFactory.onArrowLoose(stack, level, player, 0, stillHasAmmo);
 
                 if (stillHasAmmo) { // Seems to be a failsafe check; under normal circumstances this should already be true because of the checks in DartShooterItem#use().
-                    if (ammoItem.isEmpty() && stack.is(GenesisTags.Items.DARTS)) {
+                    if (ammoItem.isEmpty()) {
                         ammoItem = stack; // Another failsafe to create a stack if somehow the ammoItem is empty at this stage of the code; under normal circumstances this seems to never get reached.
                     }
                     boolean creativeOrDartIsInfinite = player.getAbilities().instabuild || (ammoItem.getItem() instanceof DartItem dartItem && dartItem.isInfinite(stack));
