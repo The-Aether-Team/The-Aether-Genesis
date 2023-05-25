@@ -14,6 +14,7 @@ import com.aetherteam.aether_genesis.data.generators.tags.GenesisItemTagData;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.loot.modifiers.GenesisLootModifiers;
+import com.aetherteam.aether_genesis.world.biomemodifier.GenesisBiomeModifierSerializers;
 import com.aetherteam.aether_genesis.world.feature.GenesisFeatures;
 import com.aetherteam.aether_genesis.world.foliageplacer.GenesisFoliagePlacerTypes;
 import com.aetherteam.aether_genesis.world.treedecorator.GenesisTreeDecoratorTypes;
@@ -68,7 +69,8 @@ public class Genesis {
                 GenesisTrunkPlacerTypes.TRUNK_PLACERS,
                 GenesisTreeDecoratorTypes.TREE_DECORATORS,
                 GenesisParticleTypes.PARTICLES,
-                GenesisSoundEvents.SOUNDS
+                GenesisSoundEvents.SOUNDS,
+                GenesisBiomeModifierSerializers.BIOME_MODIFIER_SERIALIZERS
         };
 
         for (DeferredRegister<?> register : registers) {

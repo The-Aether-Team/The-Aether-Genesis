@@ -3,6 +3,7 @@ package com.aetherteam.aether_genesis.data.resources.registries;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.GenesisTags;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
+import com.aetherteam.aether_genesis.world.biomemodifier.AddMobChargeBiomeModifier;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -26,6 +27,9 @@ public class GenesisBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_GROVE_TREES = createKey("add_grove_trees");
     public static final ResourceKey<BiomeModifier> ADD_WOODLAND_TREES = createKey("add_woodland_trees");
     public static final ResourceKey<BiomeModifier> ADD_FOREST_TREES = createKey("add_forest_trees");
+
+    public static final ResourceKey<BiomeModifier> COST_DARK_SWET = createKey("cost_dark_swet");
+    public static final ResourceKey<BiomeModifier> COST_TEMPEST = createKey("cost_tempest");
 
     public static final ResourceKey<BiomeModifier> SPAWN_DARK_SWET = createKey("spawn_dark_swet");
     public static final ResourceKey<BiomeModifier> SPAWN_TEMPEST = createKey("spawn_tempest");
@@ -101,9 +105,15 @@ public class GenesisBiomeModifiers {
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
 
+        context.register(COST_DARK_SWET, new AddMobChargeBiomeModifier(
+                context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_DARK_SWET), GenesisEntityTypes.DARK_SWET.get(), 0.5, 0.1));
+
+        context.register(COST_TEMPEST, new AddMobChargeBiomeModifier(
+                context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_TEMPEST), GenesisEntityTypes.TEMPEST.get(), 0.6, 0.16));
+
         context.register(SPAWN_DARK_SWET, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_DARK_SWET),
-                List.of(new MobSpawnSettings.SpawnerData(GenesisEntityTypes.DARK_SWET.get(), 5, 1, 1)))); //todo charges and balances
+                List.of(new MobSpawnSettings.SpawnerData(GenesisEntityTypes.DARK_SWET.get(), 5, 1, 1))));
 
         context.register(SPAWN_TEMPEST, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_TEMPEST),
