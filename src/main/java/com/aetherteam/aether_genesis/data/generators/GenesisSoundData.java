@@ -21,7 +21,7 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
         );
         this.add(GenesisSoundEvents.BLUE_AERCLOUD_BOUNCE,
                 definition().with(sound("aether_genesis:block/aercloud/blue_aercloud_bounce"))
-                        .subtitle("subtitles.aether.block.aercloud.blue_aercloud_bounce")
+                        .subtitle("subtitles.aether_genesis.block.aercloud.blue_aercloud_bounce")
         );
     }
 }
