@@ -1,6 +1,7 @@
 package com.aetherteam.aether_genesis.data.generators.loot;
 
 import com.aetherteam.aether.block.AetherBlocks;
+import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.data.loot.EntityLootSubProvider;
@@ -33,7 +34,7 @@ public class GenesisEntityLoot extends EntityLootSubProvider {
         );
         this.add(GenesisEntityTypes.TEMPEST.get(), LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(AetherBlocks.COLD_AERCLOUD.get())
+                        .add(LootItem.lootTableItem(GenesisBlocks.STORM_AERCLOUD.get())
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
                                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
                         )

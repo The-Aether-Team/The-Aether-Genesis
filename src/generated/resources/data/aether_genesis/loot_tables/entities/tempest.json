@@ -25,7 +25,7 @@
               "function": "minecraft:looting_enchant"
             }
           ],
-          "name": "aether:cold_aercloud"
+          "name": "aether_genesis:storm_aercloud"
         }
       ],
       "rolls": 1.0
