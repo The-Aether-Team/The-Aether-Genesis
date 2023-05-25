@@ -1,13 +1,12 @@
 package com.aetherteam.aether_genesis.capability;
 
 import com.aetherteam.aether.Aether;
-import com.aetherteam.aether.capability.player.AetherPlayerProvider;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.capability.player.GenesisPlayer;
 import com.aetherteam.aether_genesis.capability.player.GenesisPlayerCapability;
+import com.aetherteam.aether_genesis.capability.player.GenesisPlayerProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
@@ -32,10 +31,8 @@ public class GenesisCapabilities {
 	public static class Registration {
 		@SubscribeEvent
 		public static void attachEntityCapabilities(AttachCapabilitiesEvent<Entity> event) {
-			if (event.getObject() instanceof LivingEntity livingEntity) {
-				if (livingEntity instanceof Player player) {
-					event.addCapability(new ResourceLocation(Genesis.MODID, "genesis_player"), new AetherPlayerProvider(new GenesisPlayerCapability(player)));
-				}
+			if (event.getObject() instanceof Player player) {
+					event.addCapability(new ResourceLocation(Genesis.MODID, "genesis_player"), new GenesisPlayerProvider(new GenesisPlayerCapability(player)));
 			}
 		}
 	}

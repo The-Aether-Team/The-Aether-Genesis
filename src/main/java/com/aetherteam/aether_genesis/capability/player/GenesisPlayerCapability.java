@@ -1,15 +1,22 @@
 package com.aetherteam.aether_genesis.capability.player;
 
-import com.aetherteam.aether.capability.player.AetherPlayerCapability;
+import com.aetherteam.aether.capability.CapabilitySyncing;
+import com.aetherteam.aether.network.AetherPacket;
+import com.aetherteam.aether.network.packet.AetherPlayerSyncPacket;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 
-public class GenesisPlayerCapability extends AetherPlayerCapability implements GenesisPlayer {
-
+public class GenesisPlayerCapability extends CapabilitySyncing implements GenesisPlayer {
+    private final Player player;
     private int phoenixDartCount;
 
     public GenesisPlayerCapability(Player player) {
-        super(player);
+        this.player = player;
+    }
+
+    @Override
+    public Player getPlayer() {
+        return this.player;
     }
 
     @Override
@@ -36,4 +43,17 @@ public class GenesisPlayerCapability extends AetherPlayerCapability implements G
             this.setPhoenixDartCount(tag.getInt("PhoenixDartCount_Syncing"));
         }
     }
+
+    @Override
+    public AetherPacket getSyncPacket(CompoundTag tag) {
+        return new AetherPlayerSyncPacket(this.getPlayer().getId(), tag);
+    }
+
+    @Override
+    public CompoundTag serializeNBT() {
+        return new CompoundTag();
+    }
+
+    @Override
+    public void deserializeNBT(CompoundTag nbt) {}
 }

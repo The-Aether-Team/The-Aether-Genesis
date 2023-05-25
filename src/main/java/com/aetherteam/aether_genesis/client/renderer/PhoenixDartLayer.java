@@ -27,7 +27,7 @@ public class PhoenixDartLayer<T extends LivingEntity, M extends PlayerModel<T>> 
         if (entity instanceof Player player) {
             Optional<GenesisPlayer> genesisPlayerOptional = GenesisPlayer.get(player).resolve();
             if (genesisPlayerOptional.isPresent()) {
-                return genesisPlayerOptional.get().getGoldenDartCount();
+                return genesisPlayerOptional.get().getPhoenixDartCount();
             }
         }
         return 0;
