@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.capability.player;
 
 import com.aetherteam.aether.capability.CapabilitySyncing;
 import com.aetherteam.aether.network.AetherPacket;
-import com.aetherteam.aether.network.packet.AetherPlayerSyncPacket;
+import com.aetherteam.aether_genesis.network.packet.GenesisPlayerSyncPacket;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 
@@ -46,7 +46,7 @@ public class GenesisPlayerCapability extends CapabilitySyncing implements Genesi
 
     @Override
     public AetherPacket getSyncPacket(CompoundTag tag) {
-        return new AetherPlayerSyncPacket(this.getPlayer().getId(), tag);
+        return new GenesisPlayerSyncPacket(this.getPlayer().getId(), tag);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.aetherteam.aether_genesis;
 
 import com.aetherteam.aether.AetherConfig;
+import com.aetherteam.aether.network.AetherPacketHandler;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.blockentity.GenesisMenuTypes;
@@ -14,6 +15,7 @@ import com.aetherteam.aether_genesis.data.generators.tags.GenesisItemTagData;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.loot.modifiers.GenesisLootModifiers;
+import com.aetherteam.aether_genesis.network.GenesisPacketHandler;
 import com.aetherteam.aether_genesis.world.biomemodifier.GenesisBiomeModifierSerializers;
 import com.aetherteam.aether_genesis.world.feature.GenesisFeatures;
 import com.aetherteam.aether_genesis.world.foliageplacer.GenesisFoliagePlacerTypes;
@@ -82,6 +84,8 @@ public class Genesis {
     }
 
     public void commonSetup(FMLCommonSetupEvent event) {
+        GenesisPacketHandler.register();
+
         event.enqueueWork(() -> {
             GenesisBlocks.registerPots();
             GenesisBlocks.registerFlammability();
