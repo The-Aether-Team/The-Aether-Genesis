@@ -138,7 +138,7 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
                 this.extend(this.texture(this.name(block), "utility/"), "_side"),
                 this.extend(this.texture(this.name(block), "utility/"), "_front"),
                 this.extend(this.texture(this.name(block), "utility/"), "_side"))
-                .texture("particle", baseTexture);
+                .texture("particle", this.extend(this.texture(this.name(block), "utility/"), "_front"));
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(workbench));
     }
 
