@@ -3,6 +3,7 @@ package com.aetherteam.aether_genesis.entity.miscellaneous;
 import com.aetherteam.aether.capability.lightning.LightningTracker;
 import com.aetherteam.aether.entity.projectile.crystal.AbstractCrystal;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
+import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
@@ -14,6 +15,9 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.network.NetworkHooks;
 
 import javax.annotation.Nonnull;
+
+import static com.aetherteam.aether_genesis.entity.monster.Tempest.TEMPEST_PARTICLE_COLOR;
+
 
 public class TempestThunderBall extends AbstractCrystal {
 	private int ticksInAir;
@@ -27,6 +31,17 @@ public class TempestThunderBall extends AbstractCrystal {
 		this.setNoGravity(true);
 	}
 
+	@Override
+	public void tick() {
+		double xOffset = this.position().x() + (level.getRandom().nextDouble() * 1.5) - 0.75;
+		double yOffset = this.position().y() + (level.getRandom().nextDouble() * 2) - 0.5;
+		double zOffset = this.position().z() + (level.getRandom().nextDouble() * 1.5) - 0.75;
+		if(level.isClientSide()) {
+			level.addParticle(new DustParticleOptions(TEMPEST_PARTICLE_COLOR, 1.0F), xOffset + 0.3, yOffset + 0.3, zOffset + 0.3, 0.0, 0.0, 0.0);
+			level.addParticle(new DustParticleOptions(TEMPEST_PARTICLE_COLOR, 1.0F), xOffset, yOffset, zOffset, 0.0, 0.0, 0.0);
+		}
+		super.tick();
+	}
 
 	@Override
 	protected void tickMovement() {
