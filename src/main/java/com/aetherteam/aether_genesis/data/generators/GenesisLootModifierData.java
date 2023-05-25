@@ -5,6 +5,7 @@ import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.loot.modifiers.AddEntityDropsModifier;
+import com.aetherteam.aether_genesis.loot.modifiers.ChanceDoubleDropsModifier;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.ItemStack;
@@ -45,5 +46,6 @@ public class GenesisLootModifierData extends GlobalLootModifierProvider {
                         LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().of(AetherTags.Entities.SWETS)).build()
                 })
         );
+        this.add("chance_double_drops", new ChanceDoubleDropsModifier(new LootItemCondition[]{ }));
     }
 }

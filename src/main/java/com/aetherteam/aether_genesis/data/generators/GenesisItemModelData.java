@@ -45,6 +45,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.CRYSTAL_EXP_BOTTLE.get(), "miscellaneous/");
         this.item(GenesisItems.BONE_RING.get(), "miscellaneous/");
         this.item(GenesisItems.CANDY_RING.get(), "miscellaneous/");
+        this.item(GenesisItems.SKYROOT_RING.get(), "miscellaneous/");
 
         this.dartShooterItem(GenesisItems.PHOENIX_DART_SHOOTER.get(), "combat/");
 

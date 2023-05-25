@@ -1,7 +1,6 @@
 package com.aetherteam.aether_genesis;
 
 import com.aetherteam.aether.AetherConfig;
-import com.aetherteam.aether.network.AetherPacketHandler;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.blockentity.GenesisMenuTypes;
