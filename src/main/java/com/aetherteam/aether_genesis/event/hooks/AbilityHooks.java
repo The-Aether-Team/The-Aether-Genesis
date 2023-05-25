@@ -1,7 +1,13 @@
 package com.aetherteam.aether_genesis.event.hooks;
 
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
+import com.aetherteam.aether_genesis.capability.player.GenesisPlayer;
+import com.aetherteam.aether_genesis.entity.PhoenixDart;
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolAction;
@@ -24,6 +30,17 @@ public class AbilityHooks {
                 }
             }
             return old;
+        }
+    }
+
+    public static class WeaponHooks {
+        public static void stickDart(LivingEntity entity, DamageSource source) {
+            if (entity instanceof Player player && !player.getLevel().isClientSide()) {
+                Entity sourceEntity = source.getDirectEntity();
+                if (sourceEntity instanceof PhoenixDart) {
+                    GenesisPlayer.get(player).ifPresent(genesisPlayer -> genesisPlayer.setPhoenixDartCount(genesisPlayer.getPhoenixDartCount() + 1));
+                }
+            }
         }
     }
 }

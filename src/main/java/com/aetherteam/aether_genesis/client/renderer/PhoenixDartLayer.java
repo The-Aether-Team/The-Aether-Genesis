@@ -1,24 +1,10 @@
 package com.aetherteam.aether_genesis.client.renderer;
 
 import com.aetherteam.aether.client.renderer.player.layer.AbstractDartLayer;
-import com.aetherteam.aether.client.renderer.player.layer.GoldenDartLayer;
-import com.aetherteam.aether.entity.projectile.dart.AbstractDart;
-import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
-import com.aetherteam.aether_genesis.entity.PhoenixDart;
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.model.PlayerModel;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
-import net.minecraft.client.renderer.entity.LivingEntityRenderer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-
-import javax.annotation.Nonnull;
-
+import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.projectile.dart.AbstractDart;
 import com.aetherteam.aether.entity.projectile.dart.GoldenDart;
-import com.aetherteam.aether.entity.AetherEntityTypes;
-import com.aetherteam.aether.capability.player.AetherPlayer;
+import com.aetherteam.aether_genesis.capability.player.GenesisPlayer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -39,9 +25,9 @@ public class PhoenixDartLayer<T extends LivingEntity, M extends PlayerModel<T>> 
     @Override
     protected int numStuck(@Nonnull T entity) {
         if (entity instanceof Player player) {
-            Optional<AetherPlayer> aetherPlayerOptional = AetherPlayer.get(player).resolve();
-            if (aetherPlayerOptional.isPresent()) {
-                return aetherPlayerOptional.get().getGoldenDartCount();
+            Optional<GenesisPlayer> genesisPlayerOptional = GenesisPlayer.get(player).resolve();
+            if (genesisPlayerOptional.isPresent()) {
+                return genesisPlayerOptional.get().getGoldenDartCount();
             }
         }
         return 0;

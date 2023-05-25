@@ -1,12 +1,12 @@
 package com.aetherteam.aether_genesis.client.renderer;
 
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.client.renderer.entity.GoldenDartRenderer;
 import com.aetherteam.aether.client.renderer.entity.IceCrystalRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.client.renderer.entity.DarkSwetRenderer;
+import com.aetherteam.aether_genesis.client.renderer.entity.PhoenixDartRenderer;
 import com.aetherteam.aether_genesis.client.renderer.entity.TempestRenderer;
 import com.aetherteam.aether_genesis.client.renderer.model.TempestModel;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
@@ -30,7 +30,7 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.PURPLE_PARACHUTE.get(), (context) -> new ParachuteRenderer(context, GenesisBlocks.PURPLE_AERCLOUD));
 
         event.registerEntityRenderer(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), IceCrystalRenderer::new);
-        event.registerEntityRenderer(GenesisEntityTypes.PHOENIX_DART.get(), GoldenDartRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.PHOENIX_DART.get(), PhoenixDartRenderer::new);
     }
 
     @SubscribeEvent

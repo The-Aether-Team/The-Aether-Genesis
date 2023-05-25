@@ -5,6 +5,6 @@
     "type": "aether_genesis:dark_swet",
     "maxCount": 1,
     "minCount": 1,
-    "weight": 10
+    "weight": 5
   }
 }
