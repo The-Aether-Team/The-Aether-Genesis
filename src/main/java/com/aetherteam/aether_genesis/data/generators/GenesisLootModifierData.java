@@ -2,11 +2,15 @@ package com.aetherteam.aether_genesis.data.generators;
 
 import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.entity.AetherEntityTypes;
+import com.aetherteam.aether.loot.AetherLoot;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.item.GenesisItems;
+import com.aetherteam.aether_genesis.loot.modifiers.AddDungeonLootModifier;
 import com.aetherteam.aether_genesis.loot.modifiers.AddEntityDropsModifier;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.data.PackOutput;
+import net.minecraft.util.random.WeightedEntry;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -17,6 +21,9 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemEntityPropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
+import net.minecraftforge.common.loot.LootTableIdCondition;
+
+import java.util.List;
 
 public class GenesisLootModifierData extends GlobalLootModifierProvider {
     public GenesisLootModifierData(PackOutput output) {
@@ -44,6 +51,13 @@ public class GenesisLootModifierData extends GlobalLootModifierProvider {
                 new LootItemCondition[] {
                         LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().of(AetherTags.Entities.SWETS)).build()
                 })
+        );
+        this.add("dark_gummy_swet", new AddDungeonLootModifier(
+                new LootItemCondition[] {
+                        LootTableIdCondition.builder(AetherLoot.BRONZE_DUNGEON_REWARD).build()
+                },
+                List.of(WeightedEntry.wrap(new ItemStack(GenesisItems.DARK_GUMMY_SWET.get()), 3)),
+                UniformInt.of(1, 3))
         );
     }
 }
