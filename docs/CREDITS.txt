@@ -12,6 +12,9 @@ KELETU66666
 - Implementation of Crystal EXP Bottle.
 - Implementation of Bone Ring.
 
+StockiesLad
+- Improvement of Purple Aercloud features to make them spawn with random rotation.
+
 sunsette
 - Compression of aether1_lowpitch, aether6, aether_night1, and aether_night2.
 
