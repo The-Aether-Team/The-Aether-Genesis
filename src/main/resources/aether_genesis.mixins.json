@@ -9,6 +9,7 @@
     "common.BlueAercloudBlockMixin",
     "common.ItemMixin",
     "common.ParachuteMixin",
+    "common.SliderMixin",
     "common.accessor.WallBlockAccessor"
   ],
   "injectors": {

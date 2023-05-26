@@ -81,6 +81,8 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addClientConfig("audio", "night_music_tracks", "Adds some nice night tracks to the Aether's music selection. Also disables the default music manager for the Aether, to prevent overlap");
 
         this.addPackDescription("mod", "The Aether: Genesis Resources");
+        this.addGuiText("slider.message.attack.invalid_item", "Hmm. It's a rock-solid block. A %1$s wouldn't work on this.");
+        this.addGuiText("slider.message.attack.invalid_fist", "Hmm. It's a rock-solid block. My fist wouldn't work on this.");
         //todo: lore
     }
 }
