@@ -2,10 +2,12 @@ package com.aetherteam.aether_genesis.data.resources.registries;
 
 import com.aetherteam.aether.data.resources.AetherFeatureStates;
 import com.aetherteam.aether.data.resources.builders.AetherConfiguredFeatureBuilders;
+import com.aetherteam.aether.world.configuration.AercloudConfiguration;
 import com.aetherteam.aether.world.feature.AetherFeatures;
 import com.aetherteam.aether.world.foliageplacer.GoldenOakFoliagePlacer;
 import com.aetherteam.aether.world.trunkplacer.GoldenOakTrunkPlacer;
 import com.aetherteam.aether_genesis.Genesis;
+import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
 import com.aetherteam.aether_genesis.data.resources.GenesisFeatureStates;
 import com.aetherteam.aether_genesis.world.feature.GenesisFeatures;
 import com.aetherteam.aether_genesis.world.foliageplacer.AetherPineFoliagePlacer;
@@ -13,6 +15,7 @@ import com.aetherteam.aether_genesis.world.foliageplacer.HookedFoliagePlacer;
 import com.aetherteam.aether_genesis.world.treedecorator.TrunkDecorator;
 import com.aetherteam.aether_genesis.world.trunkplacer.HookedTrunkPlacer;
 import com.aetherteam.aether_genesis.world.trunkplacer.SkinnyHookedTrunkPlacer;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
@@ -55,9 +58,13 @@ public class GenesisConfiguredFeatures {
     }
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
+        final SimpleWeightedRandomList.Builder<BlockState> purpleAercloudDirections = new SimpleWeightedRandomList.Builder<>();
+        for (Direction direction : PurpleAercloudBlock.DIRECTIONS)
+            purpleAercloudDirections.add(GenesisFeatureStates.PURPLE_AERCLOUD.setValue(PurpleAercloudBlock.FACING, direction), 1);
+
         register(context, GREEN_AERCLOUD_4_CONFIGURATION, AetherFeatures.AERCLOUD.get(), AetherConfiguredFeatureBuilders.aercloud(4, GenesisFeatureStates.GREEN_AERCLOUD));
         register(context, GREEN_AERCLOUD_8_CONFIGURATION, AetherFeatures.AERCLOUD.get(), AetherConfiguredFeatureBuilders.aercloud(8, GenesisFeatureStates.GREEN_AERCLOUD));
-        register(context, PURPLE_AERCLOUD_CONFIGURATION, AetherFeatures.AERCLOUD.get(), AetherConfiguredFeatureBuilders.aercloud(4, GenesisFeatureStates.PURPLE_AERCLOUD));
+        register(context, PURPLE_AERCLOUD_CONFIGURATION, AetherFeatures.AERCLOUD.get(), new AercloudConfiguration(4, new WeightedStateProvider(purpleAercloudDirections)));
         register(context, STORM_AERCLOUD_CONFIGURATION, AetherFeatures.AERCLOUD.get(), AetherConfiguredFeatureBuilders.aercloud(4, GenesisFeatureStates.STORM_AERCLOUD));
         register(context, ORANGE_TREE_PATCH_CONFIGURATION, Feature.FLOWER,
                 FeatureUtils.simpleRandomPatchConfiguration(16, PlacementUtils.onlyWhenEmpty(GenesisFeatures.ORANGE_TREE.get(), new SimpleBlockConfiguration(new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(GenesisFeatureStates.ORANGE_TREE_WITHOUT_ORANGES, 1).add(GenesisFeatureStates.ORANGE_TREE_WITH_ORANGES, 1))))));

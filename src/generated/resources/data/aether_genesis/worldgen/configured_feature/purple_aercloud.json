@@ -2,14 +2,49 @@
   "type": "aether:aercloud",
   "config": {
     "blocks": {
-      "type": "minecraft:simple_state_provider",
-      "state": {
-        "Name": "aether_genesis:purple_aercloud",
-        "Properties": {
-          "double_drops": "true",
-          "facing": "south"
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "aether_genesis:purple_aercloud",
+            "Properties": {
+              "double_drops": "true",
+              "facing": "north"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "aether_genesis:purple_aercloud",
+            "Properties": {
+              "double_drops": "true",
+              "facing": "east"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "aether_genesis:purple_aercloud",
+            "Properties": {
+              "double_drops": "true",
+              "facing": "south"
+            }
+          },
+          "weight": 1
+        },
+        {
+          "data": {
+            "Name": "aether_genesis:purple_aercloud",
+            "Properties": {
+              "double_drops": "true",
+              "facing": "west"
+            }
+          },
+          "weight": 1
         }
-      }
+      ]
     },
     "bounds": 4
   }
