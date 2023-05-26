@@ -22,7 +22,9 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class PurpleAercloudBlock extends AercloudBlock {
-    public static final DirectionProperty FACING = DirectionProperty.create("facing", Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST);
+    public static final Direction[] DIRECTIONS =  new Direction[] {Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST};
+
+    public static final DirectionProperty FACING = DirectionProperty.create("facing", DIRECTIONS);
     protected static final VoxelShape COLLISION_SHAPE = Shapes.empty();
 
     public PurpleAercloudBlock(BlockBehaviour.Properties properties) {

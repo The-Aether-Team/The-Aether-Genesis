@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-25T11:11:50.7012349	Registries
+// 1.19.4	2023-05-26T15:13:31.533922	Registries
 f3bd3caa93ad04d6a0f4e740b4719e206f287da0 data/aether_genesis/forge/biome_modifier/add_forest_trees.json
 900ff5f3a7970bf2bd5ddf6a2ad008f89e6fa3a7 data/aether_genesis/forge/biome_modifier/add_green_aercloud_4.json
 d4595b80bdd5e596ef46c31b88b9b6aa9ec0c70e data/aether_genesis/forge/biome_modifier/add_green_aercloud_8.json
@@ -21,7 +21,7 @@ d957b5351fa7285d3861c3b4f999f5c5e9fa17e1 data/aether_genesis/worldgen/configured
 a722084a9935a873bb73e8916321d5396dc8d7d0 data/aether_genesis/worldgen/configured_feature/green_skyroot_pine.json
 b476eb294301957f2accc84ddf97d9fb4ecdf850 data/aether_genesis/worldgen/configured_feature/large_green_skyroot_tree.json
 be8df8eeab087579cc8f364afedfc6a07a542946 data/aether_genesis/worldgen/configured_feature/orange_tree_patch.json
-28904ae1c87d0472275e37b93857ac6857fb98a6 data/aether_genesis/worldgen/configured_feature/purple_aercloud.json
+758551cb43bab0278d6fdbfcecd67d3283630fa1 data/aether_genesis/worldgen/configured_feature/purple_aercloud.json
 a568dd9de26de53cc2d7cd24f74cbb224e3cc558 data/aether_genesis/worldgen/configured_feature/purple_crystal_tree.json
 ebea339618abdaf9fd8d109c4fca348a62895321 data/aether_genesis/worldgen/configured_feature/storm_aercloud.json
 967370c2a1468aa0ba0d75ef9abcb6e3830b7fcf data/aether_genesis/worldgen/placed_feature/green_aercloud_4.json
