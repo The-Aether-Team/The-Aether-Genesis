@@ -22,6 +22,7 @@
   "config.aether_genesis.client.audio.blue_aercloud_bounce_sfx": "Makes Blue Aerclouds have their wobbly sounds that play when bouncing on them",
   "config.aether_genesis.client.audio.night_music_tracks": "Adds some nice night tracks to the Aether's music selection. Also disables the default music manager for the Aether, to prevent overlap",
   "config.aether_genesis.common.gameplay.gold_aercloud_ability": "Changes Gold Aercloud and respective parachute behavior to launch entities downwards",
+  "config.aether_genesis.common.gameplay.improved_slider_message": "Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe",
   "entity.aether_genesis.dark_swet": "Dark Swet",
   "entity.aether_genesis.tempest": "Tempest",
   "gui.aether_genesis.slider.message.attack.invalid_fist": "Hmm. It's a rock-solid block. My fist wouldn't work on this.",

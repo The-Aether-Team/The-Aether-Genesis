@@ -6,6 +6,7 @@ import org.apache.commons.lang3.tuple.Pair;
 public class GenesisConfig {
     public static class Common {
         public final ForgeConfigSpec.ConfigValue<Boolean> gold_aercloud_ability;
+        public final ForgeConfigSpec.ConfigValue<Boolean> improved_slider_message;
 
         public Common(ForgeConfigSpec.Builder builder) {
             builder.push("Gameplay");
@@ -13,6 +14,10 @@ public class GenesisConfig {
                     .comment("Changes Gold Aercloud and respective parachute behavior to launch entities downwards")
                     .translation("config.aether_genesis.common.gameplay.gold_aercloud_ability")
                     .define("Gold Aerclouds launch entities downwards", true);
+            improved_slider_message = builder
+                    .comment("Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe")
+                    .translation("config.aether_genesis.common.gameplay.improved_slider_message")
+                    .define("Improved Slider Message", true);
             builder.pop();
         }
     }
