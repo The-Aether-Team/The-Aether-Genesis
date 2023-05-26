@@ -76,7 +76,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         
         this.addContainerType(GenesisMenuTypes.HOLYSTONE_FURNACE, "Holystone Furnace");
 
-        this.addGuiText("slider.message.attack.invalid_item", "Hmm. It's a rock-solid block. A %1$s wouldn't work on this.");
+        this.addGuiText("slider.message.attack.invalid_item", "Hmm. It's a rock-solid block. My %1$s wouldn't work on this.");
         this.addGuiText("slider.message.attack.invalid_fist", "Hmm. It's a rock-solid block. My fist wouldn't work on this.");
 
         this.addCommonConfig("gameplay", "gold_aercloud_ability", "Changes Gold Aercloud and respective parachute behavior to launch entities downwards");
