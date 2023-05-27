@@ -32,14 +32,14 @@ public class Tempest extends Zephyr {
 
     public Tempest(EntityType<? extends Tempest> type, Level level) {
         super(type, level);
-        this.moveControl = new Zephyr.MoveHelperController(this);
+        this.moveControl = new Tempest.MoveHelperController(this);
         this.xpReward = 20;
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(5, new Zephyr.RandomFlyGoal(this));
-        this.goalSelector.addGoal(7, new Zephyr.LookAroundGoal(this));
+        this.goalSelector.addGoal(5, new Tempest.RandomFlyGoal(this));
+        this.goalSelector.addGoal(7, new Tempest.LookAroundGoal(this));
         this.goalSelector.addGoal(5, new Tempest.ThunderballAttackGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
     }
