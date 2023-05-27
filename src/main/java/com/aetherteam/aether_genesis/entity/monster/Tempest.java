@@ -89,10 +89,10 @@ public class Tempest extends Zephyr {
     }
 
     static class MoveHelperController extends MoveControl {
-        private final Zephyr parentEntity;
+        private final Tempest parentEntity;
         private int courseChangeCooldown;
 
-        public MoveHelperController(Zephyr zephyr) {
+        public MoveHelperController(Tempest zephyr) {
             super(zephyr);
             this.parentEntity = zephyr;
         }
