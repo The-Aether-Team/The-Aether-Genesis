@@ -13,7 +13,10 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public class GenesisClient {
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(GenesisClient::registerGuiFactories);
+        event.enqueueWork(() -> {
+            registerGuiFactories();
+            GenesisAtlases.registerSkyrootChestAtlases();
+        });
     }
 
     public static void registerGuiFactories() {

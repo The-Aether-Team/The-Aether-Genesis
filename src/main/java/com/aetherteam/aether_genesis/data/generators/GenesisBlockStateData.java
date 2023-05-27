@@ -39,5 +39,6 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
         this.woodWallBlock(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/", Aether.MODID);
         this.skyrootCraftingTable(GenesisBlocks.SKYROOT_CRAFTING_TABLE.get(), AetherBlocks.SKYROOT_PLANKS.get(), "construction/", Aether.MODID);
         this.furnace(GenesisBlocks.HOLYSTONE_FURNACE.get());
+        this.skyrootChest(GenesisBlocks.SKYROOT_CHEST.get());
     }
 }

@@ -7,6 +7,7 @@ import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.loot.modifiers.AddDungeonLootModifier;
 import com.aetherteam.aether_genesis.loot.modifiers.AddEntityDropsModifier;
+import com.aetherteam.aether_genesis.loot.modifiers.ChanceDoubleDropsModifier;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.data.PackOutput;
 import net.minecraft.util.random.WeightedEntry;
@@ -52,6 +53,9 @@ public class GenesisLootModifierData extends GlobalLootModifierProvider {
                         LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().of(AetherTags.Entities.SWETS)).build()
                 })
         );
+
+        this.add("chance_double_drops", new ChanceDoubleDropsModifier(new LootItemCondition[]{ }));
+
         this.add("dark_gummy_swet", new AddDungeonLootModifier(
                 new LootItemCondition[] {
                         LootTableIdCondition.builder(AetherLoot.BRONZE_DUNGEON_REWARD).build()
@@ -59,5 +63,6 @@ public class GenesisLootModifierData extends GlobalLootModifierProvider {
                 List.of(WeightedEntry.wrap(new ItemStack(GenesisItems.DARK_GUMMY_SWET.get()), 3)),
                 UniformInt.of(1, 3))
         );
+
     }
 }

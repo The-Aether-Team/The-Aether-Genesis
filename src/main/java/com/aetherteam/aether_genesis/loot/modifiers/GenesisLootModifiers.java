@@ -10,6 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class GenesisLootModifiers {
     public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> GLOBAL_LOOT_MODIFIERS = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, Genesis.MODID);
 
+    public static final RegistryObject<Codec<ChanceDoubleDropsModifier>> CHANCE_DOUBLE_DROPS = GLOBAL_LOOT_MODIFIERS.register("chance_double_drops", () -> ChanceDoubleDropsModifier.CODEC);
     public static final RegistryObject<Codec<AddEntityDropsModifier>> ADD_ENTITY_DROPS = GLOBAL_LOOT_MODIFIERS.register("add_entity_drops", () -> AddEntityDropsModifier.CODEC);
     public static final RegistryObject<Codec<AddDungeonLootModifier>> ADD_DUNGEON_LOOT = GLOBAL_LOOT_MODIFIERS.register("add_dungeon_loot", () -> AddDungeonLootModifier.CODEC);
 }

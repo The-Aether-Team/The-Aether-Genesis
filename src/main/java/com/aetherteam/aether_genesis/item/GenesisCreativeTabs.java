@@ -49,6 +49,8 @@ public class GenesisCreativeTabs {
         if(tab == AetherCreativeTabs.AETHER_ARMOR_AND_ACCESSORIES){
             event.getEntries().putAfter(new ItemStack(GenesisItems.CRYSTAL_EXP_BOTTLE.get()), new ItemStack(GenesisItems.CRYSTAL_EXP_BOTTLE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.BONE_RING.get()), new ItemStack(GenesisItems.BONE_RING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.CANDY_RING.get()), new ItemStack(GenesisItems.CANDY_RING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.SKYROOT_RING.get()), new ItemStack(GenesisItems.SKYROOT_RING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (tab == AetherCreativeTabs.AETHER_FOOD_AND_DRINKS) {
             event.getEntries().putAfter(new ItemStack(AetherItems.ENCHANTED_BERRY.get()), new ItemStack(GenesisItems.BLUE_SWET_JELLY.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -80,6 +82,7 @@ public class GenesisCreativeTabs {
         if (tab == AetherCreativeTabs.AETHER_FUNCTIONAL_BLOCKS) {
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.SKYROOT_CRAFTING_TABLE.get()), new ItemStack(GenesisBlocks.SKYROOT_CRAFTING_TABLE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.HOLYSTONE_FURNACE.get()), new ItemStack(GenesisBlocks.HOLYSTONE_FURNACE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.SKYROOT_CHEST.get()), new ItemStack(GenesisBlocks.SKYROOT_CHEST.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
 }
