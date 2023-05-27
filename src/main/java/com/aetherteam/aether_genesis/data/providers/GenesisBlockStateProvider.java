@@ -200,4 +200,9 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
             side = new ResourceLocation(Aether.MODID, "block/construction/" + this.name(AetherBlocks.HOLYSTONE_BRICKS.get()));
         this.axisBlock(block, side, this.extend(this.texture(this.name(block), "construction/"), "_top"));
     }
+
+    public void skyrootChest(Block block) {
+        ModelFile chest = this.models().cubeAll(this.name(block), new ResourceLocation(Aether.MODID, "block/construction/skyroot_planks"));
+        this.chest(block, chest);
+    }
 }

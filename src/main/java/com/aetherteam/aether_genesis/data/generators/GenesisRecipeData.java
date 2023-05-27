@@ -77,5 +77,13 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
                 .pattern(" # ")
                 .unlockedBy(getHasName(GenesisBlocks.HOLYSTONE_FURNACE.get()), has(GenesisBlocks.HOLYSTONE_FURNACE.get()))
                 .save(consumer, "holystone_smoker");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_CHEST.get())
+                .define('#', AetherBlocks.SKYROOT_PLANKS.get())
+                .pattern("###")
+                .pattern("# #")
+                .pattern("###")
+                .unlockedBy(getHasName(GenesisBlocks.SKYROOT_CHEST.get()), has(AetherBlocks.SKYROOT_PLANKS.get()))
+                .save(consumer);
     }
 }

@@ -62,6 +62,7 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get(),
                 GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(),
+                GenesisBlocks.SKYROOT_CHEST.get(),
                 GenesisBlocks.SKYROOT_CRAFTING_TABLE.get());
         this.tag(BlockTags.MINEABLE_WITH_HOE).add(
                 GenesisBlocks.GREEN_AERCLOUD.get(),
