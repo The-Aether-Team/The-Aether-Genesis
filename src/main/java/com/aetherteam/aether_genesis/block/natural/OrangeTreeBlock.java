@@ -92,10 +92,11 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
 
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        DoubleBlockHalf doubleBlockHalf = state.getValue(HALF);
         int age = state.getValue(AGE);
         if (age < DOUBLE_AGE_MAX && level.getRawBrightness(pos.above(), 0) >= 9 && ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(85) == 0)) {
             age += 1;
-            if (age > SINGLE_AGE_MAX) {
+            if (age > SINGLE_AGE_MAX && doubleBlockHalf == DoubleBlockHalf.LOWER) {
                 if (level.isEmptyBlock(pos.above())) {
                     BlockState blockState = state.setValue(AetherBlockStateProperties.DOUBLE_DROPS, state.getValue(AetherBlockStateProperties.DOUBLE_DROPS)).setValue(AGE, age);
                     OrangeTreeBlock.placeAt(level, blockState, pos, 2);
@@ -127,7 +128,7 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
         int age = state.getValue(AGE);
         if (age > SINGLE_AGE_MAX) {
             if (!level.isClientSide()) {
-                if (player.isCreative() && age < DOUBLE_AGE_MAX) {
+                if (player.isCreative()) {
                     preventCreativeDropFromBottomPart(level, pos, state, player);
                 } else {
                     dropResources(state, level, pos, null, player, player.getMainHandItem());
