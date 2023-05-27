@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-25T11:11:50.6542327	Loot Tables
+// 1.19.4	2023-05-27T11:58:26.4662568	Loot Tables
 ba95b47436df1e313939c55709af7bc43d0b26ec data/aether_genesis/loot_tables/blocks/blue_skyroot_leaves.json
 2fa73eaedce1f2e997d15ae8f8d595b7b7667d00 data/aether_genesis/loot_tables/blocks/blue_skyroot_sapling.json
 d8a60a2f84d3d07aff63593c06d32aa237400b97 data/aether_genesis/loot_tables/blocks/dark_blue_skyroot_leaves.json
@@ -17,6 +17,7 @@ afadbb0a4508d5e7802cb39d1726b2a3e1f46f9b data/aether_genesis/loot_tables/blocks/
 27aa6c5bd6cca8ac8efea0d836c7885328af27d2 data/aether_genesis/loot_tables/blocks/purple_crystal_fruit_leaves.json
 f183ea478b4949681740a793f2dbf88ae88e1882 data/aether_genesis/loot_tables/blocks/purple_crystal_leaves.json
 d4c15f80de211e48f1a268047d6a906f3a1455ab data/aether_genesis/loot_tables/blocks/purple_crystal_tree_sapling.json
+5f62465636d0cdb8eed29021601aa77a73f9c84a data/aether_genesis/loot_tables/blocks/skyroot_chest.json
 313190b520ecb1c2515a5915dbf7d21d572cfdb4 data/aether_genesis/loot_tables/blocks/skyroot_crafting_table.json
 670c152d2214474a9a84dfec0a40a68e9c17a652 data/aether_genesis/loot_tables/blocks/skyroot_log_wall.json
 ecb5f8264ad2422853924589ff820411993b7774 data/aether_genesis/loot_tables/blocks/skyroot_wood_wall.json
