@@ -6,11 +6,14 @@ KELETU66666
 - Implementation of food items.
 - Implementation of Skyroot Crafting Table.
 - Implementation of Holystone Furnace.
+- Implementation of Skyroot Chest.
 - Implementation of Holystone decorative bricks.
 - Implementation of Tempests.
 - Implementation of Phoenix Dart Shooter
 - Implementation of Crystal EXP Bottle.
 - Implementation of Bone Ring.
+- Implementation of Candy Ring.
+- Implementation of Skyroot Ring.
 
 StockiesLad
 - Improvement of Purple Aercloud features to make them spawn with random rotation.
