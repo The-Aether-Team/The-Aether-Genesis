@@ -8,9 +8,11 @@ import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
+import com.aetherteam.aether_genesis.client.renderer.entity.CarrionSproutRenderer;
 import com.aetherteam.aether_genesis.client.renderer.entity.DarkSwetRenderer;
 import com.aetherteam.aether_genesis.client.renderer.entity.PhoenixDartRenderer;
 import com.aetherteam.aether_genesis.client.renderer.entity.TempestRenderer;
+import com.aetherteam.aether_genesis.client.renderer.model.CarrionSproutModel;
 import com.aetherteam.aether_genesis.client.renderer.model.TempestModel;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import net.minecraft.client.Minecraft;
@@ -27,6 +29,7 @@ public class GenesisRenderers {
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(GenesisBlockEntityTypes.SKYROOT_CHEST.get(), SkyrootChestRenderer::new);
 
+        event.registerEntityRenderer(GenesisEntityTypes.CARRION_SPROUT.get(), CarrionSproutRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.DARK_SWET.get(), DarkSwetRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TEMPEST.get(), TempestRenderer::new);
 
@@ -40,6 +43,7 @@ public class GenesisRenderers {
 
     @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(GenesisModelLayers.CARRION_SPROUT, CarrionSproutModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.TEMPEST, TempestModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.TEMPEST_TRANSPARENCY, TempestModel::createBodyLayer);
     }

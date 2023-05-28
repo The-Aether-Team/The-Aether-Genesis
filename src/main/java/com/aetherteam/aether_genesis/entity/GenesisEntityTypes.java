@@ -8,6 +8,7 @@ import com.aetherteam.aether_genesis.entity.miscellaneous.GreenParachute;
 import com.aetherteam.aether_genesis.entity.miscellaneous.PurpleParachute;
 import com.aetherteam.aether_genesis.entity.miscellaneous.TempestThunderBall;
 import com.aetherteam.aether_genesis.entity.monster.Tempest;
+import com.aetherteam.aether_genesis.entity.passive.CarrionSprout;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
@@ -23,6 +24,10 @@ import net.minecraftforge.registries.RegistryObject;
 @Mod.EventBusSubscriber(modid = Genesis.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GenesisEntityTypes {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Genesis.MODID);
+
+    // Passive Mobs
+    public static final RegistryObject<EntityType<CarrionSprout>> CARRION_SPROUT = ENTITY_TYPES.register("carrion_sprout",
+            () -> EntityType.Builder.of(CarrionSprout::new, MobCategory.CREATURE).sized(1.5F, 1.5F).clientTrackingRange(8).build("carrion_sprout"));
 
     // Hostile Mobs
     public static final RegistryObject<EntityType<Swet>> DARK_SWET = ENTITY_TYPES.register("dark_swet",
@@ -46,12 +51,14 @@ public class GenesisEntityTypes {
 
     @SubscribeEvent
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
+        event.register(GenesisEntityTypes.CARRION_SPROUT.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CarrionSprout::checkCarrionSproutSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
         event.register(GenesisEntityTypes.DARK_SWET.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Swet::checkSwetSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
         event.register(GenesisEntityTypes.TEMPEST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Tempest::checkTempestSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
     }
 
     @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
+        event.put(GenesisEntityTypes.CARRION_SPROUT.get(), CarrionSprout.createMobAttributes().build());
         event.put(GenesisEntityTypes.DARK_SWET.get(), Swet.createMobAttributes().build());
         event.put(GenesisEntityTypes.TEMPEST.get(), Tempest.createMobAttributes().build());
     }
