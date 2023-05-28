@@ -1,44 +1,8 @@
 {
-  "parent": "minecraft:block/block",
-  "elements": [
-    {
-      "faces": {
-        "down": {
-          "cullface": "down",
-          "texture": "#top"
-        },
-        "east": {
-          "texture": "#side"
-        },
-        "north": {
-          "cullface": "north",
-          "texture": "#side"
-        },
-        "south": {
-          "texture": "#side"
-        },
-        "up": {
-          "texture": "#top"
-        },
-        "west": {
-          "texture": "#side"
-        }
-      },
-      "from": [
-        5,
-        0,
-        0
-      ],
-      "to": [
-        11,
-        14,
-        8
-      ]
-    }
-  ],
+  "parent": "aether_genesis:block/wooden_side",
   "textures": {
     "particle": "aether:block/natural/stripped_skyroot_log",
     "side": "aether:block/natural/stripped_skyroot_log",
-    "top": "aether:block/natural/stripped_skyroot_log_top"
+    "top": "aether:block/natural/stripped_skyroot_log"
   }
 }

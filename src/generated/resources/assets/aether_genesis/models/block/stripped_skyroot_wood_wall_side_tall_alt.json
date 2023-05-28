@@ -1,5 +1,5 @@
 {
-  "parent": "aether_genesis:block/wooden_side_tall",
+  "parent": "aether_genesis:block/wooden_side_tall_alt",
   "textures": {
     "particle": "aether:block/natural/stripped_skyroot_log",
     "side": "aether:block/natural/stripped_skyroot_log",
