@@ -2,6 +2,7 @@ package com.aetherteam.aether_genesis.data.resources.registries;
 
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.resources.builders.AetherPlacedFeatureBuilders;
+import com.aetherteam.aether.data.resources.registries.AetherConfiguredFeatures;
 import com.aetherteam.aether.world.placementmodifier.ImprovedLayerPlacementModifier;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
@@ -15,11 +16,9 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.BiomeFilter;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
-import net.minecraft.world.level.levelgen.placement.RarityFilter;
+import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
@@ -54,6 +53,8 @@ public class GenesisPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SKYROOT_FOREST_DARK_BLUE_HOOKED_SKYROOTS_PLACEMENT = createKey("skyroot_forest_dark_blue_hooked_skyroots");
     public static final ResourceKey<PlacedFeature> SKYROOT_FOREST_GREEN_HOOKED_SKYROOTS_PLACEMENT = createKey("skyroot_forest_green_hooked_skyroots");
     public static final ResourceKey<PlacedFeature> SKYROOT_FOREST_PURPLE_CRYSTAL_TREES_PLACEMENT = createKey("skyroot_forest_purple_crystal_trees");
+
+    public static final ResourceKey<PlacedFeature> ORE_CONTINUUM_PLACEMENT = createKey("ore_continuum");
 
     private static ResourceKey<PlacedFeature> createKey(String name) {
         return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(Genesis.MODID, name));
@@ -114,6 +115,9 @@ public class GenesisPlacedFeatures {
                 GenesisPlacedFeatureBuilders.treePlacement(RarityFilter.onAverageOnceEvery(3), AetherBlocks.SKYROOT_SAPLING.get()));
         register(context, SKYROOT_FOREST_PURPLE_CRYSTAL_TREES_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.PURPLE_CRYSTAL_TREE_CONFIGURATION),
                 GenesisPlacedFeatureBuilders.treePlacement(RarityFilter.onAverageOnceEvery(5), AetherBlocks.SKYROOT_SAPLING.get()));
+
+        register(context, ORE_CONTINUUM_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.ORE_CONTINUUM_CONFIGURATION),
+                AetherPlacedFeatureBuilders.commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(128))));
     }
 
     private static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers) {

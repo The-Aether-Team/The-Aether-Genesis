@@ -11,6 +11,7 @@ import com.aetherteam.aether_genesis.item.accessories.CrystalBottleItem;
 import com.aetherteam.aether_genesis.item.accessories.SkyrootRing;
 import com.aetherteam.aether_genesis.item.combat.PhoenixDartShooterItem;
 import com.aetherteam.aether_genesis.item.food.GenesisFoods;
+import com.aetherteam.aether_genesis.item.materials.ContinuumOrbItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraftforge.common.ForgeSpawnEggItem;
@@ -28,6 +29,7 @@ public class GenesisItems {
     public static final RegistryObject<Item> DARK_SWET_BALL = ITEMS.register("dark_swet_ball", () -> new SwetBallItem(new Item.Properties()));
     public static final RegistryObject<Item> SKYROOT_BOWL = ITEMS.register("skyroot_bowl", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CORNSTARCH_BOWL = ITEMS.register("cornstarch_bowl", () -> new Item(new Item.Properties().craftRemainder(SKYROOT_BOWL.get()).stacksTo(1)));
+    public static final RegistryObject<Item> CONTINUUM_ORB = ITEMS.register("continuum_orb", () -> new ContinuumOrbItem(new Item.Properties()));
 
     public static final RegistryObject<Item> BLUE_SWET_JELLY = ITEMS.register("blue_swet_jelly", () -> new Item(new Item.Properties().food(GenesisFoods.SWET_JELLY)));
     public static final RegistryObject<Item> GOLDEN_SWET_JELLY = ITEMS.register("golden_swet_jelly", () -> new Item(new Item.Properties().food(GenesisFoods.SWET_JELLY)));
@@ -46,7 +48,6 @@ public class GenesisItems {
     public static final RegistryObject<Item> RAINBOW_STRAWBERRY = ITEMS.register("rainbow_strawberry", () -> new Item(new Item.Properties().food(GenesisFoods.RAINBOW_STRAWBERRY)));
 
     public static final RegistryObject<Item> CRYSTAL_EXP_BOTTLE = ITEMS.register("crystal_exp_bottle", () -> new CrystalBottleItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
-    public static final RegistryObject<Item> MOUSE_EAR = ITEMS.register("mouse_ear", () -> new MouseEarItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> BONE_RING = ITEMS.register("bone_ring", () -> new BoneRing(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> CANDY_RING = ITEMS.register("candy_ring", () -> new CandyRing(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> SKYROOT_RING = ITEMS.register("skyroot_ring", () -> new SkyrootRing(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));

@@ -23,6 +23,7 @@ import com.aetherteam.aether_genesis.world.treegrower.BlueSkyrootTree;
 import com.aetherteam.aether_genesis.world.treegrower.DarkBlueSkyrootTree;
 import com.aetherteam.aether_genesis.world.treegrower.PurpleCrystalTree;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -47,6 +48,8 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> GREEN_AERCLOUD = register("green_aercloud", () -> new GreenAercloudBlock(Block.Properties.of(Material.ICE, MaterialColor.COLOR_LIGHT_GREEN).strength(0.3F).sound(SoundType.WOOL).noOcclusion().dynamicShape().isRedstoneConductor(GenesisBlocks::never).isSuffocating(GenesisBlocks::never).isViewBlocking(GenesisBlocks::never)));
     public static final RegistryObject<Block> PURPLE_AERCLOUD = register("purple_aercloud", () -> new PurpleAercloudBlock(Block.Properties.of(Material.ICE, MaterialColor.COLOR_MAGENTA).strength(0.3F).sound(SoundType.WOOL).noOcclusion().dynamicShape().isRedstoneConductor(GenesisBlocks::never).isSuffocating(GenesisBlocks::never).isViewBlocking(GenesisBlocks::never)));
     public static final RegistryObject<Block> STORM_AERCLOUD = register("storm_aercloud", () -> new AercloudBlock(Block.Properties.of(Material.ICE, MaterialColor.DEEPSLATE).strength(0.3F).sound(SoundType.WOOL).noOcclusion().dynamicShape().isRedstoneConductor(GenesisBlocks::never).isSuffocating(GenesisBlocks::never).isViewBlocking(GenesisBlocks::never)));
+
+    public static final RegistryObject<Block> CONTINUUM_ORE = register("continuum_ore", () -> new DropExperienceBlock(Block.Properties.of(Material.STONE, MaterialColor.WOOL).strength(3.0F).requiresCorrectToolForDrops(), UniformInt.of(3, 5)));
 
     public static final RegistryObject<Block> BLUE_SKYROOT_LEAVES = register("blue_skyroot_leaves", () -> new AetherDoubleDropsLeaves(Block.Properties.of(Material.LEAVES, MaterialColor.DIAMOND).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(GenesisBlocks::ocelotOrParrot).isSuffocating(GenesisBlocks::never).isViewBlocking(GenesisBlocks::never)));
     public static final RegistryObject<Block> DARK_BLUE_SKYROOT_LEAVES = register("dark_blue_skyroot_leaves", () -> new AetherDoubleDropsLeaves(Block.Properties.of(Material.LEAVES, MaterialColor.LAPIS).strength(0.2F).randomTicks().sound(SoundType.GRASS).noOcclusion().isValidSpawn(GenesisBlocks::ocelotOrParrot).isSuffocating(GenesisBlocks::never).isViewBlocking(GenesisBlocks::never)));

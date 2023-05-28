@@ -18,6 +18,9 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
     protected void registerModels() {
         this.item(GenesisItems.GOLDEN_SWET_BALL.get(), "materials/");
         this.item(GenesisItems.DARK_SWET_BALL.get(), "materials/");
+        this.item(GenesisItems.SKYROOT_BOWL.get(), "miscellaneous/");
+        this.item(GenesisItems.CORNSTARCH_BOWL.get(), "miscellaneous/");
+        this.item(GenesisItems.CONTINUUM_ORB.get(), "materials/");
 
         this.item(GenesisItems.DARK_GUMMY_SWET.get(), "food/");
         this.item(GenesisItems.BLUE_SWET_JELLY.get(), "food/");
@@ -40,8 +43,6 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.CANDY_CORN.get(), "food/");
         this.item(GenesisItems.RAINBOW_STRAWBERRY.get(), "food/");
 
-        this.item(GenesisItems.SKYROOT_BOWL.get(), "miscellaneous/");
-        this.item(GenesisItems.CORNSTARCH_BOWL.get(), "miscellaneous/");
         this.item(GenesisItems.CRYSTAL_EXP_BOTTLE.get(), "miscellaneous/");
         this.item(GenesisItems.BONE_RING.get(), "miscellaneous/");
         this.item(GenesisItems.CANDY_RING.get(), "miscellaneous/");
@@ -55,6 +56,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.itemBlock(GenesisBlocks.GREEN_AERCLOUD.get());
         this.itemBlock(GenesisBlocks.PURPLE_AERCLOUD.get());
         this.itemBlock(GenesisBlocks.STORM_AERCLOUD.get());
+        this.itemBlock(GenesisBlocks.CONTINUUM_ORE.get());
         this.itemBlock(GenesisBlocks.BLUE_SKYROOT_LEAVES.get());
         this.itemBlock(GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get());
         this.itemBlock(GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get());

@@ -7,7 +7,9 @@ import com.aetherteam.aether_genesis.data.providers.GenesisBlockLootSubProvider;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -26,6 +28,7 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
         this.dropSelfDouble(GenesisBlocks.GREEN_AERCLOUD.get());
         this.dropSelfDouble(GenesisBlocks.PURPLE_AERCLOUD.get());
         this.dropSelfDouble(GenesisBlocks.STORM_AERCLOUD.get());
+        this.add(GenesisBlocks.CONTINUUM_ORE.get(), (block) -> this.createOreDrop(block, GenesisItems.CONTINUUM_ORB.get()));
         this.dropSelf(GenesisBlocks.HOLYSTONE_HEADSTONE.get());
         this.dropSelf(GenesisBlocks.HOLYSTONE_KEYSTONE.get());
         this.dropSelf(GenesisBlocks.HOLYSTONE_HIGHLIGHT.get());

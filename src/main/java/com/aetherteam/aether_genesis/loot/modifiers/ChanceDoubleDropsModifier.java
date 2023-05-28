@@ -23,12 +23,6 @@ public class ChanceDoubleDropsModifier extends LootModifier {
         super(conditions);
     }
 
-    /**
-     * Doubles mob drops if a mob is attacked with full strength with an item that implements {@link ChanceDoubleDrop} if the mob isn't tagged with {@link AetherTags.Entities#NO_SKYROOT_DOUBLE_DROPS} and the item isn't tagged with {@link AetherTags.Items#NO_SKYROOT_DOUBLE_DROPS}.
-     * @param lootStacks Result items from a loot table as an {@link ObjectArrayList} of {@link ItemStack}s.
-     * @param context The {@link LootContext}.
-     * @return A new {@link ObjectArrayList} of {@link ItemStack}s that a loot table will give.
-     */
     @Override
     public ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> lootStacks, LootContext context) {
         Entity entity = context.getParamOrNull(LootContextParams.DIRECT_KILLER_ENTITY);
@@ -36,9 +30,11 @@ public class ChanceDoubleDropsModifier extends LootModifier {
         ObjectArrayList<ItemStack> newStacks = new ObjectArrayList<>(lootStacks);
         if (entity instanceof LivingEntity livingEntity && target != null) {
             if (EquipmentUtil.hasCurio(livingEntity, GenesisItems.SKYROOT_RING.get()) && !target.getType().is(AetherTags.Entities.NO_SKYROOT_DOUBLE_DROPS)) {
-                for (ItemStack stack : lootStacks) {
-                    if (!stack.is(AetherTags.Items.NO_SKYROOT_DOUBLE_DROPS) && context.getRandom().nextInt(100) < 15) {
-                        newStacks.add(stack);
+                if (context.getRandom().nextInt(100) < 15) {
+                    for (ItemStack stack : lootStacks) {
+                        if (!stack.is(AetherTags.Items.NO_SKYROOT_DOUBLE_DROPS)) {
+                            newStacks.add(stack);
+                        }
                     }
                 }
             }
