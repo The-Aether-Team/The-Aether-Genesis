@@ -68,16 +68,19 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addItem(GenesisItems.PHOENIX_DART_SHOOTER, "Phoenix Dart Shooter");
 
+        this.addItem(GenesisItems.CARRION_SPROUT_SPAWN_EGG, "Carrion Sprout Spawn Egg");
         this.addItem(GenesisItems.DARK_SWET_SPAWN_EGG, "Dark Swet Spawn Egg");
         this.addItem(GenesisItems.TEMPEST_SPAWN_EGG, "Tempest Spawn Egg");
         this.addItem(GenesisItems.BLUE_PARACHUTE, "Blue Parachute");
         this.addItem(GenesisItems.GREEN_PARACHUTE, "Green Parachute");
         this.addItem(GenesisItems.PURPLE_PARACHUTE, "Purple Parachute");
 
+        this.addEntityType(GenesisEntityTypes.CARRION_SPROUT, "Carrion Sprout");
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");
 
-        this.addSubtitle("block.aercloud", "blue_aercloud_bounce", "Blue Aercloud bounces");
+        this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");
+        this.addSubtitle("block", "aercloud.blue_aercloud_bounce", "Blue Aercloud bounces");
         
         this.addContainerType(GenesisMenuTypes.HOLYSTONE_FURNACE, "Holystone Furnace");
 

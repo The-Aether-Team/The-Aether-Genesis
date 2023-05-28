@@ -27,6 +27,7 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get(),
                 GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get());
+        this.tag(GenesisTags.Blocks.CARRION_SPROUT_SPAWNABLE_ON).add(AetherBlocks.AETHER_GRASS_BLOCK.get());
 
         this.tag(AetherTags.Blocks.AETHER_PORTAL_BLACKLIST).add(
                 GenesisBlocks.GREEN_AERCLOUD.get(),

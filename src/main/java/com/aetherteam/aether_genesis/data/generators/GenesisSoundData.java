@@ -13,6 +13,11 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
 
     @Override
     public void registerSounds() {
+        this.add(GenesisSoundEvents.ENTITY_CARRION_SPROUT_DEATH,
+                definition().with(sound("minecraft:damage/fallbig"))
+                        .subtitle("subtitles.aether_genesis.entity.carrion_sprout.death")
+        );
+
         this.add(GenesisSoundEvents.MUSIC_AETHER_NIGHT,
                 definition().with(
                         sound("aether_genesis:music/aether_night1").stream(),
