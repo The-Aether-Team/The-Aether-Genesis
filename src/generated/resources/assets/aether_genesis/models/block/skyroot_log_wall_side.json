@@ -5,7 +5,14 @@
       "faces": {
         "down": {
           "cullface": "down",
-          "texture": "#top"
+          "rotation": 90,
+          "texture": "#top",
+          "uv": [
+            0.0,
+            5.0,
+            5.0,
+            11.0
+          ]
         },
         "east": {
           "texture": "#side"
@@ -18,7 +25,14 @@
           "texture": "#side"
         },
         "up": {
-          "texture": "#top"
+          "rotation": 90,
+          "texture": "#top",
+          "uv": [
+            0.0,
+            5.0,
+            5.0,
+            11.0
+          ]
         },
         "west": {
           "texture": "#side"
@@ -32,13 +46,13 @@
       "to": [
         11,
         14,
-        8
+        5
       ]
     }
   ],
   "textures": {
     "particle": "aether:block/natural/skyroot_log",
     "side": "aether:block/natural/skyroot_log",
-    "top": "aether:block/natural/skyroot_log_top"
+    "top": "aether:block/natural/skyroot_log"
   }
 }

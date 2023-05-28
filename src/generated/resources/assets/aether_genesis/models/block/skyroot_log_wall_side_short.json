@@ -10,7 +10,7 @@
           "uv": [
             0.0,
             5.0,
-            5.0,
+            4.0,
             11.0
           ]
         },
@@ -30,7 +30,7 @@
           "uv": [
             0.0,
             5.0,
-            5.0,
+            4.0,
             11.0
           ]
         },
@@ -46,13 +46,13 @@
       "to": [
         11,
         14,
-        5
+        4
       ]
     }
   ],
   "textures": {
-    "particle": "aether:block/natural/stripped_skyroot_log",
-    "side": "aether:block/natural/stripped_skyroot_log",
-    "top": "aether:block/natural/stripped_skyroot_log"
+    "particle": "aether:block/natural/skyroot_log",
+    "side": "aether:block/natural/skyroot_log",
+    "top": "aether:block/natural/skyroot_log"
   }
 }
