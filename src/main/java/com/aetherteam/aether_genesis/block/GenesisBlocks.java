@@ -77,7 +77,7 @@ public class GenesisBlocks {
 
     public static final RegistryObject<Block> SKYROOT_CRAFTING_TABLE = register("skyroot_crafting_table", () -> new AetherCraftingTableBlock(Block.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> HOLYSTONE_FURNACE = register("holystone_furnace", () -> new HolystoneFurnaceBlock(Block.Properties.of(Material.STONE).strength(3.5F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<Block> SKYROOT_CHEST = register("skyroot_chest", () -> new SkyrootChestBlock(Block.Properties.of(Material.WOOD).strength(2.5F), GenesisBlockEntityTypes.SKYROOT_CHEST::get));
+    public static final RegistryObject<Block> SKYROOT_CHEST = register("skyroot_chest", () -> new SkyrootChestBlock(Block.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD), GenesisBlockEntityTypes.SKYROOT_CHEST::get));
 
     public static void registerPots() {
         FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
