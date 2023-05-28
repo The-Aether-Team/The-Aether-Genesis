@@ -1,6 +1,7 @@
-// 1.19.4	2023-05-27T11:58:26.4862568	Block States: aether_genesis
+// 1.19.4	2023-05-27T19:05:17.0816712	Block States: aether_genesis
 fc386c43742f70647b3636e134a4c855ec8dbe30 assets/aether_genesis/blockstates/blue_skyroot_leaves.json
 39138ca20faefe9bc86955e83982830c5e0f5708 assets/aether_genesis/blockstates/blue_skyroot_sapling.json
+183666e23ddf178f9c328287bee6b87b8eaebc5b assets/aether_genesis/blockstates/continuum_ore.json
 fb45729d2271c9409d3a65d8b13050731b5b31df assets/aether_genesis/blockstates/dark_blue_skyroot_leaves.json
 cd6054ac310e9f25fdb837da2011186197ac91e8 assets/aether_genesis/blockstates/dark_blue_skyroot_sapling.json
 2cc1124d3dfec2a79af8429f8090c7e33c1ccffc assets/aether_genesis/blockstates/green_aercloud.json
@@ -26,6 +27,7 @@ f49ec28f1a92d7a1507698332e4d415fcfdbde01 assets/aether_genesis/blockstates/skyro
 1654285acf8756010d15814344c40973da6a8419 assets/aether_genesis/blockstates/stripped_skyroot_wood_wall.json
 da1c4cbdb9b63e81102483ddaf898812772e6184 assets/aether_genesis/models/block/blue_skyroot_leaves.json
 b4ab7b0e193850bfd7adf4b67b75f36e6e8b27df assets/aether_genesis/models/block/blue_skyroot_sapling.json
+0dc15c6152a5f2ac6a68dfcbb60a58e61a836ed8 assets/aether_genesis/models/block/continuum_ore.json
 33e29bc2aa8ec1497cb709b72801ee80c52ff739 assets/aether_genesis/models/block/dark_blue_skyroot_leaves.json
 acaa9314d381d778babcd097a81963238a4e0f53 assets/aether_genesis/models/block/dark_blue_skyroot_sapling.json
 fcd3371e3ab9292217f6a265010e1c2bfa1f4fdf assets/aether_genesis/models/block/green_aercloud.json

@@ -27,6 +27,7 @@ public class GenesisBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_GROVE_TREES = createKey("add_grove_trees");
     public static final ResourceKey<BiomeModifier> ADD_WOODLAND_TREES = createKey("add_woodland_trees");
     public static final ResourceKey<BiomeModifier> ADD_FOREST_TREES = createKey("add_forest_trees");
+    public static final ResourceKey<BiomeModifier> ADD_CONTINUUM_ORE = createKey("add_continuum_ore");
 
     public static final ResourceKey<BiomeModifier> COST_DARK_SWET = createKey("cost_dark_swet");
     public static final ResourceKey<BiomeModifier> COST_TEMPEST = createKey("cost_tempest");
@@ -103,6 +104,11 @@ public class GenesisBiomeModifiers {
                         context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_FOREST_GREEN_HOOKED_SKYROOTS_PLACEMENT),
                         context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_FOREST_PURPLE_CRYSTAL_TREES_PLACEMENT)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
+        ));
+        context.register(ADD_CONTINUUM_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_CONTINUUM_ORE),
+                HolderSet.direct(context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.ORE_CONTINUUM_PLACEMENT)),
+                GenerationStep.Decoration.UNDERGROUND_ORES
         ));
 
         context.register(COST_DARK_SWET, new AddMobChargeBiomeModifier(

@@ -18,6 +18,7 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
         this.translucentBlock(GenesisBlocks.GREEN_AERCLOUD.get(), "natural/");
         this.purpleAercloud(GenesisBlocks.PURPLE_AERCLOUD.get());
         this.translucentBlock(GenesisBlocks.STORM_AERCLOUD.get(), "natural/");
+        this.block(GenesisBlocks.CONTINUUM_ORE.get(), "natural/");
         this.block(GenesisBlocks.BLUE_SKYROOT_LEAVES.get(), "natural/");
         this.block(GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get(), "natural/");
         this.block(GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get(), "natural/");

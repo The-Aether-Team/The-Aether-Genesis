@@ -1,6 +1,7 @@
 {
   "block.aether_genesis.blue_skyroot_leaves": "Blue Skyroot Leaves",
   "block.aether_genesis.blue_skyroot_sapling": "Blue Skyroot Sapling",
+  "block.aether_genesis.continuum_ore": "Continuum Ore",
   "block.aether_genesis.dark_blue_skyroot_leaves": "Dark Blue Skyroot Leaves",
   "block.aether_genesis.dark_blue_skyroot_sapling": "Dark Blue Skyroot Sapling",
   "block.aether_genesis.green_aercloud": "Green Aercloud",
@@ -32,6 +33,7 @@
   "item.aether_genesis.candy_corn": "Candy Corn",
   "item.aether_genesis.candy_ring": "Candy Ring",
   "item.aether_genesis.cocoatrice": "Cocoatrice",
+  "item.aether_genesis.continuum_orb": "Continuum Orb",
   "item.aether_genesis.cornstarch_bowl": "Cornstarch Bowl",
   "item.aether_genesis.crystal_exp_bottle": "Crystal Exp Bottle",
   "item.aether_genesis.dark_gummy_swet": "Dark Gummy Swet",

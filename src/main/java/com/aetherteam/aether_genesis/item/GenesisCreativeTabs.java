@@ -24,6 +24,7 @@ public class GenesisCreativeTabs {
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.HOLYSTONE_HEADSTONE.get()), new ItemStack(GenesisBlocks.HOLYSTONE_HEADSTONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.HOLYSTONE_KEYSTONE.get()), new ItemStack(GenesisBlocks.HOLYSTONE_KEYSTONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.HOLYSTONE_HIGHLIGHT.get()), new ItemStack(GenesisBlocks.HOLYSTONE_HIGHLIGHT.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.CONTINUUM_ORE.get()), new ItemStack(GenesisBlocks.CONTINUUM_ORE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
 
         }
         if (tab == AetherCreativeTabs.AETHER_NATURAL_BLOCKS) {
@@ -74,6 +75,7 @@ public class GenesisCreativeTabs {
             event.getEntries().putAfter(new ItemStack(GenesisItems.GOLDEN_SWET_BALL.get()), new ItemStack(GenesisItems.DARK_SWET_BALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.SKYROOT_BOWL.get()), new ItemStack(GenesisItems.SKYROOT_BOWL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.CORNSTARCH_BOWL.get()), new ItemStack(GenesisItems.CORNSTARCH_BOWL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.CONTINUUM_ORB.get()), new ItemStack(GenesisItems.CONTINUUM_ORB.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (tab == AetherCreativeTabs.AETHER_SPAWN_EGGS) {
             event.getEntries().putAfter(new ItemStack(AetherItems.COCKATRICE_SPAWN_EGG.get()), new ItemStack(GenesisItems.DARK_SWET_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

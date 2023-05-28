@@ -1,6 +1,7 @@
 package com.aetherteam.aether_genesis.data.generators.tags;
 
 import com.aetherteam.aether.AetherTags;
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.GenesisTags;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
@@ -52,6 +53,7 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.POTTED_PURPLE_CRYSTAL_TREE_SAPLING.get(),
                 GenesisBlocks.POTTED_ORANGE_TREE.get());
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
+                GenesisBlocks.CONTINUUM_ORE.get(),
                 GenesisBlocks.HOLYSTONE_FURNACE.get(),
                 GenesisBlocks.HOLYSTONE_HEADSTONE.get(),
                 GenesisBlocks.HOLYSTONE_KEYSTONE.get(),
@@ -78,6 +80,7 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get(),
                 GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get());
+        this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(GenesisBlocks.CONTINUUM_ORE.get());
         this.tag(BlockTags.SNAPS_GOAT_HORN).addTag(GenesisTags.Blocks.LOG_WALLS);
     }
 }

@@ -18,6 +18,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addBlock(GenesisBlocks.GREEN_AERCLOUD, "Green Aercloud");
         this.addBlock(GenesisBlocks.PURPLE_AERCLOUD, "Purple Aercloud");
         this.addBlock(GenesisBlocks.STORM_AERCLOUD, "Storm Aercloud");
+        this.addBlock(GenesisBlocks.CONTINUUM_ORE, "Continuum Ore");
         this.addBlock(GenesisBlocks.ORANGE_TREE, "Orange Tree");
         this.addBlock(GenesisBlocks.BLUE_SKYROOT_LEAVES, "Blue Skyroot Leaves");
         this.addBlock(GenesisBlocks.BLUE_SKYROOT_SAPLING, "Blue Skyroot Sapling");
@@ -39,6 +40,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addBlock(GenesisBlocks.HOLYSTONE_FURNACE, "Holystone Furnace");
         this.addBlock(GenesisBlocks.SKYROOT_CHEST, "Skyroot Chest");
 
+        this.addItem(GenesisItems.CONTINUUM_ORB, "Continuum Orb");
         this.addItem(GenesisItems.GOLDEN_SWET_BALL, "Golden Swet Ball");
         this.addItem(GenesisItems.DARK_SWET_BALL, "Dark Swet Ball");
         this.addItem(GenesisItems.DARK_GUMMY_SWET, "Dark Gummy Swet");
