@@ -18,6 +18,7 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.WallSide;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -77,13 +78,13 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
 
-    public void logWallBlock(WallBlock block, Block baseBlock, String location, String modid) {
-        this.logWallBlockInternal(block, this.name(block), new ResourceLocation(modid, "block/" + location + this.name(baseBlock)));
+    public void logWallBlock(WallBlock block, Block baseBlock, String location, String modid, boolean postUsesTop) {
+        this.logWallBlockInternal(block, this.name(block), new ResourceLocation(modid, "block/" + location + this.name(baseBlock)), postUsesTop);
     }
 
-    private void logWallBlockInternal(WallBlock block, String baseName, ResourceLocation texture) {
-        ModelFile post = models().withExistingParent(baseName + "_post", this.mcLoc("block/block"))
-                .texture("particle", texture).texture("top", texture + "_top").texture("side", texture)
+    private void logWallBlockInternal(WallBlock block, String baseName, ResourceLocation texture, boolean postUsesTop) {
+        ModelFile postBig = models().withExistingParent(baseName + "_post", this.mcLoc("block/block"))
+                .texture("particle", texture).texture("top", postUsesTop ? (texture + "_top") : texture.toString()).texture("side", texture)
                 .element().from(4.0F, 0.0F, 4.0F).to(12.0F, 16.0F, 12.0F)
                 .face(Direction.DOWN).texture("#top").cullface(Direction.DOWN).end()
                 .face(Direction.UP).texture("#top").cullface(Direction.UP).end()
@@ -91,46 +92,145 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
                 .face(Direction.SOUTH).texture("#side").end()
                 .face(Direction.WEST).texture("#side").end()
                 .face(Direction.EAST).texture("#side").end().end();
-        ModelFile side = models().withExistingParent(baseName + "_side", this.mcLoc("block/block"))
-                .texture("particle", texture).texture("top", texture + "_top").texture("side", texture)
-                .element().from(5.0F, 0.0F, 0.0F).to(11.0F, 14.0F, 8.0F)
+        ModelFile postShort = models().withExistingParent(baseName + "_post_short", this.mcLoc("block/block"))
+                .texture("particle", texture).texture("top", texture).texture("side", texture)
+                .element().from(5.0F, 0.0F, 5.0F).to(11.0F, 14.0F, 11.0F)
                 .face(Direction.DOWN).texture("#top").cullface(Direction.DOWN).end()
-                .face(Direction.UP).texture("#top").end()
+                .face(Direction.UP).texture("#top").cullface(Direction.UP).end()
+                .face(Direction.NORTH).texture("#side").end()
+                .face(Direction.SOUTH).texture("#side").end()
+                .face(Direction.WEST).texture("#side").end()
+                .face(Direction.EAST).texture("#side").end().end();
+        ModelFile postTall = models().withExistingParent(baseName + "_post_tall", this.mcLoc("block/block"))
+                .texture("particle", texture).texture("top", texture).texture("side", texture)
+                .element().from(5.0F, 0.0F, 5.0F).to(11.0F, 16.0F, 11.0F)
+                .face(Direction.DOWN).texture("#top").cullface(Direction.DOWN).end()
+                .face(Direction.UP).texture("#top").cullface(Direction.UP).end()
+                .face(Direction.NORTH).texture("#side").end()
+                .face(Direction.SOUTH).texture("#side").end()
+                .face(Direction.WEST).texture("#side").end()
+                .face(Direction.EAST).texture("#side").end().end();
+
+        ModelFile side = models().withExistingParent(baseName + "_side", this.mcLoc("block/block"))
+                .texture("particle", texture).texture("top", texture).texture("side", texture)
+                .element().from(5.0F, 0.0F, 0.0F).to(11.0F, 14.0F, 5.0F)
+                .face(Direction.DOWN).texture("#top").rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).uvs(0, 5, 5, 11).cullface(Direction.DOWN).end()
+                .face(Direction.UP).texture("#top").rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).uvs(0, 5, 5, 11).end()
+                .face(Direction.NORTH).texture("#side").cullface(Direction.NORTH).end()
+                .face(Direction.SOUTH).texture("#side").end()
+                .face(Direction.WEST).texture("#side").end()
+                .face(Direction.EAST).texture("#side").end().end();
+        ModelFile sideAlt = models().withExistingParent(baseName + "_side_alt", this.mcLoc("block/block"))
+                .texture("particle", texture).texture("top", texture).texture("side", texture)
+                .element().from(5.0F, 0.0F, 0.0F).to(11.0F, 14.0F, 5.0F)
+                .face(Direction.DOWN).texture("#top").rotation(ModelBuilder.FaceRotation.COUNTERCLOCKWISE_90).uvs(11, 5, 16, 11).cullface(Direction.DOWN).end()
+                .face(Direction.UP).texture("#top").rotation(ModelBuilder.FaceRotation.COUNTERCLOCKWISE_90).uvs(11, 5, 16, 11).end()
                 .face(Direction.NORTH).texture("#side").cullface(Direction.NORTH).end()
                 .face(Direction.SOUTH).texture("#side").end()
                 .face(Direction.WEST).texture("#side").end()
                 .face(Direction.EAST).texture("#side").end().end();
         ModelFile sideTall = models().withExistingParent(baseName + "_side_tall", this.mcLoc("block/block"))
-                .texture("particle", texture).texture("top", texture + "_top").texture("side", texture)
-                .element().from(5.0F, 0.0F, 0.0F).to(11.0F, 16.0F, 8.0F)
-                .face(Direction.DOWN).texture("#top").cullface(Direction.DOWN).end()
-                .face(Direction.UP).texture("#top").cullface(Direction.UP).end()
+                .texture("particle", texture).texture("top", texture).texture("side", texture)
+                .element().from(5.0F, 0.0F, 0.0F).to(11.0F, 16.0F, 5.0F)
+                .face(Direction.DOWN).texture("#top").rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).uvs(0, 5, 5, 11).cullface(Direction.DOWN).end()
+                .face(Direction.UP).texture("#top").rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).uvs(0, 5, 5, 11).cullface(Direction.UP).end()
                 .face(Direction.NORTH).texture("#side").cullface(Direction.NORTH).end()
                 .face(Direction.SOUTH).texture("#side").end()
                 .face(Direction.WEST).texture("#side").end()
                 .face(Direction.EAST).texture("#side").end().end();
-        this.logWallBlock(block, post, side, sideTall);
+        ModelFile sideTallAlt = models().withExistingParent(baseName + "_side_tall_alt", this.mcLoc("block/block"))
+                .texture("particle", texture).texture("top", texture).texture("side", texture)
+                .element().from(5.0F, 0.0F, 0.0F).to(11.0F, 16.0F, 5.0F)
+                .face(Direction.DOWN).texture("#top").rotation(ModelBuilder.FaceRotation.COUNTERCLOCKWISE_90).uvs(11, 5, 16, 11).cullface(Direction.DOWN).end()
+                .face(Direction.UP).texture("#top").rotation(ModelBuilder.FaceRotation.COUNTERCLOCKWISE_90).uvs(11, 5, 16, 11).cullface(Direction.UP).end()
+                .face(Direction.NORTH).texture("#side").cullface(Direction.NORTH).end()
+                .face(Direction.SOUTH).texture("#side").end()
+                .face(Direction.WEST).texture("#side").end()
+                .face(Direction.EAST).texture("#side").end().end();
+
+        ModelFile sideShort = models().withExistingParent(baseName + "_side_short", this.mcLoc("block/block"))
+                .texture("particle", texture).texture("top", texture).texture("side", texture)
+                .element().from(5.0F, 0.0F, 0.0F).to(11.0F, 14.0F, 4.0F)
+                .face(Direction.DOWN).texture("#top").rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).uvs(0, 5, 4, 11).cullface(Direction.DOWN).end()
+                .face(Direction.UP).texture("#top").rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).uvs(0, 5, 4, 11).end()
+                .face(Direction.NORTH).texture("#side").cullface(Direction.NORTH).end()
+                .face(Direction.SOUTH).texture("#side").end()
+                .face(Direction.WEST).texture("#side").end()
+                .face(Direction.EAST).texture("#side").end().end();
+        ModelFile sideAltShort = models().withExistingParent(baseName + "_side_alt_short", this.mcLoc("block/block"))
+                .texture("particle", texture).texture("top", texture).texture("side", texture)
+                .element().from(5.0F, 0.0F, 0.0F).to(11.0F, 14.0F, 4.0F)
+                .face(Direction.DOWN).texture("#top").rotation(ModelBuilder.FaceRotation.COUNTERCLOCKWISE_90).uvs(12, 5, 16, 11).cullface(Direction.DOWN).end()
+                .face(Direction.UP).texture("#top").rotation(ModelBuilder.FaceRotation.COUNTERCLOCKWISE_90).uvs(12, 5, 16, 11).end()
+                .face(Direction.NORTH).texture("#side").cullface(Direction.NORTH).end()
+                .face(Direction.SOUTH).texture("#side").end()
+                .face(Direction.WEST).texture("#side").end()
+                .face(Direction.EAST).texture("#side").end().end();
+        ModelFile sideTallShort = models().withExistingParent(baseName + "_side_tall_short", this.mcLoc("block/block"))
+                .texture("particle", texture).texture("top", texture).texture("side", texture)
+                .element().from(5.0F, 0.0F, 0.0F).to(11.0F, 16.0F, 4.0F)
+                .face(Direction.DOWN).texture("#top").rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).uvs(0, 5, 4, 11).cullface(Direction.DOWN).end()
+                .face(Direction.UP).texture("#top").rotation(ModelBuilder.FaceRotation.CLOCKWISE_90).uvs(0, 5, 4, 11).cullface(Direction.UP).end()
+                .face(Direction.NORTH).texture("#side").cullface(Direction.NORTH).end()
+                .face(Direction.SOUTH).texture("#side").end()
+                .face(Direction.WEST).texture("#side").end()
+                .face(Direction.EAST).texture("#side").end().end();
+        ModelFile sideTallAltShort = models().withExistingParent(baseName + "_side_tall_alt_short", this.mcLoc("block/block"))
+                .texture("particle", texture).texture("top", texture).texture("side", texture)
+                .element().from(5.0F, 0.0F, 0.0F).to(11.0F, 16.0F, 4.0F)
+                .face(Direction.DOWN).texture("#top").rotation(ModelBuilder.FaceRotation.COUNTERCLOCKWISE_90).uvs(12, 5, 16, 11).cullface(Direction.DOWN).end()
+                .face(Direction.UP).texture("#top").rotation(ModelBuilder.FaceRotation.COUNTERCLOCKWISE_90).uvs(12, 5, 16, 11).cullface(Direction.UP).end()
+                .face(Direction.NORTH).texture("#side").cullface(Direction.NORTH).end()
+                .face(Direction.SOUTH).texture("#side").end()
+                .face(Direction.WEST).texture("#side").end()
+                .face(Direction.EAST).texture("#side").end().end();
+
+        this.logWallBlock(this.getMultipartBuilder(block), postShort, postTall, side, sideAlt, sideTall, sideTallAlt);
+        this.logWallBlockWithPost(this.getMultipartBuilder(block), postBig, sideShort, sideAltShort, sideTallShort, sideTallAltShort);
     }
 
-    public void logWallBlock(WallBlock block, ModelFile post, ModelFile side, ModelFile sideTall) {
-        MultiPartBlockStateBuilder builder = this.getMultipartBuilder(block)
-                .part().modelFile(post).addModel()
+    public void logWallBlock(MultiPartBlockStateBuilder builder, ModelFile postShort, ModelFile postTall, ModelFile side, ModelFile sideAlt, ModelFile sideTall, ModelFile sideTallAlt) {
+        builder
+                // Smaller post when West & East are both short while North & South being none
+                .part().modelFile(postShort).addModel()
+                .nestedGroup().condition(WallBlock.UP, false).condition(WallBlock.EAST_WALL, WallSide.LOW).condition(WallBlock.WEST_WALL, WallSide.LOW).end().end()
+                // Taller thinner post when West & East are both tall while North & South being none
+                .part().modelFile(postTall).addModel()
+                .nestedGroup().condition(WallBlock.UP, false).condition(WallBlock.EAST_WALL, WallSide.TALL).condition(WallBlock.WEST_WALL, WallSide.TALL).end().end()
+                // Rotated small post when West & East are both none while North & South are short
+                .part().modelFile(postShort).rotationY(90).addModel()
+                .nestedGroup().condition(WallBlock.UP, false).condition(WallBlock.EAST_WALL, WallSide.NONE).condition(WallBlock.NORTH_WALL, WallSide.LOW).condition(WallBlock.WEST_WALL, WallSide.NONE).condition(WallBlock.SOUTH_WALL, WallSide.LOW).end().end()
+                // Rotated small post when West & East are both none while North & South are tall
+                .part().modelFile(postTall).rotationY(90).addModel()
+                .nestedGroup().condition(WallBlock.UP, false).condition(WallBlock.EAST_WALL, WallSide.NONE).condition(WallBlock.NORTH_WALL, WallSide.TALL).condition(WallBlock.WEST_WALL, WallSide.NONE).condition(WallBlock.SOUTH_WALL, WallSide.TALL).end().end();
+        WALL_PROPS.entrySet().stream()
+                .filter(e -> e.getKey().getAxis().isHorizontal())
+                .forEach(e -> {
+                    this.logWallSidePart(builder, side, sideAlt, e, WallSide.LOW, false);
+                    this.logWallSidePart(builder, sideTall, sideTallAlt, e, WallSide.TALL, false);
+                });
+    }
+
+    public void logWallBlockWithPost(MultiPartBlockStateBuilder builder, ModelFile postBig, ModelFile side, ModelFile sideAlt, ModelFile sideTall, ModelFile sideTallAlt) {
+        builder
+                // Big post for connections, typically including angled
+                .part().modelFile(postBig).addModel()
                 .condition(WallBlock.UP, true).end();
         WALL_PROPS.entrySet().stream()
                 .filter(e -> e.getKey().getAxis().isHorizontal())
                 .forEach(e -> {
-                    this.logWallSidePart(builder, side, e, WallSide.LOW);
-                    this.logWallSidePart(builder, sideTall, e, WallSide.TALL);
+                    this.logWallSidePart(builder, side, sideAlt, e, WallSide.LOW, true);
+                    this.logWallSidePart(builder, sideTall, sideTallAlt, e, WallSide.TALL, true);
                 });
     }
 
-    private void logWallSidePart(MultiPartBlockStateBuilder builder, ModelFile model, Map.Entry<Direction, Property<WallSide>> entry, WallSide height) {
+    private void logWallSidePart(MultiPartBlockStateBuilder builder, ModelFile model, ModelFile modelAlt, Map.Entry<Direction, Property<WallSide>> entry, WallSide height, boolean hasPost) {
+        int rotation = (((int) entry.getKey().toYRot()) + 180) % 360;
         builder.part()
-                .modelFile(model)
-                .rotationY((((int) entry.getKey().toYRot()) + 180) % 360)
-                .uvLock(true)
+                .modelFile(rotation < 180 ? model : modelAlt)
+                .rotationY(rotation)
                 .addModel()
-                .condition(entry.getValue(), height);
+                .condition(entry.getValue(), height).condition(WallBlock.UP, hasPost);
     }
 
     public void woodWallBlock(WallBlock block, Block baseBlock, String location, String modid) {

@@ -5,34 +5,20 @@
       "faces": {
         "down": {
           "cullface": "down",
-          "rotation": 90,
-          "texture": "#top",
-          "uv": [
-            0.0,
-            5.0,
-            5.0,
-            11.0
-          ]
+          "texture": "#top"
         },
         "east": {
           "texture": "#side"
         },
         "north": {
-          "cullface": "north",
           "texture": "#side"
         },
         "south": {
           "texture": "#side"
         },
         "up": {
-          "rotation": 90,
-          "texture": "#top",
-          "uv": [
-            0.0,
-            5.0,
-            5.0,
-            11.0
-          ]
+          "cullface": "up",
+          "texture": "#top"
         },
         "west": {
           "texture": "#side"
@@ -41,18 +27,18 @@
       "from": [
         5,
         0,
-        0
+        5
       ],
       "to": [
         11,
         14,
-        5
+        11
       ]
     }
   ],
   "textures": {
-    "particle": "aether:block/natural/stripped_skyroot_log",
-    "side": "aether:block/natural/stripped_skyroot_log",
-    "top": "aether:block/natural/stripped_skyroot_log"
+    "particle": "aether:block/natural/skyroot_log",
+    "side": "aether:block/natural/skyroot_log",
+    "top": "aether:block/natural/skyroot_log"
   }
 }
