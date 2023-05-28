@@ -23,7 +23,7 @@ public class CarrionSproutRenderer extends MobRenderer<CarrionSprout, CarrionSpr
     @Override
     protected void scale(CarrionSprout carrionSprout, @Nonnull PoseStack poseStack, float partialTickTime) {
         float f2 = 0.625F + carrionSprout.getSize() / 6.0F;
-        RenderSystem.setShaderColor(f2, 1.0F, f2, 1.0F); //todo
+        //RenderSystem.setShaderColor(f2, 1.0F, f2, 1.0F); //todo
         poseStack.scale(f2, f2, f2);
         poseStack.translate(0.0, 1.2, 0.0);
         this.shadowRadius = f2 - 0.25F;
