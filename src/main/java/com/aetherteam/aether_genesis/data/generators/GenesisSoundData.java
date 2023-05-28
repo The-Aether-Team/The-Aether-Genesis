@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.data.generators;
 
+import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import net.minecraft.data.PackOutput;
@@ -13,6 +14,13 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
 
     @Override
     public void registerSounds() {
+        this.add(GenesisSoundEvents.ENTITY_CARRION_SPROUT_HURT,
+                definition().with(
+                        sound("minecraft:damage/hit1"),
+                        sound("minecraft:damage/hit2"),
+                        sound("minecraft:damage/hit3")
+                ).subtitle("subtitles.aether_genesis.entity.carrion_sprout.hurt")
+        );
         this.add(GenesisSoundEvents.ENTITY_CARRION_SPROUT_DEATH,
                 definition().with(sound("minecraft:damage/fallbig"))
                         .subtitle("subtitles.aether_genesis.entity.carrion_sprout.death")

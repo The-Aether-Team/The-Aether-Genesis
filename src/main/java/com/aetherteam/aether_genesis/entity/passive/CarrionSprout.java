@@ -12,6 +12,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -144,6 +145,11 @@ public class CarrionSprout extends Mob {
 
     public void setSize(int size) {
         this.entityData.set(DATA_SIZE_ID, size);
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return GenesisSoundEvents.ENTITY_CARRION_SPROUT_HURT.get();
     }
 
     @Override

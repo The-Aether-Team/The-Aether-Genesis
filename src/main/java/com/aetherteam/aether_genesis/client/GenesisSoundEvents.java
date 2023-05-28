@@ -10,6 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class GenesisSoundEvents {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, Genesis.MODID);
 
+    public static final RegistryObject<SoundEvent> ENTITY_CARRION_SPROUT_HURT = register("entity.carrion_sprout.hurt");
     public static final RegistryObject<SoundEvent> ENTITY_CARRION_SPROUT_DEATH = register("entity.carrion_sprout.death");
 
     public static final RegistryObject<SoundEvent> MUSIC_AETHER_NIGHT = register("music.aether_night");
