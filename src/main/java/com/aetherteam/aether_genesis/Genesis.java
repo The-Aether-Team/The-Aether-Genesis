@@ -2,6 +2,7 @@ package com.aetherteam.aether_genesis;
 
 import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
+import com.aetherteam.aether_genesis.block.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.blockentity.GenesisMenuTypes;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
@@ -84,6 +85,8 @@ public class Genesis {
 
     public void commonSetup(FMLCommonSetupEvent event) {
         GenesisPacketHandler.register();
+
+        GenesisAdvancementTriggers.init();
 
         event.enqueueWork(() -> {
             GenesisBlocks.registerPots();
