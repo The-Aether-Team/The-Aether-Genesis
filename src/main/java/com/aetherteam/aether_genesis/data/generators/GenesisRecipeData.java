@@ -67,7 +67,7 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
                 .pattern("IXI")
                 .pattern("###")
                 .unlockedBy("has_smooth_stone", has(Blocks.SMOOTH_STONE))
-                .save(consumer, "holystone_blast_furnace");
+                .save(consumer, GenesisRecipeProvider.name("holystone_blast_furnace"));
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.SMOKER)
                 .group("minecraft:smoker")
                 .define('#', ItemTags.LOGS)
@@ -76,7 +76,7 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
                 .pattern("#X#")
                 .pattern(" # ")
                 .unlockedBy(getHasName(GenesisBlocks.HOLYSTONE_FURNACE.get()), has(GenesisBlocks.HOLYSTONE_FURNACE.get()))
-                .save(consumer, "holystone_smoker");
+                .save(consumer, GenesisRecipeProvider.name("holystone_smoker"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_CHEST.get())
                 .define('#', AetherBlocks.SKYROOT_PLANKS.get())
@@ -85,5 +85,7 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
                 .pattern("###")
                 .unlockedBy(getHasName(GenesisBlocks.SKYROOT_CHEST.get()), has(AetherBlocks.SKYROOT_PLANKS.get()))
                 .save(consumer);
+
+        enchantingRecipe(RecipeCategory.FOOD, GenesisItems.RAINBOW_STRAWBERRY.get(), GenesisItems.WYNDBERRY.get(), 0.35F, 500).save(consumer, GenesisRecipeProvider.name("rainbow_strawberry_enchanting"));
     }
 }

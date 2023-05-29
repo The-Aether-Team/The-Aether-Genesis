@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "aether_genesis:rainbow_strawberry_enchanting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wyndberry": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "aether_genesis:wyndberry"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_wyndberry",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "aether_genesis:rainbow_strawberry_enchanting"
+    ]
+  }
+}
