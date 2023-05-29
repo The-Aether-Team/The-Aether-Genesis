@@ -14,10 +14,10 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import javax.annotation.Nonnull;
 
-public class AetherCraftingTableBlock extends CraftingTableBlock {
+public class SkyrootCraftingTableBlock extends CraftingTableBlock {
 	private static final Component CONTAINER_TITLE = Component.translatable("container.crafting");
 
-	public AetherCraftingTableBlock(BlockBehaviour.Properties pProperties) {
+	public SkyrootCraftingTableBlock(BlockBehaviour.Properties pProperties) {
 		super(pProperties);
 	}
 

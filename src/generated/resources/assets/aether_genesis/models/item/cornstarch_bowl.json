@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "aether_genesis:item/miscellaneous/cornstarch_bowl"
+    "layer0": "aether_genesis:item/materials/cornstarch_bowl"
   }
 }
