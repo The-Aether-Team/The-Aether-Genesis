@@ -8,13 +8,10 @@
           "type": "minecraft:item",
           "functions": [
             {
-              "add": false,
-              "count": {
-                "type": "minecraft:uniform",
-                "max": 2.0,
-                "min": 0.0
-              },
-              "function": "minecraft:set_count"
+              "function": "aether_genesis:carrion_sprout_size",
+              "maximum": 3.0,
+              "minimum": 1.0,
+              "randomBound": 3.0
             },
             {
               "count": {

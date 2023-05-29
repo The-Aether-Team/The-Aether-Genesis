@@ -4,7 +4,6 @@ import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.aether_genesis.client.renderer.model.CarrionSproutModel;
 import com.aetherteam.aether_genesis.entity.passive.CarrionSprout;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -22,8 +21,7 @@ public class CarrionSproutRenderer extends MobRenderer<CarrionSprout, CarrionSpr
 
     @Override
     protected void scale(CarrionSprout carrionSprout, @Nonnull PoseStack poseStack, float partialTickTime) {
-        float f2 = 0.625F + carrionSprout.getSize() / 6.0F;
-        //RenderSystem.setShaderColor(f2, 1.0F, f2, 1.0F); //todo
+        float f2 = carrionSprout.getSize();
         poseStack.scale(f2, f2, f2);
         poseStack.translate(0.0, 1.2, 0.0);
         this.shadowRadius = f2 - 0.25F;

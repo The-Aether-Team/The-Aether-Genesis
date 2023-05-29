@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:holystone_blast_furnace"
+        "recipe": "aether_genesis:holystone_blast_furnace"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:holystone_blast_furnace"
+      "aether_genesis:holystone_blast_furnace"
     ]
   }
 }

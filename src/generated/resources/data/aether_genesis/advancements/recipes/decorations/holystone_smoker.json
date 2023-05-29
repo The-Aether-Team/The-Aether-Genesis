@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:holystone_smoker"
+        "recipe": "aether_genesis:holystone_smoker"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:holystone_smoker"
+      "aether_genesis:holystone_smoker"
     ]
   }
 }

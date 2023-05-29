@@ -1,0 +1,10 @@
+{
+  "type": "aether:enchanting",
+  "category": "enchanting_food",
+  "cookingtime": 500,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "aether_genesis:wyndberry"
+  },
+  "result": "aether_genesis:rainbow_strawberry"
+}

@@ -27,7 +27,7 @@ public class GenesisEntityTypes {
 
     // Passive Mobs
     public static final RegistryObject<EntityType<CarrionSprout>> CARRION_SPROUT = ENTITY_TYPES.register("carrion_sprout",
-            () -> EntityType.Builder.of(CarrionSprout::new, MobCategory.CREATURE).sized(1.5F, 1.5F).clientTrackingRange(8).build("carrion_sprout"));
+            () -> EntityType.Builder.of(CarrionSprout::new, MobCategory.CREATURE).sized(1.0F, 1.0F).clientTrackingRange(8).build("carrion_sprout"));
 
     // Hostile Mobs
     public static final RegistryObject<EntityType<Swet>> DARK_SWET = ENTITY_TYPES.register("dark_swet",

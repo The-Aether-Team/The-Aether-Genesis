@@ -11,6 +11,7 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.util.Mth;
 
 import javax.annotation.Nonnull;
 
@@ -29,6 +30,8 @@ public class CarrionSproutModel extends EntityModel<CarrionSprout> {
     public ModelPart headTop;
     public ModelPart teeth;
     public ModelPart jaw;
+    private float maxSize;
+    private float size;
 
     public CarrionSproutModel(ModelPart root) {
         this.stemBottom = root.getChild("stem_bottom");
@@ -66,6 +69,13 @@ public class CarrionSproutModel extends EntityModel<CarrionSprout> {
         return LayerDefinition.create(meshDefinition, 64, 64);
     }
 
+    @Override
+    public void prepareMobModel(@Nonnull CarrionSprout carrionSprout, float limbSwing, float limbSwingAmount, float partialTicks) {
+        super.prepareMobModel(carrionSprout, limbSwing, limbSwingAmount, partialTicks);
+        this.maxSize = carrionSprout.getMaxSize();
+        this.size = carrionSprout.getSize();
+    }
+
     public Iterable<ModelPart> petalParts() {
         return ImmutableList.of(this.petal1, this.petal2, this.petal3, this.petal4, this.petal5, this.petal6, this.petal7, this.petal8);
     }
@@ -98,6 +108,11 @@ public class CarrionSproutModel extends EntityModel<CarrionSprout> {
 
     @Override
     public void renderToBuffer(@Nonnull PoseStack poseStack, @Nonnull VertexConsumer consumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+        if (this.size < this.maxSize) {
+            red = Mth.clamp(red * this.size, 0.0F, 1.0F);
+            blue = Mth.clamp(blue * this.size, 0.6F, 1.0F);
+        }
         this.stemBottom.render(poseStack, consumer, packedLight, packedOverlay, red, green, blue, alpha);
+
     }
 }

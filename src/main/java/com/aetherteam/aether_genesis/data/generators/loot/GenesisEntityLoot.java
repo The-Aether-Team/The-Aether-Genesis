@@ -3,6 +3,7 @@ package com.aetherteam.aether_genesis.data.generators.loot;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
+import com.aetherteam.aether_genesis.loot.functions.CarrionSproutSize;
 import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.flag.FeatureFlags;
@@ -26,7 +27,7 @@ public class GenesisEntityLoot extends EntityLootSubProvider {
         this.add(GenesisEntityTypes.CARRION_SPROUT.get(), LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(GenesisItems.WYNDBERRY.get())
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
+                                .apply(CarrionSproutSize.setAmount(ConstantValue.exactly(3), ConstantValue.exactly(1), ConstantValue.exactly(3)))
                                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
                         )
                 )
