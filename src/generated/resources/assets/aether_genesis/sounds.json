@@ -11,6 +11,14 @@
     ],
     "subtitle": "subtitles.aether_genesis.entity.carrion_sprout.death"
   },
+  "entity.carrion_sprout.hurt": {
+    "sounds": [
+      "damage/hit1",
+      "damage/hit2",
+      "damage/hit3"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.carrion_sprout.hurt"
+  },
   "music.aether_night": {
     "sounds": [
       {
