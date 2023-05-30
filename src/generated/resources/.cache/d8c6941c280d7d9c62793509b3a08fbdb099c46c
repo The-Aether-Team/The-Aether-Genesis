@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-29T15:44:14.6319434	Item Models: aether_genesis
+// 1.19.4	2023-05-30T10:36:53.2112225	Item Models: aether_genesis
 85e6dca000030d07451d6969e99df873abdf0362 assets/aether_genesis/models/item/blueberry_lollipop.json
 60294593b16695515c68207a9792014047ec36fb assets/aether_genesis/models/item/blue_parachute.json
 fa788e7092f1bda40ac52d02c79ac80c0b0b04e2 assets/aether_genesis/models/item/blue_skyroot_leaves.json
@@ -42,6 +42,7 @@ bc972fad4b94952d244ce10b948eb1ae63d9960f assets/aether_genesis/models/item/purpl
 17075f79338c83570da69548ce98338899e839b4 assets/aether_genesis/models/item/skyroot_bowl.json
 f6caba399494a58683561699d72ad1cc86e3d339 assets/aether_genesis/models/item/skyroot_chest.json
 b236d2ede5c29662a08fb70a5c995d8f904f2b50 assets/aether_genesis/models/item/skyroot_crafting_table.json
+f1bb6f0b931bc6cccfce308e6e12c540bf3f83b1 assets/aether_genesis/models/item/skyroot_ladder.json
 eea36a4b004881a3c4883bf36377d685c77cc2b4 assets/aether_genesis/models/item/skyroot_log_wall.json
 1b0c690ce570e6dc726e9ad9b31f28b7f87556fc assets/aether_genesis/models/item/skyroot_ring.json
 c8f56969ced222c056949091764a24f7a2d41bda assets/aether_genesis/models/item/skyroot_wood_wall.json

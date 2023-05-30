@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.data.generators;
 
+import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether_genesis.Genesis;
@@ -84,6 +85,15 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
                 .pattern("# #")
                 .pattern("###")
                 .unlockedBy(getHasName(GenesisBlocks.SKYROOT_CHEST.get()), has(AetherBlocks.SKYROOT_PLANKS.get()))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_LADDER.get(), 3)
+                .define('#', AetherTags.Items.SKYROOT_STICKS)
+                .define('S', AetherBlocks.SKYROOT_PLANKS.get())
+                .pattern("# #")
+                .pattern("#S#")
+                .pattern("# #")
+                .unlockedBy(getHasName(GenesisBlocks.SKYROOT_LADDER.get()), has(AetherTags.Items.SKYROOT_STICKS))
                 .save(consumer);
 
         enchantingRecipe(RecipeCategory.FOOD, GenesisItems.RAINBOW_STRAWBERRY.get(), GenesisItems.WYNDBERRY.get(), 0.35F, 500).save(consumer, GenesisRecipeProvider.name("rainbow_strawberry_enchanting"));
