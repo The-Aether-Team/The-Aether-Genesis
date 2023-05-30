@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "aether_genesis:item/miscellaneous/skyroot_bowl"
+    "layer0": "aether_genesis:item/materials/skyroot_bowl"
   }
 }
