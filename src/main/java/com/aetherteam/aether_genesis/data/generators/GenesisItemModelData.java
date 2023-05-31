@@ -49,7 +49,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.SKYROOT_RING.get(), "accessories/");
 
         this.dartShooterItem(GenesisItems.PHOENIX_DART_SHOOTER.get(), "combat/");
-        this.dartShooterItem(GenesisItems.CONTINUUM_BOMB.get(), "miscellaneous/");
+        this.item(GenesisItems.CONTINUUM_BOMB.get(), "miscellaneous/");
 
         this.eggItem(GenesisItems.CARRION_SPROUT_SPAWN_EGG.get());
         this.eggItem(GenesisItems.DARK_SWET_SPAWN_EGG.get());
