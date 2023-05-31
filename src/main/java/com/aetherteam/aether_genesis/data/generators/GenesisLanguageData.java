@@ -39,6 +39,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addBlock(GenesisBlocks.SKYROOT_CRAFTING_TABLE, "Skyroot Crafting Table");
         this.addBlock(GenesisBlocks.HOLYSTONE_FURNACE, "Holystone Furnace");
         this.addBlock(GenesisBlocks.SKYROOT_CHEST, "Skyroot Chest");
+        this.addBlock(GenesisBlocks.SKYROOT_LADDER, "Skyroot Ladder");
 
         this.addItem(GenesisItems.CONTINUUM_ORB, "Continuum Orb");
         this.addItem(GenesisItems.GOLDEN_SWET_BALL, "Golden Swet Ball");
@@ -67,6 +68,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.SKYROOT_RING, "Skyroot Ring");
 
         this.addItem(GenesisItems.PHOENIX_DART_SHOOTER, "Phoenix Dart Shooter");
+        this.addItem(GenesisItems.CONTINUUM_BOMB, "Continuum Bomb");
 
         this.addItem(GenesisItems.CARRION_SPROUT_SPAWN_EGG, "Carrion Sprout Spawn Egg");
         this.addItem(GenesisItems.DARK_SWET_SPAWN_EGG, "Dark Swet Spawn Egg");
@@ -79,6 +81,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");
 
+        this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");
         this.addSubtitle("block", "aercloud.blue_aercloud_bounce", "Blue Aercloud bounces");
         
@@ -88,7 +91,10 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addClientConfig("audio", "blue_aercloud_bounce_sfx", "Makes Blue Aerclouds have their wobbly sounds that play when bouncing on them");
         this.addClientConfig("audio", "night_music_tracks", "Adds some nice night tracks to the Aether's music selection. Also disables the default music manager for the Aether, to prevent overlap");
 
+        this.addPackTitle("classic", "Genesis of the Void Textures");
+
         this.addPackDescription("mod", "The Aether: Genesis Resources");
+        this.addPackDescription("classic", "The classic look from Genesis of the Void");
         //todo: lore
     }
 }

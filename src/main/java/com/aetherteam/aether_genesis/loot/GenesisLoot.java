@@ -1,6 +1,6 @@
 package com.aetherteam.aether_genesis.loot;
 
-import com.aetherteam.aether.Aether;
+import com.aetherteam.aether_genesis.Genesis;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.Collections;
@@ -14,7 +14,7 @@ public class GenesisLoot {
     public static final ResourceLocation CONTINUUM_ORB = register("selectors/continuum_orb");
 
     private static ResourceLocation register(String id) {
-        return register(new ResourceLocation(Aether.MODID, id));
+        return register(new ResourceLocation(Genesis.MODID, id));
     }
 
     private static ResourceLocation register(ResourceLocation id) {

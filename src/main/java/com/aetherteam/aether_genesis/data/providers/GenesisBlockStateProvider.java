@@ -10,10 +10,8 @@ import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.AbstractFurnaceBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.WallBlock;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.level.block.state.properties.WallSide;
@@ -233,5 +231,19 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
     public void skyrootChest(Block block) {
         ModelFile chest = this.models().cubeAll(this.name(block), new ResourceLocation(Aether.MODID, "block/construction/skyroot_planks"));
         this.chest(block, chest);
+    }
+
+    public void skyrootLadder(LadderBlock block) {
+        ResourceLocation location = this.texture(this.name(block), "construction/");
+        ModelFile ladder = models().withExistingParent(this.name(block), this.mcLoc("block/block")).renderType(new ResourceLocation("cutout")).ao(false)
+                .texture("particle", location).texture("texture", location)
+                .element().from(0.0F, 0.0F, 15.2F).to(16.0F, 16.0F, 15.2F).shade(false)
+                .face(Direction.NORTH).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#texture").end()
+                .face(Direction.SOUTH).uvs(16.0F, 0.0F, 0.0F, 16.0F).texture("#texture").end()
+                .end();
+        this.getVariantBuilder(block).forAllStatesExcept((state) -> {
+            Direction direction = state.getValue(LadderBlock.FACING);
+            return ConfiguredModel.builder().modelFile(ladder).rotationY((int) (direction.toYRot() + 180) % 360).build();
+        }, LadderBlock.WATERLOGGED);
     }
 }

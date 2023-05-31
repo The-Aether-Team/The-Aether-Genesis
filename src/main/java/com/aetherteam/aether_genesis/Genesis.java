@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis;
 
+import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.block.advancement.GenesisAdvancementTriggers;
@@ -14,6 +15,7 @@ import com.aetherteam.aether_genesis.data.generators.tags.GenesisEntityTagData;
 import com.aetherteam.aether_genesis.data.generators.tags.GenesisItemTagData;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
+import com.aetherteam.aether_genesis.loot.functions.GenesisLootFunctions;
 import com.aetherteam.aether_genesis.loot.modifiers.GenesisLootModifiers;
 import com.aetherteam.aether_genesis.network.GenesisPacketHandler;
 import com.aetherteam.aether_genesis.world.biomemodifier.GenesisBiomeModifierSerializers;
@@ -30,11 +32,16 @@ import net.minecraft.data.metadata.PackMetadataGenerator;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
+import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
@@ -42,8 +49,10 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.resource.PathPackResources;
 import org.slf4j.Logger;
 
+import java.nio.file.Path;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
@@ -58,6 +67,7 @@ public class Genesis {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::dataSetup);
         modEventBus.addListener(this::clientSetup);
+        modEventBus.addListener(this::packSetup);
 
         DeferredRegister<?>[] registers = {
                 GenesisBlocks.BLOCKS,
@@ -65,6 +75,7 @@ public class Genesis {
                 GenesisEntityTypes.ENTITY_TYPES,
                 GenesisMenuTypes.MENU_TYPES,
                 GenesisBlockEntityTypes.BLOCK_ENTITY_TYPES,
+                GenesisLootFunctions.LOOT_FUNCTION_TYPES,
                 GenesisLootModifiers.GLOBAL_LOOT_MODIFIERS,
                 GenesisFeatures.FEATURES,
                 GenesisFoliagePlacerTypes.FOLIAGE_PLACERS,
@@ -98,8 +109,7 @@ public class Genesis {
 
     public void clientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            if (GenesisConfig.CLIENT.night_music_tracks.get())
-            {
+            if (GenesisConfig.CLIENT.night_music_tracks.get()) {
                 AetherConfig.CLIENT.disable_music_manager.set(true);
             }
         });
@@ -133,6 +143,30 @@ public class Genesis {
         Map<PackType, Integer> packTypes = Map.of(PackType.SERVER_DATA, SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA));
         packMeta.add(PackMetadataSection.TYPE, new PackMetadataSection(Component.translatable("pack.aether_genesis.mod.description"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES), packTypes));
         generator.addProvider(true, packMeta);
+    }
+
+    public void packSetup(AddPackFindersEvent event) {
+        this.setupClassicPack(event);
+    }
+
+    private void setupClassicPack(AddPackFindersEvent event) {
+        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+            Path resourcePath = ModList.get().getModFileById(Genesis.MODID).getFile().findResource("packs/classic");
+            PathPackResources pack = new PathPackResources(ModList.get().getModFileById(Genesis.MODID).getFile().getFileName() + ":" + resourcePath, true, resourcePath);
+            PackMetadataSection metadata = new PackMetadataSection(Component.translatable("pack.aether_genesis.classic.description"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));
+            event.addRepositorySource((source) ->
+                    source.accept(Pack.create(
+                            "builtin/genesis_classic",
+                            Component.translatable("pack.aether_genesis.classic.title"),
+                            false,
+                            (string) -> pack,
+                            new Pack.Info(metadata.getDescription(), metadata.getPackFormat(PackType.SERVER_DATA), metadata.getPackFormat(PackType.CLIENT_RESOURCES), FeatureFlagSet.of(), pack.isHidden()),
+                            PackType.CLIENT_RESOURCES,
+                            Pack.Position.TOP,
+                            false,
+                            PackSource.BUILT_IN)
+                    ));
+        }
     }
 
     private void registerComposting() {

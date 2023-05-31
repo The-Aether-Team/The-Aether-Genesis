@@ -14,6 +14,7 @@ KELETU66666
 - Implementation of Bone Ring.
 - Implementation of Candy Ring.
 - Implementation of Skyroot Ring.
+- Implementation of Continuum Bomb.
 
 StockiesLad
 - Improvement of Purple Aercloud features to make them spawn with random rotation.

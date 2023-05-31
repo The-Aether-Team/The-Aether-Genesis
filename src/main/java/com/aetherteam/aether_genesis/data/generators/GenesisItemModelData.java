@@ -18,8 +18,8 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
     protected void registerModels() {
         this.item(GenesisItems.GOLDEN_SWET_BALL.get(), "materials/");
         this.item(GenesisItems.DARK_SWET_BALL.get(), "materials/");
-        this.item(GenesisItems.SKYROOT_BOWL.get(), "miscellaneous/");
-        this.item(GenesisItems.CORNSTARCH_BOWL.get(), "miscellaneous/");
+        this.item(GenesisItems.SKYROOT_BOWL.get(), "materials/");
+        this.item(GenesisItems.CORNSTARCH_BOWL.get(), "materials/");
         this.item(GenesisItems.CONTINUUM_ORB.get(), "materials/");
 
         this.item(GenesisItems.DARK_GUMMY_SWET.get(), "food/");
@@ -43,12 +43,13 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.CANDY_CORN.get(), "food/");
         this.item(GenesisItems.RAINBOW_STRAWBERRY.get(), "food/");
 
-        this.item(GenesisItems.CRYSTAL_EXP_BOTTLE.get(), "miscellaneous/");
-        this.item(GenesisItems.BONE_RING.get(), "miscellaneous/");
-        this.item(GenesisItems.CANDY_RING.get(), "miscellaneous/");
-        this.item(GenesisItems.SKYROOT_RING.get(), "miscellaneous/");
+        this.item(GenesisItems.CRYSTAL_EXP_BOTTLE.get(), "accessories/");
+        this.item(GenesisItems.BONE_RING.get(), "accessories/");
+        this.item(GenesisItems.CANDY_RING.get(), "accessories/");
+        this.item(GenesisItems.SKYROOT_RING.get(), "accessories/");
 
         this.dartShooterItem(GenesisItems.PHOENIX_DART_SHOOTER.get(), "combat/");
+        this.item(GenesisItems.CONTINUUM_BOMB.get(), "miscellaneous/");
 
         this.eggItem(GenesisItems.CARRION_SPROUT_SPAWN_EGG.get());
         this.eggItem(GenesisItems.DARK_SWET_SPAWN_EGG.get());
@@ -79,5 +80,6 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.itemBlock(GenesisBlocks.SKYROOT_CRAFTING_TABLE.get());
         this.itemBlock(GenesisBlocks.HOLYSTONE_FURNACE.get());
         this.lookalikeBlock(GenesisBlocks.SKYROOT_CHEST.get(), this.mcLoc("item/chest"));
+        this.itemBlockFlat(GenesisBlocks.SKYROOT_LADDER.get(), "construction/");
     }
 }
