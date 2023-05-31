@@ -3,15 +3,13 @@ package com.aetherteam.aether_genesis.entity;
 import com.aetherteam.aether.data.resources.AetherMobCategory;
 import com.aetherteam.aether.entity.monster.Swet;
 import com.aetherteam.aether_genesis.Genesis;
-import com.aetherteam.aether_genesis.entity.miscellaneous.BlueParachute;
-import com.aetherteam.aether_genesis.entity.miscellaneous.GreenParachute;
-import com.aetherteam.aether_genesis.entity.miscellaneous.PurpleParachute;
-import com.aetherteam.aether_genesis.entity.miscellaneous.TempestThunderBall;
+import com.aetherteam.aether_genesis.entity.miscellaneous.*;
 import com.aetherteam.aether_genesis.entity.monster.Tempest;
 import com.aetherteam.aether_genesis.entity.passive.CarrionSprout;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.projectile.Snowball;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
@@ -48,6 +46,10 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.<TempestThunderBall>of(TempestThunderBall::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(10).build("tempest_thunderball"));
     public static final RegistryObject<EntityType<PhoenixDart>> PHOENIX_DART = ENTITY_TYPES.register("phoenix_dart",
             () -> EntityType.Builder.<PhoenixDart>of(PhoenixDart::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("phoenix_dart"));
+    public static final RegistryObject<EntityType<ContinuumBomb>> CONTINUUM_BOMB = ENTITY_TYPES.register("continuum_bomb",
+            () -> EntityType.Builder.<ContinuumBomb>of(ContinuumBomb::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("continuum_bomb"));
+    public static final RegistryObject<EntityType<RewardItem>> REWARD_ITEM = ENTITY_TYPES.register("reward_item",
+            () -> EntityType.Builder.<RewardItem>of(RewardItem::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("reward_item"));
 
     @SubscribeEvent
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
