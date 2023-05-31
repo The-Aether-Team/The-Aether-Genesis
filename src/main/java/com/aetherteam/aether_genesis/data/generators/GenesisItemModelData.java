@@ -79,5 +79,6 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.itemBlock(GenesisBlocks.SKYROOT_CRAFTING_TABLE.get());
         this.itemBlock(GenesisBlocks.HOLYSTONE_FURNACE.get());
         this.lookalikeBlock(GenesisBlocks.SKYROOT_CHEST.get(), this.mcLoc("item/chest"));
+        this.itemBlockFlat(GenesisBlocks.SKYROOT_LADDER.get(), "construction/");
     }
 }

@@ -39,6 +39,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addBlock(GenesisBlocks.SKYROOT_CRAFTING_TABLE, "Skyroot Crafting Table");
         this.addBlock(GenesisBlocks.HOLYSTONE_FURNACE, "Holystone Furnace");
         this.addBlock(GenesisBlocks.SKYROOT_CHEST, "Skyroot Chest");
+        this.addBlock(GenesisBlocks.SKYROOT_LADDER, "Skyroot Ladder");
 
         this.addItem(GenesisItems.CONTINUUM_ORB, "Continuum Orb");
         this.addItem(GenesisItems.GOLDEN_SWET_BALL, "Golden Swet Ball");

@@ -17,7 +17,7 @@ import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.blockentity.SkyrootChestBlockEntity;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
-import com.aetherteam.aether_genesis.item.block.SkyrootCraftingTableBlockItem;
+import com.aetherteam.aether_genesis.item.block.WoodenBlockItem;
 import com.aetherteam.aether_genesis.world.treegrower.BlueSkyrootTree;
 import com.aetherteam.aether_genesis.world.treegrower.DarkBlueSkyrootTree;
 import com.aetherteam.aether_genesis.world.treegrower.PurpleCrystalTree;
@@ -76,6 +76,7 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> SKYROOT_CRAFTING_TABLE = register("skyroot_crafting_table", () -> new SkyrootCraftingTableBlock(Block.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD)));
     public static final RegistryObject<Block> HOLYSTONE_FURNACE = register("holystone_furnace", () -> new HolystoneFurnaceBlock(Block.Properties.of(Material.STONE).strength(3.5F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> SKYROOT_CHEST = register("skyroot_chest", () -> new SkyrootChestBlock(Block.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD), GenesisBlockEntityTypes.SKYROOT_CHEST::get));
+    public static final RegistryObject<LadderBlock> SKYROOT_LADDER = register("skyroot_ladder", () -> new LadderBlock(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.4F).sound(SoundType.LADDER).noOcclusion()));
 
     public static void registerPots() {
         FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
@@ -109,8 +110,8 @@ public class GenesisBlocks {
     private static <B extends Block> Supplier<BlockItem> registerBlockItem(final RegistryObject<B> blockRegistryObject) {
         return () -> {
             B block = Objects.requireNonNull(blockRegistryObject.get());
-            if (block == SKYROOT_CRAFTING_TABLE.get()) {
-                return new SkyrootCraftingTableBlockItem(block, new Item.Properties());
+            if (block == SKYROOT_CRAFTING_TABLE.get() || block == SKYROOT_LADDER.get()) {
+                return new WoodenBlockItem(block, new Item.Properties());
             } else if (block == SKYROOT_CHEST.get()) {
                 return new EntityBlockItem(block, SkyrootChestBlockEntity::new, new Item.Properties());
             }else {

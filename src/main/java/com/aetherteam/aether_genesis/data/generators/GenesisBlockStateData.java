@@ -40,6 +40,7 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
         this.skyrootCraftingTable(GenesisBlocks.SKYROOT_CRAFTING_TABLE.get(), AetherBlocks.SKYROOT_PLANKS.get(), "construction/", Aether.MODID);
         this.furnace(GenesisBlocks.HOLYSTONE_FURNACE.get());
         this.skyrootChest(GenesisBlocks.SKYROOT_CHEST.get());
+        this.skyrootLadder(GenesisBlocks.SKYROOT_LADDER.get());
     }
 
     private void makeLogWalls() {

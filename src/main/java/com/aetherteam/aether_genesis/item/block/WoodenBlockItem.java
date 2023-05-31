@@ -7,8 +7,8 @@ import net.minecraft.world.level.block.Block;
 
 import javax.annotation.Nullable;
 
-public class SkyrootCraftingTableBlockItem extends BlockItem {
-    public SkyrootCraftingTableBlockItem(Block block, Properties properties) {
+public class WoodenBlockItem extends BlockItem {
+    public WoodenBlockItem(Block block, Properties properties) {
         super(block, properties);
     }
 
