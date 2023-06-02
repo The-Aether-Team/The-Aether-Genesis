@@ -98,6 +98,14 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
                 .unlockedBy(getHasName(GenesisBlocks.SKYROOT_LADDER.get()), has(AetherTags.Items.SKYROOT_STICKS))
                 .save(consumer);
 
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HEADSTONE.get(), AetherBlocks.HOLYSTONE.get());
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), AetherBlocks.HOLYSTONE.get());
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), AetherBlocks.HOLYSTONE.get());
+
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HEADSTONE.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
+
         enchantingRecipe(RecipeCategory.FOOD, GenesisItems.RAINBOW_STRAWBERRY.get(), GenesisItems.WYNDBERRY.get(), 0.35F, 500).save(consumer, GenesisRecipeProvider.name("rainbow_strawberry_enchanting"));
     }
 }
