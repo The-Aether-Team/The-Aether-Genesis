@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.block;
 
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.block.natural.AercloudBlock;
 import com.aetherteam.aether.block.natural.AetherDoubleDropsLeaves;
 import com.aetherteam.aether.block.natural.LeavesWithParticlesBlock;
@@ -78,6 +79,13 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> SKYROOT_CHEST = register("skyroot_chest", () -> new SkyrootChestBlock(Block.Properties.of(Material.WOOD).strength(2.5F).sound(SoundType.WOOD), GenesisBlockEntityTypes.SKYROOT_CHEST::get));
     public static final RegistryObject<LadderBlock> SKYROOT_LADDER = register("skyroot_ladder", () -> new LadderBlock(BlockBehaviour.Properties.of(Material.DECORATION).strength(0.4F).sound(SoundType.LADDER).noOcclusion()));
 
+    public static final RegistryObject<RotatedPillarBlock> CARVED_PILLAR_CARVED = register("carved_pillar_carved", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<RotatedPillarBlock> CARVED_PILLAR_SIDE = register("carved_pillar_side", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
+
+    public static final RegistryObject<RotatedPillarBlock> DIVINE_CRAVED_STONE = register("divine_carved_stone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable()));
+    public static final RegistryObject<RotatedPillarBlock> DIVINE_SENTRY_STONE = register("divine_sentry_stone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable().lightLevel(GenesisBlocks::lightLevel11)));
+    public static final RegistryObject<RotatedPillarBlock> BLOOD_MOSS_HOLYSTONE = register("blood_moss_holystone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable()));
+
     public static void registerPots() {
         FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;
         pot.addPlant(GenesisBlocks.BLUE_SKYROOT_SAPLING.getId(), GenesisBlocks.POTTED_BLUE_SKYROOT_SAPLING);
@@ -126,5 +134,9 @@ public class GenesisBlocks {
 
     private static boolean ocelotOrParrot(BlockState p_235441_0_, BlockGetter p_235441_1_, BlockPos p_235441_2_, EntityType<?> p_235441_3_) {
         return p_235441_3_ == EntityType.OCELOT || p_235441_3_ == EntityType.PARROT;
+    }
+
+    private static int lightLevel11(BlockState state) {
+        return 11;
     }
 }

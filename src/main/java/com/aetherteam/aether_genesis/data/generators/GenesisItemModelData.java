@@ -82,5 +82,11 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.itemBlock(GenesisBlocks.HOLYSTONE_FURNACE.get());
         this.lookalikeBlock(GenesisBlocks.SKYROOT_CHEST.get(), this.mcLoc("item/chest"));
         this.itemBlockFlat(GenesisBlocks.SKYROOT_LADDER.get(), "construction/");
+
+        this.itemBlock(GenesisBlocks.CARVED_PILLAR_CARVED.get());
+        this.itemBlock(GenesisBlocks.CARVED_PILLAR_SIDE.get());
+        this.itemBlock(GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.itemBlock(GenesisBlocks.DIVINE_CRAVED_STONE.get());
+        this.itemBlock(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get());
     }
 }

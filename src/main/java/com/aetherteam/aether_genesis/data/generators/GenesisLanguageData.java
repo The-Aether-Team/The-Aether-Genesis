@@ -83,6 +83,12 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");
         this.addEntityType(GenesisEntityTypes.BATTLE_SENTRY, "Battle Sentry");
 
+        this.addBlock(GenesisBlocks.CARVED_PILLAR_CARVED, "Carved Pillar Carved");
+        this.addBlock(GenesisBlocks.CARVED_PILLAR_SIDE, "Carved Pillar Side");
+        this.addBlock(GenesisBlocks.DIVINE_CRAVED_STONE, "Divine Carved Stone");
+        this.addBlock(GenesisBlocks.DIVINE_SENTRY_STONE, "Divine Sentry Stone");
+        this.addBlock(GenesisBlocks.BLOOD_MOSS_HOLYSTONE, "Blood Moss Holystone");
+
         this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");
         this.addSubtitle("block", "aercloud.blue_aercloud_bounce", "Blue Aercloud bounces");

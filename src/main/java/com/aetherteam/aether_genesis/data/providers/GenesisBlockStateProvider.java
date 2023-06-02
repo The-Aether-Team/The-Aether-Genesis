@@ -4,6 +4,7 @@ import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlockStateProperties;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
+import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.block.natural.OrangeTreeBlock;
 import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
@@ -225,6 +226,10 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
         if(block == GenesisBlocks.HOLYSTONE_HEADSTONE.get())
             side = new ResourceLocation(Aether.MODID, "block/construction/" + this.name(AetherBlocks.HOLYSTONE_BRICKS.get()));
         this.axisBlock(block, side, this.extend(this.texture(this.name(block), "construction/"), "_top"));
+    }
+
+    public void dungeonBrick(RotatedPillarBlock block) {
+        this.axisBlock(block, this.texture(this.name(block), "dungeon/"),new ResourceLocation(Genesis.MODID, "block/dungeon/carved_pillar_top"));
     }
 
     public void skyrootChest(Block block) {

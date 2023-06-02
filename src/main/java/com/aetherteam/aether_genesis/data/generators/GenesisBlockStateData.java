@@ -41,6 +41,12 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
         this.furnace(GenesisBlocks.HOLYSTONE_FURNACE.get());
         this.skyrootChest(GenesisBlocks.SKYROOT_CHEST.get());
         this.skyrootLadder(GenesisBlocks.SKYROOT_LADDER.get());
+
+        this.dungeonBrick(GenesisBlocks.CARVED_PILLAR_SIDE.get());
+        this.dungeonBrick(GenesisBlocks.CARVED_PILLAR_CARVED.get());
+        this.block(GenesisBlocks.DIVINE_CRAVED_STONE.get(), "dungeon/");
+        this.block(GenesisBlocks.DIVINE_SENTRY_STONE.get(), "dungeon/");
+        this.block(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get(), "dungeon/");
     }
 
     private void makeLogWalls() {
