@@ -13,6 +13,11 @@ public class GenesisSoundEvents {
     public static final RegistryObject<SoundEvent> ENTITY_CARRION_SPROUT_HURT = register("entity.carrion_sprout.hurt");
     public static final RegistryObject<SoundEvent> ENTITY_CARRION_SPROUT_DEATH = register("entity.carrion_sprout.death");
 
+    public static final RegistryObject<SoundEvent> ITEM_MUSIC_DISC_AERWHALE = register("item.music_disc.aerwhale");
+    public static final RegistryObject<SoundEvent> ITEM_MUSIC_DISC_APPROACHES = register("item.music_disc.approaches");
+    public static final RegistryObject<SoundEvent> ITEM_MUSIC_DISC_DEMISE = register("item.music_disc.demise");
+    public static final RegistryObject<SoundEvent> ITEM_RECORDING_892 = register("item.music_disc.recording_892");
+
     public static final RegistryObject<SoundEvent> MUSIC_AETHER_NIGHT = register("music.aether_night");
     public static final RegistryObject<SoundEvent> BLUE_AERCLOUD_BOUNCE = register("block.aercloud.blue_aercloud_bounce");
 

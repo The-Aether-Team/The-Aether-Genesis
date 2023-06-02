@@ -19,6 +19,38 @@
     ],
     "subtitle": "subtitles.aether_genesis.entity.carrion_sprout.hurt"
   },
+  "item.music_disc.aerwhale": {
+    "sounds": [
+      {
+        "name": "aether_genesis:item/records/aerwhale",
+        "stream": true
+      }
+    ]
+  },
+  "item.music_disc.approaches": {
+    "sounds": [
+      {
+        "name": "aether_genesis:item/records/approaches",
+        "stream": true
+      }
+    ]
+  },
+  "item.music_disc.demise": {
+    "sounds": [
+      {
+        "name": "aether_genesis:item/records/demise",
+        "stream": true
+      }
+    ]
+  },
+  "item.music_disc.recording_892": {
+    "sounds": [
+      {
+        "name": "aether_genesis:item/records/chase",
+        "stream": true
+      }
+    ]
+  },
   "music.aether_night": {
     "sounds": [
       {
