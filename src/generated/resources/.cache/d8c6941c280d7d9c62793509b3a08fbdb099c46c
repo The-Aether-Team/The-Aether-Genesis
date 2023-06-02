@@ -1,4 +1,4 @@
-// 1.19.4	2023-05-30T10:36:53.2112225	Item Models: aether_genesis
+// 1.19.4	2023-06-01T22:33:18.9959202	Item Models: aether_genesis
 85e6dca000030d07451d6969e99df873abdf0362 assets/aether_genesis/models/item/blueberry_lollipop.json
 60294593b16695515c68207a9792014047ec36fb assets/aether_genesis/models/item/blue_parachute.json
 fa788e7092f1bda40ac52d02c79ac80c0b0b04e2 assets/aether_genesis/models/item/blue_skyroot_leaves.json
@@ -9,6 +9,7 @@ e69e7ba7ae9555f03db63addb9af9aa97190c302 assets/aether_genesis/models/item/bone_
 2991fc9b4fc56f92666d0edf5855ed9c022a9fb0 assets/aether_genesis/models/item/candy_ring.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/carrion_sprout_spawn_egg.json
 43ed2a26feb23450fac180b957897c7b26540d09 assets/aether_genesis/models/item/cocoatrice.json
+3a2fd5d4c47c9e453251c35c4c9ba020b430729f assets/aether_genesis/models/item/continuum_bomb.json
 9fab3cbf2dc68d74ccdce1fd3cb1ad8b273cb80e assets/aether_genesis/models/item/continuum_orb.json
 142dab0fc2b5840b04c80ed91dcd1a5cb7b44e50 assets/aether_genesis/models/item/continuum_ore.json
 b6a3b753f992e1af8aa12cbe742867aaf1e76858 assets/aether_genesis/models/item/cornstarch_bowl.json
