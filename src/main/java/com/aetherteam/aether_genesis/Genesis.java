@@ -1,6 +1,5 @@
 package com.aetherteam.aether_genesis;
 
-import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.block.advancement.GenesisAdvancementTriggers;
@@ -179,11 +178,6 @@ public class Genesis {
         this.addCompost(0.3F, GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get());
     }
 
-    /**
-     * Copy of {@link ComposterBlock#add(float, ItemLike)}.
-     * @param chance Chance (as a {@link Float}) to fill a compost layer.
-     * @param item The {@link ItemLike} that can be composted.
-     */
     private void addCompost(float chance, ItemLike item) {
         ComposterBlock.COMPOSTABLES.put(item.asItem(), chance);
     }

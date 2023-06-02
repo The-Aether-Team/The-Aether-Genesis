@@ -73,6 +73,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.CARRION_SPROUT_SPAWN_EGG, "Carrion Sprout Spawn Egg");
         this.addItem(GenesisItems.DARK_SWET_SPAWN_EGG, "Dark Swet Spawn Egg");
         this.addItem(GenesisItems.TEMPEST_SPAWN_EGG, "Tempest Spawn Egg");
+        this.addItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG, "Battle Sentry Spawn Egg");
         this.addItem(GenesisItems.BLUE_PARACHUTE, "Blue Parachute");
         this.addItem(GenesisItems.GREEN_PARACHUTE, "Green Parachute");
         this.addItem(GenesisItems.PURPLE_PARACHUTE, "Purple Parachute");
@@ -80,6 +81,13 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.CARRION_SPROUT, "Carrion Sprout");
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");
+        this.addEntityType(GenesisEntityTypes.BATTLE_SENTRY, "Battle Sentry");
+
+        this.addBlock(GenesisBlocks.CARVED_PILLAR_CARVED, "Carved Pillar Carved");
+        this.addBlock(GenesisBlocks.CARVED_PILLAR_SIDE, "Carved Pillar Side");
+        this.addBlock(GenesisBlocks.DIVINE_CRAVED_STONE, "Divine Carved Stone");
+        this.addBlock(GenesisBlocks.DIVINE_SENTRY_STONE, "Divine Sentry Stone");
+        this.addBlock(GenesisBlocks.BLOOD_MOSS_HOLYSTONE, "Blood Moss Holystone");
 
         this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");

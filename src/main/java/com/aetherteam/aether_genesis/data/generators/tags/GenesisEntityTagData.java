@@ -30,7 +30,8 @@ public class GenesisEntityTagData extends EntityTypeTagsProvider {
         this.tag(AetherTags.Entities.TREATED_AS_AETHER_ENTITY).add(
                 GenesisEntityTypes.CARRION_SPROUT.get(),
                 GenesisEntityTypes.DARK_SWET.get(),
-                GenesisEntityTypes.TEMPEST.get());
+                GenesisEntityTypes.TEMPEST.get(),
+                GenesisEntityTypes.BATTLE_SENTRY.get());
         this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(
                 GenesisEntityTypes.TEMPEST.get());
         this.tag(AetherTags.Entities.UNHOOKABLE).add(GenesisEntityTypes.CARRION_SPROUT.get());

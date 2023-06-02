@@ -1,6 +1,5 @@
 package com.aetherteam.aether_genesis.loot.functions;
 
-import com.aetherteam.aether.loot.functions.AetherLootFunctions;
 import com.aetherteam.aether_genesis.entity.passive.CarrionSprout;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.google.gson.JsonDeserializationContext;
