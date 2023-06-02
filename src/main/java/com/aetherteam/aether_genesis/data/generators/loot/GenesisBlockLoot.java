@@ -7,9 +7,7 @@ import com.aetherteam.aether_genesis.data.providers.GenesisBlockLootSubProvider;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 
 import java.util.HashSet;
 import java.util.Set;

@@ -1,7 +1,5 @@
 package com.aetherteam.aether_genesis.blockentity;
 
-import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.blockentity.AetherBlockEntityTypes;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;

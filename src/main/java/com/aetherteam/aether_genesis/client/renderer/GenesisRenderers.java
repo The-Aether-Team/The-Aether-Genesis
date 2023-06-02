@@ -1,22 +1,17 @@
 package com.aetherteam.aether_genesis.client.renderer;
 
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.blockentity.AetherBlockEntityTypes;
-import com.aetherteam.aether.client.renderer.blockentity.TreasureChestRenderer;
 import com.aetherteam.aether.client.renderer.entity.IceCrystalRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
-import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
-import com.aetherteam.aether_genesis.client.renderer.entity.CarrionSproutRenderer;
-import com.aetherteam.aether_genesis.client.renderer.entity.DarkSwetRenderer;
-import com.aetherteam.aether_genesis.client.renderer.entity.PhoenixDartRenderer;
-import com.aetherteam.aether_genesis.client.renderer.entity.TempestRenderer;
+import com.aetherteam.aether_genesis.client.renderer.entity.*;
 import com.aetherteam.aether_genesis.client.renderer.model.CarrionSproutModel;
 import com.aetherteam.aether_genesis.client.renderer.model.TempestModel;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.SlimeModel;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemEntityRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -35,6 +30,7 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.CARRION_SPROUT.get(), CarrionSproutRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.DARK_SWET.get(), DarkSwetRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TEMPEST.get(), TempestRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.BATTLE_SENTRY.get(), BattleSentryRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.BLUE_PARACHUTE.get(), (context) -> new ParachuteRenderer(context, AetherBlocks.BLUE_AERCLOUD));
         event.registerEntityRenderer(GenesisEntityTypes.GREEN_PARACHUTE.get(), (context) -> new ParachuteRenderer(context, GenesisBlocks.GREEN_AERCLOUD));
@@ -53,6 +49,7 @@ public class GenesisRenderers {
         event.registerLayerDefinition(GenesisModelLayers.CARRION_SPROUT, CarrionSproutModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.TEMPEST, TempestModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.TEMPEST_TRANSPARENCY, TempestModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.BATTLE_SENTRY, SlimeModel::createOuterBodyLayer);
     }
 
     @SubscribeEvent
