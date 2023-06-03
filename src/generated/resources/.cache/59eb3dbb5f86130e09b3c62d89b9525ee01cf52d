@@ -1,6 +1,8 @@
-// 1.19.4	2023-05-30T10:36:53.0822212	Loot Tables
+// 1.19.4	2023-06-02T11:52:19.6583364	Loot Tables
 ba95b47436df1e313939c55709af7bc43d0b26ec data/aether_genesis/loot_tables/blocks/blue_skyroot_leaves.json
 2fa73eaedce1f2e997d15ae8f8d595b7b7667d00 data/aether_genesis/loot_tables/blocks/blue_skyroot_sapling.json
+35631b98d32bc17a3292e49d2cbdd4bf65d0504a data/aether_genesis/loot_tables/blocks/carved_pillar_carved.json
+4cd9295dc013dd023991d396a44f465fc61c52ff data/aether_genesis/loot_tables/blocks/carved_pillar_side.json
 52662bcbdc1032d19ce8c67dc2b87f3ea4c1ce16 data/aether_genesis/loot_tables/blocks/continuum_ore.json
 d8a60a2f84d3d07aff63593c06d32aa237400b97 data/aether_genesis/loot_tables/blocks/dark_blue_skyroot_leaves.json
 ce094a38615d29be488d47763cea21d55197ba95 data/aether_genesis/loot_tables/blocks/dark_blue_skyroot_sapling.json
@@ -26,6 +28,7 @@ ecb5f8264ad2422853924589ff820411993b7774 data/aether_genesis/loot_tables/blocks/
 fe79d3453e6070902ecf31ba40543e5196ba8ede data/aether_genesis/loot_tables/blocks/storm_aercloud.json
 fcbbf31c0f53480c3568a36d8e95ded1c2634bba data/aether_genesis/loot_tables/blocks/stripped_skyroot_log_wall.json
 036d82af7d8566e340f531bef6d019b32fcb57e6 data/aether_genesis/loot_tables/blocks/stripped_skyroot_wood_wall.json
+ea2831f7a842c1c36445f1f072c9e5712c7c45d0 data/aether_genesis/loot_tables/entities/battle_sentry.json
 d7edf984fd9b3bd28788301cdacef3862f1c6011 data/aether_genesis/loot_tables/entities/carrion_sprout.json
 fdd2d3b99342e476740f38f5a547ed6bfbb1ae3f data/aether_genesis/loot_tables/entities/dark_swet.json
 02a21d8d2c603b349e61a65ed350f1b654397f28 data/aether_genesis/loot_tables/entities/tempest.json

@@ -52,6 +52,12 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get().asItem(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get().asItem(),
                 GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get().asItem());
+        this.tag(ItemTags.MUSIC_DISCS).add(
+                GenesisItems.MUSIC_DISC_AERWHALE.get(),
+                GenesisItems.MUSIC_DISC_APPROACHES.get(),
+                GenesisItems.MUSIC_DISC_DEMISE.get(),
+                GenesisItems.RECORDING_892.get());
+
         this.tag(AetherTags.Items.AETHER_ACCESSORY).add(
                 GenesisItems.CRYSTAL_EXP_BOTTLE.get());
         this.tag(AetherTags.Items.AETHER_RING).add(

@@ -78,6 +78,15 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.GREEN_PARACHUTE, "Green Parachute");
         this.addItem(GenesisItems.PURPLE_PARACHUTE, "Purple Parachute");
 
+        this.addItem(GenesisItems.MUSIC_DISC_AERWHALE, "Aerwhale Music Disc");
+        this.addDiscDesc(GenesisItems.MUSIC_DISC_AERWHALE, "Aether UK - Aerwhale");
+        this.addItem(GenesisItems.MUSIC_DISC_APPROACHES, "Moa Music Disc");
+        this.addDiscDesc(GenesisItems.MUSIC_DISC_APPROACHES, "Emile van Krieken - Approaches");
+        this.addItem(GenesisItems.MUSIC_DISC_DEMISE, "Labyrinth Music Disc");
+        this.addDiscDesc(GenesisItems.MUSIC_DISC_DEMISE, "Moorziey - Demise");
+        this.addItem(GenesisItems.RECORDING_892, "Recording #892");
+        this.addDiscDesc(GenesisItems.RECORDING_892, "Emile van Krieken - ???");
+
         this.addEntityType(GenesisEntityTypes.CARRION_SPROUT, "Carrion Sprout");
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");

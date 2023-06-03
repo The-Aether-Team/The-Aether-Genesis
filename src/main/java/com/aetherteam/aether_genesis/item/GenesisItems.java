@@ -2,8 +2,10 @@ package com.aetherteam.aether_genesis.item;
 
 import com.aetherteam.aether.item.food.GummySwetItem;
 import com.aetherteam.aether.item.materials.SwetBallItem;
+import com.aetherteam.aether.item.miscellaneous.AetherRecordItem;
 import com.aetherteam.aether.item.miscellaneous.ParachuteItem;
 import com.aetherteam.aether_genesis.Genesis;
+import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.accessories.BoneRing;
 import com.aetherteam.aether_genesis.item.accessories.CandyRing;
@@ -55,6 +57,11 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> PHOENIX_DART_SHOOTER = ITEMS.register("phoenix_dart_shooter", () -> new PhoenixDartShooterItem(GOLDEN_DART, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> CONTINUUM_BOMB = ITEMS.register("continuum_bomb", () -> new ContinuumBombItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+
+    public static final RegistryObject<Item> MUSIC_DISC_AERWHALE = ITEMS.register("music_disc_aerwhale", () -> new AetherRecordItem(5, GenesisSoundEvents.ITEM_MUSIC_DISC_AERWHALE, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 3560));
+    public static final RegistryObject<Item> MUSIC_DISC_APPROACHES = ITEMS.register("music_disc_approaches", () -> new AetherRecordItem(6, GenesisSoundEvents.ITEM_MUSIC_DISC_APPROACHES, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 5480));
+    public static final RegistryObject<Item> MUSIC_DISC_DEMISE = ITEMS.register("music_disc_demise", () -> new AetherRecordItem(7, GenesisSoundEvents.ITEM_MUSIC_DISC_DEMISE, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 6000));
+    public static final RegistryObject<Item> RECORDING_892 = ITEMS.register("recording_892", () -> new AetherRecordItem(8, GenesisSoundEvents.ITEM_RECORDING_892, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 1940));
 
     public static final RegistryObject<Item> BLUE_PARACHUTE = ITEMS.register("blue_parachute", () -> new ParachuteItem(GenesisEntityTypes.BLUE_PARACHUTE, new Item.Properties().durability(1)));
     public static final RegistryObject<Item> GREEN_PARACHUTE = ITEMS.register("green_parachute", () -> new ParachuteItem(GenesisEntityTypes.GREEN_PARACHUTE, new Item.Properties().durability(1)));
