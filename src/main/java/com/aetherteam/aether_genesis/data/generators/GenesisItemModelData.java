@@ -48,12 +48,18 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.CANDY_RING.get(), "accessories/");
         this.item(GenesisItems.SKYROOT_RING.get(), "accessories/");
 
+        this.item(GenesisItems.MUSIC_DISC_AERWHALE.get(), "miscellaneous/");
+        this.item(GenesisItems.MUSIC_DISC_APPROACHES.get(), "miscellaneous/");
+        this.item(GenesisItems.MUSIC_DISC_DEMISE.get(), "miscellaneous/");
+        this.item(GenesisItems.RECORDING_892.get(), "miscellaneous/");
+
         this.dartShooterItem(GenesisItems.PHOENIX_DART_SHOOTER.get(), "combat/");
         this.item(GenesisItems.CONTINUUM_BOMB.get(), "miscellaneous/");
 
         this.eggItem(GenesisItems.CARRION_SPROUT_SPAWN_EGG.get());
         this.eggItem(GenesisItems.DARK_SWET_SPAWN_EGG.get());
         this.eggItem(GenesisItems.TEMPEST_SPAWN_EGG.get());
+        this.eggItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG.get());
 
         this.itemBlock(GenesisBlocks.GREEN_AERCLOUD.get());
         this.itemBlock(GenesisBlocks.PURPLE_AERCLOUD.get());
@@ -81,5 +87,11 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.itemBlock(GenesisBlocks.HOLYSTONE_FURNACE.get());
         this.lookalikeBlock(GenesisBlocks.SKYROOT_CHEST.get(), this.mcLoc("item/chest"));
         this.itemBlockFlat(GenesisBlocks.SKYROOT_LADDER.get(), "construction/");
+
+        this.itemBlock(GenesisBlocks.CARVED_PILLAR_CARVED.get());
+        this.itemBlock(GenesisBlocks.CARVED_PILLAR_SIDE.get());
+        this.itemBlock(GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.itemBlock(GenesisBlocks.DIVINE_CRAVED_STONE.get());
+        this.itemBlock(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get());
     }
 }

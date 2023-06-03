@@ -1,6 +1,5 @@
 package com.aetherteam.aether_genesis.data.generators;
 
-import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import net.minecraft.data.PackOutput;
@@ -24,6 +23,19 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
         this.add(GenesisSoundEvents.ENTITY_CARRION_SPROUT_DEATH,
                 definition().with(sound("minecraft:damage/fallbig"))
                         .subtitle("subtitles.aether_genesis.entity.carrion_sprout.death")
+        );
+
+        this.add(GenesisSoundEvents.ITEM_MUSIC_DISC_AERWHALE,
+                definition().with(sound("aether_genesis:item/records/aerwhale").stream())
+        );
+        this.add(GenesisSoundEvents.ITEM_MUSIC_DISC_APPROACHES,
+                definition().with(sound("aether_genesis:item/records/approaches").stream())
+        );
+        this.add(GenesisSoundEvents.ITEM_MUSIC_DISC_DEMISE,
+                definition().with(sound("aether_genesis:item/records/demise").stream())
+        );
+        this.add(GenesisSoundEvents.ITEM_RECORDING_892,
+                definition().with(sound("aether_genesis:item/records/chase").stream())
         );
 
         this.add(GenesisSoundEvents.MUSIC_AETHER_NIGHT,
