@@ -72,5 +72,5 @@ public class GenesisItems {
     public static final RegistryObject<SpawnEggItem> TEMPEST_SPAWN_EGG = ITEMS.register("tempest_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntityTypes.TEMPEST, 0x3C464C, 0xC3E6F0, new Item.Properties()));
 
     public static final RegistryObject<SpawnEggItem> BATTLE_SENTRY_SPAWN_EGG = ITEMS.register("battle_sentry_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntityTypes.BATTLE_SENTRY, 0x808080,0x3A8AEC, new Item.Properties()));
-
+    public static final RegistryObject<SpawnEggItem> TRACKING_GOLEM_SPAWN_EGG = ITEMS.register("tracking_golem_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntityTypes.TRACKING_GOLEM, 0x808080,0x3A8AEC, new Item.Properties()));
 }

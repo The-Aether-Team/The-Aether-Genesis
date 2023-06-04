@@ -60,6 +60,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.eggItem(GenesisItems.DARK_SWET_SPAWN_EGG.get());
         this.eggItem(GenesisItems.TEMPEST_SPAWN_EGG.get());
         this.eggItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG.get());
+        this.eggItem(GenesisItems.TRACKING_GOLEM_SPAWN_EGG.get());
 
         this.itemBlock(GenesisBlocks.GREEN_AERCLOUD.get());
         this.itemBlock(GenesisBlocks.PURPLE_AERCLOUD.get());
