@@ -3,6 +3,7 @@ package com.aetherteam.aether_genesis.client.renderer;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.model.TrackingGolemModel;
 import com.aetherteam.aether_genesis.entity.monster.TrackingGolem;
+import com.aetherteam.aether_genesis.entity.monster.boss.SentryGuardian;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -23,13 +24,17 @@ public class TrackingGolemLayer<T extends TrackingGolem, M extends TrackingGolem
 	}
 
 	@Override
-	public void render(@Nonnull PoseStack poseStack, MultiBufferSource buffer, int packedLight, @Nonnull T sentry, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-		VertexConsumer consumer = buffer.getBuffer(SENTRY_EYE);
-		VertexConsumer consumer_lit = buffer.getBuffer(SENTRY_EYE_GLOW);
-		if (!sentry.getSeenEnemy()) {
-			this.getParentModel().renderToBuffer(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
-		}else
-			this.getParentModel().renderToBuffer(poseStack, consumer_lit, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+	public void render(@Nonnull PoseStack poseStack, MultiBufferSource buffer, int packedLight, @Nonnull TrackingGolem golem, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
+		VertexConsumer consumer = buffer.getBuffer(this.renderType(golem));
+		this.getParentModel().renderToBuffer(poseStack, consumer, 15728640, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+	}
+
+	@Nonnull
+	public RenderType renderType(TrackingGolem golem) {
+		if (golem.getSeenEnemy()) {
+			return SENTRY_EYE_GLOW;
+		}
+		return this.renderType();
 	}
 
 	@Nonnull

@@ -19,6 +19,30 @@
     ],
     "subtitle": "subtitles.aether_genesis.entity.carrion_sprout.hurt"
   },
+  "entity.sentry_guardian.death": {
+    "sounds": [
+      "aether_genesis:entity/sentry_guardian/death"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tracking_golem.creepy_seen"
+  },
+  "entity.sentry_guardian.hit": {
+    "sounds": [
+      "aether_genesis:entity/sentry_guardian/hit"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.sentry_guardian.hit"
+  },
+  "entity.sentry_guardian.living": {
+    "sounds": [
+      "aether_genesis:entity/sentry_guardian/living"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.sentry_guardian.living"
+  },
+  "entity.sentry_guardian.summon": {
+    "sounds": [
+      "aether_genesis:entity/sentry_guardian/spawn"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.sentry_guardian.spawn"
+  },
   "entity.tracking_golem.creepy_seen": {
     "sounds": [
       "aether_genesis:entity/tracking_golem/creepy_seen"

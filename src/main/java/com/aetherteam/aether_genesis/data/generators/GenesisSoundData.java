@@ -69,5 +69,22 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                 definition().with(sound("aether_genesis:entity/tracking_golem/seen_enemy"))
                         .subtitle("subtitles.aether_genesis.entity.tracking_golem.seen_enemy")
         );
+
+        this.add(GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_DEATH,
+                definition().with(sound("aether_genesis:entity/sentry_guardian/death"))
+                        .subtitle("subtitles.aether_genesis.entity.tracking_golem.creepy_seen")
+        );
+        this.add(GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_SUMMON,
+                definition().with(sound("aether_genesis:entity/sentry_guardian/spawn"))
+                        .subtitle("subtitles.aether_genesis.entity.sentry_guardian.spawn")
+        );
+        this.add(GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_LIVING,
+                definition().with(sound("aether_genesis:entity/sentry_guardian/living"))
+                        .subtitle("subtitles.aether_genesis.entity.sentry_guardian.living")
+        );
+        this.add(GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_HIT,
+                definition().with(sound("aether_genesis:entity/sentry_guardian/hit"))
+                        .subtitle("subtitles.aether_genesis.entity.sentry_guardian.hit")
+        );
     }
 }

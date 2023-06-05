@@ -10,6 +10,7 @@ public class GenesisModelLayers {
     public static final ModelLayerLocation TEMPEST_TRANSPARENCY = register("tempest", "transparency");
     public static final ModelLayerLocation BATTLE_SENTRY = register("battle_sentry");
     public static final ModelLayerLocation TRACKING_GOLEM = register("tracking_golem");
+    public static final ModelLayerLocation SENTRY_GUARDIAN = register("sentry_guardian");
 
     private static ModelLayerLocation register(String name) {
         return register(name, "main");
