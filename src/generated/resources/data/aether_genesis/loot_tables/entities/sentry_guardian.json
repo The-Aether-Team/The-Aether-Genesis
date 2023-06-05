@@ -13,7 +13,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "aether:bronze_dungeon_key"
+          "name": "aether_genesis:guardian_key"
         }
       ],
       "rolls": 1.0

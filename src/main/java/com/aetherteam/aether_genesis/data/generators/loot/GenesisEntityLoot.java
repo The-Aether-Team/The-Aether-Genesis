@@ -73,7 +73,7 @@ public class GenesisEntityLoot extends EntityLootSubProvider {
         );
         this.add(GenesisEntityTypes.SENTRY_GUARDIAN.get(), LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(AetherItems.BRONZE_DUNGEON_KEY.get())
+                        .add(LootItem.lootTableItem(GenesisItems.GUARDIAN_KEY.get())
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
                         )
                 )
