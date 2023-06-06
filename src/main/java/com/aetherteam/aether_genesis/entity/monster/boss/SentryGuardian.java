@@ -25,6 +25,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
@@ -71,6 +72,7 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
     public static AttributeSupplier.Builder createMobAttributes() {
         return Monster.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 250)
+                .add(Attributes.ATTACK_DAMAGE, 16)
                 .add(Attributes.MOVEMENT_SPEED, 0.28)
                 .add(Attributes.FOLLOW_RANGE, 8.0);
     }
@@ -82,7 +84,7 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
         this.goalSelector.addGoal(5, new MoveTowardsRestrictionGoal(this, 1.0));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this, SentryGuardian.class));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, livingEntity -> this.isBossFight()));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, livingEntity -> this.isBossFight()));
         this.targetSelector.addGoal(2, new SummonSentryGoal(this));
     }
 
@@ -219,9 +221,10 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
     public boolean hurt(DamageSource source, float damage) {
         Entity entity = source.getDirectEntity();
         Entity attacker = source.getEntity();
-        if (entity != null && source.is(DamageTypes.MOB_PROJECTILE)) {
-            if (attacker instanceof Player && ((Player)attacker).getMainHandItem() != Items.AIR.getDefaultInstance()) {
+        if (entity != null && source.is(DamageTypeTags.IS_PROJECTILE)) {
+            if (!this.level.isClientSide && attacker instanceof Player && ((Player)attacker).getMainHandItem() != Items.AIR.getDefaultInstance()) {
                 this.chatTime = 60;
+                attacker.sendSystemMessage(Component.translatable("gui.genesis.boss.message.projectile"));
             }
             return false;
         }
