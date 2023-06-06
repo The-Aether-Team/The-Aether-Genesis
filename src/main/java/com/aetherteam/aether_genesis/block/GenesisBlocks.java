@@ -1,6 +1,5 @@
 package com.aetherteam.aether_genesis.block;
 
-import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.block.natural.AercloudBlock;
 import com.aetherteam.aether.block.natural.AetherDoubleDropsLeaves;
 import com.aetherteam.aether.block.natural.LeavesWithParticlesBlock;

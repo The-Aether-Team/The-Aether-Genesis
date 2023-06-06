@@ -2,6 +2,7 @@ package com.aetherteam.aether_genesis.data.generators;
 
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlocks;
+import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.data.providers.GenesisItemModelProvider;
@@ -30,6 +31,8 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.BLUE_PARACHUTE.get(), "miscellaneous/");
         this.item(GenesisItems.GREEN_PARACHUTE.get(), "miscellaneous/");
         this.item(GenesisItems.PURPLE_PARACHUTE.get(), "miscellaneous/");
+
+        this.rotatedItem(GenesisItems.GUARDIAN_KEY.get(), "miscellaneous/");
 
         this.item(GenesisItems.ICESTONE_POPROCKS.get(), "food/");
         this.item(GenesisItems.COCOATRICE.get(), "food/");
@@ -60,6 +63,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.eggItem(GenesisItems.DARK_SWET_SPAWN_EGG.get());
         this.eggItem(GenesisItems.TEMPEST_SPAWN_EGG.get());
         this.eggItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG.get());
+        this.eggItem(GenesisItems.TRACKING_GOLEM_SPAWN_EGG.get());
 
         this.itemBlock(GenesisBlocks.GREEN_AERCLOUD.get());
         this.itemBlock(GenesisBlocks.PURPLE_AERCLOUD.get());
