@@ -3,14 +3,13 @@ package com.aetherteam.aether_genesis.client.renderer;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.client.renderer.entity.IceCrystalRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
+import com.aetherteam.aether.client.renderer.entity.model.SliderModel;
+import com.aetherteam.aether.entity.monster.dungeon.boss.slider.Slider;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.client.renderer.entity.*;
-import com.aetherteam.aether_genesis.client.renderer.model.CarrionSproutModel;
-import com.aetherteam.aether_genesis.client.renderer.model.SentryGuardianModel;
-import com.aetherteam.aether_genesis.client.renderer.model.TempestModel;
-import com.aetherteam.aether_genesis.client.renderer.model.TrackingGolemModel;
+import com.aetherteam.aether_genesis.client.renderer.model.*;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.SlimeModel;
@@ -36,6 +35,7 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.TRACKING_GOLEM.get(), TrackingGolemRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.SENTRY_GUARDIAN.get(), SentryGuardianRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), HostMimicRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.BLUE_PARACHUTE.get(), (context) -> new ParachuteRenderer(context, AetherBlocks.BLUE_AERCLOUD));
         event.registerEntityRenderer(GenesisEntityTypes.GREEN_PARACHUTE.get(), (context) -> new ParachuteRenderer(context, GenesisBlocks.GREEN_AERCLOUD));
@@ -46,7 +46,7 @@ public class GenesisRenderers {
 
         event.registerEntityRenderer(GenesisEntityTypes.CONTINUUM_BOMB.get(), (context) -> new ThrownItemRenderer<>(context, 1.0F, true));
         event.registerEntityRenderer(GenesisEntityTypes.REWARD_ITEM.get(), ItemEntityRenderer::new);
-
+        event.registerEntityRenderer(GenesisEntityTypes.HOST_EYE.get(), HostEyeRenderer::new);
     }
 
     @SubscribeEvent
@@ -57,6 +57,8 @@ public class GenesisRenderers {
         event.registerLayerDefinition(GenesisModelLayers.BATTLE_SENTRY, SlimeModel::createOuterBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.TRACKING_GOLEM, TrackingGolemModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SENTRY_GUARDIAN, SentryGuardianModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.SLIDER_HOST_MIMIC, SliderHostMimicModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.HOST_EYE, HostEyeModel::createBodyLayer);
     }
 
     @SubscribeEvent

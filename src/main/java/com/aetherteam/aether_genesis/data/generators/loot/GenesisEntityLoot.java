@@ -78,6 +78,13 @@ public class GenesisEntityLoot extends EntityLootSubProvider {
                         )
                 )
         );
+        this.add(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(GenesisItems.HOST_KEY.get())
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                        )
+                )
+        );
     }
 
     @Override

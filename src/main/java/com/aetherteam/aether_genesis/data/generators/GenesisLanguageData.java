@@ -81,6 +81,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.PURPLE_PARACHUTE, "Purple Parachute");
 
         this.addItem(GenesisItems.GUARDIAN_KEY, "Guardian Key");
+        this.addItem(GenesisItems.HOST_KEY, "Host Key");
 
         this.addItem(GenesisItems.MUSIC_DISC_AERWHALE, "Aerwhale Music Disc");
         this.addDiscDesc(GenesisItems.MUSIC_DISC_AERWHALE, "Aether UK - Aerwhale");

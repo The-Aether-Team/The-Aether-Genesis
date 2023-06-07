@@ -38,7 +38,8 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.GREEN_PARACHUTE.get(),
                 GenesisItems.PURPLE_PARACHUTE.get());
         this.tag(AetherTags.Items.DUNGEON_KEYS).add(
-                GenesisItems.GUARDIAN_KEY.get());
+                GenesisItems.GUARDIAN_KEY.get(),
+                GenesisItems.HOST_KEY.get());
 
         this.tag(ItemTags.SAPLINGS).add(
                 GenesisBlocks.BLUE_SKYROOT_SAPLING.get().asItem(),

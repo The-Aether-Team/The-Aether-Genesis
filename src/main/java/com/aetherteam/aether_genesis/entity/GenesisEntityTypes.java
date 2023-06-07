@@ -8,8 +8,10 @@ import com.aetherteam.aether_genesis.entity.monster.BattleSentry;
 import com.aetherteam.aether_genesis.entity.monster.Tempest;
 import com.aetherteam.aether_genesis.entity.monster.TrackingGolem;
 import com.aetherteam.aether_genesis.entity.monster.boss.SentryGuardian;
+import com.aetherteam.aether_genesis.entity.monster.boss.SliderHostMimic;
 import com.aetherteam.aether_genesis.entity.passive.CarrionSprout;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.levelgen.Heightmap;
@@ -41,6 +43,8 @@ public class GenesisEntityTypes {
 
     public static final RegistryObject<EntityType<SentryGuardian>> SENTRY_GUARDIAN = ENTITY_TYPES.register("sentry_guardian",
             () -> EntityType.Builder.of(SentryGuardian::new, MobCategory.MONSTER).sized(2.25F, 2.5F).fireImmune().clientTrackingRange(10).build("sentry_guardian"));
+    public static final RegistryObject<EntityType<SliderHostMimic>> SLIDER_HOST_MIMIC = ENTITY_TYPES.register("slider_host_mimic",
+            () -> EntityType.Builder.of(SliderHostMimic::new, MobCategory.MONSTER).sized(2, 2.5F).clientTrackingRange(10).build("slider_host_mimic"));
 
     // Miscellaneous
     public static final RegistryObject<EntityType<BlueParachute>> BLUE_PARACHUTE = ENTITY_TYPES.register("blue_parachute",
@@ -59,6 +63,8 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.<ContinuumBomb>of(ContinuumBomb::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("continuum_bomb"));
     public static final RegistryObject<EntityType<RewardItem>> REWARD_ITEM = ENTITY_TYPES.register("reward_item",
             () -> EntityType.Builder.<RewardItem>of(RewardItem::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("reward_item"));
+    public static final RegistryObject<EntityType<HostEye>> HOST_EYE = ENTITY_TYPES.register("host_eye",
+            () -> EntityType.Builder.of(HostEye::new, MobCategory.MISC).sized(0.4F, 0.4F).clientTrackingRange(10).fireImmune().build("host_eye"));
 
     @SubscribeEvent
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
@@ -75,5 +81,7 @@ public class GenesisEntityTypes {
         event.put(GenesisEntityTypes.BATTLE_SENTRY.get(), BattleSentry.createMobAttributes().build());
         event.put(GenesisEntityTypes.TRACKING_GOLEM.get(), TrackingGolem.createMobAttributes().build());
         event.put(GenesisEntityTypes.SENTRY_GUARDIAN.get(), SentryGuardian.createMobAttributes().build());
+        event.put(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), SliderHostMimic.createHostAttributes().build());
+        event.put(GenesisEntityTypes.HOST_EYE.get(), HostEye.createMobAttributes().build());
     }
 }
