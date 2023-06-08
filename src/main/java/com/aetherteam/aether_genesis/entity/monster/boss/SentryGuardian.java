@@ -78,18 +78,20 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new DoNothingGoal(this));
-        this.goalSelector.addGoal(2,  new ContinuousMeleeAttackGoal(this, 1.0, false));
+        this.targetSelector.addGoal(2,  new ContinuousMeleeAttackGoal(this, 1.0, false));
+        this.targetSelector.addGoal(3, new SummonSentryGoal(this));
         this.goalSelector.addGoal(5, new MoveTowardsRestrictionGoal(this, 1.0));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this, SentryGuardian.class));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, livingEntity -> this.isBossFight()));
-        this.targetSelector.addGoal(2, new SummonSentryGoal(this));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, livingEntity -> this.isBossFight()));
     }
 
     public SentryGuardian(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.bossFight = new ServerBossEvent(this.getBossName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS);
         this.bossFight.setVisible(false);
+        this.xpReward = XP_REWARD_BOSS;
+        this.setPersistenceRequired();
     }
 
     public void spawnSentry() {
@@ -110,11 +112,6 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
     @Override
     protected SoundEvent getHurtSound(@Nonnull DamageSource damageSource) {
         return GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_HIT.get();
-    }
-
-    @Override
-    public boolean canBeCollidedWith() {
-        return !this.isAwake();
     }
 
     @Override
@@ -377,9 +374,6 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
             return !this.sentryGuardian.isBossFight();
         }
 
-        /**
-         * Returns the sun spirit to its original position.
-         */
         @Override
         public void start() {
             this.sentryGuardian.setDeltaMovement(Vec3.ZERO);

@@ -4,7 +4,6 @@ import com.aetherteam.aether.api.BossNameGenerator;
 import com.aetherteam.aether.api.BossRoomTracker;
 import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.entity.BossMob;
-import com.aetherteam.aether.entity.ai.controller.BlankMoveControl;
 import com.aetherteam.aether.network.AetherPacketHandler;
 import com.aetherteam.aether.network.packet.client.BossInfoPacket;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
@@ -34,6 +33,8 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
@@ -66,12 +67,21 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
 
     public SliderHostMimic(EntityType<? extends SliderHostMimic> entityType, Level level) {
         super(entityType, level);
-        this.bossFight = new ServerBossEvent(this.getBossName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS);
+        this.bossFight = new ServerBossEvent(this.getBossName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS);
         this.bossFight.setVisible(false);
         this.xpReward = XP_REWARD_BOSS;
-        this.setRot(0, 0);
-        this.moveControl = new BlankMoveControl(this);
         this.setPersistenceRequired();
+    }
+
+    @Override
+    protected void registerGoals() {
+        this.goalSelector.addGoal(0, new DoNothingGoal(this));
+        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Player.class, 3.0F, 1.25F, 2.0F));
+        this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this, SentryGuardian.class));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, livingEntity -> this.isBossFight()));
     }
 
     public SliderHostMimic self(){
@@ -193,7 +203,6 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
                 this.setTarget(player);
             }
         if (this.getTarget() != null && canAttack(this.getTarget()) && !this.getTarget().isDeadOrDying()) {
-            lookAt(this.getTarget(), 10, 10);
             if (this.eyes.size() < 4) {
                     if (this.sendDelay <= 0)
                         if (!this.level.isClientSide)
@@ -361,7 +370,7 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
 
     @Override
     public float getYRot() {
-        return isAwake() ? 0 : super.getYRot();
+        return !isAwake() ? 0 : super.getYRot();
     }
 
     @Override
@@ -427,5 +436,26 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
 
     public int getChatCooldown() {
         return this.chatCooldown;
+    }
+
+    public static class DoNothingGoal extends Goal {
+        private final SliderHostMimic sliderHostMimic;
+        public DoNothingGoal(SliderHostMimic sliderHostMimic) {
+            this.sliderHostMimic = sliderHostMimic;
+            this.setFlags(EnumSet.of(Flag.MOVE, Flag.JUMP));
+        }
+
+        @Override
+        public boolean canUse() {
+            return !this.sliderHostMimic.isAwake();
+        }
+
+        @Override
+        public void start() {
+            this.sliderHostMimic.setDeltaMovement(Vec3.ZERO);
+            this.sliderHostMimic.setPos(this.sliderHostMimic.position().x,
+                    this.sliderHostMimic.position().y,
+                    this.sliderHostMimic.position().z);
+        }
     }
 }
