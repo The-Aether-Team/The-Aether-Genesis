@@ -78,8 +78,6 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
         this.goalSelector.addGoal(0, new DoNothingGoal(this));
         this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Player.class, 3.0F, 1.25F, 2.0F));
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 8.0F));
-        this.goalSelector.addGoal(8, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this, SentryGuardian.class));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, livingEntity -> this.isBossFight()));
     }
@@ -442,12 +440,13 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
         private final SliderHostMimic sliderHostMimic;
         public DoNothingGoal(SliderHostMimic sliderHostMimic) {
             this.sliderHostMimic = sliderHostMimic;
+            this.sliderHostMimic.setRot(0, 0);
             this.setFlags(EnumSet.of(Flag.MOVE, Flag.JUMP));
         }
 
         @Override
         public boolean canUse() {
-            return !this.sliderHostMimic.isAwake();
+            return !this.sliderHostMimic.isBossFight();
         }
 
         @Override
