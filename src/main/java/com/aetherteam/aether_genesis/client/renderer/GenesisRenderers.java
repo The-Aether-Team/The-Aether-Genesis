@@ -3,8 +3,6 @@ package com.aetherteam.aether_genesis.client.renderer;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.client.renderer.entity.IceCrystalRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
-import com.aetherteam.aether.client.renderer.entity.model.SliderModel;
-import com.aetherteam.aether.entity.monster.dungeon.boss.slider.Slider;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;

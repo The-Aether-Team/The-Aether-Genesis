@@ -1,8 +1,6 @@
 package com.aetherteam.aether_genesis.data.generators.loot;
 
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.entity.AetherEntityTypes;
-import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;

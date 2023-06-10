@@ -1,6 +1,5 @@
 package com.aetherteam.aether_genesis.item;
 
-import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.item.food.GummySwetItem;
 import com.aetherteam.aether.item.materials.SwetBallItem;
 import com.aetherteam.aether.item.miscellaneous.AetherRecordItem;

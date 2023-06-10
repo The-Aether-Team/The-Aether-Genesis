@@ -11,7 +11,6 @@ import com.aetherteam.aether_genesis.entity.monster.boss.SentryGuardian;
 import com.aetherteam.aether_genesis.entity.monster.boss.SliderHostMimic;
 import com.aetherteam.aether_genesis.entity.passive.CarrionSprout;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.levelgen.Heightmap;

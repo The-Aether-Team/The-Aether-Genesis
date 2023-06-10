@@ -3,7 +3,6 @@ package com.aetherteam.aether_genesis.client.renderer;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.model.TrackingGolemModel;
 import com.aetherteam.aether_genesis.entity.monster.TrackingGolem;
-import com.aetherteam.aether_genesis.entity.monster.boss.SentryGuardian;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.MultiBufferSource;
