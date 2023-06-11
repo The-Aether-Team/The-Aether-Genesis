@@ -1,6 +1,5 @@
 package com.aetherteam.aether_genesis.client.renderer.entity;
 
-import com.aetherteam.aether.entity.monster.dungeon.boss.slider.Slider;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.model.SentryGuardianModel;
 import com.aetherteam.aether_genesis.entity.monster.boss.SentryGuardian;

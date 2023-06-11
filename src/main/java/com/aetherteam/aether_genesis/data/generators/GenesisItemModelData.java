@@ -2,7 +2,6 @@ package com.aetherteam.aether_genesis.data.generators;
 
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.data.providers.GenesisItemModelProvider;
@@ -33,6 +32,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.PURPLE_PARACHUTE.get(), "miscellaneous/");
 
         this.rotatedItem(GenesisItems.GUARDIAN_KEY.get(), "miscellaneous/");
+        this.rotatedItem(GenesisItems.HOST_KEY.get(), "miscellaneous/");
 
         this.item(GenesisItems.ICESTONE_POPROCKS.get(), "food/");
         this.item(GenesisItems.COCOATRICE.get(), "food/");

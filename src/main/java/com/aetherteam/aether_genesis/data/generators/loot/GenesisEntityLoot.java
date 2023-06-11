@@ -1,8 +1,6 @@
 package com.aetherteam.aether_genesis.data.generators.loot;
 
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.entity.AetherEntityTypes;
-import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
@@ -74,6 +72,13 @@ public class GenesisEntityLoot extends EntityLootSubProvider {
         this.add(GenesisEntityTypes.SENTRY_GUARDIAN.get(), LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(GenesisItems.GUARDIAN_KEY.get())
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                        )
+                )
+        );
+        this.add(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(GenesisItems.HOST_KEY.get())
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
                         )
                 )

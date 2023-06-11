@@ -40,7 +40,7 @@ public class TrackingGolem extends Monster {
 		this.goalSelector.addGoal(2, new ContinuousMeleeAttackGoal(this, 1.0, false));
 		this.goalSelector.addGoal(5, new MoveTowardsRestrictionGoal(this, 1.0));
 		this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
-		this.targetSelector.addGoal(1, new HurtByTargetGoal(this, TrackingGolem.class));
+		this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
 		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, true));
 	}
 
@@ -94,14 +94,14 @@ public class TrackingGolem extends Monster {
 
 	public void tick() {
 		super.tick();
-		Player entityplayer = this.level.getNearestPlayer(this, 8.0D);
+		Player entityPlayer = this.level.getNearestPlayer(this, 8.0D);
 		if (this.getTarget() == null)
-			if (entityplayer != null && canBeSeenAsEnemy() && entityplayer.isAlive() && !entityplayer.isCreative() && !entityplayer.isSpectator())
-				this.setTarget(entityplayer);
-		if (this.getTarget() != null && this.getTarget() != null && canBeSeenByAnyone() && this.getTarget().isAlive()) {
-			if (this.getTarget() instanceof Player)
+			if (entityPlayer != null && canBeSeenAsEnemy() && entityPlayer.isAlive() && !entityPlayer.isCreative() && !entityPlayer.isSpectator())
+				this.setTarget(entityPlayer);
+		if (this.getTarget() != null && canBeSeenAsEnemy() && this.getTarget().isAlive()) {
+			if (this.getTarget() instanceof Player player && !player.isCreative() && !player.isSpectator())
 				faceEntity((Player) this.getTarget(), this, 3.5F, 40.0F);
-			faceEntity((Player) this.getTarget(), this, 10F, 10F);
+			lookAt(this, 10F, 10F);
 			if (!getSeenEnemy())
 				setSeenEnemy(true);
 			if (!this.level.isClientSide) {
@@ -117,15 +117,15 @@ public class TrackingGolem extends Monster {
 	public void faceEntity(Player player, Entity par1Entity, float par2, float par3) {
 		double d2, d0 = par1Entity.position().x - player.position().x;
 		double d1 = par1Entity.position().z - player.position().z;
-		if (par1Entity instanceof LivingEntity entitylivingbase) {
-			d2 = entitylivingbase.position().y + entitylivingbase.getEyeHeight() - player.position().y + player.getEyeHeight();
+		if (par1Entity instanceof LivingEntity livingEntity) {
+			d2 = livingEntity.position().y + livingEntity.getEyeHeight() - (player.position().y + player.getEyeHeight());
 		} else {
-			d2 = (par1Entity.getBoundingBox().minY + par1Entity.getBoundingBox().maxY) / 2.0D - player.position().y + player.getEyeHeight();
+			d2 = (par1Entity.getBoundingBox().minY + par1Entity.getBoundingBox().maxY) / 2.0D - (player.position().y + player.getEyeHeight());
 		}
 		double d3 = Mth.invSqrt(d0 * d0 + d1 * d1);
 		float f2 = (float) (Math.atan2(d1, d0) * 180.0D / Math.PI) - 90.0F;
 		float f3 = (float) -(Math.atan2(d2, d3) * 180.0D / Math.PI);
-		player.setXRot(updateRotation(player.getXRot(), f3 / 90, par3));
+		player.setXRot(updateRotation(player.getXRot(), f3, par3));
 		player.setYRot(updateRotation(player.getYRot(), f2, par2));
 	}
 

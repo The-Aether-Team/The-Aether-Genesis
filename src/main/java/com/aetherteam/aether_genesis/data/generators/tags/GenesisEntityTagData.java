@@ -35,12 +35,14 @@ public class GenesisEntityTagData extends EntityTypeTagsProvider {
                 GenesisEntityTypes.BATTLE_SENTRY.get());
         this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(
                 GenesisEntityTypes.TEMPEST.get(),
-                GenesisEntityTypes.SENTRY_GUARDIAN.get());
+                GenesisEntityTypes.SENTRY_GUARDIAN.get(),
+                GenesisEntityTypes.SLIDER_HOST_MIMIC.get());
         this.tag(AetherTags.Entities.UNHOOKABLE).add(GenesisEntityTypes.CARRION_SPROUT.get());
 
         this.tag(EntityTypeTags.IMPACT_PROJECTILES)
                 .add(GenesisEntityTypes.PHOENIX_DART.get());
-        this.tag(Tags.EntityTypes.BOSSES)
-                .add(GenesisEntityTypes.SENTRY_GUARDIAN.get());
+        this.tag(Tags.EntityTypes.BOSSES).add(
+                GenesisEntityTypes.SENTRY_GUARDIAN.get(),
+                GenesisEntityTypes.SLIDER_HOST_MIMIC.get());
     }
 }

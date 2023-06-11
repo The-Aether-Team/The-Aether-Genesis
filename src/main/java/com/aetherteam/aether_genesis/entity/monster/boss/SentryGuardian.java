@@ -1,13 +1,10 @@
 package com.aetherteam.aether_genesis.entity.monster.boss;
 
+import com.aetherteam.aether.api.BossNameGenerator;
 import com.aetherteam.aether.api.BossRoomTracker;
-import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.BossMob;
 import com.aetherteam.aether.entity.ai.goal.ContinuousMeleeAttackGoal;
 import com.aetherteam.aether.entity.monster.dungeon.Sentry;
-import com.aetherteam.aether.entity.monster.dungeon.boss.SunSpirit;
-import com.aetherteam.aether.entity.monster.dungeon.boss.slider.Slider;
-import com.aetherteam.aether.entity.projectile.crystal.ThunderCrystal;
 import com.aetherteam.aether.network.AetherPacketHandler;
 import com.aetherteam.aether.network.packet.client.BossInfoPacket;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
@@ -15,6 +12,7 @@ import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -26,14 +24,14 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.MoveTowardsRestrictionGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
@@ -44,6 +42,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
@@ -51,7 +50,6 @@ import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
-
 import java.util.EnumSet;
 
 import static com.aetherteam.aether.entity.AetherEntityTypes.SENTRY;
@@ -80,18 +78,20 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new DoNothingGoal(this));
-        this.goalSelector.addGoal(2,  new ContinuousMeleeAttackGoal(this, 1.0, false));
+        this.targetSelector.addGoal(2,  new ContinuousMeleeAttackGoal(this, 1.0, false));
+        this.targetSelector.addGoal(3, new SummonSentryGoal(this));
         this.goalSelector.addGoal(5, new MoveTowardsRestrictionGoal(this, 1.0));
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this, SentryGuardian.class));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, livingEntity -> this.isBossFight()));
-        this.targetSelector.addGoal(2, new SummonSentryGoal(this));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, livingEntity -> this.isBossFight()));
     }
 
     public SentryGuardian(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         this.bossFight = new ServerBossEvent(this.getBossName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS);
         this.bossFight.setVisible(false);
+        this.xpReward = XP_REWARD_BOSS;
+        this.setPersistenceRequired();
     }
 
     public void spawnSentry() {
@@ -144,9 +144,9 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
             double e = this.getBoundingBox().minY + b - 0.30000001192092896D;
             double f = this.position().z + c * b;
             if (!isAwake()) {
-                this.level.addParticle(new DustParticleOptions(Vec3.fromRGB24(16777215).toVector3f(), 1.0F), d, e, f, 0.28999999165534973D, 0.2800000011920929D, 0.47999998927116394D);
+                this.level.addParticle(new DustParticleOptions(Vec3.fromRGB24(10444703).toVector3f(), 1.0F), d, e, f, 0.28999999165534973D, 0.2800000011920929D, 0.47999998927116394D);
             } else {
-                this.level.addParticle(new DustParticleOptions(Vec3.fromRGB24(16777215).toVector3f(), 1.0F), d, e, f, 0.4300000071525574D, 0.18000000715255737D, 0.2800000011920929D);
+                this.level.addParticle(new DustParticleOptions(Vec3.fromRGB24(9315170).toVector3f(), 1.0F), d, e, f, 0.4300000071525574D, 0.18000000715255737D, 0.2800000011920929D);
             }
         }
         if (this.chatTime > 0)
@@ -345,6 +345,23 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
         this.bossFight.setName(component);
     }
 
+    protected void alignSpawnPos() {
+        this.moveTo(Mth.floor(this.getX()), this.getY(), Mth.floor(this.getZ()));
+    }
+
+    public static MutableComponent generateGuardianName() {
+        MutableComponent result = BossNameGenerator.generateBossName();
+        return result.append(Component.translatable("gui.aether.sentry_guardian.title"));
+    }
+
+    @Override
+    public SpawnGroupData finalizeSpawn(@Nonnull ServerLevelAccessor pLevel, @Nonnull DifficultyInstance pDifficulty, @Nonnull MobSpawnType pReason, @javax.annotation.Nullable SpawnGroupData pSpawnData, @javax.annotation.Nullable CompoundTag pDataTag) {
+        this.alignSpawnPos();
+        SpawnGroupData data = super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
+        this.setBossName(generateGuardianName());
+        return data;
+    }
+
     public static class DoNothingGoal extends Goal {
         private final SentryGuardian sentryGuardian;
         public DoNothingGoal(SentryGuardian sentryGuardian) {
@@ -357,9 +374,6 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
             return !this.sentryGuardian.isBossFight();
         }
 
-        /**
-         * Returns the sun spirit to its original position.
-         */
         @Override
         public void start() {
             this.sentryGuardian.setDeltaMovement(Vec3.ZERO);
@@ -369,10 +383,14 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
         }
     }
 
+    @Override
+    public void setCustomName(@javax.annotation.Nullable Component name) {
+        super.setCustomName(name);
+        this.setBossName(name);
+    }
+
     public static class SummonSentryGoal extends Goal {
         private final Mob mob;
-        @javax.annotation.Nullable
-        private LivingEntity target;
         private int heightOffsetUpdateTime = 10;
         private int attackTime = 0;
         private float heightOffset = 0.5F;
@@ -419,7 +437,6 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
         public boolean canUse() {
             LivingEntity target = this.mob.getTarget();
             if (target != null && target.isAlive()) {
-                this.target = target;
                 return this.mob.level.getDifficulty() != Difficulty.PEACEFUL;
             } else {
                 return false;
