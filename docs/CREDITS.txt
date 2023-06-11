@@ -19,6 +19,7 @@ KELETU66666
 - Implementation of Battle Sentry.
 - Implementation of Tracking Golem.
 - Implementation of Sentry Guardian.
+- Implementation of Slider Host Mimic.
 
 StockiesLad
 - Improvement of Purple Aercloud features to make them spawn with random rotation.
