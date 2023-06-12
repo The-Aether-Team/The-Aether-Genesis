@@ -6,11 +6,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
 
-public class CandyRing extends RingItem {
+public class CandyRingItem extends RingItem {
     private float foodLevel;
     private float foodSaturation;
 
-    public CandyRing(Properties properties) {
+    public CandyRingItem(Properties properties) {
         super(AetherSoundEvents.ITEM_ACCESSORY_EQUIP_GOLD_RING, properties);
     }
 

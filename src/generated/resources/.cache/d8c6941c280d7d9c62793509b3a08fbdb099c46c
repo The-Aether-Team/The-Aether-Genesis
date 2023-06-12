@@ -1,4 +1,4 @@
-// 1.19.4	2023-06-11T21:27:42.5024912	Item Models: aether_genesis
+// 1.19.4	2023-06-12T14:29:28.54409	Item Models: aether_genesis
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/battle_sentry_spawn_egg.json
 b951ae61814ccb898428dd794f3adf77d4e02a6c assets/aether_genesis/models/item/blood_moss_holystone.json
 85e6dca000030d07451d6969e99df873abdf0362 assets/aether_genesis/models/item/blueberry_lollipop.json
@@ -9,6 +9,7 @@ fa788e7092f1bda40ac52d02c79ac80c0b0b04e2 assets/aether_genesis/models/item/blue_
 e69e7ba7ae9555f03db63addb9af9aa97190c302 assets/aether_genesis/models/item/bone_ring.json
 7a68e199017d970a318436314eb8c7a5b27bfb37 assets/aether_genesis/models/item/candy_corn.json
 2991fc9b4fc56f92666d0edf5855ed9c022a9fb0 assets/aether_genesis/models/item/candy_ring.json
+5e3782a376b672c40f29d419b0e942cebf3106e2 assets/aether_genesis/models/item/cape.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/carrion_sprout_spawn_egg.json
 435961a5f4464678f79303aa991f1d16c71edafd assets/aether_genesis/models/item/carved_pillar.json
 90fe839820f250396672808d5718cf8d7e576d25 assets/aether_genesis/models/item/carved_pillar_side.json
@@ -24,6 +25,7 @@ c6c6149bfb02ea6cb5376060a9a37dd0f65852cf assets/aether_genesis/models/item/dark_
 16da46d84276e50dbd0807026902a5f05d41d008 assets/aether_genesis/models/item/dark_swet_ball.json
 b60b899aad4e1d0591a2a6c3d6cf32eee41a9c37 assets/aether_genesis/models/item/dark_swet_jelly.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/dark_swet_spawn_egg.json
+811b0a5a780db13728564dd840be57cdc3d02d0a assets/aether_genesis/models/item/dexterity_cape.json
 1e84970831e9d79957606fa178f58ac7839507b2 assets/aether_genesis/models/item/divine_carved_stone.json
 60e6ad181809e22a376437a617e47fc7cc9b6630 assets/aether_genesis/models/item/divine_sentry_stone.json
 5a8b972dba6ea1379d4786d7528fc2022fe20222 assets/aether_genesis/models/item/golden_swet_ball.json

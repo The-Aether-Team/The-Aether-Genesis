@@ -12,8 +12,8 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.UUID;
 
-public class BoneRing extends RingItem {
-    public BoneRing(Properties properties) {
+public class BoneRingItem extends RingItem {
+    public BoneRingItem(Properties properties) {
         super(() -> SoundEvents.SKELETON_AMBIENT, properties);
     }
 
