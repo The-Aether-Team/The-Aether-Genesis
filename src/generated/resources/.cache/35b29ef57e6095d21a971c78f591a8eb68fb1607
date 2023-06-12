@@ -1,0 +1,14 @@
+// 1.19.4	2023-06-11T21:27:42.4954905	Tags for minecraft:item mod id aether_genesis
+1d7eabfa746881c14275fb87c139d44dd7a797ac data/aether/tags/items/crafts_skyroot_planks.json
+fd648a6cd6467b295cc98e642efbef3aecef70b9 data/aether/tags/items/deployable_parachutes.json
+ab38332240bef556d2a0474ce64ec45da8b84b94 data/aether/tags/items/dungeon_keys.json
+02cf034bd729e8c7a6ec5b8f896d165a730f115a data/aether/tags/items/swet_balls.json
+321cad0c802b794f364a9ba5a34536ecc36271ec data/aether_genesis/tags/items/darts.json
+1d7eabfa746881c14275fb87c139d44dd7a797ac data/aether_genesis/tags/items/log_walls.json
+88f5568b143ff5a6bc6f2dc45fedbf8589285638 data/aether_genesis/tags/items/swet_jelly.json
+77ec25c4963809b3d14146933b926d401ad74caa data/curios/tags/items/aether_accessory.json
+7c30d78b6d916d4e1b51830e71de008f47a23174 data/curios/tags/items/aether_ring.json
+beac0a1e118252eaf09f2d527230162fdb9a1a72 data/minecraft/tags/items/leaves.json
+d80078b8cef8da6515b4b903017fe5783101c46f data/minecraft/tags/items/music_discs.json
+20cb9cd9fdec4548c290b66338a6eae5fe5d6d2d data/minecraft/tags/items/saplings.json
+1d7eabfa746881c14275fb87c139d44dd7a797ac data/minecraft/tags/items/walls.json

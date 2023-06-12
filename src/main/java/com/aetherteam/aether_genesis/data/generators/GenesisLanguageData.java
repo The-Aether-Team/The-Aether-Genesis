@@ -97,7 +97,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");
         this.addEntityType(GenesisEntityTypes.BATTLE_SENTRY, "Battle Sentry");
 
-        this.addBlock(GenesisBlocks.CARVED_PILLAR_CARVED, "Carved Pillar Carved");
+        this.addBlock(GenesisBlocks.CARVED_PILLAR, "Carved Pillar");
         this.addBlock(GenesisBlocks.CARVED_PILLAR_SIDE, "Carved Pillar Side");
         this.addBlock(GenesisBlocks.DIVINE_CRAVED_STONE, "Divine Carved Stone");
         this.addBlock(GenesisBlocks.DIVINE_SENTRY_STONE, "Divine Sentry Stone");
