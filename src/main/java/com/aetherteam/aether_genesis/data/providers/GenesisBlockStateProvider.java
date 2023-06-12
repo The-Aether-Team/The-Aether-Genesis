@@ -7,6 +7,7 @@ import com.aetherteam.aether.block.miscellaneous.FacingPillarBlock;
 import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
+import com.aetherteam.aether_genesis.block.miscellaneous.ColdFireBlock;
 import com.aetherteam.aether_genesis.block.natural.OrangeTreeBlock;
 import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
 import net.minecraft.core.Direction;
@@ -274,5 +275,66 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
             Direction direction = state.getValue(LadderBlock.FACING);
             return ConfiguredModel.builder().modelFile(ladder).rotationY((int) (direction.toYRot() + 180) % 360).build();
         }, LadderBlock.WATERLOGGED);
+    }
+
+    public void coldFire(ColdFireBlock block) {
+        ModelFile fireFloor0 = models().withExistingParent(this.name(block) + "_floor0", this.mcLoc("block/template_fire_floor")).renderType(new ResourceLocation("cutout"))
+                .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_0"));
+        ModelFile fireFloor1 = models().withExistingParent(this.name(block) + "_floor1", this.mcLoc("block/template_fire_floor")).renderType(new ResourceLocation("cutout"))
+                .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_1"));
+        ModelFile fireSide0 = models().withExistingParent(this.name(block) + "_side0", this.mcLoc("block/template_fire_side")).renderType(new ResourceLocation("cutout"))
+                .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_0"));
+        ModelFile fireSide1 = models().withExistingParent(this.name(block) + "_side1", this.mcLoc("block/template_fire_side")).renderType(new ResourceLocation("cutout"))
+                .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_1"));
+        ModelFile fireSideAlt0 = models().withExistingParent(this.name(block) + "_side_alt0", this.mcLoc("block/template_fire_side_alt")).renderType(new ResourceLocation("cutout"))
+                .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_0"));
+        ModelFile fireSideAlt1 = models().withExistingParent(this.name(block) + "_side_alt1", this.mcLoc("block/template_fire_side_alt")).renderType(new ResourceLocation("cutout"))
+                .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_1"));
+        ModelFile fireUp0 = models().withExistingParent(this.name(block) + "_up0", this.mcLoc("block/template_fire_up")).renderType(new ResourceLocation("cutout"))
+                .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_0"));
+        ModelFile fireUp1 = models().withExistingParent(this.name(block) + "_up1", this.mcLoc("block/template_fire_up")).renderType(new ResourceLocation("cutout"))
+                .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_1"));
+        ModelFile fireUpAlt0 = models().withExistingParent(this.name(block) + "_up_alt0", this.mcLoc("block/template_fire_up_alt")).renderType(new ResourceLocation("cutout"))
+                .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_0"));
+        ModelFile fireUpAlt1 = models().withExistingParent(this.name(block) + "_up_alt1", this.mcLoc("block/template_fire_up_alt")).renderType(new ResourceLocation("cutout"))
+                .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_1"));
+        this.getMultipartBuilder(block)
+                .part().modelFile(fireFloor0).nextModel().modelFile(fireFloor1).addModel()
+                .condition(ColdFireBlock.EAST, false)
+                .condition(ColdFireBlock.NORTH, false)
+                .condition(ColdFireBlock.SOUTH, false)
+                .condition(ColdFireBlock.UP, false)
+                .condition(ColdFireBlock.WEST, false).end()
+                .part().modelFile(fireSide0).nextModel().modelFile(fireSide1).nextModel().modelFile(fireSideAlt0).nextModel().modelFile(fireSideAlt1).addModel()
+                .useOr().nestedGroup().condition(ColdFireBlock.NORTH, true).end()
+                .useOr().nestedGroup().condition(ColdFireBlock.EAST, false)
+                .condition(ColdFireBlock.NORTH, false)
+                .condition(ColdFireBlock.SOUTH, false)
+                .condition(ColdFireBlock.UP, false)
+                .condition(ColdFireBlock.WEST, false).end().end()
+                .part().modelFile(fireSide0).rotationY(90).nextModel().modelFile(fireSide1).rotationY(90).nextModel().modelFile(fireSideAlt0).rotationY(90).nextModel().modelFile(fireSideAlt1).rotationY(90).addModel()
+                .useOr().nestedGroup().condition(ColdFireBlock.EAST, true).end()
+                .useOr().nestedGroup().condition(ColdFireBlock.EAST, false)
+                .condition(ColdFireBlock.NORTH, false)
+                .condition(ColdFireBlock.SOUTH, false)
+                .condition(ColdFireBlock.UP, false)
+                .condition(ColdFireBlock.WEST, false).end().end()
+                .part().modelFile(fireSide0).rotationY(180).nextModel().modelFile(fireSide1).rotationY(180).nextModel().modelFile(fireSideAlt0).rotationY(180).nextModel().modelFile(fireSideAlt1).rotationY(180).addModel()
+                .useOr().nestedGroup().condition(ColdFireBlock.SOUTH, true).end()
+                .useOr().nestedGroup().condition(ColdFireBlock.EAST, false)
+                .condition(ColdFireBlock.NORTH, false)
+                .condition(ColdFireBlock.SOUTH, false)
+                .condition(ColdFireBlock.UP, false)
+                .condition(ColdFireBlock.WEST, false).end().end()
+                .part().modelFile(fireSide0).rotationY(270).nextModel().modelFile(fireSide1).rotationY(270).nextModel().modelFile(fireSideAlt0).rotationY(270).nextModel().modelFile(fireSideAlt1).rotationY(270).addModel()
+                .useOr().nestedGroup().condition(ColdFireBlock.WEST, true).end()
+                .useOr().nestedGroup().condition(ColdFireBlock.EAST, false)
+                .condition(ColdFireBlock.NORTH, false)
+                .condition(ColdFireBlock.SOUTH, false)
+                .condition(ColdFireBlock.UP, false)
+                .condition(ColdFireBlock.WEST, false).end().end()
+                .part().modelFile(fireUp0).nextModel().modelFile(fireUp1).nextModel().modelFile(fireUpAlt0).nextModel().modelFile(fireUpAlt1).addModel()
+                .condition(ColdFireBlock.UP, true).end()
+        ;
     }
 }

@@ -57,6 +57,8 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
 
         this.dropSelf(GenesisBlocks.CARVED_PILLAR.get());
         this.dropSelf(GenesisBlocks.CARVED_PILLAR_SIDE.get());
+
+        this.dropNone(GenesisBlocks.COLD_FIRE.get());
     }
 
     @Override

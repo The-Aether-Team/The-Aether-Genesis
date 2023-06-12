@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/template_fire_up",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "fire": "aether_genesis:block/miscellaneous/cold_fire_1"
+  }
+}

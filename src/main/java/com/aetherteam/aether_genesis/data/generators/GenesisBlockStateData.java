@@ -47,6 +47,8 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
         this.block(GenesisBlocks.DIVINE_CRAVED_STONE.get(), "dungeon/");
         this.block(GenesisBlocks.DIVINE_SENTRY_STONE.get(), "dungeon/");
         this.block(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get(), "dungeon/");
+
+        this.coldFire(GenesisBlocks.COLD_FIRE.get());
     }
 
     private void makeLogWalls() {
