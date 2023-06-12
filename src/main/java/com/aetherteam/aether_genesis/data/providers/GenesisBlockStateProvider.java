@@ -3,6 +3,7 @@ package com.aetherteam.aether_genesis.data.providers;
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlockStateProperties;
 import com.aetherteam.aether.block.AetherBlocks;
+import com.aetherteam.aether.block.miscellaneous.FacingPillarBlock;
 import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
@@ -221,15 +222,39 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
         });
     }
 
-    public void brick(RotatedPillarBlock block) {
+    public void holystonePillar(FacingPillarBlock block) {
         ResourceLocation side = this.texture(this.name(block), "construction/");
-        if(block == GenesisBlocks.HOLYSTONE_HEADSTONE.get())
+        if (block == GenesisBlocks.HOLYSTONE_HEADSTONE.get()) {
             side = new ResourceLocation(Aether.MODID, "block/construction/" + this.name(AetherBlocks.HOLYSTONE_BRICKS.get()));
-        this.axisBlock(block, side, this.extend(this.texture(this.name(block), "construction/"), "_top"));
+        }
+        ResourceLocation end = this.extend(this.texture(this.name(block), "construction/"), "_top");
+        ModelFile vertical = this.models().cubeColumn(this.name(block), side, end);
+        ModelFile horizontal = this.models().cubeColumnHorizontal(this.name(block) + "_horizontal", side, end);
+        this.getVariantBuilder(block)
+                .partialState().with(FacingPillarBlock.FACING, Direction.DOWN).modelForState().modelFile(vertical).rotationX(180).addModel()
+                .partialState().with(FacingPillarBlock.FACING, Direction.EAST).modelForState().modelFile(horizontal).rotationX(90).rotationY(90).addModel()
+                .partialState().with(FacingPillarBlock.FACING, Direction.NORTH).modelForState().modelFile(horizontal).rotationX(90).addModel()
+                .partialState().with(FacingPillarBlock.FACING, Direction.SOUTH).modelForState().modelFile(horizontal).rotationX(90).rotationY(180).addModel()
+                .partialState().with(FacingPillarBlock.FACING, Direction.UP).modelForState().modelFile(vertical).addModel()
+                .partialState().with(FacingPillarBlock.FACING, Direction.WEST).modelForState().modelFile(horizontal).rotationX(90).rotationY(270).addModel();
     }
 
-    public void dungeonBrick(RotatedPillarBlock block) {
+    public void dungeonPillar(RotatedPillarBlock block) {
         this.axisBlock(block, this.texture(this.name(block), "dungeon/"),new ResourceLocation(Genesis.MODID, "block/dungeon/carved_pillar_top"));
+    }
+
+    public void dungeonPillarTop(FacingPillarBlock block) {
+        ResourceLocation side = this.texture("carved_pillar_carved", "dungeon/");
+        ResourceLocation end = this.extend(this.texture(this.name(block), "dungeon/"), "_top");
+        ModelFile vertical = this.models().cubeColumn(this.name(block), side, end);
+        ModelFile horizontal = this.models().cubeColumnHorizontal(this.name(block) + "_horizontal", side, end);
+        this.getVariantBuilder(block)
+                .partialState().with(FacingPillarBlock.FACING, Direction.DOWN).modelForState().modelFile(vertical).rotationX(180).addModel()
+                .partialState().with(FacingPillarBlock.FACING, Direction.EAST).modelForState().modelFile(horizontal).rotationX(90).rotationY(90).addModel()
+                .partialState().with(FacingPillarBlock.FACING, Direction.NORTH).modelForState().modelFile(horizontal).rotationX(90).addModel()
+                .partialState().with(FacingPillarBlock.FACING, Direction.SOUTH).modelForState().modelFile(horizontal).rotationX(90).rotationY(180).addModel()
+                .partialState().with(FacingPillarBlock.FACING, Direction.UP).modelForState().modelFile(vertical).addModel()
+                .partialState().with(FacingPillarBlock.FACING, Direction.WEST).modelForState().modelFile(horizontal).rotationX(90).rotationY(270).addModel();
     }
 
     public void skyrootChest(Block block) {

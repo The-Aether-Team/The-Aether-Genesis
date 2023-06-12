@@ -100,7 +100,7 @@ public class GenesisCreativeTabs {
         }
         if (tab == AetherCreativeTabs.AETHER_DUNGEON_BLOCKS) {
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.CARVED_PILLAR_SIDE.get()), new ItemStack(GenesisBlocks.CARVED_PILLAR_SIDE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(GenesisBlocks.CARVED_PILLAR_CARVED.get()), new ItemStack(GenesisBlocks.CARVED_PILLAR_CARVED.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.CARVED_PILLAR.get()), new ItemStack(GenesisBlocks.CARVED_PILLAR.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.DIVINE_CRAVED_STONE.get()), new ItemStack(GenesisBlocks.DIVINE_CRAVED_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.DIVINE_SENTRY_STONE.get()), new ItemStack(GenesisBlocks.DIVINE_SENTRY_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get()), new ItemStack(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
