@@ -97,12 +97,10 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
         if (age < DOUBLE_AGE_MAX && level.getRawBrightness(pos.above(), 0) >= 9 && ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(85) == 0)) {
             age += 1;
             if (age > SINGLE_AGE_MAX && doubleBlockHalf == DoubleBlockHalf.LOWER) {
-                if (level.isEmptyBlock(pos.above())) {
-                    BlockState blockState = state.setValue(AetherBlockStateProperties.DOUBLE_DROPS, state.getValue(AetherBlockStateProperties.DOUBLE_DROPS)).setValue(AGE, age);
-                    OrangeTreeBlock.placeAt(level, blockState, pos, 2);
-                    level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(blockState));
-                    ForgeHooks.onCropsGrowPost(level, pos, state);
-                }
+                BlockState blockState = state.setValue(AetherBlockStateProperties.DOUBLE_DROPS, state.getValue(AetherBlockStateProperties.DOUBLE_DROPS)).setValue(AGE, age);
+                OrangeTreeBlock.placeAt(level, blockState, pos, 2);
+                level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(blockState));
+                ForgeHooks.onCropsGrowPost(level, pos, state);
             } else {
                 BlockState blockState = state.setValue(AetherBlockStateProperties.DOUBLE_DROPS, state.getValue(AetherBlockStateProperties.DOUBLE_DROPS)).setValue(AGE, age);
                 level.setBlock(pos, blockState, 2);
@@ -177,9 +175,9 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
     }
 
     public static void placeAt(LevelAccessor level, BlockState state, BlockPos pos, int flags) {
-        BlockPos blockPos = pos.above();
+        BlockPos abovePos = pos.above();
         level.setBlock(pos, state.setValue(HALF, DoubleBlockHalf.LOWER), flags);
-        level.setBlock(blockPos, state.setValue(HALF, DoubleBlockHalf.UPPER), flags);
+        level.setBlock(abovePos, state.setValue(HALF, DoubleBlockHalf.UPPER), flags);
     }
 
     @Override
