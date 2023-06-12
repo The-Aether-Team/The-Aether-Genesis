@@ -2,9 +2,8 @@ package com.aetherteam.aether_genesis.mixin.mixins.client;
 
 import com.aetherteam.aether.util.EquipmentUtil;
 import com.aetherteam.aether_genesis.item.GenesisItems;
-import com.aetherteam.aether_genesis.item.accessories.DyeableClothItem;
+import com.aetherteam.aether_genesis.item.accessories.DyeableCape;
 import com.aetherteam.aether_genesis.mixin.mixins.client.accessor.ElytraLayerAccessor;
-import com.aetherteam.aether_genesis.mixin.mixins.client.accessor.PlayerModelAccessor;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
@@ -12,7 +11,6 @@ import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.renderer.entity.layers.CapeLayer;
 import net.minecraft.client.renderer.entity.layers.ElytraLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
@@ -33,7 +31,7 @@ public class ElytraLayerMixin<T extends LivingEntity, M extends EntityModel<T>> 
             SlotResult slotResult = EquipmentUtil.getCurio(livingEntity, GenesisItems.CAPE.get());
             if (slotResult != null && abstractClientPlayer.isCapeLoaded() && abstractClientPlayer.getCloakTextureLocation() != null && abstractClientPlayer.isModelPartShown(PlayerModelPart.CAPE)) {
                 ResourceLocation location = abstractClientPlayer.getCloakTextureLocation();
-                DyeableClothItem dyeableItem = (DyeableClothItem) slotResult.stack().getItem();
+                DyeableCape dyeableItem = (DyeableCape) slotResult.stack().getItem();
                 int i = ((net.minecraft.world.item.DyeableLeatherItem) dyeableItem).getColor(slotResult.stack());
                 float red = (float) (i >> 16 & 255) / 255.0F;
                 float green = (float) (i >> 8 & 255) / 255.0F;

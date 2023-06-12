@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.mixin.mixins.client;
 
 import com.aetherteam.aether.util.EquipmentUtil;
 import com.aetherteam.aether_genesis.item.GenesisItems;
-import com.aetherteam.aether_genesis.item.accessories.DyeableClothItem;
+import com.aetherteam.aether_genesis.item.accessories.DyeableCape;
 import com.aetherteam.aether_genesis.mixin.mixins.client.accessor.PlayerModelAccessor;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -24,7 +24,7 @@ public class CapeLayerMixin {
         CapeLayer capeLayer = (CapeLayer) (Object) this;
         SlotResult slotResult = EquipmentUtil.getCurio(livingEntity, GenesisItems.CAPE.get());
         if (slotResult != null) {
-            DyeableClothItem dyeableItem = (DyeableClothItem) slotResult.stack().getItem();
+            DyeableCape dyeableItem = (DyeableCape) slotResult.stack().getItem();
             int i = ((net.minecraft.world.item.DyeableLeatherItem) dyeableItem).getColor(slotResult.stack());
             float red = (float) (i >> 16 & 255) / 255.0F;
             float green = (float) (i >> 8 & 255) / 255.0F;
