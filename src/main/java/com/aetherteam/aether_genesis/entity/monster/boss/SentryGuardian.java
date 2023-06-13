@@ -32,9 +32,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.MoveTowardsRestrictionGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Enemy;
@@ -59,7 +57,7 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
     public static final EntityDataAccessor<Component> DATA_BOSS_NAME_ID = SynchedEntityData.defineId(SentryGuardian.class, EntityDataSerializers.COMPONENT);
 
     public int chatTime;
-
+    private int attackTime = 0;
 //    private int cappedAmount;
 
     private final ServerBossEvent bossFight;
@@ -70,7 +68,6 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
     public static AttributeSupplier.Builder createMobAttributes() {
         return Monster.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 250)
-                .add(Attributes.ATTACK_DAMAGE, 16)
                 .add(Attributes.MOVEMENT_SPEED, 0.28)
                 .add(Attributes.FOLLOW_RANGE, 8.0);
     }
@@ -84,6 +81,10 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
         this.goalSelector.addGoal(7, new WaterAvoidingRandomStrollGoal(this, 1.0));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this, SentryGuardian.class));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, livingEntity -> this.isBossFight()));
+    }
+
+    public int getAttackAnimationTick() {
+        return this.attackTime;
     }
 
     public SentryGuardian(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
@@ -132,6 +133,8 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
 
     public void tick() {
         super.tick();
+        if (this.attackTime > 0)
+            this.attackTime--;
         if (!this.isAwake() || (this.getTarget() instanceof Player player && (player.isCreative() || player.isSpectator()))) {
             this.setTarget(null);
         }
@@ -165,6 +168,7 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
     }
 
     public boolean doHurtTarget(Entity pEntity) {
+        this.attackTime = 10;
         this.level.broadcastEntityEvent(this, (byte)4);
         float f = 7 + this.random.nextInt(15);
         float f1 = (int)f > 0 ? f / 2.0F + (float)this.random.nextInt((int)f) : f;
@@ -207,6 +211,7 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
     public void addAdditionalSaveData(@Nonnull CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         this.addBossSaveData(tag);
+        tag.putBoolean("Awake", this.isAwake());
     }
 
     @Override
@@ -351,7 +356,7 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
 
     public static MutableComponent generateGuardianName() {
         MutableComponent result = BossNameGenerator.generateBossName();
-        return result.append(Component.translatable("gui.aether.sentry_guardian.title"));
+        return result.append(Component.translatable("gui.genesis.sentry_guardian.title"));
     }
 
     @Override
@@ -392,7 +397,6 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
     public static class SummonSentryGoal extends Goal {
         private final Mob mob;
         private int heightOffsetUpdateTime = 10;
-        private int attackTime = 0;
         private float heightOffset = 0.5F;
 
         public SummonSentryGoal(Mob mob) {
@@ -415,8 +419,6 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
         }
 
         public void tick() {
-            if (this.attackTime > 0)
-                this.attackTime--;
             if (!this.mob.level.isClientSide) {
                 if (this.mob.level.random.nextInt(100) == 1 && this.mob.getTarget() != null)
                     spawnSentry();

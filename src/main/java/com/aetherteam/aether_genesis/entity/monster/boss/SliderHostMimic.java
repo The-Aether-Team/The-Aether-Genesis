@@ -114,12 +114,12 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
 
     public void killEyes() {
         while (this.eyes.size() != 0)
-            this.eyes.remove(0).setHealth(0);
+            this.eyes.remove(0).discard();
     }
 
     public static MutableComponent generateHostName() {
         MutableComponent result = BossNameGenerator.generateBossName();
-        return result.append(Component.translatable("gui.aether.host.title"));
+        return result.append(Component.translatable("gui.genesis.host.title"));
     }
 
     protected void alignSpawnPos() {
@@ -128,7 +128,7 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
 
     public static AttributeSupplier.Builder createHostAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 200.0)
+                .add(Attributes.MAX_HEALTH, 175)
                 .add(Attributes.MOVEMENT_SPEED, 0.28)
                 .add(Attributes.FOLLOW_RANGE, 64.0);
     }
@@ -217,7 +217,7 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
         if (!this.isAwake())
             killEyes();
         if (this.eyes.size() > 4)
-            this.eyes.remove(0).setHealth(0);
+            this.eyes.remove(0).discard();
         if (this.scareTime > 0)
             this.scareTime--;
         if (this.sendDelay > 0)

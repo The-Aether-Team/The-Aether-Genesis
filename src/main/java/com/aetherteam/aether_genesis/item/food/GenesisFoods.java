@@ -16,5 +16,5 @@ public class GenesisFoods {
     public static final FoodProperties WYNDBERRY = new FoodProperties.Builder().fast().nutrition(4).saturationMod(0.16F).build();
     public static final FoodProperties JELLY_PUMPKIN = new FoodProperties.Builder().fast().nutrition(12).saturationMod(0.48F).build();
     public static final FoodProperties CANDY_CORN = new FoodProperties.Builder().fast().nutrition(10).saturationMod(0.4F).build();
-    public static final FoodProperties RAINBOW_STRAWBERRY = new FoodProperties.Builder().fast().nutrition(8).saturationMod(0.32F).effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 1), 100).effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 200, 1), 100).build();
+    public static final FoodProperties RAINBOW_STRAWBERRY = new FoodProperties.Builder().fast().alwaysEat().nutrition(8).saturationMod(0.32F).effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 1), 100).effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 200, 1), 100).build();
 }

@@ -99,6 +99,11 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");
         this.addEntityType(GenesisEntityTypes.BATTLE_SENTRY, "Battle Sentry");
+        this.addEntityType(GenesisEntityTypes.TRACKING_GOLEM, "Tracking Golem");
+
+        this.addEntityType(GenesisEntityTypes.SENTRY_GUARDIAN, "Sentry Guardian");
+        this.addEntityType(GenesisEntityTypes.SLIDER_HOST_MIMIC, "Slider Host Mimic");
+        this.addEntityType(GenesisEntityTypes.HOST_EYE, "Host Eye");
 
         this.addBlock(GenesisBlocks.CARVED_PILLAR, "Carved Pillar");
         this.addBlock(GenesisBlocks.CARVED_PILLAR_SIDE, "Carved Pillar Side");
