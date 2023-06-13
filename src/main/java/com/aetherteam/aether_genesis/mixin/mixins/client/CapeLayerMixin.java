@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.layers.CapeLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.world.item.DyeableLeatherItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -25,7 +26,7 @@ public class CapeLayerMixin {
         SlotResult slotResult = EquipmentUtil.getCurio(livingEntity, GenesisItems.CAPE.get());
         if (slotResult != null) {
             DyeableCape dyeableItem = (DyeableCape) slotResult.stack().getItem();
-            int i = ((net.minecraft.world.item.DyeableLeatherItem) dyeableItem).getColor(slotResult.stack());
+            int i = ((DyeableLeatherItem) dyeableItem).getColor(slotResult.stack());
             float red = (float) (i >> 16 & 255) / 255.0F;
             float green = (float) (i >> 8 & 255) / 255.0F;
             float blue = (float) (i & 255) / 255.0F;

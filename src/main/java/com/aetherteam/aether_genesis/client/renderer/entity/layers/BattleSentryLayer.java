@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.client.renderer;
+package com.aetherteam.aether_genesis.client.renderer.entity.layers;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.entity.monster.BattleSentry;

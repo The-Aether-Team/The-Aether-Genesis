@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.client.renderer.model;
+package com.aetherteam.aether_genesis.client.renderer.entity.model;
 
 import com.aetherteam.aether_genesis.entity.passive.CarrionSprout;
 import com.google.common.collect.ImmutableList;

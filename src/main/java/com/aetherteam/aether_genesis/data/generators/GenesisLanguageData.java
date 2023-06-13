@@ -68,6 +68,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.SKYROOT_RING, "Skyroot Ring");
         this.addItem(GenesisItems.CAPE, "Cape");
         this.addItem(GenesisItems.DEXTERITY_CAPE, "Dexterity Cape");
+        this.addItem(GenesisItems.MOUSE_EAR_CAP, "Mouse Ear Cap");
 
         this.addItem(GenesisItems.PHOENIX_DART_SHOOTER, "Phoenix Dart Shooter");
         this.addItem(GenesisItems.CONTINUUM_BOMB, "Continuum Bomb");

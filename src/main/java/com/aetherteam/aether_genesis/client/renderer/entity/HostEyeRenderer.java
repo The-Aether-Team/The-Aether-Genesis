@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.client.renderer.entity;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
-import com.aetherteam.aether_genesis.client.renderer.model.HostEyeModel;
+import com.aetherteam.aether_genesis.client.renderer.entity.model.HostEyeModel;
 import com.aetherteam.aether_genesis.entity.miscellaneous.HostEye;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;

@@ -2,8 +2,8 @@ package com.aetherteam.aether_genesis.client.renderer.entity;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
-import com.aetherteam.aether_genesis.client.renderer.TrackingGolemLayer;
-import com.aetherteam.aether_genesis.client.renderer.model.TrackingGolemModel;
+import com.aetherteam.aether_genesis.client.renderer.entity.layers.TrackingGolemLayer;
+import com.aetherteam.aether_genesis.client.renderer.entity.model.TrackingGolemModel;
 import com.aetherteam.aether_genesis.entity.monster.TrackingGolem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;

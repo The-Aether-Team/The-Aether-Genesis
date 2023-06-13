@@ -14,6 +14,8 @@ public class GenesisModelLayers {
     public static final ModelLayerLocation SLIDER_HOST_MIMIC = register("slider_host_mimic");
     public static final ModelLayerLocation HOST_EYE = register("host_eye");
 
+    public static final ModelLayerLocation MOUSE_EAR_CAP = register("mouse_ear_cap");
+
     private static ModelLayerLocation register(String name) {
         return register(name, "main");
     }

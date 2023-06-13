@@ -1,7 +1,7 @@
-package com.aetherteam.aether_genesis.client.renderer.entity;
+package com.aetherteam.aether_genesis.client.renderer.entity.layers;
 
 import com.aetherteam.aether_genesis.Genesis;
-import com.aetherteam.aether_genesis.client.renderer.model.TempestModel;
+import com.aetherteam.aether_genesis.client.renderer.entity.model.TempestModel;
 import com.aetherteam.aether_genesis.entity.monster.Tempest;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

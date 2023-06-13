@@ -57,6 +57,8 @@ public class GenesisItems {
     public static final RegistryObject<Item> CAPE = ITEMS.register("cape", () -> new DyeableCapeItem("white_cape", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> DEXTERITY_CAPE = ITEMS.register("dexterity_cape", () -> new DexterityCapeItem("dexterity_cape", new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
 
+    public static final RegistryObject<Item> MOUSE_EAR_CAP = ITEMS.register("mouse_ear_cap", () -> new MouseEarCapItem(new Item.Properties().stacksTo(1)));
+
     public static final RegistryObject<Item> PHOENIX_DART_SHOOTER = ITEMS.register("phoenix_dart_shooter", () -> new PhoenixDartShooterItem(GOLDEN_DART, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> CONTINUUM_BOMB = ITEMS.register("continuum_bomb", () -> new ContinuumBombItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 

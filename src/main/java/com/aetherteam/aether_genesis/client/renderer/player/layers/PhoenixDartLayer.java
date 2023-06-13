@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.client.renderer;
+package com.aetherteam.aether_genesis.client.renderer.player.layers;
 
 import com.aetherteam.aether.client.renderer.player.layer.AbstractDartLayer;
 import com.aetherteam.aether.entity.AetherEntityTypes;

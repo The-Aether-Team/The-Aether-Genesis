@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.client.renderer.model;// Made with Blockbench 4.7.4
+package com.aetherteam.aether_genesis.client.renderer.entity.model;// Made with Blockbench 4.7.4
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
 

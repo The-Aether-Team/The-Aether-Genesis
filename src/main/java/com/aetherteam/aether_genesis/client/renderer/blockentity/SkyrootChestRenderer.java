@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.client.renderer;
+package com.aetherteam.aether_genesis.client.renderer.blockentity;
 
 import com.aetherteam.aether_genesis.client.GenesisAtlases;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
