@@ -10,6 +10,7 @@ import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.container.HolystoneFurnaceBlock;
 import com.aetherteam.aether_genesis.block.container.SkyrootChestBlock;
 import com.aetherteam.aether_genesis.block.container.SkyrootCraftingTableBlock;
+import com.aetherteam.aether_genesis.block.miscellaneous.ColdFireBlock;
 import com.aetherteam.aether_genesis.block.natural.GenesisDoubleDropsWall;
 import com.aetherteam.aether_genesis.block.natural.GreenAercloudBlock;
 import com.aetherteam.aether_genesis.block.natural.OrangeTreeBlock;
@@ -85,6 +86,8 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> DIVINE_CRAVED_STONE = register("divine_carved_stone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable()));
     public static final RegistryObject<Block> DIVINE_SENTRY_STONE = register("divine_sentry_stone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable().lightLevel(GenesisBlocks::lightLevel11)));
     public static final RegistryObject<Block> BLOOD_MOSS_HOLYSTONE = register("blood_moss_holystone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable()));
+
+    public static final RegistryObject<ColdFireBlock> COLD_FIRE = BLOCKS.register("cold_fire", () -> new ColdFireBlock(BlockBehaviour.Properties.of(Material.FIRE, MaterialColor.COLOR_LIGHT_BLUE).noCollission().instabreak().lightLevel((state) -> 10).sound(SoundType.WOOL)));
 
     public static void registerPots() {
         FlowerPotBlock pot = (FlowerPotBlock) Blocks.FLOWER_POT;

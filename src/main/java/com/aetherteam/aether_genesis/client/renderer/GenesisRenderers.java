@@ -1,14 +1,21 @@
 package com.aetherteam.aether_genesis.client.renderer;
 
 import com.aetherteam.aether.block.AetherBlocks;
+import com.aetherteam.aether.client.renderer.AetherModelLayers;
+import com.aetherteam.aether.client.renderer.accessory.model.PendantModel;
 import com.aetherteam.aether.client.renderer.entity.IceCrystalRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
+import com.aetherteam.aether_genesis.client.renderer.accessory.MouseEarCapRenderer;
+import com.aetherteam.aether_genesis.client.renderer.accessory.model.MouseEarCapModel;
+import com.aetherteam.aether_genesis.client.renderer.blockentity.SkyrootChestRenderer;
 import com.aetherteam.aether_genesis.client.renderer.entity.*;
-import com.aetherteam.aether_genesis.client.renderer.model.*;
+import com.aetherteam.aether_genesis.client.renderer.player.layers.PhoenixDartLayer;
+import com.aetherteam.aether_genesis.client.renderer.entity.model.*;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
+import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.SlimeModel;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
@@ -19,6 +26,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 @Mod.EventBusSubscriber(modid = Genesis.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GenesisRenderers {
@@ -57,6 +65,12 @@ public class GenesisRenderers {
         event.registerLayerDefinition(GenesisModelLayers.SENTRY_GUARDIAN, SentryGuardianModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SLIDER_HOST_MIMIC, SliderHostMimicModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.HOST_EYE, HostEyeModel::createBodyLayer);
+
+        event.registerLayerDefinition(GenesisModelLayers.MOUSE_EAR_CAP, MouseEarCapModel::createLayer);
+    }
+
+    public static void registerCuriosRenderers() {
+        CuriosRendererRegistry.register(GenesisItems.MOUSE_EAR_CAP.get(), MouseEarCapRenderer::new);
     }
 
     @SubscribeEvent

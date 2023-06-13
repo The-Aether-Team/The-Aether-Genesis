@@ -1,0 +1,8 @@
+{
+  "type": "forge:conditional",
+  "conditions": [
+    {
+      "type": "forge:false"
+    }
+  ]
+}

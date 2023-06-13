@@ -66,6 +66,9 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.BONE_RING, "Bone Ring");
         this.addItem(GenesisItems.CANDY_RING, "Candy Ring");
         this.addItem(GenesisItems.SKYROOT_RING, "Skyroot Ring");
+        this.addItem(GenesisItems.CAPE, "Cape");
+        this.addItem(GenesisItems.DEXTERITY_CAPE, "Dexterity Cape");
+        this.addItem(GenesisItems.MOUSE_EAR_CAP, "Mouse Ear Cap");
 
         this.addItem(GenesisItems.PHOENIX_DART_SHOOTER, "Phoenix Dart Shooter");
         this.addItem(GenesisItems.CONTINUUM_BOMB, "Continuum Bomb");
@@ -102,6 +105,8 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addBlock(GenesisBlocks.DIVINE_CRAVED_STONE, "Divine Carved Stone");
         this.addBlock(GenesisBlocks.DIVINE_SENTRY_STONE, "Divine Sentry Stone");
         this.addBlock(GenesisBlocks.BLOOD_MOSS_HOLYSTONE, "Blood Moss Holystone");
+
+        this.addBlock(GenesisBlocks.COLD_FIRE, "Cold Fire");
 
         this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");

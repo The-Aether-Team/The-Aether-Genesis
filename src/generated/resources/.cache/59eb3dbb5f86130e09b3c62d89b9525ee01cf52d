@@ -1,8 +1,9 @@
-// 1.19.4	2023-06-11T21:27:42.4854906	Loot Tables
+// 1.19.4	2023-06-12T12:32:22.8505754	Loot Tables
 ba95b47436df1e313939c55709af7bc43d0b26ec data/aether_genesis/loot_tables/blocks/blue_skyroot_leaves.json
 2fa73eaedce1f2e997d15ae8f8d595b7b7667d00 data/aether_genesis/loot_tables/blocks/blue_skyroot_sapling.json
 672a779578d10f0252f582957ba2ec5071b4b16a data/aether_genesis/loot_tables/blocks/carved_pillar.json
 4cd9295dc013dd023991d396a44f465fc61c52ff data/aether_genesis/loot_tables/blocks/carved_pillar_side.json
+1d4929d7d6176f60e5ea991a577527ed251ef375 data/aether_genesis/loot_tables/blocks/cold_fire.json
 52662bcbdc1032d19ce8c67dc2b87f3ea4c1ce16 data/aether_genesis/loot_tables/blocks/continuum_ore.json
 d8a60a2f84d3d07aff63593c06d32aa237400b97 data/aether_genesis/loot_tables/blocks/dark_blue_skyroot_leaves.json
 ce094a38615d29be488d47763cea21d55197ba95 data/aether_genesis/loot_tables/blocks/dark_blue_skyroot_sapling.json

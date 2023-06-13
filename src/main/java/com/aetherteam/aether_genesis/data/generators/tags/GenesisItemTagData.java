@@ -62,11 +62,15 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.RECORDING_892.get());
 
         this.tag(AetherTags.Items.AETHER_ACCESSORY).add(
-                GenesisItems.CRYSTAL_EXP_BOTTLE.get());
+                GenesisItems.CRYSTAL_EXP_BOTTLE.get(),
+                GenesisItems.MOUSE_EAR_CAP.get());
         this.tag(AetherTags.Items.AETHER_RING).add(
                 GenesisItems.BONE_RING.get(),
                 GenesisItems.CANDY_RING.get(),
                 GenesisItems.SKYROOT_RING.get());
+        this.tag(AetherTags.Items.AETHER_CAPE).add(
+                GenesisItems.CAPE.get(),
+                GenesisItems.DEXTERITY_CAPE.get());
         this.tag(GenesisTags.Items.SWET_JELLY).add(
                 GenesisItems.BLUE_SWET_JELLY.get(),
                 GenesisItems.DARK_SWET_JELLY.get(),

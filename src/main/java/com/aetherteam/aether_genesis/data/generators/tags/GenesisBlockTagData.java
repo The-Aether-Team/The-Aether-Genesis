@@ -53,6 +53,8 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.POTTED_DARK_BLUE_SKYROOT_SAPLING.get(),
                 GenesisBlocks.POTTED_PURPLE_CRYSTAL_TREE_SAPLING.get(),
                 GenesisBlocks.POTTED_ORANGE_TREE.get());
+        this.tag(BlockTags.FIRE).add(
+                GenesisBlocks.COLD_FIRE.get());
         this.tag(BlockTags.CLIMBABLE).add(
                 GenesisBlocks.SKYROOT_LADDER.get());
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
