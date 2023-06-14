@@ -26,6 +26,7 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
         this.dropSelfDouble(GenesisBlocks.GREEN_AERCLOUD.get());
         this.dropSelfDouble(GenesisBlocks.PURPLE_AERCLOUD.get());
         this.dropSelfDouble(GenesisBlocks.STORM_AERCLOUD.get());
+        this.add(GenesisBlocks.CONTINUUM_ORE.get(), (block) -> this.createOreDrop(block, GenesisItems.CONTINUUM_ORB.get()));
         this.dropSelf(GenesisBlocks.HOLYSTONE_HEADSTONE.get());
         this.dropSelf(GenesisBlocks.HOLYSTONE_KEYSTONE.get());
         this.dropSelf(GenesisBlocks.HOLYSTONE_HIGHLIGHT.get());
@@ -51,6 +52,13 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
         this.dropSelf(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get());
         this.dropSelf(GenesisBlocks.SKYROOT_CRAFTING_TABLE.get());
         this.dropSelf(GenesisBlocks.HOLYSTONE_FURNACE.get());
+        this.dropSelf(GenesisBlocks.SKYROOT_CHEST.get());
+        this.dropSelf(GenesisBlocks.SKYROOT_LADDER.get());
+
+        this.dropSelf(GenesisBlocks.CARVED_PILLAR.get());
+        this.dropSelf(GenesisBlocks.CARVED_PILLAR_SIDE.get());
+
+        this.dropNone(GenesisBlocks.COLD_FIRE.get());
     }
 
     @Override

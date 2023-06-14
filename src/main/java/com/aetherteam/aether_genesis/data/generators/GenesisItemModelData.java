@@ -18,6 +18,9 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
     protected void registerModels() {
         this.item(GenesisItems.GOLDEN_SWET_BALL.get(), "materials/");
         this.item(GenesisItems.DARK_SWET_BALL.get(), "materials/");
+        this.item(GenesisItems.SKYROOT_BOWL.get(), "materials/");
+        this.item(GenesisItems.CORNSTARCH_BOWL.get(), "materials/");
+        this.item(GenesisItems.CONTINUUM_ORB.get(), "materials/");
 
         this.item(GenesisItems.DARK_GUMMY_SWET.get(), "food/");
         this.item(GenesisItems.BLUE_SWET_JELLY.get(), "food/");
@@ -27,6 +30,9 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.BLUE_PARACHUTE.get(), "miscellaneous/");
         this.item(GenesisItems.GREEN_PARACHUTE.get(), "miscellaneous/");
         this.item(GenesisItems.PURPLE_PARACHUTE.get(), "miscellaneous/");
+
+        this.rotatedItem(GenesisItems.GUARDIAN_KEY.get(), "miscellaneous/");
+        this.rotatedItem(GenesisItems.HOST_KEY.get(), "miscellaneous/");
 
         this.item(GenesisItems.ICESTONE_POPROCKS.get(), "food/");
         this.item(GenesisItems.COCOATRICE.get(), "food/");
@@ -40,19 +46,32 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.CANDY_CORN.get(), "food/");
         this.item(GenesisItems.RAINBOW_STRAWBERRY.get(), "food/");
 
-        this.item(GenesisItems.SKYROOT_BOWL.get(), "miscellaneous/");
-        this.item(GenesisItems.CORNSTARCH_BOWL.get(), "miscellaneous/");
-        this.item(GenesisItems.CRYSTAL_EXP_BOTTLE.get(), "miscellaneous/");
-        this.item(GenesisItems.BONE_RING.get(), "miscellaneous/");
+        this.item(GenesisItems.CRYSTAL_EXP_BOTTLE.get(), "accessories/");
+        this.item(GenesisItems.BONE_RING.get(), "accessories/");
+        this.item(GenesisItems.CANDY_RING.get(), "accessories/");
+        this.item(GenesisItems.SKYROOT_RING.get(), "accessories/");
+        this.dyeableCape(GenesisItems.CAPE.get());
+        this.item(GenesisItems.DEXTERITY_CAPE.get(), "accessories/");
+        this.item(GenesisItems.MOUSE_EAR_CAP.get(), "accessories/");
+
+        this.item(GenesisItems.MUSIC_DISC_AERWHALE.get(), "miscellaneous/");
+        this.item(GenesisItems.MUSIC_DISC_APPROACHES.get(), "miscellaneous/");
+        this.item(GenesisItems.MUSIC_DISC_DEMISE.get(), "miscellaneous/");
+        this.item(GenesisItems.RECORDING_892.get(), "miscellaneous/");
 
         this.dartShooterItem(GenesisItems.PHOENIX_DART_SHOOTER.get(), "combat/");
+        this.item(GenesisItems.CONTINUUM_BOMB.get(), "miscellaneous/");
 
+        this.eggItem(GenesisItems.CARRION_SPROUT_SPAWN_EGG.get());
         this.eggItem(GenesisItems.DARK_SWET_SPAWN_EGG.get());
         this.eggItem(GenesisItems.TEMPEST_SPAWN_EGG.get());
+        this.eggItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG.get());
+        this.eggItem(GenesisItems.TRACKING_GOLEM_SPAWN_EGG.get());
 
         this.itemBlock(GenesisBlocks.GREEN_AERCLOUD.get());
         this.itemBlock(GenesisBlocks.PURPLE_AERCLOUD.get());
         this.itemBlock(GenesisBlocks.STORM_AERCLOUD.get());
+        this.itemBlock(GenesisBlocks.CONTINUUM_ORE.get());
         this.itemBlock(GenesisBlocks.BLUE_SKYROOT_LEAVES.get());
         this.itemBlock(GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get());
         this.itemBlock(GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get());
@@ -73,5 +92,13 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
 
         this.itemBlock(GenesisBlocks.SKYROOT_CRAFTING_TABLE.get());
         this.itemBlock(GenesisBlocks.HOLYSTONE_FURNACE.get());
+        this.lookalikeBlock(GenesisBlocks.SKYROOT_CHEST.get(), this.mcLoc("item/chest"));
+        this.itemBlockFlat(GenesisBlocks.SKYROOT_LADDER.get(), "construction/");
+
+        this.itemBlock(GenesisBlocks.CARVED_PILLAR.get());
+        this.itemBlock(GenesisBlocks.CARVED_PILLAR_SIDE.get());
+        this.itemBlock(GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.itemBlock(GenesisBlocks.DIVINE_CRAVED_STONE.get());
+        this.itemBlock(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get());
     }
 }

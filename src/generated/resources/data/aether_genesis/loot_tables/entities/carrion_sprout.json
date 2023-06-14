@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "aether_genesis:carrion_sprout_size",
+              "maximum": 3.0,
+              "minimum": 1.0,
+              "randomBound": 3.0
+            },
+            {
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 1.0,
+                "min": 0.0
+              },
+              "function": "minecraft:looting_enchant"
+            }
+          ],
+          "name": "aether_genesis:wyndberry"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}

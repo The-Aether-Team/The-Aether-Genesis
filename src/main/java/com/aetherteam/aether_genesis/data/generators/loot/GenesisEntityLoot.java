@@ -4,6 +4,7 @@ import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
+import com.aetherteam.aether_genesis.loot.functions.CarrionSproutSize;
 import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.flag.FeatureFlags;
@@ -24,6 +25,14 @@ public class GenesisEntityLoot extends EntityLootSubProvider {
 
     @Override
     public void generate() {
+        this.add(GenesisEntityTypes.CARRION_SPROUT.get(), LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(GenesisItems.WYNDBERRY.get())
+                                .apply(CarrionSproutSize.setAmount(ConstantValue.exactly(3), ConstantValue.exactly(1), ConstantValue.exactly(3)))
+                                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                        )
+                )
+        );
         this.add(GenesisEntityTypes.DARK_SWET.get(), LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(GenesisItems.DARK_SWET_BALL.get())
@@ -37,6 +46,40 @@ public class GenesisEntityLoot extends EntityLootSubProvider {
                         .add(LootItem.lootTableItem(GenesisBlocks.STORM_AERCLOUD.get())
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(0.0F, 2.0F)))
                                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                        )
+                )
+        );
+        this.add(GenesisEntityTypes.BATTLE_SENTRY.get(), LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(AetherBlocks.CARVED_STONE.get()).setWeight(4)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F)))
+                                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                        )
+                )
+        );
+        this.add(GenesisEntityTypes.TRACKING_GOLEM.get(), LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(AetherBlocks.CARVED_STONE.get()).setWeight(4)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F)))
+                                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                        )
+                        .add(LootItem.lootTableItem(AetherBlocks.SENTRY_STONE.get()).setWeight(1)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F)))
+                                .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
+                        )
+                )
+        );
+        this.add(GenesisEntityTypes.SENTRY_GUARDIAN.get(), LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(GenesisItems.GUARDIAN_KEY.get())
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
+                        )
+                )
+        );
+        this.add(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), LootTable.lootTable()
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
+                        .add(LootItem.lootTableItem(GenesisItems.HOST_KEY.get())
+                                .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
                         )
                 )
         );

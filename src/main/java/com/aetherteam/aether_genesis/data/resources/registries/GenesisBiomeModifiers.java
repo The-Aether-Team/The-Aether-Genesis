@@ -27,10 +27,13 @@ public class GenesisBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_GROVE_TREES = createKey("add_grove_trees");
     public static final ResourceKey<BiomeModifier> ADD_WOODLAND_TREES = createKey("add_woodland_trees");
     public static final ResourceKey<BiomeModifier> ADD_FOREST_TREES = createKey("add_forest_trees");
+    public static final ResourceKey<BiomeModifier> ADD_CONTINUUM_ORE = createKey("add_continuum_ore");
 
+    public static final ResourceKey<BiomeModifier> COST_CARRION_SPROUT = createKey("cost_carrion_sprout");
     public static final ResourceKey<BiomeModifier> COST_DARK_SWET = createKey("cost_dark_swet");
     public static final ResourceKey<BiomeModifier> COST_TEMPEST = createKey("cost_tempest");
 
+    public static final ResourceKey<BiomeModifier> SPAWN_CARRION_SPROUT = createKey("spawn_carrion_sprout");
     public static final ResourceKey<BiomeModifier> SPAWN_DARK_SWET = createKey("spawn_dark_swet");
     public static final ResourceKey<BiomeModifier> SPAWN_TEMPEST = createKey("spawn_tempest");
 
@@ -104,12 +107,24 @@ public class GenesisBiomeModifiers {
                         context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_FOREST_PURPLE_CRYSTAL_TREES_PLACEMENT)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
+        context.register(ADD_CONTINUUM_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_CONTINUUM_ORE),
+                HolderSet.direct(context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.ORE_CONTINUUM_PLACEMENT)),
+                GenerationStep.Decoration.UNDERGROUND_ORES
+        ));
+
+        context.register(COST_CARRION_SPROUT, new AddMobChargeBiomeModifier(
+                context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_CARRION_SPROUT), GenesisEntityTypes.CARRION_SPROUT.get(), 0.4, 0.11));
 
         context.register(COST_DARK_SWET, new AddMobChargeBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_DARK_SWET), GenesisEntityTypes.DARK_SWET.get(), 0.5, 0.1));
 
         context.register(COST_TEMPEST, new AddMobChargeBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_TEMPEST), GenesisEntityTypes.TEMPEST.get(), 0.6, 0.16));
+
+        context.register(SPAWN_CARRION_SPROUT, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
+                context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_CARRION_SPROUT),
+                List.of(new MobSpawnSettings.SpawnerData(GenesisEntityTypes.CARRION_SPROUT.get(), 6, 1, 1))));
 
         context.register(SPAWN_DARK_SWET, new ForgeBiomeModifiers.AddSpawnsBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_DARK_SWET),

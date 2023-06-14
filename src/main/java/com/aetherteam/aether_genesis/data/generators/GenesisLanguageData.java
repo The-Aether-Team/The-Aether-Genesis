@@ -18,6 +18,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addBlock(GenesisBlocks.GREEN_AERCLOUD, "Green Aercloud");
         this.addBlock(GenesisBlocks.PURPLE_AERCLOUD, "Purple Aercloud");
         this.addBlock(GenesisBlocks.STORM_AERCLOUD, "Storm Aercloud");
+        this.addBlock(GenesisBlocks.CONTINUUM_ORE, "Continuum Ore");
         this.addBlock(GenesisBlocks.ORANGE_TREE, "Orange Tree");
         this.addBlock(GenesisBlocks.BLUE_SKYROOT_LEAVES, "Blue Skyroot Leaves");
         this.addBlock(GenesisBlocks.BLUE_SKYROOT_SAPLING, "Blue Skyroot Sapling");
@@ -37,7 +38,10 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addBlock(GenesisBlocks.SKYROOT_CRAFTING_TABLE, "Skyroot Crafting Table");
         this.addBlock(GenesisBlocks.HOLYSTONE_FURNACE, "Holystone Furnace");
+        this.addBlock(GenesisBlocks.SKYROOT_CHEST, "Skyroot Chest");
+        this.addBlock(GenesisBlocks.SKYROOT_LADDER, "Skyroot Ladder");
 
+        this.addItem(GenesisItems.CONTINUUM_ORB, "Continuum Orb");
         this.addItem(GenesisItems.GOLDEN_SWET_BALL, "Golden Swet Ball");
         this.addItem(GenesisItems.DARK_SWET_BALL, "Dark Swet Ball");
         this.addItem(GenesisItems.DARK_GUMMY_SWET, "Dark Gummy Swet");
@@ -60,19 +64,53 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.CORNSTARCH_BOWL, "Cornstarch Bowl");
         this.addItem(GenesisItems.CRYSTAL_EXP_BOTTLE, "Crystal Exp Bottle");
         this.addItem(GenesisItems.BONE_RING, "Bone Ring");
+        this.addItem(GenesisItems.CANDY_RING, "Candy Ring");
+        this.addItem(GenesisItems.SKYROOT_RING, "Skyroot Ring");
+        this.addItem(GenesisItems.CAPE, "Cape");
+        this.addItem(GenesisItems.DEXTERITY_CAPE, "Dexterity Cape");
+        this.addItem(GenesisItems.MOUSE_EAR_CAP, "Mouse Ear Cap");
 
         this.addItem(GenesisItems.PHOENIX_DART_SHOOTER, "Phoenix Dart Shooter");
+        this.addItem(GenesisItems.CONTINUUM_BOMB, "Continuum Bomb");
 
+        this.addItem(GenesisItems.CARRION_SPROUT_SPAWN_EGG, "Carrion Sprout Spawn Egg");
         this.addItem(GenesisItems.DARK_SWET_SPAWN_EGG, "Dark Swet Spawn Egg");
         this.addItem(GenesisItems.TEMPEST_SPAWN_EGG, "Tempest Spawn Egg");
+        this.addItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG, "Battle Sentry Spawn Egg");
+        this.addItem(GenesisItems.TRACKING_GOLEM_SPAWN_EGG, "Tracking Golem Spawn Egg");
+
         this.addItem(GenesisItems.BLUE_PARACHUTE, "Blue Parachute");
         this.addItem(GenesisItems.GREEN_PARACHUTE, "Green Parachute");
         this.addItem(GenesisItems.PURPLE_PARACHUTE, "Purple Parachute");
 
+        this.addItem(GenesisItems.GUARDIAN_KEY, "Guardian Key");
+        this.addItem(GenesisItems.HOST_KEY, "Host Key");
+
+        this.addItem(GenesisItems.MUSIC_DISC_AERWHALE, "Aerwhale Music Disc");
+        this.addDiscDesc(GenesisItems.MUSIC_DISC_AERWHALE, "Aether UK - Aerwhale");
+        this.addItem(GenesisItems.MUSIC_DISC_APPROACHES, "Moa Music Disc");
+        this.addDiscDesc(GenesisItems.MUSIC_DISC_APPROACHES, "Emile van Krieken - Approaches");
+        this.addItem(GenesisItems.MUSIC_DISC_DEMISE, "Labyrinth Music Disc");
+        this.addDiscDesc(GenesisItems.MUSIC_DISC_DEMISE, "Moorziey - Demise");
+        this.addItem(GenesisItems.RECORDING_892, "Recording #892");
+        this.addDiscDesc(GenesisItems.RECORDING_892, "Emile van Krieken - ???");
+
+        this.addEntityType(GenesisEntityTypes.CARRION_SPROUT, "Carrion Sprout");
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");
+        this.addEntityType(GenesisEntityTypes.BATTLE_SENTRY, "Battle Sentry");
 
-        this.addSubtitle("block.aercloud", "blue_aercloud_bounce", "Blue Aercloud bounces");
+        this.addBlock(GenesisBlocks.CARVED_PILLAR, "Carved Pillar");
+        this.addBlock(GenesisBlocks.CARVED_PILLAR_SIDE, "Carved Pillar Side");
+        this.addBlock(GenesisBlocks.DIVINE_CRAVED_STONE, "Divine Carved Stone");
+        this.addBlock(GenesisBlocks.DIVINE_SENTRY_STONE, "Divine Sentry Stone");
+        this.addBlock(GenesisBlocks.BLOOD_MOSS_HOLYSTONE, "Blood Moss Holystone");
+
+        this.addBlock(GenesisBlocks.COLD_FIRE, "Cold Fire");
+
+        this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
+        this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");
+        this.addSubtitle("block", "aercloud.blue_aercloud_bounce", "Blue Aercloud bounces");
         
         this.addContainerType(GenesisMenuTypes.HOLYSTONE_FURNACE, "Holystone Furnace");
 
@@ -84,8 +122,10 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addClientConfig("audio", "blue_aercloud_bounce_sfx", "Makes Blue Aerclouds have their wobbly sounds that play when bouncing on them");
         this.addClientConfig("audio", "night_music_tracks", "Adds some nice night tracks to the Aether's music selection. Also disables the default music manager for the Aether, to prevent overlap");
 
-        this.addPackDescription("mod", "The Aether: Genesis Resources");
+        this.addPackTitle("classic", "Genesis of the Void Textures");
 
+        this.addPackDescription("mod", "The Aether: Genesis Resources");
+        this.addPackDescription("classic", "The classic look from Genesis of the Void");
         //todo: lore
     }
 }

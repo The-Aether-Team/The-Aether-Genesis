@@ -1,16 +1,30 @@
 {
   "variants": {
-    "axis=x": {
+    "facing=down": {
+      "model": "aether_genesis:block/holystone_headstone",
+      "x": 180
+    },
+    "facing=east": {
       "model": "aether_genesis:block/holystone_headstone_horizontal",
       "x": 90,
       "y": 90
     },
-    "axis=y": {
-      "model": "aether_genesis:block/holystone_headstone"
-    },
-    "axis=z": {
+    "facing=north": {
       "model": "aether_genesis:block/holystone_headstone_horizontal",
       "x": 90
+    },
+    "facing=south": {
+      "model": "aether_genesis:block/holystone_headstone_horizontal",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "aether_genesis:block/holystone_headstone"
+    },
+    "facing=west": {
+      "model": "aether_genesis:block/holystone_headstone_horizontal",
+      "x": 90,
+      "y": 270
     }
   }
 }

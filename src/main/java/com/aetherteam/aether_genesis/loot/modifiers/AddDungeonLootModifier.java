@@ -18,7 +18,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 
-import java.util.*;
+import java.util.List;
 
 public class AddDungeonLootModifier extends LootModifier {
     public static final Codec<AddDungeonLootModifier> CODEC = RecordCodecBuilder.create(instance -> codecStart(instance)
@@ -48,7 +48,7 @@ public class AddDungeonLootModifier extends LootModifier {
                     boolean isFull = generatedLoot.size() == containerBlockEntity.getContainerSize();
                     if (!isFull) {
                         int weight = this.entries.stream().map(entry -> entry.getWeight().asInt()).reduce(0, Integer::sum);
-                        WeightedRandom.getRandomItem(randomSource, this.entries, weight).ifPresent(e -> generatedLoot.add(e.getData()));
+                        WeightedRandom.getRandomItem(randomSource, this.entries, weight).ifPresent(e -> generatedLoot.add(e.getData().copy()));
                     }
                 }
             }

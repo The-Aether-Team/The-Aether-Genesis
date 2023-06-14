@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "aether_genesis:block/dungeon/carved_pillar_top",
+    "side": "aether_genesis:block/dungeon/carved_pillar_side"
+  }
+}

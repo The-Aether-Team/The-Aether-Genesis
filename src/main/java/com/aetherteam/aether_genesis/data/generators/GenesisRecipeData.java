@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.data.generators;
 
+import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether_genesis.Genesis;
@@ -12,6 +13,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -32,6 +34,13 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
         twoByTwoPacker(consumer, RecipeCategory.TOOLS, GenesisItems.GREEN_PARACHUTE.get(), GenesisBlocks.GREEN_AERCLOUD.get());
         twoByTwoPacker(consumer, RecipeCategory.TOOLS, GenesisItems.PURPLE_PARACHUTE.get(), GenesisBlocks.PURPLE_AERCLOUD.get());
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CAPE.get())
+                .define('#', ItemTags.WOOL)
+                .pattern("##")
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy("has_wool", has(ItemTags.WOOL)).save(consumer);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.HOLYSTONE_HEADSTONE.get(), 9).define('#', AetherBlocks.HOLYSTONE_BRICKS.get()).pattern("###").pattern("###").pattern("###").unlockedBy(getHasName(AetherBlocks.HOLYSTONE_BRICKS.get()), has(AetherBlocks.HOLYSTONE_BRICKS.get())).save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), 9).define('#', AetherBlocks.HOLYSTONE_BRICKS.get()).define('H', AetherBlocks.HOLYSTONE.get()).pattern("###").pattern("###").pattern("HHH").unlockedBy(getHasName(AetherBlocks.HOLYSTONE_BRICKS.get()), has(AetherBlocks.HOLYSTONE_BRICKS.get())).save(consumer);
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), 9).define('#', AetherBlocks.HOLYSTONE_BRICKS.get()).define('H', AetherBlocks.HOLYSTONE.get()).pattern("###").pattern("H#H").pattern("H#H").unlockedBy(getHasName(AetherBlocks.HOLYSTONE_BRICKS.get()), has(AetherBlocks.HOLYSTONE_BRICKS.get())).save(consumer);
@@ -48,6 +57,8 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
         wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_WOOD_WALL.get(), AetherBlocks.SKYROOT_WOOD.get());
         wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get());
         wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_WOOD.get());
+
+        oreBlockStorageRecipesRecipesWithCustomUnpacking(consumer, RecipeCategory.MISC, GenesisItems.CONTINUUM_ORB.get(), RecipeCategory.MISC, GenesisItems.CONTINUUM_BOMB.get(), "continuum_orb_from_bomb", "continuum_bomb"); //todo recipe locations are incorrect
 
         twoByTwoPacker(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_CRAFTING_TABLE.get(), AetherBlocks.SKYROOT_PLANKS.get());
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_FURNACE.get())
@@ -67,7 +78,7 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
                 .pattern("IXI")
                 .pattern("###")
                 .unlockedBy("has_smooth_stone", has(Blocks.SMOOTH_STONE))
-                .save(consumer, "holystone_blast_furnace");
+                .save(consumer, GenesisRecipeProvider.name("holystone_blast_furnace"));
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.SMOKER)
                 .group("minecraft:smoker")
                 .define('#', ItemTags.LOGS)
@@ -76,6 +87,33 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
                 .pattern("#X#")
                 .pattern(" # ")
                 .unlockedBy(getHasName(GenesisBlocks.HOLYSTONE_FURNACE.get()), has(GenesisBlocks.HOLYSTONE_FURNACE.get()))
-                .save(consumer, "holystone_smoker");
+                .save(consumer, GenesisRecipeProvider.name("holystone_smoker"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_CHEST.get())
+                .define('#', AetherBlocks.SKYROOT_PLANKS.get())
+                .pattern("###")
+                .pattern("# #")
+                .pattern("###")
+                .unlockedBy(getHasName(GenesisBlocks.SKYROOT_CHEST.get()), has(AetherBlocks.SKYROOT_PLANKS.get()))
+                .save(consumer);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_LADDER.get(), 3)
+                .define('#', AetherTags.Items.SKYROOT_STICKS)
+                .define('S', AetherBlocks.SKYROOT_PLANKS.get())
+                .pattern("# #")
+                .pattern("#S#")
+                .pattern("# #")
+                .unlockedBy(getHasName(GenesisBlocks.SKYROOT_LADDER.get()), has(AetherTags.Items.SKYROOT_STICKS))
+                .save(consumer);
+
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HEADSTONE.get(), AetherBlocks.HOLYSTONE.get());
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), AetherBlocks.HOLYSTONE.get());
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), AetherBlocks.HOLYSTONE.get());
+
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HEADSTONE.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
+
+        enchantingRecipe(RecipeCategory.FOOD, GenesisItems.RAINBOW_STRAWBERRY.get(), GenesisItems.WYNDBERRY.get(), 0.35F, 500).save(consumer, GenesisRecipeProvider.name("rainbow_strawberry_enchanting"));
     }
 }

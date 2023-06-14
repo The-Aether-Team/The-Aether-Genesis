@@ -1,9 +1,11 @@
 package com.aetherteam.aether_genesis.data.providers;
 
+import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.data.providers.AetherItemModelProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -11,6 +13,10 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 public abstract class GenesisItemModelProvider extends AetherItemModelProvider {
     public GenesisItemModelProvider(PackOutput output, String id, ExistingFileHelper helper) {
         super(output, id, helper);
+    }
+
+    public void dyeableCape(Item item) {
+        this.withExistingParent(this.itemName(item), this.mcLoc("item/generated")).texture("layer0", new ResourceLocation(Aether.MODID, "item/accessories/white_cape"));
     }
 
     public void orangeTree(Block block) {

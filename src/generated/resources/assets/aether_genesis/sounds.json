@@ -5,6 +5,106 @@
     ],
     "subtitle": "subtitles.aether_genesis.block.aercloud.blue_aercloud_bounce"
   },
+  "entity.carrion_sprout.death": {
+    "sounds": [
+      "damage/fallbig"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.carrion_sprout.death"
+  },
+  "entity.carrion_sprout.hurt": {
+    "sounds": [
+      "damage/hit1",
+      "damage/hit2",
+      "damage/hit3"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.carrion_sprout.hurt"
+  },
+  "entity.sentry_guardian.death": {
+    "sounds": [
+      "aether_genesis:entity/sentry_guardian/death"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tracking_golem.creepy_seen"
+  },
+  "entity.sentry_guardian.hit": {
+    "sounds": [
+      "aether_genesis:entity/sentry_guardian/hit"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.sentry_guardian.hit"
+  },
+  "entity.sentry_guardian.living": {
+    "sounds": [
+      "aether_genesis:entity/sentry_guardian/living"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.sentry_guardian.living"
+  },
+  "entity.sentry_guardian.summon": {
+    "sounds": [
+      "aether_genesis:entity/sentry_guardian/spawn"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.sentry_guardian.spawn"
+  },
+  "entity.tracking_golem.creepy_seen": {
+    "sounds": [
+      "aether_genesis:entity/tracking_golem/creepy_seen"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tracking_golem.creepy_seen"
+  },
+  "entity.tracking_golem.death": {
+    "sounds": [
+      "aether_genesis:entity/tracking_golem/death"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tracking_golem.death"
+  },
+  "entity.tracking_golem.hit": {
+    "sounds": [
+      "aether_genesis:entity/tracking_golem/hit"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tracking_golem.hit"
+  },
+  "entity.tracking_golem.say": {
+    "sounds": [
+      "aether_genesis:entity/tracking_golem/say"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tracking_golem.say"
+  },
+  "entity.tracking_golem.seen_enemy": {
+    "sounds": [
+      "aether_genesis:entity/tracking_golem/seen_enemy"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tracking_golem.seen_enemy"
+  },
+  "item.music_disc.aerwhale": {
+    "sounds": [
+      {
+        "name": "aether_genesis:item/records/aerwhale",
+        "stream": true
+      }
+    ]
+  },
+  "item.music_disc.approaches": {
+    "sounds": [
+      {
+        "name": "aether_genesis:item/records/approaches",
+        "stream": true
+      }
+    ]
+  },
+  "item.music_disc.demise": {
+    "sounds": [
+      {
+        "name": "aether_genesis:item/records/demise",
+        "stream": true
+      }
+    ]
+  },
+  "item.music_disc.recording_892": {
+    "sounds": [
+      {
+        "name": "aether_genesis:item/records/chase",
+        "stream": true
+      }
+    ]
+  },
   "music.aether_night": {
     "sounds": [
       {

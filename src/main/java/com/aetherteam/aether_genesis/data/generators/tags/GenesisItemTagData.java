@@ -37,6 +37,9 @@ public class GenesisItemTagData extends ItemTagsProvider {
         this.tag(AetherTags.Items.DEPLOYABLE_PARACHUTES).add(
                 GenesisItems.GREEN_PARACHUTE.get(),
                 GenesisItems.PURPLE_PARACHUTE.get());
+        this.tag(AetherTags.Items.DUNGEON_KEYS).add(
+                GenesisItems.GUARDIAN_KEY.get(),
+                GenesisItems.HOST_KEY.get());
 
         this.tag(ItemTags.SAPLINGS).add(
                 GenesisBlocks.BLUE_SKYROOT_SAPLING.get().asItem(),
@@ -52,10 +55,22 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get().asItem(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get().asItem(),
                 GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get().asItem());
+        this.tag(ItemTags.MUSIC_DISCS).add(
+                GenesisItems.MUSIC_DISC_AERWHALE.get(),
+                GenesisItems.MUSIC_DISC_APPROACHES.get(),
+                GenesisItems.MUSIC_DISC_DEMISE.get(),
+                GenesisItems.RECORDING_892.get());
+
         this.tag(AetherTags.Items.AETHER_ACCESSORY).add(
-                GenesisItems.CRYSTAL_EXP_BOTTLE.get());
+                GenesisItems.CRYSTAL_EXP_BOTTLE.get(),
+                GenesisItems.MOUSE_EAR_CAP.get());
         this.tag(AetherTags.Items.AETHER_RING).add(
-                GenesisItems.BONE_RING.get());
+                GenesisItems.BONE_RING.get(),
+                GenesisItems.CANDY_RING.get(),
+                GenesisItems.SKYROOT_RING.get());
+        this.tag(AetherTags.Items.AETHER_CAPE).add(
+                GenesisItems.CAPE.get(),
+                GenesisItems.DEXTERITY_CAPE.get());
         this.tag(GenesisTags.Items.SWET_JELLY).add(
                 GenesisItems.BLUE_SWET_JELLY.get(),
                 GenesisItems.DARK_SWET_JELLY.get(),
