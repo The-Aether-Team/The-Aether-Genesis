@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.data.generators;
 
+import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import net.minecraft.data.PackOutput;
@@ -86,5 +87,21 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                 definition().with(sound("aether_genesis:entity/sentry_guardian/hit"))
                         .subtitle("subtitles.aether_genesis.entity.sentry_guardian.hit")
         );
+        this.add(GenesisSoundEvents.ENTITY_TEMPEST_SHOOT,
+                definition().with(sound("aether:entity/zephyr/shoot"))
+                        .subtitle("subtitles.aether_genesis.entity.tempest.shoot"));
+        this.add(GenesisSoundEvents.ENTITY_TEMPEST_AMBIENT,
+                definition().with(sound("aether:entity/zephyr/call"))
+                        .subtitle("subtitles.aether_genesis.entity.tempest.ambient")
+        );
+        this.add(GenesisSoundEvents.ENTITY_TEMPEST_DEATH,
+                definition().with(sound("aether:entity/zephyr/call"))
+                        .subtitle("subtitles.aether_genesis.entity.tempest.death")
+        );
+        this.add(GenesisSoundEvents.ENTITY_TEMPEST_HURT,
+                definition().with(sound("aether:entity/zephyr/call"))
+                        .subtitle("subtitles.aether_genesis.entity.tempest.hurt")
+        );
+
     }
 }

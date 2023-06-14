@@ -88,5 +88,9 @@
   "pack.aether_genesis.mod.description": "The Aether: Genesis Resources",
   "subtitles.aether_genesis.block.aercloud.blue_aercloud_bounce": "Blue Aercloud bounces",
   "subtitles.aether_genesis.entity.carrion_sprout.death": "Carrion Sprout dies",
-  "subtitles.aether_genesis.entity.carrion_sprout.hurt": "Carrion Sprout hurts"
+  "subtitles.aether_genesis.entity.carrion_sprout.hurt": "Carrion Sprout hurts",
+  "subtitles.aether_genesis.entity.tempest.ambient": "Tempest blows",
+  "subtitles.aether_genesis.entity.tempest.death": "Tempest dies",
+  "subtitles.aether_genesis.entity.tempest.hurt": "Tempest hurts",
+  "subtitles.aether_genesis.entity.tempest.shoot": "Tempest spits"
 }
