@@ -80,7 +80,7 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
         this.goalSelector.addGoal(0, new DoNothingGoal(this));
         this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Player.class, 3.0F, 1.25F, 2.0F));
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this, SentryGuardian.class));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this, SliderHostMimic.class));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, livingEntity -> this.isBossFight()));
     }
 
