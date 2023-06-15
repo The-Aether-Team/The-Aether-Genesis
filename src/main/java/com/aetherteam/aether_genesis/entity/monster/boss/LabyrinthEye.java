@@ -22,6 +22,8 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
@@ -32,6 +34,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Enemy;
@@ -52,9 +55,10 @@ import java.util.EnumSet;
 public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>, Enemy, IEntityAdditionalSpawnData {
     public static final EntityDataAccessor<Boolean> DATA_AWAKE_ID = SynchedEntityData.defineId(LabyrinthEye.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Component> DATA_BOSS_NAME_ID = SynchedEntityData.defineId(LabyrinthEye.class, EntityDataSerializers.COMPONENT);
+    public static final EntityDataAccessor<Integer> DATA_BOSS_STAGE = SynchedEntityData.defineId(LabyrinthEye.class, EntityDataSerializers.INT);
 
     public int chatTime;
-    private int attackTime = 30;
+    private final boolean[] stageDone = new boolean[13];
 //    private int cappedAmount;
 
     private final ServerBossEvent bossFight;
@@ -73,7 +77,8 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new DoNothingGoal(this));
         this.targetSelector.addGoal(4, new ArrowAttackCogGoal(this));
-        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(6, new LookAtPlayerGoalBoss(this, Player.class, 8.0F));
+        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this, LabyrinthEye.class));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, livingEntity -> this.isBossFight()));
     }
@@ -84,6 +89,8 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
         this.bossFight.setVisible(false);
         this.xpReward = XP_REWARD_BOSS;
         this.setPersistenceRequired();
+        for (int i = 0; i < 12; i++)
+            this.stageDone[i] = false;
     }
 
     private boolean isBossStage(int stage) {
@@ -105,6 +112,15 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
         };
     }
 
+    private void setStage(int stage) {
+        this.entityData.set(DATA_BOSS_STAGE, stage);
+        this.entityData.get(DATA_BOSS_STAGE);
+    }
+
+    public int getStage() {
+        return this.entityData.get(DATA_BOSS_STAGE);
+    }
+
   //  @Override
   //  protected SoundEvent getHurtSound(@Nonnull DamageSource damageSource) {
   //      return GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_HIT.get();
@@ -122,7 +138,28 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
 
     public void die(DamageSource source) {
         this.level.explode(this, this.position().x, this.position().y, this.position().z, 0.3F, false, Level.ExplosionInteraction.TNT);
+
         super.die(source);
+    }
+
+    public void spawnLargeCog(Entity entityToAttack, int stage) {
+        if (this.stageDone[stage])
+            return;
+        CogArrow entityarrow = new CogArrow(this.level, this);
+        entityarrow.setYRot(this.getYRot());
+        entityarrow.setXRot(this.getXRot());
+        double var3 = entityToAttack.position().x + entityToAttack.getMotionDirection().getStepX() - this.position().x;
+        double var5 = entityToAttack.position().y + -this.getMotionDirection().getStepY();
+        double var7 = entityToAttack.position().z + entityToAttack.getMotionDirection().getStepZ() - this.position().z;
+        float var9 = (float) Math.sqrt(var3 * var3 + var7 * var7);
+        if (!this.level.isClientSide) {
+            float distance = var9 * 0.075F;
+            entityarrow.shoot(var3, var5 + (var9 * 0.2F), var7, distance, 0.0F);
+            this.level.playSound(this, this.getOnPos(), SoundEvents.TNT_PRIMED, SoundSource.AMBIENT, 2.0F, 1.0F);
+            this.playSound(SoundEvents.ITEM_BREAK, 0.8F, 0.8F + this.level.random.nextFloat() * 0.4F);
+            this.level.addFreshEntity(entityarrow);
+        }
+        stageDone[stage] = true;
     }
 
     @Override
@@ -131,15 +168,11 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
         if (!this.isAwake() || (this.getTarget() instanceof Player player && (player.isCreative() || player.isSpectator()))) {
             this.setTarget(null);
         }
-        else
-            this.evaporate();
 
         if (this.chatTime > 0) {
             this.chatTime--;
         }
     }
-
-    private void evaporate() {}
 
     public void reset() {
         this.setAwake(false);
@@ -159,6 +192,7 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
     public void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_AWAKE_ID, false);
+        this.entityData.define(DATA_BOSS_STAGE, 13);
         this.entityData.define(DATA_BOSS_NAME_ID, Component.literal("Labyrinth Eye"));
     }
 
@@ -189,13 +223,19 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
         if (entity != null && source.is(DamageTypeTags.IS_PROJECTILE)) {
             if (!this.level.isClientSide && attacker instanceof Player && ((Player)attacker).getMainHandItem() != Items.AIR.getDefaultInstance()) {
                 this.chatTime = 60;
-                attacker.sendSystemMessage(Component.translatable("gui.genesis.boss.message.projectile"));
+                attacker.sendSystemMessage(Component.translatable("gui.aether_genesis_genesis.boss.message.projectile"));
             }
             return false;
         }
         if (!this.isBossFight()) {
             this.setAwake(true);
             this.setBossFight(true);
+        }
+        for (int stage = 0; stage < 13; stage++) {
+            if (isBossStage(stage) && !this.stageDone[stage]) {
+                setStage(stage);
+                spawnLargeCog(this, stage);
+            }
         }
         return super.hurt(source, damage);
     }
@@ -320,7 +360,17 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
 
     public static MutableComponent generateGuardianName() {
         MutableComponent result = BossNameGenerator.generateBossName();
-        return result.append(Component.translatable("gui.genesis.labyrinth_eye.title"));
+        return result.append(Component.translatable("gui.aether_genesis.labyrinth_eye.title"));
+    }
+
+    @Override
+    public boolean isNoGravity() {
+        return !isAwake();
+    }
+
+    @Override
+    public float getYRot() {
+        return !isAwake() ? 0 : super.getYRot();
     }
 
     @Override
@@ -360,29 +410,40 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
 
     public static class ArrowAttackCogGoal extends Goal {
         private final LabyrinthEye labyrinthEye;
-        private int shootInterval;
 
         public ArrowAttackCogGoal(LabyrinthEye labyrinthEye) {
             this.labyrinthEye = labyrinthEye;
-            this.shootInterval = (int) (55 + labyrinthEye.getHealth() / 2);
         }
 
         @Override
         public boolean canUse() {
-            return this.labyrinthEye.isBossFight() && --this.shootInterval <= 0;
+            return this.labyrinthEye.isBossFight() && this.labyrinthEye.random.nextInt(20) == 0;
         }
 
         @Override
         public void start() {
-            CogArrow crystal = new CogArrow(this.labyrinthEye.level, this.labyrinthEye);
+            Entity cog = new CogArrow(this.labyrinthEye.level, this.labyrinthEye);
             this.labyrinthEye.playSound(this.labyrinthEye.getShootSound(), 1.0F, this.labyrinthEye.level.random.nextFloat() - this.labyrinthEye.level.random.nextFloat() * 0.2F + 1.2F);
-            this.labyrinthEye.level.addFreshEntity(crystal);
-            this.shootInterval = (int) (15 + labyrinthEye.getHealth() / 2);
+            this.labyrinthEye.level.addFreshEntity(cog);
+            cog.setPos(labyrinthEye.position());
         }
 
         @Override
         public boolean requiresUpdateEveryTick() {
             return true;
+        }
+    }
+
+    public static class LookAtPlayerGoalBoss extends LookAtPlayerGoal{
+        private final LabyrinthEye labyrinthEye;
+
+        public LookAtPlayerGoalBoss(LabyrinthEye pMob, Class<? extends LivingEntity> pLookAtType, float pLookDistance) {
+            super(pMob, pLookAtType, pLookDistance);
+            this.labyrinthEye = pMob;
+        }
+
+        public boolean canUse() {
+        return super.canUse() && this.labyrinthEye.isBossFight();
         }
     }
 }

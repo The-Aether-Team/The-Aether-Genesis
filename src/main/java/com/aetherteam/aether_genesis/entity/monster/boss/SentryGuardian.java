@@ -229,7 +229,7 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
         if (entity != null && source.is(DamageTypeTags.IS_PROJECTILE)) {
             if (!this.level.isClientSide && attacker instanceof Player && ((Player)attacker).getMainHandItem() != Items.AIR.getDefaultInstance()) {
                 this.chatTime = 60;
-                attacker.sendSystemMessage(Component.translatable("gui.genesis.boss.message.projectile"));
+                attacker.sendSystemMessage(Component.translatable("gui.aether_genesis.boss.message.projectile"));
             }
             return false;
         }
@@ -356,7 +356,7 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
 
     public static MutableComponent generateGuardianName() {
         MutableComponent result = BossNameGenerator.generateBossName();
-        return result.append(Component.translatable("gui.genesis.sentry_guardian.title"));
+        return result.append(Component.translatable("gui.aether_genesis.sentry_guardian.title"));
     }
 
     @Override

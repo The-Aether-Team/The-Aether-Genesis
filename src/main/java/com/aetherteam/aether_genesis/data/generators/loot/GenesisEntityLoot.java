@@ -85,7 +85,7 @@ public class GenesisEntityLoot extends EntityLootSubProvider {
         );
         this.add(GenesisEntityTypes.LABYRINTH_EYE.get(), LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
-                        .add(LootItem.lootTableItem(GenesisItems.HOST_KEY.get())
+                        .add(LootItem.lootTableItem(GenesisItems.COG_KEY.get())
                                 .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1)))
                         )
                 )

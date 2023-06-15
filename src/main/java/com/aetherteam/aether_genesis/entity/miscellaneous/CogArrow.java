@@ -73,11 +73,10 @@ public class CogArrow extends Projectile {
         }
         this.checkInsideBlocks();
         this.tickMovement();
+        if(this.getOwner() != null && !this.getOwner().isAlive())
+            this.discard();
     }
 
-    /**
-     * Handles the crystal's movement. Override this if you need different movement code.
-     */
     protected void tickMovement() {
         Vec3 vector3d = this.getDeltaMovement();
         double d2 = this.getX() + vector3d.x;
@@ -117,7 +116,7 @@ public class CogArrow extends Projectile {
     @Override
     protected void onHitEntity(EntityHitResult result) {
         Entity entity = result.getEntity();
-        if (entity instanceof LivingEntity livingEntity) {
+        if (entity instanceof LivingEntity livingEntity && livingEntity != this.getOwner()) {
             if (livingEntity.hurt(AetherDamageTypes.indirectEntityDamageSource(this.level, AetherDamageTypes.FLOATING_BLOCK, this, this.getOwner()), 6.0F)) {
                 this.level.playSound(null, this.getX(), this.getY(), this.getZ(), this.getImpactExplosionSoundEvent(), SoundSource.HOSTILE, 2.0F, this.random.nextFloat() - this.random.nextFloat() * 0.2F + 1.2F);
             }
@@ -139,9 +138,6 @@ public class CogArrow extends Projectile {
         return SoundEvents.ARMOR_STAND_BREAK;
     }
 
-    /** [VANILLA COPY] - AbstractHurtingProjectile.hurt(DamageSource, float)
-     * The fire crystal doesn't reset the owner when hit back. It'll be a threat until it despawns.
-     */
     @Override
     public boolean hurt(DamageSource source, float amount) {
         if (this.isInvulnerableTo(source)) {
@@ -165,9 +161,6 @@ public class CogArrow extends Projectile {
         }
     }
 
-    /**
-     * This is needed to make the crystal vulnerable to player attacks.
-     */
     @Override
     public boolean isPickable() {
         return true;

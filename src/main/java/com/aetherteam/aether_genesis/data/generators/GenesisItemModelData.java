@@ -33,6 +33,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
 
         this.rotatedItem(GenesisItems.GUARDIAN_KEY.get(), "miscellaneous/");
         this.rotatedItem(GenesisItems.HOST_KEY.get(), "miscellaneous/");
+        this.rotatedItem(GenesisItems.COG_KEY.get(), "miscellaneous/");
 
         this.item(GenesisItems.ICESTONE_POPROCKS.get(), "food/");
         this.item(GenesisItems.COCOATRICE.get(), "food/");

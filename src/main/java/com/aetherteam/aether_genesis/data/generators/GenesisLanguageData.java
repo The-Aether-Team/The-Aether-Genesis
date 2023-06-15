@@ -85,6 +85,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addItem(GenesisItems.GUARDIAN_KEY, "Guardian Key");
         this.addItem(GenesisItems.HOST_KEY, "Host Key");
+        this.addItem(GenesisItems.COG_KEY, "Cog Key");
 
         this.addItem(GenesisItems.MUSIC_DISC_AERWHALE, "Aerwhale Music Disc");
         this.addDiscDesc(GenesisItems.MUSIC_DISC_AERWHALE, "Aether UK - Aerwhale");
@@ -127,6 +128,12 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addPackDescription("mod", "The Aether: Genesis Resources");
         this.addPackDescription("classic", "The classic look from Genesis of the Void");
+
+        this.addGuiText("host.title", "the Slider Host Mimic");
+        this.addGuiText("sentry_guardian.title", "the Sentry Guardian");
+        this.addGuiText("labyrinth_eye.title", "the Labyrinth Eye");
+
+        this.addGuiText("boss.message.projectile", "Hmm... Better switch to a sword");
         //todo: lore
     }
 }

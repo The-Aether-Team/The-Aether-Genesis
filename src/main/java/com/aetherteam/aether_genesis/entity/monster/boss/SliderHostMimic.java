@@ -119,7 +119,7 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
 
     public static MutableComponent generateHostName() {
         MutableComponent result = BossNameGenerator.generateBossName();
-        return result.append(Component.translatable("gui.genesis.host.title"));
+        return result.append(Component.translatable("gui.aether_genesis.host.title"));
     }
 
     protected void alignSpawnPos() {
@@ -167,7 +167,7 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
         if (entity != null && source.is(DamageTypeTags.IS_PROJECTILE)) {
             if (!this.level.isClientSide && attacker instanceof Player && ((Player)attacker).getMainHandItem() != Items.AIR.getDefaultInstance()) {
                 this.chatCooldown = 60;
-                attacker.sendSystemMessage(Component.translatable("gui.genesis.boss.message.projectile"));
+                attacker.sendSystemMessage(Component.translatable("gui.aether_genesis.boss.message.projectile"));
             }
             return false;
         }
