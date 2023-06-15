@@ -2,13 +2,10 @@ package com.aetherteam.aether_genesis.entity.monster.boss;
 
 import com.aetherteam.aether.api.BossNameGenerator;
 import com.aetherteam.aether.api.BossRoomTracker;
-import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.entity.BossMob;
-import com.aetherteam.aether.entity.projectile.crystal.AbstractCrystal;
-import com.aetherteam.aether.entity.projectile.crystal.FireCrystal;
-import com.aetherteam.aether.entity.projectile.crystal.IceCrystal;
 import com.aetherteam.aether.network.AetherPacketHandler;
 import com.aetherteam.aether.network.packet.client.BossInfoPacket;
+import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.entity.miscellaneous.CogArrow;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -23,7 +20,6 @@ import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
@@ -121,20 +117,15 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
         return this.entityData.get(DATA_BOSS_STAGE);
     }
 
-  //  @Override
-  //  protected SoundEvent getHurtSound(@Nonnull DamageSource damageSource) {
-  //      return GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_HIT.get();
-  //  }
-//
-  //  @Override
-  //  protected SoundEvent getAmbientSound() {
-  //      return GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_LIVING.get();
-  //  }
-//
-  //  @Override
-  //  protected SoundEvent getDeathSound() {
-  //      return GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_DEATH.get();
-  //  }
+   @Override
+   protected SoundEvent getDeathSound() {
+       return GenesisSoundEvents.ENTITY_LABYRINTH_EYE_DEATH.get();
+   }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return GenesisSoundEvents.ENTITY_LABYRINTH_EYE_MOVE.get();
+    }
 
     public void die(DamageSource source) {
         this.level.explode(this, this.position().x, this.position().y, this.position().z, 0.3F, false, Level.ExplosionInteraction.TNT);
@@ -145,7 +136,7 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
     public void spawnLargeCog(Entity entityToAttack, int stage) {
         if (this.stageDone[stage])
             return;
-        CogArrow entityarrow = new CogArrow(this.level, this);
+        CogArrow entityarrow = new CogArrow(this.level, this, true);
         entityarrow.setYRot(this.getYRot());
         entityarrow.setXRot(this.getXRot());
         double var3 = entityToAttack.position().x + entityToAttack.getMotionDirection().getStepX() - this.position().x;
@@ -155,7 +146,7 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
         if (!this.level.isClientSide) {
             float distance = var9 * 0.075F;
             entityarrow.shoot(var3, var5 + (var9 * 0.2F), var7, distance, 0.0F);
-            this.level.playSound(this, this.getOnPos(), SoundEvents.TNT_PRIMED, SoundSource.AMBIENT, 2.0F, 1.0F);
+            this.playSound(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COGLOSS.get(), 2.0F, 1.0F);
             this.playSound(SoundEvents.ITEM_BREAK, 0.8F, 0.8F + this.level.random.nextFloat() * 0.4F);
             this.level.addFreshEntity(entityarrow);
         }
@@ -223,7 +214,7 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
         if (entity != null && source.is(DamageTypeTags.IS_PROJECTILE)) {
             if (!this.level.isClientSide && attacker instanceof Player && ((Player)attacker).getMainHandItem() != Items.AIR.getDefaultInstance()) {
                 this.chatTime = 60;
-                attacker.sendSystemMessage(Component.translatable("gui.aether_genesis_genesis.boss.message.projectile"));
+                attacker.sendSystemMessage(Component.translatable("gui.aether_genesis.boss.message.projectile"));
             }
             return false;
         }
@@ -324,10 +315,6 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
         }
     }
 
-    protected SoundEvent getShootSound() {
-        return AetherSoundEvents.ENTITY_SUN_SPIRIT_SHOOT.get();
-    }
-
     @Override
     public void onDungeonPlayerRemoved(@javax.annotation.Nullable Player player) {
         if (player instanceof ServerPlayer serverPlayer) {
@@ -422,8 +409,7 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
 
         @Override
         public void start() {
-            Entity cog = new CogArrow(this.labyrinthEye.level, this.labyrinthEye);
-            this.labyrinthEye.playSound(this.labyrinthEye.getShootSound(), 1.0F, this.labyrinthEye.level.random.nextFloat() - this.labyrinthEye.level.random.nextFloat() * 0.2F + 1.2F);
+            Entity cog = new CogArrow(this.labyrinthEye.level, this.labyrinthEye, false);
             this.labyrinthEye.level.addFreshEntity(cog);
             cog.setPos(labyrinthEye.position());
         }

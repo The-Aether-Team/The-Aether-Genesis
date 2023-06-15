@@ -616,7 +616,7 @@ public class LabyrinthEyeModel<T extends LabyrinthEye> extends EntityModel<T> {
 
 	@Override
 	public void setupAnim(LabyrinthEye entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		labyrinthEye.getChild("cogMain").zRot = ageInTicks*400;
+		labyrinthEye.getChild("cogMain").zRot = ageInTicks*4000;
 		labyrinthEye.getChild("cogMain").getChild("leftCog").visible = entity.getHealth() >= 231.0F;
 		labyrinthEye.getChild("cogMain").getChild("cogGroupAbove").getChild("cog").visible = entity.getHealth() >= 212.0F;
 		labyrinthEye.getChild("cogMain").getChild("cogGroupAbove2").getChild("cog8").visible = entity.getHealth() >= 193.0F;

@@ -3,6 +3,7 @@ package com.aetherteam.aether_genesis.client.renderer.entity;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.aether_genesis.entity.miscellaneous.CogArrow;
+import com.aetherteam.aether_genesis.entity.passive.CarrionSprout;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
@@ -24,6 +25,18 @@ public class CogArrowRenderer extends EntityRenderer<CogArrow> {
     public CogArrowRenderer(EntityRendererProvider.Context context) {
         super(context);
         this.cogArrow = context.bakeLayer(GenesisModelLayers.COG_ARROW);
+    }
+
+    @Override
+    public void render(CogArrow cog, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+        poseStack.pushPose();
+        poseStack.translate(1.0, 1.5, 1.0);
+        if (!cog.isLarge())
+            poseStack.scale(0.25F, 0.25F, 0.25F);
+        VertexConsumer iVertexBuilder = buffer.getBuffer(RenderType.entityTranslucent(this.getTextureLocation(cog)));
+        this.cogArrow.render(poseStack, iVertexBuilder, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        poseStack.popPose();
+        super.render(cog, entityYaw, partialTicks, poseStack, buffer, packedLight);
     }
 
     @Nonnull

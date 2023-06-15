@@ -19,6 +19,31 @@
     ],
     "subtitle": "subtitles.aether_genesis.entity.carrion_sprout.hurt"
   },
+  "entity.cog.break": {
+    "sounds": [
+      "aether_genesis:entity/cog/wall_final"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.cog.break"
+  },
+  "entity.labyrinth_eye.cogloss": {
+    "sounds": [
+      "aether_genesis:entity/labyrinth_eye/cogloss"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.labyrinth_eye.cogloss"
+  },
+  "entity.labyrinth_eye.death": {
+    "sounds": [
+      "aether_genesis:entity/labyrinth_eye/eyedeath"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.labyrinth_eye.eyedeath"
+  },
+  "entity.labyrinth_eye.move": {
+    "sounds": [
+      "aether_genesis:entity/labyrinth_eye/move_1",
+      "aether_genesis:entity/labyrinth_eye/move_2"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.labyrinth_eye.move"
+  },
   "entity.sentry_guardian.death": {
     "sounds": [
       "aether_genesis:entity/sentry_guardian/death"

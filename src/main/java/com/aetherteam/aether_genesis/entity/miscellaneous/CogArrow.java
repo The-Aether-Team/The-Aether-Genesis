@@ -1,11 +1,15 @@
 package com.aetherteam.aether_genesis.entity.miscellaneous;
 
 import com.aetherteam.aether.data.resources.AetherDamageTypes;
+import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -30,6 +34,8 @@ import net.minecraftforge.network.NetworkHooks;
 import javax.annotation.Nonnull;
 
 public class CogArrow extends Projectile {
+    public static final EntityDataAccessor<Boolean> SIZE = SynchedEntityData.defineId(CogArrow.class, EntityDataSerializers.BOOLEAN);
+
     public double xPower;
     public double yPower;
     public double zPower;
@@ -41,7 +47,23 @@ public class CogArrow extends Projectile {
     }
 
     @Override
-    protected void defineSynchedData() { }
+    public void remove(RemovalReason pReason) {
+        this.playSound(GenesisSoundEvents.ENTITY_COG_BREAK.get(), 2.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.2F);
+        super.remove(pReason);
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        this.entityData.define(SIZE, false);
+    }
+
+    public boolean isLarge() {
+        return this.entityData.get(SIZE);
+    }
+
+    public void setLarge(boolean large) {
+        this.entityData.set(SIZE, large);
+    }
 
     @Override
     public void tick() {
@@ -99,8 +121,9 @@ public class CogArrow extends Projectile {
     /**
      * @param shooter - The entity that created this projectile
      */
-    public CogArrow(Level level, Entity shooter) {
+    public CogArrow(Level level, Entity shooter, Boolean large) {
         this(GenesisEntityTypes.COG_ARROW.get(), level);
+        this.setLarge(large);
         this.setOwner(shooter);
         this.setPos(shooter.getX(), shooter.getY() + 1, shooter.getZ());
         float rotation = this.random.nextFloat() * 360;
