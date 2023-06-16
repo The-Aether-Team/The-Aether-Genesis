@@ -68,6 +68,30 @@
     ],
     "subtitle": "subtitles.aether_genesis.entity.sentry_guardian.spawn"
   },
+  "entity.tempest.ambient": {
+    "sounds": [
+      "aether:entity/zephyr/call"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tempest.ambient"
+  },
+  "entity.tempest.death": {
+    "sounds": [
+      "aether:entity/zephyr/call"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tempest.death"
+  },
+  "entity.tempest.hurt": {
+    "sounds": [
+      "aether:entity/zephyr/call"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tempest.hurt"
+  },
+  "entity.tempest.shoot": {
+    "sounds": [
+      "aether:entity/zephyr/shoot"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tempest.shoot"
+  },
   "entity.tracking_golem.creepy_seen": {
     "sounds": [
       "aether_genesis:entity/tracking_golem/creepy_seen"
