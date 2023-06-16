@@ -2,6 +2,7 @@ package com.aetherteam.aether_genesis.entity.monster;
 
 import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.entity.monster.Zephyr;
+import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.entity.miscellaneous.TempestThunderBall;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -10,8 +11,10 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -84,6 +87,19 @@ public class Tempest extends Zephyr {
         super.tick();
     }
 
+    protected SoundEvent getAmbientSound() {
+        return GenesisSoundEvents.ENTITY_TEMPEST_AMBIENT.get();
+    }
+
+    protected SoundEvent getHurtSound(@Nonnull DamageSource damageSource) {
+        return GenesisSoundEvents.ENTITY_TEMPEST_HURT.get();
+    }
+
+    protected SoundEvent getDeathSound() {
+        return GenesisSoundEvents.ENTITY_TEMPEST_DEATH.get();
+    }
+
+
     static class ThunderballAttackGoal extends Goal {
         private final Tempest parentEntity;
         public int attackTimer;
@@ -134,7 +150,7 @@ public class Tempest extends Zephyr {
                     double accelX = target.getX() - (this.parentEntity.getX() + look.x * 4.0);
                     double accelY = target.getY(0.5) - (0.5 + this.parentEntity.getY(0.5));
                     double accelZ = target.getZ() - (this.parentEntity.getZ() + look.z * 4.0);
-                    this.parentEntity.playSound(AetherSoundEvents.ENTITY_ZEPHYR_SHOOT.get(), 3.0F, (level.random.nextFloat() - level.random.nextFloat()) * 0.2F + 1.0F);
+                    this.parentEntity.playSound(GenesisSoundEvents.ENTITY_TEMPEST_SHOOT.get(), 3.0F, (level.random.nextFloat() - level.random.nextFloat()) * 0.2F + 1.0F);
                     TempestThunderBall thunderBall = new TempestThunderBall(level);
                     thunderBall.setPos(this.parentEntity.getX() + look.x * 4.0, this.parentEntity.getY(0.5) + 0.5, this.parentEntity.getZ() + look.z * 4.0);
                     thunderBall.shoot(accelX, accelY, accelZ, 1.0F, 1.0F);

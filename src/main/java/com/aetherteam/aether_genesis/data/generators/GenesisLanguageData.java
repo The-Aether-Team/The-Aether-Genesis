@@ -111,6 +111,10 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");
         this.addSubtitle("block", "aercloud.blue_aercloud_bounce", "Blue Aercloud bounces");
+        this.addSubtitle("entity", "tempest.shoot", "Tempest spits");
+        this.addSubtitle("entity", "tempest.ambient", "Tempest blows");
+        this.addSubtitle("entity", "tempest.death", "Tempest dies");
+        this.addSubtitle("entity", "tempest.hurt", "Tempest hurts");
         
         this.addContainerType(GenesisMenuTypes.HOLYSTONE_FURNACE, "Holystone Furnace");
 
