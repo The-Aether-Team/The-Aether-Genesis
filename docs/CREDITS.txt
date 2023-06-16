@@ -20,6 +20,7 @@ KELETU66666
 - Implementation of Tracking Golem.
 - Implementation of Sentry Guardian.
 - Implementation of Slider Host Mimic.
+- Implementation of Labyrinth Eye.
 
 StockiesLad
 - Improvement of Purple Aercloud features to make them spawn with random rotation.
