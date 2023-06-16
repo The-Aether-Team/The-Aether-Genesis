@@ -24,6 +24,12 @@ public class GenesisSoundEvents {
     public static final RegistryObject<SoundEvent> ENTITY_SENTRY_GUARDIAN_HIT = register("entity.sentry_guardian.hit");
     public static final RegistryObject<SoundEvent> ENTITY_SENTRY_GUARDIAN_LIVING = register("entity.sentry_guardian.living");
 
+    public static final RegistryObject<SoundEvent> ENTITY_LABYRINTH_EYE_DEATH = register("entity.labyrinth_eye.death");
+    public static final RegistryObject<SoundEvent> ENTITY_LABYRINTH_EYE_COGLOSS = register("entity.labyrinth_eye.cogloss");
+    public static final RegistryObject<SoundEvent> ENTITY_LABYRINTH_EYE_MOVE = register("entity.labyrinth_eye.move");
+
+    public static final RegistryObject<SoundEvent> ENTITY_COG_BREAK = register("entity.cog.break");
+
     public static final RegistryObject<SoundEvent> ENTITY_TEMPEST_AMBIENT = register("entity.tempest.ambient");
     public static final RegistryObject<SoundEvent> ENTITY_TEMPEST_HURT = register("entity.tempest.hurt");
     public static final RegistryObject<SoundEvent> ENTITY_TEMPEST_DEATH = register("entity.tempest.death");

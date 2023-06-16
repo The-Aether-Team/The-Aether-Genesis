@@ -103,5 +103,24 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                         .subtitle("subtitles.aether_genesis.entity.tempest.hurt")
         );
 
+
+        this.add(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COGLOSS,
+                definition().with(sound("aether_genesis:entity/labyrinth_eye/cogloss"))
+                        .subtitle("subtitles.aether_genesis.entity.labyrinth_eye.cogloss")
+        );
+        this.add(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_DEATH,
+                definition().with(sound("aether_genesis:entity/labyrinth_eye/eyedeath"))
+                        .subtitle("subtitles.aether_genesis.entity.labyrinth_eye.eyedeath")
+        );
+        this.add(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_MOVE,
+                definition().with(sound("aether_genesis:entity/labyrinth_eye/move_1"),
+                                sound("aether_genesis:entity/labyrinth_eye/move_2"))
+                        .subtitle("subtitles.aether_genesis.entity.labyrinth_eye.move")
+        );
+
+        this.add(GenesisSoundEvents.ENTITY_COG_BREAK,
+                definition().with(sound("aether_genesis:entity/cog/wall_final"))
+                        .subtitle("subtitles.aether_genesis.entity.cog.break")
+        );
     }
 }

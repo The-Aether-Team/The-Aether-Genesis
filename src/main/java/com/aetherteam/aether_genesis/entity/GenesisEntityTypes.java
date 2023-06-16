@@ -2,11 +2,13 @@ package com.aetherteam.aether_genesis.entity;
 
 import com.aetherteam.aether.data.resources.AetherMobCategory;
 import com.aetherteam.aether.entity.monster.Swet;
+import com.aetherteam.aether.entity.projectile.crystal.FireCrystal;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.entity.miscellaneous.*;
 import com.aetherteam.aether_genesis.entity.monster.BattleSentry;
 import com.aetherteam.aether_genesis.entity.monster.Tempest;
 import com.aetherteam.aether_genesis.entity.monster.TrackingGolem;
+import com.aetherteam.aether_genesis.entity.monster.boss.LabyrinthEye;
 import com.aetherteam.aether_genesis.entity.monster.boss.SentryGuardian;
 import com.aetherteam.aether_genesis.entity.monster.boss.SliderHostMimic;
 import com.aetherteam.aether_genesis.entity.passive.CarrionSprout;
@@ -44,6 +46,8 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.of(SentryGuardian::new, MobCategory.MONSTER).sized(2.25F, 2.5F).fireImmune().clientTrackingRange(10).build("sentry_guardian"));
     public static final RegistryObject<EntityType<SliderHostMimic>> SLIDER_HOST_MIMIC = ENTITY_TYPES.register("slider_host_mimic",
             () -> EntityType.Builder.of(SliderHostMimic::new, MobCategory.MONSTER).sized(2, 2.5F).clientTrackingRange(10).build("slider_host_mimic"));
+    public static final RegistryObject<EntityType<LabyrinthEye>> LABYRINTH_EYE = ENTITY_TYPES.register("labyrinth_eye",
+            () -> EntityType.Builder.of(LabyrinthEye::new, MobCategory.MONSTER).sized(2, 2).clientTrackingRange(8).build("labyrinth_eye"));
 
     // Miscellaneous
     public static final RegistryObject<EntityType<BlueParachute>> BLUE_PARACHUTE = ENTITY_TYPES.register("blue_parachute",
@@ -64,6 +68,8 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.<RewardItem>of(RewardItem::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("reward_item"));
     public static final RegistryObject<EntityType<HostEye>> HOST_EYE = ENTITY_TYPES.register("host_eye",
             () -> EntityType.Builder.of(HostEye::new, MobCategory.MISC).sized(0.4F, 0.4F).clientTrackingRange(10).fireImmune().build("host_eye"));
+    public static final RegistryObject<EntityType<CogArrow>> COG_ARROW = ENTITY_TYPES.register("cog_arrow",
+            () -> EntityType.Builder.<CogArrow>of(CogArrow::new, MobCategory.MISC).clientTrackingRange(4).updateInterval(10).sized(0.9F, 0.9F).fireImmune().build("cog_arrow"));
 
     @SubscribeEvent
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
@@ -81,6 +87,7 @@ public class GenesisEntityTypes {
         event.put(GenesisEntityTypes.TRACKING_GOLEM.get(), TrackingGolem.createMobAttributes().build());
         event.put(GenesisEntityTypes.SENTRY_GUARDIAN.get(), SentryGuardian.createMobAttributes().build());
         event.put(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), SliderHostMimic.createHostAttributes().build());
+        event.put(GenesisEntityTypes.LABYRINTH_EYE.get(), LabyrinthEye.createMobAttributes().build());
         event.put(GenesisEntityTypes.HOST_EYE.get(), HostEye.createMobAttributes().build());
     }
 }

@@ -80,7 +80,7 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
         this.goalSelector.addGoal(0, new DoNothingGoal(this));
         this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Player.class, 3.0F, 1.25F, 2.0F));
         this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this, SentryGuardian.class));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this, SliderHostMimic.class));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, livingEntity -> this.isBossFight()));
     }
 
@@ -114,12 +114,12 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
 
     public void killEyes() {
         while (this.eyes.size() != 0)
-            this.eyes.remove(0).setHealth(0);
+            this.eyes.remove(0).discard();
     }
 
     public static MutableComponent generateHostName() {
         MutableComponent result = BossNameGenerator.generateBossName();
-        return result.append(Component.translatable("gui.aether.host.title"));
+        return result.append(Component.translatable("gui.aether_genesis.host.title"));
     }
 
     protected void alignSpawnPos() {
@@ -128,7 +128,7 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
 
     public static AttributeSupplier.Builder createHostAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 200.0)
+                .add(Attributes.MAX_HEALTH, 175)
                 .add(Attributes.MOVEMENT_SPEED, 0.28)
                 .add(Attributes.FOLLOW_RANGE, 64.0);
     }
@@ -167,7 +167,7 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
         if (entity != null && source.is(DamageTypeTags.IS_PROJECTILE)) {
             if (!this.level.isClientSide && attacker instanceof Player && ((Player)attacker).getMainHandItem() != Items.AIR.getDefaultInstance()) {
                 this.chatCooldown = 60;
-                attacker.sendSystemMessage(Component.translatable("gui.genesis.boss.message.projectile"));
+                attacker.sendSystemMessage(Component.translatable("gui.aether_genesis.boss.message.projectile"));
             }
             return false;
         }
@@ -217,7 +217,7 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
         if (!this.isAwake())
             killEyes();
         if (this.eyes.size() > 4)
-            this.eyes.remove(0).setHealth(0);
+            this.eyes.remove(0).discard();
         if (this.scareTime > 0)
             this.scareTime--;
         if (this.sendDelay > 0)

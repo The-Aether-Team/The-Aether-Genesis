@@ -85,6 +85,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addItem(GenesisItems.GUARDIAN_KEY, "Guardian Key");
         this.addItem(GenesisItems.HOST_KEY, "Host Key");
+        this.addItem(GenesisItems.COG_KEY, "Cog Key");
 
         this.addItem(GenesisItems.MUSIC_DISC_AERWHALE, "Aerwhale Music Disc");
         this.addDiscDesc(GenesisItems.MUSIC_DISC_AERWHALE, "Aether UK - Aerwhale");
@@ -99,6 +100,11 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");
         this.addEntityType(GenesisEntityTypes.BATTLE_SENTRY, "Battle Sentry");
+        this.addEntityType(GenesisEntityTypes.TRACKING_GOLEM, "Tracking Golem");
+
+        this.addEntityType(GenesisEntityTypes.SENTRY_GUARDIAN, "Sentry Guardian");
+        this.addEntityType(GenesisEntityTypes.SLIDER_HOST_MIMIC, "Slider Host Mimic");
+        this.addEntityType(GenesisEntityTypes.HOST_EYE, "Host Eye");
 
         this.addBlock(GenesisBlocks.CARVED_PILLAR, "Carved Pillar");
         this.addBlock(GenesisBlocks.CARVED_PILLAR_SIDE, "Carved Pillar Side");
@@ -126,6 +132,12 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addPackDescription("mod", "The Aether: Genesis Resources");
         this.addPackDescription("classic", "The classic look from Genesis of the Void");
+
+        this.addGuiText("host.title", "the Slider Host Mimic");
+        this.addGuiText("sentry_guardian.title", "the Sentry Guardian");
+        this.addGuiText("labyrinth_eye.title", "the Labyrinth Eye");
+
+        this.addGuiText("boss.message.projectile", "Hmm... Better switch to a sword");
         //todo: lore
     }
 }
