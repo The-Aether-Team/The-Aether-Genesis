@@ -74,6 +74,7 @@ public class GenesisRenderers {
     }
 
     public static void registerCuriosRenderers() {
+        CuriosRendererRegistry.register(GenesisItems.LUCKY_BELL.get(), PendantRenderer::new);
         CuriosRendererRegistry.register(GenesisItems.SWETTY_PENDANT.get(), PendantRenderer::new);
         CuriosRendererRegistry.register(GenesisItems.DAGGERFROST_LOCKET.get(), PendantRenderer::new);
         CuriosRendererRegistry.register(GenesisItems.MOUSE_EAR_CAP.get(), MouseEarCapRenderer::new);
