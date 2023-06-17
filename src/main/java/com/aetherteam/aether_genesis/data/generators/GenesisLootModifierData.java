@@ -8,6 +8,7 @@ import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.loot.modifiers.AddDungeonLootModifier;
 import com.aetherteam.aether_genesis.loot.modifiers.AddEntityDropsModifier;
 import com.aetherteam.aether_genesis.loot.modifiers.ChanceDoubleDropsModifier;
+import com.aetherteam.aether_genesis.loot.modifiers.PresentDropsModifier;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.data.PackOutput;
 import net.minecraft.util.random.WeightedEntry;
@@ -55,6 +56,7 @@ public class GenesisLootModifierData extends GlobalLootModifierProvider {
         );
 
         this.add("chance_double_drops", new ChanceDoubleDropsModifier(new LootItemCondition[]{ }));
+        this.add("present_drops", new PresentDropsModifier(new LootItemCondition[]{ }));
 
         this.add("dark_gummy_swet", new AddDungeonLootModifier(
                 new LootItemCondition[] {

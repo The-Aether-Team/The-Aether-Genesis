@@ -2,6 +2,7 @@ package com.aetherteam.aether_genesis.data.generators.tags;
 
 import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether_genesis.Genesis;
+import com.aetherteam.aether_genesis.GenesisTags;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -20,6 +21,8 @@ public class GenesisEntityTagData extends EntityTypeTagsProvider {
 
     @Override
     public void addTags(HolderLookup.Provider provider) {
+        this.tag(GenesisTags.Entities.NO_PRESENT_DROPS);
+
         this.tag(AetherTags.Entities.WHIRLWIND_UNAFFECTED).add(GenesisEntityTypes.CARRION_SPROUT.get());
         this.tag(AetherTags.Entities.UNLAUNCHABLE).add(GenesisEntityTypes.CARRION_SPROUT.get());
         this.tag(AetherTags.Entities.DEFLECTABLE_PROJECTILES)

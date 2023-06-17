@@ -7,9 +7,13 @@ import net.minecraft.world.entity.projectile.Snowball;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 
-public class FrostBall extends Snowball {
-    public FrostBall(Level pLevel) {
-        super(EntityType.SNOWBALL, pLevel);
+public class DaggerfrostSnowball extends Snowball {
+    public DaggerfrostSnowball(Level pLevel) {
+        super(GenesisEntityTypes.DAGGERFROST_SNOWBALL.get(), pLevel);
+    }
+
+    public DaggerfrostSnowball(EntityType<DaggerfrostSnowball> daggerfrostSnowballEntityType, Level level) {
+        super(daggerfrostSnowballEntityType, level);
     }
 
     @Override
