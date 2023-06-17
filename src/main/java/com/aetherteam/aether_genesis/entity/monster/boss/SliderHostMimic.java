@@ -155,6 +155,9 @@ public class SliderHostMimic extends PathfinderMob implements BossMob<SliderHost
     }
 
     @Override
+    public void checkDespawn() {}
+
+    @Override
     public void customServerAiStep() {
         super.customServerAiStep();
         this.bossFight.setProgress(this.getHealth() / this.getMaxHealth());
