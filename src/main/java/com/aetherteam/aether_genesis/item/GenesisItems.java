@@ -1,5 +1,7 @@
 package com.aetherteam.aether_genesis.item;
 
+import com.aetherteam.aether.client.AetherSoundEvents;
+import com.aetherteam.aether.item.accessories.pendant.PendantItem;
 import com.aetherteam.aether.item.food.GummySwetItem;
 import com.aetherteam.aether.item.materials.SwetBallItem;
 import com.aetherteam.aether.item.miscellaneous.AetherRecordItem;
@@ -53,6 +55,8 @@ public class GenesisItems {
     public static final RegistryObject<Item> BONE_RING = ITEMS.register("bone_ring", () -> new BoneRingItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> CANDY_RING = ITEMS.register("candy_ring", () -> new CandyRingItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> SKYROOT_RING = ITEMS.register("skyroot_ring", () -> new SkyrootRingItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+
+    public static final RegistryObject<Item> DAGGERFROST_LOCKET = ITEMS.register("daggerfrost_locket", () -> new PendantItem(new ResourceLocation(Genesis.MODID, "daggerfrost_locket"), AetherSoundEvents.ITEM_ACCESSORY_EQUIP_ICE_PENDANT, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
 
     public static final RegistryObject<Item> CAPE = ITEMS.register("cape", () -> new DyeableCapeItem("white_cape", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> DEXTERITY_CAPE = ITEMS.register("dexterity_cape", () -> new DexterityCapeItem("dexterity_cape", new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));

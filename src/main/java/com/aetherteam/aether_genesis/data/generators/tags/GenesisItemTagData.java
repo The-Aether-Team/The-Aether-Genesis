@@ -70,6 +70,8 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.BONE_RING.get(),
                 GenesisItems.CANDY_RING.get(),
                 GenesisItems.SKYROOT_RING.get());
+        this.tag(AetherTags.Items.AETHER_PENDANT).add(
+                GenesisItems.DAGGERFROST_LOCKET.get());
         this.tag(AetherTags.Items.AETHER_CAPE).add(
                 GenesisItems.CAPE.get(),
                 GenesisItems.DEXTERITY_CAPE.get());

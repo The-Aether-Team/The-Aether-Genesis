@@ -1,6 +1,7 @@
 package com.aetherteam.aether_genesis.client.renderer;
 
 import com.aetherteam.aether.block.AetherBlocks;
+import com.aetherteam.aether.client.renderer.accessory.PendantRenderer;
 import com.aetherteam.aether.client.renderer.entity.IceCrystalRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
 import com.aetherteam.aether_genesis.Genesis;
@@ -46,6 +47,7 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.GREEN_PARACHUTE.get(), (context) -> new ParachuteRenderer(context, GenesisBlocks.GREEN_AERCLOUD));
         event.registerEntityRenderer(GenesisEntityTypes.PURPLE_PARACHUTE.get(), (context) -> new ParachuteRenderer(context, GenesisBlocks.PURPLE_AERCLOUD));
 
+        event.registerEntityRenderer(GenesisEntityTypes.DAGGERFROST_SNOWBALL.get(), DaggerfrostSnowballRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), IceCrystalRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.PHOENIX_DART.get(), PhoenixDartRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.COG_ARROW.get(), CogArrowRenderer::new);
@@ -72,6 +74,7 @@ public class GenesisRenderers {
     }
 
     public static void registerCuriosRenderers() {
+        CuriosRendererRegistry.register(GenesisItems.DAGGERFROST_LOCKET.get(), PendantRenderer::new);
         CuriosRendererRegistry.register(GenesisItems.MOUSE_EAR_CAP.get(), MouseEarCapRenderer::new);
     }
 

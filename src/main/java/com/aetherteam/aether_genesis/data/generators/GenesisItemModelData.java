@@ -51,6 +51,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.BONE_RING.get(), "accessories/");
         this.item(GenesisItems.CANDY_RING.get(), "accessories/");
         this.item(GenesisItems.SKYROOT_RING.get(), "accessories/");
+        this.item(GenesisItems.DAGGERFROST_LOCKET.get(), "accessories/");
         this.dyeableCape(GenesisItems.CAPE.get());
         this.item(GenesisItems.DEXTERITY_CAPE.get(), "accessories/");
         this.item(GenesisItems.MOUSE_EAR_CAP.get(), "accessories/");

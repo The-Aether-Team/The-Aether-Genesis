@@ -66,6 +66,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.BONE_RING, "Bone Ring");
         this.addItem(GenesisItems.CANDY_RING, "Candy Ring");
         this.addItem(GenesisItems.SKYROOT_RING, "Skyroot Ring");
+        this.addItem(GenesisItems.DAGGERFROST_LOCKET, "Daggerfrost Locket");
         this.addItem(GenesisItems.CAPE, "Cape");
         this.addItem(GenesisItems.DEXTERITY_CAPE, "Dexterity Cape");
         this.addItem(GenesisItems.MOUSE_EAR_CAP, "Mouse Ear Cap");
