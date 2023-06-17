@@ -1,4 +1,4 @@
-// 1.19.4	2023-06-16T18:11:00.8817876	Item Models: aether_genesis
+// 1.19.4	2023-06-16T20:02:10.9212982	Item Models: aether_genesis
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/battle_sentry_spawn_egg.json
 b951ae61814ccb898428dd794f3adf77d4e02a6c assets/aether_genesis/models/item/blood_moss_holystone.json
 85e6dca000030d07451d6969e99df873abdf0362 assets/aether_genesis/models/item/blueberry_lollipop.json
@@ -68,6 +68,7 @@ c8f56969ced222c056949091764a24f7a2d41bda assets/aether_genesis/models/item/skyro
 19b7f69f4c39de05ea9b7f9a3bd2930b21778800 assets/aether_genesis/models/item/storm_aercloud.json
 6046d5be86eaff723e9244d8d2516b73a335b8d4 assets/aether_genesis/models/item/stripped_skyroot_log_wall.json
 6f6bf41d91e000d12d38a242ebcc3b577441376a assets/aether_genesis/models/item/stripped_skyroot_wood_wall.json
+e12fb33dcdbb49f6ccdadc433683c23768192329 assets/aether_genesis/models/item/swetty_pendant.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/tempest_spawn_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/tracking_golem_spawn_egg.json
 1a5ffa969f394514a6ce3e4945cadba6912dbf96 assets/aether_genesis/models/item/wrapped_chocolates.json
