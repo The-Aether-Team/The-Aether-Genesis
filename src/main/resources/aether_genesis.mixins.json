@@ -9,7 +9,6 @@
     "common.BlueAercloudBlockMixin",
     "common.ItemMixin",
     "common.ParachuteMixin",
-    "common.accessor.MobAccessor",
     "common.accessor.WallBlockAccessor"
   ],
   "client": [

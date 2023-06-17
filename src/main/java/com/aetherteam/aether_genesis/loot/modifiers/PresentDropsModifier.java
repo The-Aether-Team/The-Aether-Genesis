@@ -1,18 +1,15 @@
 package com.aetherteam.aether_genesis.loot.modifiers;
 
-import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.util.EquipmentUtil;
 import com.aetherteam.aether_genesis.GenesisTags;
 import com.aetherteam.aether_genesis.item.GenesisItems;
-import com.aetherteam.aether_genesis.mixin.mixins.common.accessor.MobAccessor;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -32,8 +29,8 @@ public class PresentDropsModifier extends LootModifier {
         Entity entity = context.getParamOrNull(LootContextParams.DIRECT_KILLER_ENTITY);
         Entity target = context.getParamOrNull(LootContextParams.THIS_ENTITY);
         ObjectArrayList<ItemStack> newStacks = new ObjectArrayList<>(lootStacks);
-        if (entity instanceof LivingEntity livingEntity && target instanceof Mob mobTarget) {
-            if (EquipmentUtil.isFullStrength(livingEntity) && EquipmentUtil.hasCurio(livingEntity, GenesisItems.LUCKY_BELL.get()) && ((MobAccessor) mobTarget).callShouldDespawnInPeaceful() && !mobTarget.getType().is(GenesisTags.Entities.NO_PRESENT_DROPS) && mobTarget.getRandom().nextInt(5) == 0) {
+        if (entity instanceof LivingEntity livingEntity && target instanceof LivingEntity livingTarget) {
+            if (EquipmentUtil.isFullStrength(livingEntity) && EquipmentUtil.hasCurio(livingEntity, GenesisItems.LUCKY_BELL.get()) && livingTarget instanceof Enemy && !livingTarget.getType().is(GenesisTags.Entities.NO_PRESENT_DROPS) && livingTarget.getRandom().nextInt(5) == 0) {
                 newStacks.add(new ItemStack(AetherBlocks.PRESENT.get()));
             }
         }
