@@ -104,6 +104,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");
         this.addEntityType(GenesisEntityTypes.BATTLE_SENTRY, "Battle Sentry");
         this.addEntityType(GenesisEntityTypes.TRACKING_GOLEM, "Tracking Golem");
+        this.addEntityType(GenesisEntityTypes.SKYROOT_MIMIC, "Skyroot Mimic");
 
         this.addEntityType(GenesisEntityTypes.SENTRY_GUARDIAN, "Sentry Guardian");
         this.addEntityType(GenesisEntityTypes.SLIDER_HOST_MIMIC, "Slider Host Mimic");
@@ -111,6 +112,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addBlock(GenesisBlocks.CARVED_PILLAR, "Carved Pillar");
         this.addBlock(GenesisBlocks.CARVED_PILLAR_SIDE, "Carved Pillar Side");
+        this.addBlock(GenesisBlocks.SKYROOT_CHEST_MIMIC, "Skyroot Chest Mimic");
         this.addBlock(GenesisBlocks.DIVINE_CRAVED_STONE, "Divine Carved Stone");
         this.addBlock(GenesisBlocks.DIVINE_SENTRY_STONE, "Divine Sentry Stone");
         this.addBlock(GenesisBlocks.BLOOD_MOSS_HOLYSTONE, "Blood Moss Holystone");

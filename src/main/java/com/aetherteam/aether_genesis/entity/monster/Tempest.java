@@ -1,6 +1,5 @@
 package com.aetherteam.aether_genesis.entity.monster;
 
-import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.entity.monster.Zephyr;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.entity.miscellaneous.TempestThunderBall;
