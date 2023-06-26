@@ -1,0 +1,7 @@
+// 1.19.4	2023-06-26T14:58:36.257892	Global Loot Modifiers : aether_genesis
+e772f51aa4708cdc9782caff0b2e83cff464a202 data/aether_genesis/loot_modifiers/chance_double_drops.json
+5dd99b82792aa9b75f05c1c7e51ab98626d2456b data/aether_genesis/loot_modifiers/dark_gummy_swet.json
+931b9238a2c0d807830bbe4de0b8fd8c902020c6 data/aether_genesis/loot_modifiers/golden_swet_ball.json
+93d2dd9ae6fd809ef1f2f22e43eae4bc743b4bff data/aether_genesis/loot_modifiers/present_drops.json
+377a500fdfe15b9671f28f270e5a9b66f9f5f1e1 data/aether_genesis/loot_modifiers/swet_sugar.json
+805f73fc4e7e16c6b2ac53dc09c64f9a9d595d98 data/forge/loot_modifiers/global_loot_modifiers.json

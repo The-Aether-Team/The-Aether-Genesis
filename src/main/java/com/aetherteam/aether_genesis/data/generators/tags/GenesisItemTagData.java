@@ -76,7 +76,8 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.DAGGERFROST_LOCKET.get());
         this.tag(AetherTags.Items.AETHER_CAPE).add(
                 GenesisItems.CAPE.get(),
-                GenesisItems.DEXTERITY_CAPE.get());
+                GenesisItems.DEXTERITY_CAPE.get(),
+                GenesisItems.SOARING_STONE.get()); //todo temporary
         this.tag(GenesisTags.Items.SWET_JELLY).add(
                 GenesisItems.BLUE_SWET_JELLY.get(),
                 GenesisItems.DARK_SWET_JELLY.get(),

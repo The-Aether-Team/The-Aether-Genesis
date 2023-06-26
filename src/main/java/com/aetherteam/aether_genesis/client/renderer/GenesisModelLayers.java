@@ -18,6 +18,8 @@ public class GenesisModelLayers {
     public static final ModelLayerLocation HOST_EYE = register("host_eye");
     public static final ModelLayerLocation COG_ARROW = register("cog_arrow");
 
+    public static final ModelLayerLocation SOARING_WISP = register("soaring_wisp");
+
     public static final ModelLayerLocation MOUSE_EAR_CAP = register("mouse_ear_cap");
 
     private static ModelLayerLocation register(String name) {

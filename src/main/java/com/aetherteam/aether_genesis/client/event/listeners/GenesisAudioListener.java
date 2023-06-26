@@ -1,6 +1,6 @@
-package com.aetherteam.aether_genesis.client.event.listener;
+package com.aetherteam.aether_genesis.client.event.listeners;
 
-import com.aetherteam.aether_genesis.client.event.hook.GenesisAudioHooks;
+import com.aetherteam.aether_genesis.client.event.hooks.GenesisAudioHooks;
 import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;

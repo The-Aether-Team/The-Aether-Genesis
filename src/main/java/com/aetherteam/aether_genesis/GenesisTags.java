@@ -30,6 +30,7 @@ public class GenesisTags {
     }
 
     public static class Entities {
+        public static final TagKey<EntityType<?>> COMPANIONS = tag("companions");
         public static final TagKey<EntityType<?>> NO_PRESENT_DROPS = tag("no_present_drops");
 
         private static TagKey<EntityType<?>> tag(String name) {

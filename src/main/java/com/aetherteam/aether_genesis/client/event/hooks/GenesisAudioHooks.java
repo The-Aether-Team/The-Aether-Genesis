@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.client.event.hook;
+package com.aetherteam.aether_genesis.client.event.hooks;
 
 import com.aetherteam.aether_genesis.GenesisConfig;
 import com.aetherteam.aether_genesis.client.GenesisMusicManager;

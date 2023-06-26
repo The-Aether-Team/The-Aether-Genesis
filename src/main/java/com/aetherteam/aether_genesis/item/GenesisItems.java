@@ -65,6 +65,8 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> MOUSE_EAR_CAP = ITEMS.register("mouse_ear_cap", () -> new MouseEarCapItem(new Item.Properties().stacksTo(1)));
 
+    public static final RegistryObject<Item> SOARING_STONE = ITEMS.register("soaring_stone", () -> new SoaringStoneItem(GenesisEntityTypes.SOARING_WISP, new Item.Properties().stacksTo(1)));
+
     public static final RegistryObject<Item> PHOENIX_DART_SHOOTER = ITEMS.register("phoenix_dart_shooter", () -> new PhoenixDartShooterItem(GOLDEN_DART, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> CONTINUUM_BOMB = ITEMS.register("continuum_bomb", () -> new ContinuumBombItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 

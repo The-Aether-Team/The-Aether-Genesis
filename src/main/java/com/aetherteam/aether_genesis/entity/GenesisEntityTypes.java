@@ -4,6 +4,7 @@ import com.aetherteam.aether.data.resources.AetherMobCategory;
 import com.aetherteam.aether.entity.monster.Swet;
 import com.aetherteam.aether.entity.monster.dungeon.Mimic;
 import com.aetherteam.aether_genesis.Genesis;
+import com.aetherteam.aether_genesis.entity.companion.Wisp;
 import com.aetherteam.aether_genesis.entity.miscellaneous.*;
 import com.aetherteam.aether_genesis.entity.monster.BattleSentry;
 import com.aetherteam.aether_genesis.entity.monster.SkyrootMimic;
@@ -60,7 +61,11 @@ public class GenesisEntityTypes {
     public static final RegistryObject<EntityType<PurpleParachute>> PURPLE_PARACHUTE = ENTITY_TYPES.register("purple_parachute",
             () -> EntityType.Builder.of(PurpleParachute::new, MobCategory.MISC).sized(1.0F, 1.0F).clientTrackingRange(8).build("purple_parachute"));
 
-    //Projectile
+    // Companions
+    public static final RegistryObject<EntityType<Wisp>> SOARING_WISP = ENTITY_TYPES.register("soaring_wisp",
+            () -> EntityType.Builder.of(Wisp::new, MobCategory.MISC).sized(1.0F, 1.0F).clientTrackingRange(8).build("soaring_wisp"));
+
+    // Projectile
     public static final RegistryObject<EntityType<DaggerfrostSnowball>> DAGGERFROST_SNOWBALL = ENTITY_TYPES.register("daggerfrost_snowball",
             () -> EntityType.Builder.<DaggerfrostSnowball>of(DaggerfrostSnowball::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("daggerfrost_snowball"));
     public static final RegistryObject<EntityType<TempestThunderBall>> TEMPEST_THUNDERBALL = ENTITY_TYPES.register("tempest_thunderball",
@@ -95,5 +100,6 @@ public class GenesisEntityTypes {
         event.put(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), SliderHostMimic.createHostAttributes().build());
         event.put(GenesisEntityTypes.LABYRINTH_EYE.get(), LabyrinthEye.createMobAttributes().build());
         event.put(GenesisEntityTypes.HOST_EYE.get(), HostEye.createMobAttributes().build());
+        event.put(GenesisEntityTypes.SOARING_WISP.get(), Wisp.createAttributes().build());
     }
 }
