@@ -16,6 +16,7 @@ KELETU66666
 - Implementation of Skyroot Ring.
 - Implementation of Continuum Bomb.
 - Implementation of dungeon blocks.
+- Implementation of Skyroot Chest Mimic.
 - Implementation of Battle Sentry.
 - Implementation of Tracking Golem.
 - Implementation of Sentry Guardian.
