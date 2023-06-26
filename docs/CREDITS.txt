@@ -34,3 +34,4 @@ Zepalesque
 - Implementation of Tempest sound events.
 - Improvements to Tempest code and behavior.
 - Improvements to Blue Aercloud sound.
+- Fixes to Tempest texture.
