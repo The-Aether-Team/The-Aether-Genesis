@@ -4,11 +4,13 @@ import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.client.renderer.accessory.PendantRenderer;
 import com.aetherteam.aether.client.renderer.entity.IceCrystalRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
+import com.aetherteam.aether.client.renderer.entity.model.MimicModel;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.client.renderer.accessory.MouseEarCapRenderer;
 import com.aetherteam.aether_genesis.client.renderer.accessory.model.MouseEarCapModel;
+import com.aetherteam.aether_genesis.client.renderer.blockentity.SkyrootChestMimicRenderer;
 import com.aetherteam.aether_genesis.client.renderer.blockentity.SkyrootChestRenderer;
 import com.aetherteam.aether_genesis.client.renderer.entity.*;
 import com.aetherteam.aether_genesis.client.renderer.entity.model.*;
@@ -17,6 +19,7 @@ import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.SlimeModel;
+import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemEntityRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -32,12 +35,14 @@ public class GenesisRenderers {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(GenesisBlockEntityTypes.SKYROOT_CHEST.get(), SkyrootChestRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntityTypes.SKYROOT_CHEST_MIMIC.get(), SkyrootChestMimicRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.CARRION_SPROUT.get(), CarrionSproutRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.DARK_SWET.get(), DarkSwetRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TEMPEST.get(), TempestRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.BATTLE_SENTRY.get(), BattleSentryRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TRACKING_GOLEM.get(), TrackingGolemRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.SKYROOT_MIMIC.get(), SkyrootMimicRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.SENTRY_GUARDIAN.get(), SentryGuardianRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), HostMimicRenderer::new);
@@ -59,7 +64,10 @@ public class GenesisRenderers {
 
     @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(GenesisModelLayers.SKYROOT_CHEST_MIMIC, ChestRenderer::createSingleBodyLayer);
+
         event.registerLayerDefinition(GenesisModelLayers.CARRION_SPROUT, CarrionSproutModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.SKYROOT_MIMIC, MimicModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.TEMPEST, TempestModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.TEMPEST_TRANSPARENCY, TempestModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.BATTLE_SENTRY, SlimeModel::createOuterBodyLayer);
@@ -87,7 +95,7 @@ public class GenesisRenderers {
         for (String type : types) {
             PlayerRenderer playerRenderer = event.getSkin(type);
             if (playerRenderer != null) {
-                playerRenderer.addLayer(new PhoenixDartLayer(renderDispatcher, playerRenderer));
+                playerRenderer.addLayer(new PhoenixDartLayer<>(renderDispatcher, playerRenderer));
             }
         }
     }
