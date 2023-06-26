@@ -101,6 +101,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
 
         this.itemBlock(GenesisBlocks.CARVED_PILLAR.get());
         this.itemBlock(GenesisBlocks.CARVED_PILLAR_SIDE.get());
+        this.lookalikeBlock(GenesisBlocks.SKYROOT_CHEST_MIMIC.get(), this.mcLoc("item/chest"));
         this.itemBlock(GenesisBlocks.DIVINE_SENTRY_STONE.get());
         this.itemBlock(GenesisBlocks.DIVINE_CRAVED_STONE.get());
         this.itemBlock(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get());

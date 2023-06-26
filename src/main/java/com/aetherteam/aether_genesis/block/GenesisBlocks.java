@@ -10,6 +10,7 @@ import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.container.HolystoneFurnaceBlock;
 import com.aetherteam.aether_genesis.block.container.SkyrootChestBlock;
 import com.aetherteam.aether_genesis.block.container.SkyrootCraftingTableBlock;
+import com.aetherteam.aether_genesis.block.container.SkyrootChestMimicBlock;
 import com.aetherteam.aether_genesis.block.miscellaneous.ColdFireBlock;
 import com.aetherteam.aether_genesis.block.natural.GenesisDoubleDropsWall;
 import com.aetherteam.aether_genesis.block.natural.GreenAercloudBlock;
@@ -17,6 +18,7 @@ import com.aetherteam.aether_genesis.block.natural.OrangeTreeBlock;
 import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.blockentity.SkyrootChestBlockEntity;
+import com.aetherteam.aether_genesis.blockentity.SkyrootChestMimicBlockEntity;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.item.block.WoodenBlockItem;
@@ -83,6 +85,7 @@ public class GenesisBlocks {
     public static final RegistryObject<FacingPillarBlock> CARVED_PILLAR = register("carved_pillar", () -> new FacingPillarBlock(Block.Properties.of(Material.STONE).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<RotatedPillarBlock> CARVED_PILLAR_SIDE = register("carved_pillar_side", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
 
+    public static final RegistryObject<Block> SKYROOT_CHEST_MIMIC = register("skyroot_chest_mimic", () -> new SkyrootChestMimicBlock(Block.Properties.copy(SKYROOT_CHEST.get()).noLootTable()));
     public static final RegistryObject<Block> DIVINE_CRAVED_STONE = register("divine_carved_stone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable()));
     public static final RegistryObject<Block> DIVINE_SENTRY_STONE = register("divine_sentry_stone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable().lightLevel(GenesisBlocks::lightLevel11)));
     public static final RegistryObject<Block> BLOOD_MOSS_HOLYSTONE = register("blood_moss_holystone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable()));
@@ -125,7 +128,9 @@ public class GenesisBlocks {
                 return new WoodenBlockItem(block, new Item.Properties());
             } else if (block == SKYROOT_CHEST.get()) {
                 return new EntityBlockItem(block, SkyrootChestBlockEntity::new, new Item.Properties());
-            }else {
+            }else if (block == SKYROOT_CHEST_MIMIC.get()) {
+                return new EntityBlockItem(block, SkyrootChestMimicBlockEntity::new, new Item.Properties());
+            } else {
                 return new BlockItem(block, new Item.Properties());
             }
         };
