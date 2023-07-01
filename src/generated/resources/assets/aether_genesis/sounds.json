@@ -5,6 +5,23 @@
     ],
     "subtitle": "subtitles.aether_genesis.block.aercloud.blue_aercloud_bounce"
   },
+  "block.portal.hum": {
+    "sounds": [
+      "aether_genesis:block/portal/hum"
+    ],
+    "subtitle": "subtitles.aether_genesis.block.portal.hum"
+  },
+  "block.portal.travel": {
+    "sounds": [
+      "aether_genesis:block/portal/travel"
+    ]
+  },
+  "block.portal.trigger": {
+    "sounds": [
+      "aether_genesis:block/portal/trigger"
+    ],
+    "subtitle": "subtitles.aether_genesis.block.portal.trigger"
+  },
   "entity.carrion_sprout.death": {
     "sounds": [
       "damage/fallbig"

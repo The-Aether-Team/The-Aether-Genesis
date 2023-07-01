@@ -122,5 +122,17 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                 definition().with(sound("aether_genesis:entity/cog/wall_final"))
                         .subtitle("subtitles.aether_genesis.entity.cog.break")
         );
+
+        this.add(GenesisSoundEvents.PORTAL_HUM,
+                definition().with(sound("aether_genesis:block/portal/hum"))
+                        .subtitle("subtitles.aether_genesis.block.portal.hum")
+        );
+        this.add(GenesisSoundEvents.PORTAL_TRAVEL,
+                definition().with(sound("aether_genesis:block/portal/travel"))
+        );
+        this.add(GenesisSoundEvents.PORTAL_TRIGGER,
+                definition().with(sound("aether_genesis:block/portal/trigger"))
+                        .subtitle("subtitles.aether_genesis.block.portal.trigger")
+        );
     }
 }
