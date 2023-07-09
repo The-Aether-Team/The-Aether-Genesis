@@ -8,6 +8,7 @@ import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -92,5 +93,8 @@ public class GenesisBlockTagData extends BlockTagsProvider {
         );
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(GenesisBlocks.CONTINUUM_ORE.get());
         this.tag(BlockTags.SNAPS_GOAT_HORN).addTag(GenesisTags.Blocks.LOG_WALLS);
+
+        // Forge
+        this.tag(Tags.Blocks.CHESTS_WOODEN).add(GenesisBlocks.SKYROOT_CHEST.get());
     }
 }

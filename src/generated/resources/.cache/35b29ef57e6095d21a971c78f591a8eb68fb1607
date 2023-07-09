@@ -1,4 +1,4 @@
-// 1.19.4	2023-06-26T14:58:36.2598939	Tags for minecraft:item mod id aether_genesis
+// 1.19.4	2023-07-09T01:32:26.49459	Tags for minecraft:item mod id aether_genesis
 1d7eabfa746881c14275fb87c139d44dd7a797ac data/aether/tags/items/crafts_skyroot_planks.json
 fd648a6cd6467b295cc98e642efbef3aecef70b9 data/aether/tags/items/deployable_parachutes.json
 a3eac039548e1059b71778bc8e17558b8f2aea4f data/aether/tags/items/dungeon_keys.json
@@ -10,6 +10,7 @@ c58f29b6879092f7eb907ad5f5d7d1575377dc88 data/curios/tags/items/aether_accessory
 5a933596241508690ef8419ad83703a50bac7989 data/curios/tags/items/aether_cape.json
 d1a8d412e7c7c9bcae51c0760965af276c050ebd data/curios/tags/items/aether_pendant.json
 7c30d78b6d916d4e1b51830e71de008f47a23174 data/curios/tags/items/aether_ring.json
+c21725ee872d7defc7979eb8d4fd016267f6facb data/forge/tags/items/chests/wooden.json
 beac0a1e118252eaf09f2d527230162fdb9a1a72 data/minecraft/tags/items/leaves.json
 d80078b8cef8da6515b4b903017fe5783101c46f data/minecraft/tags/items/music_discs.json
 20cb9cd9fdec4548c290b66338a6eae5fe5d6d2d data/minecraft/tags/items/saplings.json
