@@ -66,6 +66,13 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.BONE_RING, "Bone Ring");
         this.addItem(GenesisItems.CANDY_RING, "Candy Ring");
         this.addItem(GenesisItems.SKYROOT_RING, "Skyroot Ring");
+        this.addItem(GenesisItems.LUCKY_BELL, "Lucky Bell");
+        this.addItem(GenesisItems.SWETTY_PENDANT, "Swetty Pendant");
+        this.addItem(GenesisItems.DAGGERFROST_LOCKET, "Daggerfrost Locket");
+        this.addItem(GenesisItems.CAPE, "Cape");
+        this.addItem(GenesisItems.DEXTERITY_CAPE, "Dexterity Cape");
+        this.addItem(GenesisItems.MOUSE_EAR_CAP, "Mouse Ear Cap");
+        this.addItem(GenesisItems.SOARING_STONE, "Soaring Stone");
 
         this.addItem(GenesisItems.PHOENIX_DART_SHOOTER, "Phoenix Dart Shooter");
         this.addItem(GenesisItems.CONTINUUM_BOMB, "Continuum Bomb");
@@ -74,9 +81,15 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.DARK_SWET_SPAWN_EGG, "Dark Swet Spawn Egg");
         this.addItem(GenesisItems.TEMPEST_SPAWN_EGG, "Tempest Spawn Egg");
         this.addItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG, "Battle Sentry Spawn Egg");
+        this.addItem(GenesisItems.TRACKING_GOLEM_SPAWN_EGG, "Tracking Golem Spawn Egg");
+
         this.addItem(GenesisItems.BLUE_PARACHUTE, "Blue Parachute");
         this.addItem(GenesisItems.GREEN_PARACHUTE, "Green Parachute");
         this.addItem(GenesisItems.PURPLE_PARACHUTE, "Purple Parachute");
+
+        this.addItem(GenesisItems.GUARDIAN_KEY, "Guardian Key");
+        this.addItem(GenesisItems.HOST_KEY, "Host Key");
+        this.addItem(GenesisItems.COG_KEY, "Cog Key");
 
         this.addItem(GenesisItems.MUSIC_DISC_AERWHALE, "Aerwhale Music Disc");
         this.addDiscDesc(GenesisItems.MUSIC_DISC_AERWHALE, "Aether UK - Aerwhale");
@@ -91,16 +104,29 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");
         this.addEntityType(GenesisEntityTypes.BATTLE_SENTRY, "Battle Sentry");
+        this.addEntityType(GenesisEntityTypes.TRACKING_GOLEM, "Tracking Golem");
+        this.addEntityType(GenesisEntityTypes.SKYROOT_MIMIC, "Skyroot Mimic");
 
-        this.addBlock(GenesisBlocks.CARVED_PILLAR_CARVED, "Carved Pillar Carved");
+        this.addEntityType(GenesisEntityTypes.SENTRY_GUARDIAN, "Sentry Guardian");
+        this.addEntityType(GenesisEntityTypes.SLIDER_HOST_MIMIC, "Slider Host Mimic");
+        this.addEntityType(GenesisEntityTypes.HOST_EYE, "Host Eye");
+
+        this.addBlock(GenesisBlocks.CARVED_PILLAR, "Carved Pillar");
         this.addBlock(GenesisBlocks.CARVED_PILLAR_SIDE, "Carved Pillar Side");
+        this.addBlock(GenesisBlocks.SKYROOT_CHEST_MIMIC, "Skyroot Chest Mimic");
         this.addBlock(GenesisBlocks.DIVINE_CRAVED_STONE, "Divine Carved Stone");
         this.addBlock(GenesisBlocks.DIVINE_SENTRY_STONE, "Divine Sentry Stone");
         this.addBlock(GenesisBlocks.BLOOD_MOSS_HOLYSTONE, "Blood Moss Holystone");
 
+        this.addBlock(GenesisBlocks.COLD_FIRE, "Cold Fire");
+
         this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");
         this.addSubtitle("block", "aercloud.blue_aercloud_bounce", "Blue Aercloud bounces");
+        this.addSubtitle("entity", "tempest.shoot", "Tempest spits");
+        this.addSubtitle("entity", "tempest.ambient", "Tempest blows");
+        this.addSubtitle("entity", "tempest.death", "Tempest dies");
+        this.addSubtitle("entity", "tempest.hurt", "Tempest hurts");
         
         this.addContainerType(GenesisMenuTypes.HOLYSTONE_FURNACE, "Holystone Furnace");
 
@@ -112,6 +138,12 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addPackDescription("mod", "The Aether: Genesis Resources");
         this.addPackDescription("classic", "The classic look from Genesis of the Void");
+
+        this.addGuiText("host.title", "the Slider Host Mimic");
+        this.addGuiText("sentry_guardian.title", "the Sentry Guardian");
+        this.addGuiText("labyrinth_eye.title", "the Labyrinth Eye");
+
+        this.addGuiText("boss.message.projectile", "Hmm... Better switch to a sword");
         //todo: lore
     }
 }

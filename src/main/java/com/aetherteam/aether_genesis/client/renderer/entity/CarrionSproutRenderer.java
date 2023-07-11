@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.client.renderer.entity;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
-import com.aetherteam.aether_genesis.client.renderer.model.CarrionSproutModel;
+import com.aetherteam.aether_genesis.client.renderer.entity.model.CarrionSproutModel;
 import com.aetherteam.aether_genesis.entity.passive.CarrionSprout;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

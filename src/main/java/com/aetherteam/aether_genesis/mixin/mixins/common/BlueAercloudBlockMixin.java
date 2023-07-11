@@ -4,6 +4,7 @@ import com.aetherteam.aether.block.natural.BlueAercloudBlock;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -19,7 +20,7 @@ public class BlueAercloudBlockMixin {
     private void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, CallbackInfo ci) {
         if (!entity.isShiftKeyDown()) {
             level.playSound((entity instanceof Player player ? player : (Player) null), pos, GenesisSoundEvents.BLUE_AERCLOUD_BOUNCE.get(), SoundSource.BLOCKS, 0.8f,
-                    0.9f + (level.random.nextFloat() * 0.2f));
+                    0.5f + (((float)(Math.pow(level.random.nextDouble(), 2.5))) * 0.5f));
         }
     }
 }

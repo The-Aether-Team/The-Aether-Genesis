@@ -7,7 +7,7 @@ public class GenesisConfig {
     public static class Common {
         public final ForgeConfigSpec.ConfigValue<Boolean> gold_aercloud_ability;
 
-        public Common(ForgeConfigSpec.Builder builder) {
+        public Common(ForgeConfigSpec.Builder builder) { //todo server config
             builder.push("Gameplay");
             gold_aercloud_ability = builder
                     .comment("Changes Gold Aercloud and respective parachute behavior to launch entities downwards")

@@ -31,6 +31,10 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.GREEN_PARACHUTE.get(), "miscellaneous/");
         this.item(GenesisItems.PURPLE_PARACHUTE.get(), "miscellaneous/");
 
+        this.rotatedItem(GenesisItems.GUARDIAN_KEY.get(), "miscellaneous/");
+        this.rotatedItem(GenesisItems.HOST_KEY.get(), "miscellaneous/");
+        this.rotatedItem(GenesisItems.COG_KEY.get(), "miscellaneous/");
+
         this.item(GenesisItems.ICESTONE_POPROCKS.get(), "food/");
         this.item(GenesisItems.COCOATRICE.get(), "food/");
         this.item(GenesisItems.WRAPPED_CHOCOLATES.get(), "food/");
@@ -47,6 +51,13 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.BONE_RING.get(), "accessories/");
         this.item(GenesisItems.CANDY_RING.get(), "accessories/");
         this.item(GenesisItems.SKYROOT_RING.get(), "accessories/");
+        this.item(GenesisItems.LUCKY_BELL.get(), "accessories/");
+        this.item(GenesisItems.SWETTY_PENDANT.get(), "accessories/");
+        this.item(GenesisItems.DAGGERFROST_LOCKET.get(), "accessories/");
+        this.dyeableCape(GenesisItems.CAPE.get());
+        this.item(GenesisItems.DEXTERITY_CAPE.get(), "accessories/");
+        this.item(GenesisItems.MOUSE_EAR_CAP.get(), "accessories/");
+        this.item(GenesisItems.SOARING_STONE.get(), "accessories/");
 
         this.item(GenesisItems.MUSIC_DISC_AERWHALE.get(), "miscellaneous/");
         this.item(GenesisItems.MUSIC_DISC_APPROACHES.get(), "miscellaneous/");
@@ -60,6 +71,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.eggItem(GenesisItems.DARK_SWET_SPAWN_EGG.get());
         this.eggItem(GenesisItems.TEMPEST_SPAWN_EGG.get());
         this.eggItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG.get());
+        this.eggItem(GenesisItems.TRACKING_GOLEM_SPAWN_EGG.get());
 
         this.itemBlock(GenesisBlocks.GREEN_AERCLOUD.get());
         this.itemBlock(GenesisBlocks.PURPLE_AERCLOUD.get());
@@ -88,8 +100,9 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.lookalikeBlock(GenesisBlocks.SKYROOT_CHEST.get(), this.mcLoc("item/chest"));
         this.itemBlockFlat(GenesisBlocks.SKYROOT_LADDER.get(), "construction/");
 
-        this.itemBlock(GenesisBlocks.CARVED_PILLAR_CARVED.get());
+        this.itemBlock(GenesisBlocks.CARVED_PILLAR.get());
         this.itemBlock(GenesisBlocks.CARVED_PILLAR_SIDE.get());
+        this.lookalikeBlock(GenesisBlocks.SKYROOT_CHEST_MIMIC.get(), this.mcLoc("item/chest"));
         this.itemBlock(GenesisBlocks.DIVINE_SENTRY_STONE.get());
         this.itemBlock(GenesisBlocks.DIVINE_CRAVED_STONE.get());
         this.itemBlock(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get());

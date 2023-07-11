@@ -11,6 +11,12 @@
     "common.ParachuteMixin",
     "common.accessor.WallBlockAccessor"
   ],
+  "client": [
+    "client.CapeLayerMixin",
+    "client.ElytraLayerMixin",
+    "client.accessor.ElytraLayerAccessor",
+    "client.accessor.PlayerModelAccessor"
+  ],
   "injectors": {
     "defaultRequire": 1
   }

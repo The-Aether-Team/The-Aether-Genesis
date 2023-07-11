@@ -23,6 +23,7 @@ public class RewardItem extends ItemEntity {
         this.setPos(pPosX, pPosY, pPosZ);
         this.setDeltaMovement(pDeltaX, pDeltaY, pDeltaZ);
         this.setItem(pItemStack);
+        this.setDefaultPickUpDelay();
     }
 
     public void tick() {

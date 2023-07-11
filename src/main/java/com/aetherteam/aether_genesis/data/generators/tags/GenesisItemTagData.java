@@ -11,6 +11,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nullable;
@@ -37,6 +38,10 @@ public class GenesisItemTagData extends ItemTagsProvider {
         this.tag(AetherTags.Items.DEPLOYABLE_PARACHUTES).add(
                 GenesisItems.GREEN_PARACHUTE.get(),
                 GenesisItems.PURPLE_PARACHUTE.get());
+        this.tag(AetherTags.Items.DUNGEON_KEYS).add(
+                GenesisItems.COG_KEY.get(),
+                GenesisItems.GUARDIAN_KEY.get(),
+                GenesisItems.HOST_KEY.get());
 
         this.tag(ItemTags.SAPLINGS).add(
                 GenesisBlocks.BLUE_SKYROOT_SAPLING.get().asItem(),
@@ -58,12 +63,22 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.MUSIC_DISC_DEMISE.get(),
                 GenesisItems.RECORDING_892.get());
 
+        //todo move to new aether accessory tags eventually
         this.tag(AetherTags.Items.AETHER_ACCESSORY).add(
-                GenesisItems.CRYSTAL_EXP_BOTTLE.get());
+                GenesisItems.CRYSTAL_EXP_BOTTLE.get(),
+                GenesisItems.MOUSE_EAR_CAP.get());
         this.tag(AetherTags.Items.AETHER_RING).add(
                 GenesisItems.BONE_RING.get(),
                 GenesisItems.CANDY_RING.get(),
                 GenesisItems.SKYROOT_RING.get());
+        this.tag(AetherTags.Items.AETHER_PENDANT).add(
+                GenesisItems.LUCKY_BELL.get(),
+                GenesisItems.SWETTY_PENDANT.get(),
+                GenesisItems.DAGGERFROST_LOCKET.get());
+        this.tag(AetherTags.Items.AETHER_CAPE).add(
+                GenesisItems.CAPE.get(),
+                GenesisItems.DEXTERITY_CAPE.get(),
+                GenesisItems.SOARING_STONE.get()); //todo temporary
         this.tag(GenesisTags.Items.SWET_JELLY).add(
                 GenesisItems.BLUE_SWET_JELLY.get(),
                 GenesisItems.DARK_SWET_JELLY.get(),
@@ -72,5 +87,8 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 AetherItems.GOLDEN_DART.get(),
                 AetherItems.POISON_DART.get(),
                 AetherItems.ENCHANTED_DART.get());
+
+        // Forge
+        this.tag(Tags.Items.CHESTS_WOODEN).add(GenesisBlocks.SKYROOT_CHEST.get().asItem());
     }
 }

@@ -3,7 +3,8 @@
     "aether_genesis:swet_sugar",
     "aether_genesis:chance_double_drops",
     "aether_genesis:dark_gummy_swet",
-    "aether_genesis:golden_swet_ball"
+    "aether_genesis:golden_swet_ball",
+    "aether_genesis:present_drops"
   ],
   "replace": false
 }

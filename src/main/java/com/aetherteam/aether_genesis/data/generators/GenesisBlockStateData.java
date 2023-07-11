@@ -6,6 +6,7 @@ import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.data.providers.GenesisBlockStateProvider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.model.generators.ModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -30,9 +31,9 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
         this.saplingBlock(GenesisBlocks.BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.saplingBlock(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.saplingBlock(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), "natural/");
-        this.brick(GenesisBlocks.HOLYSTONE_HEADSTONE.get());
-        this.brick(GenesisBlocks.HOLYSTONE_KEYSTONE.get());
-        this.brick(GenesisBlocks.HOLYSTONE_HIGHLIGHT.get());
+        this.holystonePillar(GenesisBlocks.HOLYSTONE_HEADSTONE.get());
+        this.holystonePillar(GenesisBlocks.HOLYSTONE_KEYSTONE.get());
+        this.holystonePillar(GenesisBlocks.HOLYSTONE_HIGHLIGHT.get());
         this.pottedPlant(GenesisBlocks.POTTED_BLUE_SKYROOT_SAPLING.get(), GenesisBlocks.BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.pottedPlant(GenesisBlocks.POTTED_DARK_BLUE_SKYROOT_SAPLING.get(), GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.pottedPlant(GenesisBlocks.POTTED_PURPLE_CRYSTAL_TREE_SAPLING.get(), GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), "natural/");
@@ -42,11 +43,14 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
         this.skyrootChest(GenesisBlocks.SKYROOT_CHEST.get());
         this.skyrootLadder(GenesisBlocks.SKYROOT_LADDER.get());
 
-        this.dungeonBrick(GenesisBlocks.CARVED_PILLAR_SIDE.get());
-        this.dungeonBrick(GenesisBlocks.CARVED_PILLAR_CARVED.get());
+        this.dungeonPillar(GenesisBlocks.CARVED_PILLAR_SIDE.get());
+        this.dungeonPillarTop(GenesisBlocks.CARVED_PILLAR.get());
+        this.skyrootChest(GenesisBlocks.SKYROOT_CHEST_MIMIC.get());
         this.block(GenesisBlocks.DIVINE_CRAVED_STONE.get(), "dungeon/");
         this.block(GenesisBlocks.DIVINE_SENTRY_STONE.get(), "dungeon/");
         this.block(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get(), "dungeon/");
+
+        this.coldFire(GenesisBlocks.COLD_FIRE.get());
     }
 
     private void makeLogWalls() {

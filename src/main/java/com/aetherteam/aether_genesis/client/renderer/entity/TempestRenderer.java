@@ -2,7 +2,10 @@ package com.aetherteam.aether_genesis.client.renderer.entity;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
-import com.aetherteam.aether_genesis.client.renderer.model.TempestModel;
+import com.aetherteam.aether_genesis.client.renderer.entity.layers.TempestMarkingsLayer;
+import com.aetherteam.aether_genesis.client.renderer.entity.layers.TempestTransparencyGlowLayer;
+import com.aetherteam.aether_genesis.client.renderer.entity.layers.TempestTransparencyLayer;
+import com.aetherteam.aether_genesis.client.renderer.entity.model.TempestModel;
 import com.aetherteam.aether_genesis.entity.monster.Tempest;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;

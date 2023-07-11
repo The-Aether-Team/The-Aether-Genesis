@@ -2,11 +2,13 @@ package com.aetherteam.aether_genesis.data.generators.tags;
 
 import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether_genesis.Genesis;
+import com.aetherteam.aether_genesis.GenesisTags;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
 import net.minecraft.tags.EntityTypeTags;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nullable;
@@ -19,6 +21,10 @@ public class GenesisEntityTagData extends EntityTypeTagsProvider {
 
     @Override
     public void addTags(HolderLookup.Provider provider) {
+        this.tag(GenesisTags.Entities.COMPANIONS).add(
+                GenesisEntityTypes.SOARING_WISP.get());
+        this.tag(GenesisTags.Entities.NO_PRESENT_DROPS);
+
         this.tag(AetherTags.Entities.WHIRLWIND_UNAFFECTED).add(GenesisEntityTypes.CARRION_SPROUT.get());
         this.tag(AetherTags.Entities.UNLAUNCHABLE).add(GenesisEntityTypes.CARRION_SPROUT.get());
         this.tag(AetherTags.Entities.DEFLECTABLE_PROJECTILES)
@@ -33,10 +39,17 @@ public class GenesisEntityTagData extends EntityTypeTagsProvider {
                 GenesisEntityTypes.TEMPEST.get(),
                 GenesisEntityTypes.BATTLE_SENTRY.get());
         this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(
-                GenesisEntityTypes.TEMPEST.get());
+                GenesisEntityTypes.TEMPEST.get(),
+                GenesisEntityTypes.SENTRY_GUARDIAN.get(),
+                GenesisEntityTypes.LABYRINTH_EYE.get(),
+                GenesisEntityTypes.SLIDER_HOST_MIMIC.get());
         this.tag(AetherTags.Entities.UNHOOKABLE).add(GenesisEntityTypes.CARRION_SPROUT.get());
 
         this.tag(EntityTypeTags.IMPACT_PROJECTILES)
                 .add(GenesisEntityTypes.PHOENIX_DART.get());
+        this.tag(Tags.EntityTypes.BOSSES).add(
+                GenesisEntityTypes.LABYRINTH_EYE.get(),
+                GenesisEntityTypes.SENTRY_GUARDIAN.get(),
+                GenesisEntityTypes.SLIDER_HOST_MIMIC.get());
     }
 }

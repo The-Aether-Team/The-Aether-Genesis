@@ -8,6 +8,7 @@ import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
@@ -53,6 +54,8 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.POTTED_DARK_BLUE_SKYROOT_SAPLING.get(),
                 GenesisBlocks.POTTED_PURPLE_CRYSTAL_TREE_SAPLING.get(),
                 GenesisBlocks.POTTED_ORANGE_TREE.get());
+        this.tag(BlockTags.FIRE).add(
+                GenesisBlocks.COLD_FIRE.get());
         this.tag(BlockTags.CLIMBABLE).add(
                 GenesisBlocks.SKYROOT_LADDER.get());
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
@@ -69,7 +72,8 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(),
                 GenesisBlocks.SKYROOT_CHEST.get(),
                 GenesisBlocks.SKYROOT_CRAFTING_TABLE.get(),
-                GenesisBlocks.SKYROOT_LADDER.get());
+                GenesisBlocks.SKYROOT_LADDER.get(),
+                GenesisBlocks.SKYROOT_CHEST_MIMIC.get());
         this.tag(BlockTags.MINEABLE_WITH_HOE).add(
                 GenesisBlocks.GREEN_AERCLOUD.get(),
                 GenesisBlocks.PURPLE_AERCLOUD.get(),
@@ -84,7 +88,13 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get(),
                 GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get());
+        this.tag(AetherTags.Blocks.NON_BRONZE_DUNGEON_REPLACEABLE).add(
+                GenesisBlocks.SKYROOT_CHEST_MIMIC.get()
+        );
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(GenesisBlocks.CONTINUUM_ORE.get());
         this.tag(BlockTags.SNAPS_GOAT_HORN).addTag(GenesisTags.Blocks.LOG_WALLS);
+
+        // Forge
+        this.tag(Tags.Blocks.CHESTS_WOODEN).add(GenesisBlocks.SKYROOT_CHEST.get());
     }
 }
