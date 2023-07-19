@@ -14,10 +14,10 @@ import net.minecraft.resources.ResourceLocation;
 
 import javax.annotation.Nonnull;
 
-public class HostMimicLayer<T extends SliderHostMimic, M extends SliderHostMimicModel<T>> extends EyesLayer<T, M> {
+public class HostMimicLayer extends EyesLayer<SliderHostMimic, SliderHostMimicModel> {
 	private static final RenderType HOST_MIMIC_EYE_LIT = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/slider_host_mimic/slider_host_mimic_critical_glow.png"));
 
-	public HostMimicLayer(RenderLayerParent<T, M> entityRenderer) {
+	public HostMimicLayer(RenderLayerParent<SliderHostMimic, SliderHostMimicModel> entityRenderer) {
 		super(entityRenderer);
 	}
 
