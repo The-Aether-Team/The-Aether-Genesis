@@ -11,6 +11,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 import javax.annotation.Nullable;
@@ -86,5 +87,8 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 AetherItems.GOLDEN_DART.get(),
                 AetherItems.POISON_DART.get(),
                 AetherItems.ENCHANTED_DART.get());
+
+        // Forge
+        this.tag(Tags.Items.CHESTS_WOODEN).add(GenesisBlocks.SKYROOT_CHEST.get().asItem());
     }
 }
