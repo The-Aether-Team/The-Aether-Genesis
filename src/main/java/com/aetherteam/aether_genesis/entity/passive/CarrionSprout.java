@@ -11,6 +11,8 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -18,17 +20,19 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.AABB;
-import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 public class CarrionSprout extends Mob {
     public static final EntityDataAccessor<Float> DATA_MAX_SIZE_ID = SynchedEntityData.defineId(CarrionSprout.class, EntityDataSerializers.FLOAT);
     public static final EntityDataAccessor<Float> DATA_SIZE_ID = SynchedEntityData.defineId(CarrionSprout.class, EntityDataSerializers.FLOAT);
+    public static final EntityDataAccessor<String> DATA_COLOR_ID = SynchedEntityData.defineId(CarrionSprout.class, EntityDataSerializers.STRING);
 
     public float sinage;
     public float sinageAdd;
@@ -43,7 +47,6 @@ public class CarrionSprout extends Mob {
         this.goalSelector.addGoal(1, new RandomLookAroundGoal(this));
     }
 
-    @Nonnull
     public static AttributeSupplier.Builder createMobAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 10.0)
@@ -54,12 +57,13 @@ public class CarrionSprout extends Mob {
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(DATA_MAX_SIZE_ID, 0.0F);
-        this.entityData.define(DATA_SIZE_ID, 0.0F);
+        this.getEntityData().define(DATA_MAX_SIZE_ID, 0.0F);
+        this.getEntityData().define(DATA_SIZE_ID, 0.0F);
+        this.getEntityData().define(DATA_COLOR_ID, "blue");
     }
 
     @Override
-    public void onSyncedDataUpdated(@Nonnull EntityDataAccessor<?> dataAccessor) {
+    public void onSyncedDataUpdated(EntityDataAccessor<?> dataAccessor) {
         if (DATA_SIZE_ID.equals(dataAccessor)) {
             this.setBoundingBox(this.makeBoundingBox());
             this.refreshDimensions();
@@ -69,11 +73,11 @@ public class CarrionSprout extends Mob {
 
     @Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(@Nonnull ServerLevelAccessor level, @Nonnull DifficultyInstance difficulty, @Nonnull MobSpawnType reason, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag tag) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag tag) {
         this.setPos(Math.floor(this.getX()) + 0.5, this.getY(), Math.floor(this.getZ()) + 0.5);
         this.setMaxSize(Mth.clamp(this.getRandom().nextFloat() * this.getRandom().nextInt(3), 1.0F, 3.0F));
         this.setSize(Mth.clamp(this.getRandom().nextFloat() * this.getRandom().nextInt(2) - 0.3F, Mth.clamp(this.getMaxSize() - this.getRandom().nextFloat(), 0.3F, 0.6F), 0.3F));
-        this.sinage = this.random.nextFloat() * 6.0F;
+        this.sinage = this.getRandom().nextFloat() * 6.0F;
         return super.finalizeSpawn(level, difficulty, reason, spawnData, tag);
     }
 
@@ -111,54 +115,51 @@ public class CarrionSprout extends Mob {
     }
 
     @Override
+    public void push(double x, double y, double z) { }
+
+    @Override
     protected void jumpFromGround() { }
 
     @Override
-    protected void doPush(@Nonnull Entity entity) {
-        if (!this.isPassengerOfSameVehicle(entity)) {
-            if (!entity.noPhysics && !this.noPhysics) {
-                double d0 = entity.getX() - this.getX();
-                double d1 = entity.getZ() - this.getZ();
-                double d2 = Mth.absMax(d0, d1);
-                if (d2 >= (double) 0.01F) {
-                    d2 = Math.sqrt(d2);
-                    d0 /= d2;
-                    d1 /= d2;
-                    double d3 = 1.0 / d2;
-                    if (d3 > 1.0) {
-                        d3 = 1.0;
-                    }
-
-                    d0 *= d3;
-                    d1 *= d3;
-                    d0 *= 0.05F;
-                    d1 *= 0.05F;
-
-                    if (!entity.isVehicle()) {
-                        entity.push(d0, 0.0, d1);
-                    }
-                }
-            }
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack itemStack = player.getItemInHand(hand);
+        if (itemStack.is(Items.PINK_DYE) && !this.getColor().equals("pink")) {
+            this.setColor("pink");
+            return InteractionResult.SUCCESS;
+        } else if (itemStack.is(Items.WHITE_DYE) && !this.getColor().equals("white")) {
+            this.setColor("white");
+            return InteractionResult.SUCCESS;
+        } else if (itemStack.is(Items.LIGHT_BLUE_DYE) && !this.getColor().equals("blue")) {
+            this.setColor("blue");
+            return InteractionResult.SUCCESS;
         }
+        return super.mobInteract(player, hand);
     }
 
     public float getMaxSize() {
-        return this.entityData.get(DATA_MAX_SIZE_ID);
+        return this.getEntityData().get(DATA_MAX_SIZE_ID);
     }
 
     public void setMaxSize(float maxSize) {
-        this.entityData.set(DATA_MAX_SIZE_ID, maxSize);
+        this.getEntityData().set(DATA_MAX_SIZE_ID, maxSize);
     }
 
     public float getSize() {
-        return this.entityData.get(DATA_SIZE_ID);
+        return this.getEntityData().get(DATA_SIZE_ID);
     }
 
     public void setSize(float size) {
-        this.entityData.set(DATA_SIZE_ID, size);
+        this.getEntityData().set(DATA_SIZE_ID, size);
     }
 
-    @Nonnull
+    public String getColor() {
+        return this.getEntityData().get(DATA_COLOR_ID);
+    }
+
+    public void setColor(String color) {
+        this.getEntityData().set(DATA_COLOR_ID, color);
+    }
+
     @Override
     protected AABB makeBoundingBox() {
         return this.createDimensions().makeBoundingBox(this.position());
@@ -196,16 +197,20 @@ public class CarrionSprout extends Mob {
     }
 
     @Override
-    public void addAdditionalSaveData(@Nonnull CompoundTag tag) {
+    public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putFloat("Size", this.getSize());
+        tag.putString("Color", this.getColor());
     }
 
     @Override
-    public void readAdditionalSaveData(@Nonnull CompoundTag tag) {
+    public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         if (tag.contains("Size")) {
             this.setSize(tag.getFloat("Size"));
+        }
+        if (tag.contains("Color")) {
+            this.setColor(tag.getString("Color"));
         }
     }
 }
