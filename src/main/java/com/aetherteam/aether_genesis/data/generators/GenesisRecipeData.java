@@ -59,7 +59,13 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
 
         oreBlockStorageRecipesRecipesWithCustomUnpacking(consumer, RecipeCategory.MISC, GenesisItems.CONTINUUM_ORB.get(), RecipeCategory.MISC, GenesisItems.CONTINUUM_BOMB.get(), "continuum_orb_from_bomb", "continuum_bomb"); //todo recipe locations are incorrect
 
-        twoByTwoPacker(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_CRAFTING_TABLE.get(), AetherBlocks.SKYROOT_PLANKS.get());
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_CRAFTING_TABLE.get())
+                .define('#', AetherBlocks.SKYROOT_PLANKS.get())
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy(getHasName(GenesisBlocks.SKYROOT_CRAFTING_TABLE.get()), has(AetherTags.Items.PLANKS_CRAFTING))
+                .save(consumer);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_FURNACE.get())
                 .define('#', AetherBlocks.HOLYSTONE.get())
                 .pattern("###")
@@ -89,16 +95,16 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
                 .save(consumer, this.name("holystone_smoker"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_CHEST.get())
-                .define('#', AetherBlocks.SKYROOT_PLANKS.get())
+                .define('#', AetherTags.Items.PLANKS_CRAFTING)
                 .pattern("###")
                 .pattern("# #")
                 .pattern("###")
-                .unlockedBy(getHasName(GenesisBlocks.SKYROOT_CHEST.get()), has(AetherBlocks.SKYROOT_PLANKS.get()))
+                .unlockedBy(getHasName(GenesisBlocks.SKYROOT_CHEST.get()), has(AetherTags.Items.PLANKS_CRAFTING))
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_LADDER.get(), 3)
                 .define('#', AetherTags.Items.SKYROOT_STICKS)
-                .define('S', AetherBlocks.SKYROOT_PLANKS.get())
+                .define('S', AetherTags.Items.PLANKS_CRAFTING)
                 .pattern("# #")
                 .pattern("#S#")
                 .pattern("# #")
