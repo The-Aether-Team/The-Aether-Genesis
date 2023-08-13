@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.entity.passive;
 
+import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether_genesis.GenesisTags;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import net.minecraft.core.BlockPos;
@@ -90,7 +91,7 @@ public class CarrionSprout extends Mob {
     @Override
     public void tick() {
         super.tick();
-        if (!this.getLevel().getBlockState(this.blockPosition().below()).is(GenesisTags.Blocks.CARRION_SPROUT_SPAWNABLE_ON)) {
+        if (!this.getLevel().getBlockState(this.blockPosition().below()).is(AetherTags.Blocks.AECHOR_PLANT_SPAWNABLE_ON) && !this.isPassenger()) {
             this.kill();
         }
         if (!this.getLevel().isClientSide()) {
@@ -177,6 +178,11 @@ public class CarrionSprout extends Mob {
     }
 
     @Override
+    public double getMyRidingOffset() {
+        return this.getVehicle() != null && this.getVehicle().isCrouching() ? 0.1D : 0.275D;
+    }
+
+    @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
         return GenesisSoundEvents.ENTITY_CARRION_SPROUT_HURT.get();
     }
@@ -184,11 +190,6 @@ public class CarrionSprout extends Mob {
     @Override
     protected SoundEvent getDeathSound() {
         return GenesisSoundEvents.ENTITY_CARRION_SPROUT_DEATH.get();
-    }
-
-    @Override
-    public boolean isPushable() {
-        return false;
     }
 
     @Override
