@@ -25,19 +25,27 @@ public class GenesisConfig {
     }
 
     public static class Client {
+        public final ForgeConfigSpec.ConfigValue<Boolean> genesis_menu_layout;
         public final ForgeConfigSpec.ConfigValue<Boolean> night_music_tracks;
         public final ForgeConfigSpec.ConfigValue<Boolean> blue_aercloud_bounce_sfx;
 
         public Client(ForgeConfigSpec.Builder builder) {
+            builder.push("Gui");
+            genesis_menu_layout = builder
+                    .comment("Replaces the menu toggle buttons with the Cumulus' menu switcher")
+                    .translation("config.aether.client.gui.genesis_menu_layout")
+                    .define("Genesis menu button layout", true);
+            builder.pop();
+
             builder.push("Audio");
             night_music_tracks = builder
                     .comment("Adds some nice night tracks to the Aether's music selection. Also disables the default music manager for the Aether, to prevent overlap")
                     .translation("config.aether_genesis.client.audio.night_music_tracks")
-                    .define("Nighttime Music Tracks", true);
+                    .define("Nighttime music tracks", true);
             blue_aercloud_bounce_sfx = builder
                     .comment("Makes Blue Aerclouds have their wobbly sounds that play when bouncing on them")
                     .translation("config.aether_genesis.client.audio.blue_aercloud_bounce_sfx")
-                    .define("Blue Aercloud Bouncing Sounds", true);
+                    .define("Blue Aercloud bouncing sounds", true);
             builder.pop();
         }
     }

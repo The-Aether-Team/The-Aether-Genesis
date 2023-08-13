@@ -32,6 +32,7 @@
   "block.aether_genesis.stripped_skyroot_wood_wall": "Stripped Skyroot Wood Wall",
   "config.aether_genesis.client.audio.blue_aercloud_bounce_sfx": "Makes Blue Aerclouds have their wobbly sounds that play when bouncing on them",
   "config.aether_genesis.client.audio.night_music_tracks": "Adds some nice night tracks to the Aether's music selection. Also disables the default music manager for the Aether, to prevent overlap",
+  "config.aether_genesis.client.gui.genesis_menu_layout": "Replaces the menu toggle buttons with the Cumulus' menu switcher",
   "config.aether_genesis.common.gameplay.gold_aercloud_ability": "Changes Gold Aercloud and respective parachute behavior to launch entities downwards",
   "entity.aether_genesis.battle_sentry": "Battle Sentry",
   "entity.aether_genesis.carrion_sprout": "Carrion Sprout",
