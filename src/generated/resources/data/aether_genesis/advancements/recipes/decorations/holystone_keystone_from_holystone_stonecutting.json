@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_holystone_bricks": {
+    "has_holystone": {
       "conditions": {
         "items": [
           {
             "items": [
-              "aether:holystone_bricks"
+              "aether:holystone"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "aether:holystone_keystone_from_holystone_bricks_stonecutting"
+        "recipe": "aether_genesis:holystone_keystone_from_holystone_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_holystone_bricks",
+      "has_holystone",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "aether:holystone_keystone_from_holystone_bricks_stonecutting"
+      "aether_genesis:holystone_keystone_from_holystone_stonecutting"
     ]
   }
 }

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_holystone": {
+    "has_continuum_bomb": {
       "conditions": {
         "items": [
           {
             "items": [
-              "aether:holystone"
+              "aether_genesis:continuum_bomb"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "aether:holystone_keystone_from_holystone_stonecutting"
+        "recipe": "aether_genesis:continuum_orb_from_bomb"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_holystone",
+      "has_continuum_bomb",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "aether:holystone_keystone_from_holystone_stonecutting"
+      "aether_genesis:continuum_orb_from_bomb"
     ]
   }
 }

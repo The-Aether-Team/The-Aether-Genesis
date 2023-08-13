@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_continuum_bomb": {
+    "has_continuum_orb": {
       "conditions": {
         "items": [
           {
             "items": [
-              "aether_genesis:continuum_bomb"
+              "aether_genesis:continuum_orb"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "aether:continuum_orb_from_bomb"
+        "recipe": "aether_genesis:continuum_bomb"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_continuum_bomb",
+      "has_continuum_orb",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "aether:continuum_orb_from_bomb"
+      "aether_genesis:continuum_bomb"
     ]
   }
 }

@@ -6,6 +6,7 @@ import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.data.providers.GenesisBlockStateProvider;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.client.model.generators.ModelBuilder;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -17,6 +18,7 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
 
     @Override
     public void registerStatesAndModels() {
+        this.enchantedVanillaGrass(GenesisBlocks.ENCHANTED_GRASS_BLOCK.get(), Blocks.GRASS_BLOCK, Blocks.DIRT);
         this.translucentBlock(GenesisBlocks.GREEN_AERCLOUD.get(), "natural/");
         this.purpleAercloud(GenesisBlocks.PURPLE_AERCLOUD.get());
         this.translucentBlock(GenesisBlocks.STORM_AERCLOUD.get(), "natural/");

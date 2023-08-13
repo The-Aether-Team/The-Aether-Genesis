@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_continuum_orb": {
+    "has_holystone_bricks": {
       "conditions": {
         "items": [
           {
             "items": [
-              "aether_genesis:continuum_orb"
+              "aether:holystone_bricks"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "aether:continuum_bomb"
+        "recipe": "aether_genesis:holystone_keystone_from_holystone_bricks_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_continuum_orb",
+      "has_holystone_bricks",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "aether:continuum_bomb"
+      "aether_genesis:holystone_keystone_from_holystone_bricks_stonecutting"
     ]
   }
 }

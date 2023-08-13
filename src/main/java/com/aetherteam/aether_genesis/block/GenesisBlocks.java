@@ -11,10 +11,7 @@ import com.aetherteam.aether_genesis.block.container.SkyrootChestBlock;
 import com.aetherteam.aether_genesis.block.container.SkyrootChestMimicBlock;
 import com.aetherteam.aether_genesis.block.container.SkyrootCraftingTableBlock;
 import com.aetherteam.aether_genesis.block.miscellaneous.ColdFireBlock;
-import com.aetherteam.aether_genesis.block.natural.GenesisDoubleDropsWall;
-import com.aetherteam.aether_genesis.block.natural.GreenAercloudBlock;
-import com.aetherteam.aether_genesis.block.natural.OrangeTreeBlock;
-import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
+import com.aetherteam.aether_genesis.block.natural.*;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.blockentity.SkyrootChestBlockEntity;
 import com.aetherteam.aether_genesis.blockentity.SkyrootChestMimicBlockEntity;
@@ -46,6 +43,8 @@ import java.util.function.Supplier;
 
 public class GenesisBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Genesis.MODID);
+
+    public static final RegistryObject<Block> ENCHANTED_GRASS_BLOCK = register("enchanted_grass_block", () -> new EnchantedGrassBlock(Block.Properties.of(Material.GRASS, MaterialColor.GOLD).randomTicks().strength(0.2F).sound(SoundType.GRASS)));
 
     public static final RegistryObject<Block> GREEN_AERCLOUD = register("green_aercloud", () -> new GreenAercloudBlock(Block.Properties.of(Material.ICE, MaterialColor.COLOR_LIGHT_GREEN).strength(0.3F).sound(SoundType.WOOL).noOcclusion().dynamicShape().isRedstoneConductor(GenesisBlocks::never).isSuffocating(GenesisBlocks::never).isViewBlocking(GenesisBlocks::never)));
     public static final RegistryObject<Block> PURPLE_AERCLOUD = register("purple_aercloud", () -> new PurpleAercloudBlock(Block.Properties.of(Material.ICE, MaterialColor.COLOR_MAGENTA).strength(0.3F).sound(SoundType.WOOL).noOcclusion().dynamicShape().isRedstoneConductor(GenesisBlocks::never).isSuffocating(GenesisBlocks::never).isViewBlocking(GenesisBlocks::never)));
