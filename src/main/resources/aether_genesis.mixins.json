@@ -11,7 +11,7 @@
     "common.BlueAercloudBlockMixin",
     "common.ItemMixin",
     "common.ParachuteMixin",
-    "common.ServerSoundUtilMixin",
+    "common.PortalSoundUtilMixin",
     "common.accessor.WallBlockAccessor"
   ],
   "client": [
