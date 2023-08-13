@@ -128,7 +128,10 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addSubtitle("entity", "tempest.ambient", "Tempest blows");
         this.addSubtitle("entity", "tempest.death", "Tempest dies");
         this.addSubtitle("entity", "tempest.hurt", "Tempest hurts");
-        
+
+        this.addSubtitle("block", "portal.hum", "Aether Portal hums");
+        this.addSubtitle("block", "portal.trigger", "Aether Portal hum intensifies");
+
         this.addContainerType(GenesisMenuTypes.HOLYSTONE_FURNACE, "Holystone Furnace");
 
         this.addCommonConfig("gameplay", "gold_aercloud_ability", "Changes Gold Aercloud and respective parachute behavior to launch entities downwards");

@@ -6,6 +6,7 @@ import org.apache.commons.lang3.tuple.Pair;
 public class GenesisConfig {
     public static class Common {
         public final ForgeConfigSpec.ConfigValue<Boolean> gold_aercloud_ability;
+        public final ForgeConfigSpec.ConfigValue<Boolean> aether_ii_portal_sounds;
 
         public Common(ForgeConfigSpec.Builder builder) { //todo server config
             builder.push("Gameplay");
@@ -13,6 +14,12 @@ public class GenesisConfig {
                     .comment("Changes Gold Aercloud and respective parachute behavior to launch entities downwards")
                     .translation("config.aether_genesis.common.gameplay.gold_aercloud_ability")
                     .define("Gold Aerclouds launch entities downwards", true);
+            builder.pop();
+            builder.push("Audio");
+            aether_ii_portal_sounds = builder
+                    .comment("Gives Aether Portals their sounds from the Aether II")
+                    .translation("config.aether_genesis.client.audio.aether_ii_portal_sounds")
+                    .define("Aether II Portal Sounds", true);
             builder.pop();
         }
     }

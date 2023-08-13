@@ -6,9 +6,12 @@
   "refmap": "aether_genesis.refmap.json",
   "mixins": [
     "common.AercloudBlockMixin",
+    "common.AetherPlayerCapabilityMixin",
+    "common.AetherPortalBlockMixin",
     "common.BlueAercloudBlockMixin",
     "common.ItemMixin",
     "common.ParachuteMixin",
+    "common.PortalSoundUtilMixin",
     "common.accessor.WallBlockAccessor"
   ],
   "client": [
