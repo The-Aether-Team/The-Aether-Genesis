@@ -1,7 +1,6 @@
 package com.aetherteam.aether_genesis.mixin.mixins.common;
 
 import com.aetherteam.aether.capability.player.AetherPlayerCapability;
-import com.aetherteam.aether.util.ServerSoundUtil;
 import com.aetherteam.aether_genesis.GenesisConfig;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import net.minecraftforge.registries.RegistryObject;
