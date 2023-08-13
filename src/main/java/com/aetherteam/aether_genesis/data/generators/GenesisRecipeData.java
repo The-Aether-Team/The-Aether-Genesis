@@ -13,7 +13,6 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -78,7 +77,7 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
                 .pattern("IXI")
                 .pattern("###")
                 .unlockedBy("has_smooth_stone", has(Blocks.SMOOTH_STONE))
-                .save(consumer, GenesisRecipeProvider.name("holystone_blast_furnace"));
+                .save(consumer, this.name("holystone_blast_furnace"));
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.SMOKER)
                 .group("minecraft:smoker")
                 .define('#', ItemTags.LOGS)
@@ -87,7 +86,7 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
                 .pattern("#X#")
                 .pattern(" # ")
                 .unlockedBy(getHasName(GenesisBlocks.HOLYSTONE_FURNACE.get()), has(GenesisBlocks.HOLYSTONE_FURNACE.get()))
-                .save(consumer, GenesisRecipeProvider.name("holystone_smoker"));
+                .save(consumer, this.name("holystone_smoker"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_CHEST.get())
                 .define('#', AetherBlocks.SKYROOT_PLANKS.get())
@@ -114,6 +113,6 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
         stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
         stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
 
-        enchantingRecipe(RecipeCategory.FOOD, GenesisItems.RAINBOW_STRAWBERRY.get(), GenesisItems.WYNDBERRY.get(), 0.35F, 500).save(consumer, GenesisRecipeProvider.name("rainbow_strawberry_enchanting"));
+        enchantingRecipe(RecipeCategory.FOOD, GenesisItems.RAINBOW_STRAWBERRY.get(), GenesisItems.WYNDBERRY.get(), 0.35F, 500).save(consumer, this.name("rainbow_strawberry_enchanting"));
     }
 }

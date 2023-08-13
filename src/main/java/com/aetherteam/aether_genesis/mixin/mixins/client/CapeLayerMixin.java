@@ -1,6 +1,6 @@
 package com.aetherteam.aether_genesis.mixin.mixins.client;
 
-import com.aetherteam.aether.util.EquipmentUtil;
+import com.aetherteam.aether.item.EquipmentUtil;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.item.accessories.DyeableCape;
 import com.aetherteam.aether_genesis.mixin.mixins.client.accessor.PlayerModelAccessor;

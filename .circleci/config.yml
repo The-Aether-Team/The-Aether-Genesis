@@ -17,13 +17,20 @@ jobs:
     steps:
       - setup
       - run: |
-          gradle publish
+          chmod +x ./gradlew
+          ./gradlew publish
 
 commands:
   setup:
     steps:
       - checkout
-      - run: gradle build --console=plain
+      - gradle/with_cache:
+          cache_key: 'v1'
+          steps:
+            - run:
+                name: chmod permissions
+                command: chmod +x ./gradlew
+            - run: ./gradlew build --parallel --console=plain
       - store_artifacts:
           path: ~/project/build/libs
 
@@ -46,4 +53,4 @@ workflows:
             branches:
               ignore:
                 - /.*/
-                
+

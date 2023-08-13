@@ -1,6 +1,6 @@
 package com.aetherteam.aether_genesis.event.listeners.abilities;
 
-import com.aetherteam.aether.util.EquipmentUtil;
+import com.aetherteam.aether.item.EquipmentUtil;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.entity.DaggerfrostSnowball;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;

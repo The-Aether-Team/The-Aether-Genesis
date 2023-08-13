@@ -4,7 +4,6 @@ import com.aetherteam.aether.block.natural.BlueAercloudBlock;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;

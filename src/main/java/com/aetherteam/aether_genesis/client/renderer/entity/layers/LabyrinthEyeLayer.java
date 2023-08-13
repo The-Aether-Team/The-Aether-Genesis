@@ -2,9 +2,7 @@ package com.aetherteam.aether_genesis.client.renderer.entity.layers;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.entity.model.LabyrinthEyeModel;
-import com.aetherteam.aether_genesis.client.renderer.entity.model.SliderHostMimicModel;
 import com.aetherteam.aether_genesis.entity.monster.boss.LabyrinthEye;
-import com.aetherteam.aether_genesis.entity.monster.boss.SliderHostMimic;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.MultiBufferSource;

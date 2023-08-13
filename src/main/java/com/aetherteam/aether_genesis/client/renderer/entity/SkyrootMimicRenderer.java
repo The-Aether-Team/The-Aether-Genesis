@@ -1,6 +1,5 @@
 package com.aetherteam.aether_genesis.client.renderer.entity;
 
-import com.aetherteam.aether.client.renderer.AetherModelLayers;
 import com.aetherteam.aether.client.renderer.entity.model.MimicModel;
 import com.aetherteam.aether.entity.monster.dungeon.Mimic;
 import com.aetherteam.aether_genesis.Genesis;

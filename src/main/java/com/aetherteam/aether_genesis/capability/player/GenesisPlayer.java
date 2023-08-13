@@ -1,7 +1,7 @@
 package com.aetherteam.aether_genesis.capability.player;
 
-import com.aetherteam.aether.capability.INBTSynchable;
 import com.aetherteam.aether_genesis.capability.GenesisCapabilities;
+import com.aetherteam.nitrogen.capability.INBTSynchable;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;

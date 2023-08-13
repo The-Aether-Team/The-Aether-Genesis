@@ -1,8 +1,6 @@
 package com.aetherteam.aether_genesis.entity;
 
 import com.aetherteam.aether.entity.projectile.dart.GoldenDart;
-import com.aetherteam.aether.network.AetherPacketHandler;
-import com.aetherteam.aether.network.packet.client.PhoenixArrowPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -59,7 +57,6 @@ public class PhoenixDart extends GoldenDart {
     public void tick() {
         super.tick();
         if (!this.level.isClientSide) {
-            AetherPacketHandler.sendToAll(new PhoenixArrowPacket(this.getId(), true));
             for (int i = 0; i < 2; i++)
                 this.spawnParticles(this);
         }else

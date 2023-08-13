@@ -2,7 +2,6 @@ package com.aetherteam.aether_genesis.client.renderer.entity;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
-import com.aetherteam.aether_genesis.client.renderer.entity.layers.HostMimicLayer;
 import com.aetherteam.aether_genesis.client.renderer.entity.layers.LabyrinthEyeLayer;
 import com.aetherteam.aether_genesis.client.renderer.entity.model.LabyrinthEyeModel;
 import com.aetherteam.aether_genesis.entity.monster.boss.LabyrinthEye;

@@ -1,12 +1,13 @@
 package com.aetherteam.aether_genesis.entity.monster.boss;
 
-import com.aetherteam.aether.api.BossNameGenerator;
-import com.aetherteam.aether.api.BossRoomTracker;
-import com.aetherteam.aether.entity.BossMob;
+import com.aetherteam.aether.entity.AetherBossMob;
+import com.aetherteam.aether.entity.monster.dungeon.boss.BossNameGenerator;
 import com.aetherteam.aether.network.AetherPacketHandler;
-import com.aetherteam.aether.network.packet.client.BossInfoPacket;
+import com.aetherteam.aether.network.packet.serverbound.BossInfoPacket;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.entity.miscellaneous.CogArrow;
+import com.aetherteam.nitrogen.entity.BossRoomTracker;
+import com.aetherteam.nitrogen.network.PacketRelay;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -48,7 +49,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.Nonnull;
 import java.util.EnumSet;
 
-public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>, Enemy, IEntityAdditionalSpawnData {
+public class LabyrinthEye extends PathfinderMob implements AetherBossMob<LabyrinthEye>, Enemy, IEntityAdditionalSpawnData {
     public static final EntityDataAccessor<Boolean> DATA_AWAKE_ID = SynchedEntityData.defineId(LabyrinthEye.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Component> DATA_BOSS_NAME_ID = SynchedEntityData.defineId(LabyrinthEye.class, EntityDataSerializers.COMPONENT);
     public static final EntityDataAccessor<Integer> DATA_BOSS_STAGE = SynchedEntityData.defineId(LabyrinthEye.class, EntityDataSerializers.INT);
@@ -288,7 +289,7 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
     @Override
     public void startSeenByPlayer(@Nonnull ServerPlayer player) {
         super.startSeenByPlayer(player);
-        AetherPacketHandler.sendToPlayer(new BossInfoPacket.Display(this.bossFight.getId()), player);
+        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Display(this.bossFight.getId()), player);
         if (this.getDungeon() == null || this.getDungeon().isPlayerTracked(player)) {
             this.bossFight.addPlayer(player);
         }
@@ -304,7 +305,7 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
     @Override
     public void stopSeenByPlayer(@Nonnull ServerPlayer player) {
         super.stopSeenByPlayer(player);
-        AetherPacketHandler.sendToPlayer(new BossInfoPacket.Remove(this.bossFight.getId()), player);
+        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Remove(this.bossFight.getId()), player);
         this.bossFight.removePlayer(player);
     }
 
@@ -345,8 +346,8 @@ public class LabyrinthEye extends PathfinderMob implements BossMob<LabyrinthEye>
         this.moveTo(Mth.floor(this.getX()), this.getY(), Mth.floor(this.getZ()));
     }
 
-    public static MutableComponent generateGuardianName() {
-        MutableComponent result = BossNameGenerator.generateBossName();
+    public MutableComponent generateGuardianName() {
+        MutableComponent result = BossNameGenerator.generateBossName(this.getRandom());
         return result.append(Component.translatable("gui.aether_genesis.labyrinth_eye.title"));
     }
 

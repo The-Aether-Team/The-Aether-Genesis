@@ -31,7 +31,7 @@ public class TempestRenderer extends MobRenderer<Tempest, TempestModel<Tempest>>
     }
 
     protected void scale(Tempest tempest, @Nonnull PoseStack poseStack, float partialTickTime) {
-        float f = Mth.lerp(partialTickTime, (float)tempest.scale, (float)(tempest.scale + tempest.scaleAdd));
+        float f = Mth.lerp(partialTickTime, (float)tempest.getCloudScale(), (float)(tempest.getCloudScale() + tempest.getCloudScaleAdd()));
         float f1 = f / 40.0F;
         if (f1 < 0.0F) {
             f1 = 0.0F;
@@ -51,6 +51,6 @@ public class TempestRenderer extends MobRenderer<Tempest, TempestModel<Tempest>>
     }
 
     protected float getBob(@Nonnull Tempest tempest, float partialTicks) {
-        return Mth.lerp(partialTicks, tempest.tailRot, tempest.tailRot + tempest.tailRotAdd);
+        return Mth.lerp(partialTicks, tempest.getTailRot(), tempest.getTailRot() + tempest.getTailRotAdd());
     }
 }
