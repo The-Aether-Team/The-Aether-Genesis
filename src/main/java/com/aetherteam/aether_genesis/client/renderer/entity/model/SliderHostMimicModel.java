@@ -7,7 +7,6 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.util.Mth;
 
 public class SliderHostMimicModel extends EntityModel<SliderHostMimic> {
 	private final ModelPart body;

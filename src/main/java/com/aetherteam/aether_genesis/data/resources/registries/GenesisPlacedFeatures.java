@@ -6,6 +6,7 @@ import com.aetherteam.aether.world.placementmodifier.ImprovedLayerPlacementModif
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.data.resources.builders.GenesisPlacedFeatureBuilders;
+import com.aetherteam.nitrogen.data.resources.builders.NitrogenPlacedFeatureBuilders;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -116,7 +117,7 @@ public class GenesisPlacedFeatures {
                 GenesisPlacedFeatureBuilders.treePlacement(RarityFilter.onAverageOnceEvery(5), AetherBlocks.SKYROOT_SAPLING.get()));
 
         register(context, ORE_CONTINUUM_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.ORE_CONTINUUM_CONFIGURATION),
-                AetherPlacedFeatureBuilders.commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(128))));
+                NitrogenPlacedFeatureBuilders.commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(128))));
     }
 
     private static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers) {

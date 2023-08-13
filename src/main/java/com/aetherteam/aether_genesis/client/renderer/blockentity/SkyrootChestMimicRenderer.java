@@ -1,6 +1,5 @@
 package com.aetherteam.aether_genesis.client.renderer.blockentity;
 
-import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.block.container.SkyrootChestBlock;
 import com.aetherteam.aether_genesis.block.container.SkyrootChestMimicBlock;
@@ -12,19 +11,15 @@ import com.mojang.math.Axis;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.ChestType;
 
 import javax.annotation.Nonnull;
-import java.util.Calendar;
 
 public class SkyrootChestMimicRenderer<T extends BlockEntity> implements BlockEntityRenderer<T>
 {

@@ -1,4 +1,4 @@
-// 1.19.4	2023-06-26T14:58:36.2908942	Item Models: aether_genesis
+// 1.19.4	2023-08-12T19:49:30.4122636	Item Models: aether_genesis
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/battle_sentry_spawn_egg.json
 b951ae61814ccb898428dd794f3adf77d4e02a6c assets/aether_genesis/models/item/blood_moss_holystone.json
 85e6dca000030d07451d6969e99df873abdf0362 assets/aether_genesis/models/item/blueberry_lollipop.json
@@ -30,6 +30,7 @@ b60b899aad4e1d0591a2a6c3d6cf32eee41a9c37 assets/aether_genesis/models/item/dark_
 811b0a5a780db13728564dd840be57cdc3d02d0a assets/aether_genesis/models/item/dexterity_cape.json
 1e84970831e9d79957606fa178f58ac7839507b2 assets/aether_genesis/models/item/divine_carved_stone.json
 60e6ad181809e22a376437a617e47fc7cc9b6630 assets/aether_genesis/models/item/divine_sentry_stone.json
+d879185777d90614dbf807f9e08c82e306c9fc9c assets/aether_genesis/models/item/enchanted_grass_block.json
 5a8b972dba6ea1379d4786d7528fc2022fe20222 assets/aether_genesis/models/item/golden_swet_ball.json
 c28faf72edc96a4f3ce81b4f77c8cec92966bd50 assets/aether_genesis/models/item/golden_swet_jelly.json
 403cf963c9c694a87ed5df64075c8bc53a2d1265 assets/aether_genesis/models/item/green_aercloud.json

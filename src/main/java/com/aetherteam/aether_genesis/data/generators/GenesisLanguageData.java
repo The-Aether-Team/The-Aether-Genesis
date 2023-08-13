@@ -15,6 +15,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
     @Override
     protected void addTranslations() {
+        this.addBlock(GenesisBlocks.ENCHANTED_GRASS_BLOCK, "Enchanted Grass Block");
         this.addBlock(GenesisBlocks.GREEN_AERCLOUD, "Green Aercloud");
         this.addBlock(GenesisBlocks.PURPLE_AERCLOUD, "Purple Aercloud");
         this.addBlock(GenesisBlocks.STORM_AERCLOUD, "Storm Aercloud");

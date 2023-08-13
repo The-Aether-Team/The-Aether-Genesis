@@ -1,7 +1,6 @@
 package com.aetherteam.aether_genesis.data.generators.loot;
 
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
@@ -10,7 +9,6 @@ import com.aetherteam.aether_genesis.loot.functions.CarrionSproutSize;
 import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;

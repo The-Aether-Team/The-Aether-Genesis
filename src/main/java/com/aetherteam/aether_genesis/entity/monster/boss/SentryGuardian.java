@@ -1,13 +1,14 @@
 package com.aetherteam.aether_genesis.entity.monster.boss;
 
-import com.aetherteam.aether.api.BossNameGenerator;
-import com.aetherteam.aether.api.BossRoomTracker;
-import com.aetherteam.aether.entity.BossMob;
+import com.aetherteam.aether.entity.AetherBossMob;
 import com.aetherteam.aether.entity.ai.goal.ContinuousMeleeAttackGoal;
 import com.aetherteam.aether.entity.monster.dungeon.Sentry;
+import com.aetherteam.aether.entity.monster.dungeon.boss.BossNameGenerator;
 import com.aetherteam.aether.network.AetherPacketHandler;
-import com.aetherteam.aether.network.packet.client.BossInfoPacket;
+import com.aetherteam.aether.network.packet.serverbound.BossInfoPacket;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
+import com.aetherteam.nitrogen.entity.BossRoomTracker;
+import com.aetherteam.nitrogen.network.PacketRelay;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -32,7 +33,9 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.MoveTowardsRestrictionGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Enemy;
@@ -52,7 +55,7 @@ import java.util.EnumSet;
 
 import static com.aetherteam.aether.entity.AetherEntityTypes.SENTRY;
 
-public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuardian>, Enemy, IEntityAdditionalSpawnData {
+public class SentryGuardian extends PathfinderMob implements AetherBossMob<SentryGuardian>, Enemy, IEntityAdditionalSpawnData {
     public static final EntityDataAccessor<Boolean> DATA_AWAKE_ID = SynchedEntityData.defineId(SentryGuardian.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Component> DATA_BOSS_NAME_ID = SynchedEntityData.defineId(SentryGuardian.class, EntityDataSerializers.COMPONENT);
 
@@ -297,7 +300,7 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
     @Override
     public void startSeenByPlayer(@Nonnull ServerPlayer player) {
         super.startSeenByPlayer(player);
-        AetherPacketHandler.sendToPlayer(new BossInfoPacket.Display(this.bossFight.getId()), player);
+        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Display(this.bossFight.getId()), player);
         if (this.getDungeon() == null || this.getDungeon().isPlayerTracked(player)) {
             this.bossFight.addPlayer(player);
         }
@@ -313,7 +316,7 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
     @Override
     public void stopSeenByPlayer(@Nonnull ServerPlayer player) {
         super.stopSeenByPlayer(player);
-        AetherPacketHandler.sendToPlayer(new BossInfoPacket.Remove(this.bossFight.getId()), player);
+        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Remove(this.bossFight.getId()), player);
         this.bossFight.removePlayer(player);
     }
 
@@ -354,8 +357,8 @@ public class SentryGuardian extends PathfinderMob implements BossMob<SentryGuard
         this.moveTo(Mth.floor(this.getX()), this.getY(), Mth.floor(this.getZ()));
     }
 
-    public static MutableComponent generateGuardianName() {
-        MutableComponent result = BossNameGenerator.generateBossName();
+    public MutableComponent generateGuardianName() {
+        MutableComponent result = BossNameGenerator.generateBossName(this.getRandom());
         return result.append(Component.translatable("gui.aether_genesis.sentry_guardian.title"));
     }
 

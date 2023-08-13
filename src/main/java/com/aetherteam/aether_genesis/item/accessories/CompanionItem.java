@@ -1,9 +1,7 @@
 package com.aetherteam.aether_genesis.item.accessories;
 
-import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.item.accessories.AccessoryItem;
 import com.aetherteam.aether_genesis.capability.player.GenesisPlayer;
-import com.aetherteam.aether_genesis.entity.companion.Companion;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;

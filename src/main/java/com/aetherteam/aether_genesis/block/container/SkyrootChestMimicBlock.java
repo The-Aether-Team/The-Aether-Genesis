@@ -3,7 +3,6 @@ package com.aetherteam.aether_genesis.block.container;
 import com.aetherteam.aether.block.dungeon.ChestMimicBlock;
 import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.entity.monster.dungeon.Mimic;
-import com.aetherteam.aether_genesis.blockentity.SkyrootChestBlockEntity;
 import com.aetherteam.aether_genesis.blockentity.SkyrootChestMimicBlockEntity;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import net.minecraft.core.BlockPos;

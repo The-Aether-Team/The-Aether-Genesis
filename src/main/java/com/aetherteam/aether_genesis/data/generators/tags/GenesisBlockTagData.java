@@ -37,6 +37,11 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.GREEN_AERCLOUD.get(),
                 GenesisBlocks.PURPLE_AERCLOUD.get(),
                 GenesisBlocks.STORM_AERCLOUD.get());
+        this.tag(AetherTags.Blocks.ENCHANTED_GRASS).add(
+                GenesisBlocks.ENCHANTED_GRASS_BLOCK.get());
+        this.tag(AetherTags.Blocks.NON_BRONZE_DUNGEON_REPLACEABLE).add(
+                GenesisBlocks.SKYROOT_CHEST_MIMIC.get()
+        );
 
         this.tag(BlockTags.LOGS).addTag(GenesisTags.Blocks.LOG_WALLS);
         this.tag(BlockTags.LOGS_THAT_BURN).addTag(GenesisTags.Blocks.LOG_WALLS);
@@ -49,11 +54,19 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get(),
                 GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get(),
                 GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get());
+        this.tag(BlockTags.DIRT).add(
+                GenesisBlocks.ENCHANTED_GRASS_BLOCK.get());
         this.tag(BlockTags.FLOWER_POTS).add(
                 GenesisBlocks.POTTED_BLUE_SKYROOT_SAPLING.get(),
                 GenesisBlocks.POTTED_DARK_BLUE_SKYROOT_SAPLING.get(),
                 GenesisBlocks.POTTED_PURPLE_CRYSTAL_TREE_SAPLING.get(),
                 GenesisBlocks.POTTED_ORANGE_TREE.get());
+        this.tag(BlockTags.ENDERMAN_HOLDABLE).add(
+                GenesisBlocks.ENCHANTED_GRASS_BLOCK.get());
+        this.tag(BlockTags.VALID_SPAWN).add(
+                GenesisBlocks.ENCHANTED_GRASS_BLOCK.get());
+        this.tag(BlockTags.BAMBOO_PLANTABLE_ON).add(
+                GenesisBlocks.ENCHANTED_GRASS_BLOCK.get());
         this.tag(BlockTags.FIRE).add(
                 GenesisBlocks.COLD_FIRE.get());
         this.tag(BlockTags.CLIMBABLE).add(
@@ -74,6 +87,8 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.SKYROOT_CRAFTING_TABLE.get(),
                 GenesisBlocks.SKYROOT_LADDER.get(),
                 GenesisBlocks.SKYROOT_CHEST_MIMIC.get());
+        this.tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
+                GenesisBlocks.ENCHANTED_GRASS_BLOCK.get());
         this.tag(BlockTags.MINEABLE_WITH_HOE).add(
                 GenesisBlocks.GREEN_AERCLOUD.get(),
                 GenesisBlocks.PURPLE_AERCLOUD.get(),
@@ -88,11 +103,12 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get(),
                 GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get());
-        this.tag(AetherTags.Blocks.NON_BRONZE_DUNGEON_REPLACEABLE).add(
-                GenesisBlocks.SKYROOT_CHEST_MIMIC.get()
-        );
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(GenesisBlocks.CONTINUUM_ORE.get());
         this.tag(BlockTags.SNAPS_GOAT_HORN).addTag(GenesisTags.Blocks.LOG_WALLS);
+        this.tag(BlockTags.CONVERTABLE_TO_MUD).add(
+                GenesisBlocks.ENCHANTED_GRASS_BLOCK.get());
+        this.tag(BlockTags.SCULK_REPLACEABLE).add(
+                GenesisBlocks.ENCHANTED_GRASS_BLOCK.get());
 
         // Forge
         this.tag(Tags.Blocks.CHESTS_WOODEN).add(GenesisBlocks.SKYROOT_CHEST.get());

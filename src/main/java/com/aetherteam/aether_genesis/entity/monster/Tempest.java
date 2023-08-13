@@ -34,14 +34,14 @@ public class Tempest extends Zephyr {
 
     public Tempest(EntityType<? extends Tempest> type, Level level) {
         super(type, level);
-        this.moveControl = new Zephyr.MoveHelperController(this);
+        this.moveControl = new Zephyr.ZephyrMoveControl(this);
         this.xpReward = 20;
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(5, new Zephyr.RandomFlyGoal(this));
-        this.goalSelector.addGoal(7, new Zephyr.LookAroundGoal(this));
+        this.goalSelector.addGoal(5, new Zephyr.RandomFloatAroundGoal(this));
+        this.goalSelector.addGoal(7, new Zephyr.ZephyrLookGoal(this));
         this.goalSelector.addGoal(5, new Tempest.ThunderballAttackGoal(this));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
     }
@@ -130,7 +130,7 @@ public class Tempest extends Zephyr {
          */
         @Override
         public void stop() {
-            this.parentEntity.setAttackCharge(0);
+            this.parentEntity.setCharging(false);
         }
 
         /**
@@ -159,7 +159,7 @@ public class Tempest extends Zephyr {
             } else if (this.attackTimer > 0) {
                 this.attackTimer--;
             }
-            this.parentEntity.setAttackCharge(this.attackTimer);
+            this.parentEntity.setCharging(true);
         }
     }
 }

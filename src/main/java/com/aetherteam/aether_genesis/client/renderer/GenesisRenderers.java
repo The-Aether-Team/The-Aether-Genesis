@@ -1,10 +1,12 @@
 package com.aetherteam.aether_genesis.client.renderer;
 
 import com.aetherteam.aether.block.AetherBlocks;
+import com.aetherteam.aether.capability.player.AetherPlayer;
 import com.aetherteam.aether.client.renderer.accessory.PendantRenderer;
 import com.aetherteam.aether.client.renderer.entity.IceCrystalRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
 import com.aetherteam.aether.client.renderer.entity.model.MimicModel;
+import com.aetherteam.aether.client.renderer.player.layer.DartLayer;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
@@ -14,8 +16,8 @@ import com.aetherteam.aether_genesis.client.renderer.blockentity.SkyrootChestMim
 import com.aetherteam.aether_genesis.client.renderer.blockentity.SkyrootChestRenderer;
 import com.aetherteam.aether_genesis.client.renderer.entity.*;
 import com.aetherteam.aether_genesis.client.renderer.entity.model.*;
-import com.aetherteam.aether_genesis.client.renderer.player.layers.PhoenixDartLayer;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
+import com.aetherteam.aether_genesis.entity.PhoenixDart;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.SlimeModel;
@@ -99,7 +101,7 @@ public class GenesisRenderers {
         for (String type : types) {
             PlayerRenderer playerRenderer = event.getSkin(type);
             if (playerRenderer != null) {
-                playerRenderer.addLayer(new PhoenixDartLayer<>(renderDispatcher, playerRenderer));
+                playerRenderer.addLayer(new DartLayer<>(renderDispatcher, playerRenderer, (entity) -> new PhoenixDart(GenesisEntityTypes.PHOENIX_DART.get(), entity.getLevel()), AetherPlayer::getGoldenDartCount, 1.0F));
             }
         }
     }

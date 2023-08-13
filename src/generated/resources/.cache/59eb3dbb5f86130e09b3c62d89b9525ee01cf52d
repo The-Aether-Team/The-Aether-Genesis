@@ -1,4 +1,4 @@
-// 1.19.4	2023-06-26T14:58:36.2398946	Loot Tables
+// 1.19.4	2023-08-12T19:49:30.3992631	Loot Tables
 ba95b47436df1e313939c55709af7bc43d0b26ec data/aether_genesis/loot_tables/blocks/blue_skyroot_leaves.json
 2fa73eaedce1f2e997d15ae8f8d595b7b7667d00 data/aether_genesis/loot_tables/blocks/blue_skyroot_sapling.json
 672a779578d10f0252f582957ba2ec5071b4b16a data/aether_genesis/loot_tables/blocks/carved_pillar.json
@@ -7,6 +7,7 @@ ba95b47436df1e313939c55709af7bc43d0b26ec data/aether_genesis/loot_tables/blocks/
 52662bcbdc1032d19ce8c67dc2b87f3ea4c1ce16 data/aether_genesis/loot_tables/blocks/continuum_ore.json
 d8a60a2f84d3d07aff63593c06d32aa237400b97 data/aether_genesis/loot_tables/blocks/dark_blue_skyroot_leaves.json
 ce094a38615d29be488d47763cea21d55197ba95 data/aether_genesis/loot_tables/blocks/dark_blue_skyroot_sapling.json
+6c2bd312e9ba26187703c3d328d24abe75c60dfa data/aether_genesis/loot_tables/blocks/enchanted_grass_block.json
 2d10462d33d8d87993050e774afb6d505e4d6189 data/aether_genesis/loot_tables/blocks/green_aercloud.json
 8bd87fc14701d313c79506d2375537f710e2519f data/aether_genesis/loot_tables/blocks/holystone_furnace.json
 906fc2a5ff386963f761355bd632910fdbd19adb data/aether_genesis/loot_tables/blocks/holystone_headstone.json

@@ -21,7 +21,7 @@ public class CompanionFollowGoal extends TemptGoal {
     public CompanionFollowGoal(PathfinderMob mob, double speedModifier) {
         super(mob, speedModifier, Ingredient.EMPTY, false);
         this.speedModifier = speedModifier;
-        this.targetingConditions = TEMP_TARGETING.copy().selector((livingEntity) -> mob instanceof Companion companion && livingEntity.getUUID().equals(companion.getOwner().getUUID()));
+        this.targetingConditions = TEMP_TARGETING.copy().selector((livingEntity) -> mob instanceof Companion companion && companion.getOwner() != null && livingEntity.getUUID().equals(companion.getOwner().getUUID()));
     }
 
     @Override

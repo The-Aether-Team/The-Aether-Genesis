@@ -1,7 +1,7 @@
 package com.aetherteam.aether_genesis.loot.modifiers;
 
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.util.EquipmentUtil;
+import com.aetherteam.aether.item.EquipmentUtil;
 import com.aetherteam.aether_genesis.GenesisTags;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.mojang.serialization.Codec;

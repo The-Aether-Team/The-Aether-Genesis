@@ -6,7 +6,7 @@
       "tag": "aether:skyroot_stick"
     },
     "S": {
-      "item": "aether:skyroot_planks"
+      "tag": "aether:planks_crafting"
     }
   },
   "pattern": [
