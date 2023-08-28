@@ -145,7 +145,11 @@ public class Genesis {
     }
 
     public void packSetup(AddPackFindersEvent event) {
+        // Resource Packs
         this.setupClassicPack(event);
+
+        // Data Packs
+        this.setupDataOverridePack(event);
     }
 
     private void setupClassicPack(AddPackFindersEvent event) {
@@ -165,6 +169,27 @@ public class Genesis {
                             false,
                             PackSource.BUILT_IN)
                     ));
+        }
+    }
+
+    private void setupDataOverridePack(AddPackFindersEvent event) {
+        if (event.getPackType() == PackType.SERVER_DATA) {
+            Path resourcePath = ModList.get().getModFileById(Genesis.MODID).getFile().findResource("packs/data_override");
+            PathPackResources pack = new PathPackResources(ModList.get().getModFileById(Genesis.MODID).getFile().getFileName() + ":" + resourcePath, true, resourcePath);
+            PackMetadataSection metadata = new PackMetadataSection(Component.literal(""), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA));
+            event.addRepositorySource((source) ->
+                    source.accept(Pack.create(
+                            "builtin/genesis_data_override",
+                            Component.literal(""),
+                            true,
+                            (string) -> pack,
+                            new Pack.Info(metadata.getDescription(), metadata.getPackFormat(PackType.SERVER_DATA), metadata.getPackFormat(PackType.CLIENT_RESOURCES), FeatureFlagSet.of(), true),
+                            PackType.SERVER_DATA,
+                            Pack.Position.TOP,
+                            false,
+                            PackSource.BUILT_IN)
+                    )
+            );
         }
     }
 
