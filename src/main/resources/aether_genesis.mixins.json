@@ -12,6 +12,7 @@
     "common.ItemMixin",
     "common.ParachuteMixin",
     "common.PortalSoundUtilMixin",
+    "common.StructurePieceMixin",
     "common.accessor.WallBlockAccessor"
   ],
   "client": [

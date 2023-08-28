@@ -10,8 +10,6 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
-import javax.annotation.Nonnull;
-
 public class CarrionSproutRenderer extends MobRenderer<CarrionSprout, CarrionSproutModel> {
     private static final ResourceLocation CARRION_SPROUT_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/carrion_sprout/carrion_sprout.png");
     private static final ResourceLocation CARRION_SPROUT_PINK_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/carrion_sprout/carrion_sprout_pink.png");

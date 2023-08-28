@@ -1,7 +1,6 @@
 package com.aetherteam.aether_genesis.mixin.mixins.common;
 
 import com.aetherteam.aether.block.portal.AetherPortalBlock;
-import com.aetherteam.aether.capability.player.AetherPlayerCapability;
 import com.aetherteam.aether_genesis.GenesisConfig;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import net.minecraft.sounds.SoundEvent;
