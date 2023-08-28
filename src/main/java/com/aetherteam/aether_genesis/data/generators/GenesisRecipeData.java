@@ -119,6 +119,11 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
         stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
         stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
 
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR.get(), AetherBlocks.CARVED_STONE.get());
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR.get(), GenesisBlocks.CARVED_PILLAR_SIDE.get());
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR_SIDE.get(), AetherBlocks.CARVED_STONE.get());
+        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR_SIDE.get(), GenesisBlocks.CARVED_PILLAR.get());
+
         enchantingRecipe(RecipeCategory.FOOD, GenesisItems.RAINBOW_STRAWBERRY.get(), GenesisItems.WYNDBERRY.get(), 0.35F, 500).save(consumer, this.name("rainbow_strawberry_enchanting"));
     }
 }
