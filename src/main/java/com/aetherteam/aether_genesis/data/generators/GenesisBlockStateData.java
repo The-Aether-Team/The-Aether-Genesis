@@ -47,8 +47,22 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
         this.dungeonPillar(GenesisBlocks.CARVED_PILLAR_SIDE.get());
         this.dungeonPillarTop(GenesisBlocks.CARVED_PILLAR.get());
         this.skyrootChest(GenesisBlocks.SKYROOT_CHEST_MIMIC.get());
-        this.block(GenesisBlocks.DIVINE_CRAVED_STONE.get(), "dungeon/");
+
+        this.block(GenesisBlocks.DIVINE_CARVED_STONE.get(), "dungeon/");
         this.block(GenesisBlocks.DIVINE_SENTRY_STONE.get(), "dungeon/");
+        this.dungeonBlock(GenesisBlocks.LOCKED_DIVINE_CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.dungeonBlock(GenesisBlocks.LOCKED_DIVINE_SENTRY_STONE.get(), GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.dungeonBlock(GenesisBlocks.TRAPPED_DIVINE_CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.dungeonBlock(GenesisBlocks.TRAPPED_DIVINE_SENTRY_STONE.get(), GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.invisibleBlock(GenesisBlocks.BOSS_DOORWAY_DIVINE_CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.invisibleBlock(GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE.get(), GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.dungeonBlock(GenesisBlocks.TREASURE_DOORWAY_DIVINE_CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.dungeonBlock(GenesisBlocks.TREASURE_DOORWAY_DIVINE_SENTRY_STONE.get(), GenesisBlocks.DIVINE_SENTRY_STONE.get());
+
+        this.wallBlock(GenesisBlocks.DIVINE_CARVED_WALL.get(), GenesisBlocks.DIVINE_CARVED_STONE.get(), "dungeon/");
+        this.stairs(GenesisBlocks.DIVINE_CARVED_STAIRS.get(), GenesisBlocks.DIVINE_CARVED_STONE.get(), "dungeon/");
+        this.slab(GenesisBlocks.DIVINE_CARVED_SLAB.get(), GenesisBlocks.DIVINE_CARVED_STONE.get(), "dungeon/");
+
         this.block(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get(), "dungeon/");
 
         this.coldFire(GenesisBlocks.COLD_FIRE.get());

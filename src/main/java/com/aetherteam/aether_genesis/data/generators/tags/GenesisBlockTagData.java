@@ -42,6 +42,45 @@ public class GenesisBlockTagData extends BlockTagsProvider {
         this.tag(AetherTags.Blocks.NON_BRONZE_DUNGEON_REPLACEABLE).add(
                 GenesisBlocks.SKYROOT_CHEST_MIMIC.get()
         );
+        this.tag(AetherTags.Blocks.DUNGEON_BLOCKS).add(
+                GenesisBlocks.DIVINE_CARVED_STONE.get(),
+                GenesisBlocks.DIVINE_SENTRY_STONE.get(),
+                GenesisBlocks.CARVED_PILLAR.get(),
+                GenesisBlocks.CARVED_PILLAR_SIDE.get()
+        );
+        this.tag(AetherTags.Blocks.LOCKED_DUNGEON_BLOCKS).add(
+                GenesisBlocks.LOCKED_DIVINE_CARVED_STONE.get(),
+                GenesisBlocks.LOCKED_DIVINE_SENTRY_STONE.get()
+        );
+        this.tag(AetherTags.Blocks.TRAPPED_DUNGEON_BLOCKS).add(
+                GenesisBlocks.TRAPPED_DIVINE_CARVED_STONE.get(),
+                GenesisBlocks.TRAPPED_DIVINE_SENTRY_STONE.get()
+        );
+        this.tag(AetherTags.Blocks.BOSS_DOORWAY_DUNGEON_BLOCKS).add(
+                GenesisBlocks.BOSS_DOORWAY_DIVINE_CARVED_STONE.get(),
+                GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE.get()
+        );
+        this.tag(AetherTags.Blocks.TREASURE_DOORWAY_DUNGEON_BLOCKS).add(
+                GenesisBlocks.TREASURE_DOORWAY_DIVINE_CARVED_STONE.get(),
+                GenesisBlocks.TREASURE_DOORWAY_DIVINE_SENTRY_STONE.get()
+        );
+        this.tag(AetherTags.Blocks.SENTRY_BLOCKS).add(
+                GenesisBlocks.DIVINE_CARVED_STONE.get(),
+                GenesisBlocks.DIVINE_SENTRY_STONE.get(),
+                GenesisBlocks.LOCKED_DIVINE_CARVED_STONE.get(),
+                GenesisBlocks.LOCKED_DIVINE_SENTRY_STONE.get(),
+                GenesisBlocks.TRAPPED_DIVINE_CARVED_STONE.get(),
+                GenesisBlocks.TRAPPED_DIVINE_SENTRY_STONE.get(),
+                GenesisBlocks.BOSS_DOORWAY_DIVINE_CARVED_STONE.get(),
+                GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE.get(),
+                GenesisBlocks.TREASURE_DOORWAY_DIVINE_CARVED_STONE.get(),
+                GenesisBlocks.TREASURE_DOORWAY_DIVINE_SENTRY_STONE.get(),
+                GenesisBlocks.CARVED_PILLAR.get(),
+                GenesisBlocks.CARVED_PILLAR_SIDE.get(),
+                GenesisBlocks.DIVINE_CARVED_WALL.get(),
+                GenesisBlocks.DIVINE_CARVED_STAIRS.get(),
+                GenesisBlocks.DIVINE_CARVED_SLAB.get()
+        );
 
         this.tag(BlockTags.LOGS).addTag(GenesisTags.Blocks.LOG_WALLS);
         this.tag(BlockTags.LOGS_THAT_BURN).addTag(GenesisTags.Blocks.LOG_WALLS);
@@ -98,11 +137,16 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get(),
                 GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get(),
                 GenesisBlocks.ORANGE_TREE.get());
+        this.tag(BlockTags.STAIRS).add(
+                GenesisBlocks.DIVINE_CARVED_STAIRS.get());
+        this.tag(BlockTags.SLABS).add(
+                GenesisBlocks.DIVINE_CARVED_SLAB.get());
         this.tag(BlockTags.WALLS).add(
                 GenesisBlocks.SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get(),
-                GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get());
+                GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(),
+                GenesisBlocks.DIVINE_CARVED_WALL.get());
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(GenesisBlocks.CONTINUUM_ORE.get());
         this.tag(BlockTags.SNAPS_GOAT_HORN).addTag(GenesisTags.Blocks.LOG_WALLS);
         this.tag(BlockTags.CONVERTABLE_TO_MUD).add(

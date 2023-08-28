@@ -101,7 +101,6 @@ public class Tempest extends Zephyr {
 
     static class ThunderballAttackGoal extends Goal {
         private final Tempest parentEntity;
-        public int attackTimer;
 
         public ThunderballAttackGoal(Tempest tempest) {
             this.parentEntity = tempest;
@@ -113,7 +112,7 @@ public class Tempest extends Zephyr {
          */
         @Override
         public boolean canUse() {
-            return parentEntity.getTarget() != null;
+            return this.parentEntity.getTarget() != null;
         }
 
         /**
@@ -121,7 +120,7 @@ public class Tempest extends Zephyr {
          */
         @Override
         public void start() {
-            this.attackTimer = 0;
+            this.parentEntity.setChargeTime(0);
         }
 
         /**
@@ -130,7 +129,7 @@ public class Tempest extends Zephyr {
          */
         @Override
         public void stop() {
-            this.parentEntity.setCharging(false);
+            this.parentEntity.setChargeTime(0);
         }
 
         /**
@@ -141,10 +140,10 @@ public class Tempest extends Zephyr {
             LivingEntity target = this.parentEntity.getTarget();
             if (target.distanceToSqr(this.parentEntity) < 40 * 40 && this.parentEntity.hasLineOfSight(target)) {
                 Level level = this.parentEntity.level;
-                ++this.attackTimer;
-                if (this.attackTimer == 10) {
+                this.parentEntity.setChargeTime(this.parentEntity.getChargeTime() + 1);
+                if (this.parentEntity.getChargeTime() == 10) {
                     this.parentEntity.playSound(this.parentEntity.getAmbientSound(), 3.0F, (level.random.nextFloat() - level.random.nextFloat()) * 0.2F + 1.0F);
-                } else if (this.attackTimer == 20) {
+                } else if (this.parentEntity.getChargeTime() == 20) {
                     Vec3 look = this.parentEntity.getViewVector(1.0F);
                     double accelX = target.getX() - (this.parentEntity.getX() + look.x * 4.0);
                     double accelY = target.getY(0.5) - (0.5 + this.parentEntity.getY(0.5));
@@ -154,12 +153,11 @@ public class Tempest extends Zephyr {
                     thunderBall.setPos(this.parentEntity.getX() + look.x * 4.0, this.parentEntity.getY(0.5) + 0.5, this.parentEntity.getZ() + look.z * 4.0);
                     thunderBall.shoot(accelX, accelY, accelZ, 1.0F, 1.0F);
                     level.addFreshEntity(thunderBall);
-                    this.attackTimer = -40;
+                    this.parentEntity.setChargeTime(-40);
                 }
-            } else if (this.attackTimer > 0) {
-                this.attackTimer--;
+            } else if (this.parentEntity.getChargeTime() > 0) {
+                this.parentEntity.setChargeTime(this.parentEntity.getChargeTime() - 1);
             }
-            this.parentEntity.setCharging(true);
         }
     }
 }

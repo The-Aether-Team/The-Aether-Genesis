@@ -1,9 +1,14 @@
 package com.aetherteam.aether_genesis.block;
 
+import com.aetherteam.aether.block.AetherBlocks;
+import com.aetherteam.aether.block.dungeon.DoorwayBlock;
+import com.aetherteam.aether.block.dungeon.TrappedBlock;
+import com.aetherteam.aether.block.dungeon.TreasureDoorwayBlock;
 import com.aetherteam.aether.block.miscellaneous.FacingPillarBlock;
 import com.aetherteam.aether.block.natural.AercloudBlock;
 import com.aetherteam.aether.block.natural.AetherDoubleDropsLeaves;
 import com.aetherteam.aether.block.natural.LeavesWithParticlesBlock;
+import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.mixin.mixins.common.accessor.FireBlockAccessor;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.container.HolystoneFurnaceBlock;
@@ -85,8 +90,30 @@ public class GenesisBlocks {
     public static final RegistryObject<RotatedPillarBlock> CARVED_PILLAR_SIDE = register("carved_pillar_side", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> SKYROOT_CHEST_MIMIC = register("skyroot_chest_mimic", () -> new SkyrootChestMimicBlock(Block.Properties.copy(SKYROOT_CHEST.get()).noLootTable()));
-    public static final RegistryObject<Block> DIVINE_CRAVED_STONE = register("divine_carved_stone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable()));
-    public static final RegistryObject<Block> DIVINE_SENTRY_STONE = register("divine_sentry_stone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable().lightLevel(GenesisBlocks::lightLevel11)));
+
+    public static final RegistryObject<Block> DIVINE_CARVED_STONE = register("divine_carved_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DIVINE_SENTRY_STONE = register("divine_sentry_stone", () -> new Block(Block.Properties.copy(DIVINE_CARVED_STONE.get()).lightLevel(GenesisBlocks::lightLevel11)));
+
+    public static final RegistryObject<Block> LOCKED_DIVINE_CARVED_STONE = register("locked_divine_carved_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F)));
+    public static final RegistryObject<Block> LOCKED_DIVINE_SENTRY_STONE = register("locked_divine_sentry_stone", () -> new Block(Block.Properties.copy(LOCKED_DIVINE_CARVED_STONE.get()).lightLevel(GenesisBlocks::lightLevel11)));
+
+    public static final RegistryObject<Block> TRAPPED_DIVINE_CARVED_STONE = register("trapped_divine_carved_stone", () -> new TrappedBlock(AetherEntityTypes.SENTRY::get, () -> DIVINE_CARVED_STONE.get().defaultBlockState(), Block.Properties.copy(DIVINE_CARVED_STONE.get())));
+    public static final RegistryObject<Block> TRAPPED_DIVINE_SENTRY_STONE = register("trapped_divine_sentry_stone", () -> new TrappedBlock(AetherEntityTypes.SENTRY::get, () -> DIVINE_SENTRY_STONE.get().defaultBlockState(), Block.Properties.copy(DIVINE_SENTRY_STONE.get())));
+
+    public static final RegistryObject<Block> BOSS_DOORWAY_DIVINE_CARVED_STONE = register("boss_doorway_divine_carved_stone", () -> new DoorwayBlock(AetherEntityTypes.SLIDER::get, BlockBehaviour.Properties.copy(DIVINE_CARVED_STONE.get())));
+    public static final RegistryObject<Block> BOSS_DOORWAY_DIVINE_SENTRY_STONE = register("boss_doorway_divine_sentry_stone", () -> new DoorwayBlock(AetherEntityTypes.SLIDER::get, BlockBehaviour.Properties.copy(DIVINE_SENTRY_STONE.get())));
+
+    public static final RegistryObject<Block> TREASURE_DOORWAY_DIVINE_CARVED_STONE = register("treasure_doorway_divine_carved_stone", () -> new TreasureDoorwayBlock(BlockBehaviour.Properties.copy(DIVINE_CARVED_STONE.get())));
+    public static final RegistryObject<Block> TREASURE_DOORWAY_DIVINE_SENTRY_STONE = register("treasure_doorway_divine_sentry_stone", () -> new TreasureDoorwayBlock(BlockBehaviour.Properties.copy(DIVINE_SENTRY_STONE.get())));
+
+    public static final RegistryObject<WallBlock> DIVINE_CARVED_WALL = register("divine_carved_wall", () -> new WallBlock(Block.Properties.copy(DIVINE_CARVED_STONE.get())));
+
+    public static final RegistryObject<StairBlock> DIVINE_CARVED_STAIRS = register("divine_carved_stairs",
+            () -> new StairBlock(() -> DIVINE_CARVED_STONE.get().defaultBlockState(), Block.Properties.copy(DIVINE_CARVED_STONE.get())));
+
+    public static final RegistryObject<SlabBlock> DIVINE_CARVED_SLAB = register("divine_carved_slab",
+            () -> new SlabBlock(Block.Properties.copy(DIVINE_CARVED_STONE.get()).strength(0.5F, 6.0F)));
+
     public static final RegistryObject<Block> BLOOD_MOSS_HOLYSTONE = register("blood_moss_holystone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable()));
 
     public static final RegistryObject<ColdFireBlock> COLD_FIRE = BLOCKS.register("cold_fire", () -> new ColdFireBlock(BlockBehaviour.Properties.of(Material.FIRE, MaterialColor.COLOR_LIGHT_BLUE).noCollission().instabreak().lightLevel((state) -> 10).sound(SoundType.WOOL)));

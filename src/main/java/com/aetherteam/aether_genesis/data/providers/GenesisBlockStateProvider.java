@@ -349,7 +349,6 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
                 .condition(ColdFireBlock.UP, false)
                 .condition(ColdFireBlock.WEST, false).end().end()
                 .part().modelFile(fireUp0).nextModel().modelFile(fireUp1).nextModel().modelFile(fireUpAlt0).nextModel().modelFile(fireUpAlt1).addModel()
-                .condition(ColdFireBlock.UP, true).end()
-        ;
+                .condition(ColdFireBlock.UP, true).end();
     }
 }

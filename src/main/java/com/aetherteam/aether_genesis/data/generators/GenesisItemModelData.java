@@ -105,7 +105,20 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.itemBlock(GenesisBlocks.CARVED_PILLAR_SIDE.get());
         this.lookalikeBlock(GenesisBlocks.SKYROOT_CHEST_MIMIC.get(), this.mcLoc("item/chest"));
         this.itemBlock(GenesisBlocks.DIVINE_SENTRY_STONE.get());
-        this.itemBlock(GenesisBlocks.DIVINE_CRAVED_STONE.get());
+        this.itemBlock(GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.itemLockedDungeonBlock(GenesisBlocks.LOCKED_DIVINE_CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.itemLockedDungeonBlock(GenesisBlocks.LOCKED_DIVINE_SENTRY_STONE.get(), GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.itemTrappedDungeonBlock(GenesisBlocks.TRAPPED_DIVINE_CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.itemTrappedDungeonBlock(GenesisBlocks.TRAPPED_DIVINE_SENTRY_STONE.get(), GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.itemBossDoorwayDungeonBlock(GenesisBlocks.BOSS_DOORWAY_DIVINE_CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.itemBossDoorwayDungeonBlock(GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE.get(), GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.itemTreasureDoorwayDungeonBlock(GenesisBlocks.TREASURE_DOORWAY_DIVINE_CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.itemTreasureDoorwayDungeonBlock(GenesisBlocks.TREASURE_DOORWAY_DIVINE_SENTRY_STONE.get(), GenesisBlocks.DIVINE_SENTRY_STONE.get());
+
+        this.itemWallBlock(GenesisBlocks.DIVINE_CARVED_WALL.get(), GenesisBlocks.DIVINE_CARVED_STONE.get(), "dungeon/");
+        this.itemBlock(GenesisBlocks.DIVINE_CARVED_STAIRS.get());
+        this.itemBlock(GenesisBlocks.DIVINE_CARVED_SLAB.get());
+
         this.itemBlock(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get());
     }
 }

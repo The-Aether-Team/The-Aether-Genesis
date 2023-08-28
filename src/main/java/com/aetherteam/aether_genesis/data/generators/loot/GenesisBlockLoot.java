@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.data.generators.loot;
 
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.mixin.mixins.common.accessor.BlockLootAccessor;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
@@ -59,6 +60,19 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
 
         this.dropSelf(GenesisBlocks.CARVED_PILLAR.get());
         this.dropSelf(GenesisBlocks.CARVED_PILLAR_SIDE.get());
+        this.dropSelf(GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.dropSelf(GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.dropNone(GenesisBlocks.LOCKED_DIVINE_CARVED_STONE.get());
+        this.dropNone(GenesisBlocks.LOCKED_DIVINE_SENTRY_STONE.get());
+        this.dropNone(GenesisBlocks.TRAPPED_DIVINE_CARVED_STONE.get());
+        this.dropNone(GenesisBlocks.TRAPPED_DIVINE_SENTRY_STONE.get());
+        this.dropNone(GenesisBlocks.BOSS_DOORWAY_DIVINE_CARVED_STONE.get());
+        this.dropNone(GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE.get());
+        this.dropNone(GenesisBlocks.TREASURE_DOORWAY_DIVINE_CARVED_STONE.get());
+        this.dropNone(GenesisBlocks.TREASURE_DOORWAY_DIVINE_SENTRY_STONE.get());
+        this.dropSelf(GenesisBlocks.DIVINE_CARVED_WALL.get());
+        this.dropSelf(GenesisBlocks.DIVINE_CARVED_STAIRS.get());
+        this.dropSelf(GenesisBlocks.DIVINE_CARVED_SLAB.get());
 
         this.dropNone(GenesisBlocks.COLD_FIRE.get());
     }

@@ -1,8 +1,14 @@
-// 1.19.4	2023-08-12T19:49:30.4032629	Tags for minecraft:block mod id aether_genesis
+// 1.19.4	2023-08-27T19:29:32.6411121	Tags for minecraft:block mod id aether_genesis
 614013f20fac83eb129749507a06df0b994edde0 data/aether/tags/blocks/aerclouds.json
 b766ba39bfeb172795926a01996b1b1fcc58281f data/aether/tags/blocks/aether_portal_blacklist.json
+770c4531b8e49765e8558a6ca3a88e6b7a5f7600 data/aether/tags/blocks/boss_doorway_dungeon_blocks.json
+1ebc3204079eb2a045496cc7bce2e16427144833 data/aether/tags/blocks/dungeon_blocks.json
 dd90b9c66a134662746ea640ea1c0e1a1a42b9fe data/aether/tags/blocks/enchanted_grass.json
+3dcf10b82a2080a9bd10b8d2b5d01a41fb6bd7b8 data/aether/tags/blocks/locked_dungeon_blocks.json
 fc9e1d639503da260315c021d4ba5e80bda8634e data/aether/tags/blocks/non_tunnel_replaceable.json
+e927d26e41772ff1076938a9f5704f9c82b83067 data/aether/tags/blocks/sentry_blocks.json
+9422525eb9d5e84c5ea326a8882a93ac364a19c3 data/aether/tags/blocks/trapped_dungeon_blocks.json
+11a0385ec3734993a320caf3d189391e9407878d data/aether/tags/blocks/treasure_doorway_dungeon_blocks.json
 fc9b66cee900f1b4f341fcec6da19eb45d575f43 data/aether_genesis/tags/blocks/carrion_sprout_spawnable_on.json
 1d7eabfa746881c14275fb87c139d44dd7a797ac data/aether_genesis/tags/blocks/log_walls.json
 c21725ee872d7defc7979eb8d4fd016267f6facb data/forge/tags/blocks/chests/wooden.json
@@ -23,6 +29,8 @@ dd90b9c66a134662746ea640ea1c0e1a1a42b9fe data/minecraft/tags/blocks/mineable/sho
 6ff9b23d7f59d105370ad06adf8429d94d62fccd data/minecraft/tags/blocks/needs_diamond_tool.json
 20cb9cd9fdec4548c290b66338a6eae5fe5d6d2d data/minecraft/tags/blocks/saplings.json
 dd90b9c66a134662746ea640ea1c0e1a1a42b9fe data/minecraft/tags/blocks/sculk_replaceable.json
+46e9ea9c45d8b0ab9890101bbcdd4b390036a2b5 data/minecraft/tags/blocks/slabs.json
 21ba05af990cf6d402d13ff2f1286d2126ff491a data/minecraft/tags/blocks/snaps_goat_horn.json
+f1e69c4c0656034561d16b87973764168fe42856 data/minecraft/tags/blocks/stairs.json
 dd90b9c66a134662746ea640ea1c0e1a1a42b9fe data/minecraft/tags/blocks/valid_spawn.json
-1d7eabfa746881c14275fb87c139d44dd7a797ac data/minecraft/tags/blocks/walls.json
+ade3fb0ba0398b8f8b88ad33631cccab56ab3843 data/minecraft/tags/blocks/walls.json

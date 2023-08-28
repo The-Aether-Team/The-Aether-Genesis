@@ -9,6 +9,7 @@ import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.Tags;
@@ -42,6 +43,45 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.COG_KEY.get(),
                 GenesisItems.GUARDIAN_KEY.get(),
                 GenesisItems.HOST_KEY.get());
+        this.tag(AetherTags.Items.DUNGEON_BLOCKS).add(
+                GenesisBlocks.DIVINE_CARVED_STONE.get().asItem(),
+                GenesisBlocks.DIVINE_SENTRY_STONE.get().asItem(),
+                GenesisBlocks.CARVED_PILLAR.get().asItem(),
+                GenesisBlocks.CARVED_PILLAR_SIDE.get().asItem()
+        );
+        this.tag(AetherTags.Items.LOCKED_DUNGEON_BLOCKS).add(
+                GenesisBlocks.LOCKED_DIVINE_CARVED_STONE.get().asItem(),
+                GenesisBlocks.LOCKED_DIVINE_SENTRY_STONE.get().asItem()
+        );
+        this.tag(AetherTags.Items.TRAPPED_DUNGEON_BLOCKS).add(
+                GenesisBlocks.TRAPPED_DIVINE_CARVED_STONE.get().asItem(),
+                GenesisBlocks.TRAPPED_DIVINE_SENTRY_STONE.get().asItem()
+        );
+        this.tag(AetherTags.Items.BOSS_DOORWAY_DUNGEON_BLOCKS).add(
+                GenesisBlocks.BOSS_DOORWAY_DIVINE_CARVED_STONE.get().asItem(),
+                GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE.get().asItem()
+        );
+        this.tag(AetherTags.Items.TREASURE_DOORWAY_DUNGEON_BLOCKS).add(
+                GenesisBlocks.TREASURE_DOORWAY_DIVINE_CARVED_STONE.get().asItem(),
+                GenesisBlocks.TREASURE_DOORWAY_DIVINE_SENTRY_STONE.get().asItem()
+        );
+        this.tag(AetherTags.Items.SENTRY_BLOCKS).add(
+                GenesisBlocks.DIVINE_CARVED_STONE.get().asItem(),
+                GenesisBlocks.DIVINE_SENTRY_STONE.get().asItem(),
+                GenesisBlocks.LOCKED_DIVINE_CARVED_STONE.get().asItem(),
+                GenesisBlocks.LOCKED_DIVINE_SENTRY_STONE.get().asItem(),
+                GenesisBlocks.TRAPPED_DIVINE_CARVED_STONE.get().asItem(),
+                GenesisBlocks.TRAPPED_DIVINE_SENTRY_STONE.get().asItem(),
+                GenesisBlocks.BOSS_DOORWAY_DIVINE_CARVED_STONE.get().asItem(),
+                GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE.get().asItem(),
+                GenesisBlocks.TREASURE_DOORWAY_DIVINE_CARVED_STONE.get().asItem(),
+                GenesisBlocks.TREASURE_DOORWAY_DIVINE_SENTRY_STONE.get().asItem(),
+                GenesisBlocks.CARVED_PILLAR.get().asItem(),
+                GenesisBlocks.CARVED_PILLAR_SIDE.get().asItem(),
+                GenesisBlocks.DIVINE_CARVED_WALL.get().asItem(),
+                GenesisBlocks.DIVINE_CARVED_STAIRS.get().asItem(),
+                GenesisBlocks.DIVINE_CARVED_SLAB.get().asItem()
+        );
 
         this.tag(ItemTags.SAPLINGS).add(
                 GenesisBlocks.BLUE_SKYROOT_SAPLING.get().asItem(),
@@ -52,11 +92,16 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get().asItem(),
                 GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get().asItem(),
                 GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get().asItem());
+        this.tag(ItemTags.STAIRS).add(
+                GenesisBlocks.DIVINE_CARVED_STAIRS.get().asItem());
+        this.tag(ItemTags.SLABS).add(
+                GenesisBlocks.DIVINE_CARVED_SLAB.get().asItem());
         this.tag(ItemTags.WALLS).add(
                 GenesisBlocks.SKYROOT_LOG_WALL.get().asItem(),
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get().asItem(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get().asItem(),
-                GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get().asItem());
+                GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get().asItem(),
+                GenesisBlocks.DIVINE_CARVED_WALL.get().asItem());
         this.tag(ItemTags.MUSIC_DISCS).add(
                 GenesisItems.MUSIC_DISC_AERWHALE.get(),
                 GenesisItems.MUSIC_DISC_APPROACHES.get(),
