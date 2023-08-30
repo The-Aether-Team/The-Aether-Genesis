@@ -3,7 +3,13 @@
   "category": "misc",
   "key": {
     "#": {
-      "tag": "aether_genesis:skyroot_ladder_crafting"
+      "type": "forge:difference",
+      "base": {
+        "tag": "forge:rods/wooden"
+      },
+      "subtracted": {
+        "tag": "aether_genesis:skyroot_ladder_crafting"
+      }
     }
   },
   "pattern": [
@@ -13,7 +19,7 @@
   ],
   "result": {
     "count": 3,
-    "item": "aether_genesis:skyroot_ladder"
+    "item": "minecraft:ladder"
   },
   "show_notification": true
 }

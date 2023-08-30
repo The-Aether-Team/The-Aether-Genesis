@@ -20,6 +20,9 @@ public class GenesisTags {
     }
 
     public static class Items {
+        public static final TagKey<Item> SKYROOT_LADDER_CRAFTING = tag("skyroot_ladder_crafting");
+        public static final TagKey<Item> HOLYSTONE_FURNACE_CRAFTING = tag("holystone_furnace_crafting");
+
         public static final TagKey<Item> LOG_WALLS = tag("log_walls");
         public static final TagKey<Item> SWET_JELLY = tag("swet_jelly");
         public static final TagKey<Item> DARTS = tag("darts");

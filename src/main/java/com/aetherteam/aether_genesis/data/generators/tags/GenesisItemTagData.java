@@ -1,6 +1,7 @@
 package com.aetherteam.aether_genesis.data.generators.tags;
 
 import com.aetherteam.aether.AetherTags;
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.GenesisTags;
@@ -123,6 +124,11 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.CAPE.get(),
                 GenesisItems.DEXTERITY_CAPE.get(),
                 GenesisItems.SOARING_STONE.get()); //todo temporary
+
+        this.tag(GenesisTags.Items.SKYROOT_LADDER_CRAFTING).addTag(
+                AetherTags.Items.SKYROOT_STICKS);
+        this.tag(GenesisTags.Items.HOLYSTONE_FURNACE_CRAFTING).add(
+                AetherBlocks.HOLYSTONE.get().asItem());
         this.tag(GenesisTags.Items.SWET_JELLY).add(
                 GenesisItems.BLUE_SWET_JELLY.get(),
                 GenesisItems.DARK_SWET_JELLY.get(),

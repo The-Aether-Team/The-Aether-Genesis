@@ -67,7 +67,7 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_FURNACE.get())
-                .define('#', AetherBlocks.HOLYSTONE.get())
+                .define('#',GenesisTags.Items.HOLYSTONE_FURNACE_CRAFTING)
                 .pattern("###")
                 .pattern("# #")
                 .pattern("###")
@@ -103,10 +103,9 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
                 .save(consumer);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_LADDER.get(), 3)
-                .define('#', AetherTags.Items.SKYROOT_STICKS)
-                .define('S', AetherTags.Items.PLANKS_CRAFTING)
+                .define('#', GenesisTags.Items.SKYROOT_LADDER_CRAFTING)
                 .pattern("# #")
-                .pattern("#S#")
+                .pattern("###")
                 .pattern("# #")
                 .unlockedBy(getHasName(GenesisBlocks.SKYROOT_LADDER.get()), has(AetherTags.Items.SKYROOT_STICKS))
                 .save(consumer);
