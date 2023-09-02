@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.entity.ai.goal;
 
+import com.aetherteam.aether.Aether;
 import com.aetherteam.aether_genesis.entity.companion.Companion;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
@@ -15,8 +16,8 @@ public class CompanionFollowGoal extends TemptGoal {
     private final double speedModifier;
     @Nullable
     protected Player player;
-    private int calmDown;
     private boolean isRunning;
+    private int timeToRecalcPath;
 
     public CompanionFollowGoal(PathfinderMob mob, double speedModifier) {
         super(mob, speedModifier, Ingredient.EMPTY, false);
@@ -26,40 +27,40 @@ public class CompanionFollowGoal extends TemptGoal {
 
     @Override
     public boolean canUse() {
-        if (this.calmDown > 0) {
-            --this.calmDown;
-            return false;
-        } else {
-            this.player = this.mob.level.getNearestPlayer(this.targetingConditions, this.mob);
-            return this.player != null;
-        }
+        this.player = this.mob.level.getNearestPlayer(this.targetingConditions, this.mob);
+        return this.player != null && this.mob.distanceToSqr(this.player) >= 5.0D;
     }
 
     @Override
     public boolean canContinueToUse() {
-        return this.canUse();
+        return !this.mob.getNavigation().isDone();
     }
 
     @Override
     public void start() {
         this.isRunning = true;
+        this.timeToRecalcPath = 0;
     }
 
     @Override
     public void stop() {
         this.player = null;
         this.mob.getNavigation().stop();
-        this.calmDown = reducedTickDelay(100);
         this.isRunning = false;
     }
 
     @Override
-    public void tick() {
-        this.mob.getLookControl().setLookAt(this.player, (float) (this.mob.getMaxHeadYRot() + 20), (float) this.mob.getMaxHeadXRot());
-        if (this.mob.distanceToSqr(this.player) < 6.25D) {
-            this.mob.getNavigation().stop();
-        } else {
-            this.mob.getNavigation().moveTo(this.player, this.speedModifier);
+    public void tick() { //todo why is it spinning.
+//        this.mob.getLookControl().setLookAt(this.player, 5.0F, 5.0F);
+        this.mob.lookAt(this.player, 10.0F, this.mob.getMaxHeadXRot());
+        Aether.LOGGER.info("a");
+        if (--this.timeToRecalcPath <= 0) {
+            this.timeToRecalcPath = this.adjustedTickDelay(10);
+            if (this.mob.distanceToSqr(this.player) >= 144.0D) {
+                //this.teleportToOwner();
+            } else if (this.mob.distanceToSqr(this.player) >= 5.0D) {
+                this.mob.getNavigation().moveTo(this.player, this.speedModifier);
+            }
         }
     }
 

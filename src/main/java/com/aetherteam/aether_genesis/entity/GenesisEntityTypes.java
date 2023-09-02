@@ -63,7 +63,7 @@ public class GenesisEntityTypes {
 
     // Companions
     public static final RegistryObject<EntityType<Wisp>> SOARING_WISP = ENTITY_TYPES.register("soaring_wisp",
-            () -> EntityType.Builder.of(Wisp::new, MobCategory.MISC).sized(1.0F, 1.0F).clientTrackingRange(8).build("soaring_wisp"));
+            () -> EntityType.Builder.of(Wisp::new, MobCategory.MISC).sized(1.0F, 2.0F).clientTrackingRange(8).build("soaring_wisp"));
 
     // Projectile
     public static final RegistryObject<EntityType<DaggerfrostSnowball>> DAGGERFROST_SNOWBALL = ENTITY_TYPES.register("daggerfrost_snowball",

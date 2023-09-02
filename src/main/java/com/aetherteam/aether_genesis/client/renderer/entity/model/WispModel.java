@@ -3,10 +3,12 @@ package com.aetherteam.aether_genesis.client.renderer.entity.model;
 import com.aetherteam.aether_genesis.entity.companion.Wisp;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.util.Mth;
 
 public class WispModel extends EntityModel<Wisp> {
 	private final ModelPart head;
@@ -33,7 +35,8 @@ public class WispModel extends EntityModel<Wisp> {
 
 	@Override
 	public void setupAnim(Wisp wisp, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
+		//this.head.yRot = ageInTicks * Mth.DEG_TO_RAD;
+		this.arms.yRot += 0.1; //todo scales with amount of wisps in the world which isnt good.
 	}
 
 	@Override

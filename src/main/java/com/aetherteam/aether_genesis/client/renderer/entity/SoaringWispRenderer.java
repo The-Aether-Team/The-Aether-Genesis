@@ -27,6 +27,14 @@ public class SoaringWispRenderer extends MobRenderer<Wisp, WispModel> {
     }
 
     @Override
+    protected void setupRotations(Wisp entityLiving, PoseStack matrixStack, float ageInTicks, float rotationYaw, float partialTicks) { }
+
+    @Override
+    protected float getBob(Wisp wisp, float partialTick) {
+        return 180.0F + Mth.rotLerp(partialTick, wisp.yBodyRotO, wisp.yBodyRot);
+    }
+
+    @Override
     public ResourceLocation getTextureLocation(@Nonnull Wisp wisp) {
         return SOARING_WISP_LOCATION;
     }
