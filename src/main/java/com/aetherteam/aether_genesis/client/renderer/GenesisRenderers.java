@@ -57,6 +57,7 @@ public class GenesisRenderers {
 
         event.registerEntityRenderer(GenesisEntityTypes.FLEETING_WISP.get(), (context) -> new WispRenderer(context, GenesisModelLayers.FLEETING_WISP, new ResourceLocation(Genesis.MODID, "textures/entity/companions/fleeting_wisp.png")));
         event.registerEntityRenderer(GenesisEntityTypes.SOARING_WISP.get(), (context) -> new WispRenderer(context, GenesisModelLayers.SOARING_WISP, new ResourceLocation(Genesis.MODID, "textures/entity/companions/soaring_wisp.png")));
+        event.registerEntityRenderer(GenesisEntityTypes.ETHEREAL_WISP.get(), EtherealWispRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.DAGGERFROST_SNOWBALL.get(), DaggerfrostSnowballRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), IceCrystalRenderer::new);
@@ -86,6 +87,7 @@ public class GenesisRenderers {
 
         event.registerLayerDefinition(GenesisModelLayers.FLEETING_WISP, WispModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SOARING_WISP, WispModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.ETHEREAL_WISP, WispModel::createBodyLayer);
 
         event.registerLayerDefinition(GenesisModelLayers.MOUSE_EAR_CAP, MouseEarCapModel::createLayer);
     }

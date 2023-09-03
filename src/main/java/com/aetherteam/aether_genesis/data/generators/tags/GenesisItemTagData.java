@@ -124,7 +124,8 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.CAPE.get(),
                 GenesisItems.DEXTERITY_CAPE.get(),
                 GenesisItems.FLEETING_STONE.get(),
-                GenesisItems.SOARING_STONE.get()); //todo temporary
+                GenesisItems.SOARING_STONE.get(),
+                GenesisItems.ETHEREAL_STONE.get()); //todo temporary
 
         this.tag(GenesisTags.Items.SKYROOT_LADDER_CRAFTING).addTag(
                 AetherTags.Items.SKYROOT_STICKS);

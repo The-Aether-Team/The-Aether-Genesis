@@ -23,7 +23,8 @@ public class GenesisEntityTagData extends EntityTypeTagsProvider {
     public void addTags(HolderLookup.Provider provider) {
         this.tag(GenesisTags.Entities.COMPANIONS).add(
                 GenesisEntityTypes.FLEETING_WISP.get(),
-                GenesisEntityTypes.SOARING_WISP.get());
+                GenesisEntityTypes.SOARING_WISP.get(),
+                GenesisEntityTypes.ETHEREAL_WISP.get());
         this.tag(GenesisTags.Entities.NO_PRESENT_DROPS);
 
         this.tag(AetherTags.Entities.WHIRLWIND_UNAFFECTED).add(GenesisEntityTypes.CARRION_SPROUT.get());
