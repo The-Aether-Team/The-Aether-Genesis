@@ -57,11 +57,12 @@ public class SoaringWispRenderer extends MobRenderer<Wisp, WispModel> { //todo a
     protected void renderDisplayItem(Wisp entity, PoseStack matrixStack, MultiBufferSource buffer) {
         double d0 = this.entityRenderDispatcher.distanceToSqr(entity);
         if (net.minecraftforge.client.ForgeHooksClient.isNameplateInRenderDistance(entity, d0)) {
-            float f = entity.getBbHeight() + 0.65F;
+            float f = entity.getBbHeight() + 0.5F;
             matrixStack.pushPose();
-            matrixStack.translate(-0.05F, f, 0.05F);
+            matrixStack.translate(0.0F, f, 0.0F);
             matrixStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
-            matrixStack.scale(1.0F, 1.0F, 1.0F);
+            matrixStack.translate(0.0F, 0.15, 0.0F);
+            matrixStack.scale(1.0F, 1.0F, 0.1F);
             this.itemRenderer.renderStatic(entity.getSummonItem(), ItemDisplayContext.GROUND, LightTexture.pack(15, 15), OverlayTexture.NO_OVERLAY, matrixStack, buffer, entity.getLevel(), entity.getId());
             matrixStack.popPose();
         }
