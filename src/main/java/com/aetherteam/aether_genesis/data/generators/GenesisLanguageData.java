@@ -73,6 +73,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.CAPE, "Cape");
         this.addItem(GenesisItems.DEXTERITY_CAPE, "Dexterity Cape");
         this.addItem(GenesisItems.MOUSE_EAR_CAP, "Mouse Ear Cap");
+        this.addItem(GenesisItems.FLEETING_STONE, "Fleeting Stone");
         this.addItem(GenesisItems.SOARING_STONE, "Soaring Stone");
 
         this.addItem(GenesisItems.PHOENIX_DART_SHOOTER, "Phoenix Dart Shooter");
@@ -109,6 +110,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.TRACKING_GOLEM, "Tracking Golem");
         this.addEntityType(GenesisEntityTypes.SKYROOT_MIMIC, "Skyroot Mimic");
 
+        this.addEntityType(GenesisEntityTypes.FLEETING_WISP, "Fleeting Wisp");
         this.addEntityType(GenesisEntityTypes.SOARING_WISP, "Soaring Wisp");
 
         this.addEntityType(GenesisEntityTypes.SENTRY_GUARDIAN, "Sentry Guardian");

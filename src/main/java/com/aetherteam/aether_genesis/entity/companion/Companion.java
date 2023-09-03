@@ -219,4 +219,10 @@ public abstract class Companion extends PathfinderMob {
     public boolean shouldShowName() {
         return true;
     }
+
+    @Nullable
+    @Override
+    public ItemStack getPickResult() {
+        return this.getSummonItem();
+    }
 }
