@@ -109,6 +109,8 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.TRACKING_GOLEM, "Tracking Golem");
         this.addEntityType(GenesisEntityTypes.SKYROOT_MIMIC, "Skyroot Mimic");
 
+        this.addEntityType(GenesisEntityTypes.SOARING_WISP, "Soaring Wisp");
+
         this.addEntityType(GenesisEntityTypes.SENTRY_GUARDIAN, "Sentry Guardian");
         this.addEntityType(GenesisEntityTypes.SLIDER_HOST_MIMIC, "Slider Host Mimic");
         this.addEntityType(GenesisEntityTypes.HOST_EYE, "Host Eye");

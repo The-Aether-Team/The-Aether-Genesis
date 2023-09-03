@@ -77,7 +77,7 @@ public class GenesisPlayerCapability implements GenesisPlayer {
     public void setCompanions(List<Entity> companions) {
         companions.forEach((entity) -> {
             if (entity instanceof Companion companionEntity) {
-                companionEntity.setOwner(this.getPlayer());
+                companionEntity.setOwner(this.getPlayer().getUUID());
             }
         });
         this.companions = companions;
@@ -86,7 +86,7 @@ public class GenesisPlayerCapability implements GenesisPlayer {
     @Override
     public void addCompanion(Entity companion) {
         if (companion instanceof Companion companionEntity) {
-            companionEntity.setOwner(this.getPlayer());
+            companionEntity.setOwner(this.getPlayer().getUUID());
         }
         this.companions.add(companion);
     }

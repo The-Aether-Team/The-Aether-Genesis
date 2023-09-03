@@ -2,6 +2,8 @@ package com.aetherteam.aether_genesis.item.accessories;
 
 import com.aetherteam.aether.item.accessories.AccessoryItem;
 import com.aetherteam.aether_genesis.capability.player.GenesisPlayer;
+import com.aetherteam.aether_genesis.entity.companion.Companion;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -13,10 +15,10 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.function.Supplier;
 
-public class CompanionItem extends AccessoryItem {
-    private final Supplier<? extends EntityType<? extends Entity>> companionType;
+public class CompanionItem<T extends Entity & Companion, S extends EntityType<T>> extends AccessoryItem {
+    private final Supplier<S> companionType;
 
-    public CompanionItem(Supplier<? extends EntityType<? extends Entity>> companionType, Properties properties) {
+    public CompanionItem(Supplier<S> companionType, Properties properties) {
         super(properties);
         this.companionType = companionType;
     }
@@ -25,7 +27,9 @@ public class CompanionItem extends AccessoryItem {
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
         LivingEntity wearer = slotContext.entity();
         if (wearer.getLevel() instanceof ServerLevel serverLevel) {
-            Entity entity = this.getCompanionType().spawn(serverLevel, wearer.blockPosition(), MobSpawnType.MOB_SUMMONED);
+            CompoundTag tag = new CompoundTag();
+            tag.putUUID("Owner", wearer.getUUID());
+            Entity entity = this.getCompanionType().spawn(serverLevel, tag, null, wearer.blockPosition(), MobSpawnType.MOB_SUMMONED, false, false);
             if (entity != null && wearer instanceof Player player) {
                 GenesisPlayer.get(player).ifPresent(genesisPlayer -> genesisPlayer.addCompanion(entity));
             }
@@ -42,7 +46,7 @@ public class CompanionItem extends AccessoryItem {
         super.onUnequip(slotContext, newStack, stack);
     }
 
-    public EntityType<? extends Entity> getCompanionType() {
+    public S getCompanionType() {
         return this.companionType.get();
     }
 }

@@ -1,6 +1,5 @@
 package com.aetherteam.aether_genesis.entity.ai.goal;
 
-import com.aetherteam.aether.Aether;
 import com.aetherteam.aether_genesis.entity.companion.Companion;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.TemptGoal;
@@ -22,7 +21,7 @@ public class CompanionFollowGoal extends TemptGoal {
     public CompanionFollowGoal(PathfinderMob mob, double speedModifier) {
         super(mob, speedModifier, Ingredient.EMPTY, false);
         this.speedModifier = speedModifier;
-        this.targetingConditions = TEMP_TARGETING.copy().selector((livingEntity) -> mob instanceof Companion companion && companion.getOwner() != null && livingEntity.getUUID().equals(companion.getOwner().getUUID()));
+        this.targetingConditions = TEMP_TARGETING.copy().selector((livingEntity) -> mob instanceof Companion companion && companion.getOwner() != null && livingEntity.getUUID().equals(companion.getOwner()));
     }
 
     @Override
@@ -33,7 +32,7 @@ public class CompanionFollowGoal extends TemptGoal {
 
     @Override
     public boolean canContinueToUse() {
-        return !this.mob.getNavigation().isDone();
+        return !this.mob.getNavigation().isDone() && this.mob.distanceToSqr(this.player) >= 5.0D;
     }
 
     @Override
@@ -50,10 +49,8 @@ public class CompanionFollowGoal extends TemptGoal {
     }
 
     @Override
-    public void tick() { //todo why is it spinning.
-//        this.mob.getLookControl().setLookAt(this.player, 5.0F, 5.0F);
+    public void tick() {
         this.mob.lookAt(this.player, 10.0F, this.mob.getMaxHeadXRot());
-        Aether.LOGGER.info("a");
         if (--this.timeToRecalcPath <= 0) {
             this.timeToRecalcPath = this.adjustedTickDelay(10);
             if (this.mob.distanceToSqr(this.player) >= 144.0D) {
