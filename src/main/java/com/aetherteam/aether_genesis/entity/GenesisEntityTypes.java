@@ -4,10 +4,7 @@ import com.aetherteam.aether.data.resources.AetherMobCategory;
 import com.aetherteam.aether.entity.monster.Swet;
 import com.aetherteam.aether.entity.monster.dungeon.Mimic;
 import com.aetherteam.aether_genesis.Genesis;
-import com.aetherteam.aether_genesis.entity.companion.EtherealWisp;
-import com.aetherteam.aether_genesis.entity.companion.FleetingWisp;
-import com.aetherteam.aether_genesis.entity.companion.SoaringWisp;
-import com.aetherteam.aether_genesis.entity.companion.Wisp;
+import com.aetherteam.aether_genesis.entity.companion.*;
 import com.aetherteam.aether_genesis.entity.miscellaneous.*;
 import com.aetherteam.aether_genesis.entity.monster.BattleSentry;
 import com.aetherteam.aether_genesis.entity.monster.SkyrootMimic;
@@ -71,6 +68,8 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.of(SoaringWisp::new, MobCategory.MISC).sized(0.8F, 1.8F).clientTrackingRange(8).build("soaring_wisp"));
     public static final RegistryObject<EntityType<EtherealWisp>> ETHEREAL_WISP = ENTITY_TYPES.register("ethereal_wisp",
             () -> EntityType.Builder.of(EtherealWisp::new, MobCategory.MISC).sized(0.8F, 1.8F).clientTrackingRange(8).build("ethereal_wisp"));
+    public static final RegistryObject<EntityType<ShadeOfArkenzus>> SHADE_OF_ARKENZUS = ENTITY_TYPES.register("shade_of_arkenzus",
+            () -> EntityType.Builder.of(ShadeOfArkenzus::new, MobCategory.MISC).sized(0.4F, 1.0F).clientTrackingRange(8).build("shade_of_arkenzus"));
 
     // Projectile
     public static final RegistryObject<EntityType<DaggerfrostSnowball>> DAGGERFROST_SNOWBALL = ENTITY_TYPES.register("daggerfrost_snowball",
@@ -110,5 +109,6 @@ public class GenesisEntityTypes {
         event.put(GenesisEntityTypes.FLEETING_WISP.get(), Wisp.createAttributes().build());
         event.put(GenesisEntityTypes.SOARING_WISP.get(), Wisp.createAttributes().build());
         event.put(GenesisEntityTypes.ETHEREAL_WISP.get(), Wisp.createAttributes().build());
+        event.put(GenesisEntityTypes.SHADE_OF_ARKENZUS.get(), ShadeOfArkenzus.createAttributes().build());
     }
 }

@@ -1,6 +1,6 @@
 package com.aetherteam.aether_genesis.client.renderer.entity;
 
-import com.aetherteam.aether_genesis.entity.companion.Wisp;
+import com.aetherteam.aether_genesis.entity.companion.Companion;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -16,7 +16,7 @@ import net.minecraftforge.client.ForgeHooksClient;
 import javax.annotation.Nullable;
 
 public interface DisplayItemPlate {
-    default void renderDisplayItem(Wisp entity, PoseStack poseStack, MultiBufferSource buffer, EntityRenderDispatcher entityRenderDispatcher, ItemRenderer itemRenderer) {
+    default void renderDisplayItem(Companion entity, PoseStack poseStack, MultiBufferSource buffer, EntityRenderDispatcher entityRenderDispatcher, ItemRenderer itemRenderer) {
         double distance = entityRenderDispatcher.distanceToSqr(entity);
         if (ForgeHooksClient.isNameplateInRenderDistance(entity, distance)) {
             float height = entity.getBbHeight() + 0.5F;

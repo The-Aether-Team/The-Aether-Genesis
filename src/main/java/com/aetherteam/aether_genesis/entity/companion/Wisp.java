@@ -2,7 +2,6 @@ package com.aetherteam.aether_genesis.entity.companion;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -16,12 +15,12 @@ public class Wisp extends Companion {
     private float armRotO;
     private float armRot;
 
-    public Wisp(EntityType<? extends PathfinderMob> entityType, Level level, Supplier<ItemStack> summoningItem) {
+    public Wisp(EntityType<? extends Wisp> entityType, Level level, Supplier<ItemStack> summoningItem) {
         super(entityType, level, summoningItem, true);
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 1.0D).add(Attributes.MOVEMENT_SPEED, 0.25).add(Attributes.FOLLOW_RANGE, 48.0D);
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 1.0).add(Attributes.MOVEMENT_SPEED, 0.25).add(Attributes.FOLLOW_RANGE, 48.0);
     }
 
     @Override

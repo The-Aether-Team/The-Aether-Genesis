@@ -1,4 +1,4 @@
-// 1.19.4	2023-09-03T12:53:40.3793473	Item Models: aether_genesis
+// 1.19.4	2023-09-03T13:49:09.6491887	Item Models: aether_genesis
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/battle_sentry_spawn_egg.json
 b951ae61814ccb898428dd794f3adf77d4e02a6c assets/aether_genesis/models/item/blood_moss_holystone.json
 85e6dca000030d07451d6969e99df873abdf0362 assets/aether_genesis/models/item/blueberry_lollipop.json
@@ -60,6 +60,7 @@ f3ab6f0a3bb02ea09aa82a2317fca330d9259249 assets/aether_genesis/models/item/locke
 08233c1a16610607f2a4f0270961fd93e3a61012 assets/aether_genesis/models/item/orange.json
 1d961f92a52e6e1cbed476ccbe39f063a574b318 assets/aether_genesis/models/item/orange_lollipop.json
 d839ba00744dd55613d7f9f8a61ca78922916834 assets/aether_genesis/models/item/orange_tree.json
+2e5b0777d95bde8cf8a4022e2bb63f6941a3d8b2 assets/aether_genesis/models/item/orb_of_arkenzus.json
 ffc630f2d51c34a4e0cdfd4bf393377aa272078e assets/aether_genesis/models/item/phoenix_dart_shooter.json
 2d164d1b15283914dd33f1f287f6718e694b168a assets/aether_genesis/models/item/purple_aercloud.json
 bc972fad4b94952d244ce10b948eb1ae63d9960f assets/aether_genesis/models/item/purple_crystal_fruit_leaves.json

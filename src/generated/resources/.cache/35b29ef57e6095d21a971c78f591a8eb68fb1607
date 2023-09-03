@@ -1,4 +1,4 @@
-// 1.19.4	2023-09-03T12:53:40.2873466	Tags for minecraft:item mod id aether_genesis
+// 1.19.4	2023-09-03T13:49:09.6341913	Tags for minecraft:item mod id aether_genesis
 770c4531b8e49765e8558a6ca3a88e6b7a5f7600 data/aether/tags/items/boss_doorway_dungeon_blocks.json
 1d7eabfa746881c14275fb87c139d44dd7a797ac data/aether/tags/items/crafts_skyroot_planks.json
 fd648a6cd6467b295cc98e642efbef3aecef70b9 data/aether/tags/items/deployable_parachutes.json
@@ -15,7 +15,7 @@ e927d26e41772ff1076938a9f5704f9c82b83067 data/aether/tags/items/sentry_blocks.js
 829f90b2789d000dd0bda389a343b48a97d2ad03 data/aether_genesis/tags/items/skyroot_ladder_crafting.json
 88f5568b143ff5a6bc6f2dc45fedbf8589285638 data/aether_genesis/tags/items/swet_jelly.json
 c58f29b6879092f7eb907ad5f5d7d1575377dc88 data/curios/tags/items/aether_accessory.json
-964025c4585a75729bd9dd7c48409be348931977 data/curios/tags/items/aether_cape.json
+cf6b3fc4b926a19e47667d6d8a7de42ab4985d44 data/curios/tags/items/aether_cape.json
 d1a8d412e7c7c9bcae51c0760965af276c050ebd data/curios/tags/items/aether_pendant.json
 7c30d78b6d916d4e1b51830e71de008f47a23174 data/curios/tags/items/aether_ring.json
 c21725ee872d7defc7979eb8d4fd016267f6facb data/forge/tags/items/chests/wooden.json

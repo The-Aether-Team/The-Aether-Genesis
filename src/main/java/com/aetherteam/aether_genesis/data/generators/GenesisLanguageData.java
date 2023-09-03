@@ -76,6 +76,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.FLEETING_STONE, "Fleeting Stone");
         this.addItem(GenesisItems.SOARING_STONE, "Soaring Stone");
         this.addItem(GenesisItems.ETHEREAL_STONE, "Ethereal Stone");
+        this.addItem(GenesisItems.ORB_OF_ARKENZUS, "Orb of Arkenzus");
 
         this.addItem(GenesisItems.PHOENIX_DART_SHOOTER, "Phoenix Dart Shooter");
         this.addItem(GenesisItems.CONTINUUM_BOMB, "Continuum Bomb");
@@ -114,6 +115,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.FLEETING_WISP, "Fleeting Wisp");
         this.addEntityType(GenesisEntityTypes.SOARING_WISP, "Soaring Wisp");
         this.addEntityType(GenesisEntityTypes.ETHEREAL_WISP, "Ethereal Wisp");
+        this.addEntityType(GenesisEntityTypes.SHADE_OF_ARKENZUS, "Shade of Arkenzus");
 
         this.addEntityType(GenesisEntityTypes.SENTRY_GUARDIAN, "Sentry Guardian");
         this.addEntityType(GenesisEntityTypes.SLIDER_HOST_MIMIC, "Slider Host Mimic");

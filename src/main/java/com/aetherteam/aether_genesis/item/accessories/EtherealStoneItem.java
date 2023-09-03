@@ -70,5 +70,6 @@ public class EtherealStoneItem extends CompanionItem<EtherealWisp> {
         }
         livingEntity.setInvisible(false);
         ((LivingEntityAccessor) livingEntity).callUpdateEffectVisibility();
+        super.onUnequip(slotContext, newStack, stack);
     }
 }
