@@ -15,10 +15,10 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.function.Supplier;
 
-public class CompanionItem<T extends Entity & Companion, S extends EntityType<T>> extends AccessoryItem {
-    private final Supplier<S> companionType;
+public class CompanionItem<T extends Companion> extends AccessoryItem {
+    private final Supplier<EntityType<T>> companionType;
 
-    public CompanionItem(Supplier<S> companionType, Properties properties) {
+    public CompanionItem(Supplier<EntityType<T>> companionType, Properties properties) {
         super(properties);
         this.companionType = companionType;
     }
@@ -46,7 +46,7 @@ public class CompanionItem<T extends Entity & Companion, S extends EntityType<T>
         super.onUnequip(slotContext, newStack, stack);
     }
 
-    public S getCompanionType() {
+    public EntityType<T> getCompanionType() {
         return this.companionType.get();
     }
 }
