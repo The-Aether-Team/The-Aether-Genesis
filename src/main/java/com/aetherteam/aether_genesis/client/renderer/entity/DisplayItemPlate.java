@@ -18,9 +18,9 @@ public interface DisplayItemPlate {
             poseStack.pushPose();
             poseStack.translate(0.0F, height, 0.0F);
             poseStack.mulPose(entityRenderDispatcher.cameraOrientation());
-            poseStack.translate(0.0F, 0.15, 0.0F);
-            poseStack.scale(1.0F, 1.0F, 0.1F);
-            itemRenderer.renderStatic(entity.getSummonItem(), ItemDisplayContext.GROUND, LightTexture.pack(15, 15), OverlayTexture.NO_OVERLAY, poseStack, buffer, entity.getLevel(), entity.getId()); //todo its still affected by light.
+            poseStack.translate(0.0F, -0.1, 0.0F);
+            poseStack.scale(0.5F, 0.5F, 0.1F);
+            itemRenderer.renderStatic(entity.getSummonItem(), ItemDisplayContext.HEAD, LightTexture.pack(15, 15), OverlayTexture.NO_OVERLAY, poseStack, buffer, entity.getLevel(), entity.getId()); //todo its still affected by light.
             poseStack.popPose();
         }
     }
