@@ -70,6 +70,8 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.of(EtherealWisp::new, MobCategory.MISC).sized(0.8F, 1.8F).clientTrackingRange(8).build("ethereal_wisp"));
     public static final RegistryObject<EntityType<ShadeOfArkenzus>> SHADE_OF_ARKENZUS = ENTITY_TYPES.register("shade_of_arkenzus",
             () -> EntityType.Builder.of(ShadeOfArkenzus::new, MobCategory.MISC).sized(0.4F, 1.0F).clientTrackingRange(8).build("shade_of_arkenzus"));
+    public static final RegistryObject<EntityType<FrostpineTotem>> FROSTPINE_TOTEM = ENTITY_TYPES.register("frostpine_totem",
+            () -> EntityType.Builder.of(FrostpineTotem::new, MobCategory.MISC).sized(0.8F, 1.8F).clientTrackingRange(8).build("frostpine_totem"));
 
     // Projectile
     public static final RegistryObject<EntityType<DaggerfrostSnowball>> DAGGERFROST_SNOWBALL = ENTITY_TYPES.register("daggerfrost_snowball",
@@ -110,5 +112,6 @@ public class GenesisEntityTypes {
         event.put(GenesisEntityTypes.SOARING_WISP.get(), Wisp.createAttributes().build());
         event.put(GenesisEntityTypes.ETHEREAL_WISP.get(), Wisp.createAttributes().build());
         event.put(GenesisEntityTypes.SHADE_OF_ARKENZUS.get(), ShadeOfArkenzus.createAttributes().build());
+        event.put(GenesisEntityTypes.FROSTPINE_TOTEM.get(), FrostpineTotem.createAttributes().build());
     }
 }

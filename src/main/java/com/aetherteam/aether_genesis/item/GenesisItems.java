@@ -69,6 +69,7 @@ public class GenesisItems {
     public static final RegistryObject<Item> SOARING_STONE = ITEMS.register("soaring_stone", () -> new SoaringStoneItem(GenesisEntityTypes.SOARING_WISP, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> ETHEREAL_STONE = ITEMS.register("ethereal_stone", () -> new EtherealStoneItem(GenesisEntityTypes.ETHEREAL_WISP, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> ORB_OF_ARKENZUS = ITEMS.register("orb_of_arkenzus", () -> new OrbOfArkenzus(GenesisEntityTypes.SHADE_OF_ARKENZUS, new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> FROSTPINE_TOTEM = ITEMS.register("frostpine_totem", () -> new FrostpineTotemItem(GenesisEntityTypes.FROSTPINE_TOTEM, new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> PHOENIX_DART_SHOOTER = ITEMS.register("phoenix_dart_shooter", () -> new PhoenixDartShooterItem(GOLDEN_DART, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> CONTINUUM_BOMB = ITEMS.register("continuum_bomb", () -> new ContinuumBombItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));

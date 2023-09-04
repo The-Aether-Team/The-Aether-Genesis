@@ -25,7 +25,8 @@ public class GenesisEntityTagData extends EntityTypeTagsProvider {
                 GenesisEntityTypes.FLEETING_WISP.get(),
                 GenesisEntityTypes.SOARING_WISP.get(),
                 GenesisEntityTypes.ETHEREAL_WISP.get(),
-                GenesisEntityTypes.SHADE_OF_ARKENZUS.get());
+                GenesisEntityTypes.SHADE_OF_ARKENZUS.get(),
+                GenesisEntityTypes.FROSTPINE_TOTEM.get());
         this.tag(GenesisTags.Entities.NO_PRESENT_DROPS);
 
         this.tag(AetherTags.Entities.WHIRLWIND_UNAFFECTED).add(GenesisEntityTypes.CARRION_SPROUT.get());

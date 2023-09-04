@@ -22,6 +22,7 @@ public class GenesisModelLayers {
     public static final ModelLayerLocation SOARING_WISP = register("soaring_wisp");
     public static final ModelLayerLocation ETHEREAL_WISP = register("ethereal_wisp");
     public static final ModelLayerLocation SHADE_OF_ARKENZUS = register("shade_of_arkenzus");
+    public static final ModelLayerLocation FROSTPINE_TOTEM = register("frostpine_totem");
 
     public static final ModelLayerLocation MOUSE_EAR_CAP = register("mouse_ear_cap");
 

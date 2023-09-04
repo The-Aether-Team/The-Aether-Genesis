@@ -12,7 +12,7 @@ public class ShadeOfArkenzusRenderer extends CompanionRenderer<ShadeOfArkenzus, 
     private static final ResourceLocation SHADE_OF_ARKENZUS_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/companions/shade_of_arkenzus/shade_of_arkenzus.png");
 
     public ShadeOfArkenzusRenderer(EntityRendererProvider.Context context) {
-        super(context, new ShadeOfArkenzusModel(context.bakeLayer(GenesisModelLayers.SHADE_OF_ARKENZUS)), 0.25F);
+        super(context, new ShadeOfArkenzusModel(context.bakeLayer(GenesisModelLayers.SHADE_OF_ARKENZUS)), 0.35F);
         this.addLayer(new ShadeOfArkenzusEyesLayer(this));
     }
 

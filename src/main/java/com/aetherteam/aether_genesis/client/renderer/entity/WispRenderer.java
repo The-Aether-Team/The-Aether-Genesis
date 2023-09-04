@@ -14,7 +14,7 @@ public class WispRenderer extends CompanionRenderer<Wisp, WispModel> {
     private final ResourceLocation texture;
 
     public WispRenderer(EntityRendererProvider.Context renderer, ModelLayerLocation modelLocation, ResourceLocation textureLocation) {
-        super(renderer, new WispModel(renderer.bakeLayer(modelLocation)), 0.25F);
+        super(renderer, new WispModel(renderer.bakeLayer(modelLocation)), 0.3F);
         this.texture = textureLocation;
     }
 

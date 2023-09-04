@@ -61,6 +61,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.SOARING_STONE.get(), "accessories/");
         this.item(GenesisItems.ETHEREAL_STONE.get(), "accessories/");
         this.item(GenesisItems.ORB_OF_ARKENZUS.get(), "accessories/");
+        this.item(GenesisItems.FROSTPINE_TOTEM.get(), "accessories/");
 
         this.item(GenesisItems.MUSIC_DISC_AERWHALE.get(), "miscellaneous/");
         this.item(GenesisItems.MUSIC_DISC_APPROACHES.get(), "miscellaneous/");

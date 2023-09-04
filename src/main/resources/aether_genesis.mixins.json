@@ -18,6 +18,7 @@
   ],
   "client": [
     "client.CapeLayerMixin",
+    "client.EffectRenderingInventoryScreenMixin",
     "client.ElytraLayerMixin",
     "client.accessor.ElytraLayerAccessor",
     "client.accessor.PlayerModelAccessor"

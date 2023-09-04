@@ -15,6 +15,10 @@ public class ShadeOfArkenzus extends Companion {
         super(entityType, level, () -> new ItemStack(GenesisItems.ORB_OF_ARKENZUS.get()), false);
     }
 
+    public static AttributeSupplier.Builder createAttributes() {
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 1.0).add(Attributes.MOVEMENT_SPEED, 0.3).add(Attributes.FOLLOW_RANGE, 48.0);
+    }
+
     @Override
     public void tick() {
         super.tick();
@@ -26,9 +30,5 @@ public class ShadeOfArkenzus extends Companion {
                 this.hasImpulse = true;
             }
         }
-    }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 1.0).add(Attributes.MOVEMENT_SPEED, 0.3).add(Attributes.FOLLOW_RANGE, 48.0);
     }
 }
