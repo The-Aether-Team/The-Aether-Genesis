@@ -1,6 +1,5 @@
 package com.aetherteam.aether_genesis.client.renderer.entity;
 
-import com.aetherteam.aether.Aether;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.aether_genesis.client.renderer.entity.layers.HostMimicLayer;
@@ -13,7 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import javax.annotation.Nonnull;
 
 public class HostMimicRenderer extends MobRenderer<SliderHostMimic, SliderHostMimicModel> {
-    private static final ResourceLocation HOST_MIMIC_ASLEEP_TEXTURE = new ResourceLocation(Aether.MODID, "textures/entity/mobs/slider/slider_asleep.png");
+    private static final ResourceLocation HOST_MIMIC_ASLEEP_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/slider_host_mimic/slider_host_mimic_asleep.png");
     private static final ResourceLocation HOST_MIMIC_AWAKE_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/slider_host_mimic/slider_host_mimic_critical.png");
 
     public HostMimicRenderer(EntityRendererProvider.Context context) {

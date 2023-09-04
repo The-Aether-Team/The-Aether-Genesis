@@ -9,15 +9,19 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 
 public class SliderHostMimicModel extends EntityModel<SliderHostMimic> {
+	private final ModelPart mimic;
 	private final ModelPart body;
 
 	public SliderHostMimicModel(ModelPart root) {
+		this.mimic = root.getChild("mimic");
 		this.body = root.getChild("body");
 	}
 
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
+
+		partdefinition.addOrReplaceChild("mimic", CubeListBuilder.create().texOffs(0, 0).addBox(-16.0F, -32.0F, -16.0F, 32.0F, 32.0F, 32.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
 
 		PartDefinition body = partdefinition.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 160).addBox(-16.0F, -16.0F, -17.0F, 32.0F, 32.0F, 32.0F, new CubeDeformation(0.0F))
 				.texOffs(0, 118).addBox(-16.0F, 6.0F, -17.0F, 32.0F, 10.0F, 32.0F, new CubeDeformation(0.0F))
@@ -39,11 +43,18 @@ public class SliderHostMimicModel extends EntityModel<SliderHostMimic> {
 
 	@Override
 	public void setupAnim(SliderHostMimic entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-
+		if (entity.isAwake()) {
+			this.body.visible = true;
+			this.mimic.visible = false;
+		} else {
+			this.body.visible = false;
+			this.mimic.visible = true;
+		}
 	}
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+		mimic.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 		body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
 	}
 }
