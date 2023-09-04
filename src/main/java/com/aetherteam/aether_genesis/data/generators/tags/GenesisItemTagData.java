@@ -127,7 +127,8 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.SOARING_STONE.get(),
                 GenesisItems.ETHEREAL_STONE.get(),
                 GenesisItems.ORB_OF_ARKENZUS.get(),
-                GenesisItems.FROSTPINE_TOTEM.get()); //todo temporary
+                GenesisItems.FROSTPINE_TOTEM.get(),
+                GenesisItems.BABY_PINK_SWET.get()); //todo temporary
 
         this.tag(GenesisTags.Items.SKYROOT_LADDER_CRAFTING).addTag(
                 AetherTags.Items.SKYROOT_STICKS);

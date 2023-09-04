@@ -60,6 +60,7 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.ETHEREAL_WISP.get(), EtherealWispRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.SHADE_OF_ARKENZUS.get(), ShadeOfArkenzusRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.FROSTPINE_TOTEM.get(), FrostpineTotemRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.BABY_PINK_SWET.get(), BabyPinkSwetRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.DAGGERFROST_SNOWBALL.get(), DaggerfrostSnowballRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), IceCrystalRenderer::new);

@@ -9,14 +9,15 @@ import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.ForgeHooksClient;
 
 import javax.annotation.Nullable;
 
-public interface DisplayItemPlate {
-    default void renderDisplayItem(Companion entity, PoseStack poseStack, MultiBufferSource buffer, EntityRenderDispatcher entityRenderDispatcher, ItemRenderer itemRenderer) {
+public interface DisplayItemPlate<T extends Mob & Companion<T>> {
+    default void renderDisplayItem(T entity, PoseStack poseStack, MultiBufferSource buffer, EntityRenderDispatcher entityRenderDispatcher, ItemRenderer itemRenderer) {
         double distance = entityRenderDispatcher.distanceToSqr(entity);
         if (ForgeHooksClient.isNameplateInRenderDistance(entity, distance)) {
             float height = entity.getBbHeight() + 0.5F;

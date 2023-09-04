@@ -3,6 +3,7 @@ package com.aetherteam.aether_genesis.entity.ai.goal;
 import com.aetherteam.aether_genesis.entity.companion.Companion;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
@@ -16,8 +17,8 @@ import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 
 import java.util.EnumSet;
 
-public class CompanionFollowGoal extends Goal {
-    private final Companion companion;
+public class CompanionFollowGoal<T extends Mob & Companion<T>> extends Goal {
+    private final T companion;
     private LivingEntity owner;
     private final LevelReader level;
     private final double speedModifier;
@@ -26,11 +27,11 @@ public class CompanionFollowGoal extends Goal {
     private float oldWaterCost;
     private final boolean canFly;
 
-    public CompanionFollowGoal(Companion companion, double speedModifier) {
+    public CompanionFollowGoal(T companion, double speedModifier) {
         this.companion = companion ;
-        this.level = companion .level;
+        this.level = companion.level;
         this.speedModifier = speedModifier;
-        this.navigation = companion .getNavigation();
+        this.navigation = companion.getNavigation();
         this.canFly = false;
         this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
         if (!(companion.getNavigation() instanceof GroundPathNavigation) && !(companion.getNavigation() instanceof FlyingPathNavigation)) {
@@ -43,7 +44,7 @@ public class CompanionFollowGoal extends Goal {
      * method as well.
      */
     public boolean canUse() {
-        Player player = this.companion.level.getPlayerByUUID(this.companion.getOwner());
+        Player player = this.companion.getLevel().getPlayerByUUID(this.companion.getOwner());
         if (player == null) {
             return false;
         } else if (player.isSpectator()) {

@@ -78,6 +78,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.ETHEREAL_STONE, "Ethereal Stone");
         this.addItem(GenesisItems.ORB_OF_ARKENZUS, "Orb of Arkenzus");
         this.addItem(GenesisItems.FROSTPINE_TOTEM, "Frostpine Totem");
+        this.addItem(GenesisItems.BABY_PINK_SWET, "Baby Pink Swet");
 
         this.addItem(GenesisItems.PHOENIX_DART_SHOOTER, "Phoenix Dart Shooter");
         this.addItem(GenesisItems.CONTINUUM_BOMB, "Continuum Bomb");
@@ -118,6 +119,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.ETHEREAL_WISP, "Ethereal Wisp");
         this.addEntityType(GenesisEntityTypes.SHADE_OF_ARKENZUS, "Shade of Arkenzus");
         this.addEntityType(GenesisEntityTypes.FROSTPINE_TOTEM, "Frostpine Totem");
+        this.addEntityType(GenesisEntityTypes.BABY_PINK_SWET, "Baby Pink Swet");
 
         this.addEntityType(GenesisEntityTypes.SENTRY_GUARDIAN, "Sentry Guardian");
         this.addEntityType(GenesisEntityTypes.SLIDER_HOST_MIMIC, "Slider Host Mimic");

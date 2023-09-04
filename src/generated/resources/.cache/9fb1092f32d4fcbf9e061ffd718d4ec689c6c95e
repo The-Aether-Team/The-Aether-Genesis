@@ -1,4 +1,4 @@
-// 1.19.4	2023-08-30T08:52:07.4977564	Recipes
+// 1.19.4	2023-09-03T19:56:38.4565317	Recipes
 752de14c6023b77d8c62aa78487656e0cf2e2c3f data/aether_genesis/advancements/recipes/building_blocks/divine_carved_slab.json
 b204c6d72ac6b21839010bfacb9504a83d73b822 data/aether_genesis/advancements/recipes/building_blocks/divine_carved_stairs.json
 77f37c8cae90c13651e097445976b6dfa0764cf7 data/aether_genesis/advancements/recipes/building_blocks/holystone_headstone.json
@@ -47,6 +47,7 @@ c6886cf501e584098f5f9a253edd0bdce70911f2 data/aether_genesis/advancements/recipe
 3775fcc07fa87d7f2259fb241db74fbd0c502a41 data/aether_genesis/advancements/recipes/food/jelly_pumpkin.json
 c2b8cc28bac504ef07cd66f84cf44434a7d80886 data/aether_genesis/advancements/recipes/food/orange_lollipop.json
 9b992949430b925a9019ab7921cf3f23c51500d1 data/aether_genesis/advancements/recipes/food/rainbow_strawberry_enchanting.json
+2fcf07fb116eeb33c55162c5676c0fe48db2711e data/aether_genesis/advancements/recipes/food/stomper_pop.json
 d12a28d79dc0240455e3f1d0637d4e44138525ed data/aether_genesis/advancements/recipes/food/wrapped_chocolates.json
 3fb2d2797296a86486db0b8b54792aab8d5bf9a8 data/aether_genesis/advancements/recipes/misc/continuum_bomb.json
 1e0c4224aaf652af18c19407e53ad76ad56c51d6 data/aether_genesis/advancements/recipes/misc/continuum_orb_from_bomb.json
@@ -104,6 +105,7 @@ d9e9ec74497834026b87ce9cfe53e2d5e11175db data/aether_genesis/recipes/skyroot_cra
 69e783ba7e7511075c06b680626f7a0ded5b0d82 data/aether_genesis/recipes/skyroot_ladder.json
 7c29989ded849757e9f95b70d5edf8d024e98cac data/aether_genesis/recipes/skyroot_log_wall.json
 d426d840b475a1491b355b6bdc69d8296204aa4b data/aether_genesis/recipes/skyroot_wood_wall.json
+3d29f18591d43f3fa5ce3036e61f69a9f718b5b8 data/aether_genesis/recipes/stomper_pop.json
 6a6da3f3cbfe02ac65eb43c5e6ea66cf1e89f355 data/aether_genesis/recipes/stripped_skyroot_log_wall.json
 4bc07f4f356bf0c13aaef5027169beaaf6b474a7 data/aether_genesis/recipes/stripped_skyroot_wood_wall.json
 0af78191d0f2009588ff50b718121bb3c6ce696c data/aether_genesis/recipes/wrapped_chocolates.json

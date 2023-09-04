@@ -10,7 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeMod;
 
-public class ShadeOfArkenzus extends Companion {
+public class ShadeOfArkenzus extends CompanionMob {
     public ShadeOfArkenzus(EntityType<ShadeOfArkenzus> entityType, Level level) {
         super(entityType, level, () -> new ItemStack(GenesisItems.ORB_OF_ARKENZUS.get()), false);
     }

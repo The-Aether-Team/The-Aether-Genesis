@@ -1,6 +1,5 @@
 package com.aetherteam.aether_genesis.mixin.mixins.client;
 
-import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.item.accessories.FrostpineTotemItem;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
 import net.minecraft.world.effect.MobEffectInstance;

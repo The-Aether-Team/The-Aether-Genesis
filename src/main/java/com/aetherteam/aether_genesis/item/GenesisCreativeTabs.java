@@ -73,6 +73,7 @@ public class GenesisCreativeTabs {
             event.getEntries().putAfter(new ItemStack(GenesisItems.ETHEREAL_STONE.get()), new ItemStack(GenesisItems.ETHEREAL_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.ORB_OF_ARKENZUS.get()), new ItemStack(GenesisItems.ORB_OF_ARKENZUS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.FROSTPINE_TOTEM.get()), new ItemStack(GenesisItems.FROSTPINE_TOTEM.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.BABY_PINK_SWET.get()), new ItemStack(GenesisItems.BABY_PINK_SWET.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (tab == AetherCreativeTabs.AETHER_FOOD_AND_DRINKS) {
             event.getEntries().putAfter(new ItemStack(AetherItems.ENCHANTED_BERRY.get()), new ItemStack(GenesisItems.BLUE_SWET_JELLY.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

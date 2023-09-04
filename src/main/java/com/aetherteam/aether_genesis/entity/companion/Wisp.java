@@ -11,7 +11,7 @@ import net.minecraftforge.common.ForgeMod;
 
 import java.util.function.Supplier;
 
-public class Wisp extends Companion {
+public class Wisp extends CompanionMob {
     private float armRotO;
     private float armRot;
 

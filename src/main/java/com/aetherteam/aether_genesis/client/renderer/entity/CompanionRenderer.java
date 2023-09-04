@@ -1,6 +1,6 @@
 package com.aetherteam.aether_genesis.client.renderer.entity;
 
-import com.aetherteam.aether_genesis.entity.companion.Companion;
+import com.aetherteam.aether_genesis.entity.companion.CompanionMob;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.MobRenderer;
 
-public abstract class CompanionRenderer<T extends Companion, S extends EntityModel<T>> extends MobRenderer<T, S> implements DisplayItemPlate {
+public abstract class CompanionRenderer<T extends CompanionMob, S extends EntityModel<T>> extends MobRenderer<T, S> implements DisplayItemPlate<CompanionMob> {
     protected final ItemRenderer itemRenderer;
 
     public CompanionRenderer(EntityRendererProvider.Context context, S model, float shadowRadius) {

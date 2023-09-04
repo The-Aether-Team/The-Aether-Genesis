@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.item.accessories;
 
 import com.aetherteam.aether.item.accessories.AccessoryItem;
 import com.aetherteam.aether_genesis.capability.player.GenesisPlayer;
-import com.aetherteam.aether_genesis.entity.companion.Companion;
+import com.aetherteam.aether_genesis.entity.companion.CompanionMob;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -15,7 +15,7 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.function.Supplier;
 
-public class CompanionItem<T extends Companion> extends AccessoryItem {
+public class CompanionItem<T extends CompanionMob> extends AccessoryItem {
     private final Supplier<EntityType<T>> companionType;
 
     public CompanionItem(Supplier<EntityType<T>> companionType, Properties properties) {
