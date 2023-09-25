@@ -26,7 +26,7 @@ public class PhoenixDart extends GoldenDart {
 
     protected void onHitEntity(EntityHitResult pResult) {
         super.onHitEntity(pResult);
-        if (!this.level.isClientSide) {
+        if (!this.level().isClientSide) {
             Entity entity = pResult.getEntity();
             entity.setSecondsOnFire(5);
         }
@@ -34,12 +34,12 @@ public class PhoenixDart extends GoldenDart {
 
     protected void onHitBlock(BlockHitResult pResult) {
         super.onHitBlock(pResult);
-        if (!this.level.isClientSide) {
+        if (!this.level().isClientSide) {
             Entity entity = this.getOwner();
-            if (!(entity instanceof Mob) || net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level, entity)) {
+            if (!(entity instanceof Mob) || net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level(), entity)) {
                 BlockPos blockpos = pResult.getBlockPos().relative(pResult.getDirection());
-                if (this.level.isEmptyBlock(blockpos)) {
-                    this.level.setBlockAndUpdate(blockpos, BaseFireBlock.getState(this.level, blockpos));
+                if (this.level().isEmptyBlock(blockpos)) {
+                    this.level().setBlockAndUpdate(blockpos, BaseFireBlock.getState(this.level(), blockpos));
                 }
             }
 
@@ -48,7 +48,7 @@ public class PhoenixDart extends GoldenDart {
 
     protected void onHit(HitResult pResult) {
         super.onHit(pResult);
-        if (!this.level.isClientSide) {
+        if (!this.level().isClientSide) {
             this.discard();
         }
 
@@ -56,7 +56,7 @@ public class PhoenixDart extends GoldenDart {
 
     public void tick() {
         super.tick();
-        if (!this.level.isClientSide) {
+        if (!this.level().isClientSide) {
             for (int i = 0; i < 2; i++)
                 this.spawnParticles(this);
         }else
@@ -64,7 +64,7 @@ public class PhoenixDart extends GoldenDart {
     }
 
     private void spawnParticles(AbstractArrow arrow) {
-        if (arrow.level instanceof ServerLevel serverLevel) {
+        if (arrow.level() instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(ParticleTypes.FLAME,
                     arrow.getX() + (serverLevel.getRandom().nextGaussian() / 5.0D),
                     arrow.getY() + (serverLevel.getRandom().nextGaussian() / 3.0D),

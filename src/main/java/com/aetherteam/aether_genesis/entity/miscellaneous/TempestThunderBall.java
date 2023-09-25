@@ -37,12 +37,12 @@ public class TempestThunderBall extends AbstractCrystal {
 
 	@Override
 	public void tick() {
-		double xOffset = this.position().x() + (level.getRandom().nextDouble() * 1.5) - 0.75;
-		double yOffset = this.position().y() + (level.getRandom().nextDouble() * 2) - 0.5;
-		double zOffset = this.position().z() + (level.getRandom().nextDouble() * 1.5) - 0.75;
-		if(level.isClientSide()) {
-			level.addParticle(new DustParticleOptions(TEMPEST_PARTICLE_COLOR, 1.0F), xOffset + 0.3, yOffset + 0.3, zOffset + 0.3, 0.0, 0.0, 0.0);
-			level.addParticle(new DustParticleOptions(TEMPEST_PARTICLE_COLOR, 1.0F), xOffset, yOffset, zOffset, 0.0, 0.0, 0.0);
+		double xOffset = this.position().x() + (level().getRandom().nextDouble() * 1.5) - 0.75;
+		double yOffset = this.position().y() + (level().getRandom().nextDouble() * 2) - 0.5;
+		double zOffset = this.position().z() + (level().getRandom().nextDouble() * 1.5) - 0.75;
+		if(level().isClientSide()) {
+			level().addParticle(new DustParticleOptions(TEMPEST_PARTICLE_COLOR, 1.0F), xOffset + 0.3, yOffset + 0.3, zOffset + 0.3, 0.0, 0.0, 0.0);
+			level().addParticle(new DustParticleOptions(TEMPEST_PARTICLE_COLOR, 1.0F), xOffset, yOffset, zOffset, 0.0, 0.0, 0.0);
 		}
 		super.tick();
 	}
@@ -60,13 +60,13 @@ public class TempestThunderBall extends AbstractCrystal {
 
 	protected void onHit(HitResult pResult) {
 		super.onHit(pResult);
-		if (!this.level.isClientSide) {
-			LightningBolt lightningBolt = EntityType.LIGHTNING_BOLT.create(this.level);
+		if (!this.level().isClientSide) {
+			LightningBolt lightningBolt = EntityType.LIGHTNING_BOLT.create(this.level());
 			if (lightningBolt != null) {
 				LightningTracker.get(lightningBolt).ifPresent(lightningTracker -> lightningTracker.setOwner(this.getOwner()));
 				lightningBolt.setPos(this.getX(), this.getY(), this.getZ());
 				lightningBolt.setVisualOnly(true);
-				this.level.addFreshEntity(lightningBolt);
+				this.level().addFreshEntity(lightningBolt);
 				this.spawnColdFire();
 			}
 			this.discard();
@@ -74,18 +74,18 @@ public class TempestThunderBall extends AbstractCrystal {
 	}
 
 	private void spawnColdFire() {
-		if (!this.level.isClientSide && this.level.getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
+		if (!this.level().isClientSide && this.level().getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
 			BlockPos blockPos = this.blockPosition();
-			BlockState blockState = ColdFireBlock.getState(this.level, blockPos);
-			if (this.level.getBlockState(blockPos).isAir() && blockState.canSurvive(this.level, blockPos)) {
-				this.level.setBlockAndUpdate(blockPos, blockState);
+			BlockState blockState = ColdFireBlock.getState(this.level(), blockPos);
+			if (this.level().getBlockState(blockPos).isAir() && blockState.canSurvive(this.level(), blockPos)) {
+				this.level().setBlockAndUpdate(blockPos, blockState);
 			}
 
 			for (int i = 0; i < 4; ++i) {
 				BlockPos blockPos1 = blockPos.offset(this.random.nextInt(3) - 1, this.random.nextInt(3) - 1, this.random.nextInt(3) - 1);
-				blockState = ColdFireBlock.getState(this.level, blockPos1);
-				if (this.level.getBlockState(blockPos1).isAir() && blockState.canSurvive(this.level, blockPos1)) {
-					this.level.setBlockAndUpdate(blockPos1, blockState);
+				blockState = ColdFireBlock.getState(this.level(), blockPos1);
+				if (this.level().getBlockState(blockPos1).isAir() && blockState.canSurvive(this.level(), blockPos1)) {
+					this.level().setBlockAndUpdate(blockPos1, blockState);
 				}
 			}
 		}

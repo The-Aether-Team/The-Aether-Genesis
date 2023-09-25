@@ -23,7 +23,7 @@ public class CandyRingItem extends RingItem {
 
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
-        if (!slotContext.entity().level.isClientSide) {
+        if (!slotContext.entity().level().isClientSide) {
             if (slotContext.entity() instanceof Player player) {
                 if (player.getFoodData().getExhaustionLevel() > this.foodLevel) {
                     player.getFoodData().setExhaustion(foodLevel);

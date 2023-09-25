@@ -1,6 +1,7 @@
 package com.aetherteam.aether_genesis.item.materials;
 
 import com.aetherteam.aether.item.miscellaneous.ConsumableItem;
+import com.aetherteam.aether.loot.AetherLootContexts;
 import com.aetherteam.aether_genesis.advancement.ContinuumOrbLootTrigger;
 import com.aetherteam.aether_genesis.loot.GenesisLoot;
 import net.minecraft.server.level.ServerLevel;
@@ -12,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -41,10 +43,10 @@ public class ContinuumOrbItem extends Item implements ConsumableItem {
 
     protected List<ItemStack> createLoot(Player player) {
         List<ItemStack> lootItems = new ArrayList<>();
-        LootContext.Builder builder = new LootContext.Builder((ServerLevel) player.getLevel())
+        LootParams.Builder builder = new LootParams.Builder((ServerLevel) player.level())
                 .withParameter(LootContextParams.ORIGIN, player.position())
                 .withParameter(LootContextParams.THIS_ENTITY, player);
-        LootTable lootTable = player.getLevel().getServer().getLootTables().get(GenesisLoot.CONTINUUM_ORB);
+        LootTable lootTable = player.level().getServer().getLootData().getLootTable(GenesisLoot.CONTINUUM_ORB);
         List<ItemStack> list = lootTable.getRandomItems(builder.create(LootContextParamSets.SELECTOR));
         for (ItemStack itemStack : list) {
             if (!player.addItem(itemStack)) {

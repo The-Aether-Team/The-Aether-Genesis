@@ -29,7 +29,7 @@ public class CompanionFollowGoal<T extends Mob & Companion<T>> extends Goal {
 
     public CompanionFollowGoal(T companion, double speedModifier) {
         this.companion = companion ;
-        this.level = companion.level;
+        this.level = companion.level();
         this.speedModifier = speedModifier;
         this.navigation = companion.getNavigation();
         this.canFly = false;
@@ -44,7 +44,7 @@ public class CompanionFollowGoal<T extends Mob & Companion<T>> extends Goal {
      * method as well.
      */
     public boolean canUse() {
-        Player player = this.companion.getLevel().getPlayerByUUID(this.companion.getOwner());
+        Player player = this.companion.level().getPlayerByUUID(this.companion.getOwner());
         if (player == null) {
             return false;
         } else if (player.isSpectator()) {

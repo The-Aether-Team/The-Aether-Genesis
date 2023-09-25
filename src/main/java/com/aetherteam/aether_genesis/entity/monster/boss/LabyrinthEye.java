@@ -129,7 +129,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     }
 
     public void die(DamageSource source) {
-        this.level.explode(this, this.position().x, this.position().y, this.position().z, 0.3F, false, Level.ExplosionInteraction.TNT);
+        this.level().explode(this, this.position().x, this.position().y, this.position().z, 0.3F, false, Level.ExplosionInteraction.TNT);
 
         super.die(source);
     }
@@ -137,19 +137,19 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     public void spawnLargeCog(Entity entityToAttack, int stage) {
         if (this.stageDone[stage])
             return;
-        CogArrow entityarrow = new CogArrow(this.level, this, true);
+        CogArrow entityarrow = new CogArrow(this.level(), this, true);
         entityarrow.setYRot(this.getYRot());
         entityarrow.setXRot(this.getXRot());
         double var3 = entityToAttack.position().x + entityToAttack.getMotionDirection().getStepX() - this.position().x;
         double var5 = entityToAttack.position().y + -this.getMotionDirection().getStepY();
         double var7 = entityToAttack.position().z + entityToAttack.getMotionDirection().getStepZ() - this.position().z;
         float var9 = (float) Math.sqrt(var3 * var3 + var7 * var7);
-        if (!this.level.isClientSide) {
+        if (!this.level().isClientSide) {
             float distance = var9 * 0.075F;
             entityarrow.shoot(var3, var5 + (var9 * 0.2F), var7, distance, 0.0F);
             this.playSound(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COGLOSS.get(), 2.0F, 1.0F);
-            this.playSound(SoundEvents.ITEM_BREAK, 0.8F, 0.8F + this.level.random.nextFloat() * 0.4F);
-            this.level.addFreshEntity(entityarrow);
+            this.playSound(SoundEvents.ITEM_BREAK, 0.8F, 0.8F + this.level().random.nextFloat() * 0.4F);
+            this.level().addFreshEntity(entityarrow);
         }
         stageDone[stage] = true;
     }
@@ -213,7 +213,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
         Entity entity = source.getDirectEntity();
         Entity attacker = source.getEntity();
         if (entity != null && source.is(DamageTypeTags.IS_PROJECTILE)) {
-            if (!this.level.isClientSide && attacker instanceof Player && ((Player)attacker).getMainHandItem() != Items.AIR.getDefaultInstance()) {
+            if (!this.level().isClientSide && attacker instanceof Player && ((Player)attacker).getMainHandItem() != Items.AIR.getDefaultInstance()) {
                 this.chatTime = 60;
                 attacker.sendSystemMessage(Component.translatable("gui.aether_genesis.boss.message.projectile"));
             }
@@ -410,8 +410,8 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
 
         @Override
         public void start() {
-            Entity cog = new CogArrow(this.labyrinthEye.level, this.labyrinthEye, false);
-            this.labyrinthEye.level.addFreshEntity(cog);
+            Entity cog = new CogArrow(this.labyrinthEye.level(), this.labyrinthEye, false);
+            this.labyrinthEye.level().addFreshEntity(cog);
             cog.setPos(labyrinthEye.position());
         }
 

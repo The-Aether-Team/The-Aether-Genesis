@@ -85,7 +85,7 @@ public class TrackingGolem extends Monster {
 
 	public void setSeenEnemy(boolean seen) {
 		if (seen) {
-			this.level.playSound(this, this.getOnPos(), GenesisSoundEvents.ENTITY_TRACKING_GOLEM_SEEN_ENEMY.get(), SoundSource.AMBIENT, 5.0F, this.random.nextFloat() * 0.4F + 0.8F);
+			this.level().playSound(this, this.getOnPos(), GenesisSoundEvents.ENTITY_TRACKING_GOLEM_SEEN_ENEMY.get(), SoundSource.AMBIENT, 5.0F, this.random.nextFloat() * 0.4F + 0.8F);
 			this.entityData.set(CAN_SEE_ENEMY, 1);
 		} else {
 			this.entityData.set(CAN_SEE_ENEMY, 0);
@@ -94,7 +94,7 @@ public class TrackingGolem extends Monster {
 
 	public void tick() {
 		super.tick();
-		Player entityPlayer = this.level.getNearestPlayer(this, 8.0D);
+		Player entityPlayer = this.level().getNearestPlayer(this, 8.0D);
 		if (this.getTarget() == null)
 			if (entityPlayer != null && canBeSeenAsEnemy() && entityPlayer.isAlive() && !entityPlayer.isCreative() && !entityPlayer.isSpectator())
 				this.setTarget(entityPlayer);
@@ -104,7 +104,7 @@ public class TrackingGolem extends Monster {
 			lookAt(this, 10F, 10F);
 			if (!getSeenEnemy())
 				setSeenEnemy(true);
-			if (!this.level.isClientSide) {
+			if (!this.level().isClientSide) {
 				(this.getTarget()).addEffect(new MobEffectInstance(MobEffects.CONFUSION, 10, 3));
 				(this.getTarget()).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 3));
 			}

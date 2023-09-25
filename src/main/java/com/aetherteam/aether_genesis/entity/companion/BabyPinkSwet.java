@@ -138,13 +138,13 @@ public class BabyPinkSwet extends Swet implements Companion<BabyPinkSwet> {
 
         public SwetFollowPlayerGoal(BabyPinkSwet swet) {
             this.swet = swet;
-            this.level = swet.getLevel();
+            this.level = swet.level();
             this.setFlags(EnumSet.of(Goal.Flag.LOOK));
         }
 
         @Override
         public boolean canUse() {
-            Player player = this.swet.getLevel().getPlayerByUUID(this.swet.getOwner());
+            Player player = this.swet.level().getPlayerByUUID(this.swet.getOwner());
             if (player == null) {
                 return false;
             } else if (player.isSpectator()) {

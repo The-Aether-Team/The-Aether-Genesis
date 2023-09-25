@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber
 public class LevelListener {
     @SubscribeEvent
-    public static void onPlayerTraveling(SaplingGrowTreeEvent event) {
+    public static void onGrowSapling(SaplingGrowTreeEvent event) {
         LevelAccessor level = event.getLevel();
         RandomSource random = event.getRandomSource();
         Holder<ConfiguredFeature<?, ?>> feature = event.getFeature();

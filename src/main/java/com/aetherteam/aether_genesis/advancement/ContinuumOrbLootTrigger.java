@@ -20,9 +20,9 @@ public class ContinuumOrbLootTrigger extends SimpleCriterionTrigger<ContinuumOrb
     }
 
     @Override
-    public ContinuumOrbLootTrigger.Instance createInstance(JsonObject json, EntityPredicate.Composite entity, DeserializationContext context) {
+    public ContinuumOrbLootTrigger.Instance createInstance(JsonObject json, ContextAwarePredicate predicate, DeserializationContext context) {
         ItemPredicate itemPredicate = ItemPredicate.fromJson(json.get("item"));
-        return new ContinuumOrbLootTrigger.Instance(entity, itemPredicate);
+        return new ContinuumOrbLootTrigger.Instance(predicate, itemPredicate);
     }
 
     public void trigger(ServerPlayer player, ItemStack stack) {
@@ -43,13 +43,13 @@ public class ContinuumOrbLootTrigger extends SimpleCriterionTrigger<ContinuumOrb
     public static class Instance extends AbstractCriterionTriggerInstance {
         private final ItemPredicate item;
 
-        public Instance(EntityPredicate.Composite entity, ItemPredicate item) {
-            super(ContinuumOrbLootTrigger.ID, entity);
+        public Instance(ContextAwarePredicate predicate, ItemPredicate item) {
+            super(ContinuumOrbLootTrigger.ID, predicate);
             this.item = item;
         }
 
         public static ContinuumOrbLootTrigger.Instance forItem(ItemPredicate item) {
-            return new ContinuumOrbLootTrigger.Instance(EntityPredicate.Composite.ANY, item);
+            return new ContinuumOrbLootTrigger.Instance(ContextAwarePredicate.ANY, item);
         }
 
         public static ContinuumOrbLootTrigger.Instance forItem(ItemLike item) {

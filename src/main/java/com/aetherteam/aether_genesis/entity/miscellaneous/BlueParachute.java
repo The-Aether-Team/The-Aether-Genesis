@@ -17,7 +17,7 @@ public class BlueParachute extends Parachute {
         super.tick();
         LivingEntity passenger = this.getControllingPassenger();
         if (passenger != null) {
-            if (this.getY() >= this.getLevel().getMaxBuildHeight()) {
+            if (this.getY() >= this.level().getMaxBuildHeight()) {
                 this.ejectPassengers();
                 this.die();
             }

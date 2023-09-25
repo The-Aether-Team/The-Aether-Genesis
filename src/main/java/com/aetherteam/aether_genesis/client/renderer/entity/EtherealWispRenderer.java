@@ -17,7 +17,7 @@ public class EtherealWispRenderer extends WispRenderer {
 
     @Override
     public void render(Wisp wisp, float entityYaw, float partialTicks, PoseStack matrixStack, MultiBufferSource buffer, int packedLight) {
-        Player player = wisp.getLevel().getPlayerByUUID(wisp.getOwner());
+        Player player = wisp.level().getPlayerByUUID(wisp.getOwner());
         if (player != null) {
             AetherPlayer.get(player).ifPresent((aetherPlayer) -> {
                 if (!aetherPlayer.isWearingInvisibilityCloak()) {

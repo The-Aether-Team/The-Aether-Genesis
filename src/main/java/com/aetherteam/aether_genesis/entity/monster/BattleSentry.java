@@ -85,7 +85,7 @@ public class BattleSentry extends Slime {
 
     @Override
     public void tick() {
-        if (this.level.getNearestPlayer(this.getX(), this.getY(), this.getZ(), 8.0, EntitySelector.NO_SPECTATORS) != null) {
+        if (this.level().getNearestPlayer(this.getX(), this.getY(), this.getZ(), 8.0, EntitySelector.NO_SPECTATORS) != null) {
             if (!this.isAwake()) {
                 if (this.timeSpotted >= 24) {
                     this.setAwake(true);

@@ -12,7 +12,7 @@ public class EntityListener {
     @SubscribeEvent
     public static void disableSpawn(MobSpawnEvent.FinalizeSpawn event){
         LivingEntity zephyr = event.getEntity();
-        if (zephyr.getType() == AetherEntityTypes.ZEPHYR.get() && !zephyr.getLevel().isClientSide() && zephyr.getLevel().isNight()) {
+        if (zephyr.getType() == AetherEntityTypes.ZEPHYR.get() && !zephyr.level().isClientSide() && zephyr.level().isNight()) {
             event.setSpawnCancelled(true);
         }
     }
@@ -20,7 +20,7 @@ public class EntityListener {
     @SubscribeEvent
     public static void forceDespawn(MobSpawnEvent.AllowDespawn event) {
         LivingEntity zephyr = event.getEntity();
-        if (zephyr.getType() == AetherEntityTypes.ZEPHYR.get() && !zephyr.getLevel().isClientSide() && zephyr.getLevel().isNight() && zephyr.getRandom().nextInt(100) == 0) {
+        if (zephyr.getType() == AetherEntityTypes.ZEPHYR.get() && !zephyr.level().isClientSide() && zephyr.level().isNight() && zephyr.getRandom().nextInt(100) == 0) {
             event.setResult(Event.Result.ALLOW);
         }
     }

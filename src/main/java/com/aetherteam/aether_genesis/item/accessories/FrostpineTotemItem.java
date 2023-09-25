@@ -20,7 +20,7 @@ public class FrostpineTotemItem extends CompanionItem<FrostpineTotem> {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         LivingEntity livingEntity = slotContext.entity();
-        if (!livingEntity.getLevel().isClientSide()) {
+        if (!livingEntity.level().isClientSide()) {
             boolean noEffect = true;
             for (MobEffectInstance effect : livingEntity.getActiveEffects()) {
                 if (effect.toString().equals(TOTEM_NIGHT_VISION_EFFECT.toString())) {
@@ -38,7 +38,7 @@ public class FrostpineTotemItem extends CompanionItem<FrostpineTotem> {
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         LivingEntity livingEntity = slotContext.entity();
-        if (!livingEntity.getLevel().isClientSide()) {
+        if (!livingEntity.level().isClientSide()) {
             boolean hasEffect = false;
             for (MobEffectInstance effect : livingEntity.getActiveEffects()) {
                 if (effect.toString().equals(TOTEM_NIGHT_VISION_EFFECT.toString())) {

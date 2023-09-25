@@ -76,13 +76,13 @@ public class ShadeOfArkenzusModel extends EntityModel<ShadeOfArkenzus> {
 		this.leftArm.yRot = 0.0F;
 
 		float sinage = ageInTicks;
-		if (!entity.isOnGround()) {
+		if (!entity.onGround()) {
 			sinage *= 0.75F;
 		} else {
 			sinage *= 0.15F;
 		}
 		float targetYRot = Mth.sin(sinage) / 6.0F + 0.25F;
-		float targetZRot = Mth.cos(sinage) / (entity.isOnGround() ? 8.0F : 3.0F) - 0.125F;
+		float targetZRot = Mth.cos(sinage) / (entity.onGround() ? 8.0F : 3.0F) - 0.125F;
 		this.leftWing.yRot = targetYRot;
 		this.leftWing.zRot = targetZRot;
 		this.rightWing.yRot = -targetYRot;

@@ -41,18 +41,18 @@ public class ContinuumBomb extends ThrowableItemProjectile {
                     double motX = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
                     double motY = 1.0D;
                     double motZ = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-                    if (!this.level.isClientSide) {
+                    if (!this.level().isClientSide) {
                         ItemStack reward = Items.DIAMOND.getDefaultInstance();
-                        RewardItem entity = new RewardItem(this.level, this.getX(), this.getY(), this.getZ(), reward);
+                        RewardItem entity = new RewardItem(this.level(), this.getX(), this.getY(), this.getZ(), reward);
                         entity.setDeltaMovement(motX, motY, motZ);
-                        this.level.addFreshEntity(entity);
+                        this.level().addFreshEntity(entity);
                     }
                     for (int sparkCount = 1; sparkCount <= 10; sparkCount++) {
                         motX = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
                         motY = this.random.nextDouble();
                         motZ = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-                        this.level.addParticle(ParticleTypes.AMBIENT_ENTITY_EFFECT, this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
-                        this.level.addParticle(ParticleTypes.CLOUD, this.getX(), this.getY(), this.getZ(), motX / 6.0D, motY / 6.0D, motZ / 6.0D);
+                        this.level().addParticle(ParticleTypes.AMBIENT_ENTITY_EFFECT, this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
+                        this.level().addParticle(ParticleTypes.CLOUD, this.getX(), this.getY(), this.getZ(), motX / 6.0D, motY / 6.0D, motZ / 6.0D);
                     }
                 }
                 this.partyTime++;
@@ -61,8 +61,8 @@ public class ContinuumBomb extends ThrowableItemProjectile {
                     double motX = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
                     double motY = this.random.nextDouble();
                     double motZ = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-                    this.level.addParticle(ParticleTypes.AMBIENT_ENTITY_EFFECT, this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
-                    this.level.addParticle(ParticleTypes.CLOUD, this.getX(), this.getY(), this.getZ(), motX / 6.0D, motY / 6.0D, motZ / 6.0D);
+                    this.level().addParticle(ParticleTypes.AMBIENT_ENTITY_EFFECT, this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
+                    this.level().addParticle(ParticleTypes.CLOUD, this.getX(), this.getY(), this.getZ(), motX / 6.0D, motY / 6.0D, motZ / 6.0D);
                 }
                 discard();
             }
