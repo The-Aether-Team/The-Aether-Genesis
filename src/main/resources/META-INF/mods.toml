@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[45,)"
+loaderVersion = "[47,)"
 license = "Assets: All Rights Reserved; Code: LGPL-3.0"
 issueTrackerURL = "https://github.com/The-Aether-Team/The-Aether-Genesis/issues"
 
@@ -19,18 +19,18 @@ description = '''
 [[dependencies.aether_genesis]]
 modId = "forge"
 mandatory = true
-versionRange = "[45.1.0,]"
+versionRange = "[47,]"
 ordering = "NONE"
 side = "BOTH"
 [[dependencies.aether_genesis]]
 modId = "aether"
 mandatory = true
-versionRange = "[1.19.4-1.0.0-beta.5.1-forge,)"
+versionRange = "[1.20.1-1.0.0-beta.1.2-neoforge,)"
 ordering = "NONE"
 side = "BOTH"
 [[dependencies.aether_genesis]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.4]"
+versionRange = "[1.20.1]"
 ordering = "NONE"
 side = "BOTH"
