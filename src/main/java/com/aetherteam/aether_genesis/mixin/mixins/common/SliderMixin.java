@@ -1,7 +1,7 @@
 package com.aetherteam.aether_genesis.mixin.mixins.common;
 
 
-import com.aetherteam.aether.entity.monster.dungeon.boss.slider.Slider;
+import com.aetherteam.aether.entity.monster.dungeon.boss.Slider;
 import com.aetherteam.aether_genesis.GenesisConfig;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.HoverEvent;
@@ -16,8 +16,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(Slider.class)
 public class SliderMixin {
 
-    @Redirect(method = "hurt", at = @At(value = "INVOKE", target = "Lcom/aetherteam/aether/entity/monster/dungeon/boss/slider/Slider;displayInvalidToolMessage(Lnet/minecraft/world/entity/player/Player;)V"))
-    public void displayInvalidToolMessage(Slider instance, Player player)
+    @Redirect(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;sendSystemMessage(Lnet/minecraft/network/chat/Component;)V"))
+    public void displayInvalidToolMessage(Player player, Component component)
     {
         if (GenesisConfig.COMMON.improved_slider_message.get()) {
             ItemStack stack = player.getMainHandItem();
@@ -29,7 +29,7 @@ public class SliderMixin {
             } else {
                 player.sendSystemMessage(Component.translatable("gui.aether_genesis.slider.message.attack.invalid_fist"));
             }
-        } else { instance.displayInvalidToolMessage(player); }
+        } else { player.sendSystemMessage(component); }
     }
 
 
