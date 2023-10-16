@@ -12,6 +12,7 @@
     "common.BlueAercloudBlockMixin",
     "common.ItemMixin",
     "common.ParachuteMixin",
+    "common.SliderMixin",
     "common.PortalSoundUtilMixin",
     "common.StructurePieceMixin",
     "common.SwetMixin",
