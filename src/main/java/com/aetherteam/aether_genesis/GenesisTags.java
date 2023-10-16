@@ -3,6 +3,7 @@ package com.aetherteam.aether_genesis;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -19,12 +20,24 @@ public class GenesisTags {
     }
 
     public static class Items {
+        public static final TagKey<Item> SKYROOT_LADDER_CRAFTING = tag("skyroot_ladder_crafting");
+        public static final TagKey<Item> HOLYSTONE_FURNACE_CRAFTING = tag("holystone_furnace_crafting");
+
         public static final TagKey<Item> LOG_WALLS = tag("log_walls");
         public static final TagKey<Item> SWET_JELLY = tag("swet_jelly");
         public static final TagKey<Item> DARTS = tag("darts");
 
         private static TagKey<Item> tag(String name) {
             return TagKey.create(Registries.ITEM, new ResourceLocation(Genesis.MODID, name));
+        }
+    }
+
+    public static class Entities {
+        public static final TagKey<EntityType<?>> COMPANIONS = tag("companions");
+        public static final TagKey<EntityType<?>> NO_PRESENT_DROPS = tag("no_present_drops");
+
+        private static TagKey<EntityType<?>> tag(String name) {
+            return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(Genesis.MODID, name));
         }
     }
 

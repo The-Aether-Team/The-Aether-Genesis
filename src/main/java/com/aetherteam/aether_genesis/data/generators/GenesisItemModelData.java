@@ -33,6 +33,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
 
         this.rotatedItem(GenesisItems.GUARDIAN_KEY.get(), "miscellaneous/");
         this.rotatedItem(GenesisItems.HOST_KEY.get(), "miscellaneous/");
+        this.rotatedItem(GenesisItems.COG_KEY.get(), "miscellaneous/");
 
         this.item(GenesisItems.ICESTONE_POPROCKS.get(), "food/");
         this.item(GenesisItems.COCOATRICE.get(), "food/");
@@ -50,9 +51,18 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.BONE_RING.get(), "accessories/");
         this.item(GenesisItems.CANDY_RING.get(), "accessories/");
         this.item(GenesisItems.SKYROOT_RING.get(), "accessories/");
+        this.item(GenesisItems.LUCKY_BELL.get(), "accessories/");
+        this.item(GenesisItems.SWETTY_PENDANT.get(), "accessories/");
+        this.item(GenesisItems.DAGGERFROST_LOCKET.get(), "accessories/");
         this.dyeableCape(GenesisItems.CAPE.get());
         this.item(GenesisItems.DEXTERITY_CAPE.get(), "accessories/");
         this.item(GenesisItems.MOUSE_EAR_CAP.get(), "accessories/");
+        this.item(GenesisItems.FLEETING_STONE.get(), "accessories/");
+        this.item(GenesisItems.SOARING_STONE.get(), "accessories/");
+        this.item(GenesisItems.ETHEREAL_STONE.get(), "accessories/");
+        this.item(GenesisItems.ORB_OF_ARKENZUS.get(), "accessories/");
+        this.item(GenesisItems.FROSTPINE_TOTEM.get(), "accessories/");
+        this.item(GenesisItems.BABY_PINK_SWET.get(), "accessories/");
 
         this.item(GenesisItems.MUSIC_DISC_AERWHALE.get(), "miscellaneous/");
         this.item(GenesisItems.MUSIC_DISC_APPROACHES.get(), "miscellaneous/");
@@ -65,9 +75,11 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.eggItem(GenesisItems.CARRION_SPROUT_SPAWN_EGG.get());
         this.eggItem(GenesisItems.DARK_SWET_SPAWN_EGG.get());
         this.eggItem(GenesisItems.TEMPEST_SPAWN_EGG.get());
+        this.eggItem(GenesisItems.SKYROOT_CHEST_MIMIC_SPAWN_EGG.get());
         this.eggItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG.get());
         this.eggItem(GenesisItems.TRACKING_GOLEM_SPAWN_EGG.get());
 
+        this.itemBlock(GenesisBlocks.ENCHANTED_GRASS_BLOCK.get());
         this.itemBlock(GenesisBlocks.GREEN_AERCLOUD.get());
         this.itemBlock(GenesisBlocks.PURPLE_AERCLOUD.get());
         this.itemBlock(GenesisBlocks.STORM_AERCLOUD.get());
@@ -97,8 +109,22 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
 
         this.itemBlock(GenesisBlocks.CARVED_PILLAR.get());
         this.itemBlock(GenesisBlocks.CARVED_PILLAR_SIDE.get());
+        this.lookalikeBlock(GenesisBlocks.SKYROOT_CHEST_MIMIC.get(), this.mcLoc("item/chest"));
         this.itemBlock(GenesisBlocks.DIVINE_SENTRY_STONE.get());
-        this.itemBlock(GenesisBlocks.DIVINE_CRAVED_STONE.get());
+        this.itemBlock(GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.itemLockedDungeonBlock(GenesisBlocks.LOCKED_DIVINE_CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.itemLockedDungeonBlock(GenesisBlocks.LOCKED_DIVINE_SENTRY_STONE.get(), GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.itemTrappedDungeonBlock(GenesisBlocks.TRAPPED_DIVINE_CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.itemTrappedDungeonBlock(GenesisBlocks.TRAPPED_DIVINE_SENTRY_STONE.get(), GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.itemBossDoorwayDungeonBlock(GenesisBlocks.BOSS_DOORWAY_DIVINE_CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.itemBossDoorwayDungeonBlock(GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE.get(), GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.itemTreasureDoorwayDungeonBlock(GenesisBlocks.TREASURE_DOORWAY_DIVINE_CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.itemTreasureDoorwayDungeonBlock(GenesisBlocks.TREASURE_DOORWAY_DIVINE_SENTRY_STONE.get(), GenesisBlocks.DIVINE_SENTRY_STONE.get());
+
+        this.itemWallBlock(GenesisBlocks.DIVINE_CARVED_WALL.get(), GenesisBlocks.DIVINE_CARVED_STONE.get(), "dungeon/");
+        this.itemBlock(GenesisBlocks.DIVINE_CARVED_STAIRS.get());
+        this.itemBlock(GenesisBlocks.DIVINE_CARVED_SLAB.get());
+
         this.itemBlock(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get());
     }
 }

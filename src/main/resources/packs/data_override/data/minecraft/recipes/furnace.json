@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "type": "forge:difference",
+      "base": {
+        "tag": "minecraft:stone_crafting_materials"
+      },
+      "subtracted": {
+        "tag": "aether_genesis:holystone_furnace_crafting"
+      }
+    }
+  },
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "result": {
+    "item": "minecraft:furnace"
+  },
+  "show_notification": true
+}

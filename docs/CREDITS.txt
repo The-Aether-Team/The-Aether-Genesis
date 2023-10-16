@@ -16,10 +16,12 @@ KELETU66666
 - Implementation of Skyroot Ring.
 - Implementation of Continuum Bomb.
 - Implementation of dungeon blocks.
+- Implementation of Skyroot Chest Mimic.
 - Implementation of Battle Sentry.
 - Implementation of Tracking Golem.
 - Implementation of Sentry Guardian.
 - Implementation of Slider Host Mimic.
+- Implementation of Labyrinth Eye.
 
 StockiesLad
 - Improvement of Purple Aercloud features to make them spawn with random rotation.
@@ -29,5 +31,9 @@ sunsette
 
 Zepalesque
 - Implementation of a custom music manager for nighttime tracks.
+- Implementation of the new portal sounds.
 - Implementation of the bounce sound for Blue Aerclouds.
+- Implementation of Tempest sound events.
 - Improvements to Tempest code and behavior.
+- Improvements to Blue Aercloud sound.
+- Fixes to Tempest texture.

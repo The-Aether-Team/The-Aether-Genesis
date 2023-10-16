@@ -1,8 +1,9 @@
 package com.aetherteam.aether_genesis.item;
 
+import com.aetherteam.aether.client.AetherSoundEvents;
+import com.aetherteam.aether.item.accessories.pendant.PendantItem;
 import com.aetherteam.aether.item.food.GummySwetItem;
 import com.aetherteam.aether.item.materials.SwetBallItem;
-import com.aetherteam.aether.item.miscellaneous.AetherRecordItem;
 import com.aetherteam.aether.item.miscellaneous.DungeonKeyItem;
 import com.aetherteam.aether.item.miscellaneous.ParachuteItem;
 import com.aetherteam.aether_genesis.Genesis;
@@ -15,6 +16,7 @@ import com.aetherteam.aether_genesis.item.materials.ContinuumOrbItem;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.RecordItem;
 import net.minecraft.world.item.SpawnEggItem;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
@@ -54,18 +56,29 @@ public class GenesisItems {
     public static final RegistryObject<Item> CANDY_RING = ITEMS.register("candy_ring", () -> new CandyRingItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> SKYROOT_RING = ITEMS.register("skyroot_ring", () -> new SkyrootRingItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
 
+    public static final RegistryObject<Item> LUCKY_BELL = ITEMS.register("lucky_bell", () -> new PendantItem(new ResourceLocation(Genesis.MODID, "lucky_bell"), AetherSoundEvents.ITEM_ACCESSORY_EQUIP_ICE_PENDANT, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final RegistryObject<Item> SWETTY_PENDANT = ITEMS.register("swetty_pendant", () -> new SwettyPendantItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final RegistryObject<Item> DAGGERFROST_LOCKET = ITEMS.register("daggerfrost_locket", () -> new PendantItem(new ResourceLocation(Genesis.MODID, "daggerfrost_locket"), AetherSoundEvents.ITEM_ACCESSORY_EQUIP_ICE_PENDANT, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+
     public static final RegistryObject<Item> CAPE = ITEMS.register("cape", () -> new DyeableCapeItem("white_cape", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> DEXTERITY_CAPE = ITEMS.register("dexterity_cape", () -> new DexterityCapeItem("dexterity_cape", new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
 
     public static final RegistryObject<Item> MOUSE_EAR_CAP = ITEMS.register("mouse_ear_cap", () -> new MouseEarCapItem(new Item.Properties().stacksTo(1)));
 
+    public static final RegistryObject<Item> FLEETING_STONE = ITEMS.register("fleeting_stone", () -> new FleetingStoneItem(GenesisEntityTypes.FLEETING_WISP, new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SOARING_STONE = ITEMS.register("soaring_stone", () -> new SoaringStoneItem(GenesisEntityTypes.SOARING_WISP, new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> ETHEREAL_STONE = ITEMS.register("ethereal_stone", () -> new EtherealStoneItem(GenesisEntityTypes.ETHEREAL_WISP, new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> ORB_OF_ARKENZUS = ITEMS.register("orb_of_arkenzus", () -> new OrbOfArkenzus(GenesisEntityTypes.SHADE_OF_ARKENZUS, new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> FROSTPINE_TOTEM = ITEMS.register("frostpine_totem", () -> new FrostpineTotemItem(GenesisEntityTypes.FROSTPINE_TOTEM, new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> BABY_PINK_SWET = ITEMS.register("baby_pink_swet", () -> new BabyPinkSwetItem(GenesisEntityTypes.BABY_PINK_SWET, new Item.Properties().stacksTo(1)));
+
     public static final RegistryObject<Item> PHOENIX_DART_SHOOTER = ITEMS.register("phoenix_dart_shooter", () -> new PhoenixDartShooterItem(GOLDEN_DART, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> CONTINUUM_BOMB = ITEMS.register("continuum_bomb", () -> new ContinuumBombItem(new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 
-    public static final RegistryObject<Item> MUSIC_DISC_AERWHALE = ITEMS.register("music_disc_aerwhale", () -> new AetherRecordItem(5, GenesisSoundEvents.ITEM_MUSIC_DISC_AERWHALE, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 3560));
-    public static final RegistryObject<Item> MUSIC_DISC_APPROACHES = ITEMS.register("music_disc_approaches", () -> new AetherRecordItem(6, GenesisSoundEvents.ITEM_MUSIC_DISC_APPROACHES, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 5480));
-    public static final RegistryObject<Item> MUSIC_DISC_DEMISE = ITEMS.register("music_disc_demise", () -> new AetherRecordItem(7, GenesisSoundEvents.ITEM_MUSIC_DISC_DEMISE, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 6000));
-    public static final RegistryObject<Item> RECORDING_892 = ITEMS.register("recording_892", () -> new AetherRecordItem(8, GenesisSoundEvents.ITEM_RECORDING_892, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 1940));
+    public static final RegistryObject<Item> MUSIC_DISC_AERWHALE = ITEMS.register("music_disc_aerwhale", () -> new RecordItem(5, GenesisSoundEvents.ITEM_MUSIC_DISC_AERWHALE, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 3560));
+    public static final RegistryObject<Item> MUSIC_DISC_APPROACHES = ITEMS.register("music_disc_approaches", () -> new RecordItem(6, GenesisSoundEvents.ITEM_MUSIC_DISC_APPROACHES, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 5480));
+    public static final RegistryObject<Item> MUSIC_DISC_DEMISE = ITEMS.register("music_disc_demise", () -> new RecordItem(7, GenesisSoundEvents.ITEM_MUSIC_DISC_DEMISE, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 6000));
+    public static final RegistryObject<Item> RECORDING_892 = ITEMS.register("recording_892", () -> new RecordItem(8, GenesisSoundEvents.ITEM_RECORDING_892, new Item.Properties().stacksTo(1).rarity(Rarity.RARE), 1940));
 
     public static final RegistryObject<Item> BLUE_PARACHUTE = ITEMS.register("blue_parachute", () -> new ParachuteItem(GenesisEntityTypes.BLUE_PARACHUTE, new Item.Properties().durability(1)));
     public static final RegistryObject<Item> GREEN_PARACHUTE = ITEMS.register("green_parachute", () -> new ParachuteItem(GenesisEntityTypes.GREEN_PARACHUTE, new Item.Properties().durability(1)));
@@ -73,11 +86,13 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> GUARDIAN_KEY = ITEMS.register("guardian_key", () -> new DungeonKeyItem(new ResourceLocation(Genesis.MODID, "guardian"), new Item.Properties().stacksTo(1).rarity(AETHER_LOOT).fireResistant()));
     public static final RegistryObject<Item> HOST_KEY = ITEMS.register("host_key", () -> new DungeonKeyItem(new ResourceLocation(Genesis.MODID, "host"), new Item.Properties().stacksTo(1).rarity(AETHER_LOOT).fireResistant()));
+    public static final RegistryObject<Item> COG_KEY = ITEMS.register("cog_key", () -> new DungeonKeyItem(new ResourceLocation(Genesis.MODID, "cog"), new Item.Properties().stacksTo(1).rarity(AETHER_LOOT).fireResistant()));
 
     public static final RegistryObject<SpawnEggItem> CARRION_SPROUT_SPAWN_EGG = ITEMS.register("carrion_sprout_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntityTypes.CARRION_SPROUT, 0xC9D8E9, 0x597898, new Item.Properties()));
     public static final RegistryObject<SpawnEggItem> DARK_SWET_SPAWN_EGG = ITEMS.register("dark_swet_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntityTypes.DARK_SWET, 0x947DC4, 0x4FB1DA, new Item.Properties()));
     public static final RegistryObject<SpawnEggItem> TEMPEST_SPAWN_EGG = ITEMS.register("tempest_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntityTypes.TEMPEST, 0x3C464C, 0xC3E6F0, new Item.Properties()));
 
+    public static final RegistryObject<SpawnEggItem> SKYROOT_CHEST_MIMIC_SPAWN_EGG = ITEMS.register("skyroot_chest_mimic_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntityTypes.SKYROOT_MIMIC, 0x696B51,0x47443A, new Item.Properties()));
     public static final RegistryObject<SpawnEggItem> BATTLE_SENTRY_SPAWN_EGG = ITEMS.register("battle_sentry_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntityTypes.BATTLE_SENTRY, 0x808080,0x3A8AEC, new Item.Properties()));
     public static final RegistryObject<SpawnEggItem> TRACKING_GOLEM_SPAWN_EGG = ITEMS.register("tracking_golem_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntityTypes.TRACKING_GOLEM, 0x808080,0x3A8AEC, new Item.Properties()));
 }

@@ -28,6 +28,7 @@ public class GenesisCreativeTabs {
 
         }
         if (tab == AetherCreativeTabs.AETHER_NATURAL_BLOCKS) {
+            event.getEntries().putAfter(new ItemStack(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get()), new ItemStack(GenesisBlocks.ENCHANTED_GRASS_BLOCK.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(AetherBlocks.SKYROOT_LOG.get()), new ItemStack(GenesisBlocks.SKYROOT_LOG_WALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(AetherBlocks.GOLDEN_AERCLOUD.get()), new ItemStack(GenesisBlocks.GREEN_AERCLOUD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.GREEN_AERCLOUD.get()), new ItemStack(GenesisBlocks.PURPLE_AERCLOUD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -52,16 +53,27 @@ public class GenesisCreativeTabs {
             event.getEntries().putAfter(new ItemStack(GenesisItems.MUSIC_DISC_APPROACHES.get()), new ItemStack(GenesisItems.MUSIC_DISC_APPROACHES.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.MUSIC_DISC_DEMISE.get()), new ItemStack(GenesisItems.MUSIC_DISC_DEMISE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.RECORDING_892.get()), new ItemStack(GenesisItems.RECORDING_892.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-
+            event.getEntries().putAfter(new ItemStack(AetherItems.BRONZE_DUNGEON_KEY.get()), new ItemStack(GenesisItems.GUARDIAN_KEY.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(AetherItems.BRONZE_DUNGEON_KEY.get()), new ItemStack(GenesisItems.HOST_KEY.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(AetherItems.BRONZE_DUNGEON_KEY.get()), new ItemStack(GenesisItems.COG_KEY.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
-        if(tab == AetherCreativeTabs.AETHER_ARMOR_AND_ACCESSORIES) {
+        if (tab == AetherCreativeTabs.AETHER_ARMOR_AND_ACCESSORIES) {
             event.getEntries().putAfter(new ItemStack(GenesisItems.CRYSTAL_EXP_BOTTLE.get()), new ItemStack(GenesisItems.CRYSTAL_EXP_BOTTLE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.BONE_RING.get()), new ItemStack(GenesisItems.BONE_RING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.CANDY_RING.get()), new ItemStack(GenesisItems.CANDY_RING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.SKYROOT_RING.get()), new ItemStack(GenesisItems.SKYROOT_RING.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.CAPE.get()), new ItemStack(GenesisItems.CAPE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.DEXTERITY_CAPE.get()), new ItemStack(GenesisItems.DEXTERITY_CAPE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.SWETTY_PENDANT.get()), new ItemStack(GenesisItems.SWETTY_PENDANT.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.LUCKY_BELL.get()), new ItemStack(GenesisItems.LUCKY_BELL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.DAGGERFROST_LOCKET.get()), new ItemStack(GenesisItems.DAGGERFROST_LOCKET.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.MOUSE_EAR_CAP.get()), new ItemStack(GenesisItems.MOUSE_EAR_CAP.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.FLEETING_STONE.get()), new ItemStack(GenesisItems.FLEETING_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.SOARING_STONE.get()), new ItemStack(GenesisItems.SOARING_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.ETHEREAL_STONE.get()), new ItemStack(GenesisItems.ETHEREAL_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.ORB_OF_ARKENZUS.get()), new ItemStack(GenesisItems.ORB_OF_ARKENZUS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.FROSTPINE_TOTEM.get()), new ItemStack(GenesisItems.FROSTPINE_TOTEM.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.BABY_PINK_SWET.get()), new ItemStack(GenesisItems.BABY_PINK_SWET.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (tab == AetherCreativeTabs.AETHER_FOOD_AND_DRINKS) {
             event.getEntries().putAfter(new ItemStack(AetherItems.ENCHANTED_BERRY.get()), new ItemStack(GenesisItems.BLUE_SWET_JELLY.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -81,18 +93,17 @@ public class GenesisCreativeTabs {
             event.getEntries().putAfter(new ItemStack(GenesisItems.RAINBOW_STRAWBERRY.get()), new ItemStack(GenesisItems.RAINBOW_STRAWBERRY.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (tab == AetherCreativeTabs.AETHER_INGREDIENTS) {
-            event.getEntries().putAfter(new ItemStack(AetherItems.SWET_BALL.get()), new ItemStack(GenesisItems.GOLDEN_SWET_BALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(GenesisItems.GOLDEN_SWET_BALL.get()), new ItemStack(GenesisItems.DARK_SWET_BALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.GOLDEN_SWET_BALL.get()), new ItemStack(GenesisItems.GOLDEN_SWET_BALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.DARK_SWET_BALL.get()), new ItemStack(GenesisItems.DARK_SWET_BALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.SKYROOT_BOWL.get()), new ItemStack(GenesisItems.SKYROOT_BOWL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.CORNSTARCH_BOWL.get()), new ItemStack(GenesisItems.CORNSTARCH_BOWL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.CONTINUUM_ORB.get()), new ItemStack(GenesisItems.CONTINUUM_ORB.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(AetherItems.BRONZE_DUNGEON_KEY.get()), new ItemStack(GenesisItems.GUARDIAN_KEY.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(AetherItems.BRONZE_DUNGEON_KEY.get()), new ItemStack(GenesisItems.HOST_KEY.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-        }
+            }
         if (tab == AetherCreativeTabs.AETHER_SPAWN_EGGS) {
             event.getEntries().putAfter(new ItemStack(AetherItems.COCKATRICE_SPAWN_EGG.get()), new ItemStack(GenesisItems.CARRION_SPROUT_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(AetherItems.COCKATRICE_SPAWN_EGG.get()), new ItemStack(GenesisItems.DARK_SWET_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(AetherItems.COCKATRICE_SPAWN_EGG.get()), new ItemStack(GenesisItems.TEMPEST_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(AetherItems.COCKATRICE_SPAWN_EGG.get()), new ItemStack(GenesisItems.SKYROOT_CHEST_MIMIC_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(AetherItems.COCKATRICE_SPAWN_EGG.get()), new ItemStack(GenesisItems.BATTLE_SENTRY_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(AetherItems.COCKATRICE_SPAWN_EGG.get()), new ItemStack(GenesisItems.TRACKING_GOLEM_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
@@ -104,8 +115,20 @@ public class GenesisCreativeTabs {
         if (tab == AetherCreativeTabs.AETHER_DUNGEON_BLOCKS) {
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.CARVED_PILLAR_SIDE.get()), new ItemStack(GenesisBlocks.CARVED_PILLAR_SIDE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.CARVED_PILLAR.get()), new ItemStack(GenesisBlocks.CARVED_PILLAR.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(GenesisBlocks.DIVINE_CRAVED_STONE.get()), new ItemStack(GenesisBlocks.DIVINE_CRAVED_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(AetherBlocks.CHEST_MIMIC.get()), new ItemStack(GenesisBlocks.SKYROOT_CHEST_MIMIC.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.DIVINE_CARVED_STONE.get()), new ItemStack(GenesisBlocks.DIVINE_CARVED_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.LOCKED_DIVINE_CARVED_STONE.get()), new ItemStack(GenesisBlocks.LOCKED_DIVINE_CARVED_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.TRAPPED_DIVINE_CARVED_STONE.get()), new ItemStack(GenesisBlocks.TRAPPED_DIVINE_CARVED_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.BOSS_DOORWAY_DIVINE_CARVED_STONE.get()), new ItemStack(GenesisBlocks.BOSS_DOORWAY_DIVINE_CARVED_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.TREASURE_DOORWAY_DIVINE_CARVED_STONE.get()), new ItemStack(GenesisBlocks.TREASURE_DOORWAY_DIVINE_CARVED_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.DIVINE_CARVED_STAIRS.get()), new ItemStack(GenesisBlocks.DIVINE_CARVED_STAIRS.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.DIVINE_CARVED_SLAB.get()), new ItemStack(GenesisBlocks.DIVINE_CARVED_SLAB.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.DIVINE_CARVED_WALL.get()), new ItemStack(GenesisBlocks.DIVINE_CARVED_WALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.DIVINE_SENTRY_STONE.get()), new ItemStack(GenesisBlocks.DIVINE_SENTRY_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.LOCKED_DIVINE_SENTRY_STONE.get()), new ItemStack(GenesisBlocks.LOCKED_DIVINE_SENTRY_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.TRAPPED_DIVINE_SENTRY_STONE.get()), new ItemStack(GenesisBlocks.TRAPPED_DIVINE_SENTRY_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE.get()), new ItemStack(GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisBlocks.TREASURE_DOORWAY_DIVINE_SENTRY_STONE.get()), new ItemStack(GenesisBlocks.TREASURE_DOORWAY_DIVINE_SENTRY_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get()), new ItemStack(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         event.getEntries().remove(new ItemStack(AetherItems.RED_CAPE.get()));

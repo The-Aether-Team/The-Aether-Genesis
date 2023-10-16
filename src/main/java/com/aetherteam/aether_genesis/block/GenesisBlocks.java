@@ -1,28 +1,31 @@
 package com.aetherteam.aether_genesis.block;
 
+import com.aetherteam.aether.block.dungeon.DoorwayBlock;
+import com.aetherteam.aether.block.dungeon.TrappedBlock;
+import com.aetherteam.aether.block.dungeon.TreasureDoorwayBlock;
 import com.aetherteam.aether.block.miscellaneous.FacingPillarBlock;
 import com.aetherteam.aether.block.natural.AercloudBlock;
 import com.aetherteam.aether.block.natural.AetherDoubleDropsLeaves;
 import com.aetherteam.aether.block.natural.LeavesWithParticlesBlock;
-import com.aetherteam.aether.item.block.EntityBlockItem;
+import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.mixin.mixins.common.accessor.FireBlockAccessor;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.container.HolystoneFurnaceBlock;
 import com.aetherteam.aether_genesis.block.container.SkyrootChestBlock;
+import com.aetherteam.aether_genesis.block.container.SkyrootChestMimicBlock;
 import com.aetherteam.aether_genesis.block.container.SkyrootCraftingTableBlock;
 import com.aetherteam.aether_genesis.block.miscellaneous.ColdFireBlock;
-import com.aetherteam.aether_genesis.block.natural.GenesisDoubleDropsWall;
-import com.aetherteam.aether_genesis.block.natural.GreenAercloudBlock;
-import com.aetherteam.aether_genesis.block.natural.OrangeTreeBlock;
-import com.aetherteam.aether_genesis.block.natural.PurpleAercloudBlock;
+import com.aetherteam.aether_genesis.block.natural.*;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.blockentity.SkyrootChestBlockEntity;
+import com.aetherteam.aether_genesis.blockentity.SkyrootChestMimicBlockEntity;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.item.block.WoodenBlockItem;
 import com.aetherteam.aether_genesis.world.treegrower.BlueSkyrootTree;
 import com.aetherteam.aether_genesis.world.treegrower.DarkBlueSkyrootTree;
 import com.aetherteam.aether_genesis.world.treegrower.PurpleCrystalTree;
+import com.aetherteam.nitrogen.item.block.EntityBlockItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.EntityType;
@@ -44,6 +47,8 @@ import java.util.function.Supplier;
 
 public class GenesisBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Genesis.MODID);
+
+    public static final RegistryObject<Block> ENCHANTED_GRASS_BLOCK = register("enchanted_grass_block", () -> new EnchantedGrassBlock(Block.Properties.of(Material.GRASS, MaterialColor.GOLD).randomTicks().strength(0.2F).sound(SoundType.GRASS)));
 
     public static final RegistryObject<Block> GREEN_AERCLOUD = register("green_aercloud", () -> new GreenAercloudBlock(Block.Properties.of(Material.ICE, MaterialColor.COLOR_LIGHT_GREEN).strength(0.3F).sound(SoundType.WOOL).noOcclusion().dynamicShape().isRedstoneConductor(GenesisBlocks::never).isSuffocating(GenesisBlocks::never).isViewBlocking(GenesisBlocks::never)));
     public static final RegistryObject<Block> PURPLE_AERCLOUD = register("purple_aercloud", () -> new PurpleAercloudBlock(Block.Properties.of(Material.ICE, MaterialColor.COLOR_MAGENTA).strength(0.3F).sound(SoundType.WOOL).noOcclusion().dynamicShape().isRedstoneConductor(GenesisBlocks::never).isSuffocating(GenesisBlocks::never).isViewBlocking(GenesisBlocks::never)));
@@ -83,8 +88,31 @@ public class GenesisBlocks {
     public static final RegistryObject<FacingPillarBlock> CARVED_PILLAR = register("carved_pillar", () -> new FacingPillarBlock(Block.Properties.of(Material.STONE).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<RotatedPillarBlock> CARVED_PILLAR_SIDE = register("carved_pillar_side", () -> new RotatedPillarBlock(Block.Properties.of(Material.STONE).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
 
-    public static final RegistryObject<Block> DIVINE_CRAVED_STONE = register("divine_carved_stone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable()));
-    public static final RegistryObject<Block> DIVINE_SENTRY_STONE = register("divine_sentry_stone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable().lightLevel(GenesisBlocks::lightLevel11)));
+    public static final RegistryObject<Block> SKYROOT_CHEST_MIMIC = register("skyroot_chest_mimic", () -> new SkyrootChestMimicBlock(Block.Properties.copy(SKYROOT_CHEST.get()).noLootTable()));
+
+    public static final RegistryObject<Block> DIVINE_CARVED_STONE = register("divine_carved_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> DIVINE_SENTRY_STONE = register("divine_sentry_stone", () -> new Block(Block.Properties.copy(DIVINE_CARVED_STONE.get()).lightLevel(GenesisBlocks::lightLevel11)));
+
+    public static final RegistryObject<Block> LOCKED_DIVINE_CARVED_STONE = register("locked_divine_carved_stone", () -> new Block(Block.Properties.of(Material.STONE).strength(-1.0F, 3600000.0F)));
+    public static final RegistryObject<Block> LOCKED_DIVINE_SENTRY_STONE = register("locked_divine_sentry_stone", () -> new Block(Block.Properties.copy(LOCKED_DIVINE_CARVED_STONE.get()).lightLevel(GenesisBlocks::lightLevel11)));
+
+    public static final RegistryObject<Block> TRAPPED_DIVINE_CARVED_STONE = register("trapped_divine_carved_stone", () -> new TrappedBlock(AetherEntityTypes.SENTRY::get, () -> DIVINE_CARVED_STONE.get().defaultBlockState(), Block.Properties.copy(DIVINE_CARVED_STONE.get())));
+    public static final RegistryObject<Block> TRAPPED_DIVINE_SENTRY_STONE = register("trapped_divine_sentry_stone", () -> new TrappedBlock(AetherEntityTypes.SENTRY::get, () -> DIVINE_SENTRY_STONE.get().defaultBlockState(), Block.Properties.copy(DIVINE_SENTRY_STONE.get())));
+
+    public static final RegistryObject<Block> BOSS_DOORWAY_DIVINE_CARVED_STONE = register("boss_doorway_divine_carved_stone", () -> new DoorwayBlock(AetherEntityTypes.SLIDER::get, BlockBehaviour.Properties.copy(DIVINE_CARVED_STONE.get())));
+    public static final RegistryObject<Block> BOSS_DOORWAY_DIVINE_SENTRY_STONE = register("boss_doorway_divine_sentry_stone", () -> new DoorwayBlock(AetherEntityTypes.SLIDER::get, BlockBehaviour.Properties.copy(DIVINE_SENTRY_STONE.get())));
+
+    public static final RegistryObject<Block> TREASURE_DOORWAY_DIVINE_CARVED_STONE = register("treasure_doorway_divine_carved_stone", () -> new TreasureDoorwayBlock(BlockBehaviour.Properties.copy(DIVINE_CARVED_STONE.get())));
+    public static final RegistryObject<Block> TREASURE_DOORWAY_DIVINE_SENTRY_STONE = register("treasure_doorway_divine_sentry_stone", () -> new TreasureDoorwayBlock(BlockBehaviour.Properties.copy(DIVINE_SENTRY_STONE.get())));
+
+    public static final RegistryObject<WallBlock> DIVINE_CARVED_WALL = register("divine_carved_wall", () -> new WallBlock(Block.Properties.copy(DIVINE_CARVED_STONE.get())));
+
+    public static final RegistryObject<StairBlock> DIVINE_CARVED_STAIRS = register("divine_carved_stairs",
+            () -> new StairBlock(() -> DIVINE_CARVED_STONE.get().defaultBlockState(), Block.Properties.copy(DIVINE_CARVED_STONE.get())));
+
+    public static final RegistryObject<SlabBlock> DIVINE_CARVED_SLAB = register("divine_carved_slab",
+            () -> new SlabBlock(Block.Properties.copy(DIVINE_CARVED_STONE.get()).strength(0.5F, 6.0F)));
+
     public static final RegistryObject<Block> BLOOD_MOSS_HOLYSTONE = register("blood_moss_holystone", () -> new Block(Block.Properties.copy(Blocks.BEDROCK).noLootTable()));
 
     public static final RegistryObject<ColdFireBlock> COLD_FIRE = BLOCKS.register("cold_fire", () -> new ColdFireBlock(BlockBehaviour.Properties.of(Material.FIRE, MaterialColor.COLOR_LIGHT_BLUE).noCollission().instabreak().lightLevel((state) -> 10).sound(SoundType.WOOL)));
@@ -125,7 +153,9 @@ public class GenesisBlocks {
                 return new WoodenBlockItem(block, new Item.Properties());
             } else if (block == SKYROOT_CHEST.get()) {
                 return new EntityBlockItem(block, SkyrootChestBlockEntity::new, new Item.Properties());
-            }else {
+            }else if (block == SKYROOT_CHEST_MIMIC.get()) {
+                return new EntityBlockItem(block, SkyrootChestMimicBlockEntity::new, new Item.Properties());
+            } else {
                 return new BlockItem(block, new Item.Properties());
             }
         };

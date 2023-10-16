@@ -5,15 +5,22 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "aether_genesis.refmap.json",
   "mixins": [
+    "client.accessor.SoundEngineAccessor",
     "common.AercloudBlockMixin",
+    "common.AetherPlayerCapabilityMixin",
+    "common.AetherPortalBlockMixin",
     "common.BlueAercloudBlockMixin",
     "common.ItemMixin",
     "common.ParachuteMixin",
     "common.SliderMixin",
+    "common.PortalSoundUtilMixin",
+    "common.StructurePieceMixin",
+    "common.SwetMixin",
     "common.accessor.WallBlockAccessor"
   ],
   "client": [
     "client.CapeLayerMixin",
+    "client.EffectRenderingInventoryScreenMixin",
     "client.ElytraLayerMixin",
     "client.accessor.ElytraLayerAccessor",
     "client.accessor.PlayerModelAccessor"

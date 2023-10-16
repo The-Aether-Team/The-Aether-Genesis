@@ -3,15 +3,12 @@
   "category": "misc",
   "key": {
     "#": {
-      "tag": "aether:skyroot_stick"
-    },
-    "S": {
-      "item": "aether:skyroot_planks"
+      "tag": "aether_genesis:skyroot_ladder_crafting"
     }
   },
   "pattern": [
     "# #",
-    "#S#",
+    "###",
     "# #"
   ],
   "result": {

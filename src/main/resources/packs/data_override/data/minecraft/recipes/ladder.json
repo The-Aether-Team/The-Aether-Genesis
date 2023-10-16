@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "type": "forge:difference",
+      "base": {
+        "tag": "forge:rods/wooden"
+      },
+      "subtracted": {
+        "tag": "aether_genesis:skyroot_ladder_crafting"
+      }
+    }
+  },
+  "pattern": [
+    "# #",
+    "###",
+    "# #"
+  ],
+  "result": {
+    "count": 3,
+    "item": "minecraft:ladder"
+  },
+  "show_notification": true
+}

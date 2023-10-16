@@ -91,7 +91,7 @@ public class HostEye extends PathfinderMob {
                     stop();
                     this.timer = 0;
                     if (!this.level.isClientSide)
-                        setHealth(0);
+                        discard();
                     return;
                 }
             }
@@ -101,7 +101,7 @@ public class HostEye extends PathfinderMob {
             stop();
             this.timer = 0;
             if (!this.level.isClientSide)
-                setHealth(0);
+                discard();
             return;
         }
         if (!this.host.canAttack(this.getTarget())) {
@@ -109,7 +109,7 @@ public class HostEye extends PathfinderMob {
             stop();
             this.timer = 0;
             if (!this.level.isClientSide)
-                setHealth(0);
+                discard();
             return;
         }
         this.fallDistance = 0.0F;

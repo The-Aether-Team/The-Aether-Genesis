@@ -6,7 +6,7 @@ orbs:
 parameters:
   artifact-name:
     type: string
-    default: aether_genesis
+    default: aether_genesis-1.19.4-0.0.1-forge.jar
 
 jobs:
   build:
@@ -18,16 +18,18 @@ jobs:
       GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.logging.level=info
     steps:
       - setup
-      - persist_to_workspace:
-          root: ~/project/build/libs
-          paths:
-            - << pipeline.parameters.artifact-name >>-*.jar
 
 commands:
   setup:
     steps:
       - checkout
-      - run: gradle build --console=plain
+      - gradle/with_cache:
+          cache_key: 'v1'
+          steps:
+            - run:
+                name: chmod permissions
+                command: chmod +x ./gradlew
+            - run: ./gradlew build --parallel --console=plain
       - store_artifacts:
           path: ~/project/build/libs
 

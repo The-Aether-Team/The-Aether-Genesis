@@ -19,7 +19,7 @@ public class BlueAercloudBlockMixin {
     private void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, CallbackInfo ci) {
         if (!entity.isShiftKeyDown()) {
             level.playSound((entity instanceof Player player ? player : (Player) null), pos, GenesisSoundEvents.BLUE_AERCLOUD_BOUNCE.get(), SoundSource.BLOCKS, 0.8f,
-                    0.9f + (level.random.nextFloat() * 0.2f));
+                    0.5f + (((float)(Math.pow(level.random.nextDouble(), 2.5))) * 0.5f));
         }
     }
 }

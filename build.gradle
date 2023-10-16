@@ -1,67 +1,67 @@
 plugins {
+    id 'eclipse'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '5.1.+'
-    id 'org.spongepowered.mixin' version '0.7.+'
-    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
-    id 'io.github.0ffz.github-packages' version '1.+'
-    id 'com.matthewprenger.cursegradle' version '1.4.+'
-    id 'com.modrinth.minotaur' version '2.+'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.spongepowered.mixin' version '[0.7,0.8)'
+    id 'org.parchmentmc.librarian.forgegradle' version '[1,2)'
+    id 'org.moddingx.modgradle.mapping' version '[4,5)'
+    id 'org.moddingx.modgradle.sourcejar' version '[4,5)' apply false
+    id 'io.github.0ffz.github-packages' version '[1,2)'
+    id 'com.matthewprenger.cursegradle' version '[1.4,1.5)'
+    id 'com.modrinth.minotaur' version '[2,3)'
 }
 
-version = "${project.mc_version}-${project.mod_version}-forge"
+version = "${mc_version}-${mod_version}-forge"
 group = 'com.aetherteam.aether_genesis' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = project.mod_id
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17) // Mojang ships Java 8 to end users, so your mod should target Java 8.
+base {
+    archivesName = mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+apply plugin: 'org.moddingx.modgradle.sourcejar'
 
 minecraft {
-    mappings channel: 'parchment', version: project.mappings
+    mappings channel: 'sugarcane', version: project.mappings
+
+    copyIdeResources = true
 
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
     runs {
-        client {
+        configureEach {
             workingDirectory project.file('run')
 
-            //Only uncomment this if you actually need the debug logging! If you enable this the log will be full of incredibly useless information spam
-            //property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            //property 'forge.logging.console.level', 'debug'
+            property "${mod_id}.iside", 'true'
+//            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'info' // info is the default for production
 
             mods {
-                "${project.mod_id}" {
+                "${mod_id}" {
                     source sourceSets.main
                 }
             }
+        }
+
+        client {
+            property 'forge.enabledGameTestNamespaces', mod_id
         }
 
         server {
-            workingDirectory project.file('run')
+            property 'forge.enabledGameTestNamespaces', mod_id
 
-            //property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            //property 'forge.logging.console.level', 'debug'
+            args '--nogui'
+        }
 
-            mods {
-                "${project.mod_id}" {
-                    source sourceSets.main
-                }
-            }
+        gameTestServer {
+            property 'forge.enabledGameTestNamespaces', mod_id
         }
 
         data {
-            workingDirectory project.file('run')
-
-            //property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            //property 'forge.logging.console.level', 'debug'
-
-            args '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), '--existing', file('src/generated/resources/'), '--existing-mod', 'aether'
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), '--existing', file('src/generated/resources/'), '--existing-mod', 'aether'
 
             environment 'target', 'fmluserdevdata'
-
-            mods {
-                "${project.mod_id}" {
-                    source sourceSets.main
-                }
-            }
         }
     }
 }
@@ -75,24 +75,14 @@ dependencies {
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
-//    compileOnly "com.aetherteam.nitrogen:nitrogen:${project.nitrogen_version}"
-//    runtimeOnly fg.deobf("com.aetherteam.nitrogen:nitrogen:${project.nitrogen_version}")
-
     //implementation fg.deobf("com.aetherteam.aether:aether:${project.aether_version}")
     implementation fg.deobf("local:aether:${project.aether_version}")
 
+    implementation fg.deobf("com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}")
+    implementation fg.deobf("com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}")
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${project.curios_version}")
 
-//    runtimeOnly(fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}"))
-
-//    runtimeOnly fg.deobf("io.github.flemmli97:debugutils:${project.mc_version}-${project.debugutils_version}-forge")
-
-//    jarJar fg.deobf("com.aetherteam.nitrogen:nitrogen:${project.nitrogen_version}") {
-//        jarJar.ranged(it, "[${project.nitrogen_version},)")
-//        jarJar.pin(it, "${project.nitrogen_version}")
-//    }
-
-    //compileOnly fileTree(dir: 'libs', include: '*.jar')
+    runtimeOnly fg.deobf("io.github.flemmli97:debugutils:${project.mc_version}-${project.debugutils_version}-forge")
 }
 
 repositories {
@@ -101,13 +91,15 @@ repositories {
     maven { url = "https://www.cursemaven.com" }
     maven { url = "https://gitlab.com/api/v4/projects/21830712/packages/maven" }
 //    maven githubPackage.invoke("The-Aether-Team/The-Aether")
+    maven githubPackage.invoke("The-Aether-Team/Nitrogen")
+    maven githubPackage.invoke("The-Aether-Team/Cumulus")
     flatDir {
         dir 'libs'
     }
 //    maven githubPackage.invoke("The-Aether-Team/Nitrogen")
 }
 
-jar {
+tasks.named('jar', Jar).configure {
     manifest {
         attributes([
                 "Specification-Title"     : project.mod_name,
@@ -116,27 +108,62 @@ jar {
                 "Implementation-Title"    : project.mod_name,
                 "Implementation-Version"  : project.jar.archiveVersion,
                 "Implementation-Vendor"   : "The Aether Team",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
-}
 
-task sourcesJar(type: Jar) {
-    archiveClassifier.set('sources')
-    from sourceSets.main.allJava
-}
-
-artifacts {
-    archives sourcesJar
-}
-
-tasks.named(sourceSets.main.compileJavaTaskName) {
-    outputs.file("${it.temporaryDir}/${it.name}-refmap.json").withPropertyName("mixin refmap")
+    finalizedBy 'reobfJar'
 }
 
 compileJava {
     options.incremental = false
 }
+
+//publishing {
+//    publications {
+//        mavenJava(MavenPublication) {
+//            artifactId project.archivesBaseName
+//            artifact jar
+//            artifact sourceJar
+//        }
+//    }
+//    repositories {
+//        maven {
+//            name = "GitHubPackages"
+//            url = "https://maven.pkg.github.com/The-Aether-Team/Example-Mod"
+//            credentials {
+//                username = System.getenv("GITHUB_ACTOR")
+//                password = System.getenv("GITHUB_TOKEN")
+//            }
+//        }
+//    }
+//}
+//
+//curseforge {
+//    project {
+//        apiKey = System.getenv("CURSEFORGE_TOKEN")
+//        id = "${project.curseforge_id}"
+//        releaseType = "${project.version_type}"
+//        changelog = file("$rootDir/docs/CHANGELOG.md")
+//        changelogType = "markdown"
+//        addGameVersion("${project.mc_version}")
+//        mainArtifact(tasks.jar) {
+//            displayName = "${project.mod_name} - ${version}"
+//        }
+//    }
+//}
+//
+//modrinth {
+//    token = System.getenv("MODRINTH_TOKEN")
+//    projectId = "${project.modrinth_id}"
+//    versionNumber = "${version}"
+//    versionType = "${project.version_type}"
+//    versionName = "${project.mod_name} - ${version}"
+//    changelog = new File("$rootDir/docs/CHANGELOG.md").text
+//    uploadFile = tasks.jar
+//    gameVersions = ["${project.mc_version}"]
+//    loaders = ["forge"]
+//}
 
 mixin {
     config "${project.mod_id}.mixins.json"

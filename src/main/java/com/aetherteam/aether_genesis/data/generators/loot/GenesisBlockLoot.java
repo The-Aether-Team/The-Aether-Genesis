@@ -8,6 +8,7 @@ import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,6 +24,7 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
 
     @Override
     public void generate() {
+        this.add(GenesisBlocks.ENCHANTED_GRASS_BLOCK.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, Blocks.DIRT));
         this.dropSelfDouble(GenesisBlocks.GREEN_AERCLOUD.get());
         this.dropSelfDouble(GenesisBlocks.PURPLE_AERCLOUD.get());
         this.dropSelfDouble(GenesisBlocks.STORM_AERCLOUD.get());
@@ -57,6 +59,19 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
 
         this.dropSelf(GenesisBlocks.CARVED_PILLAR.get());
         this.dropSelf(GenesisBlocks.CARVED_PILLAR_SIDE.get());
+        this.dropSelf(GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.dropSelf(GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.dropNone(GenesisBlocks.LOCKED_DIVINE_CARVED_STONE.get());
+        this.dropNone(GenesisBlocks.LOCKED_DIVINE_SENTRY_STONE.get());
+        this.dropNone(GenesisBlocks.TRAPPED_DIVINE_CARVED_STONE.get());
+        this.dropNone(GenesisBlocks.TRAPPED_DIVINE_SENTRY_STONE.get());
+        this.dropNone(GenesisBlocks.BOSS_DOORWAY_DIVINE_CARVED_STONE.get());
+        this.dropNone(GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE.get());
+        this.dropNone(GenesisBlocks.TREASURE_DOORWAY_DIVINE_CARVED_STONE.get());
+        this.dropNone(GenesisBlocks.TREASURE_DOORWAY_DIVINE_SENTRY_STONE.get());
+        this.dropSelf(GenesisBlocks.DIVINE_CARVED_WALL.get());
+        this.dropSelf(GenesisBlocks.DIVINE_CARVED_STAIRS.get());
+        this.dropSelf(GenesisBlocks.DIVINE_CARVED_SLAB.get());
 
         this.dropNone(GenesisBlocks.COLD_FIRE.get());
     }

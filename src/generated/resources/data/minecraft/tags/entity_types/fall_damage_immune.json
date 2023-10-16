@@ -2,6 +2,7 @@
   "values": [
     "aether_genesis:tempest",
     "aether_genesis:sentry_guardian",
+    "aether_genesis:labyrinth_eye",
     "aether_genesis:slider_host_mimic"
   ]
 }

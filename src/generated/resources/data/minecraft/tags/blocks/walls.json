@@ -3,6 +3,7 @@
     "aether_genesis:skyroot_log_wall",
     "aether_genesis:stripped_skyroot_log_wall",
     "aether_genesis:skyroot_wood_wall",
-    "aether_genesis:stripped_skyroot_wood_wall"
+    "aether_genesis:stripped_skyroot_wood_wall",
+    "aether_genesis:divine_carved_wall"
   ]
 }

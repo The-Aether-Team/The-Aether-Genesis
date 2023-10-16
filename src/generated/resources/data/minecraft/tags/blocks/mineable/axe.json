@@ -6,6 +6,7 @@
     "aether_genesis:stripped_skyroot_wood_wall",
     "aether_genesis:skyroot_chest",
     "aether_genesis:skyroot_crafting_table",
-    "aether_genesis:skyroot_ladder"
+    "aether_genesis:skyroot_ladder",
+    "aether_genesis:skyroot_chest_mimic"
   ]
 }

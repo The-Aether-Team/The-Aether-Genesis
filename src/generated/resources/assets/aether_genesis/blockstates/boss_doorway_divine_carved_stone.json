@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "invisible=false": {
+      "model": "aether_genesis:block/divine_carved_stone"
+    },
+    "invisible=true": {
+      "model": "aether_genesis:block/boss_doorway_divine_carved_stone"
+    }
+  }
+}

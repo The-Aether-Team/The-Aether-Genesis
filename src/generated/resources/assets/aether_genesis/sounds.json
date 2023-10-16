@@ -5,6 +5,23 @@
     ],
     "subtitle": "subtitles.aether_genesis.block.aercloud.blue_aercloud_bounce"
   },
+  "block.portal.hum": {
+    "sounds": [
+      "aether_genesis:block/portal/hum"
+    ],
+    "subtitle": "subtitles.aether_genesis.block.portal.hum"
+  },
+  "block.portal.travel": {
+    "sounds": [
+      "aether_genesis:block/portal/travel"
+    ]
+  },
+  "block.portal.trigger": {
+    "sounds": [
+      "aether_genesis:block/portal/trigger"
+    ],
+    "subtitle": "subtitles.aether_genesis.block.portal.trigger"
+  },
   "entity.carrion_sprout.death": {
     "sounds": [
       "damage/fallbig"
@@ -18,6 +35,31 @@
       "damage/hit3"
     ],
     "subtitle": "subtitles.aether_genesis.entity.carrion_sprout.hurt"
+  },
+  "entity.cog.break": {
+    "sounds": [
+      "aether_genesis:entity/cog/wall_final"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.cog.break"
+  },
+  "entity.labyrinth_eye.cogloss": {
+    "sounds": [
+      "aether_genesis:entity/labyrinth_eye/cogloss"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.labyrinth_eye.cogloss"
+  },
+  "entity.labyrinth_eye.death": {
+    "sounds": [
+      "aether_genesis:entity/labyrinth_eye/eyedeath"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.labyrinth_eye.eyedeath"
+  },
+  "entity.labyrinth_eye.move": {
+    "sounds": [
+      "aether_genesis:entity/labyrinth_eye/move_1",
+      "aether_genesis:entity/labyrinth_eye/move_2"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.labyrinth_eye.move"
   },
   "entity.sentry_guardian.death": {
     "sounds": [
@@ -42,6 +84,30 @@
       "aether_genesis:entity/sentry_guardian/spawn"
     ],
     "subtitle": "subtitles.aether_genesis.entity.sentry_guardian.spawn"
+  },
+  "entity.tempest.ambient": {
+    "sounds": [
+      "aether:entity/zephyr/call"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tempest.ambient"
+  },
+  "entity.tempest.death": {
+    "sounds": [
+      "aether:entity/zephyr/call"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tempest.death"
+  },
+  "entity.tempest.hurt": {
+    "sounds": [
+      "aether:entity/zephyr/call"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tempest.hurt"
+  },
+  "entity.tempest.shoot": {
+    "sounds": [
+      "aether:entity/zephyr/shoot"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.tempest.shoot"
   },
   "entity.tracking_golem.creepy_seen": {
     "sounds": [

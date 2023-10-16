@@ -16,4 +16,7 @@ public class GenesisBlockEntityTypes {
     public static final RegistryObject<BlockEntityType<SkyrootChestBlockEntity>> SKYROOT_CHEST = BLOCK_ENTITY_TYPES.register("skyroot_chest", () ->
             BlockEntityType.Builder.of(SkyrootChestBlockEntity::new, GenesisBlocks.SKYROOT_CHEST.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<SkyrootChestMimicBlockEntity>> SKYROOT_CHEST_MIMIC = BLOCK_ENTITY_TYPES.register("skyroot_chest_mimic", () ->
+            BlockEntityType.Builder.of(SkyrootChestMimicBlockEntity::new, GenesisBlocks.SKYROOT_CHEST_MIMIC.get()).build(null));
+
 }

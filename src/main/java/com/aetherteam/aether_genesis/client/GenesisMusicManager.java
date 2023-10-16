@@ -2,8 +2,8 @@ package com.aetherteam.aether_genesis.client;
 
 import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether.AetherTags;
-import com.aetherteam.aether.api.WorldDisplayHelper;
-import com.aetherteam.aether.client.gui.screen.menu.AetherTitleScreen;
+import com.aetherteam.aether.client.AetherMenuUtil;
+import com.aetherteam.aether.client.WorldDisplayHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.WinScreen;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
@@ -88,50 +88,35 @@ public class GenesisMusicManager {
         return currentMusic;
     }
 
-    public static boolean isAetherMenuEnabled() {
-        return (Boolean)AetherConfig.CLIENT.enable_aether_menu.get() && !(Boolean)AetherConfig.CLIENT.disable_aether_menu_music.get();
-    }
-
     public static boolean isAetherWorldPreviewEnabled() {
-        return (Boolean)AetherConfig.CLIENT.enable_aether_menu.get() && isWorldPreviewEnabled() && !(Boolean)AetherConfig.CLIENT.disable_aether_world_preview_menu_music.get();
+        return AetherMenuUtil.isAetherMenu() && isWorldPreviewEnabled() && !AetherConfig.CLIENT.disable_aether_world_preview_menu_music.get();
     }
 
     public static boolean isVanillaWorldPreviewEnabled() {
-        return isWorldPreviewEnabled() && !(Boolean)AetherConfig.CLIENT.disable_vanilla_world_preview_menu_music.get();
+        return AetherMenuUtil.isMinecraftMenu() && isWorldPreviewEnabled() && !AetherConfig.CLIENT.disable_vanilla_world_preview_menu_music.get();
     }
 
     public static boolean isWorldPreviewEnabled() {
-        return minecraft.player != null && (Boolean)AetherConfig.CLIENT.enable_world_preview.get() && WorldDisplayHelper.loadedLevel != null && WorldDisplayHelper.loadedSummary != null;
+        return minecraft.player != null && WorldDisplayHelper.isActive();
     }
 
     public static boolean isCreative(Holder<Biome> holder, Player player) {
         return player.level.dimension() != Level.END && player.level.dimension() != Level.NETHER && holder.is(AetherTags.Biomes.AETHER_MUSIC) && !musicManager.isPlayingMusic(Musics.UNDER_WATER) && (!player.isUnderWater() || !holder.is(BiomeTags.PLAYS_UNDERWATER_MUSIC)) && player.getAbilities().instabuild && player.getAbilities().mayfly;
     }
-    //    @Override
+
     public static Music getSituationalMusic() {
         if (!(minecraft.screen instanceof WinScreen)) {
-            if (isAetherWorldPreviewEnabled()) {
-                return AetherTitleScreen.MENU;
-            }
-
-            if (isVanillaWorldPreviewEnabled()) {
-                return Musics.MENU;
-            }
-
-            if (minecraft.player != null) {
+            if (!isVanillaWorldPreviewEnabled() && !isAetherWorldPreviewEnabled() && minecraft.player != null) {
                 Holder<Biome> holder = minecraft.player.level.getBiome(minecraft.player.blockPosition());
                 long time = minecraft.player.clientLevel.getLevelData().getDayTime() % 72000L;
                 boolean night = time >= 39000 && time < 69000;
 
-                if (night)
-                {
+                if (night) {
                     return GenesisMusic.getNightMusicForBiome(holder);
                 }
                 if (isCreative(holder, minecraft.player)) {
                     return holder.value().getBackgroundMusic().orElse(Musics.GAME);
                 }
-            } else if (isAetherMenuEnabled()) {
-                return AetherTitleScreen.MENU;
             }
         }
 
@@ -141,15 +126,8 @@ public class GenesisMusicManager {
     public static Music getSituationalOppositeDaytimeMusic()
     {
         if (!(minecraft.screen instanceof WinScreen)) {
-            if (isAetherWorldPreviewEnabled()) {
-                return AetherTitleScreen.MENU;
-            }
 
-            if (isVanillaWorldPreviewEnabled()) {
-                return Musics.MENU;
-            }
-
-            if (minecraft.player != null) {
+            if (!isVanillaWorldPreviewEnabled() && !isAetherWorldPreviewEnabled() && minecraft.player != null) {
                 Holder<Biome> holder = minecraft.player.level.getBiome(minecraft.player.blockPosition());
                 long time = minecraft.player.clientLevel.getLevelData().getDayTime() % 72000L;
                 boolean night = time >= 39000 && time < 69000;
@@ -161,8 +139,6 @@ public class GenesisMusicManager {
                 if (isCreative(holder, minecraft.player)) {
                     return holder.value().getBackgroundMusic().orElse(Musics.GAME);
                 }
-            } else if (isAetherMenuEnabled()) {
-                return AetherTitleScreen.MENU;
             }
         }
 

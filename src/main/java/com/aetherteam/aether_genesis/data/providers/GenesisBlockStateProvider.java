@@ -27,6 +27,21 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
         super(output, id, helper);
     }
 
+    public void enchantedVanillaGrass(Block block, Block grassBlock, Block dirtBlock) {
+        ModelFile grass = this.cubeBottomTop(this.name(block),
+                this.extend(this.texture(this.name(block), "natural/"), "_side"),
+                this.mcLoc("block/" + this.name(dirtBlock)),
+                this.extend(this.texture(this.name(block), "natural/"), "_top"));
+        ModelFile grassSnowed = this.cubeBottomTop(this.name(block) + "_snow",
+                this.extend(this.mcLoc("block/" + this.name(grassBlock)), "_snow"),
+                this.mcLoc("block/" + this.name(dirtBlock)),
+                this.extend(this.texture(this.name(block), "natural/"), "_top"));
+        this.getVariantBuilder(block).forAllStatesExcept(state -> {
+            boolean snowy = state.getValue(SnowyDirtBlock.SNOWY);
+            return ConfiguredModel.allYRotations(snowy ? grassSnowed : grass, 0, false);
+        }, AetherBlockStateProperties.DOUBLE_DROPS);
+    }
+
     public void purpleAercloud(Block block) {
         String blockName = this.name(block);
         ResourceLocation front = this.extend(this.texture(this.name(block), "natural/"), "_front");
@@ -334,7 +349,6 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
                 .condition(ColdFireBlock.UP, false)
                 .condition(ColdFireBlock.WEST, false).end().end()
                 .part().modelFile(fireUp0).nextModel().modelFile(fireUp1).nextModel().modelFile(fireUpAlt0).nextModel().modelFile(fireUpAlt1).addModel()
-                .condition(ColdFireBlock.UP, true).end()
-        ;
+                .condition(ColdFireBlock.UP, true).end();
     }
 }

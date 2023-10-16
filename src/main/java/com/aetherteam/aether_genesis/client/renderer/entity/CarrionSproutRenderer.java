@@ -10,31 +10,35 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
-import javax.annotation.Nonnull;
-
 public class CarrionSproutRenderer extends MobRenderer<CarrionSprout, CarrionSproutModel> {
     private static final ResourceLocation CARRION_SPROUT_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/carrion_sprout/carrion_sprout.png");
+    private static final ResourceLocation CARRION_SPROUT_PINK_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/carrion_sprout/carrion_sprout_pink.png");
+    private static final ResourceLocation CARRION_SPROUT_WHITE_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/carrion_sprout/carrion_sprout_white.png");
 
     public CarrionSproutRenderer(EntityRendererProvider.Context context) {
         super(context, new CarrionSproutModel(context.bakeLayer(GenesisModelLayers.CARRION_SPROUT)), 0.5F);
     }
 
     @Override
-    protected void scale(CarrionSprout carrionSprout, @Nonnull PoseStack poseStack, float partialTickTime) {
-        float f2 = carrionSprout.getSize();
-        poseStack.scale(f2, f2, f2);
+    protected void scale(CarrionSprout carrionSprout, PoseStack poseStack, float partialTickTime) {
+        float size = carrionSprout.getSize();
+        poseStack.scale(size, size, size);
         poseStack.translate(0.0, 1.2, 0.0);
-        this.shadowRadius = f2 - 0.25F;
+        this.shadowRadius = size - 0.25F;
     }
 
     @Override
-    protected float getBob(@Nonnull CarrionSprout carrionSprout, float partialTicks) {
+    protected float getBob(CarrionSprout carrionSprout, float partialTicks) {
         return Mth.lerp(partialTicks, carrionSprout.sinage, carrionSprout.sinage + carrionSprout.sinageAdd);
     }
 
-    @Nonnull
     @Override
-    public ResourceLocation getTextureLocation(@Nonnull CarrionSprout carrionSprout) {
+    public ResourceLocation getTextureLocation(CarrionSprout carrionSprout) {
+        if (carrionSprout.getColor().equals("pink")) {
+            return CARRION_SPROUT_PINK_TEXTURE;
+        } else if (carrionSprout.getColor().equals("white")) {
+            return CARRION_SPROUT_WHITE_TEXTURE;
+        }
         return CARRION_SPROUT_TEXTURE;
     }
 }

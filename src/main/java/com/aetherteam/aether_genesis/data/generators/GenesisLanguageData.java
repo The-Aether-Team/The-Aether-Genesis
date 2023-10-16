@@ -15,6 +15,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
     @Override
     protected void addTranslations() {
+        this.addBlock(GenesisBlocks.ENCHANTED_GRASS_BLOCK, "Enchanted Grass Block");
         this.addBlock(GenesisBlocks.GREEN_AERCLOUD, "Green Aercloud");
         this.addBlock(GenesisBlocks.PURPLE_AERCLOUD, "Purple Aercloud");
         this.addBlock(GenesisBlocks.STORM_AERCLOUD, "Storm Aercloud");
@@ -66,9 +67,18 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.BONE_RING, "Bone Ring");
         this.addItem(GenesisItems.CANDY_RING, "Candy Ring");
         this.addItem(GenesisItems.SKYROOT_RING, "Skyroot Ring");
+        this.addItem(GenesisItems.LUCKY_BELL, "Lucky Bell");
+        this.addItem(GenesisItems.SWETTY_PENDANT, "Swetty Pendant");
+        this.addItem(GenesisItems.DAGGERFROST_LOCKET, "Daggerfrost Locket");
         this.addItem(GenesisItems.CAPE, "Cape");
         this.addItem(GenesisItems.DEXTERITY_CAPE, "Dexterity Cape");
         this.addItem(GenesisItems.MOUSE_EAR_CAP, "Mouse Ear Cap");
+        this.addItem(GenesisItems.FLEETING_STONE, "Fleeting Stone");
+        this.addItem(GenesisItems.SOARING_STONE, "Soaring Stone");
+        this.addItem(GenesisItems.ETHEREAL_STONE, "Ethereal Stone");
+        this.addItem(GenesisItems.ORB_OF_ARKENZUS, "Orb of Arkenzus");
+        this.addItem(GenesisItems.FROSTPINE_TOTEM, "Frostpine Totem");
+        this.addItem(GenesisItems.BABY_PINK_SWET, "Baby Pink Swet");
 
         this.addItem(GenesisItems.PHOENIX_DART_SHOOTER, "Phoenix Dart Shooter");
         this.addItem(GenesisItems.CONTINUUM_BOMB, "Continuum Bomb");
@@ -76,6 +86,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.CARRION_SPROUT_SPAWN_EGG, "Carrion Sprout Spawn Egg");
         this.addItem(GenesisItems.DARK_SWET_SPAWN_EGG, "Dark Swet Spawn Egg");
         this.addItem(GenesisItems.TEMPEST_SPAWN_EGG, "Tempest Spawn Egg");
+        this.addItem(GenesisItems.SKYROOT_CHEST_MIMIC_SPAWN_EGG, "Skyroot Chest Mimic Spawn Egg");
         this.addItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG, "Battle Sentry Spawn Egg");
         this.addItem(GenesisItems.TRACKING_GOLEM_SPAWN_EGG, "Tracking Golem Spawn Egg");
 
@@ -85,6 +96,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addItem(GenesisItems.GUARDIAN_KEY, "Guardian Key");
         this.addItem(GenesisItems.HOST_KEY, "Host Key");
+        this.addItem(GenesisItems.COG_KEY, "Cog Key");
 
         this.addItem(GenesisItems.MUSIC_DISC_AERWHALE, "Aerwhale Music Disc");
         this.addDiscDesc(GenesisItems.MUSIC_DISC_AERWHALE, "Aether UK - Aerwhale");
@@ -99,11 +111,37 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");
         this.addEntityType(GenesisEntityTypes.BATTLE_SENTRY, "Battle Sentry");
+        this.addEntityType(GenesisEntityTypes.TRACKING_GOLEM, "Tracking Golem");
+        this.addEntityType(GenesisEntityTypes.SKYROOT_MIMIC, "Skyroot Mimic");
+
+        this.addEntityType(GenesisEntityTypes.FLEETING_WISP, "Fleeting Wisp");
+        this.addEntityType(GenesisEntityTypes.SOARING_WISP, "Soaring Wisp");
+        this.addEntityType(GenesisEntityTypes.ETHEREAL_WISP, "Ethereal Wisp");
+        this.addEntityType(GenesisEntityTypes.SHADE_OF_ARKENZUS, "Shade of Arkenzus");
+        this.addEntityType(GenesisEntityTypes.FROSTPINE_TOTEM, "Frostpine Totem");
+        this.addEntityType(GenesisEntityTypes.BABY_PINK_SWET, "Baby Pink Swet");
+
+        this.addEntityType(GenesisEntityTypes.SENTRY_GUARDIAN, "Sentry Guardian");
+        this.addEntityType(GenesisEntityTypes.SLIDER_HOST_MIMIC, "Slider Host Mimic");
+        this.addEntityType(GenesisEntityTypes.HOST_EYE, "Host Eye");
 
         this.addBlock(GenesisBlocks.CARVED_PILLAR, "Carved Pillar");
         this.addBlock(GenesisBlocks.CARVED_PILLAR_SIDE, "Carved Pillar Side");
-        this.addBlock(GenesisBlocks.DIVINE_CRAVED_STONE, "Divine Carved Stone");
+        this.addBlock(GenesisBlocks.SKYROOT_CHEST_MIMIC, "Skyroot Chest Mimic");
+        this.addBlock(GenesisBlocks.DIVINE_CARVED_STONE, "Divine Carved Stone");
         this.addBlock(GenesisBlocks.DIVINE_SENTRY_STONE, "Divine Sentry Stone");
+        this.addBlock(GenesisBlocks.LOCKED_DIVINE_CARVED_STONE, "Locked Divine Carved Stone");
+        this.addBlock(GenesisBlocks.LOCKED_DIVINE_SENTRY_STONE, "Locked Divine Sentry Stone");
+        this.addBlock(GenesisBlocks.TRAPPED_DIVINE_CARVED_STONE, "Trapped Divine Carved Stone");
+        this.addBlock(GenesisBlocks.TRAPPED_DIVINE_SENTRY_STONE, "Trapped Divine Sentry Stone");
+        this.addBlock(GenesisBlocks.BOSS_DOORWAY_DIVINE_CARVED_STONE, "Boss Doorway Divine Carved Stone");
+        this.addBlock(GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE, "Boss Doorway Divine Sentry Stone");
+        this.addBlock(GenesisBlocks.TREASURE_DOORWAY_DIVINE_CARVED_STONE, "Treasure Doorway Divine Carved Stone");
+        this.addBlock(GenesisBlocks.TREASURE_DOORWAY_DIVINE_SENTRY_STONE, "Treasure Doorway Divine Sentry Stone");
+        this.addBlock(GenesisBlocks.DIVINE_CARVED_WALL, "Divine Carved Wall");
+        this.addBlock(GenesisBlocks.DIVINE_CARVED_STAIRS, "Divine Carved Stairs");
+        this.addBlock(GenesisBlocks.DIVINE_CARVED_SLAB, "Divine Carved Slab");
+
         this.addBlock(GenesisBlocks.BLOOD_MOSS_HOLYSTONE, "Blood Moss Holystone");
 
         this.addBlock(GenesisBlocks.COLD_FIRE, "Cold Fire");
@@ -111,7 +149,14 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");
         this.addSubtitle("block", "aercloud.blue_aercloud_bounce", "Blue Aercloud bounces");
-        
+        this.addSubtitle("entity", "tempest.shoot", "Tempest spits");
+        this.addSubtitle("entity", "tempest.ambient", "Tempest blows");
+        this.addSubtitle("entity", "tempest.death", "Tempest dies");
+        this.addSubtitle("entity", "tempest.hurt", "Tempest hurts");
+
+        this.addSubtitle("block", "portal.hum", "Aether Portal hums");
+        this.addSubtitle("block", "portal.trigger", "Aether Portal hum intensifies");
+
         this.addContainerType(GenesisMenuTypes.HOLYSTONE_FURNACE, "Holystone Furnace");
 
         this.addGuiText("slider.message.attack.invalid_item", "Hmm. It's a rock-solid block. My %1$s wouldn't work on this.");
@@ -119,6 +164,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addCommonConfig("gameplay", "gold_aercloud_ability", "Changes Gold Aercloud and respective parachute behavior to launch entities downwards");
         this.addCommonConfig("gameplay", "improved_slider_message", "Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe");
+        this.addClientConfig("gui", "genesis_menu_layout", "Replaces the menu toggle buttons with the Cumulus' menu switcher");
         this.addClientConfig("audio", "blue_aercloud_bounce_sfx", "Makes Blue Aerclouds have their wobbly sounds that play when bouncing on them");
         this.addClientConfig("audio", "night_music_tracks", "Adds some nice night tracks to the Aether's music selection. Also disables the default music manager for the Aether, to prevent overlap");
 
@@ -126,6 +172,12 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addPackDescription("mod", "The Aether: Genesis Resources");
         this.addPackDescription("classic", "The classic look from Genesis of the Void");
+
+        this.addGuiText("host.title", "the Slider Host Mimic");
+        this.addGuiText("sentry_guardian.title", "the Sentry Guardian");
+        this.addGuiText("labyrinth_eye.title", "the Labyrinth Eye");
+
+        this.addGuiText("boss.message.projectile", "Hmm... Better switch to a sword");
         //todo: lore
     }
 }
