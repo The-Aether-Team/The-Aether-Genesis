@@ -142,5 +142,7 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
         stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_SLAB.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
 
         enchantingRecipe(RecipeCategory.FOOD, GenesisItems.RAINBOW_STRAWBERRY.get(), GenesisItems.WYNDBERRY.get(), 0.35F, 500).save(consumer, this.name("rainbow_strawberry_enchanting"));
+        this.enchantingRecipe(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.GREEN_AERCLOUD.get(), GenesisBlocks.PURPLE_AERCLOUD.get(), 0.1F, 1000).save(consumer, this.name("green_aercloud_enchanting"));
+
     }
 }
