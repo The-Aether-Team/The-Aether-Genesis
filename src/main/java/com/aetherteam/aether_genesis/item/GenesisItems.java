@@ -14,10 +14,7 @@ import com.aetherteam.aether_genesis.item.combat.PhoenixDartShooterItem;
 import com.aetherteam.aether_genesis.item.food.GenesisFoods;
 import com.aetherteam.aether_genesis.item.materials.ContinuumOrbItem;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.RecordItem;
-import net.minecraft.world.item.SpawnEggItem;
+import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -31,8 +28,7 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> GOLDEN_SWET_BALL = ITEMS.register("golden_swet_ball", () -> new SwetBallItem(new Item.Properties()));
     public static final RegistryObject<Item> DARK_SWET_BALL = ITEMS.register("dark_swet_ball", () -> new SwetBallItem(new Item.Properties()));
-    public static final RegistryObject<Item> SKYROOT_BOWL = ITEMS.register("skyroot_bowl", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> CORNSTARCH_BOWL = ITEMS.register("cornstarch_bowl", () -> new Item(new Item.Properties().craftRemainder(SKYROOT_BOWL.get()).stacksTo(1)));
+    public static final RegistryObject<Item> CORNSTARCH_BOWL = ITEMS.register("cornstarch_bowl", () -> new Item(new Item.Properties().craftRemainder(Items.BOWL).stacksTo(1)));
     public static final RegistryObject<Item> CONTINUUM_ORB = ITEMS.register("continuum_orb", () -> new ContinuumOrbItem(new Item.Properties()));
 
     public static final RegistryObject<Item> BLUE_SWET_JELLY = ITEMS.register("blue_swet_jelly", () -> new Item(new Item.Properties().food(GenesisFoods.SWET_JELLY)));

@@ -1,4 +1,4 @@
-// 1.19.4	2023-09-03T19:12:04.3214771	Item Models: aether_genesis
+// 1.19.4	2023-10-20T20:55:47.7277022	Item Models: aether_genesis
 a1f4e59bd85e14a40e0f96656878f1d867da93d8 assets/aether_genesis/models/item/baby_pink_swet.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/battle_sentry_spawn_egg.json
 b951ae61814ccb898428dd794f3adf77d4e02a6c assets/aether_genesis/models/item/blood_moss_holystone.json
@@ -71,7 +71,6 @@ bc972fad4b94952d244ce10b948eb1ae63d9960f assets/aether_genesis/models/item/purpl
 7640573f679a1da92f41f461ae43966427e776c4 assets/aether_genesis/models/item/purple_parachute.json
 46eb40131dfe4ccb8536e9f0f4094813e5334ecb assets/aether_genesis/models/item/rainbow_strawberry.json
 036add890fb66464717193f7cd328d09783cee78 assets/aether_genesis/models/item/recording_892.json
-17075f79338c83570da69548ce98338899e839b4 assets/aether_genesis/models/item/skyroot_bowl.json
 f6caba399494a58683561699d72ad1cc86e3d339 assets/aether_genesis/models/item/skyroot_chest.json
 f6caba399494a58683561699d72ad1cc86e3d339 assets/aether_genesis/models/item/skyroot_chest_mimic.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/skyroot_chest_mimic_spawn_egg.json

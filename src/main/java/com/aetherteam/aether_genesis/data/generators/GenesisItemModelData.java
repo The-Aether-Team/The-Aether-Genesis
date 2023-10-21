@@ -18,7 +18,6 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
     protected void registerModels() {
         this.item(GenesisItems.GOLDEN_SWET_BALL.get(), "materials/");
         this.item(GenesisItems.DARK_SWET_BALL.get(), "materials/");
-        this.item(GenesisItems.SKYROOT_BOWL.get(), "materials/");
         this.item(GenesisItems.CORNSTARCH_BOWL.get(), "materials/");
         this.item(GenesisItems.CONTINUUM_ORB.get(), "materials/");
 
