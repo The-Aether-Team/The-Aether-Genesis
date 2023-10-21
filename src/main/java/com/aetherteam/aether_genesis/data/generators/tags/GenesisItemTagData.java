@@ -109,9 +109,7 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.RECORDING_892.get());
 
         //todo move to new aether accessory tags eventually
-        this.tag(AetherTags.Items.AETHER_ACCESSORY).add(
-                GenesisItems.CRYSTAL_EXP_BOTTLE.get(),
-                GenesisItems.MOUSE_EAR_CAP.get());
+        this.tag(AetherTags.Items.AETHER_ACCESSORY).add(GenesisItems.MOUSE_EAR_CAP.get());
         this.tag(AetherTags.Items.AETHER_RING).add(
                 GenesisItems.BONE_RING.get(),
                 GenesisItems.CANDY_RING.get(),

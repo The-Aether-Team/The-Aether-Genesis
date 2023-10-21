@@ -1,6 +1,7 @@
 package com.aetherteam.aether_genesis.item.accessories;
 
 import com.aetherteam.aether.item.accessories.AccessoryItem;
+import net.minecraft.Util;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -11,9 +12,14 @@ import net.minecraft.world.level.Level;
 import top.theillusivec4.curios.api.SlotContext;
 
 import javax.annotation.Nullable;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
+import java.util.Locale;
 
 public class CrystalBottleItem extends AccessoryItem {
+    private static final DecimalFormat EXPERIENCE_FORMAT = Util.make(new DecimalFormat("#.#"), (format) -> format.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+
     public CrystalBottleItem(Properties properties) {
         super(properties);
     }
@@ -53,8 +59,9 @@ public class CrystalBottleItem extends AccessoryItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
-        if(stack.getTag() != null)
-        components.add(Component.literal("Experience" + (stack.hasTag() ? (" (" + (int)stack.getTag().getFloat("Experience") + " inside)") : "")));
+        if (stack.getTag() != null) {
+            components.add(Component.literal("Experience" + (stack.hasTag() ? (" (" + EXPERIENCE_FORMAT.format(stack.getTag().getFloat("Experience")) + " inside)") : "")));
+        }
         super.appendHoverText(stack, level, components, flag);
     }
 }
