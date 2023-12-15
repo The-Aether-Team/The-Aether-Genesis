@@ -111,7 +111,7 @@ public class GenesisRenderers {
         for (String type : types) {
             PlayerRenderer playerRenderer = event.getSkin(type);
             if (playerRenderer != null) {
-                playerRenderer.addLayer(new DartLayer<>(renderDispatcher, playerRenderer, (entity) -> new PhoenixDart(GenesisEntityTypes.PHOENIX_DART.get(), entity.getLevel()), AetherPlayer::getGoldenDartCount, 1.0F));
+                playerRenderer.addLayer(new DartLayer<>(renderDispatcher, playerRenderer, (entity) -> new PhoenixDart(GenesisEntityTypes.PHOENIX_DART.get(), entity.level()), AetherPlayer::getGoldenDartCount, 1.0F));
             }
         }
     }

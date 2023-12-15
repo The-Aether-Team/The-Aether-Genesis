@@ -30,5 +30,6 @@
     "recipes": [
       "aether_genesis:icestone_poprocks"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

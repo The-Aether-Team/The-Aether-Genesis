@@ -68,24 +68,24 @@ public class CogArrow extends Projectile {
     @Override
     public void tick() {
         super.tick();
-        if (!this.onGround) {
+        if (!this.onGround()) {
             ++this.ticksInAir;
         }
         if (this.ticksInAir > this.getLifeSpan()) {
             this.discard();
         }
-        HitResult result = ProjectileUtil.getHitResult(this, this::canHitEntity);
+        HitResult result = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
         boolean flag = false;
         if (result.getType() == HitResult.Type.BLOCK) {
             BlockPos blockPos = ((BlockHitResult) result).getBlockPos();
-            BlockState blockState = this.level.getBlockState(blockPos);
+            BlockState blockState = this.level().getBlockState(blockPos);
             if (blockState.is(Blocks.NETHER_PORTAL)) {
                 this.handleInsidePortal(blockPos);
                 flag = true;
             } else if (blockState.is(Blocks.END_GATEWAY)) {
-                BlockEntity blockEntity = this.level.getBlockEntity(blockPos);
+                BlockEntity blockEntity = this.level().getBlockEntity(blockPos);
                 if (blockEntity instanceof TheEndGatewayBlockEntity endGatewayBlockEntity && TheEndGatewayBlockEntity.canEntityTeleport(this)) {
-                    TheEndGatewayBlockEntity.teleportEntity(this.level, blockPos, blockState, this, endGatewayBlockEntity);
+                    TheEndGatewayBlockEntity.teleportEntity(this.level(), blockPos, blockState, this, endGatewayBlockEntity);
                 }
                 flag = true;
             }
@@ -140,8 +140,8 @@ public class CogArrow extends Projectile {
     protected void onHitEntity(EntityHitResult result) {
         Entity entity = result.getEntity();
         if (entity instanceof LivingEntity livingEntity && livingEntity != this.getOwner()) {
-            if (livingEntity.hurt(AetherDamageTypes.indirectEntityDamageSource(this.level, AetherDamageTypes.FLOATING_BLOCK, this, this.getOwner()), 6.0F)) {
-                this.level.playSound(null, this.getX(), this.getY(), this.getZ(), this.getImpactExplosionSoundEvent(), SoundSource.HOSTILE, 2.0F, this.random.nextFloat() - this.random.nextFloat() * 0.2F + 1.2F);
+            if (livingEntity.hurt(AetherDamageTypes.indirectEntityDamageSource(this.level(), AetherDamageTypes.FLOATING_BLOCK, this, this.getOwner()), 6.0F)) {
+                this.level().playSound(null, this.getX(), this.getY(), this.getZ(), this.getImpactExplosionSoundEvent(), SoundSource.HOSTILE, 2.0F, this.random.nextFloat() - this.random.nextFloat() * 0.2F + 1.2F);
             }
         }
     }
@@ -169,7 +169,7 @@ public class CogArrow extends Projectile {
             this.markHurt();
             Entity entity = source.getEntity();
             if (entity != null) {
-                if (!this.level.isClientSide) {
+                if (!this.level().isClientSide) {
                     Vec3 vec3 = entity.getLookAngle();
                     this.setDeltaMovement(vec3);
                     this.xPower = vec3.x * 0.25;

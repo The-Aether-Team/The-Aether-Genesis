@@ -30,5 +30,6 @@
     "recipes": [
       "aether_genesis:dark_swet_jelly"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

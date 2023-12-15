@@ -28,5 +28,6 @@
     "recipes": [
       "aether_genesis:skyroot_ladder"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -69,19 +69,19 @@ public class Tempest extends Zephyr {
 
     @Override
     public void tick() {
-        if (!this.getLevel().isClientSide() && !isNight(this.level)) {
-            this.hurt(this.level.damageSources().generic(), 1);
+        if (!this.level().isClientSide() && !isNight(this.level())) {
+            this.hurt(this.level().damageSources().generic(), 1);
             for (int i = 0; i < 7; ++i) {
-                if (this.getLevel() instanceof ServerLevel serverLevel) {
+                if (this.level() instanceof ServerLevel serverLevel) {
                     serverLevel.sendParticles(ParticleTypes.SMOKE, this.getRandomX(0.3), this.getRandomY() - 0.1, this.getRandomZ(0.3), 1, 0, 0, 0, this.random.nextGaussian() * 0.02);
                 }
             }
         }
         for (int count = 0; count < 3; ++count) {
-            double xOffset = this.position().x() + (level.getRandom().nextDouble() * 1.5) - 0.75;
-            double yOffset = this.position().y() + (level.getRandom().nextDouble() * 2) - 0.5;
-            double zOffset = this.position().z() + (level.getRandom().nextDouble() * 1.5) - 0.75;
-            level.addParticle(TEMPEST_PARTICLES, xOffset, yOffset, zOffset, 0.0, 0.0, 0.0);
+            double xOffset = this.position().x() + (this.level().getRandom().nextDouble() * 1.5) - 0.75;
+            double yOffset = this.position().y() + (this.level().getRandom().nextDouble() * 2) - 0.5;
+            double zOffset = this.position().z() + (this.level().getRandom().nextDouble() * 1.5) - 0.75;
+            this.level().addParticle(TEMPEST_PARTICLES, xOffset, yOffset, zOffset, 0.0, 0.0, 0.0);
         }
         super.tick();
     }
@@ -139,7 +139,7 @@ public class Tempest extends Zephyr {
         public void tick() {
             LivingEntity target = this.parentEntity.getTarget();
             if (target.distanceToSqr(this.parentEntity) < 40 * 40 && this.parentEntity.hasLineOfSight(target)) {
-                Level level = this.parentEntity.level;
+                Level level = this.parentEntity.level();
                 this.parentEntity.setChargeTime(this.parentEntity.getChargeTime() + 1);
                 if (this.parentEntity.getChargeTime() == 10) {
                     this.parentEntity.playSound(this.parentEntity.getAmbientSound(), 3.0F, (level.random.nextFloat() - level.random.nextFloat()) * 0.2F + 1.0F);

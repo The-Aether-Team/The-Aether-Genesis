@@ -20,7 +20,7 @@ public class SkyrootMimic extends Mimic {
     public boolean hurt(DamageSource damageSource, float amount) {
         if (!(damageSource.getDirectEntity() instanceof Mimic)) {
             if (damageSource.getDirectEntity() instanceof LivingEntity livingEntity && this.hurtTime == 0) {
-                if (this.level instanceof ServerLevel level) {
+                if (this.level() instanceof ServerLevel level) {
                     for (int i = 0; i < 20; i++) {
                         level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, GenesisBlocks.SKYROOT_CHEST.get().defaultBlockState()), this.getX(), this.getY() + this.getBbHeight() / 1.5, this.getZ(), 1, this.getBbWidth() / 4.0, this.getBbHeight() / 4.0, this.getBbWidth() / 4.0, 0.05F);
                     }

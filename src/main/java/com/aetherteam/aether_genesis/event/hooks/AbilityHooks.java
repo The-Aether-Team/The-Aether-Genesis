@@ -35,7 +35,7 @@ public class AbilityHooks {
 
     public static class WeaponHooks {
         public static void stickDart(LivingEntity entity, DamageSource source) {
-            if (entity instanceof Player player && !player.getLevel().isClientSide()) {
+            if (entity instanceof Player player && !player.level().isClientSide()) {
                 Entity sourceEntity = source.getDirectEntity();
                 if (sourceEntity instanceof PhoenixDart) {
                     GenesisPlayer.get(player).ifPresent(genesisPlayer -> genesisPlayer.setPhoenixDartCount(genesisPlayer.getPhoenixDartCount() + 1));

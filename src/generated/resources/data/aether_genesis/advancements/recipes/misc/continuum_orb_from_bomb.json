@@ -30,5 +30,6 @@
     "recipes": [
       "aether_genesis:continuum_orb_from_bomb"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

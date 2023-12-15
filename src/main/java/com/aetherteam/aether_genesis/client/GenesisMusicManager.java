@@ -101,13 +101,13 @@ public class GenesisMusicManager {
     }
 
     public static boolean isCreative(Holder<Biome> holder, Player player) {
-        return player.level.dimension() != Level.END && player.level.dimension() != Level.NETHER && holder.is(AetherTags.Biomes.AETHER_MUSIC) && !musicManager.isPlayingMusic(Musics.UNDER_WATER) && (!player.isUnderWater() || !holder.is(BiomeTags.PLAYS_UNDERWATER_MUSIC)) && player.getAbilities().instabuild && player.getAbilities().mayfly;
+        return player.level().dimension() != Level.END && player.level().dimension() != Level.NETHER && holder.is(AetherTags.Biomes.AETHER_MUSIC) && !musicManager.isPlayingMusic(Musics.UNDER_WATER) && (!player.isUnderWater() || !holder.is(BiomeTags.PLAYS_UNDERWATER_MUSIC)) && player.getAbilities().instabuild && player.getAbilities().mayfly;
     }
 
     public static Music getSituationalMusic() {
         if (!(minecraft.screen instanceof WinScreen)) {
             if (!isVanillaWorldPreviewEnabled() && !isAetherWorldPreviewEnabled() && minecraft.player != null) {
-                Holder<Biome> holder = minecraft.player.level.getBiome(minecraft.player.blockPosition());
+                Holder<Biome> holder = minecraft.player.level().getBiome(minecraft.player.blockPosition());
                 long time = minecraft.player.clientLevel.getLevelData().getDayTime() % 72000L;
                 boolean night = time >= 39000 && time < 69000;
 
@@ -128,7 +128,7 @@ public class GenesisMusicManager {
         if (!(minecraft.screen instanceof WinScreen)) {
 
             if (!isVanillaWorldPreviewEnabled() && !isAetherWorldPreviewEnabled() && minecraft.player != null) {
-                Holder<Biome> holder = minecraft.player.level.getBiome(minecraft.player.blockPosition());
+                Holder<Biome> holder = minecraft.player.level().getBiome(minecraft.player.blockPosition());
                 long time = minecraft.player.clientLevel.getLevelData().getDayTime() % 72000L;
                 boolean night = time >= 39000 && time < 69000;
 

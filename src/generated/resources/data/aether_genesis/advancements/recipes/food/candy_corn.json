@@ -30,5 +30,6 @@
     "recipes": [
       "aether_genesis:candy_corn"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

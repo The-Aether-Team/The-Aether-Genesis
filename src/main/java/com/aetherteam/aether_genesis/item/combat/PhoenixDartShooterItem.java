@@ -22,7 +22,7 @@ public class PhoenixDartShooterItem extends DartShooterItem {
     }
 
     public AbstractDart customDart(AbstractDart dart) {
-        PhoenixDart phoenixdart = new PhoenixDart(dart.level);
+        PhoenixDart phoenixdart = new PhoenixDart(dart.level());
         phoenixdart.setOwner(dart.getOwner());
         if(phoenixdart.getOwner() != null)
         phoenixdart.setPos(phoenixdart.getOwner().getX(), phoenixdart.getOwner().getEyeY() - 0.1D, phoenixdart.getOwner().getZ());

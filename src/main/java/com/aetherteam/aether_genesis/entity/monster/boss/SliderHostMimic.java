@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.entity.monster.boss;
 
+import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.entity.AetherBossMob;
 import com.aetherteam.aether.entity.monster.dungeon.boss.BossNameGenerator;
@@ -20,6 +21,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -103,10 +105,10 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     public void sendEye() {
         while (this.eyes.size() > 4)
             (this.eyes.remove(0)).setHealth(0);
-        HostEye eye = new HostEye(GenesisEntityTypes.HOST_EYE.get(), level);
-        this.level.addFreshEntity(eye);
+        HostEye eye = new HostEye(GenesisEntityTypes.HOST_EYE.get(), level());
+        this.level().addFreshEntity(eye);
         eye.setPos(this.position());
-        this.level.playSound(this, this.blockPosition(), AetherSoundEvents.ENTITY_SLIDER_AWAKEN.get(), SoundSource.HOSTILE, 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
+        this.level().playSound(this, this.blockPosition(), AetherSoundEvents.ENTITY_SLIDER_AWAKEN.get(), SoundSource.HOSTILE, 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
         this.eyes.add(eye);
         this.sendDelay = 30;
         if (isDeadOrDying())
@@ -169,7 +171,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
         Entity entity = source.getDirectEntity();
         Entity attacker = source.getEntity();
         if (entity != null && source.is(DamageTypeTags.IS_PROJECTILE)) {
-            if (!this.level.isClientSide && attacker instanceof Player && ((Player)attacker).getMainHandItem() != Items.AIR.getDefaultInstance()) {
+            if (!this.level().isClientSide && attacker instanceof Player && ((Player)attacker).getMainHandItem() != Items.AIR.getDefaultInstance()) {
                 this.chatCooldown = 60;
                 attacker.sendSystemMessage(Component.translatable("gui.aether_genesis.boss.message.projectile"));
             }
@@ -190,7 +192,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
         this.setDeltaMovement(Vec3.ZERO);
         killEyes();
         this.explode();
-        if (this.level instanceof ServerLevel) {
+        if (this.level() instanceof ServerLevel) {
             this.bossFight.setProgress(this.getHealth() / this.getMaxHealth());
             if (this.getDungeon() != null) {
                 this.getDungeon().grantAdvancements(damageSource);
@@ -201,7 +203,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     }
 
     private void evaporate() {
-        Player player = this.level.getNearestPlayer(this, 8.5D);
+        Player player = this.level().getNearestPlayer(this, 8.5D);
         if (this.getTarget() == null)
             if (player != null && canAttack(player) && !player.isDeadOrDying() && !player.isCreative() && !player.isSpectator()) {
                 this.setTarget(player);
@@ -209,10 +211,10 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
         if (this.getTarget() != null && canAttack(this.getTarget()) && !this.getTarget().isDeadOrDying()) {
             if (this.eyes.size() < 4) {
                     if (this.sendDelay <= 0)
-                        if (!this.level.isClientSide)
+                        if (!this.level().isClientSide)
                             sendEye();
                 } else if (this.sendRespawnDelay <= 0) {
-                    if (!this.level.isClientSide) {
+                    if (!this.level().isClientSide) {
                         sendEye();
                         this.sendRespawnDelay = 100;
                     }
@@ -257,14 +259,14 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
             double x = this.position().x() + (double) (this.random.nextFloat() - this.random.nextFloat()) * 1.5;
             double y = this.getBoundingBox().minY + 1.75 + (double) (this.random.nextFloat() - this.random.nextFloat()) * 1.5;
             double z = this.position().z() + (double) (this.random.nextFloat() - this.random.nextFloat()) * 1.5;
-            this.level.addParticle(ParticleTypes.POOF, x, y, z, 0.0, 0.0, 0.0);
+            this.level().addParticle(ParticleTypes.POOF, x, y, z, 0.0, 0.0, 0.0);
         }
     }
 
     @Override
     public void startSeenByPlayer(@Nonnull ServerPlayer player) {
         super.startSeenByPlayer(player);
-        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Display(this.bossFight.getId()), player);
+        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Display(this.bossFight.getId(), this.getId()), player);
         if (this.getDungeon() == null || this.getDungeon().isPlayerTracked(player)) {
             this.bossFight.addPlayer(player);
         }
@@ -273,7 +275,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     @Override
     public void stopSeenByPlayer(@Nonnull ServerPlayer player) {
         super.stopSeenByPlayer(player);
-        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Remove(this.bossFight.getId()), player);
+        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()), player);
         this.bossFight.removePlayer(player);
     }
 
@@ -333,6 +335,12 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     @Override
     public void setBossFight(boolean isFighting) {
         this.bossFight.setVisible(isFighting);
+    }
+
+    @Nullable
+    @Override
+    public ResourceLocation getBossBarTexture() {
+        return new ResourceLocation(Aether.MODID, "textures/gui/boss_bar_slider.png");
     }
 
     protected SoundEvent getAwakenSound() {

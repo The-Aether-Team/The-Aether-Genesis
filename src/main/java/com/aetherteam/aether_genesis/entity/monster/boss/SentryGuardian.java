@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.entity.monster.boss;
 
+import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.entity.AetherBossMob;
 import com.aetherteam.aether.entity.ai.goal.ContinuousMeleeAttackGoal;
 import com.aetherteam.aether.entity.monster.dungeon.Sentry;
@@ -19,6 +20,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -100,16 +102,16 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
 
     public void spawnSentry() {
        // if (!this.level.isClientSide && this.cappedAmount < 5) {
-        if (!this.level.isClientSide) {
-            Sentry sentry = new Sentry(SENTRY.get(), level);
+        if (!this.level().isClientSide) {
+            Sentry sentry = new Sentry(SENTRY.get(), this.level());
             sentry.setPos(this.position());
-            this.level.addFreshEntity(sentry);
+            this.level().addFreshEntity(sentry);
             sentry.setDeltaMovement(0, 1, 0);
       //      sentry.fallDistance = -100.0F;
             sentry.setTarget(this.getTarget());
           //  this.cappedAmount++;
         //    sentry.setParent(this);
-            this.level.playSound(this, this.blockPosition(), GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_SUMMON.get(), SoundSource.AMBIENT, 2.0F, 1.0F);
+            this.level().playSound(this, this.blockPosition(), GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_SUMMON.get(), SoundSource.AMBIENT, 2.0F, 1.0F);
         }
     }
 
@@ -129,7 +131,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     public void die(DamageSource source) {
-        this.level.explode(this, this.position().x, this.position().y, this.position().z, 0.3F, false, Level.ExplosionInteraction.TNT);
+        this.level().explode(this, this.position().x, this.position().y, this.position().z, 0.3F, false, Level.ExplosionInteraction.TNT);
         spawnSentry();
         super.die(source);
     }
@@ -150,9 +152,9 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
             double e = this.getBoundingBox().minY + b - 0.30000001192092896D;
             double f = this.position().z + c * b;
             if (!isAwake()) {
-                this.level.addParticle(new DustParticleOptions(Vec3.fromRGB24(10444703).toVector3f(), 1.0F), d, e, f, 0.28999999165534973D, 0.2800000011920929D, 0.47999998927116394D);
+                this.level().addParticle(new DustParticleOptions(Vec3.fromRGB24(10444703).toVector3f(), 1.0F), d, e, f, 0.28999999165534973D, 0.2800000011920929D, 0.47999998927116394D);
             } else {
-                this.level.addParticle(new DustParticleOptions(Vec3.fromRGB24(9315170).toVector3f(), 1.0F), d, e, f, 0.4300000071525574D, 0.18000000715255737D, 0.2800000011920929D);
+                this.level().addParticle(new DustParticleOptions(Vec3.fromRGB24(9315170).toVector3f(), 1.0F), d, e, f, 0.4300000071525574D, 0.18000000715255737D, 0.2800000011920929D);
             }
         }
         if (this.chatTime > 0)
@@ -172,7 +174,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
 
     public boolean doHurtTarget(Entity pEntity) {
         this.attackTime = 10;
-        this.level.broadcastEntityEvent(this, (byte)4);
+        this.level().broadcastEntityEvent(this, (byte)4);
         float f = 7 + this.random.nextInt(15);
         float f1 = (int)f > 0 ? f / 2.0F + (float)this.random.nextInt((int)f) : f;
         boolean flag = pEntity.hurt(this.damageSources().mobAttack(this), f1);
@@ -230,7 +232,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         Entity entity = source.getDirectEntity();
         Entity attacker = source.getEntity();
         if (entity != null && source.is(DamageTypeTags.IS_PROJECTILE)) {
-            if (!this.level.isClientSide && attacker instanceof Player && ((Player)attacker).getMainHandItem() != Items.AIR.getDefaultInstance()) {
+            if (!this.level().isClientSide && attacker instanceof Player && ((Player)attacker).getMainHandItem() != Items.AIR.getDefaultInstance()) {
                 this.chatTime = 60;
                 attacker.sendSystemMessage(Component.translatable("gui.aether_genesis.boss.message.projectile"));
             }
@@ -259,6 +261,12 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     @Override
     public void setBossFight(boolean isFighting) {
         this.bossFight.setVisible(isFighting);
+    }
+
+    @Nullable
+    @Override
+    public ResourceLocation getBossBarTexture() {
+        return new ResourceLocation(Aether.MODID, "textures/gui/boss_bar_slider.png");
     }
 
     @Override
@@ -300,7 +308,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     @Override
     public void startSeenByPlayer(@Nonnull ServerPlayer player) {
         super.startSeenByPlayer(player);
-        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Display(this.bossFight.getId()), player);
+        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Display(this.bossFight.getId(), this.getId()), player);
         if (this.getDungeon() == null || this.getDungeon().isPlayerTracked(player)) {
             this.bossFight.addPlayer(player);
         }
@@ -316,7 +324,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     @Override
     public void stopSeenByPlayer(@Nonnull ServerPlayer player) {
         super.stopSeenByPlayer(player);
-        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Remove(this.bossFight.getId()), player);
+        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()), player);
         this.bossFight.removePlayer(player);
     }
 
@@ -408,32 +416,32 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
 
         public void spawnSentry() {
             // if (!this.level.isClientSide && this.cappedAmount < 5) {
-            if (!this.mob.level.isClientSide) {
-                Sentry sentry = new Sentry(SENTRY.get(), this.mob.level);
+            if (!this.mob.level().isClientSide) {
+                Sentry sentry = new Sentry(SENTRY.get(), this.mob.level());
                 sentry.setPos(this.mob.position());
-                this.mob.level.addFreshEntity(sentry);
+                this.mob.level().addFreshEntity(sentry);
                 sentry.setDeltaMovement(0, 1, 0);
                 //      sentry.fallDistance = -100.0F;
                 sentry.setTarget(this.mob.getTarget());
                 //  this.cappedAmount++;
                 //    sentry.setParent(this);
-                this.mob.level.playSound(this.mob, this.mob.blockPosition(), GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_SUMMON.get(), SoundSource.AMBIENT, 2.0F, 1.0F);
+                this.mob.level().playSound(this.mob, this.mob.blockPosition(), GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_SUMMON.get(), SoundSource.AMBIENT, 2.0F, 1.0F);
             }
         }
 
         public void tick() {
-            if (!this.mob.level.isClientSide) {
-                if (this.mob.level.random.nextInt(100) == 1 && this.mob.getTarget() != null)
+            if (!this.mob.level().isClientSide) {
+                if (this.mob.level().random.nextInt(100) == 1 && this.mob.getTarget() != null)
                     spawnSentry();
                 this.heightOffsetUpdateTime--;
                 if (this.heightOffsetUpdateTime <= 0) {
                     this.heightOffsetUpdateTime = 100;
-                    this.heightOffset = 0.5F + (float)this.mob.level.random.nextGaussian() * 3.0F;
+                    this.heightOffset = 0.5F + (float)this.mob.level().random.nextGaussian() * 3.0F;
                 }
                 if (this.mob.getTarget() != null && (this.mob.getTarget()).position().y + this.mob.getTarget().getEyeHeight() > this.mob.position().y + this.mob.getEyeHeight() + this.heightOffset)
                     this.mob.setDeltaMovement(0,  0.700000011920929D * 0.700000011920929D, 0);
             }
-            if (!this.mob.isOnGround() && this.mob.getMotionDirection().getStepY() < 0.0D)
+            if (!this.mob.onGround() && this.mob.getMotionDirection().getStepY() < 0.0D)
                 this.mob.setDeltaMovement(0, 0.8D, 0);
             super.tick();
         }
@@ -442,7 +450,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         public boolean canUse() {
             LivingEntity target = this.mob.getTarget();
             if (target != null && target.isAlive()) {
-                return this.mob.level.getDifficulty() != Difficulty.PEACEFUL;
+                return this.mob.level().getDifficulty() != Difficulty.PEACEFUL;
             } else {
                 return false;
             }

@@ -90,7 +90,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
             }
             gravityValue = gravity.getValue();
 
-            FluidState fluidState = this.getLevel().getFluidState(this.blockPosition());
+            FluidState fluidState = this.level().getFluidState(this.blockPosition());
             if ((this.isInWater() || (this.isInFluidType(fluidState) && fluidState.getFluidType() != ForgeMod.LAVA_TYPE.get())) && this.isAffectedByFluids() && !this.canStandOnFluid(fluidState)) {
                 if (this.isInWater() || (this.isInFluidType(fluidState) && !this.moveInFluid(fluidState, travelVector, gravityValue))) {
                     double y = this.getY();
@@ -101,7 +101,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
                         depthStrider = 3.0F;
                     }
 
-                    if (!this.isOnGround()) {
+                    if (!this.onGround()) {
                         depthStrider *= 0.5F;
                     }
 
@@ -152,14 +152,14 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
             } else {
                 BlockPos belowPos = this.getBlockPosBelowThatAffectsMyMovement();
                 float friction = this.getFrictionModifier();
-                float speed = this.isOnGround() ? friction * 0.91F : 0.91F;
+                float speed = this.onGround() ? friction * 0.91F : 0.91F;
                 Vec3 frictionMovement = this.handleRelativeFrictionAndCalculateMovement(travelVector, friction);
                 double deltaY = frictionMovement.y();
                 if (this.hasEffect(MobEffects.LEVITATION)) {
                     deltaY += (0.05 * (double) (this.getEffect(MobEffects.LEVITATION).getAmplifier() + 1) - frictionMovement.y()) * 0.2;
                     this.resetFallDistance();
-                } else if (this.getLevel().isClientSide() && !this.getLevel().hasChunkAt(belowPos)) {
-                    if (this.getY() > (double) this.getLevel().getMinBuildHeight()) {
+                } else if (this.level().isClientSide() && !this.level().hasChunkAt(belowPos)) {
+                    if (this.getY() > (double) this.level().getMinBuildHeight()) {
                         deltaY = -0.1;
                     } else {
                         deltaY = 0.0;

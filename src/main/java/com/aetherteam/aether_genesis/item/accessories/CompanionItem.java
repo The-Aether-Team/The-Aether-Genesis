@@ -26,7 +26,7 @@ public class CompanionItem<T extends CompanionMob> extends AccessoryItem {
     @Override
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
         LivingEntity wearer = slotContext.entity();
-        if (wearer.getLevel() instanceof ServerLevel serverLevel) {
+        if (wearer.level() instanceof ServerLevel serverLevel) {
             CompoundTag tag = new CompoundTag();
             tag.putUUID("Owner", wearer.getUUID());
             Entity entity = this.getCompanionType().spawn(serverLevel, tag, null, wearer.blockPosition(), MobSpawnType.MOB_SUMMONED, false, false);

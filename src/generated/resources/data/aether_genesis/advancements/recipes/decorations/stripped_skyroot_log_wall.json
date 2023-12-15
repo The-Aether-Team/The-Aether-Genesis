@@ -30,5 +30,6 @@
     "recipes": [
       "aether_genesis:stripped_skyroot_log_wall"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

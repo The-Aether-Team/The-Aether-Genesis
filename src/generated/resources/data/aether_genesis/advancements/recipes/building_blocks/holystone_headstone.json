@@ -30,5 +30,6 @@
     "recipes": [
       "aether_genesis:holystone_headstone"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

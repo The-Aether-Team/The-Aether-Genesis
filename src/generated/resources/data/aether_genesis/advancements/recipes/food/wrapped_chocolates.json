@@ -30,5 +30,6 @@
     "recipes": [
       "aether_genesis:wrapped_chocolates"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

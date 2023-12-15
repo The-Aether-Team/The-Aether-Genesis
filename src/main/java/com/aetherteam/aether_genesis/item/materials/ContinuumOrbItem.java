@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -41,11 +42,9 @@ public class ContinuumOrbItem extends Item implements ConsumableItem {
 
     protected List<ItemStack> createLoot(Player player) {
         List<ItemStack> lootItems = new ArrayList<>();
-        LootContext.Builder builder = new LootContext.Builder((ServerLevel) player.getLevel())
-                .withParameter(LootContextParams.ORIGIN, player.position())
-                .withParameter(LootContextParams.THIS_ENTITY, player);
-        LootTable lootTable = player.getLevel().getServer().getLootTables().get(GenesisLoot.CONTINUUM_ORB);
-        List<ItemStack> list = lootTable.getRandomItems(builder.create(LootContextParamSets.SELECTOR));
+        LootParams parameters = new LootParams.Builder((ServerLevel) player.level()).withParameter(LootContextParams.ORIGIN, player.position()).withParameter(LootContextParams.THIS_ENTITY, player).create(LootContextParamSets.SELECTOR);
+        LootTable lootTable = ((ServerLevel) player.level()).getServer().getLootData().getLootTable(GenesisLoot.CONTINUUM_ORB);
+        List<ItemStack> list = lootTable.getRandomItems(parameters);
         for (ItemStack itemStack : list) {
             if (!player.addItem(itemStack)) {
                 player.drop(itemStack, false);

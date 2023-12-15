@@ -30,5 +30,6 @@
     "recipes": [
       "aether_genesis:skyroot_wood_wall"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

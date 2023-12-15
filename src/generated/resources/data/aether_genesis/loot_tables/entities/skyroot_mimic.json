@@ -161,5 +161,6 @@
         "min": 1.0
       }
     }
-  ]
+  ],
+  "random_sequence": "aether_genesis:entities/skyroot_mimic"
 }

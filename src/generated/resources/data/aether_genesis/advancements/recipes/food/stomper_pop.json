@@ -30,5 +30,6 @@
     "recipes": [
       "aether_genesis:stomper_pop"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

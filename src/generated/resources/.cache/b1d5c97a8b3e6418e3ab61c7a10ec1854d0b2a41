@@ -1,4 +1,4 @@
-// 1.19.4	2023-09-03T19:12:04.3204784	Tags for minecraft:entity_type mod id aether_genesis
+// 1.20.1	2023-12-14T20:57:09.6393903	Tags for minecraft:entity_type mod id aether_genesis
 98adcc48926a85b2b9847ec815a45733a1c4c2bb data/aether/tags/entity_types/deflectable_projectiles.json
 d320098398784bc4b5bd20f3857af4b83db9dbdc data/aether/tags/entity_types/swets.json
 e6357e0668614f597468e2eefc7b6ffcce4e83eb data/aether/tags/entity_types/treated_as_aether_entity.json

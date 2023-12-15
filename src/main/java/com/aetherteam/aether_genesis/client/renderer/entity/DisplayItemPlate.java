@@ -26,7 +26,7 @@ public interface DisplayItemPlate<T extends Mob & Companion<T>> {
             poseStack.mulPose(entityRenderDispatcher.cameraOrientation());
             poseStack.translate(0.0F, 0.3, 0.0F);
             poseStack.scale(0.5F, 0.5F, 0.1F);
-            this.renderItem(itemRenderer, entity.getSummonItem(), LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, poseStack, buffer, entity.getLevel(), entity.getId());
+            this.renderItem(itemRenderer, entity.getSummonItem(), LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, poseStack, buffer, entity.level(), entity.getId());
             poseStack.popPose();
         }
     }

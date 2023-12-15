@@ -22,7 +22,7 @@ public class ContinuumOrbLootTrigger extends SimpleCriterionTrigger<ContinuumOrb
     @Override
     public ContinuumOrbLootTrigger.Instance createInstance(JsonObject json, ContextAwarePredicate predicate, DeserializationContext context) {
         ItemPredicate itemPredicate = ItemPredicate.fromJson(json.get("item"));
-        return new ContinuumOrbLootTrigger.Instance(entity, itemPredicate);
+        return new ContinuumOrbLootTrigger.Instance(predicate, itemPredicate);
     }
 
     public void trigger(ServerPlayer player, ItemStack stack) {

@@ -28,23 +28,23 @@ public class RewardItem extends ItemEntity {
 
     public void tick() {
         if (this.getAge() == 0)
-            this.level.playSound(this,this.getOnPos() , SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.AMBIENT, 3.0F, 0.75F + this.random.nextFloat());
-        if (!this.onGround) {
-            if (this.level.isClientSide && this.getAge() % 2 < 2)
-                this.level.addParticle(ParticleTypes.FIREWORK, this.getX(), this.getY() - 0.3D, this.getZ(), this.random.nextGaussian() * 0.05D, - this.getMotionDirection().getStepY() * 0.5D, this.random.nextGaussian() * 0.05D);
+            this.level().playSound(this,this.getOnPos() , SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.AMBIENT, 3.0F, 0.75F + this.random.nextFloat());
+        if (!this.onGround()) {
+            if (this.level().isClientSide && this.getAge() % 2 < 2)
+                this.level().addParticle(ParticleTypes.FIREWORK, this.getX(), this.getY() - 0.3D, this.getZ(), this.random.nextGaussian() * 0.05D, - this.getMotionDirection().getStepY() * 0.5D, this.random.nextGaussian() * 0.05D);
             int sparkCount;
             for (sparkCount = 1; sparkCount <= 5; sparkCount++) {
                 double motX = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
                 double motY = this.random.nextDouble();
                 double motZ = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-                this.level.addParticle(ParticleTypes.ENTITY_EFFECT, this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
+                this.level().addParticle(ParticleTypes.ENTITY_EFFECT, this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
             }
             if (this.tickCount % 5 == 0)
                 for (sparkCount = 1; sparkCount <= 10; sparkCount++) {
                     double motX = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
                     double motY = this.random.nextDouble();
                     double motZ = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-                    this.level.addParticle(ParticleTypes.FIREWORK, this.getX(), this.getY(), this.getZ(), motX / 2.0D, motY / 2.0D, motZ / 2.0D);
+                    this.level().addParticle(ParticleTypes.FIREWORK, this.getX(), this.getY(), this.getZ(), motX / 2.0D, motY / 2.0D, motZ / 2.0D);
                 }
         }
         super.tick();

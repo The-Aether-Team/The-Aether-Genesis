@@ -39,7 +39,7 @@ public class HostEye extends PathfinderMob {
 
     public HostEye(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        host = new SliderHostMimic(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), level);
+        host = new SliderHostMimic(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), this.level());
     }
 
 
@@ -85,12 +85,12 @@ public class HostEye extends PathfinderMob {
                 return;
             }
             if (this.getTarget() == null) {
-                this.setTarget(level.getNearestPlayer(this, -1.0));
+                this.setTarget(level().getNearestPlayer(this, -1.0));
                 if (this.getTarget() == null) {
                     this.setTarget(null);
                     stop();
                     this.timer = 0;
-                    if (!this.level.isClientSide)
+                    if (!this.level().isClientSide)
                         discard();
                     return;
                 }
@@ -100,7 +100,7 @@ public class HostEye extends PathfinderMob {
             this.setTarget(null);
             stop();
             this.timer = 0;
-            if (!this.level.isClientSide)
+            if (!this.level().isClientSide)
                 discard();
             return;
         }
@@ -108,15 +108,15 @@ public class HostEye extends PathfinderMob {
             this.setTarget(null);
             stop();
             this.timer = 0;
-            if (!this.level.isClientSide)
+            if (!this.level().isClientSide)
                 discard();
             return;
         }
         this.fallDistance = 0.0F;
         if (this.movement) {
             if (this.isPushable()) {
-                this.level.playLocalSound(this.position().x, this.position().y, this.position().z, SoundEvents.GENERIC_EXPLODE, SoundSource.AMBIENT, 3.0F, (0.625F + (this.level.random.nextFloat() - this.level.random.nextFloat()) * 0.2F) * 0.7F, false);
-                this.level.playSound(this, this.blockPosition(), AetherSoundEvents.ENTITY_SLIDER_COLLIDE.get(), SoundSource.AMBIENT, 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
+                this.level().playLocalSound(this.position().x, this.position().y, this.position().z, SoundEvents.GENERIC_EXPLODE, SoundSource.AMBIENT, 3.0F, (0.625F + (this.level().random.nextFloat() - this.level().random.nextFloat()) * 0.2F) * 0.7F, false);
+                this.level().playSound(this, this.blockPosition(), AetherSoundEvents.ENTITY_SLIDER_COLLIDE.get(), SoundSource.AMBIENT, 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
                 stop();
             } else {
                 if (this.speedy < 2.0F)
@@ -196,7 +196,7 @@ public class HostEye extends PathfinderMob {
                 return;
             boolean flag = entity.hurt(this.damageSources().thrown(this, this.host), 6.0F);
             if (flag && entity instanceof LivingEntity) {
-                this.level.playSound(this, this.blockPosition(), AetherSoundEvents.ENTITY_SLIDER_COLLIDE.get(), SoundSource.AMBIENT, 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
+                this.level().playSound(this, this.blockPosition(), AetherSoundEvents.ENTITY_SLIDER_COLLIDE.get(), SoundSource.AMBIENT, 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
                 LivingEntity ek = (LivingEntity)entity;
                 ek.setDeltaMovement(ek.getDeltaMovement().x + 0.35D,ek.getDeltaMovement().y +  2.0D,ek.getDeltaMovement().z +  2.0D);
                 stop();

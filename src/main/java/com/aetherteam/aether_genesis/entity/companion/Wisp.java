@@ -34,7 +34,7 @@ public class Wisp extends CompanionMob {
                 this.hasImpulse = true;
             }
         }
-        if (this.getLevel().isClientSide()) {
+        if (this.level().isClientSide()) {
             this.armRotO = this.armRot;
             this.armRot += 0.5F;
         }

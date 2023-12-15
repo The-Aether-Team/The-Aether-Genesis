@@ -30,5 +30,6 @@
     "recipes": [
       "aether_genesis:sentry_stone_from_divine_sentry_stone_stonecutting"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

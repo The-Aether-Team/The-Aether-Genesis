@@ -30,5 +30,6 @@
     "recipes": [
       "aether_genesis:rainbow_strawberry_enchanting"
     ]
-  }
+  },
+  "sends_telemetry_event": true
 }
