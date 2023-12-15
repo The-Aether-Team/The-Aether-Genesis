@@ -1,7 +1,7 @@
 plugins {
     id 'eclipse'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'net.neoforged.gradle' version '[6.0.13, 6.2)'
     id 'org.spongepowered.mixin' version '[0.7,0.8)'
     id 'org.parchmentmc.librarian.forgegradle' version '[1,2)'
     id 'org.moddingx.modgradle.mapping' version '[4,5)'
@@ -11,7 +11,7 @@ plugins {
     id 'com.modrinth.minotaur' version '[2,3)'
 }
 
-version = "${mc_version}-${mod_version}-forge"
+version = "${mc_version}-${mod_version}-neoforge"
 group = 'com.aetherteam.aether_genesis' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 
 base {
@@ -71,18 +71,18 @@ sourceSets.main.resources {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${project.mc_version}-${project.forge_version}"
+    minecraft "net.neoforged:forge:${project.mc_version}-${project.neoforge_version}"
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
-    //implementation fg.deobf("com.aetherteam.aether:aether:${project.aether_version}")
-    implementation fg.deobf("local:aether:${project.aether_version}")
+    implementation fg.deobf("com.aetherteam.aether:aether:${project.aether_version}")
+//    implementation fg.deobf("local:aether:${project.aether_version}")
 
     implementation fg.deobf("com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}")
     implementation fg.deobf("com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}")
-    implementation fg.deobf("top.theillusivec4.curios:curios-forge:${project.curios_version}")
+    implementation fg.deobf("top.theillusivec4.curios:curios-forge:${project.curios_version}+${project.mc_version}")
 
-    runtimeOnly fg.deobf("io.github.flemmli97:debugutils:${project.mc_version}-${project.debugutils_version}-forge")
+    //runtimeOnly fg.deobf("io.github.flemmli97:debugutils:${project.mc_version}-${project.debugutils_version}-forge")
 }
 
 repositories {

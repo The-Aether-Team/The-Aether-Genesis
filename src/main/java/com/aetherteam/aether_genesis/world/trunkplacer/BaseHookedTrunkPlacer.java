@@ -5,6 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.TreeFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.TreeConfiguration;
@@ -112,10 +113,7 @@ public abstract class BaseHookedTrunkPlacer extends TrunkPlacer {
     }
 
     private static boolean isReplaceablePlant(LevelSimulatedReader level, BlockPos pos) {
-        return level.isStateAtPosition(pos, (state) -> {
-            Material material = state.getMaterial();
-            return material == Material.REPLACEABLE_PLANT || material == Material.REPLACEABLE_WATER_PLANT || material == Material.REPLACEABLE_FIREPROOF_PLANT;
-        });
+        return level.isStateAtPosition(pos, BlockBehaviour.BlockStateBase::canBeReplaced);
     }
 
     public abstract boolean isTrunk(LevelSimulatedReader level, BlockPos pos);
