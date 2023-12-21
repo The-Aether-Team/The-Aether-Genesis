@@ -23,7 +23,6 @@ public class GenesisBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_PURPLE_AERCLOUD = createKey("add_purple_aercloud");
     public static final ResourceKey<BiomeModifier> ADD_STORM_AERCLOUD = createKey("add_storm_aercloud");
     public static final ResourceKey<BiomeModifier> ADD_ORANGE_TREES = createKey("add_orange_trees");
-    public static final ResourceKey<BiomeModifier> ADD_MEADOW_TREES = createKey("add_meadow_trees");
     public static final ResourceKey<BiomeModifier> ADD_GROVE_TREES = createKey("add_grove_trees");
     public static final ResourceKey<BiomeModifier> ADD_WOODLAND_TREES = createKey("add_woodland_trees");
     public static final ResourceKey<BiomeModifier> ADD_FOREST_TREES = createKey("add_forest_trees");
@@ -67,44 +66,26 @@ public class GenesisBiomeModifiers {
                 HolderSet.direct(context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.ORANGE_TREE_PATCH_PLACEMENT)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
-        context.register(ADD_MEADOW_TREES, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_MEADOW_TREES),
-                HolderSet.direct(
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_MEADOW_BLUE_SKYROOT_TREES_PLACEMENT),
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_MEADOW_LARGE_GREEN_SKYROOT_TREES_PLACEMENT)),
-                GenerationStep.Decoration.VEGETAL_DECORATION
-        ));
         context.register(ADD_GROVE_TREES, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_GROVE_TREES),
                 HolderSet.direct(
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_GROVE_BLUE_SKYROOT_TREES_PLACEMENT),
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_GROVE_LARGE_GREEN_SKYROOT_TREES_PLACEMENT),
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_GROVE_BLUE_SKYROOT_PINES_PLACEMENT),
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_GROVE_GREEN_SKYROOT_PINES_PLACEMENT)),
+                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_GROVE_LARGE_GREEN_SKYROOT_TREES_PLACEMENT)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
         context.register(ADD_WOODLAND_TREES, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_WOODLAND_TREES),
                 HolderSet.direct(
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_WOODLAND_BLUE_SKYROOT_TREES_PLACEMENT),
                         context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_WOODLAND_LARGE_GREEN_SKYROOT_TREES_PLACEMENT),
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_WOODLAND_BLUE_SKYROOT_PINES_PLACEMENT),
                         context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_WOODLAND_GREEN_SKYROOT_PINES_PLACEMENT),
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_WOODLAND_DARK_BLUE_HOOKED_SKYROOTS_PLACEMENT),
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_WOODLAND_GREEN_HOOKED_SKYROOTS_PLACEMENT),
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_WOODLAND_PURPLE_CRYSTAL_TREES_PLACEMENT)),
+                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_WOODLAND_GREEN_HOOKED_SKYROOTS_PLACEMENT)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
         context.register(ADD_FOREST_TREES, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_FOREST_TREES),
                 HolderSet.direct(
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_FOREST_BLUE_SKYROOT_TREES_PLACEMENT),
                         context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_FOREST_LARGE_GREEN_SKYROOT_TREES_PLACEMENT),
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_FOREST_BLUE_SKYROOT_PINES_PLACEMENT),
                         context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_FOREST_GREEN_SKYROOT_PINES_PLACEMENT),
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_FOREST_DARK_BLUE_HOOKED_SKYROOTS_PLACEMENT),
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_FOREST_GREEN_HOOKED_SKYROOTS_PLACEMENT),
-                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_FOREST_PURPLE_CRYSTAL_TREES_PLACEMENT)),
+                        context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.SKYROOT_FOREST_GREEN_HOOKED_SKYROOTS_PLACEMENT)),
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
         context.register(ADD_CONTINUUM_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(

@@ -17,6 +17,7 @@ import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.loot.functions.GenesisLootFunctions;
 import com.aetherteam.aether_genesis.loot.modifiers.GenesisLootModifiers;
 import com.aetherteam.aether_genesis.network.GenesisPacketHandler;
+import com.aetherteam.aether_genesis.world.GenesisRegion;
 import com.aetherteam.aether_genesis.world.biomemodifier.GenesisBiomeModifierSerializers;
 import com.aetherteam.aether_genesis.world.feature.GenesisFeatures;
 import com.aetherteam.aether_genesis.world.foliageplacer.GenesisFoliagePlacerTypes;
@@ -29,6 +30,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.metadata.PackMetadataGenerator;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 import net.minecraft.server.packs.repository.Pack;
@@ -50,6 +52,10 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.resource.PathPackResources;
 import org.slf4j.Logger;
+import teamrazor.aeroblender.aether.AetherRuleCategory;
+import teamrazor.aeroblender.aether.AetherSurfaceRuleData;
+import terrablender.api.Regions;
+import terrablender.api.SurfaceRuleManager;
 
 import java.nio.file.Path;
 import java.util.Map;
@@ -103,6 +109,8 @@ public class Genesis {
             GenesisBlocks.registerFlammability();
 
             this.registerComposting();
+
+            Regions.register(new GenesisRegion(new ResourceLocation(MODID, MODID), GenesisConfig.COMMON.biome_weight.get()));
         });
     }
 

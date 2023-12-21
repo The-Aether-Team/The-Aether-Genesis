@@ -47,7 +47,6 @@ public class GenesisTags {
         public static final TagKey<Biome> HAS_STORM_AERCLOUDS = tag("has_storm_aerclouds");
         public static final TagKey<Biome> HAS_CONTINUUM_ORE = tag("has_continuum_ore");
         public static final TagKey<Biome> HAS_ORANGE_TREES = tag("has_orange_trees");
-        public static final TagKey<Biome> HAS_MEADOW_TREES = tag("has_meadow_trees");
         public static final TagKey<Biome> HAS_GROVE_TREES = tag("has_grove_trees");
         public static final TagKey<Biome> HAS_WOODLAND_TREES = tag("has_woodland_trees");
         public static final TagKey<Biome> HAS_FOREST_TREES = tag("has_forest_trees");

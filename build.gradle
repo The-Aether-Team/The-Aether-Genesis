@@ -82,6 +82,9 @@ dependencies {
     implementation fg.deobf("com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}")
     implementation fg.deobf("top.theillusivec4.curios:curios-forge:${project.curios_version}+${project.mc_version}")
 
+    implementation fg.deobf("curse.maven:aeroblender-879879:${project.aeroblender_version}")
+    implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${project.terrablender_version}")
+
     //runtimeOnly fg.deobf("io.github.flemmli97:debugutils:${project.mc_version}-${project.debugutils_version}-forge")
 }
 
@@ -90,13 +93,13 @@ repositories {
     maven { url = "https://maven.theillusivec4.top/" }
     maven { url = "https://www.cursemaven.com" }
     maven { url = "https://gitlab.com/api/v4/projects/21830712/packages/maven" }
-//    maven githubPackage.invoke("The-Aether-Team/The-Aether")
+    maven { url = 'https://maven.minecraftforge.net/' }
+    maven githubPackage.invoke("The-Aether-Team/The-Aether")
     maven githubPackage.invoke("The-Aether-Team/Nitrogen")
     maven githubPackage.invoke("The-Aether-Team/Cumulus")
     flatDir {
         dir 'libs'
     }
-//    maven githubPackage.invoke("The-Aether-Team/Nitrogen")
 }
 
 tasks.named('jar', Jar).configure {

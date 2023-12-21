@@ -2,13 +2,9 @@
   "type": "forge:add_features",
   "biomes": "#aether_genesis:has_forest_trees",
   "features": [
-    "aether_genesis:skyroot_forest_blue_skyroot_trees",
     "aether_genesis:skyroot_forest_large_green_skyroot_trees",
-    "aether_genesis:skyroot_forest_blue_skyroot_pines",
     "aether_genesis:skyroot_forest_green_skyroot_pines",
-    "aether_genesis:skyroot_forest_dark_blue_hooked_skyroots",
-    "aether_genesis:skyroot_forest_green_hooked_skyroots",
-    "aether_genesis:skyroot_forest_purple_crystal_trees"
+    "aether_genesis:skyroot_forest_green_hooked_skyroots"
   ],
   "step": "vegetal_decoration"
 }

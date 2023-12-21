@@ -1,9 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#aether_genesis:has_meadow_trees",
-  "features": [
-    "aether_genesis:skyroot_meadow_blue_skyroot_trees",
-    "aether_genesis:skyroot_meadow_large_green_skyroot_trees"
-  ],
-  "step": "vegetal_decoration"
-}

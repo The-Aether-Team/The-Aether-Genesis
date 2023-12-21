@@ -1,9 +1,21 @@
 {
-  "feature": "aether_genesis:blue_skyroot_pine",
+  "feature": "aether_genesis:trees_vibrant_grove",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 2
+      "type": "minecraft:count",
+      "count": {
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "data": 2,
+            "weight": 9
+          },
+          {
+            "data": 3,
+            "weight": 1
+          }
+        ]
+      }
     },
     {
       "type": "minecraft:surface_water_depth_filter",
@@ -26,18 +38,6 @@
     },
     {
       "type": "aether:dungeon_blacklist_filter"
-    },
-    {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:would_survive",
-        "state": {
-          "Name": "aether_genesis:blue_skyroot_sapling",
-          "Properties": {
-            "stage": "0"
-          }
-        }
-      }
     }
   ]
 }

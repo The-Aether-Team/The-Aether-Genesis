@@ -12,10 +12,11 @@
     "common.BlueAercloudBlockMixin",
     "common.ItemMixin",
     "common.ParachuteMixin",
-    "common.SliderMixin",
     "common.PortalSoundUtilMixin",
+    "common.SliderMixin",
     "common.StructurePieceMixin",
     "common.SwetMixin",
+    "common.accessor.RegistrySetBuilderAccessor",
     "common.accessor.WallBlockAccessor"
   ],
   "client": [

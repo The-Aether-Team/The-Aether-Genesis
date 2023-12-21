@@ -7,6 +7,7 @@ public class GenesisConfig {
     public static class Common {
         public final ForgeConfigSpec.ConfigValue<Boolean> gold_aercloud_ability;
         public final ForgeConfigSpec.ConfigValue<Boolean> improved_slider_message;
+        public final ForgeConfigSpec.ConfigValue<Integer> biome_weight;
         public final ForgeConfigSpec.ConfigValue<Boolean> aether_ii_portal_sounds;
 
         public Common(ForgeConfigSpec.Builder builder) { //todo server config
@@ -19,6 +20,12 @@ public class GenesisConfig {
                     .comment("Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe")
                     .translation("config.aether_genesis.common.gameplay.improved_slider_message")
                     .define("Improved Slider Message", true);
+            builder.pop();
+            builder.push("World Generation");
+            biome_weight = builder
+                    .comment("Determines the biome weight for biome regions.")
+                    .translation("config.aether_genesis.common.world_generation.biome_weight")
+                    .define("Biome Weight", 15);
             builder.pop();
             builder.push("Audio");
             aether_ii_portal_sounds = builder
