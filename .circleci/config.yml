@@ -9,8 +9,8 @@ orbs:
 jobs:
   publish:
     machine:
-      image: ubuntu-2204:2023.02.1
-    resource_class: medium
+      image: ubuntu-2204:2022.07.1
+    resource_class: large
     environment:
       _JAVA_OPTIONS: -Xmx3200m
       GRADLE_OPTS: -Dorg.gradle.daemon=false
@@ -25,7 +25,7 @@ commands:
     steps:
       - checkout
       - gradle/with_cache:
-          cache_key: 'v1'
+          cache_key: 'v9'
           steps:
             - run:
                 name: chmod permissions
@@ -39,6 +39,8 @@ workflows:
     jobs:
       - path-filtering/filter:
           name: filter
+          mapping: |
+            src/.* allow-deploy-and-discord-publish true
           base-revision: << pipeline.git.branch >>
           config-path: .circleci/continue_config.yml
   publish:
@@ -46,6 +48,7 @@ workflows:
       - publish:
           context:
             - maven
+            - publishing
           filters:
             tags:
               only:
@@ -53,4 +56,3 @@ workflows:
             branches:
               ignore:
                 - /.*/
-
