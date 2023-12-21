@@ -1,8 +1,10 @@
 package com.aetherteam.aether_genesis.data.generators.tags;
 
+import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.data.resources.registries.AetherBiomes;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.GenesisTags;
+import com.aetherteam.aether_genesis.data.resources.registries.GenesisBiomes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
@@ -22,22 +24,38 @@ public class GenesisBiomeTagData extends BiomeTagsProvider {
                 .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
                 .addOptional(AetherBiomes.SKYROOT_GROVE.location())
                 .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location());
+                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
+                .add(GenesisBiomes.VIBRANT_MEADOW)
+                .add(GenesisBiomes.VIBRANT_GROVE)
+                .add(GenesisBiomes.VIBRANT_WOODLAND)
+                .add(GenesisBiomes.VIBRANT_FOREST);
         this.tag(GenesisTags.Biomes.HAS_PURPLE_AERCLOUDS)
                 .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
                 .addOptional(AetherBiomes.SKYROOT_GROVE.location())
                 .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location());
+                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
+                .add(GenesisBiomes.VIBRANT_MEADOW)
+                .add(GenesisBiomes.VIBRANT_GROVE)
+                .add(GenesisBiomes.VIBRANT_WOODLAND)
+                .add(GenesisBiomes.VIBRANT_FOREST);
         this.tag(GenesisTags.Biomes.HAS_STORM_AERCLOUDS)
                 .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
                 .addOptional(AetherBiomes.SKYROOT_GROVE.location())
                 .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location());
+                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
+                .add(GenesisBiomes.VIBRANT_MEADOW)
+                .add(GenesisBiomes.VIBRANT_GROVE)
+                .add(GenesisBiomes.VIBRANT_WOODLAND)
+                .add(GenesisBiomes.VIBRANT_FOREST);
         this.tag(GenesisTags.Biomes.HAS_ORANGE_TREES)
                 .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
                 .addOptional(AetherBiomes.SKYROOT_GROVE.location())
                 .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location());
+                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
+                .add(GenesisBiomes.VIBRANT_MEADOW)
+                .add(GenesisBiomes.VIBRANT_GROVE)
+                .add(GenesisBiomes.VIBRANT_WOODLAND)
+                .add(GenesisBiomes.VIBRANT_FOREST);
         this.tag(GenesisTags.Biomes.HAS_GROVE_TREES)
                 .addOptional(AetherBiomes.SKYROOT_GROVE.location());
         this.tag(GenesisTags.Biomes.HAS_WOODLAND_TREES)
@@ -48,21 +66,43 @@ public class GenesisBiomeTagData extends BiomeTagsProvider {
                 .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
                 .addOptional(AetherBiomes.SKYROOT_GROVE.location())
                 .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location());
+                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
+                .add(GenesisBiomes.VIBRANT_MEADOW)
+                .add(GenesisBiomes.VIBRANT_GROVE)
+                .add(GenesisBiomes.VIBRANT_WOODLAND)
+                .add(GenesisBiomes.VIBRANT_FOREST);
         this.tag(GenesisTags.Biomes.HAS_CARRION_SPROUT)
                 .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
                 .addOptional(AetherBiomes.SKYROOT_GROVE.location())
                 .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location());
+                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
+                .add(GenesisBiomes.VIBRANT_MEADOW)
+                .add(GenesisBiomes.VIBRANT_GROVE)
+                .add(GenesisBiomes.VIBRANT_WOODLAND)
+                .add(GenesisBiomes.VIBRANT_FOREST);
         this.tag(GenesisTags.Biomes.HAS_DARK_SWET)
                 .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
                 .addOptional(AetherBiomes.SKYROOT_GROVE.location())
                 .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location());
+                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
+                .add(GenesisBiomes.VIBRANT_MEADOW)
+                .add(GenesisBiomes.VIBRANT_GROVE)
+                .add(GenesisBiomes.VIBRANT_WOODLAND)
+                .add(GenesisBiomes.VIBRANT_FOREST);
         this.tag(GenesisTags.Biomes.HAS_TEMPEST)
                 .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
                 .addOptional(AetherBiomes.SKYROOT_GROVE.location())
                 .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location());
+                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
+                .add(GenesisBiomes.VIBRANT_MEADOW)
+                .add(GenesisBiomes.VIBRANT_GROVE)
+                .add(GenesisBiomes.VIBRANT_WOODLAND)
+                .add(GenesisBiomes.VIBRANT_FOREST);
+
+        this.tag(AetherTags.Biomes.IS_AETHER)
+                .add(GenesisBiomes.VIBRANT_MEADOW)
+                .add(GenesisBiomes.VIBRANT_GROVE)
+                .add(GenesisBiomes.VIBRANT_WOODLAND)
+                .add(GenesisBiomes.VIBRANT_FOREST);
     }
 }

@@ -15,6 +15,10 @@
     {
       "id": "aether:skyroot_forest",
       "required": false
-    }
+    },
+    "aether_genesis:vibrant_meadow",
+    "aether_genesis:vibrant_grove",
+    "aether_genesis:vibrant_woodland",
+    "aether_genesis:vibrant_forest"
   ]
 }

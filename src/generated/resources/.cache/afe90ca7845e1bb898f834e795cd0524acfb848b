@@ -1,12 +1,13 @@
-// 1.20.1	2023-12-19T14:56:52.3002653	Tags for minecraft:worldgen/biome mod id aether_genesis
-8ae388244a6715d127cccb34fd7bc2b08a1f4f8e data/aether_genesis/tags/worldgen/biome/has_carrion_sprout.json
-8ae388244a6715d127cccb34fd7bc2b08a1f4f8e data/aether_genesis/tags/worldgen/biome/has_continuum_ore.json
-8ae388244a6715d127cccb34fd7bc2b08a1f4f8e data/aether_genesis/tags/worldgen/biome/has_dark_swet.json
+// 1.20.1	2023-12-21T12:57:10.2941497	Tags for minecraft:worldgen/biome mod id aether_genesis
+02bf558e4afc5ecdd647139229d117ee0c214af5 data/aether/tags/worldgen/biome/is_aether.json
+a65395f96f1079c37ca0378a2b321278602657ed data/aether_genesis/tags/worldgen/biome/has_carrion_sprout.json
+a65395f96f1079c37ca0378a2b321278602657ed data/aether_genesis/tags/worldgen/biome/has_continuum_ore.json
+a65395f96f1079c37ca0378a2b321278602657ed data/aether_genesis/tags/worldgen/biome/has_dark_swet.json
 efadc41688a3c74d6a47112c2930e85e96efe21d data/aether_genesis/tags/worldgen/biome/has_forest_trees.json
-8ae388244a6715d127cccb34fd7bc2b08a1f4f8e data/aether_genesis/tags/worldgen/biome/has_green_aerclouds.json
+a65395f96f1079c37ca0378a2b321278602657ed data/aether_genesis/tags/worldgen/biome/has_green_aerclouds.json
 ebc61c82de748aa9895bc384f64150b54c7279bc data/aether_genesis/tags/worldgen/biome/has_grove_trees.json
-8ae388244a6715d127cccb34fd7bc2b08a1f4f8e data/aether_genesis/tags/worldgen/biome/has_orange_trees.json
-8ae388244a6715d127cccb34fd7bc2b08a1f4f8e data/aether_genesis/tags/worldgen/biome/has_purple_aerclouds.json
-8ae388244a6715d127cccb34fd7bc2b08a1f4f8e data/aether_genesis/tags/worldgen/biome/has_storm_aerclouds.json
-8ae388244a6715d127cccb34fd7bc2b08a1f4f8e data/aether_genesis/tags/worldgen/biome/has_tempest.json
+a65395f96f1079c37ca0378a2b321278602657ed data/aether_genesis/tags/worldgen/biome/has_orange_trees.json
+a65395f96f1079c37ca0378a2b321278602657ed data/aether_genesis/tags/worldgen/biome/has_purple_aerclouds.json
+a65395f96f1079c37ca0378a2b321278602657ed data/aether_genesis/tags/worldgen/biome/has_storm_aerclouds.json
+a65395f96f1079c37ca0378a2b321278602657ed data/aether_genesis/tags/worldgen/biome/has_tempest.json
 0ccb8251b610bc44aeba2b7394da9458f9ada3cc data/aether_genesis/tags/worldgen/biome/has_woodland_trees.json
