@@ -60,14 +60,14 @@ public class GenesisLootModifierData extends GlobalLootModifierProvider {
 
         this.add("bronze_dark_gummy_swet", new AddDungeonLootModifier(
                 new LootItemCondition[] {
-                        LootTableIdCondition.builder(AetherLoot.BRONZE_DUNGEON_GUMMIES).build()
+                        LootTableIdCondition.builder(AetherLoot.BRONZE_DUNGEON_REWARD).build()
                 },
                 List.of(WeightedEntry.wrap(new ItemStack(GenesisItems.DARK_GUMMY_SWET.get()), 3)),
                 UniformInt.of(1, 1))
         );
         this.add("silver_dark_gummy_swet", new AddDungeonLootModifier(
                 new LootItemCondition[] {
-                        LootTableIdCondition.builder(AetherLoot.SILVER_DUNGEON_GUMMIES).build()
+                        LootTableIdCondition.builder(AetherLoot.SILVER_DUNGEON_REWARD).build()
                 },
                 List.of(WeightedEntry.wrap(new ItemStack(GenesisItems.DARK_GUMMY_SWET.get()), 4)),
                 UniformInt.of(1, 4))
@@ -138,14 +138,14 @@ public class GenesisLootModifierData extends GlobalLootModifierProvider {
         );
         this.add("bronze_candy_corn", new AddDungeonLootModifier(
                 new LootItemCondition[] {
-                        LootTableIdCondition.builder(AetherLoot.BRONZE_DUNGEON_LOOT).build()
+                        LootTableIdCondition.builder(AetherLoot.BRONZE_DUNGEON).build()
                 },
                 List.of(WeightedEntry.wrap(new ItemStack(GenesisItems.CANDY_CORN.get()), 1)),
                 UniformInt.of(1, 5))
         );
         this.add("bronze_cornstarch_bowl", new AddDungeonLootModifier(
                 new LootItemCondition[] {
-                        LootTableIdCondition.builder(AetherLoot.BRONZE_DUNGEON_LOOT).build()
+                        LootTableIdCondition.builder(AetherLoot.BRONZE_DUNGEON).build()
                 },
                 List.of(WeightedEntry.wrap(new ItemStack(GenesisItems.CORNSTARCH_BOWL.get()), 1)),
                 UniformInt.of(1, 2))
@@ -216,14 +216,14 @@ public class GenesisLootModifierData extends GlobalLootModifierProvider {
         );
         this.add("silver_candy_corn", new AddDungeonLootModifier(
                 new LootItemCondition[] {
-                        LootTableIdCondition.builder(AetherLoot.SILVER_DUNGEON_LOOT).build()
+                        LootTableIdCondition.builder(AetherLoot.SILVER_DUNGEON).build()
                 },
                 List.of(WeightedEntry.wrap(new ItemStack(GenesisItems.CANDY_CORN.get()), 1)),
                 UniformInt.of(1, 7))
         );
         this.add("silver_cornstarch_bowl", new AddDungeonLootModifier(
                 new LootItemCondition[] {
-                        LootTableIdCondition.builder(AetherLoot.SILVER_DUNGEON_LOOT).build()
+                        LootTableIdCondition.builder(AetherLoot.SILVER_DUNGEON).build()
                 },
                 List.of(WeightedEntry.wrap(new ItemStack(GenesisItems.CORNSTARCH_BOWL.get()), 1)),
                 UniformInt.of(1, 4))

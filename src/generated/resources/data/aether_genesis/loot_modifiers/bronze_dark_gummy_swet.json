@@ -3,7 +3,7 @@
   "conditions": [
     {
       "condition": "forge:loot_table_id",
-      "loot_table_id": "aether:chests/dungeon/bronze/bronze_dungeon_gummies"
+      "loot_table_id": "aether:chests/dungeon/bronze/bronze_dungeon_reward"
     }
   ],
   "entries": [
