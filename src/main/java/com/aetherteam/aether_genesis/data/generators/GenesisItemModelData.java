@@ -46,7 +46,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.CANDY_CORN.get(), "food/");
         this.item(GenesisItems.RAINBOW_STRAWBERRY.get(), "food/");
 
-        this.item(GenesisItems.CRYSTAL_EXP_BOTTLE.get(), "accessories/");
+        this.item(GenesisItems.CRYSTAL_EXPERIENCE_BOTTLE.get(), "accessories/");
         this.item(GenesisItems.BONE_RING.get(), "accessories/");
         this.item(GenesisItems.CANDY_RING.get(), "accessories/");
         this.item(GenesisItems.SKYROOT_RING.get(), "accessories/");
@@ -56,11 +56,15 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.dyeableCape(GenesisItems.CAPE.get());
         this.item(GenesisItems.DEXTERITY_CAPE.get(), "accessories/");
         this.item(GenesisItems.MOUSE_EAR_CAP.get(), "accessories/");
+        this.item(GenesisItems.FANGRIN_CAPSULE.get(), "accessories/");
+        this.item(GenesisItems.KRAISITH_CAPSULE.get(), "accessories/");
         this.item(GenesisItems.FLEETING_STONE.get(), "accessories/");
         this.item(GenesisItems.SOARING_STONE.get(), "accessories/");
         this.item(GenesisItems.ETHEREAL_STONE.get(), "accessories/");
         this.item(GenesisItems.ORB_OF_ARKENZUS.get(), "accessories/");
         this.item(GenesisItems.FROSTPINE_TOTEM.get(), "accessories/");
+        this.item(GenesisItems.FROSTBOUND_STONE.get(), "accessories/");
+        this.item(GenesisItems.DEATH_SEAL.get(), "accessories/");
         this.item(GenesisItems.BABY_PINK_SWET.get(), "accessories/");
 
         this.item(GenesisItems.MUSIC_DISC_AERWHALE.get(), "miscellaneous/");

@@ -47,7 +47,7 @@ public class GenesisItems {
     public static final RegistryObject<Item> CANDY_CORN = ITEMS.register("candy_corn", () -> new Item(new Item.Properties().food(GenesisFoods.CANDY_CORN)));
     public static final RegistryObject<Item> RAINBOW_STRAWBERRY = ITEMS.register("rainbow_strawberry", () -> new Item(new Item.Properties().food(GenesisFoods.RAINBOW_STRAWBERRY)));
 
-    public static final RegistryObject<Item> CRYSTAL_EXP_BOTTLE = ITEMS.register("crystal_exp_bottle", () -> new CrystalBottleItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final RegistryObject<Item> CRYSTAL_EXPERIENCE_BOTTLE = ITEMS.register("crystal_experience_bottle", () -> new CrystalBottleItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> BONE_RING = ITEMS.register("bone_ring", () -> new BoneRingItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> CANDY_RING = ITEMS.register("candy_ring", () -> new CandyRingItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final RegistryObject<Item> SKYROOT_RING = ITEMS.register("skyroot_ring", () -> new SkyrootRingItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
@@ -61,11 +61,15 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> MOUSE_EAR_CAP = ITEMS.register("mouse_ear_cap", () -> new MouseEarCapItem(new Item.Properties().stacksTo(1)));
 
+    public static final RegistryObject<Item> FANGRIN_CAPSULE = ITEMS.register("fangrin_capsule", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> KRAISITH_CAPSULE = ITEMS.register("kraisith_capsule", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> FLEETING_STONE = ITEMS.register("fleeting_stone", () -> new FleetingStoneItem(GenesisEntityTypes.FLEETING_WISP, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SOARING_STONE = ITEMS.register("soaring_stone", () -> new SoaringStoneItem(GenesisEntityTypes.SOARING_WISP, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> ETHEREAL_STONE = ITEMS.register("ethereal_stone", () -> new EtherealStoneItem(GenesisEntityTypes.ETHEREAL_WISP, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> ORB_OF_ARKENZUS = ITEMS.register("orb_of_arkenzus", () -> new OrbOfArkenzus(GenesisEntityTypes.SHADE_OF_ARKENZUS, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> FROSTPINE_TOTEM = ITEMS.register("frostpine_totem", () -> new FrostpineTotemItem(GenesisEntityTypes.FROSTPINE_TOTEM, new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> FROSTBOUND_STONE = ITEMS.register("frostbound_stone", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> DEATH_SEAL = ITEMS.register("death_seal", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> BABY_PINK_SWET = ITEMS.register("baby_pink_swet", () -> new BabyPinkSwetItem(GenesisEntityTypes.BABY_PINK_SWET, new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> PHOENIX_DART_SHOOTER = ITEMS.register("phoenix_dart_shooter", () -> new PhoenixDartShooterItem(GOLDEN_DART, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));

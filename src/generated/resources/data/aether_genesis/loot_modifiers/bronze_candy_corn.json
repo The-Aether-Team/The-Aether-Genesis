@@ -1,0 +1,25 @@
+{
+  "type": "aether_genesis:add_dungeon_loot",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "aether:chests/dungeon/bronze/bronze_dungeon_loot"
+    }
+  ],
+  "entries": [
+    {
+      "data": {
+        "Count": 1,
+        "id": "aether_genesis:candy_corn"
+      },
+      "weight": 1
+    }
+  ],
+  "rolls": {
+    "type": "minecraft:uniform",
+    "value": {
+      "max_inclusive": 5,
+      "min_inclusive": 1
+    }
+  }
+}

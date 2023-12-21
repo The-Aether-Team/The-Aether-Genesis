@@ -10,15 +10,15 @@
     {
       "data": {
         "Count": 1,
-        "id": "aether_genesis:dark_gummy_swet"
+        "id": "aether_genesis:mouse_ear_cap"
       },
-      "weight": 3
+      "weight": 1
     }
   ],
   "rolls": {
     "type": "minecraft:uniform",
     "value": {
-      "max_inclusive": 3,
+      "max_inclusive": 1,
       "min_inclusive": 1
     }
   }

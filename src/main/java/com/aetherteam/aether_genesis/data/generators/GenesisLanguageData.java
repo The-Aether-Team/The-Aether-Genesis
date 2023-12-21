@@ -62,7 +62,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.RAINBOW_STRAWBERRY, "Rainbow Strawberry");
 
         this.addItem(GenesisItems.CORNSTARCH_BOWL, "Cornstarch Bowl");
-        this.addItem(GenesisItems.CRYSTAL_EXP_BOTTLE, "Crystal Experience Bottle");
+        this.addItem(GenesisItems.CRYSTAL_EXPERIENCE_BOTTLE, "Crystal Experience Bottle");
         this.addItem(GenesisItems.BONE_RING, "Bone Ring");
         this.addItem(GenesisItems.CANDY_RING, "Candy Ring");
         this.addItem(GenesisItems.SKYROOT_RING, "Skyroot Ring");
@@ -72,11 +72,15 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.CAPE, "Cape");
         this.addItem(GenesisItems.DEXTERITY_CAPE, "Dexterity Cape");
         this.addItem(GenesisItems.MOUSE_EAR_CAP, "Mouse Ear Cap");
+        this.addItem(GenesisItems.FANGRIN_CAPSULE, "Fangrin Capsule");
+        this.addItem(GenesisItems.KRAISITH_CAPSULE, "Kraisith Capsule");
         this.addItem(GenesisItems.FLEETING_STONE, "Fleeting Stone");
         this.addItem(GenesisItems.SOARING_STONE, "Soaring Stone");
         this.addItem(GenesisItems.ETHEREAL_STONE, "Ethereal Stone");
         this.addItem(GenesisItems.ORB_OF_ARKENZUS, "Orb of Arkenzus");
         this.addItem(GenesisItems.FROSTPINE_TOTEM, "Frostpine Totem");
+        this.addItem(GenesisItems.FROSTBOUND_STONE, "Frostbound Stone");
+        this.addItem(GenesisItems.DEATH_SEAL, "Death Seal");
         this.addItem(GenesisItems.BABY_PINK_SWET, "Baby Pink Swet");
 
         this.addItem(GenesisItems.PHOENIX_DART_SHOOTER, "Phoenix Dart Shooter");

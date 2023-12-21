@@ -1,0 +1,25 @@
+{
+  "type": "aether_genesis:add_dungeon_loot",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "aether:chests/dungeon/silver/silver_dungeon_loot"
+    }
+  ],
+  "entries": [
+    {
+      "data": {
+        "Count": 1,
+        "id": "aether_genesis:cornstarch_bowl"
+      },
+      "weight": 1
+    }
+  ],
+  "rolls": {
+    "type": "minecraft:uniform",
+    "value": {
+      "max_inclusive": 4,
+      "min_inclusive": 1
+    }
+  }
+}

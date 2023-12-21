@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "aether_genesis:item/accessories/crystal_exp_bottle"
-  }
-}
