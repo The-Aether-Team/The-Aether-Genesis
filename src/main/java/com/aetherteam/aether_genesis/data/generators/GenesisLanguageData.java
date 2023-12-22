@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.data.generators;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
-import com.aetherteam.aether_genesis.blockentity.GenesisMenuTypes;
+import com.aetherteam.aether_genesis.inventory.menu.GenesisMenuTypes;
 import com.aetherteam.aether_genesis.data.providers.GenesisLanguageProvider;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;

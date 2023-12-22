@@ -1,8 +1,9 @@
-package com.aetherteam.aether_genesis.block.container;
+package com.aetherteam.aether_genesis.block.dungeon;
 
 import com.aetherteam.aether.block.dungeon.ChestMimicBlock;
 import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.entity.monster.dungeon.Mimic;
+import com.aetherteam.aether_genesis.block.utility.SkyrootChestBlock;
 import com.aetherteam.aether_genesis.blockentity.SkyrootChestMimicBlockEntity;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import net.minecraft.core.BlockPos;
@@ -19,6 +20,10 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
+/**
+ * [CODE COPY] - {@link ChestMimicBlock}.<br><br>
+ * Spawns a Skyroot Chest Mimic.
+ */
 public class SkyrootChestMimicBlock extends ChestMimicBlock {
     public SkyrootChestMimicBlock(Properties properties) {
         super(properties);
@@ -53,7 +58,7 @@ public class SkyrootChestMimicBlock extends ChestMimicBlock {
             mimic.setYHeadRot(angle);
             level.addFreshEntity(mimic);
             level.setBlockAndUpdate(pos, Blocks.AIR.defaultBlockState());
-            level.playSound(null, pos, AetherSoundEvents.BLOCK_CHEST_MIMIC_OPEN.get(), SoundSource.BLOCKS, 0.5F, level.random.nextFloat() * 0.1F + 0.9F);
+            level.playSound(null, pos, AetherSoundEvents.BLOCK_CHEST_MIMIC_OPEN.get(), SoundSource.BLOCKS, 0.5F, level.getRandom().nextFloat() * 0.1F + 0.9F);
             mimic.spawnAnim();
         }
     }

@@ -1,6 +1,7 @@
-package com.aetherteam.aether_genesis.blockentity;
+package com.aetherteam.aether_genesis.client.gui.screen.inventory;
 
 import com.aetherteam.aether_genesis.Genesis;
+import com.aetherteam.aether_genesis.inventory.menu.HolystoneFurnaceMenu;
 import net.minecraft.client.gui.screens.inventory.AbstractFurnaceScreen;
 import net.minecraft.client.gui.screens.recipebook.SmeltingRecipeBookComponent;
 import net.minecraft.network.chat.Component;

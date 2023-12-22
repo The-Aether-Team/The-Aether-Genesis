@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.block.container;
+package com.aetherteam.aether_genesis.block.utility;
 
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.blockentity.HolystoneFurnaceBlockEntity;
@@ -19,9 +19,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 public class HolystoneFurnaceBlock extends AbstractFurnaceBlock {
-
-    public HolystoneFurnaceBlock(Properties pProperties) {
-        super(pProperties);
+    public HolystoneFurnaceBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
@@ -45,24 +44,24 @@ public class HolystoneFurnaceBlock extends AbstractFurnaceBlock {
         return new HolystoneFurnaceBlockEntity(pos, state);
     }
 
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        if (pState.getValue(LIT)) {
-            double d0 = (double)pPos.getX() + 0.5D;
-            double d1 = (double)pPos.getY();
-            double d2 = (double)pPos.getZ() + 0.5D;
-            if (pRandom.nextDouble() < 0.1D) {
-                pLevel.playLocalSound(d0, d1, d2, SoundEvents.FURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (state.getValue(LIT)) {
+            double d0 = pos.getX() + 0.5;
+            double d1 = pos.getY();
+            double d2 = pos.getZ() + 0.5;
+            if (random.nextDouble() < 0.1) {
+                level.playLocalSound(d0, d1, d2, SoundEvents.FURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 1.0F, 1.0F, false);
             }
-
-            Direction direction = pState.getValue(FACING);
-            Direction.Axis direction$axis = direction.getAxis();
-            double d3 = 0.52D;
-            double d4 = pRandom.nextDouble() * 0.6D - 0.3D;
-            double d5 = direction$axis == Direction.Axis.X ? (double)direction.getStepX() * 0.52D : d4;
-            double d6 = pRandom.nextDouble() * 6.0D / 16.0D;
-            double d7 = direction$axis == Direction.Axis.Z ? (double)direction.getStepZ() * 0.52D : d4;
-            pLevel.addParticle(ParticleTypes.SMOKE, d0 + d5, d1 + d6, d2 + d7, 0.0D, 0.0D, 0.0D);
-            pLevel.addParticle(ParticleTypes.SOUL_FIRE_FLAME, d0 + d5, d1 + d6, d2 + d7, 0.0D, 0.0D, 0.0D);
+            Direction direction = state.getValue(FACING);
+            Direction.Axis axis = direction.getAxis();
+            double d3 = 0.52;
+            double d4 = random.nextDouble() * 0.6 - 0.3;
+            double d5 = axis == Direction.Axis.X ? (double) direction.getStepX() * d3 : d4;
+            double d6 = random.nextDouble() * 6.0 / 16.0;
+            double d7 = axis == Direction.Axis.Z ? (double) direction.getStepZ() * d3 : d4;
+            level.addParticle(ParticleTypes.SMOKE, d0 + d5, d1 + d6, d2 + d7, 0.0, 0.0, 0.0);
+            level.addParticle(ParticleTypes.SOUL_FIRE_FLAME, d0 + d5, d1 + d6, d2 + d7, 0.0, 0.0, 0.0);
         }
     }
 }

@@ -1,7 +1,7 @@
 package com.aetherteam.aether_genesis.item.materials;
 
 import com.aetherteam.aether.item.miscellaneous.ConsumableItem;
-import com.aetherteam.aether_genesis.block.advancement.ContinuumOrbLootTrigger;
+import com.aetherteam.aether_genesis.advancement.ContinuumOrbLootTrigger;
 import com.aetherteam.aether_genesis.loot.GenesisLoot;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -11,7 +11,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;

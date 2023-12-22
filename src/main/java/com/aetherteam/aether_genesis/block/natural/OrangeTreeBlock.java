@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
@@ -50,11 +51,15 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
         builder.add(AetherBlockStateProperties.DOUBLE_DROPS, HALF, AGE);
     }
 
+    /**
+     * Warning for "deprecation" is suppressed because the method is fine to override.
+     */
+    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         int age = state.getValue(AGE);
         DoubleBlockHalf doubleBlockHalf = state.getValue(HALF);
-        if (doubleBlockHalf == DoubleBlockHalf.LOWER) {
+        if (doubleBlockHalf == DoubleBlockHalf.LOWER) { // Handles age-dependent shape for the bottom block of an Orange Tree.
             switch(age) {
                 case 0 -> {
                     return AGE_0_BOTTOM_SHAPE;
@@ -66,7 +71,7 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
                     return GENERAL_BOTTOM_SHAPE;
                 }
             }
-        } else {
+        } else { // Handles age-dependent shape for the top block of an Orange Tree.
             if (age == 2) {
                 return AGE_2_TOP_SHAPE;
             } else {
@@ -75,6 +80,9 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
         }
     }
 
+    /**
+     * [CODE COPY] - {@link net.minecraft.world.level.block.DoublePlantBlock#updateShape(BlockState, Direction, BlockState, LevelAccessor, BlockPos, BlockPos)}.
+     */
     @Override
     public BlockState updateShape(BlockState state, Direction facing, BlockState facingState, LevelAccessor level, BlockPos currentPos, BlockPos facingPos) {
         DoubleBlockHalf doubleBlockHalf = state.getValue(HALF);
@@ -85,42 +93,56 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
         }
     }
 
+    /**
+     * Only ticks the Orange Tree when it is growing before it has reached its max age.
+     * @param state The {@link BlockState} of the block.
+     * @return Whether the block should be ticking, as a {@link Boolean}.
+     */
     @Override
     public boolean isRandomlyTicking(BlockState state) {
         return state.getValue(AGE) < DOUBLE_AGE_MAX;
     }
 
+    /**
+     * Ages the Orange Tree up a state with a chance from a random tick.<br><br>
+     * Warning for "deprecation" is suppressed because the method is fine to override.
+     */
+    @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         DoubleBlockHalf doubleBlockHalf = state.getValue(HALF);
         int age = state.getValue(AGE);
-        if (age < DOUBLE_AGE_MAX && level.getRawBrightness(pos.above(), 0) >= 9 && ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(85) == 0)) {
+        if (age < DOUBLE_AGE_MAX && level.getRawBrightness(pos.above(), 0) >= 9 && ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(85) == 0)) { // Whether the Orange Tree is able to grow.
             age += 1;
-            if (age > SINGLE_AGE_MAX && doubleBlockHalf == DoubleBlockHalf.LOWER) {
-                BlockState blockState = state.setValue(AetherBlockStateProperties.DOUBLE_DROPS, state.getValue(AetherBlockStateProperties.DOUBLE_DROPS)).setValue(AGE, age);
+            BlockState blockState = state.setValue(AetherBlockStateProperties.DOUBLE_DROPS, state.getValue(AetherBlockStateProperties.DOUBLE_DROPS)).setValue(AGE, age);
+            if (age > SINGLE_AGE_MAX && doubleBlockHalf == DoubleBlockHalf.LOWER) { // Growing for the double block state.
                 OrangeTreeBlock.placeAt(level, blockState, pos, 2);
-                level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(blockState));
-                ForgeHooks.onCropsGrowPost(level, pos, state);
-            } else {
-                BlockState blockState = state.setValue(AetherBlockStateProperties.DOUBLE_DROPS, state.getValue(AetherBlockStateProperties.DOUBLE_DROPS)).setValue(AGE, age);
+            } else { // Growing for the single block state.
                 level.setBlock(pos, blockState, 2);
-                level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(blockState));
-                ForgeHooks.onCropsGrowPost(level, pos, state);
             }
+            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(blockState));
+            ForgeHooks.onCropsGrowPost(level, pos, state);
         }
     }
 
+    /**
+     * [CODE COPY] - {@link net.minecraft.world.level.block.DoublePlantBlock#canSurvive(BlockState, LevelReader, BlockPos)}.
+     */
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         if (state.getValue(HALF) != DoubleBlockHalf.UPPER) {
             return super.canSurvive(state, level, pos);
         } else {
             BlockState blockstate = level.getBlockState(pos.below());
-            if (state.getBlock() != this) return super.canSurvive(state, level, pos);
+            if (state.getBlock() != this) return super.canSurvive(state, level, pos); // Forge: This function is called during world gen and placement, before this block is set, so if we are not 'here' then assume it's the pre-check.
             return blockstate.is(this) && blockstate.getValue(HALF) == DoubleBlockHalf.LOWER;
         }
     }
 
+    /**
+     * [CODE COPY] - {@link net.minecraft.world.level.block.DoublePlantBlock#playerWillDestroy(Level, BlockPos, BlockState, Player)}.<br><br>
+     * Behavior depends on the Orange Tree's age being at the point of it being a double tall block instead of a single block.
+     */
     @Override
     public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         int age = state.getValue(AGE);
@@ -136,23 +158,39 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
         super.playerWillDestroy(level, pos, state, player);
     }
 
+    /**
+     * Handles destroying the entire Orange Tree when broken by a player.
+     * @param level The {@link Level} the block is in.
+     * @param player The {@link Player} destroying the block.
+     * @param pos The {@link BlockPos} of the block.
+     * @param state The {@link BlockState} of the block.
+     * @param blockEntity The {@link BlockEntity} that the block has.
+     * @param tool The {@link ItemStack} of the tool used to destroy the block.
+     */
     @Override
-    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack stack) {
+    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack tool) {
         DoubleBlockHalf doubleBlockHalf = state.getValue(HALF);
         int age = state.getValue(AGE);
-        if (age > SINGLE_AGE_MAX) {
-            super.playerDestroy(level, player, pos, Blocks.AIR.defaultBlockState(), blockEntity, stack);
-            if (age == DOUBLE_AGE_MAX) {
+        if (age > SINGLE_AGE_MAX) { // Destroying for the double block state.
+            super.playerDestroy(level, player, pos, Blocks.AIR.defaultBlockState(), blockEntity, tool); // Replaces the entire blocks with air.
+            if (age == DOUBLE_AGE_MAX) { // If the Orange Tree had Oranges, the age is reverted to represent harvesting, instead of the entire block being broken.
                 if (doubleBlockHalf == DoubleBlockHalf.UPPER) {
                     pos = pos.below();
                 }
                 OrangeTreeBlock.placeAt(level, state.setValue(AetherBlockStateProperties.DOUBLE_DROPS, state.getValue(AetherBlockStateProperties.DOUBLE_DROPS)).setValue(AGE, age - 1), pos, 2);
             }
-        } else {
-            super.playerDestroy(level, player, pos, state, blockEntity, stack);
+        } else { // Destroying for the single block state.
+            super.playerDestroy(level, player, pos, state, blockEntity, tool);
         }
     }
 
+    /**
+     * Reverts the Orange Tree age state to not have Oranges when exploded.
+     * @param state The {@link BlockState} of the block.
+     * @param level The {@link Level} the block is in.
+     * @param pos The {@link BlockPos} of the block.
+     * @param explosion The {@link Explosion} affecting the block.
+     */
     @Override
     public void onBlockExploded(BlockState state, Level level, BlockPos pos, Explosion explosion) {
         super.onBlockExploded(state, level, pos, explosion);
@@ -162,50 +200,85 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
         }
     }
 
+    /**
+     * [CODE COPY] - {@link net.minecraft.world.level.block.DoublePlantBlock#preventCreativeDropFromBottomPart(Level, BlockPos, BlockState, Player)}.
+     */
     protected static void preventCreativeDropFromBottomPart(Level level, BlockPos pos, BlockState state, Player player) {
         DoubleBlockHalf doubleBlockHalf = state.getValue(HALF);
         if (doubleBlockHalf == DoubleBlockHalf.UPPER) {
             BlockPos blockPos = pos.below();
             BlockState blockState = level.getBlockState(blockPos);
             if (blockState.is(state.getBlock()) && blockState.getValue(HALF) == DoubleBlockHalf.LOWER) {
-                level.setBlock(blockPos, Blocks.AIR.defaultBlockState(), 35);
+                level.setBlock(blockPos, blockState.getFluidState().is(Fluids.WATER) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState(), 35);
                 level.levelEvent(player, 2001, blockPos, Block.getId(blockState));
             }
         }
     }
 
+    /**
+     * [CODE COPY] - {@link net.minecraft.world.level.block.DoublePlantBlock#placeAt(LevelAccessor, BlockState, BlockPos, int)}.<br><br>
+     * Without waterlogging behavior.
+     */
     public static void placeAt(LevelAccessor level, BlockState state, BlockPos pos, int flags) {
         BlockPos abovePos = pos.above();
         level.setBlock(pos, state.setValue(HALF, DoubleBlockHalf.LOWER), flags);
         level.setBlock(abovePos, state.setValue(HALF, DoubleBlockHalf.UPPER), flags);
     }
 
+    /**
+     * Grows an Orange Tree to the next age state.
+     * @param level The {@link Level} the block is in.
+     * @param random The {@link RandomSource} from the level.
+     * @param pos The {@link BlockPos} of the block.
+     * @param state The {@link BlockState} of the block.
+     */
     @Override
-    public long getSeed(BlockState state, BlockPos pos) {
-        return Mth.getSeed(pos.getX(), pos.below(state.getValue(HALF) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), pos.getZ());
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+        DoubleBlockHalf doubleBlockHalf = state.getValue(HALF);
+        int i = Math.min(DOUBLE_AGE_MAX, state.getValue(AGE) + 1);
+        if (i > SINGLE_AGE_MAX && (level.isEmptyBlock(pos.above()) || level.getBlockState(pos.above()).is(this))) { // Growing for the double block state.
+            if (doubleBlockHalf == DoubleBlockHalf.UPPER) {
+                pos = pos.below();
+            }
+            OrangeTreeBlock.placeAt(level, state.setValue(AetherBlockStateProperties.DOUBLE_DROPS, state.getValue(AetherBlockStateProperties.DOUBLE_DROPS)).setValue(AGE, i), pos, 2);
+        } else { // Growing for the single block state.
+            level.setBlock(pos, state.setValue(AGE, i), 2);
+        }
     }
 
+    /**
+     * Whether the behavior for using bone meal should run. A 100% success rate.
+     * @param level The {@link Level} the block is in.
+     * @param random The {@link RandomSource} from the level.
+     * @param pos The {@link BlockPos} of the block.
+     * @param state The {@link BlockState} of the block.
+     * @return A {@link Boolean} of whether using Bone Meal was successful.
+     */
+    @Override
+    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+        return true; //todo balance
+    }
+
+    /**
+     * Allows bone meal to be used on Orange Trees when not yet fully grown.
+     * @param level The {@link Level} the block is in.
+     * @param pos The {@link BlockPos} of the block.
+     * @param state The {@link BlockState} of the block.
+     * @param isClient Whether the game's side is the client, as a {@link Boolean}.
+     * @return Whether this block is valid to use bone meal on, as a {@link Boolean}.
+     */
     @Override
     public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
         return state.getValue(AGE) < DOUBLE_AGE_MAX;
     }
 
+    /**
+     * [CODE COPY] - {@link net.minecraft.world.level.block.DoublePlantBlock#getSeed(BlockState, BlockPos)}.<br><br>
+     * Warning for "deprecation" is suppressed because the method is fine to override.
+     */
+    @SuppressWarnings("deprecation")
     @Override
-    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
-        DoubleBlockHalf doubleBlockHalf = state.getValue(HALF);
-        int i = Math.min(DOUBLE_AGE_MAX, state.getValue(AGE) + 1);
-        if (i > SINGLE_AGE_MAX && (level.isEmptyBlock(pos.above()) || level.getBlockState(pos.above()).is(this))) {
-            if (doubleBlockHalf == DoubleBlockHalf.UPPER) {
-                pos = pos.below();
-            }
-            OrangeTreeBlock.placeAt(level, state.setValue(AetherBlockStateProperties.DOUBLE_DROPS, state.getValue(AetherBlockStateProperties.DOUBLE_DROPS)).setValue(AGE, i), pos, 2);
-        } else {
-            level.setBlock(pos, state.setValue(AGE, i), 2);
-        }
+    public long getSeed(BlockState state, BlockPos pos) {
+        return Mth.getSeed(pos.getX(), pos.below(state.getValue(HALF) == DoubleBlockHalf.LOWER ? 0 : 1).getY(), pos.getZ());
     }
 }

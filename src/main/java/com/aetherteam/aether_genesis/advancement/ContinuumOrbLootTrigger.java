@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.block.advancement;
+package com.aetherteam.aether_genesis.advancement;
 
 import com.aetherteam.aether.Aether;
 import com.google.gson.JsonObject;

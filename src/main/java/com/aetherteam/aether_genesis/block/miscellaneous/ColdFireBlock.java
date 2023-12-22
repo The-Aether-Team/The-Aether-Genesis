@@ -31,6 +31,12 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * [CODE COPY] - {@link net.minecraft.world.level.block.FireBlock}.<br><br>
+ * Unable to spread like normal fire.<br><br>
+ * Warning for "deprecation" is suppressed for methods that are fine to override.
+ */
+@SuppressWarnings("deprecation")
 public class ColdFireBlock extends BaseFireBlock {
     public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
     public static final BooleanProperty NORTH = PipeBlock.NORTH;
@@ -48,8 +54,8 @@ public class ColdFireBlock extends BaseFireBlock {
 
     public ColdFireBlock(BlockBehaviour.Properties properties) {
         super(properties, 1.0F);
-        this.registerDefaultState(this.stateDefinition.any().setValue(AGE, 0).setValue(NORTH, Boolean.FALSE).setValue(EAST, Boolean.FALSE).setValue(SOUTH, Boolean.FALSE).setValue(WEST, Boolean.FALSE).setValue(UP, Boolean.FALSE));
-        this.shapesCache = ImmutableMap.copyOf(this.stateDefinition.getPossibleStates().stream().filter((p_53497_) -> p_53497_.getValue(AGE) == 0).collect(Collectors.toMap(Function.identity(), ColdFireBlock::calculateShape)));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(AGE, 0).setValue(NORTH, Boolean.FALSE).setValue(EAST, Boolean.FALSE).setValue(SOUTH, Boolean.FALSE).setValue(WEST, Boolean.FALSE).setValue(UP, Boolean.FALSE));
+        this.shapesCache = ImmutableMap.copyOf(this.getStateDefinition().getPossibleStates().stream().filter((p_53497_) -> p_53497_.getValue(AGE) == 0).collect(Collectors.toMap(Function.identity(), ColdFireBlock::calculateShape)));
     }
 
     private static VoxelShape calculateShape(BlockState state) {
@@ -169,7 +175,7 @@ public class ColdFireBlock extends BaseFireBlock {
     @Override
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
         super.onPlace(state, level, pos, oldState, isMoving);
-        level.scheduleTick(pos, this, getFireTickDelay(level.random));
+        level.scheduleTick(pos, this, getFireTickDelay(level.getRandom()));
     }
 
     private static int getFireTickDelay(RandomSource random) {
@@ -190,11 +196,11 @@ public class ColdFireBlock extends BaseFireBlock {
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         entity.hurt(level.damageSources().inFire(), 1.0F);
         if (entity instanceof LivingEntity livingEntity) {
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 4));
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 4)); //todo balance
         }
     }
 
-    public boolean canCatchFire(BlockGetter world, BlockPos pos, Direction face) {
-        return world.getBlockState(pos).isFlammable(world, pos, face);
+    public boolean canCatchFire(BlockGetter level, BlockPos pos, Direction face) {
+        return level.getBlockState(pos).isFlammable(level, pos, face);
     }
 }

@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.blockentity;
+package com.aetherteam.aether_genesis.inventory.menu;
 
 import com.aetherteam.aether_genesis.Genesis;
 import net.minecraft.world.flag.FeatureFlags;

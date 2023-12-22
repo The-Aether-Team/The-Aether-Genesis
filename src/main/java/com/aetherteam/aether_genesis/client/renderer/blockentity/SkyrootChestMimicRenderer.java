@@ -1,8 +1,8 @@
 package com.aetherteam.aether_genesis.client.renderer.blockentity;
 
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
-import com.aetherteam.aether_genesis.block.container.SkyrootChestBlock;
-import com.aetherteam.aether_genesis.block.container.SkyrootChestMimicBlock;
+import com.aetherteam.aether_genesis.block.utility.SkyrootChestBlock;
+import com.aetherteam.aether_genesis.block.dungeon.SkyrootChestMimicBlock;
 import com.aetherteam.aether_genesis.client.GenesisAtlases;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
 import com.mojang.blaze3d.vertex.PoseStack;

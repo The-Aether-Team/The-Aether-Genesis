@@ -2,9 +2,9 @@ package com.aetherteam.aether_genesis;
 
 import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
-import com.aetherteam.aether_genesis.block.advancement.GenesisAdvancementTriggers;
+import com.aetherteam.aether_genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
-import com.aetherteam.aether_genesis.blockentity.GenesisMenuTypes;
+import com.aetherteam.aether_genesis.inventory.menu.GenesisMenuTypes;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.data.generators.*;
@@ -52,10 +52,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.resource.PathPackResources;
 import org.slf4j.Logger;
-import teamrazor.aeroblender.aether.AetherRuleCategory;
-import teamrazor.aeroblender.aether.AetherSurfaceRuleData;
 import terrablender.api.Regions;
-import terrablender.api.SurfaceRuleManager;
 
 import java.nio.file.Path;
 import java.util.Map;

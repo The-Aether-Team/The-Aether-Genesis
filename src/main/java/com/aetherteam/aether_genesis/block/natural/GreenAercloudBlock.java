@@ -17,6 +17,14 @@ public class GreenAercloudBlock extends AercloudBlock {
         super(properties);
     }
 
+    /**
+     * Launches the entity inside the block in a random horizontal direction and resets their fall distance when not holding the shift key.
+     * If they are holding the shift key, behavior defaults to that of {@link AercloudBlock#entityInside(BlockState, Level, BlockPos, Entity)}.
+     * @param state The {@link BlockState} of the block.
+     * @param level The {@link Level} the block is in.
+     * @param pos The {@link BlockPos} of the block.
+     * @param entity The {@link Entity} in the block.
+     */
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (!entity.isShiftKeyDown()) {

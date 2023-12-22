@@ -24,6 +24,9 @@ public class GenesisDoubleDropsWall extends WallBlock {
         builder.add(AetherBlockStateProperties.DOUBLE_DROPS);
     }
 
+    /**
+     * Based on the Framed Blocks mod's shape map fix for implementing a wall with additional block properties.
+     */
     private void fixShapeMaps() {
         WallBlockAccessor wallBlockAccessor = (WallBlockAccessor) this;
         Map<BlockState, VoxelShape> shapeByIndex = wallBlockAccessor.getShapeByIndex();

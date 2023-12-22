@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.blockentity;
+package com.aetherteam.aether_genesis.inventory.menu;
 
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;

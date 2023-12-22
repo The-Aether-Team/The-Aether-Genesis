@@ -8,6 +8,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.GrassBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
+/**
+ * [CODE COPY] - {@link com.aetherteam.aether.block.natural.EnchantedAetherGrassBlock}.<br><br>
+ * Converts back to normal dirt.
+ */
 public class EnchantedGrassBlock extends GrassBlock {
     public EnchantedGrassBlock(Properties properties) {
         super(properties);

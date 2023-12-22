@@ -23,7 +23,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class PurpleAercloudBlock extends AercloudBlock {
     public static final Direction[] DIRECTIONS =  new Direction[] {Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST};
-
     public static final DirectionProperty FACING = DirectionProperty.create("facing", DIRECTIONS);
     protected static final VoxelShape COLLISION_SHAPE = Shapes.empty();
 
@@ -32,6 +31,14 @@ public class PurpleAercloudBlock extends AercloudBlock {
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.SOUTH).setValue(AetherBlockStateProperties.DOUBLE_DROPS, false));
     }
 
+    /**
+     * Launches the entity inside the block in the same direction as the block is facing and resets their fall distance when not holding the shift key.
+     * If they are holding the shift key, behavior defaults to that of {@link AercloudBlock#entityInside(BlockState, Level, BlockPos, Entity)}.
+     * @param state The {@link BlockState} of the block.
+     * @param level The {@link Level} the block is in.
+     * @param pos The {@link BlockPos} of the block.
+     * @param entity The {@link Entity} in the block.
+     */
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (!entity.isShiftKeyDown()) {
@@ -47,6 +54,13 @@ public class PurpleAercloudBlock extends AercloudBlock {
         }
     }
 
+    /**
+     * Shoots white smoke particles with a velocity in the same direction as the block is facing.
+     * @param state The {@link BlockState} of the block.
+     * @param level The {@link Level} the block is in.
+     * @param pos The {@link BlockPos} of the block.
+     * @param random The {@link RandomSource} of the level.
+     */
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         double xOffset = (double) pos.getX() + 0.5F;
@@ -77,11 +91,19 @@ public class PurpleAercloudBlock extends AercloudBlock {
         level.addParticle(ParticleTypes.POOF, xOffset, yOffset, zOffset, xSpeed, ySpeed, zSpeed);
     }
 
+    /**
+     * Warning for "deprecation" is suppressed because the method is fine to override.
+     */
+    @SuppressWarnings("deprecation")
     @Override
     public BlockState rotate(BlockState state, Rotation rot) {
         return state.setValue(FACING, rot.rotate(state.getValue(FACING)));
     }
 
+    /**
+     * Warning for "deprecation" is suppressed because the method is fine to override.
+     */
+    @SuppressWarnings("deprecation")
     @Override
     public BlockState mirror(BlockState state, Mirror mirror) {
         return state.rotate(mirror.getRotation(state.getValue(FACING)));

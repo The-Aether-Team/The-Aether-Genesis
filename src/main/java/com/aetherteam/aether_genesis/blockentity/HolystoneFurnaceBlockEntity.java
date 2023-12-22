@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.blockentity;
 
+import com.aetherteam.aether_genesis.inventory.menu.HolystoneFurnaceMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
