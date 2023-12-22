@@ -8,17 +8,13 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.LidBlockEntity;
 import net.minecraft.world.level.block.state.properties.ChestType;
 
-import javax.annotation.Nonnull;
-
-public class SkyrootChestRenderer<T extends BlockEntity & LidBlockEntity> extends ChestRenderer<T>
-{
-	public SkyrootChestRenderer(BlockEntityRendererProvider.Context p_173607_) {
-		super(p_173607_);
+public class SkyrootChestRenderer<T extends BlockEntity & LidBlockEntity> extends ChestRenderer<T> {
+	public SkyrootChestRenderer(BlockEntityRendererProvider.Context context) {
+		super(context);
 	}
 
-	@Nonnull
 	@Override
-	protected Material getMaterial(@Nonnull T blockEntity, @Nonnull ChestType chestType) {
+	protected Material getMaterial(T blockEntity, ChestType chestType) {
 		return switch (chestType) {
 			case LEFT -> GenesisAtlases.SKYROOT_CHEST_LEFT_MATERIAL;
 			case RIGHT -> GenesisAtlases.SKYROOT_CHEST_RIGHT_MATERIAL;

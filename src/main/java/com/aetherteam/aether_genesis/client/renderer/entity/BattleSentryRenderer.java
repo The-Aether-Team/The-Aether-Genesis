@@ -11,15 +11,13 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
-import javax.annotation.Nonnull;
-
 public class BattleSentryRenderer extends MobRenderer<BattleSentry, SlimeModel<BattleSentry>> {
     private static final ResourceLocation BATTLE_SENTRY_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/battle_sentry/battle_sentry.png");
     private static final ResourceLocation BATTLE_SENTRY_LIT_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/battle_sentry/battle_sentry_lit.png");
 
     public BattleSentryRenderer(EntityRendererProvider.Context context) {
         super(context, new SlimeModel<>(context.bakeLayer(GenesisModelLayers.BATTLE_SENTRY)), 0.3F);
-        this.addLayer(new BattleSentryLayer<>(this));
+        this.addLayer(new BattleSentryLayer(this));
     }
 
     @Override
@@ -43,7 +41,7 @@ public class BattleSentryRenderer extends MobRenderer<BattleSentry, SlimeModel<B
         }
     }
 
-    @Nonnull
+    
     @Override
     public ResourceLocation getTextureLocation(BattleSentry sentry) {
         return sentry.isAwake() ? BATTLE_SENTRY_LIT_TEXTURE : BATTLE_SENTRY_TEXTURE;

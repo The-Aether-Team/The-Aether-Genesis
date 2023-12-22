@@ -25,8 +25,6 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 
-import javax.annotation.Nonnull;
-
 public class TrackingGolem extends Monster {
 	public static final EntityDataAccessor<Integer> CAN_SEE_ENEMY = SynchedEntityData.defineId(TrackingGolem.class, EntityDataSerializers.INT);
 
@@ -50,7 +48,7 @@ public class TrackingGolem extends Monster {
 		this.entityData.define(CAN_SEE_ENEMY, 16);
 	}
 
-	@Nonnull
+	
 	public static AttributeSupplier.Builder createMobAttributes() {
 		return Monster.createMobAttributes()
 				.add(Attributes.MAX_HEALTH, 20.0)
@@ -60,7 +58,7 @@ public class TrackingGolem extends Monster {
 	}
 
 	@Override
-	protected SoundEvent getHurtSound(@Nonnull DamageSource damageSource) {
+	protected SoundEvent getHurtSound( DamageSource damageSource) {
 		return GenesisSoundEvents.ENTITY_TRACKING_GOLEM_HIT.get();
 	}
 

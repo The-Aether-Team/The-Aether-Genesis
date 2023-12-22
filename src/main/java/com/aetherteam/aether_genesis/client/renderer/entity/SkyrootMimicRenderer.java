@@ -8,8 +8,6 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
-import javax.annotation.Nonnull;
-
 public class SkyrootMimicRenderer extends MobRenderer<Mimic, MimicModel> {
 	private static final ResourceLocation TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/mimic/normal.png");
 
@@ -17,9 +15,9 @@ public class SkyrootMimicRenderer extends MobRenderer<Mimic, MimicModel> {
 		super(renderer, new MimicModel(renderer.bakeLayer(GenesisModelLayers.SKYROOT_MIMIC)), 1.0F);
 	}
 
-	@Nonnull
+	
 	@Override
-	public ResourceLocation getTextureLocation(@Nonnull Mimic mimic) {
+	public ResourceLocation getTextureLocation( Mimic mimic) {
 		return TEXTURE;
 	}
 }

@@ -13,8 +13,6 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 
-import javax.annotation.Nonnull;
-
 public class CarrionSproutModel extends EntityModel<CarrionSprout> {
     public ModelPart stemBottom;
     public ModelPart head;
@@ -70,7 +68,7 @@ public class CarrionSproutModel extends EntityModel<CarrionSprout> {
     }
 
     @Override
-    public void prepareMobModel(@Nonnull CarrionSprout carrionSprout, float limbSwing, float limbSwingAmount, float partialTicks) {
+    public void prepareMobModel( CarrionSprout carrionSprout, float limbSwing, float limbSwingAmount, float partialTicks) {
         super.prepareMobModel(carrionSprout, limbSwing, limbSwingAmount, partialTicks);
         this.maxSize = carrionSprout.getMaxSize();
         this.size = carrionSprout.getSize();
@@ -81,7 +79,7 @@ public class CarrionSproutModel extends EntityModel<CarrionSprout> {
     }
 
     @Override
-    public void setupAnim(@Nonnull CarrionSprout carrionSprout, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim( CarrionSprout carrionSprout, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         float sinage1 = (float) Math.sin(ageInTicks);
         float sinage2 = 1.75F + (float) Math.sin(ageInTicks + 2.0F) * 1.5F;
         if (carrionSprout.hurtTime > 0) {
@@ -107,12 +105,11 @@ public class CarrionSproutModel extends EntityModel<CarrionSprout> {
     }
 
     @Override
-    public void renderToBuffer(@Nonnull PoseStack poseStack, @Nonnull VertexConsumer consumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+    public void renderToBuffer( PoseStack poseStack,  VertexConsumer consumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         if (this.size < this.maxSize) {
             red = Mth.clamp(red * this.size, 0.0F, 1.0F);
             blue = Mth.clamp(blue * this.size, 0.6F, 1.0F);
         }
         this.stemBottom.render(poseStack, consumer, packedLight, packedOverlay, red, green, blue, alpha);
-
     }
 }

@@ -9,7 +9,7 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 
-public class TrackingGolemModel<T extends TrackingGolem> extends EntityModel<T> {
+public class TrackingGolemModel extends EntityModel<TrackingGolem> {
     private final ModelPart left_leg;
     private final ModelPart right_leg;
     private final ModelPart left_arm;
@@ -53,7 +53,7 @@ public class TrackingGolemModel<T extends TrackingGolem> extends EntityModel<T> 
     }
 
     @Override
-    public void setupAnim(TrackingGolem entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(TrackingGolem golem, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.head.yRot = netHeadYaw * ((float)Math.PI / 180F);
         this.right_arm.xRot = -Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.left_arm.xRot = -Mth.cos(limbSwing * 0.6662F + (float) Math.PI) * 1.4F * limbSwingAmount;
@@ -63,7 +63,7 @@ public class TrackingGolemModel<T extends TrackingGolem> extends EntityModel<T> 
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        left_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.left_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
         right_leg.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
         left_arm.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
         right_arm.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);

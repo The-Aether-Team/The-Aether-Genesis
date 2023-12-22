@@ -85,8 +85,8 @@ public class GenesisRenderers {
         event.registerLayerDefinition(GenesisModelLayers.SENTRY_GUARDIAN, SentryGuardianModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SLIDER_HOST_MIMIC, SliderHostMimicModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.LABYRINTH_EYE, LabyrinthEyeModel::createBodyLayer);
-        event.registerLayerDefinition(GenesisModelLayers.HOST_EYE, HostEyeModel::createBodyLayer);
-        event.registerLayerDefinition(GenesisModelLayers.COG_ARROW, CogArrowModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.HOST_EYE, HostEyeProjectileModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.COG_ARROW, CogProtectileModel::createBodyLayer);
 
         event.registerLayerDefinition(GenesisModelLayers.FLEETING_WISP, WispModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SOARING_WISP, WispModel::createBodyLayer);

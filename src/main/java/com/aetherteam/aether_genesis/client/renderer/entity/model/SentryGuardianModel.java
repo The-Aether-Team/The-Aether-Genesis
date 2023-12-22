@@ -12,7 +12,7 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 
-public class SentryGuardianModel<T extends SentryGuardian> extends EntityModel<T> {
+public class SentryGuardianModel extends EntityModel<SentryGuardian> {
 
 	private final ModelPart leftarm;
 	private final ModelPart rightarm;
@@ -48,7 +48,7 @@ public class SentryGuardianModel<T extends SentryGuardian> extends EntityModel<T
 	}
 
 	@Override
-	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+	public void setupAnim(SentryGuardian entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.leftarm.xRot = -Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 		this.rightarm.xRot = -Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 	}

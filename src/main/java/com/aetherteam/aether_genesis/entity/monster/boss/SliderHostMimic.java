@@ -8,7 +8,7 @@ import com.aetherteam.aether.network.AetherPacketHandler;
 import com.aetherteam.aether.network.packet.serverbound.BossInfoPacket;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
-import com.aetherteam.aether_genesis.entity.miscellaneous.HostEye;
+import com.aetherteam.aether_genesis.entity.miscellaneous.HostEyeProjectile;
 import com.aetherteam.nitrogen.entity.BossRoomTracker;
 import com.aetherteam.nitrogen.network.PacketRelay;
 import net.minecraft.core.particles.ParticleTypes;
@@ -50,7 +50,6 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraftforge.network.NetworkHooks;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -68,7 +67,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     public int sendRespawnDelay = 10;
     public int scareTime = 0;
 
-    public List<HostEye> eyes = new ArrayList<>();
+    public List<HostEyeProjectile> eyes = new ArrayList<>();
 
     public SliderHostMimic(EntityType<? extends SliderHostMimic> entityType, Level level) {
         super(entityType, level);
@@ -95,7 +94,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
      * Generates a name for the boss and adjusts its position.
      */
     @Override
-    public SpawnGroupData finalizeSpawn(@Nonnull ServerLevelAccessor pLevel, @Nonnull DifficultyInstance pDifficulty, @Nonnull MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+    public SpawnGroupData finalizeSpawn( ServerLevelAccessor pLevel,  DifficultyInstance pDifficulty,  MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
         this.alignSpawnPos();
         SpawnGroupData data = super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
         this.setBossName(this.generateHostName());
@@ -105,7 +104,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     public void sendEye() {
         while (this.eyes.size() > 4)
             (this.eyes.remove(0)).setHealth(0);
-        HostEye eye = new HostEye(GenesisEntityTypes.HOST_EYE.get(), level());
+        HostEyeProjectile eye = new HostEyeProjectile(GenesisEntityTypes.HOST_EYE.get(), level());
         this.level().addFreshEntity(eye);
         eye.setPos(this.position());
         this.level().playSound(this, this.blockPosition(), AetherSoundEvents.ENTITY_SLIDER_AWAKEN.get(), SoundSource.HOSTILE, 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
@@ -188,7 +187,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     }
 
     @Override
-    public void die(@Nonnull DamageSource damageSource) {
+    public void die( DamageSource damageSource) {
         this.setDeltaMovement(Vec3.ZERO);
         killEyes();
         this.explode();
@@ -264,7 +263,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     }
 
     @Override
-    public void startSeenByPlayer(@Nonnull ServerPlayer player) {
+    public void startSeenByPlayer( ServerPlayer player) {
         super.startSeenByPlayer(player);
         PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Display(this.bossFight.getId(), this.getId()), player);
         if (this.getDungeon() == null || this.getDungeon().isPlayerTracked(player)) {
@@ -273,7 +272,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     }
 
     @Override
-    public void stopSeenByPlayer(@Nonnull ServerPlayer player) {
+    public void stopSeenByPlayer( ServerPlayer player) {
         super.stopSeenByPlayer(player);
         PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()), player);
         this.bossFight.removePlayer(player);
@@ -354,7 +353,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     }
 
     @Override
-    protected SoundEvent getHurtSound(@Nonnull DamageSource damageSource) {
+    protected SoundEvent getHurtSound( DamageSource damageSource) {
         return AetherSoundEvents.ENTITY_SLIDER_HURT.get();
     }
 
@@ -363,7 +362,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
         return AetherSoundEvents.ENTITY_SLIDER_DEATH.get();
     }
 
-    @Nonnull
+    
     @Override
     public SoundSource getSoundSource() {
         return SoundSource.HOSTILE;
@@ -386,7 +385,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     }
 
     @Override
-    protected boolean canRide(@Nonnull Entity vehicle) {
+    protected boolean canRide( Entity vehicle) {
         return false;
     }
 
@@ -411,14 +410,14 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     }
 
     @Override
-    public void addAdditionalSaveData(@Nonnull CompoundTag tag) {
+    public void addAdditionalSaveData( CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         this.addBossSaveData(tag);
         tag.putBoolean("Awake", this.isAwake());
     }
 
     @Override
-    public void readAdditionalSaveData(@Nonnull CompoundTag tag) {
+    public void readAdditionalSaveData( CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.readBossSaveData(tag);
         if (tag.contains("Awake")) {

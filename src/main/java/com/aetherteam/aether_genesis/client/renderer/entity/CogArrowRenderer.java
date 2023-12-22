@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.client.renderer.entity;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
-import com.aetherteam.aether_genesis.entity.miscellaneous.CogArrow;
+import com.aetherteam.aether_genesis.entity.miscellaneous.CogProjectile;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.geom.ModelPart;
@@ -13,10 +13,8 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
-import javax.annotation.Nonnull;
-
 //todo FIX THIS
-public class CogArrowRenderer extends EntityRenderer<CogArrow> {
+public class CogArrowRenderer extends EntityRenderer<CogProjectile> {
     private static final ResourceLocation COG_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/projectile/cog.png");
     private final ModelPart cogArrow;
 
@@ -26,7 +24,7 @@ public class CogArrowRenderer extends EntityRenderer<CogArrow> {
     }
 
     @Override
-    public void render(CogArrow cog, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+    public void render(CogProjectile cog, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
         poseStack.translate(1.0, 1.5, 1.0);
         if (!cog.isLarge())
@@ -37,9 +35,9 @@ public class CogArrowRenderer extends EntityRenderer<CogArrow> {
         super.render(cog, entityYaw, partialTicks, poseStack, buffer, packedLight);
     }
 
-    @Nonnull
+    
     @Override
-    public ResourceLocation getTextureLocation(@Nonnull CogArrow cogArrow) {
+    public ResourceLocation getTextureLocation( CogProjectile cogArrow) {
         return COG_TEXTURE;
     }
 }

@@ -24,7 +24,6 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 
-import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class BattleSentry extends Slime {
@@ -45,7 +44,7 @@ public class BattleSentry extends Slime {
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, (entity) -> Math.abs(entity.getY() - this.getY()) <= 4.0));
     }
 
-    @Nonnull
+    
     public static AttributeSupplier.Builder createMobAttributes() {
         return Mob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 10.0)
@@ -63,7 +62,7 @@ public class BattleSentry extends Slime {
     public void setSize(int size, boolean resetHealth) {}
 
     @Override
-    public void remove(@Nonnull Entity.RemovalReason reason) {
+    public void remove( Entity.RemovalReason reason) {
         this.setRemoved(reason);
         if (reason == Entity.RemovalReason.KILLED) {
             this.gameEvent(GameEvent.ENTITY_DIE);
@@ -100,20 +99,20 @@ public class BattleSentry extends Slime {
 
     @Override
     public @Nullable
-    SpawnGroupData finalizeSpawn(@Nonnull ServerLevelAccessor level, @Nonnull DifficultyInstance difficulty, @Nonnull MobSpawnType reason, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag tag) {
+    SpawnGroupData finalizeSpawn( ServerLevelAccessor level,  DifficultyInstance difficulty,  MobSpawnType reason, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag tag) {
         this.setSize(1, true);
         this.setLeftHanded(false);
         return spawnData;
     }
 
-    @Nonnull
+    
     @Override
     protected ResourceLocation getDefaultLootTable() {
         return this.getType().getDefaultLootTable();
     }
 
     @Override
-    protected SoundEvent getHurtSound(@Nonnull DamageSource damageSource) {
+    protected SoundEvent getHurtSound( DamageSource damageSource) {
         return AetherSoundEvents.ENTITY_SENTRY_HURT.get();
     }
 
@@ -126,32 +125,32 @@ public class BattleSentry extends Slime {
         return this.isEffectiveAi();
     }
 
-    @Nonnull
+    
     @Override
     protected SoundEvent getSquishSound() {
         return AetherSoundEvents.ENTITY_SENTRY_JUMP.get();
     }
 
-    @Nonnull
+    
     @Override
     protected SoundEvent getJumpSound() {
         return AetherSoundEvents.ENTITY_SENTRY_JUMP.get();
     }
 
-    @Nonnull
+    
     @Override
     public EntityDimensions getDimensions(Pose pose) {
         return super.getDimensions(pose).scale(2*0.879F);
     }
 
-    @Nonnull
+    
     @Override
     protected ParticleOptions getParticleType() {
         return new BlockParticleOption(ParticleTypes.BLOCK, AetherBlocks.SENTRY_STONE.get().defaultBlockState());
     }
 
     @SuppressWarnings("unchecked")
-    @Nonnull
+    
     @Override
     public EntityType<? extends BattleSentry> getType() {
         return (EntityType<? extends BattleSentry>) super.getType();

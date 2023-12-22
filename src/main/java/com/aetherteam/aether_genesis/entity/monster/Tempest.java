@@ -25,8 +25,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 
-import javax.annotation.Nonnull;
-
 public class Tempest extends Zephyr {
     public static final EntityDataAccessor<Integer> DATA_ATTACK_CHARGE_ID = SynchedEntityData.defineId(Tempest.class, EntityDataSerializers.INT);
     public static final Vector3f TEMPEST_PARTICLE_COLOR = Vec3.fromRGB24(16777215).toVector3f();
@@ -46,7 +44,7 @@ public class Tempest extends Zephyr {
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
     }
 
-    @Nonnull
+    
     public static AttributeSupplier.Builder createMobAttributes() {
         return FlyingMob.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 25.0)
@@ -90,7 +88,7 @@ public class Tempest extends Zephyr {
         return GenesisSoundEvents.ENTITY_TEMPEST_AMBIENT.get();
     }
 
-    protected SoundEvent getHurtSound(@Nonnull DamageSource damageSource) {
+    protected SoundEvent getHurtSound( DamageSource damageSource) {
         return GenesisSoundEvents.ENTITY_TEMPEST_HURT.get();
     }
 

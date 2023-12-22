@@ -52,7 +52,6 @@ import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
 import java.util.EnumSet;
 
 import static com.aetherteam.aether.entity.AetherEntityTypes.SENTRY;
@@ -69,7 +68,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
 
     private BossRoomTracker<SentryGuardian> bronzeDungeon;
 
-    @Nonnull
+    
     public static AttributeSupplier.Builder createMobAttributes() {
         return Monster.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 250)
@@ -116,7 +115,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
-    protected SoundEvent getHurtSound(@Nonnull DamageSource damageSource) {
+    protected SoundEvent getHurtSound( DamageSource damageSource) {
         return GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_HIT.get();
     }
 
@@ -213,14 +212,14 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
-    public void addAdditionalSaveData(@Nonnull CompoundTag tag) {
+    public void addAdditionalSaveData( CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         this.addBossSaveData(tag);
         tag.putBoolean("Awake", this.isAwake());
     }
 
     @Override
-    public void readAdditionalSaveData(@Nonnull CompoundTag tag) {
+    public void readAdditionalSaveData( CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.readBossSaveData(tag);
         if (tag.contains("Awake")) {
@@ -306,7 +305,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
-    public void startSeenByPlayer(@Nonnull ServerPlayer player) {
+    public void startSeenByPlayer( ServerPlayer player) {
         super.startSeenByPlayer(player);
         PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Display(this.bossFight.getId(), this.getId()), player);
         if (this.getDungeon() == null || this.getDungeon().isPlayerTracked(player)) {
@@ -322,7 +321,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
-    public void stopSeenByPlayer(@Nonnull ServerPlayer player) {
+    public void stopSeenByPlayer( ServerPlayer player) {
         super.stopSeenByPlayer(player);
         PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()), player);
         this.bossFight.removePlayer(player);
@@ -371,7 +370,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn(@Nonnull ServerLevelAccessor pLevel, @Nonnull DifficultyInstance pDifficulty, @Nonnull MobSpawnType pReason, @javax.annotation.Nullable SpawnGroupData pSpawnData, @javax.annotation.Nullable CompoundTag pDataTag) {
+    public SpawnGroupData finalizeSpawn( ServerLevelAccessor pLevel,  DifficultyInstance pDifficulty,  MobSpawnType pReason, @javax.annotation.Nullable SpawnGroupData pSpawnData, @javax.annotation.Nullable CompoundTag pDataTag) {
         this.alignSpawnPos();
         SpawnGroupData data = super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
         this.setBossName(generateGuardianName());

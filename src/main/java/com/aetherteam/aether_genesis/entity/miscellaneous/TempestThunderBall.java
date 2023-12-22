@@ -18,8 +18,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.network.NetworkHooks;
 
-import javax.annotation.Nonnull;
-
 import static com.aetherteam.aether_genesis.entity.monster.Tempest.TEMPEST_PARTICLE_COLOR;
 
 
@@ -91,7 +89,7 @@ public class TempestThunderBall extends AbstractCrystal {
 		}
 	}
 
-	@Nonnull
+	
 	@Override
 	public Packet<ClientGamePacketListener> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);

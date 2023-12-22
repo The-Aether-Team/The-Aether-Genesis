@@ -8,7 +8,7 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 
-public class LabyrinthEyeModel<T extends LabyrinthEye> extends EntityModel<T> {
+public class LabyrinthEyeModel extends EntityModel<LabyrinthEye> {
 	private final ModelPart labyrinthEye;
 
 	public LabyrinthEyeModel(ModelPart root) {

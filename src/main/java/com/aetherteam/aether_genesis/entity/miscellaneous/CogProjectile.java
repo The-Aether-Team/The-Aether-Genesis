@@ -31,17 +31,15 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 
-import javax.annotation.Nonnull;
-
-public class CogArrow extends Projectile {
-    public static final EntityDataAccessor<Boolean> SIZE = SynchedEntityData.defineId(CogArrow.class, EntityDataSerializers.BOOLEAN);
+public class CogProjectile extends Projectile {
+    public static final EntityDataAccessor<Boolean> SIZE = SynchedEntityData.defineId(CogProjectile.class, EntityDataSerializers.BOOLEAN);
 
     public double xPower;
     public double yPower;
     public double zPower;
     protected int ticksInAir = 0;
 
-    public CogArrow(EntityType<? extends CogArrow> entityType, Level level) {
+    public CogProjectile(EntityType<? extends CogProjectile> entityType, Level level) {
         super(entityType, level);
         this.setNoGravity(true);
     }
@@ -112,7 +110,7 @@ public class CogArrow extends Projectile {
         return 300;
     }
 
-    @Nonnull
+    
     @Override
     public Packet<ClientGamePacketListener> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
@@ -121,7 +119,7 @@ public class CogArrow extends Projectile {
     /**
      * @param shooter - The entity that created this projectile
      */
-    public CogArrow(Level level, Entity shooter, Boolean large) {
+    public CogProjectile(Level level, Entity shooter, Boolean large) {
         this(GenesisEntityTypes.COG_ARROW.get(), level);
         this.setLarge(large);
         this.setOwner(shooter);
@@ -190,7 +188,7 @@ public class CogArrow extends Projectile {
     }
 
     @Override
-    public void addAdditionalSaveData(@Nonnull CompoundTag tag) {
+    public void addAdditionalSaveData( CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("TicksInAir", this.ticksInAir);
         tag.putDouble("XSpeed", this.xPower);
@@ -199,7 +197,7 @@ public class CogArrow extends Projectile {
     }
 
     @Override
-    public void readAdditionalSaveData(@Nonnull CompoundTag tag) {
+    public void readAdditionalSaveData( CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         if (tag.contains("TicksInAir")) {
             this.ticksInAir = tag.getInt("TicksInAir");

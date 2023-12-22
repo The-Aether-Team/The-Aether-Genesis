@@ -11,8 +11,8 @@ import net.minecraft.resources.ResourceLocation;
 public class ShadeOfArkenzusEyesLayer extends EyesLayer<ShadeOfArkenzus, ShadeOfArkenzusModel> {
     private static final RenderType SHADE_OF_ARKENZUS_EYES = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/companions/shade_of_arkenzus/shade_of_arkenzus_emissive.png"));
 
-    public ShadeOfArkenzusEyesLayer(RenderLayerParent<ShadeOfArkenzus, ShadeOfArkenzusModel> renderer) {
-        super(renderer);
+    public ShadeOfArkenzusEyesLayer(RenderLayerParent<ShadeOfArkenzus, ShadeOfArkenzusModel> entityRenderer) {
+        super(entityRenderer);
     }
 
     @Override

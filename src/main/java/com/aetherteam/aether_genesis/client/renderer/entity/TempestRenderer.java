@@ -13,16 +13,14 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
-import javax.annotation.Nonnull;
-
-public class TempestRenderer extends MobRenderer<Tempest, TempestModel<Tempest>> {
+public class TempestRenderer extends MobRenderer<Tempest, TempestModel> {
     private static final ResourceLocation TEMPEST_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/tempest/tempest.png");
 
     public TempestRenderer(Context context) {
         super(context, new TempestModel(context.bakeLayer(GenesisModelLayers.TEMPEST)), 0.5F);
-        this.addLayer(new TempestMarkingsLayer<>(this));
+        this.addLayer(new TempestMarkingsLayer(this));
         this.addLayer(new TempestTransparencyLayer(this, new TempestModel(context.getModelSet().bakeLayer(GenesisModelLayers.TEMPEST_TRANSPARENCY))));
-        this.addLayer(new TempestTransparencyGlowLayer(this, new TempestModel(context.getModelSet().bakeLayer(GenesisModelLayers.TEMPEST_TRANSPARENCY))));
+        this.addLayer(new TempestTransparencyGlowLayer(this));
     }
 
     @Override
@@ -30,7 +28,7 @@ public class TempestRenderer extends MobRenderer<Tempest, TempestModel<Tempest>>
         return TEMPEST_TEXTURE;
     }
 
-    protected void scale(Tempest tempest, @Nonnull PoseStack poseStack, float partialTickTime) {
+    protected void scale(Tempest tempest,  PoseStack poseStack, float partialTickTime) {
         float f = Mth.lerp(partialTickTime, (float)tempest.getCloudScale(), (float)(tempest.getCloudScale() + tempest.getCloudScaleAdd()));
         float f1 = f / 40.0F;
         if (f1 < 0.0F) {
@@ -50,7 +48,7 @@ public class TempestRenderer extends MobRenderer<Tempest, TempestModel<Tempest>>
         poseStack.translate(0.0D, sin / 15, 0.0D);
     }
 
-    protected float getBob(@Nonnull Tempest tempest, float partialTicks) {
+    protected float getBob( Tempest tempest, float partialTicks) {
         return Mth.lerp(partialTicks, tempest.getTailRot(), tempest.getTailRot() + tempest.getTailRotAdd());
     }
 }

@@ -86,10 +86,10 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.<ContinuumBomb>of(ContinuumBomb::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("continuum_bomb"));
     public static final RegistryObject<EntityType<RewardItem>> REWARD_ITEM = ENTITY_TYPES.register("reward_item",
             () -> EntityType.Builder.<RewardItem>of(RewardItem::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("reward_item"));
-    public static final RegistryObject<EntityType<HostEye>> HOST_EYE = ENTITY_TYPES.register("host_eye",
-            () -> EntityType.Builder.of(HostEye::new, MobCategory.MISC).sized(0.4F, 0.4F).clientTrackingRange(10).fireImmune().build("host_eye"));
-    public static final RegistryObject<EntityType<CogArrow>> COG_ARROW = ENTITY_TYPES.register("cog_arrow",
-            () -> EntityType.Builder.<CogArrow>of(CogArrow::new, MobCategory.MISC).clientTrackingRange(4).updateInterval(10).sized(0.9F, 0.9F).fireImmune().build("cog_arrow"));
+    public static final RegistryObject<EntityType<HostEyeProjectile>> HOST_EYE = ENTITY_TYPES.register("host_eye",
+            () -> EntityType.Builder.of(HostEyeProjectile::new, MobCategory.MISC).sized(0.4F, 0.4F).clientTrackingRange(10).fireImmune().build("host_eye"));
+    public static final RegistryObject<EntityType<CogProjectile>> COG_ARROW = ENTITY_TYPES.register("cog_arrow",
+            () -> EntityType.Builder.<CogProjectile>of(CogProjectile::new, MobCategory.MISC).clientTrackingRange(4).updateInterval(10).sized(0.9F, 0.9F).fireImmune().build("cog_arrow"));
 
     @SubscribeEvent
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
@@ -109,7 +109,7 @@ public class GenesisEntityTypes {
         event.put(GenesisEntityTypes.SENTRY_GUARDIAN.get(), SentryGuardian.createMobAttributes().build());
         event.put(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), SliderHostMimic.createHostAttributes().build());
         event.put(GenesisEntityTypes.LABYRINTH_EYE.get(), LabyrinthEye.createMobAttributes().build());
-        event.put(GenesisEntityTypes.HOST_EYE.get(), HostEye.createMobAttributes().build());
+        event.put(GenesisEntityTypes.HOST_EYE.get(), HostEyeProjectile.createMobAttributes().build());
         event.put(GenesisEntityTypes.FLEETING_WISP.get(), Wisp.createAttributes().build());
         event.put(GenesisEntityTypes.SOARING_WISP.get(), Wisp.createAttributes().build());
         event.put(GenesisEntityTypes.ETHEREAL_WISP.get(), Wisp.createAttributes().build());

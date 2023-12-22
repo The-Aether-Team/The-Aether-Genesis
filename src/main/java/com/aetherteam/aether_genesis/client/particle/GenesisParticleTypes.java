@@ -4,7 +4,6 @@ import com.aetherteam.aether_genesis.Genesis;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -19,7 +18,6 @@ public class GenesisParticleTypes {
     public static final RegistryObject<SimpleParticleType> PURPLE_CRYSTAL_LEAVES = PARTICLES.register("purple_crystal_leaves", () -> new SimpleParticleType(false));
 
     @SubscribeEvent
-    @OnlyIn(Dist.CLIENT)
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(PURPLE_CRYSTAL_LEAVES.get(), PurpleCrystalLeavesParticle.Factory::new);
     }

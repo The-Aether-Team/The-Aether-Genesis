@@ -6,7 +6,7 @@ import com.aetherteam.aether.entity.monster.dungeon.boss.BossNameGenerator;
 import com.aetherteam.aether.network.AetherPacketHandler;
 import com.aetherteam.aether.network.packet.serverbound.BossInfoPacket;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
-import com.aetherteam.aether_genesis.entity.miscellaneous.CogArrow;
+import com.aetherteam.aether_genesis.entity.miscellaneous.CogProjectile;
 import com.aetherteam.nitrogen.entity.BossRoomTracker;
 import com.aetherteam.nitrogen.network.PacketRelay;
 import net.minecraft.nbt.CompoundTag;
@@ -48,7 +48,6 @@ import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
 import java.util.EnumSet;
 
 public class LabyrinthEye extends PathfinderMob implements AetherBossMob<LabyrinthEye>, Enemy, IEntityAdditionalSpawnData {
@@ -64,7 +63,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
 
     private BossRoomTracker<LabyrinthEye> bronzeDungeon;
 
-    @Nonnull
+    
     public static AttributeSupplier.Builder createMobAttributes() {
         return Monster.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 250)
@@ -139,7 +138,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     public void spawnLargeCog(Entity entityToAttack, int stage) {
         if (this.stageDone[stage])
             return;
-        CogArrow entityarrow = new CogArrow(this.level(), this, true);
+        CogProjectile entityarrow = new CogProjectile(this.level(), this, true);
         entityarrow.setYRot(this.getYRot());
         entityarrow.setXRot(this.getXRot());
         double var3 = entityToAttack.position().x + entityToAttack.getMotionDirection().getStepX() - this.position().x;
@@ -196,14 +195,14 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     }
 
     @Override
-    public void addAdditionalSaveData(@Nonnull CompoundTag tag) {
+    public void addAdditionalSaveData( CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         this.addBossSaveData(tag);
         tag.putBoolean("Awake", this.isAwake());
     }
 
     @Override
-    public void readAdditionalSaveData(@Nonnull CompoundTag tag) {
+    public void readAdditionalSaveData( CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.readBossSaveData(tag);
         if (tag.contains("Awake")) {
@@ -295,7 +294,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     }
 
     @Override
-    public void startSeenByPlayer(@Nonnull ServerPlayer player) {
+    public void startSeenByPlayer( ServerPlayer player) {
         super.startSeenByPlayer(player);
         PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Display(this.bossFight.getId(), this.getId()), player);
         if (this.getDungeon() == null || this.getDungeon().isPlayerTracked(player)) {
@@ -311,7 +310,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     }
 
     @Override
-    public void stopSeenByPlayer(@Nonnull ServerPlayer player) {
+    public void stopSeenByPlayer( ServerPlayer player) {
         super.stopSeenByPlayer(player);
         PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()), player);
         this.bossFight.removePlayer(player);
@@ -370,7 +369,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn(@Nonnull ServerLevelAccessor pLevel, @Nonnull DifficultyInstance pDifficulty, @Nonnull MobSpawnType pReason, @javax.annotation.Nullable SpawnGroupData pSpawnData, @javax.annotation.Nullable CompoundTag pDataTag) {
+    public SpawnGroupData finalizeSpawn( ServerLevelAccessor pLevel,  DifficultyInstance pDifficulty,  MobSpawnType pReason, @javax.annotation.Nullable SpawnGroupData pSpawnData, @javax.annotation.Nullable CompoundTag pDataTag) {
         this.alignSpawnPos();
         SpawnGroupData data = super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
         this.setBossName(generateGuardianName());
@@ -418,7 +417,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
 
         @Override
         public void start() {
-            Entity cog = new CogArrow(this.labyrinthEye.level(), this.labyrinthEye, false);
+            Entity cog = new CogProjectile(this.labyrinthEye.level(), this.labyrinthEye, false);
             this.labyrinthEye.level().addFreshEntity(cog);
             cog.setPos(labyrinthEye.position());
         }

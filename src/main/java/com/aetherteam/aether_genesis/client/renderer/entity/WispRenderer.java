@@ -8,8 +8,6 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
-import javax.annotation.Nonnull;
-
 public class WispRenderer extends CompanionRenderer<Wisp, WispModel> {
     private final ResourceLocation texture;
 
@@ -19,7 +17,7 @@ public class WispRenderer extends CompanionRenderer<Wisp, WispModel> {
     }
 
     @Override
-    protected void scale(Wisp wisp, @Nonnull PoseStack poseStack, float partialTickTime) {
+    protected void scale(Wisp wisp,  PoseStack poseStack, float partialTickTime) {
         poseStack.translate(0.0D, -0.75D, 0.0D);
         float sin = Mth.sin((wisp.tickCount + partialTickTime) / 6);
         poseStack.translate(0.0D, sin / 15, 0.0D);
@@ -34,7 +32,7 @@ public class WispRenderer extends CompanionRenderer<Wisp, WispModel> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(@Nonnull Wisp wisp) {
+    public ResourceLocation getTextureLocation( Wisp wisp) {
         return this.texture;
     }
 }

@@ -22,13 +22,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-import javax.annotation.Nonnull;
-
-public class HostEye extends PathfinderMob {
-    public static final EntityDataAccessor<Boolean> MOVEMENT = SynchedEntityData.defineId(HostEye.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<Integer> TIMER = SynchedEntityData.defineId(HostEye.class, EntityDataSerializers.INT);
-    public static final EntityDataAccessor<Integer> DIRECTION = SynchedEntityData.defineId(HostEye.class, EntityDataSerializers.INT);
-    public static final EntityDataAccessor<Float> SPEEDY = SynchedEntityData.defineId(HostEye.class, EntityDataSerializers.FLOAT);
+public class HostEyeProjectile extends PathfinderMob {
+    public static final EntityDataAccessor<Boolean> MOVEMENT = SynchedEntityData.defineId(HostEyeProjectile.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<Integer> TIMER = SynchedEntityData.defineId(HostEyeProjectile.class, EntityDataSerializers.INT);
+    public static final EntityDataAccessor<Integer> DIRECTION = SynchedEntityData.defineId(HostEyeProjectile.class, EntityDataSerializers.INT);
+    public static final EntityDataAccessor<Float> SPEEDY = SynchedEntityData.defineId(HostEyeProjectile.class, EntityDataSerializers.FLOAT);
 
     private final SliderHostMimic host;
     private boolean movement;
@@ -37,7 +35,7 @@ public class HostEye extends PathfinderMob {
     public float speedy;
     public float harvey;
 
-    public HostEye(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
+    public HostEyeProjectile(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
         host = new SliderHostMimic(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), this.level());
     }
@@ -242,7 +240,7 @@ public class HostEye extends PathfinderMob {
     }
 
     @Override
-    protected boolean canRide(@Nonnull Entity vehicle) {
+    protected boolean canRide( Entity vehicle) {
         return false;
     }
 

@@ -11,8 +11,8 @@ import net.minecraft.resources.ResourceLocation;
 public class FrostpineTotemEyesLayer extends EyesLayer<FrostpineTotem, FrostpineTotemModel> {
     private static final RenderType FROSTPINE_TOTEM_EYES = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/companions/frostpine_totem/frostpine_totem_emissive.png"));
 
-    public FrostpineTotemEyesLayer(RenderLayerParent<FrostpineTotem, FrostpineTotemModel> renderer) {
-        super(renderer);
+    public FrostpineTotemEyesLayer(RenderLayerParent<FrostpineTotem, FrostpineTotemModel> entityRenderer) {
+        super(entityRenderer);
     }
 
     @Override
