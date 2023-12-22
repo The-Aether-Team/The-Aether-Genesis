@@ -11,7 +11,7 @@ import net.minecraft.world.entity.player.Inventory;
 public class HolystoneFurnaceScreen extends AbstractFurnaceScreen<HolystoneFurnaceMenu> {
 	private static final ResourceLocation FURNACE_GUI_TEXTURES = new ResourceLocation(Genesis.MODID, "textures/gui/menu/holystone_furnace.png");
 
-	public HolystoneFurnaceScreen(HolystoneFurnaceMenu container, Inventory inventory, Component title) {
-		super(container, new SmeltingRecipeBookComponent(), inventory, title, FURNACE_GUI_TEXTURES);
+	public HolystoneFurnaceScreen(HolystoneFurnaceMenu menu, Inventory inventory, Component title) {
+		super(menu, new SmeltingRecipeBookComponent(), inventory, title, FURNACE_GUI_TEXTURES);
 	}
 }

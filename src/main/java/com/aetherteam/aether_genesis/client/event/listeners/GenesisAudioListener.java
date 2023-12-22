@@ -16,24 +16,26 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-
 @Mod.EventBusSubscriber(Dist.CLIENT)
 public class GenesisAudioListener {
+    /**
+     * @see GenesisAudioHooks#shouldCancelMusic(SoundInstance)
+     * @see GenesisAudioHooks#shouldReplacePortalHum(SoundInstance)
+     * @see GenesisAudioHooks#shouldCancelPortalSound(SoundEngine, SoundInstance)
+     */
     @SubscribeEvent
     public static void onPlaySound(PlaySoundEvent event) {
         SoundEngine soundEngine = event.getEngine();
         SoundInstance sound = event.getOriginalSound();
+
         if (GenesisAudioHooks.shouldCancelMusic(sound)) {
-            event.setSound(null);
-        }
-        if (GenesisAudioHooks.shouldCancelAercloudBounceSound(sound)) {
             event.setSound(null);
         }
 
         Level level = Minecraft.getInstance().level;
         if (level != null) {
             RandomSource random = level.getRandom();
-            if (GenesisAudioHooks.shouldReplacePortalHum(sound)) {
+            if (GenesisAudioHooks.shouldReplacePortalHum(sound)) { // Parameters based on Nether Portal hum.
                 event.setSound(new SimpleSoundInstance(GenesisSoundEvents.PORTAL_HUM.get(), SoundSource.BLOCKS, 0.5F, random.nextFloat() * 0.4F + 0.8F, RandomSource.create(random.nextLong()), sound.getX(), sound.getY(), sound.getZ()));
             }
         }
@@ -44,17 +46,21 @@ public class GenesisAudioListener {
         }
     }
 
+    /**
+     * @see GenesisAudioHooks#tick()
+     */
     @SubscribeEvent
     public static void onClientTick(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
             GenesisAudioHooks.tick();
         }
-
     }
 
+    /**
+     * @see GenesisAudioHooks#stop()
+     */
     @SubscribeEvent
     public static void onPlayerRespawn(ClientPlayerNetworkEvent.Clone event) {
         GenesisAudioHooks.stop();
     }
-
 }

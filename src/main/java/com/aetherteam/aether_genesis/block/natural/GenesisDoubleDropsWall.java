@@ -29,13 +29,13 @@ public class GenesisDoubleDropsWall extends WallBlock {
      */
     private void fixShapeMaps() {
         WallBlockAccessor wallBlockAccessor = (WallBlockAccessor) this;
-        Map<BlockState, VoxelShape> shapeByIndex = wallBlockAccessor.getShapeByIndex();
+        Map<BlockState, VoxelShape> shapeByIndex = wallBlockAccessor.aether_genesis$getShapeByIndex();
         shapeByIndex = fixShapeMap(shapeByIndex);
-        wallBlockAccessor.setShapeByIndex(shapeByIndex);
+        wallBlockAccessor.aether_genesis$setShapeByIndex(shapeByIndex);
 
-        Map<BlockState, VoxelShape> collisionShapeByIndex = wallBlockAccessor.getCollisionShapeByIndex();
+        Map<BlockState, VoxelShape> collisionShapeByIndex = wallBlockAccessor.aether_genesis$getCollisionShapeByIndex();
         collisionShapeByIndex = fixShapeMap(collisionShapeByIndex);
-        wallBlockAccessor.setCollisionShapeByIndex(collisionShapeByIndex);
+        wallBlockAccessor.aether_genesis$setCollisionShapeByIndex(collisionShapeByIndex);
     }
 
     private static Map<BlockState, VoxelShape> fixShapeMap(Map<BlockState, VoxelShape> map) {

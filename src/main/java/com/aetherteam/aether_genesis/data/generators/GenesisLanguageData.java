@@ -181,6 +181,5 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addGuiText("labyrinth_eye.title", "the Labyrinth Eye");
 
         this.addGuiText("boss.message.projectile", "Hmm... Better switch to a sword");
-        //todo: lore
     }
 }

@@ -20,6 +20,7 @@ public class GenesisPacketHandler {
 	private static int index;
 
 	public static synchronized void register() {
+		// BOTH
 		register(GenesisPlayerSyncPacket.class, GenesisPlayerSyncPacket::decode);
 	}
 

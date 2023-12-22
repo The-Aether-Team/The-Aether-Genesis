@@ -11,7 +11,7 @@ import java.util.List;
 @Mixin(RegistrySetBuilder.class)
 public interface RegistrySetBuilderAccessor {
     @Accessor("entries")
-    List<RegistrySetBuilder.RegistryStub<?>> aether$getEntries();
+    List<RegistrySetBuilder.RegistryStub<?>> aether_genesis$getEntries();
 
     @Invoker
     RegistrySetBuilder.BuildState callCreateState(RegistryAccess registryAccess);

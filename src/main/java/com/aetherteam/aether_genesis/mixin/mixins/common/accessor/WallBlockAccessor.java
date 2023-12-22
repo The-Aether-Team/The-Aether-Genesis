@@ -10,18 +10,18 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 import java.util.Map;
 
 @Mixin(WallBlock.class)
-public interface WallBlockAccessor { //todo rename
-    @Accessor
-    Map<BlockState, VoxelShape> getShapeByIndex();
+public interface WallBlockAccessor {
+    @Accessor("shapeByIndex")
+    Map<BlockState, VoxelShape> aether_genesis$getShapeByIndex();
 
     @Mutable
-    @Accessor
-    void setShapeByIndex(Map<BlockState, VoxelShape> shapeByIndex);
+    @Accessor("shapeByIndex")
+    void aether_genesis$setShapeByIndex(Map<BlockState, VoxelShape> shapeByIndex);
 
-    @Accessor
-    Map<BlockState, VoxelShape> getCollisionShapeByIndex();
+    @Accessor("collisionShapeByIndex")
+    Map<BlockState, VoxelShape> aether_genesis$getCollisionShapeByIndex();
 
     @Mutable
-    @Accessor
-    void setCollisionShapeByIndex(Map<BlockState, VoxelShape> collisionShapeByIndex);
+    @Accessor("collisionShapeByIndex")
+    void aether_genesis$setCollisionShapeByIndex(Map<BlockState, VoxelShape> collisionShapeByIndex);
 }

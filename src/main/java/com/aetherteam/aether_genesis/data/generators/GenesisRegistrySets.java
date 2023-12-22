@@ -31,7 +31,7 @@ public class GenesisRegistrySets extends DatapackBuiltinEntriesProvider {
             RegistrySetBuilder.BuildState state = ((RegistrySetBuilderAccessor) setBuilder).callCreateState(registries);
             Map<ResourceKey<? extends Registry<?>>, RegistryContents<?>> map = new HashMap<>();
             state.collectReferencedRegistries().forEach((element) -> map.put(element.key(), element));
-            ((RegistrySetBuilderAccessor) setBuilder).aether$getEntries().stream().map((RegistryStub<?> stub) -> stub.collectChanges(state)).forEach((contents) -> map.put(contents.key(), contents));
+            ((RegistrySetBuilderAccessor) setBuilder).aether_genesis$getEntries().stream().map((RegistryStub<?> stub) -> stub.collectChanges(state)).forEach((contents) -> map.put(contents.key(), contents));
             Stream<HolderLookup.RegistryLookup<?>> stream = registries.registries().map((entry) -> entry.value().asLookup());
             HolderLookup.Provider provider = HolderLookup.Provider.create(Stream.concat(stream, map.values().stream().map(RegistrySetBuilder.RegistryContents::buildAsLookup).peek(state::addOwner)));
             state.fillMissingHolders(lookup);

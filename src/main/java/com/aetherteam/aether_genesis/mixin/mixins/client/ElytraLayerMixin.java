@@ -37,7 +37,7 @@ public class ElytraLayerMixin<T extends LivingEntity, M extends EntityModel<T>> 
                 float green = (float) (i >> 8 & 255) / 255.0F;
                 float blue = (float) (i & 255) / 255.0F;
                 VertexConsumer consumer = ItemRenderer.getArmorFoilBuffer(buffer, RenderType.armorCutoutNoCull(location), false, slotResult.stack().hasFoil());
-                ((ElytraLayerAccessor<T>) elytraLayer).aether$getElytraModel().renderToBuffer(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, red, green, blue, 1.0F);
+                ((ElytraLayerAccessor<T>) elytraLayer).aether_genesis$getElytraModel().renderToBuffer(poseStack, consumer, packedLight, OverlayTexture.NO_OVERLAY, red, green, blue, 1.0F);
                 poseStack.popPose();
                 ci.cancel();
             }

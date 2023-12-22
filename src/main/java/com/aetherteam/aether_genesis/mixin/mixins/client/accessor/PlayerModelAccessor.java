@@ -8,5 +8,5 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 @Mixin(PlayerModel.class)
 public interface PlayerModelAccessor {
     @Accessor("cloak")
-    ModelPart aether$getCloak();
+    ModelPart aether_genesis$getCloak();
 }

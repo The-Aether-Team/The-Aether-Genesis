@@ -8,7 +8,6 @@
     "client.accessor.SoundEngineAccessor",
     "common.AercloudBlockMixin",
     "common.AetherPlayerCapabilityMixin",
-    "common.AetherPortalBlockMixin",
     "common.BlueAercloudBlockMixin",
     "common.ItemMixin",
     "common.ParachuteMixin",

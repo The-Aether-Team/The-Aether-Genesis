@@ -31,7 +31,7 @@ public class CapeLayerMixin {
             float green = (float) (i >> 8 & 255) / 255.0F;
             float blue = (float) (i & 255) / 255.0F;
             VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.entitySolid(livingEntity.getCloakTextureLocation()));
-            ((PlayerModelAccessor) capeLayer.getParentModel()).aether$getCloak().render(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY, red, green, blue, 1.0F);
+            ((PlayerModelAccessor) capeLayer.getParentModel()).aether_genesis$getCloak().render(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY, red, green, blue, 1.0F);
         }
     }
 }
