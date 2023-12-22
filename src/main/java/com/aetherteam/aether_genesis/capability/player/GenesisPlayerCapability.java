@@ -24,9 +24,12 @@ public class GenesisPlayerCapability implements GenesisPlayer {
     private List<Entity> companions = new ArrayList<>();
     private int phoenixDartCount;
 
+    /**
+     * Stores the following methods as able to be synced between client and server and vice-versa.
+     */
     private final Map<String, Triple<Type, Consumer<Object>, Supplier<Object>>> synchableFunctions = Map.ofEntries(
             Map.entry("setPhoenixDartCount", Triple.of(Type.INT, (object) -> this.setPhoenixDartCount((int) object), this::getPhoenixDartCount))
-            );
+    );
     private boolean shouldSyncAfterJoin;
 
     public GenesisPlayerCapability(Player player) {
@@ -38,11 +41,17 @@ public class GenesisPlayerCapability implements GenesisPlayer {
         return this.player;
     }
 
+    /**
+     * Saves data on world close.
+     */
     @Override
     public CompoundTag serializeNBT() {
         return new CompoundTag();
     }
 
+    /**
+     * Restores data from world on open.
+     */
     @Override
     public void deserializeNBT(CompoundTag nbt) { }
 
@@ -51,16 +60,25 @@ public class GenesisPlayerCapability implements GenesisPlayer {
         return this.synchableFunctions;
     }
 
+    /**
+     * Handles functions when the player logs out of a world from {@link net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent}.
+     */
     @Override
     public void onLogout() {
         this.clearCompanions();
     }
 
+    /**
+     * Handles functions when the player logs in to a world from {@link net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedOutEvent}.
+     */
     @Override
     public void onLogin() {
         this.shouldSyncAfterJoin = true;
     }
 
+    /**
+     * Handles functions when the player ticks from {@link net.minecraftforge.event.entity.living.LivingEvent.LivingTickEvent}
+     */
     @Override
     public void onUpdate() {
         this.syncAfterJoin();
@@ -75,11 +93,7 @@ public class GenesisPlayerCapability implements GenesisPlayer {
 
     @Override
     public void setCompanions(List<Entity> companions) {
-        companions.forEach((entity) -> {
-            if (entity instanceof Companion companionEntity) {
-                companionEntity.setOwner(this.getPlayer().getUUID());
-            }
-        });
+        companions.stream().filter((entity) -> entity instanceof Companion<?>).forEach((entity) -> ((Companion<?>) entity).setOwner(this.getPlayer().getUUID()));
         this.companions = companions;
     }
 
@@ -103,6 +117,9 @@ public class GenesisPlayerCapability implements GenesisPlayer {
         this.companions.clear();
     }
 
+    /**
+     * @return The {@link List} of companion {@link Entity Entities} that this player has active.
+     */
     @Override
     public List<Entity> getCompanions() {
         return this.companions;
@@ -113,6 +130,9 @@ public class GenesisPlayerCapability implements GenesisPlayer {
         this.phoenixDartCount = count;
     }
 
+    /**
+     * @return An {@link Integer} for how many Phoenix Darts are stuck in the player.
+     */
     @Override
     public int getPhoenixDartCount() {
         return this.phoenixDartCount;
