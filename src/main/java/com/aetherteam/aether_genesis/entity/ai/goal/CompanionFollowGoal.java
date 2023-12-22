@@ -16,6 +16,7 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 
 import java.util.EnumSet;
+import java.util.UUID;
 
 public class CompanionFollowGoal<T extends Mob & Companion<T>> extends Goal {
     private final T companion;
@@ -44,18 +45,23 @@ public class CompanionFollowGoal<T extends Mob & Companion<T>> extends Goal {
      * method as well.
      */
     public boolean canUse() {
-        Player player = this.companion.level().getPlayerByUUID(this.companion.getOwner());
-        if (player == null) {
-            return false;
-        } else if (player.isSpectator()) {
-            return false;
-        } else if (this.unableToMove()) {
-            return false;
-        } else if (this.companion.distanceToSqr(player) < 4.0) {
+        UUID uuid = this.companion.getOwner();
+        if (uuid == null) {
             return false;
         } else {
-            this.owner = player;
-            return true;
+            Player player = this.companion.level().getPlayerByUUID(uuid);
+            if (player == null) {
+                return false;
+            } else if (player.isSpectator()) {
+                return false;
+            } else if (this.unableToMove()) {
+                return false;
+            } else if (this.companion.distanceToSqr(player) < 4.0) {
+                return false;
+            } else {
+                this.owner = player;
+                return true;
+            }
         }
     }
 
