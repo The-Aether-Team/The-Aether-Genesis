@@ -34,6 +34,9 @@ public class GenesisEntityLoot extends EntityLootSubProvider {
                         )
                 )
         );
+        this.add(GenesisEntityTypes.ZEPHYROO.get(), LootTable.lootTable()
+                .withPool(LootPool.lootPool())
+        );
         this.add(GenesisEntityTypes.DARK_SWET.get(), LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(GenesisItems.DARK_SWET_BALL.get())

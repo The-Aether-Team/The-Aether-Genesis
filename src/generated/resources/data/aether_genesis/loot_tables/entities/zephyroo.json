@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "aether_genesis:entities/zephyroo"
+}
