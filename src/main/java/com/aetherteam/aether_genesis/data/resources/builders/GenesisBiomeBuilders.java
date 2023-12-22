@@ -4,7 +4,6 @@ import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.data.resources.AetherMobCategory;
 import com.aetherteam.aether.data.resources.registries.AetherPlacedFeatures;
 import com.aetherteam.aether.entity.AetherEntityTypes;
-import com.aetherteam.aether_genesis.data.generators.GenesisRegistrySets;
 import com.aetherteam.aether_genesis.data.resources.registries.GenesisPlacedFeatures;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.sounds.Music;

@@ -1,10 +1,9 @@
 package com.aetherteam.aether_genesis;
 
 import com.aetherteam.aether.AetherConfig;
-import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.advancement.GenesisAdvancementTriggers;
+import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
-import com.aetherteam.aether_genesis.inventory.menu.GenesisMenuTypes;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.data.generators.*;
@@ -13,6 +12,7 @@ import com.aetherteam.aether_genesis.data.generators.tags.GenesisBlockTagData;
 import com.aetherteam.aether_genesis.data.generators.tags.GenesisEntityTagData;
 import com.aetherteam.aether_genesis.data.generators.tags.GenesisItemTagData;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
+import com.aetherteam.aether_genesis.inventory.menu.GenesisMenuTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.loot.functions.GenesisLootFunctions;
 import com.aetherteam.aether_genesis.loot.modifiers.GenesisLootModifiers;

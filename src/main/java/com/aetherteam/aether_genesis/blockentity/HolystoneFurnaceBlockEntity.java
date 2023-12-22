@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.blockentity;
 
+import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.inventory.menu.HolystoneFurnaceMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -10,15 +11,15 @@ import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class HolystoneFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
-    public HolystoneFurnaceBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(GenesisBlockEntityTypes.HOLYSTONE_FURNACE.get(), pPos, pBlockState, RecipeType.SMELTING);
+    public HolystoneFurnaceBlockEntity(BlockPos pos, BlockState state) {
+        super(GenesisBlockEntityTypes.HOLYSTONE_FURNACE.get(), pos, state, RecipeType.SMELTING);
     }
 
     protected Component getDefaultName() {
-        return Component.translatable("menu.aether_genesis.holystone_furnace");
+        return Component.translatable("menu." + Genesis.MODID + ".holystone_furnace");
     }
 
-    protected AbstractContainerMenu createMenu(int pId, Inventory pPlayer) {
-        return new HolystoneFurnaceMenu(pId, pPlayer, this, this.dataAccess);
+    protected AbstractContainerMenu createMenu(int id, Inventory playerInventory) {
+        return new HolystoneFurnaceMenu(id, playerInventory, this, this.dataAccess);
     }
 }
