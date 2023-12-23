@@ -92,7 +92,7 @@ public class LabyrinthEyeModel extends EntityModel<LabyrinthEye> {
 		cogDouble4.addOrReplaceChild("main_r8", CubeListBuilder.create().texOffs(0, 14).addBox(-15.0F, 2.0F, 0.0F, 6.0F, 4.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 54.9117F, 57.1249F, 0.0F, 1.5708F, -1.5708F));
 
 
-		PartDefinition cog2 = cogGroupAbove.addOrReplaceChild("cog2", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, 0.0F, -2.0F, -1.5708F, 0.0F, -2.618F));
+		PartDefinition cog2 = cogGroupAbove.addOrReplaceChild("cog_2", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, 0.0F, -2.0F, -1.5708F, 0.0F, -2.618F));
 
 		PartDefinition halfCog3 = cog2.addOrReplaceChild("half_cog3", CubeListBuilder.create(), PartPose.offset(6.808F, -3.6422F, -41.4853F));
 
@@ -127,7 +127,7 @@ public class LabyrinthEyeModel extends EntityModel<LabyrinthEye> {
 		cogDouble8.addOrReplaceChild("main_r16", CubeListBuilder.create().texOffs(0, 14).addBox(-15.0F, 2.0F, 0.0F, 6.0F, 4.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-11.6613F, 81.3265F, 57.1756F, 0.0F, 1.5708F, -1.5708F));
 
 
-		PartDefinition cog3 = cogGroupAbove.addOrReplaceChild("cog3", CubeListBuilder.create(), PartPose.offsetAndRotation(-30.0F, 0.0F, -2.0F, -1.5708F, 0.0F, 2.618F));
+		PartDefinition cog3 = cogGroupAbove.addOrReplaceChild("cog_3", CubeListBuilder.create(), PartPose.offsetAndRotation(-30.0F, 0.0F, -2.0F, -1.5708F, 0.0F, 2.618F));
 
 		PartDefinition halfCog5 = cog3.addOrReplaceChild("half_cog5", CubeListBuilder.create(), PartPose.offset(6.808F, -3.6422F, -41.4853F));
 
@@ -162,7 +162,7 @@ public class LabyrinthEyeModel extends EntityModel<LabyrinthEye> {
 		cogDouble12.addOrReplaceChild("main_r24", CubeListBuilder.create().texOffs(0, 14).addBox(-15.0F, 2.0F, 0.0F, 6.0F, 4.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-35.9353F, 70.7199F, 46.569F, 0.0F, 1.5708F, -1.5708F));
 
 
-		PartDefinition cog4 = cogGroupAbove.addOrReplaceChild("cog4", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, -2.0F, -2.0F, -1.5708F, 0.0F, 2.0944F));
+		PartDefinition cog4 = cogGroupAbove.addOrReplaceChild("cog_4", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, -2.0F, -2.0F, -1.5708F, 0.0F, 2.0944F));
 
 		PartDefinition halfCog7 = cog4.addOrReplaceChild("half_cog7", CubeListBuilder.create(), PartPose.offset(-12.229F, 16.3578F, -20.979F));
 
@@ -197,7 +197,7 @@ public class LabyrinthEyeModel extends EntityModel<LabyrinthEye> {
 		cogDouble16.addOrReplaceChild("main_r32", CubeListBuilder.create().texOffs(0, 14).addBox(-15.0F, 2.0F, 0.0F, 6.0F, 4.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(11.4392F, 52.4189F, 56.5523F, 0.0F, 1.5708F, -1.5708F));
 
 
-		PartDefinition cog5 = cogGroupAbove.addOrReplaceChild("cog5", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, -2.0F, -2.0F, -1.5708F, 0.0F, -2.0944F));
+		PartDefinition cog5 = cogGroupAbove.addOrReplaceChild("cog_5", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, -2.0F, -2.0F, -1.5708F, 0.0F, -2.0944F));
 
 		PartDefinition halfCog9 = cog5.addOrReplaceChild("half_cog9", CubeListBuilder.create(), PartPose.offset(-12.229F, 16.3578F, -20.979F));
 
@@ -268,7 +268,7 @@ public class LabyrinthEyeModel extends EntityModel<LabyrinthEye> {
 
 		PartDefinition cogGroupBelow = cogGroup.addOrReplaceChild("cog_group_below", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, 2.25F, 0.0F, 3.1416F, 0.0F, 0.0F));
 
-		PartDefinition cog6 = cogGroupBelow.addOrReplaceChild("cog6", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, -2.0F, -2.0F, -1.5708F, 0.0F, 3.1416F));
+		PartDefinition cog6 = cogGroupBelow.addOrReplaceChild("cog_6", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, -2.0F, -2.0F, -1.5708F, 0.0F, 3.1416F));
 
 		PartDefinition halfCog11 = cog6.addOrReplaceChild("half_cog11", CubeListBuilder.create(), PartPose.offset(-4.0F, 15.0F, -25.0F));
 
@@ -303,7 +303,7 @@ public class LabyrinthEyeModel extends EntityModel<LabyrinthEye> {
 		cogDouble24.addOrReplaceChild("main_r48", CubeListBuilder.create().texOffs(0, 14).addBox(-15.0F, 2.0F, 0.0F, 6.0F, 4.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, 54.1538F, 57.0533F, 0.0F, 1.5708F, -1.5708F));
 
 
-		PartDefinition cog7 = cogGroupBelow.addOrReplaceChild("cog7", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, 0.0F, -2.0F, -1.5708F, 0.0F, -2.618F));
+		PartDefinition cog7 = cogGroupBelow.addOrReplaceChild("cog_7", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, 0.0F, -2.0F, -1.5708F, 0.0F, -2.618F));
 
 		PartDefinition halfCog13 = cog7.addOrReplaceChild("half_cog13", CubeListBuilder.create(), PartPose.offset(6.808F, -3.6422F, -41.4853F));
 
@@ -338,7 +338,7 @@ public class LabyrinthEyeModel extends EntityModel<LabyrinthEye> {
 		cogDouble28.addOrReplaceChild("main_r56", CubeListBuilder.create().texOffs(0, 14).addBox(-15.0F, 2.0F, 0.0F, 6.0F, 4.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-11.9546F, 80.6242F, 57.1596F, 0.0F, 1.5708F, -1.5708F));
 
 
-		PartDefinition cog8 = cogGroupBelow.addOrReplaceChild("cog8", CubeListBuilder.create(), PartPose.offsetAndRotation(-30.0F, 0.0F, -2.0F, -1.5708F, 0.0F, 2.618F));
+		PartDefinition cog8 = cogGroupBelow.addOrReplaceChild("cog_8", CubeListBuilder.create(), PartPose.offsetAndRotation(-30.0F, 0.0F, -2.0F, -1.5708F, 0.0F, 2.618F));
 
 		PartDefinition halfCog15 = cog8.addOrReplaceChild("half_cog15", CubeListBuilder.create(), PartPose.offset(6.808F, -3.6422F, -41.4853F));
 
@@ -373,7 +373,7 @@ public class LabyrinthEyeModel extends EntityModel<LabyrinthEye> {
 		cogDouble32.addOrReplaceChild("main_r64", CubeListBuilder.create().texOffs(0, 14).addBox(-15.0F, 2.0F, 0.0F, 6.0F, 4.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(-35.6421F, 70.0176F, 46.553F, 0.0F, 1.5708F, -1.5708F));
 
 
-		PartDefinition cog9 = cogGroupBelow.addOrReplaceChild("cog9", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, -2.0F, -2.0F, -1.5708F, 0.0F, 2.0944F));
+		PartDefinition cog9 = cogGroupBelow.addOrReplaceChild("cog_9", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, -2.0F, -2.0F, -1.5708F, 0.0F, 2.0944F));
 
 		PartDefinition halfCog17 = cog9.addOrReplaceChild("half_cog17", CubeListBuilder.create(), PartPose.offset(-12.229F, 16.3578F, -20.979F));
 
@@ -408,7 +408,7 @@ public class LabyrinthEyeModel extends EntityModel<LabyrinthEye> {
 		cogDouble36.addOrReplaceChild("main_r72", CubeListBuilder.create().texOffs(0, 14).addBox(-15.0F, 2.0F, 0.0F, 6.0F, 4.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(11.9471F, 51.8683F, 56.688F, 0.0F, 1.5708F, -1.5708F));
 
 
-		PartDefinition cog10 = cogGroupBelow.addOrReplaceChild("cog10", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, -2.0F, -2.0F, -1.5708F, 0.0F, -2.0944F));
+		PartDefinition cog10 = cogGroupBelow.addOrReplaceChild("cog_10", CubeListBuilder.create(), PartPose.offsetAndRotation(0.0F, -2.0F, -2.0F, -1.5708F, 0.0F, -2.0944F));
 
 		PartDefinition halfCog19 = cog10.addOrReplaceChild("half_cog19", CubeListBuilder.create(), PartPose.offset(-12.229F, 16.3578F, -20.979F));
 
