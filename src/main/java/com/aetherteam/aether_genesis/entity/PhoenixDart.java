@@ -32,26 +32,11 @@ public class PhoenixDart extends GoldenDart {
         }
     }
 
-    protected void onHitBlock(BlockHitResult pResult) {
-        super.onHitBlock(pResult);
-        if (!this.level().isClientSide) {
-            Entity entity = this.getOwner();
-            if (!(entity instanceof Mob) || net.minecraftforge.event.ForgeEventFactory.getMobGriefingEvent(this.level(), entity)) {
-                BlockPos blockpos = pResult.getBlockPos().relative(pResult.getDirection());
-                if (this.level().isEmptyBlock(blockpos)) {
-                    this.level().setBlockAndUpdate(blockpos, BaseFireBlock.getState(this.level(), blockpos));
-                }
-            }
-
-        }
-    }
-
     protected void onHit(HitResult pResult) {
         super.onHit(pResult);
         if (!this.level().isClientSide) {
             this.discard();
         }
-
     }
 
     public void tick() {
