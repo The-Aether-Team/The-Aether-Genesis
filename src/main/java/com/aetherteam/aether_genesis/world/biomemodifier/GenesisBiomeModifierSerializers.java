@@ -16,7 +16,7 @@ public class GenesisBiomeModifierSerializers {
     public static final RegistryObject<Codec<AddMobChargeBiomeModifier>> ADD_MOB_CHARGE_BIOME_MODIFIER_TYPE = BIOME_MODIFIER_SERIALIZERS.register("add_mob_charge", () ->
             RecordCodecBuilder.create(builder -> builder.group(
                     Biome.LIST_CODEC.fieldOf("biomes").forGetter(AddMobChargeBiomeModifier::biomes),
-                    BuiltInRegistries.ENTITY_TYPE.byNameCodec().fieldOf("entity_type").forGetter(AddMobChargeBiomeModifier::entityType),
+                    ForgeRegistries.ENTITY_TYPES.getCodec().fieldOf("entity_type").forGetter(AddMobChargeBiomeModifier::entityType),
                     Codec.DOUBLE.fieldOf("charge").forGetter(AddMobChargeBiomeModifier::charge),
                     Codec.DOUBLE.fieldOf("energy_budget").forGetter(AddMobChargeBiomeModifier::energyBudget)
             ).apply(builder, AddMobChargeBiomeModifier::new))

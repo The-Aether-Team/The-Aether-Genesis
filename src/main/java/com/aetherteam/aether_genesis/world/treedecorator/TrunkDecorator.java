@@ -13,19 +13,19 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
 public class TrunkDecorator extends TreeDecorator {
-    public static final Codec<TrunkDecorator> CODEC = BlockStateProvider.CODEC.fieldOf("provider").xmap(TrunkDecorator::new, (p_69327_) -> {
-        return p_69327_.provider;
-    }).codec();
+    public static final Codec<TrunkDecorator> CODEC = BlockStateProvider.CODEC.fieldOf("provider").xmap(TrunkDecorator::new, (decorator) -> decorator.provider).codec();
     private final BlockStateProvider provider;
 
-    public TrunkDecorator(BlockStateProvider p_69306_) {
-        this.provider = p_69306_;
+    public TrunkDecorator(BlockStateProvider provider) {
+        this.provider = provider;
     }
 
+    @Override
     protected TreeDecoratorType<?> type() {
         return GenesisTreeDecoratorTypes.TRUNK_DECORATOR.get();
     }
 
+    @Override
     public void place(TreeDecorator.Context context) {
         BlockPos basePos = context.logs().get(1);
 

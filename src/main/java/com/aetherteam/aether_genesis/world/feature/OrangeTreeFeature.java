@@ -10,8 +10,8 @@ import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleBlockConfiguration;
 
 public class OrangeTreeFeature extends Feature<SimpleBlockConfiguration> {
-    public OrangeTreeFeature(Codec<SimpleBlockConfiguration> config) {
-        super(config);
+    public OrangeTreeFeature(Codec<SimpleBlockConfiguration> codec) {
+        super(codec);
     }
 
     public boolean place(FeaturePlaceContext<SimpleBlockConfiguration> context) {
