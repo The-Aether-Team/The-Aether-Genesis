@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "aether_genesis:carved_pillar_side"
+          "name": "aether_genesis:carved_pillar_top"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "aether_genesis:blocks/carved_pillar_side"
+  "random_sequence": "aether_genesis:blocks/carved_pillar_top"
 }

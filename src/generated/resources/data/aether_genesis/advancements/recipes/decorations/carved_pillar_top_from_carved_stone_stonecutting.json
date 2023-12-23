@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_carved_pillar": {
+    "has_carved_stone": {
       "conditions": {
         "items": [
           {
             "items": [
-              "aether_genesis:carved_pillar"
+              "aether:carved_stone"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "aether_genesis:carved_pillar_side_from_carved_pillar_stonecutting"
+        "recipe": "aether_genesis:carved_pillar_top_from_carved_stone_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_carved_pillar",
+      "has_carved_stone",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "aether_genesis:carved_pillar_side_from_carved_pillar_stonecutting"
+      "aether_genesis:carved_pillar_top_from_carved_stone_stonecutting"
     ]
   },
   "sends_telemetry_event": false

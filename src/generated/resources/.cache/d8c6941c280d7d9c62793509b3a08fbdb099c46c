@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-20T20:46:58.15969	Item Models: aether_genesis
+// 1.20.1	2023-12-22T20:26:51.9470573	Item Models: aether_genesis
 a1f4e59bd85e14a40e0f96656878f1d867da93d8 assets/aether_genesis/models/item/baby_pink_swet.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/battle_sentry_spawn_egg.json
 b951ae61814ccb898428dd794f3adf77d4e02a6c assets/aether_genesis/models/item/blood_moss_holystone.json
@@ -15,7 +15,7 @@ a58226448e09dd1671902d7d9776c7b280e4012c assets/aether_genesis/models/item/boss_
 5e3782a376b672c40f29d419b0e942cebf3106e2 assets/aether_genesis/models/item/cape.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/carrion_sprout_spawn_egg.json
 435961a5f4464678f79303aa991f1d16c71edafd assets/aether_genesis/models/item/carved_pillar.json
-90fe839820f250396672808d5718cf8d7e576d25 assets/aether_genesis/models/item/carved_pillar_side.json
+cf50c219cc0fd4f99629615a944e481714a3e26d assets/aether_genesis/models/item/carved_pillar_top.json
 43ed2a26feb23450fac180b957897c7b26540d09 assets/aether_genesis/models/item/cocoatrice.json
 ce16d7553b086ee408bee4461eb3949c2221fa4b assets/aether_genesis/models/item/cog_key.json
 3a2fd5d4c47c9e453251c35c4c9ba020b430729f assets/aether_genesis/models/item/continuum_bomb.json

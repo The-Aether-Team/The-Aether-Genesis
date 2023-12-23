@@ -123,10 +123,10 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
         this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
         this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
 
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR_TOP.get(), AetherBlocks.CARVED_STONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR_TOP.get(), GenesisBlocks.CARVED_PILLAR.get());
         this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR.get(), AetherBlocks.CARVED_STONE.get());
-        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR.get(), GenesisBlocks.CARVED_PILLAR_SIDE.get());
-        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR_SIDE.get(), AetherBlocks.CARVED_STONE.get());
-        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR_SIDE.get(), GenesisBlocks.CARVED_PILLAR.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR.get(), GenesisBlocks.CARVED_PILLAR_TOP.get());
 
         this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_STONE.get(), AetherBlocks.CARVED_STONE.get());
         this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_SENTRY_STONE.get(), AetherBlocks.CARVED_STONE.get());

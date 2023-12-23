@@ -44,8 +44,8 @@ public class GenesisBlockTagData extends BlockTagsProvider {
         this.tag(AetherTags.Blocks.DUNGEON_BLOCKS).add(
                 GenesisBlocks.DIVINE_CARVED_STONE.get(),
                 GenesisBlocks.DIVINE_SENTRY_STONE.get(),
-                GenesisBlocks.CARVED_PILLAR.get(),
-                GenesisBlocks.CARVED_PILLAR_SIDE.get()
+                GenesisBlocks.CARVED_PILLAR_TOP.get(),
+                GenesisBlocks.CARVED_PILLAR.get()
         );
         this.tag(AetherTags.Blocks.LOCKED_DUNGEON_BLOCKS).add(
                 GenesisBlocks.LOCKED_DIVINE_CARVED_STONE.get(),
@@ -74,8 +74,8 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE.get(),
                 GenesisBlocks.TREASURE_DOORWAY_DIVINE_CARVED_STONE.get(),
                 GenesisBlocks.TREASURE_DOORWAY_DIVINE_SENTRY_STONE.get(),
+                GenesisBlocks.CARVED_PILLAR_TOP.get(),
                 GenesisBlocks.CARVED_PILLAR.get(),
-                GenesisBlocks.CARVED_PILLAR_SIDE.get(),
                 GenesisBlocks.DIVINE_CARVED_WALL.get(),
                 GenesisBlocks.DIVINE_CARVED_STAIRS.get(),
                 GenesisBlocks.DIVINE_CARVED_SLAB.get()

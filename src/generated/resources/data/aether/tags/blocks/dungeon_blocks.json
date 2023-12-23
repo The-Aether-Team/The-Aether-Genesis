@@ -2,7 +2,7 @@
   "values": [
     "aether_genesis:divine_carved_stone",
     "aether_genesis:divine_sentry_stone",
-    "aether_genesis:carved_pillar",
-    "aether_genesis:carved_pillar_side"
+    "aether_genesis:carved_pillar_top",
+    "aether_genesis:carved_pillar"
   ]
 }

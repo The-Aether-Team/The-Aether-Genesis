@@ -2,7 +2,7 @@
   "type": "minecraft:stonecutting",
   "count": 1,
   "ingredient": {
-    "item": "aether_genesis:carved_pillar_side"
+    "item": "aether_genesis:carved_pillar_top"
   },
   "result": "aether_genesis:carved_pillar"
 }

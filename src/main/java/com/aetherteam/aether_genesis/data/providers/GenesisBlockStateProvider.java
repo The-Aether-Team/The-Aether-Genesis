@@ -256,12 +256,12 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
     }
 
     public void dungeonPillar(RotatedPillarBlock block) {
-        this.axisBlock(block, this.texture(this.name(block), "dungeon/"),new ResourceLocation(Genesis.MODID, "block/dungeon/carved_pillar_top"));
+        this.axisBlock(block, this.extend(this.texture(this.name(block), "dungeon/"), "_side"), new ResourceLocation(Genesis.MODID, "block/dungeon/carved_pillar_top"));
     }
 
     public void dungeonPillarTop(FacingPillarBlock block) {
         ResourceLocation side = this.texture("carved_pillar_carved", "dungeon/");
-        ResourceLocation end = this.extend(this.texture(this.name(block), "dungeon/"), "_top");
+        ResourceLocation end = this.texture(this.name(block), "dungeon/");
         ModelFile vertical = this.models().cubeColumn(this.name(block), side, end);
         ModelFile horizontal = this.models().cubeColumnHorizontal(this.name(block) + "_horizontal", side, end);
         this.getVariantBuilder(block)

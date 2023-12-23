@@ -128,8 +128,8 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.SLIDER_HOST_MIMIC, "Slider Host Mimic");
         this.addEntityType(GenesisEntityTypes.HOST_EYE, "Host Eye");
 
+        this.addBlock(GenesisBlocks.CARVED_PILLAR_TOP, "Carved Pillar Top");
         this.addBlock(GenesisBlocks.CARVED_PILLAR, "Carved Pillar");
-        this.addBlock(GenesisBlocks.CARVED_PILLAR_SIDE, "Carved Pillar Side");
         this.addBlock(GenesisBlocks.SKYROOT_CHEST_MIMIC, "Skyroot Chest Mimic");
         this.addBlock(GenesisBlocks.DIVINE_CARVED_STONE, "Divine Carved Stone");
         this.addBlock(GenesisBlocks.DIVINE_SENTRY_STONE, "Divine Sentry Stone");

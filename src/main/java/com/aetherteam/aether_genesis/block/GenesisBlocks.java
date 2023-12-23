@@ -86,8 +86,8 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> SKYROOT_CHEST = register("skyroot_chest", () -> new SkyrootChestBlock(Block.Properties.copy(Blocks.CHEST), GenesisBlockEntityTypes.SKYROOT_CHEST::get));
     public static final RegistryObject<LadderBlock> SKYROOT_LADDER = register("skyroot_ladder", () -> new LadderBlock(BlockBehaviour.Properties.copy(Blocks.LADDER).strength(0.4F).sound(SoundType.LADDER).noOcclusion()));
 
-    public static final RegistryObject<FacingPillarBlock> CARVED_PILLAR = register("carved_pillar", () -> new FacingPillarBlock(Block.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
-    public static final RegistryObject<RotatedPillarBlock> CARVED_PILLAR_SIDE = register("carved_pillar_side", () -> new RotatedPillarBlock(Block.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<RotatedPillarBlock> CARVED_PILLAR = register("carved_pillar", () -> new RotatedPillarBlock(Block.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
+    public static final RegistryObject<FacingPillarBlock> CARVED_PILLAR_TOP = register("carved_pillar_top", () -> new FacingPillarBlock(Block.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> SKYROOT_CHEST_MIMIC = register("skyroot_chest_mimic", () -> new SkyrootChestMimicBlock(Block.Properties.copy(SKYROOT_CHEST.get()).noLootTable()));
 

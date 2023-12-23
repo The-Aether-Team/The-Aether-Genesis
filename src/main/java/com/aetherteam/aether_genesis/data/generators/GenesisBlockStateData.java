@@ -44,8 +44,8 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
         this.skyrootChest(GenesisBlocks.SKYROOT_CHEST.get());
         this.skyrootLadder(GenesisBlocks.SKYROOT_LADDER.get());
 
-        this.dungeonPillar(GenesisBlocks.CARVED_PILLAR_SIDE.get());
-        this.dungeonPillarTop(GenesisBlocks.CARVED_PILLAR.get());
+        this.dungeonPillar(GenesisBlocks.CARVED_PILLAR.get());
+        this.dungeonPillarTop(GenesisBlocks.CARVED_PILLAR_TOP.get());
         this.skyrootChest(GenesisBlocks.SKYROOT_CHEST_MIMIC.get());
 
         this.block(GenesisBlocks.DIVINE_CARVED_STONE.get(), "dungeon/");

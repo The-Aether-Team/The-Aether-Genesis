@@ -1,10 +1,10 @@
-// 1.20.1	2023-12-14T20:57:09.4173902	Loot Tables
+// 1.20.1	2023-12-22T20:26:51.9400565	Loot Tables
 9ad2ec631303e607b95b33edf0d72bcc71257a54 data/aether_genesis/loot_tables/blocks/blue_skyroot_leaves.json
 7ecb374e2147a8693b4ded2eb27280a1362ff491 data/aether_genesis/loot_tables/blocks/blue_skyroot_sapling.json
 23387232a36e56cbc262b9d327330feb72ea684c data/aether_genesis/loot_tables/blocks/boss_doorway_divine_carved_stone.json
 85188b731a23ddc5af04fb99d92f39675562cd2a data/aether_genesis/loot_tables/blocks/boss_doorway_divine_sentry_stone.json
 647ab0d6cf05af53be767779d5d7350be88b7161 data/aether_genesis/loot_tables/blocks/carved_pillar.json
-044366bf7463b7accd4b464c11b81597e9b508dd data/aether_genesis/loot_tables/blocks/carved_pillar_side.json
+1b207c30ed602c0b0eaa502ef0331cf3fe96ce87 data/aether_genesis/loot_tables/blocks/carved_pillar_top.json
 9251ef8ff00b3a842e57d87038c78656cce6c3bb data/aether_genesis/loot_tables/blocks/cold_fire.json
 139bda80fb235a9758fb2dc29e4f82676706564e data/aether_genesis/loot_tables/blocks/continuum_ore.json
 1e9b385cb924f84cc6aafc7e1f313a60475cb580 data/aether_genesis/loot_tables/blocks/dark_blue_skyroot_leaves.json
