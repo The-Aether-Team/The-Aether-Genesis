@@ -149,6 +149,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addBlock(GenesisBlocks.COLD_FIRE, "Cold Fire");
 
+        //todo missing subtitles
         this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");
         this.addSubtitle("block", "aercloud.blue_aercloud_bounce", "Blue Aercloud bounces");

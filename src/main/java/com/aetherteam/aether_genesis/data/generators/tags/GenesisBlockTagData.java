@@ -20,7 +20,6 @@ public class GenesisBlockTagData extends BlockTagsProvider {
         super(output, registries, Genesis.MODID, helper);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public void addTags(HolderLookup.Provider provider) {
         this.tag(GenesisTags.Blocks.LOG_WALLS).add(

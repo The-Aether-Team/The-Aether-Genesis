@@ -25,6 +25,9 @@ import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
 public class GenesisRegistrySets extends DatapackBuiltinEntriesProvider {
+    /**
+     * This anonymous class of {@link RegistrySetBuilder} prevents the missing {@link ResourceKey} error during data generation.
+     */
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder() {
         public HolderLookup.Provider buildPatch(RegistryAccess registries, HolderLookup.Provider lookup) {
             RegistrySetBuilder setBuilder = this;

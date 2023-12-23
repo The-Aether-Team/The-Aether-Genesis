@@ -19,7 +19,7 @@ public class GenesisSelectorLoot implements LootTableSubProvider {
         );
     }
 
-    private static LootPool.Builder continuumOrbLoot() {
+    private static LootPool.Builder continuumOrbLoot() { //todo
         return LootPool.lootPool().setRolls(ConstantValue.exactly(1)).add(LootItem.lootTableItem(Items.DIAMOND).setWeight(1));
     }
 }
