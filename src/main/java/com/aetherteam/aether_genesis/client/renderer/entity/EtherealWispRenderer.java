@@ -10,27 +10,32 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 
+import java.util.UUID;
+
 public class EtherealWispRenderer extends WispRenderer {
-    public EtherealWispRenderer(EntityRendererProvider.Context renderer) {
-        super(renderer, GenesisModelLayers.ETHEREAL_WISP, new ResourceLocation(Genesis.MODID, "textures/entity/companions/ethereal_wisp.png"));
+    public EtherealWispRenderer(EntityRendererProvider.Context context) {
+        super(context, GenesisModelLayers.ETHEREAL_WISP, new ResourceLocation(Genesis.MODID, "textures/entity/companions/ethereal_wisp.png"));
     }
 
     @Override
-    public void render(Wisp wisp, float entityYaw, float partialTicks, PoseStack matrixStack, MultiBufferSource buffer, int packedLight) {
-        Player player = wisp.level().getPlayerByUUID(wisp.getOwner());
-        if (player != null) {
-            AetherPlayer.get(player).ifPresent((aetherPlayer) -> {
-                if (!aetherPlayer.isWearingInvisibilityCloak()) {
-                    super.render(wisp, entityYaw, partialTicks, matrixStack, buffer, packedLight);
-                    if (this.shadowRadius < 0.25F) {
-                        this.shadowRadius = 0.25F;
+    public void render(Wisp wisp, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+        UUID owner = wisp.getOwner();
+        if (owner != null) {
+            Player player = wisp.level().getPlayerByUUID(owner);
+            if (player != null) {
+                AetherPlayer.get(player).ifPresent((aetherPlayer) -> {
+                    if (!aetherPlayer.isWearingInvisibilityCloak()) {
+                        super.render(wisp, entityYaw, partialTicks, poseStack, buffer, packedLight);
+                        if (this.shadowRadius < 0.25F) {
+                            this.shadowRadius = 0.25F;
+                        }
+                    } else {
+                        if (this.shadowRadius > 0.0F) {
+                            this.shadowRadius = 0.0F;
+                        }
                     }
-                } else {
-                    if (this.shadowRadius > 0.0F) {
-                        this.shadowRadius = 0.0F;
-                    }
-                }
-            });
+                });
+            }
         }
     }
 }

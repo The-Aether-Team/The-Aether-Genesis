@@ -30,18 +30,17 @@ public class BattleSentryRenderer extends MobRenderer<BattleSentry, SlimeModel<B
         poseStack.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
     }
 
-    public void render(BattleSentry pEntity, float pEntityYaw, float pPartialTicks, PoseStack pMatrixStack, MultiBufferSource pBuffer, int pPackedLight) {
-        if (pEntity.isAwake() && !pEntity.hurtMarked)
-            super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
-        if (!pEntity.isAwake() || pEntity.hurtMarked) {
-            pMatrixStack.pushPose();
-            pMatrixStack.translate(0.0F, -0.75F, 0.0F);
-            super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
-            pMatrixStack.popPose();
+    public void render(BattleSentry sentry, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+        if (sentry.isAwake() && !sentry.hurtMarked)
+            super.render(sentry, entityYaw, partialTicks, poseStack, buffer, packedLight);
+        if (!sentry.isAwake() || sentry.hurtMarked) {
+            poseStack.pushPose();
+            poseStack.translate(0.0F, -0.75F, 0.0F);
+            super.render(sentry, entityYaw, partialTicks, poseStack, buffer, packedLight);
+            poseStack.popPose();
         }
     }
 
-    
     @Override
     public ResourceLocation getTextureLocation(BattleSentry sentry) {
         return sentry.isAwake() ? BATTLE_SENTRY_LIT_TEXTURE : BATTLE_SENTRY_TEXTURE;

@@ -18,9 +18,8 @@ public class HostMimicRenderer extends MobRenderer<SliderHostMimic, SliderHostMi
         this.addLayer(new HostMimicLayer(this));
     }
 
-    
     @Override
-    public ResourceLocation getTextureLocation( SliderHostMimic sentryGuardian) {
-        return sentryGuardian.isAwake() ? HOST_MIMIC_AWAKE_TEXTURE : HOST_MIMIC_ASLEEP_TEXTURE;
+    public ResourceLocation getTextureLocation(SliderHostMimic hostMimic) {
+        return hostMimic.isAwake() ? HOST_MIMIC_AWAKE_TEXTURE : HOST_MIMIC_ASLEEP_TEXTURE;
     }
 }

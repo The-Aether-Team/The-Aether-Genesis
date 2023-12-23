@@ -13,9 +13,8 @@ public class PhoenixDartRenderer extends ArrowRenderer<PhoenixDart> {
         super(context);
     }
 
-    
     @Override
-    public ResourceLocation getTextureLocation( PhoenixDart dart) {
+    public ResourceLocation getTextureLocation(PhoenixDart dart) {
         return PHOENIX_DART_TEXTURE;
     }
 }

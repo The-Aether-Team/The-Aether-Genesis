@@ -20,10 +20,10 @@ public class BabyPinkSwetRenderer extends SwetRenderer implements DisplayItemPla
     }
 
     @Override
-    public void render(Swet swet, float entityYaw, float partialTicks, PoseStack matrixStack, MultiBufferSource buffer, int packedLight) {
-        super.render(swet, entityYaw, partialTicks, matrixStack, buffer, packedLight);
+    public void render(Swet swet, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+        super.render(swet, entityYaw, partialTicks, poseStack, buffer, packedLight);
         if (this.shouldShowName(swet) && swet instanceof BabyPinkSwet babyPinkSwet) {
-            this.renderDisplayItem(babyPinkSwet, matrixStack, buffer, this.entityRenderDispatcher, this.itemRenderer);
+            this.renderDisplayItem(babyPinkSwet, poseStack, buffer, this.entityRenderDispatcher, this.itemRenderer);
         }
     }
 

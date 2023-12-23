@@ -20,9 +20,9 @@ public class FrostpineTotemRenderer extends CompanionRenderer<FrostpineTotem, Fr
 
     @Override
     protected void scale(FrostpineTotem frostpineTotem, PoseStack poseStack, float partialTickTime) {
-        poseStack.translate(0.0D, -0.45D, 0.0D);
+        poseStack.translate(0.0, -0.45, 0.0);
         float sin = Mth.sin((frostpineTotem.tickCount + partialTickTime) / 6);
-        poseStack.translate(0.0D, sin / 15, 0.0D);
+        poseStack.translate(0.0, sin / 15, 0.0);
     }
 
     @Override

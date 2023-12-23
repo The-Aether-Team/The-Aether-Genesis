@@ -13,9 +13,8 @@ public class DarkSwetRenderer extends SwetRenderer {
         super(context);
     }
 
-    
     @Override
-    public ResourceLocation getTextureLocation( Swet swet) {
+    public ResourceLocation getTextureLocation(Swet swet) {
         return DARK_TEXTURE;
     }
 }

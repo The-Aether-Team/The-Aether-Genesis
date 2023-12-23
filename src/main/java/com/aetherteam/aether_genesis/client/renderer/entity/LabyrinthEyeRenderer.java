@@ -18,9 +18,8 @@ public class LabyrinthEyeRenderer extends MobRenderer<LabyrinthEye, LabyrinthEye
         this.addLayer(new LabyrinthEyeLayer(this));
     }
 
-    
     @Override
-    public ResourceLocation getTextureLocation( LabyrinthEye labyrinthEye) {
+    public ResourceLocation getTextureLocation(LabyrinthEye labyrinthEye) {
         return labyrinthEye.isAwake() ? LABYRINTH_EYE_TEXTURE_LIT : LABYRINTH_EYE_TEXTURE;
     }
 }

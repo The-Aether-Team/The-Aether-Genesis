@@ -14,30 +14,30 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 //todo FIX THIS
-public class CogArrowRenderer extends EntityRenderer<CogProjectile> {
+public class CogProjectileRenderer extends EntityRenderer<CogProjectile> {
     private static final ResourceLocation COG_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/projectile/cog.png");
-    private final ModelPart cogArrow;
+    private final ModelPart cog;
 
-    public CogArrowRenderer(EntityRendererProvider.Context context) {
+    public CogProjectileRenderer(EntityRendererProvider.Context context) {
         super(context);
-        this.cogArrow = context.bakeLayer(GenesisModelLayers.COG_ARROW);
+        this.cog = context.bakeLayer(GenesisModelLayers.COG_PROJECTILE);
     }
 
     @Override
     public void render(CogProjectile cog, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
         poseStack.translate(1.0, 1.5, 1.0);
-        if (!cog.isLarge())
+        if (!cog.isLarge()) {
             poseStack.scale(0.25F, 0.25F, 0.25F);
+        }
         VertexConsumer iVertexBuilder = buffer.getBuffer(RenderType.entityTranslucent(this.getTextureLocation(cog)));
-        this.cogArrow.render(poseStack, iVertexBuilder, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        this.cog.render(poseStack, iVertexBuilder, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
         poseStack.popPose();
         super.render(cog, entityYaw, partialTicks, poseStack, buffer, packedLight);
     }
 
-    
     @Override
-    public ResourceLocation getTextureLocation( CogProjectile cogArrow) {
+    public ResourceLocation getTextureLocation(CogProjectile cog) {
         return COG_TEXTURE;
     }
 }

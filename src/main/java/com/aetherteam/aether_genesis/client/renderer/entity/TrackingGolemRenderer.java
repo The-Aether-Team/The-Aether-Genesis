@@ -19,7 +19,7 @@ public class TrackingGolemRenderer extends MobRenderer<TrackingGolem, TrackingGo
     }
 
     @Override
-    public ResourceLocation getTextureLocation( TrackingGolem trackingGolem) {
-        return trackingGolem.getSeenEnemy() ? TRACKING_GOLEM_TEXTURE_GLOW : TRACKING_GOLEM_TEXTURE;
+    public ResourceLocation getTextureLocation(TrackingGolem golem) {
+        return golem.getSeenEnemy() ? TRACKING_GOLEM_TEXTURE_GLOW : TRACKING_GOLEM_TEXTURE;
     }
 }
