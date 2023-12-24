@@ -3,7 +3,6 @@ package com.aetherteam.aether_genesis.world.biomemodifier;
 import com.aetherteam.aether_genesis.Genesis;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.registries.DeferredRegister;

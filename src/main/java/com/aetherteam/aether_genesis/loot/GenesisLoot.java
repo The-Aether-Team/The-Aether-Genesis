@@ -12,6 +12,10 @@ public class GenesisLoot {
     public static final Set<ResourceLocation> IMMUTABLE_LOOT_TABLES = Collections.unmodifiableSet(LOOT_TABLES);
 
     public static final ResourceLocation CONTINUUM_ORB = register("selectors/continuum_orb");
+    public static final ResourceLocation CONTINUUM_ORB_WOOD = register("selectors/continuum_orb/wood");
+    public static final ResourceLocation CONTINUUM_ORB_WOOD_LOGS = register("selectors/continuum_orb/wood/logs");
+    public static final ResourceLocation CONTINUUM_ORB_WOOD_PLANKS = register("selectors/continuum_orb/wood/planks");
+    public static final ResourceLocation CONTINUUM_ORB_STONE = register("selectors/continuum_orb/stone");
 
     private static ResourceLocation register(String id) {
         return register(new ResourceLocation(Genesis.MODID, id));

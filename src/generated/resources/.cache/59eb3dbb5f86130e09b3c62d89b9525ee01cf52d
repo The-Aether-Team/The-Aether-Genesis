@@ -1,4 +1,4 @@
-// 1.20.1	2023-12-22T20:26:51.9400565	Loot Tables
+// 1.20.1	2023-12-24T12:12:16.7772781	Loot Tables
 9ad2ec631303e607b95b33edf0d72bcc71257a54 data/aether_genesis/loot_tables/blocks/blue_skyroot_leaves.json
 7ecb374e2147a8693b4ded2eb27280a1362ff491 data/aether_genesis/loot_tables/blocks/blue_skyroot_sapling.json
 23387232a36e56cbc262b9d327330feb72ea684c data/aether_genesis/loot_tables/blocks/boss_doorway_divine_carved_stone.json
@@ -52,4 +52,8 @@ b801a3b4ea34892f4580baa0a480603ded8b96d5 data/aether_genesis/loot_tables/entitie
 b14931f124c57ad3b2d530e608ab40d591476a78 data/aether_genesis/loot_tables/entities/slider_host_mimic.json
 10db7281d5f8022a902efd10228142c607245255 data/aether_genesis/loot_tables/entities/tempest.json
 e4e4b3a9df68262f388b3f4e4661d1be84a1d891 data/aether_genesis/loot_tables/entities/tracking_golem.json
-93299a5f7fe943954ceb4d31b2832b7f10cf5f5b data/aether_genesis/loot_tables/selectors/continuum_orb.json
+8a9a2e147eb9999fd2da1da5dcb9e6a9aefdc875 data/aether_genesis/loot_tables/selectors/continuum_orb.json
+d18c0e51a9c76ef925fade6729d02b32183baae1 data/aether_genesis/loot_tables/selectors/continuum_orb/stone.json
+63aa7615233c98fc97da57ca3257b5a255612267 data/aether_genesis/loot_tables/selectors/continuum_orb/wood.json
+57925ed4e415f3ccf6ccc612ce9347b0acf93c10 data/aether_genesis/loot_tables/selectors/continuum_orb/wood/logs.json
+de2c6d9345fea79d4916aa998cea431c12e24a8c data/aether_genesis/loot_tables/selectors/continuum_orb/wood/planks.json

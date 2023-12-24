@@ -9,11 +9,11 @@
           "children": [
             {
               "type": "minecraft:loot_table",
-              "name": "aether_genesis:selectors/continuum_orb/wood"
+              "name": "aether_genesis:selectors/continuum_orb/wood/planks"
             },
             {
               "type": "minecraft:loot_table",
-              "name": "aether_genesis:selectors/continuum_orb/stone"
+              "name": "aether_genesis:selectors/continuum_orb/wood/logs"
             }
           ]
         }
@@ -21,5 +21,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "aether_genesis:selectors/continuum_orb"
+  "random_sequence": "aether_genesis:selectors/continuum_orb/wood"
 }
