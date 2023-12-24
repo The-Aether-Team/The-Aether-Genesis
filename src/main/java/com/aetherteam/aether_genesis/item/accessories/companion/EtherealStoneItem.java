@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.item.accessories;
+package com.aetherteam.aether_genesis.item.accessories.companion;
 
 import com.aetherteam.aether.capability.player.AetherPlayer;
 import com.aetherteam.aether.client.AetherKeys;

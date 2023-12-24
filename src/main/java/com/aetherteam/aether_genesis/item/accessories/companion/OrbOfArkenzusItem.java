@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.item.accessories;
+package com.aetherteam.aether_genesis.item.accessories.companion;
 
 import com.aetherteam.aether.item.accessories.abilities.SlowFallAccessory;
 import com.aetherteam.aether_genesis.entity.companion.ShadeOfArkenzus;
@@ -9,8 +9,8 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.function.Supplier;
 
-public class OrbOfArkenzus extends CompanionItem<ShadeOfArkenzus> implements SlowFallAccessory {
-    public OrbOfArkenzus(Supplier<EntityType<ShadeOfArkenzus>> companionType, Properties properties) {
+public class OrbOfArkenzusItem extends CompanionItem<ShadeOfArkenzus> implements SlowFallAccessory {
+    public OrbOfArkenzusItem(Supplier<EntityType<ShadeOfArkenzus>> companionType, Properties properties) {
         super(companionType, properties);
     }
 

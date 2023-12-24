@@ -8,12 +8,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Predicate;
-import java.util.function.Supplier;
+
+import static com.aetherteam.aether.item.AetherItems.AETHER_LOOT;
+import static com.aetherteam.aether.item.AetherItems.GOLDEN_DART;
 
 public class PhoenixDartShooterItem extends DartShooterItem {
-
-    public PhoenixDartShooterItem(Supplier<? extends Item> dartType, Properties properties) {
-        super(dartType, properties);
+    public PhoenixDartShooterItem() {
+        super(GOLDEN_DART, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)); //todo might be able to switch dart type to itemstack empty.
     }
 
     @Override
@@ -22,10 +23,11 @@ public class PhoenixDartShooterItem extends DartShooterItem {
     }
 
     public AbstractDart customDart(AbstractDart dart) {
-        PhoenixDart phoenixdart = new PhoenixDart(dart.level());
-        phoenixdart.setOwner(dart.getOwner());
-        if(phoenixdart.getOwner() != null)
-        phoenixdart.setPos(phoenixdart.getOwner().getX(), phoenixdart.getOwner().getEyeY() - 0.1D, phoenixdart.getOwner().getZ());
-        return phoenixdart;
+        PhoenixDart phoenixDart = new PhoenixDart(dart.level());
+        phoenixDart.setOwner(dart.getOwner());
+        if (phoenixDart.getOwner() != null) {
+            phoenixDart.setPos(phoenixDart.getOwner().getX(), phoenixDart.getOwner().getEyeY() - 0.1, phoenixDart.getOwner().getZ());
+        }
+        return phoenixDart;
     }
 }

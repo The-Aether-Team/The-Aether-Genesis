@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.item.accessories;
+package com.aetherteam.aether_genesis.item.miscellaneous;
 
 import com.aetherteam.aether.item.accessories.AccessoryItem;
 import net.minecraft.Util;
@@ -6,6 +6,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
@@ -17,11 +18,13 @@ import java.text.DecimalFormatSymbols;
 import java.util.List;
 import java.util.Locale;
 
+import static com.aetherteam.aether.item.AetherItems.AETHER_LOOT;
+
 public class CrystalBottleItem extends AccessoryItem {
     private static final DecimalFormat EXPERIENCE_FORMAT = Util.make(new DecimalFormat("#.#"), (format) -> format.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
 
-    public CrystalBottleItem(Properties properties) {
-        super(properties);
+    public CrystalBottleItem() {
+        super(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT));
     }
 
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)  {
@@ -60,7 +63,7 @@ public class CrystalBottleItem extends AccessoryItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
         if (stack.getTag() != null) {
-            components.add(Component.literal("Experience" + (stack.hasTag() ? (" (" + EXPERIENCE_FORMAT.format(stack.getTag().getFloat("Experience")) + " inside)") : "")));
+            components.add(Component.literal("Experience" + (stack.hasTag() ? (" (" + EXPERIENCE_FORMAT.format(stack.getTag().getFloat("Experience")) + " inside)") : ""))); //todo translatable
         }
         super.appendHoverText(stack, level, components, flag);
     }

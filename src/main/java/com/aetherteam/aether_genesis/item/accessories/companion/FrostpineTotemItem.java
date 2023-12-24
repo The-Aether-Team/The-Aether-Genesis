@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.item.accessories;
+package com.aetherteam.aether_genesis.item.accessories.companion;
 
 import com.aetherteam.aether_genesis.entity.companion.FrostpineTotem;
 import net.minecraft.world.effect.MobEffectInstance;

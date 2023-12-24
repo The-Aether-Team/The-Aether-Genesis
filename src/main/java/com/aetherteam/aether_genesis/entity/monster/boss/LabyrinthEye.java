@@ -253,7 +253,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
 
     @Nullable
     @Override
-    public ResourceLocation getBossBarTexture() {
+    public ResourceLocation getBossBarTexture() { //todo unique files
         return new ResourceLocation(Aether.MODID, "textures/gui/boss_bar_slider.png");
     }
 

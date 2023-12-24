@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.mixin.mixins.client;
 
 import com.aetherteam.aether.item.EquipmentUtil;
 import com.aetherteam.aether_genesis.item.GenesisItems;
-import com.aetherteam.aether_genesis.item.accessories.DyeableCape;
+import com.aetherteam.aether_genesis.item.accessories.cape.DyeableCape;
 import com.aetherteam.aether_genesis.mixin.mixins.client.accessor.ElytraLayerAccessor;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

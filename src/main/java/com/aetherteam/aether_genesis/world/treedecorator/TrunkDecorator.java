@@ -12,7 +12,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
-public class TrunkDecorator extends TreeDecorator {
+public class TrunkDecorator extends TreeDecorator { //todo docs
     public static final Codec<TrunkDecorator> CODEC = BlockStateProvider.CODEC.fieldOf("provider").xmap(TrunkDecorator::new, (decorator) -> decorator.provider).codec();
     private final BlockStateProvider provider;
 

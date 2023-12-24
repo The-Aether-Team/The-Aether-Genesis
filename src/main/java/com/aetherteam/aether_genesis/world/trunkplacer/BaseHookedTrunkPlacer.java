@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Function;
 
-public abstract class BaseHookedTrunkPlacer extends TrunkPlacer {
+public abstract class BaseHookedTrunkPlacer extends TrunkPlacer { //todo docs
     public BaseHookedTrunkPlacer(int height, int heightRandA, int heightRandB) {
         super(height, heightRandA, heightRandB);
     }
