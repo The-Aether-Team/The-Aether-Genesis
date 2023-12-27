@@ -13,9 +13,22 @@ public class GenesisLoot {
 
     public static final ResourceLocation CONTINUUM_ORB = register("selectors/continuum_orb");
     public static final ResourceLocation CONTINUUM_ORB_WOOD = register("selectors/continuum_orb/wood");
-    public static final ResourceLocation CONTINUUM_ORB_WOOD_LOGS = register("selectors/continuum_orb/wood/logs");
-    public static final ResourceLocation CONTINUUM_ORB_WOOD_PLANKS = register("selectors/continuum_orb/wood/planks");
     public static final ResourceLocation CONTINUUM_ORB_STONE = register("selectors/continuum_orb/stone");
+    public static final ResourceLocation CONTINUUM_ORB_ORE = register("selectors/continuum_orb/ore");
+    public static final ResourceLocation CONTINUUM_ORB_NATURAL = register("selectors/continuum_orb/natural");
+    public static final ResourceLocation CONTINUUM_ORB_FLOWER = register("selectors/continuum_orb/flower");
+    public static final ResourceLocation CONTINUUM_ORB_PLANTABLE = register("selectors/continuum_orb/plantable");
+    public static final ResourceLocation CONTINUUM_ORB_MATERIALS = register("selectors/continuum_orb/materials");
+    public static final ResourceLocation CONTINUUM_ORB_DYES = register("selectors/continuum_orb/dyes");
+    public static final ResourceLocation CONTINUUM_ORB_DROPS = register("selectors/continuum_orb/drops");
+    public static final ResourceLocation CONTINUUM_ORB_DISCS = register("selectors/continuum_orb/discs");
+    public static final ResourceLocation CONTINUUM_ORB_TEMPLATES = register("selectors/continuum_orb/templates");
+    public static final ResourceLocation CONTINUUM_ORB_BOOKS = register("selectors/continuum_orb/books");
+    public static final ResourceLocation CONTINUUM_ORB_PATTERNS = register("selectors/continuum_orb/patterns");
+    public static final ResourceLocation CONTINUUM_ORB_SHERDS = register("selectors/continuum_orb/sherds");
+
+    public static final ResourceLocation CONTINUUM_ORB_CORAL = register("selectors/continuum_orb/coral");
+    public static final ResourceLocation CONTINUUM_ORB_LEAVES = register("selectors/continuum_orb/leaves");
 
     private static ResourceLocation register(String id) {
         return register(new ResourceLocation(Genesis.MODID, id));
