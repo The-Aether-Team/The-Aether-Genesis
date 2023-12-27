@@ -30,7 +30,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static com.aetherteam.aether.item.AetherItems.AETHER_LOOT;
-import static com.aetherteam.aether.item.AetherItems.GOLDEN_DART;
 
 public class GenesisItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Genesis.MODID);

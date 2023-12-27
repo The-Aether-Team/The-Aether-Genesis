@@ -1,0 +1,257 @@
+{
+  "type": "minecraft:selector",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "aether_genesis:random",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:white_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:light_gray_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:gray_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:black_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:brown_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:red_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:orange_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:yellow_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:lime_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:green_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:cyan_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:light_blue_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:blue_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:purple_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:magenta_dye"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:pink_dye"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "aether_genesis:selectors/continuum_orb/dyes"
+}

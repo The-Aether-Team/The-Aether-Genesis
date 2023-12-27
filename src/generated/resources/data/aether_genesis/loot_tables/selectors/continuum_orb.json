@@ -5,8 +5,69 @@
       "bonus_rolls": 0.0,
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "minecraft:diamond"
+          "type": "aether_genesis:random",
+          "children": [
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/wood"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/stone"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/ore"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/natural"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/flower"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/plant"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/farmable"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/leaves"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/coral"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/materials"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/drops"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/dyes"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/discs"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/books"
+            },
+            {
+              "type": "minecraft:loot_table",
+              "name": "aether_genesis:selectors/continuum_orb/treasure"
+            }
+          ]
         }
       ],
       "rolls": 1.0

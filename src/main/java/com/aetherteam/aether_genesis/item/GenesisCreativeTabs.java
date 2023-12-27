@@ -128,7 +128,7 @@ public class GenesisCreativeTabs {
             event.getEntries().putAfter(new ItemStack(AetherBlocks.ENCHANTED_GRAVITITE.get()), new ItemStack(GenesisItems.CONTINUUM_ORB.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(AetherItems.SWET_BALL.get()), new ItemStack(GenesisItems.GOLDEN_SWET_BALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.GOLDEN_SWET_BALL.get()), new ItemStack(GenesisItems.DARK_SWET_BALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(GenesisItems.CORNSTARCH_BOWL.get()), new ItemStack(GenesisItems.CORNSTARCH_BOWL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.DARK_SWET_BALL.get()), new ItemStack(GenesisItems.CORNSTARCH_BOWL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             }
         if (tab == AetherCreativeTabs.AETHER_SPAWN_EGGS.getKey()) {
             event.getEntries().putAfter(new ItemStack(AetherItems.BLUE_SWET_SPAWN_EGG.get()), new ItemStack(GenesisItems.BATTLE_SENTRY_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

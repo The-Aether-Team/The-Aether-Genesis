@@ -15,6 +15,7 @@
     "common.SliderMixin",
     "common.StructurePieceMixin",
     "common.SwetMixin",
+    "common.accessor.LootPoolEntryContainerAccessor",
     "common.accessor.RegistrySetBuilderAccessor",
     "common.accessor.WallBlockAccessor"
   ],
