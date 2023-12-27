@@ -40,10 +40,8 @@ public class GenesisSelectorLoot implements LootTableSubProvider {
                                         LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_DROPS),
                                         LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_DYES),
                                         LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_DISCS),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_TEMPLATES),
                                         LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_BOOKS),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_PATTERNS),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_SHERDS)
+                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_TREASURE)
                                 )
                         )
                 )
@@ -425,7 +423,16 @@ public class GenesisSelectorLoot implements LootTableSubProvider {
                         )
                 )
         );
-        builder.accept(GenesisLoot.CONTINUUM_ORB_TEMPLATES,
+        builder.accept(GenesisLoot.CONTINUUM_ORB_BOOKS,
+                LootTable.lootTable().withPool(
+                        LootPool.lootPool().add(
+                                RandomEntry.random(
+                                        LootItem.lootTableItem(Items.BOOK).apply(EnchantRandomlyFunction.randomEnchantment())
+                                )
+                        )
+                )
+        );
+        builder.accept(GenesisLoot.CONTINUUM_ORB_TREASURE,
                 LootTable.lootTable().withPool(
                         LootPool.lootPool().add(
                                 RandomEntry.random(
@@ -444,38 +451,13 @@ public class GenesisSelectorLoot implements LootTableSubProvider {
                                         LootItem.lootTableItem(Items.SNOUT_ARMOR_TRIM_SMITHING_TEMPLATE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))),
                                         LootItem.lootTableItem(Items.RIB_ARMOR_TRIM_SMITHING_TEMPLATE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))),
                                         LootItem.lootTableItem(Items.EYE_ARMOR_TRIM_SMITHING_TEMPLATE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))),
-                                        LootItem.lootTableItem(Items.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F)))
-                                )
-                        )
-                )
-        );
-        builder.accept(GenesisLoot.CONTINUUM_ORB_BOOKS,
-                LootTable.lootTable().withPool(
-                        LootPool.lootPool().add(
-                                RandomEntry.random(
-                                        LootItem.lootTableItem(Items.ENCHANTED_BOOK).apply(EnchantRandomlyFunction.randomApplicableEnchantment())
-                                )
-                        )
-                )
-        );
-        builder.accept(GenesisLoot.CONTINUUM_ORB_PATTERNS,
-                LootTable.lootTable().withPool(
-                        LootPool.lootPool().add(
-                                RandomEntry.random(
+                                        LootItem.lootTableItem(Items.SPIRE_ARMOR_TRIM_SMITHING_TEMPLATE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 2.0F))),
                                         LootItem.lootTableItem(Items.FLOWER_BANNER_PATTERN).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F))),
                                         LootItem.lootTableItem(Items.CREEPER_BANNER_PATTERN).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F))),
                                         LootItem.lootTableItem(Items.SKULL_BANNER_PATTERN).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F))),
                                         LootItem.lootTableItem(Items.MOJANG_BANNER_PATTERN).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F))),
                                         LootItem.lootTableItem(Items.GLOBE_BANNER_PATTERN).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F))),
-                                        LootItem.lootTableItem(Items.PIGLIN_BANNER_PATTERN).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F)))
-                                )
-                        )
-                )
-        );
-        builder.accept(GenesisLoot.CONTINUUM_ORB_SHERDS,
-                LootTable.lootTable().withPool(
-                        LootPool.lootPool().add(
-                                RandomEntry.random(
+                                        LootItem.lootTableItem(Items.PIGLIN_BANNER_PATTERN).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F))),
                                         LootItem.lootTableItem(Items.ANGLER_POTTERY_SHERD).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))),
                                         LootItem.lootTableItem(Items.ARCHER_POTTERY_SHERD).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))),
                                         LootItem.lootTableItem(Items.ARMS_UP_POTTERY_SHERD).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F))),

@@ -25,10 +25,8 @@ public class GenesisLoot {
     public static final ResourceLocation CONTINUUM_ORB_DROPS = register("selectors/continuum_orb/drops");
     public static final ResourceLocation CONTINUUM_ORB_DYES = register("selectors/continuum_orb/dyes");
     public static final ResourceLocation CONTINUUM_ORB_DISCS = register("selectors/continuum_orb/discs");
-    public static final ResourceLocation CONTINUUM_ORB_TEMPLATES = register("selectors/continuum_orb/templates");
     public static final ResourceLocation CONTINUUM_ORB_BOOKS = register("selectors/continuum_orb/books");
-    public static final ResourceLocation CONTINUUM_ORB_PATTERNS = register("selectors/continuum_orb/patterns");
-    public static final ResourceLocation CONTINUUM_ORB_SHERDS = register("selectors/continuum_orb/sherds");
+    public static final ResourceLocation CONTINUUM_ORB_TREASURE = register("selectors/continuum_orb/treasure");
 
     private static ResourceLocation register(String id) {
         return register(new ResourceLocation(Genesis.MODID, id));
