@@ -2,6 +2,7 @@ package com.aetherteam.aether_genesis.client.particle;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
+import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
@@ -23,15 +24,15 @@ public class TempestElectricityParticle extends TextureSheetParticle {
         this.rCol = this.randomizeColor(color.x(), f);
         this.gCol = this.randomizeColor(color.y(), f);
         this.bCol = this.randomizeColor(color.z(), f);
-        this.quadSize *= 0.75F * 1.5;
+        this.quadSize *= 0.75F * 2.0;
         int i = (int) (8.0 / (this.random.nextDouble() * 0.8 + 0.2));
-        this.lifetime = (int) Math.max(i * 1.5, 1.0F);
+        this.lifetime = (int) Math.max(i * 2.0, 1.0F);
         this.setSpriteFromAge(sprite);
     }
 
     @Override
     public ParticleRenderType getRenderType() {
-        return ParticleRenderType.PARTICLE_SHEET_LIT;
+        return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
     @Override
@@ -47,11 +48,11 @@ public class TempestElectricityParticle extends TextureSheetParticle {
 
     @Override
     public int getLightColor(float partialTick) {
-        return 16777215;
+        return LightTexture.FULL_BRIGHT;
     }
 
     protected float randomizeColor(float coordMultiplier, float multiplier) {
-        return (this.random.nextFloat() * 0.2F + 0.8F) * coordMultiplier * multiplier;
+        return (0.2F + 0.8F) * coordMultiplier * multiplier;
     }
 
     public static class Factory implements ParticleProvider<SimpleParticleType> {
