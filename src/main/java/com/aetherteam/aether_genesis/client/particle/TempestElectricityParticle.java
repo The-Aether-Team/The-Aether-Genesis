@@ -20,7 +20,7 @@ public class TempestElectricityParticle extends TextureSheetParticle {
         this.yd *= 0.1F;
         this.zd *= 0.1F;
         float f = this.random.nextFloat() * 0.4F + 0.6F;
-        Vector3f color = Vec3.fromRGB24(16777215).toVector3f();
+        Vector3f color = Vec3.fromRGB24(14283007).toVector3f();
         this.rCol = this.randomizeColor(color.x(), f);
         this.gCol = this.randomizeColor(color.y(), f);
         this.bCol = this.randomizeColor(color.z(), f);

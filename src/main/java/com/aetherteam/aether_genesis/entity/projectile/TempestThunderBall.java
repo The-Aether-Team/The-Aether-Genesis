@@ -2,6 +2,7 @@ package com.aetherteam.aether_genesis.entity.projectile;
 
 import com.aetherteam.aether.capability.lightning.LightningTracker;
 import com.aetherteam.aether.entity.projectile.crystal.AbstractCrystal;
+import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.miscellaneous.ColdFireBlock;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
@@ -57,7 +58,7 @@ public class TempestThunderBall extends AbstractCrystal {
 
 	protected void onHit(HitResult pResult) {
 		super.onHit(pResult);
-		if (!this.level().isClientSide) {
+		if (!this.level().isClientSide()) {
 			LightningBolt lightningBolt = EntityType.LIGHTNING_BOLT.create(this.level());
 			if (lightningBolt != null) {
 				LightningTracker.get(lightningBolt).ifPresent(lightningTracker -> lightningTracker.setOwner(this.getOwner()));
@@ -71,15 +72,20 @@ public class TempestThunderBall extends AbstractCrystal {
 	}
 
 	private void spawnColdFire() {
-		if (!this.level().isClientSide && this.level().getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
+		if (!this.level().isClientSide() && this.level().getGameRules().getBoolean(GameRules.RULE_DOFIRETICK)) {
 			BlockPos blockPos = this.blockPosition();
+			BlockPos belowPos = blockPos.below(0);
 			BlockState blockState = ColdFireBlock.getState(this.level(), blockPos);
-			if (this.level().getBlockState(blockPos).isAir() && blockState.canSurvive(this.level(), blockPos)) {
-				this.level().setBlockAndUpdate(blockPos, blockState);
+			for (int offset = 0; !this.level().getBlockState(belowPos).isAir() || !blockState.canSurvive(this.level(), belowPos); offset++) {
+				belowPos = blockPos.below(offset);
 			}
 
+			Genesis.LOGGER.info(belowPos + " " + blockState.canSurvive(this.level(), belowPos));
+
+			this.level().setBlockAndUpdate(belowPos, blockState);
+
 			for (int i = 0; i < 4; ++i) {
-				BlockPos blockPos1 = blockPos.offset(this.random.nextInt(3) - 1, this.random.nextInt(3) - 1, this.random.nextInt(3) - 1);
+				BlockPos blockPos1 = belowPos.offset(this.random.nextInt(3) - 1, this.random.nextInt(3) - 1, this.random.nextInt(3) - 1);
 				blockState = ColdFireBlock.getState(this.level(), blockPos1);
 				if (this.level().getBlockState(blockPos1).isAir() && blockState.canSurvive(this.level(), blockPos1)) {
 					this.level().setBlockAndUpdate(blockPos1, blockState);

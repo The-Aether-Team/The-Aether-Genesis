@@ -10,7 +10,9 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.projectile.DragonFireball;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
@@ -25,7 +27,7 @@ public class TempestThunderballRenderer extends EntityRenderer<TempestThunderBal
     public void render(TempestThunderBall thunderball, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         if (thunderball.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(thunderball) < 12.25)) {
             poseStack.pushPose();
-            poseStack.scale(0.5F, 0.5F, 0.5F);
+            poseStack.scale(1.0F, 1.0F, 1.0F);
             poseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
             poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
             PoseStack.Pose pose = poseStack.last();
@@ -54,6 +56,11 @@ public class TempestThunderballRenderer extends EntityRenderer<TempestThunderBal
                 .uv2(uv)
                 .normal(matrix3f, 0.0F, 1.0F, 0.0F)
                 .endVertex();
+    }
+
+    @Override
+    protected int getBlockLightLevel(TempestThunderBall entity, BlockPos pos) {
+        return 15;
     }
 
     @Override

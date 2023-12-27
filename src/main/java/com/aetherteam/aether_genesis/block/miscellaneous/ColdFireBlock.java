@@ -196,7 +196,7 @@ public class ColdFireBlock extends BaseFireBlock {
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         entity.hurt(level.damageSources().inFire(), 1.0F);
         if (entity instanceof LivingEntity livingEntity) {
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 4)); //todo balance
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 4));
         }
     }
 
