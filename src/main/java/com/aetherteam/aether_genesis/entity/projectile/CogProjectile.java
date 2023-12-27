@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.entity.miscellaneous;
+package com.aetherteam.aether_genesis.entity.projectile;
 
 import com.aetherteam.aether.data.resources.registries.AetherDamageTypes;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;

@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.entity.miscellaneous;
+package com.aetherteam.aether_genesis.entity.projectile;
 
 import com.aetherteam.aether.capability.lightning.LightningTracker;
 import com.aetherteam.aether.entity.projectile.crystal.AbstractCrystal;

@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.event.listeners.abilities;
 
 import com.aetherteam.aether.item.EquipmentUtil;
 import com.aetherteam.aether_genesis.Genesis;
-import com.aetherteam.aether_genesis.entity.DaggerfrostSnowball;
+import com.aetherteam.aether_genesis.entity.projectile.DaggerfrostSnowball;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.world.entity.Entity;

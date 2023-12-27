@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.entity.monster;
 
 import com.aetherteam.aether.entity.monster.Zephyr;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
-import com.aetherteam.aether_genesis.entity.miscellaneous.TempestThunderBall;
+import com.aetherteam.aether_genesis.entity.projectile.TempestThunderBall;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;

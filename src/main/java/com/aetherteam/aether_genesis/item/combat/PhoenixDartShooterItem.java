@@ -3,7 +3,7 @@ package com.aetherteam.aether_genesis.item.combat;
 import com.aetherteam.aether.entity.projectile.dart.AbstractDart;
 import com.aetherteam.aether.item.combat.DartShooterItem;
 import com.aetherteam.aether_genesis.GenesisTags;
-import com.aetherteam.aether_genesis.entity.PhoenixDart;
+import com.aetherteam.aether_genesis.entity.projectile.PhoenixDart;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 

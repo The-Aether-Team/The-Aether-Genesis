@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.event.hooks;
 
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.capability.player.GenesisPlayer;
-import com.aetherteam.aether_genesis.entity.PhoenixDart;
+import com.aetherteam.aether_genesis.entity.projectile.PhoenixDart;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
