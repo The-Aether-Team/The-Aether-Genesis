@@ -144,9 +144,8 @@ public class Tempest extends Zephyr {
                     double accelY = target.getY(0.5) - (0.5 + this.parentEntity.getY(0.5));
                     double accelZ = target.getZ() - (this.parentEntity.getZ() + look.z * 4.0);
                     this.parentEntity.playSound(GenesisSoundEvents.ENTITY_TEMPEST_SHOOT.get(), 3.0F, (level.random.nextFloat() - level.random.nextFloat()) * 0.2F + 1.0F);
-                    TempestThunderBall thunderBall = new TempestThunderBall(level);
+                    TempestThunderBall thunderBall = new TempestThunderBall(level, this.parentEntity, accelX, accelY, accelZ);
                     thunderBall.setPos(this.parentEntity.getX() + look.x * 4.0, this.parentEntity.getY(0.5) + 0.5, this.parentEntity.getZ() + look.z * 4.0);
-                    thunderBall.shoot(accelX, accelY, accelZ, 1.0F, 1.0F);
                     level.addFreshEntity(thunderBall);
                     this.parentEntity.setChargeTime(-40);
                 }
