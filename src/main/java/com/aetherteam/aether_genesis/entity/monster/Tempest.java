@@ -2,9 +2,9 @@ package com.aetherteam.aether_genesis.entity.monster;
 
 import com.aetherteam.aether.entity.monster.Zephyr;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
+import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.entity.projectile.TempestThunderBall;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -23,12 +23,9 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Vector3f;
 
 public class Tempest extends Zephyr {
     public static final EntityDataAccessor<Integer> DATA_ATTACK_CHARGE_ID = SynchedEntityData.defineId(Tempest.class, EntityDataSerializers.INT);
-    public static final Vector3f TEMPEST_PARTICLE_COLOR = Vec3.fromRGB24(16777215).toVector3f();
-    public static final DustParticleOptions TEMPEST_PARTICLES = new DustParticleOptions(TEMPEST_PARTICLE_COLOR, 1.0F);
 
     public Tempest(EntityType<? extends Tempest> type, Level level) {
         super(type, level);
@@ -79,7 +76,7 @@ public class Tempest extends Zephyr {
             double xOffset = this.position().x() + (this.level().getRandom().nextDouble() * 1.5) - 0.75;
             double yOffset = this.position().y() + (this.level().getRandom().nextDouble() * 2) - 0.5;
             double zOffset = this.position().z() + (this.level().getRandom().nextDouble() * 1.5) - 0.75;
-            this.level().addParticle(TEMPEST_PARTICLES, xOffset, yOffset, zOffset, 0.0, 0.0, 0.0);
+            this.level().addParticle(GenesisParticleTypes.TEMPEST_ELECTRICITY.get(), xOffset, yOffset, zOffset, 0.0, 0.0, 0.0);
         }
         super.tick();
     }

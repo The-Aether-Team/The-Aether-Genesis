@@ -3,6 +3,7 @@ package com.aetherteam.aether_genesis.entity.projectile;
 import com.aetherteam.aether.capability.lightning.LightningTracker;
 import com.aetherteam.aether.entity.projectile.crystal.AbstractCrystal;
 import com.aetherteam.aether_genesis.block.miscellaneous.ColdFireBlock;
+import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -17,8 +18,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.network.NetworkHooks;
-
-import static com.aetherteam.aether_genesis.entity.monster.Tempest.TEMPEST_PARTICLE_COLOR;
 
 
 public class TempestThunderBall extends AbstractCrystal {
@@ -38,9 +37,9 @@ public class TempestThunderBall extends AbstractCrystal {
 		double xOffset = this.position().x() + (level().getRandom().nextDouble() * 1.5) - 0.75;
 		double yOffset = this.position().y() + (level().getRandom().nextDouble() * 2) - 0.5;
 		double zOffset = this.position().z() + (level().getRandom().nextDouble() * 1.5) - 0.75;
-		if(level().isClientSide()) {
-			level().addParticle(new DustParticleOptions(TEMPEST_PARTICLE_COLOR, 1.0F), xOffset + 0.3, yOffset + 0.3, zOffset + 0.3, 0.0, 0.0, 0.0);
-			level().addParticle(new DustParticleOptions(TEMPEST_PARTICLE_COLOR, 1.0F), xOffset, yOffset, zOffset, 0.0, 0.0, 0.0);
+		if (level().isClientSide()) {
+			level().addParticle(GenesisParticleTypes.TEMPEST_ELECTRICITY.get(), xOffset + 0.3, yOffset + 0.3, zOffset + 0.3, 0.0, 0.0, 0.0);
+			level().addParticle(GenesisParticleTypes.TEMPEST_ELECTRICITY.get(), xOffset, yOffset, zOffset, 0.0, 0.0, 0.0);
 		}
 		super.tick();
 	}
