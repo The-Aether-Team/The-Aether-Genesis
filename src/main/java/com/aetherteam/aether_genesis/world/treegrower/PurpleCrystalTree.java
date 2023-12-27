@@ -12,6 +12,6 @@ public class PurpleCrystalTree extends AbstractTreeGrower {
     @Nullable
     @Override
     protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean largeHive) {
-        return GenesisConfiguredFeatures.PURPLE_CRYSTAL_TREE_CONFIGURATION;
+        return GenesisConfiguredFeatures.FRUITLESS_PURPLE_CRYSTAL_TREE_CONFIGURATION;
     }
 }

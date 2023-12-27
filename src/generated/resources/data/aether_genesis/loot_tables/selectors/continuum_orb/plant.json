@@ -1,0 +1,302 @@
+{
+  "type": "minecraft:selector",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "aether_genesis:random",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:fern"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:dead_bush"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:vine"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:glow_lichen"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:hanging_roots"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:lily_pad"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:seagrass"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:sea_pickle"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:small_dripleaf"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:big_dripleaf"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:moss_carpet"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:sculk_vein"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:crimson_roots"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:warped_roots"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:nether_sprouts"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:weeping_vines"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:twisting_vines"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:shroomlight"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 2.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:sculk_sensor"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "aether_genesis:selectors/continuum_orb/plant"
+}

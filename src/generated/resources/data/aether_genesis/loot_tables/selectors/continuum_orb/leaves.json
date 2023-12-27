@@ -1,0 +1,347 @@
+{
+  "type": "minecraft:selector",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "aether_genesis:random",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:oak_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:spruce_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:birch_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:jungle_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:acacia_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:dark_oak_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:mangrove_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:cherry_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:azalea_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:flowering_azalea_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:brown_mushroom_block"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:red_mushroom_block"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:nether_wart_block"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:warped_wart_block"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:skyroot_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:golden_oak_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:crystal_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:holiday_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:decorated_holiday_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether_genesis:blue_skyroot_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether_genesis:dark_blue_skyroot_leaves"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether_genesis:purple_crystal_leaves"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "aether_genesis:selectors/continuum_orb/leaves"
+}

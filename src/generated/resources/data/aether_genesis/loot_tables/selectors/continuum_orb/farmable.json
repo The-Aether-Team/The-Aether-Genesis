@@ -1,0 +1,467 @@
+{
+  "type": "minecraft:selector",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "aether_genesis:random",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:oak_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:spruce_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:birch_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:jungle_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:acacia_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:dark_oak_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:mangrove_propagule"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:cherry_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:bamboo"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:sugar_cane"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:cactus"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:chorus_flower"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:wheat_seeds"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:cocoa_beans"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:pumpkin_seeds"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:melon_seeds"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 10.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:beetroot_seeds"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 2.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:torchflower_seeds"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 2.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:pitcher_pod"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 5.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:glow_berries"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:sweet_berries"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:kelp"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:nether_wart"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:skyroot_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:golden_oak_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether_genesis:blue_skyroot_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether_genesis:dark_blue_skyroot_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 9.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether_genesis:purple_crystal_tree_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:berry_bush_stem"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 8.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether_genesis:orange_tree"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "aether_genesis:selectors/continuum_orb/farmable"
+}

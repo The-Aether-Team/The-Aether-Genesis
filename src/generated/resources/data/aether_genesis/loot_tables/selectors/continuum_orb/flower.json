@@ -1,0 +1,452 @@
+{
+  "type": "minecraft:selector",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "aether_genesis:random",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:azalea"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:flowering_azalea"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:dandelion"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:poppy"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:blue_orchid"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:allium"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:azure_bluet"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:red_tulip"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:orange_tulip"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:white_tulip"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:pink_tulip"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:oxeye_daisy"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:cornflower"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:lily_of_the_valley"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:torchflower"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:wither_rose"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:pink_petals"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:spore_blossom"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:brown_mushroom"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:red_mushroom"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:crimson_fungus"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:warped_fungus"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:sunflower"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:lilac"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:rose_bush"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:peony"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:pitcher_plant"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:purple_flower"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 6.0,
+                    "min": 1.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:white_flower"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "aether_genesis:selectors/continuum_orb/flower"
+}

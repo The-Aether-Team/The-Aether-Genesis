@@ -14,6 +14,7 @@ import com.aetherteam.aether_genesis.data.generators.tags.GenesisItemTagData;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.inventory.menu.GenesisMenuTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
+import com.aetherteam.aether_genesis.loot.entries.GenesisLootPoolEntries;
 import com.aetherteam.aether_genesis.loot.functions.GenesisLootFunctions;
 import com.aetherteam.aether_genesis.loot.modifiers.GenesisLootModifiers;
 import com.aetherteam.aether_genesis.network.GenesisPacketHandler;
@@ -77,6 +78,7 @@ public class Genesis {
                 GenesisEntityTypes.ENTITY_TYPES,
                 GenesisMenuTypes.MENU_TYPES,
                 GenesisBlockEntityTypes.BLOCK_ENTITY_TYPES,
+                GenesisLootPoolEntries.LOOT_POOL_ENTRY_TYPES,
                 GenesisLootFunctions.LOOT_FUNCTION_TYPES,
                 GenesisLootModifiers.GLOBAL_LOOT_MODIFIERS,
                 GenesisFeatures.FEATURES,
