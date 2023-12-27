@@ -12,7 +12,7 @@ public class GenesisFoods {
     public static final FoodProperties BLUEBERRY_LOLLIPOP = new FoodProperties.Builder().nutrition(4).saturationMod(0.2F).build();
     public static final FoodProperties ORANGE_LOLLIPOP = new FoodProperties.Builder().nutrition(5).saturationMod(0.2F).build();
     public static final FoodProperties STOMPER_POP = new FoodProperties.Builder().nutrition(20).saturationMod(0.2F).build();
-    public static final FoodProperties ORANGE = new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).build();
+    public static final FoodProperties ORANGE = new FoodProperties.Builder().nutrition(3).saturationMod(0.5F).build();
     public static final FoodProperties WYNDBERRY = new FoodProperties.Builder().fast().nutrition(5).saturationMod(0.4F).build();
     public static final FoodProperties JELLY_PUMPKIN = new FoodProperties.Builder().nutrition(5).saturationMod(0.2F).build();
     public static final FoodProperties CANDY_CORN = new FoodProperties.Builder().fast().nutrition(2).saturationMod(0.2F).build();
