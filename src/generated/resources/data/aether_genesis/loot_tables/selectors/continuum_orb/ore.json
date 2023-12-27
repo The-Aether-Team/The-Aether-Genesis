@@ -14,13 +14,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:stone"
+              "name": "minecraft:coal"
             },
             {
               "type": "minecraft:item",
@@ -29,13 +29,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:andesite"
+              "name": "minecraft:iron_ingot"
             },
             {
               "type": "minecraft:item",
@@ -44,13 +44,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:diorite"
+              "name": "minecraft:copper_ingot"
             },
             {
               "type": "minecraft:item",
@@ -59,13 +59,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:granite"
+              "name": "minecraft:gold_ingot"
             },
             {
               "type": "minecraft:item",
@@ -74,13 +74,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:deepslate"
+              "name": "minecraft:diamond"
             },
             {
               "type": "minecraft:item",
@@ -89,13 +89,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:calcite"
+              "name": "minecraft:netherite_scrap"
             },
             {
               "type": "minecraft:item",
@@ -104,13 +104,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:tuff"
+              "name": "minecraft:emerald"
             },
             {
               "type": "minecraft:item",
@@ -119,13 +119,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:dripstone_block"
+              "name": "minecraft:lapis_lazuli"
             },
             {
               "type": "minecraft:item",
@@ -134,13 +134,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:sandstone"
+              "name": "minecraft:amethyst_shard"
             },
             {
               "type": "minecraft:item",
@@ -149,13 +149,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:red_sandstone"
+              "name": "minecraft:redstone"
             },
             {
               "type": "minecraft:item",
@@ -164,13 +164,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:prismarine"
+              "name": "minecraft:quartz"
             },
             {
               "type": "minecraft:item",
@@ -179,13 +179,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:netherrack"
+              "name": "aether:ambrosium_shard"
             },
             {
               "type": "minecraft:item",
@@ -194,13 +194,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:basalt"
+              "name": "aether:zanite_gemstone"
             },
             {
               "type": "minecraft:item",
@@ -209,13 +209,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:blackstone"
+              "name": "aether:enchanted_gravitite"
             },
             {
               "type": "minecraft:item",
@@ -224,133 +224,13 @@
                   "add": false,
                   "count": {
                     "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
+                    "max": 4.0,
+                    "min": 1.0
                   },
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:end_stone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "minecraft:magma_block"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "minecraft:obsidian"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "minecraft:glowstone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "aether:holystone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "aether:icestone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "aether:carved_stone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "aether:angelic_stone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "aether:hellfire_stone"
+              "name": "aether:golden_amber"
             }
           ]
         }
@@ -358,5 +238,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "aether_genesis:selectors/continuum_orb/stone"
+  "random_sequence": "aether_genesis:selectors/continuum_orb/ore"
 }

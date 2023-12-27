@@ -20,7 +20,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:stone"
+              "name": "minecraft:white_wool"
             },
             {
               "type": "minecraft:item",
@@ -35,7 +35,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:andesite"
+              "name": "minecraft:bone"
             },
             {
               "type": "minecraft:item",
@@ -50,7 +50,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:diorite"
+              "name": "minecraft:string"
             },
             {
               "type": "minecraft:item",
@@ -65,7 +65,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:granite"
+              "name": "minecraft:feather"
             },
             {
               "type": "minecraft:item",
@@ -80,7 +80,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:deepslate"
+              "name": "minecraft:leather"
             },
             {
               "type": "minecraft:item",
@@ -95,7 +95,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:calcite"
+              "name": "minecraft:rabbit_hide"
             },
             {
               "type": "minecraft:item",
@@ -110,7 +110,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:tuff"
+              "name": "minecraft:glow_ink_sac"
             },
             {
               "type": "minecraft:item",
@@ -125,7 +125,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:dripstone_block"
+              "name": "minecraft:scute"
             },
             {
               "type": "minecraft:item",
@@ -140,7 +140,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:sandstone"
+              "name": "minecraft:slime_ball"
             },
             {
               "type": "minecraft:item",
@@ -155,7 +155,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:red_sandstone"
+              "name": "minecraft:blaze_rod"
             },
             {
               "type": "minecraft:item",
@@ -170,7 +170,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:prismarine"
+              "name": "minecraft:ender_pearl"
             },
             {
               "type": "minecraft:item",
@@ -185,7 +185,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:netherrack"
+              "name": "minecraft:shulker_shell"
             },
             {
               "type": "minecraft:item",
@@ -200,7 +200,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:basalt"
+              "name": "minecraft:gunpowder"
             },
             {
               "type": "minecraft:item",
@@ -215,7 +215,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:blackstone"
+              "name": "minecraft:rabbit_hide"
             },
             {
               "type": "minecraft:item",
@@ -230,7 +230,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:end_stone"
+              "name": "minecraft:blaze_powder"
             },
             {
               "type": "minecraft:item",
@@ -245,7 +245,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:magma_block"
+              "name": "minecraft:rabbit_foot"
             },
             {
               "type": "minecraft:item",
@@ -260,7 +260,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:obsidian"
+              "name": "minecraft:spider_eye"
             },
             {
               "type": "minecraft:item",
@@ -275,7 +275,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:glowstone"
+              "name": "minecraft:magma_cream"
             },
             {
               "type": "minecraft:item",
@@ -290,7 +290,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:holystone"
+              "name": "minecraft:ghast_tear"
             },
             {
               "type": "minecraft:item",
@@ -305,7 +305,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:icestone"
+              "name": "minecraft:phantom_membrane"
             },
             {
               "type": "minecraft:item",
@@ -320,7 +320,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:carved_stone"
+              "name": "aether:aechor_petal"
             },
             {
               "type": "minecraft:item",
@@ -335,7 +335,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:angelic_stone"
+              "name": "aether:swet_ball"
             },
             {
               "type": "minecraft:item",
@@ -350,7 +350,22 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:hellfire_stone"
+              "name": "aether_genesis:golden_swet_ball"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 32.0,
+                    "min": 16.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether_genesis:dark_swet_ball"
             }
           ]
         }
@@ -358,5 +373,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "aether_genesis:selectors/continuum_orb/stone"
+  "random_sequence": "aether_genesis:selectors/continuum_orb/drops"
 }

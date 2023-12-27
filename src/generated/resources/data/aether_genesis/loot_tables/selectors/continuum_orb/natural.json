@@ -20,7 +20,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:stone"
+              "name": "minecraft:grass_block"
             },
             {
               "type": "minecraft:item",
@@ -35,7 +35,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:andesite"
+              "name": "minecraft:mud"
             },
             {
               "type": "minecraft:item",
@@ -50,7 +50,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:diorite"
+              "name": "minecraft:clay"
             },
             {
               "type": "minecraft:item",
@@ -65,7 +65,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:granite"
+              "name": "minecraft:gravel"
             },
             {
               "type": "minecraft:item",
@@ -80,7 +80,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:deepslate"
+              "name": "minecraft:sand"
             },
             {
               "type": "minecraft:item",
@@ -95,7 +95,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:calcite"
+              "name": "minecraft:red_sand"
             },
             {
               "type": "minecraft:item",
@@ -110,7 +110,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:tuff"
+              "name": "minecraft:ice"
             },
             {
               "type": "minecraft:item",
@@ -125,7 +125,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:dripstone_block"
+              "name": "minecraft:snow"
             },
             {
               "type": "minecraft:item",
@@ -140,7 +140,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:sandstone"
+              "name": "minecraft:moss_block"
             },
             {
               "type": "minecraft:item",
@@ -155,7 +155,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:red_sandstone"
+              "name": "minecraft:sculk"
             },
             {
               "type": "minecraft:item",
@@ -170,7 +170,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:prismarine"
+              "name": "minecraft:crimson_nylium"
             },
             {
               "type": "minecraft:item",
@@ -185,7 +185,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:netherrack"
+              "name": "minecraft:warped_nylium"
             },
             {
               "type": "minecraft:item",
@@ -200,7 +200,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:basalt"
+              "name": "minecraft:soul_soil"
             },
             {
               "type": "minecraft:item",
@@ -215,7 +215,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:blackstone"
+              "name": "minecraft:bone_block"
             },
             {
               "type": "minecraft:item",
@@ -230,7 +230,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:end_stone"
+              "name": "minecraft:terracotta"
             },
             {
               "type": "minecraft:item",
@@ -245,7 +245,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:magma_block"
+              "name": "minecraft:glass"
             },
             {
               "type": "minecraft:item",
@@ -260,7 +260,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:obsidian"
+              "name": "minecraft:sponge"
             },
             {
               "type": "minecraft:item",
@@ -275,7 +275,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:glowstone"
+              "name": "aether:aether_grass_block"
             },
             {
               "type": "minecraft:item",
@@ -290,7 +290,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:holystone"
+              "name": "aether:quicksoil"
             },
             {
               "type": "minecraft:item",
@@ -305,7 +305,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:icestone"
+              "name": "aether:cold_aercloud"
             },
             {
               "type": "minecraft:item",
@@ -320,7 +320,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:carved_stone"
+              "name": "aether:blue_aercloud"
             },
             {
               "type": "minecraft:item",
@@ -335,7 +335,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:angelic_stone"
+              "name": "aether:golden_aercloud"
             },
             {
               "type": "minecraft:item",
@@ -350,7 +350,97 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:hellfire_stone"
+              "name": "aether_genesis:green_aercloud"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 32.0,
+                    "min": 16.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether_genesis:purple_aercloud"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 32.0,
+                    "min": 16.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether_genesis:storm_aercloud"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 32.0,
+                    "min": 16.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:aerogel"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 32.0,
+                    "min": 16.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:present"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 32.0,
+                    "min": 16.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:mangrove_roots"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 32.0,
+                    "min": 16.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "minecraft:cobweb"
             }
           ]
         }
@@ -358,5 +448,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "aether_genesis:selectors/continuum_orb/stone"
+  "random_sequence": "aether_genesis:selectors/continuum_orb/natural"
 }

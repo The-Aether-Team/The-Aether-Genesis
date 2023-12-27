@@ -20,7 +20,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:stone"
+              "name": "minecraft:tube_coral_block"
             },
             {
               "type": "minecraft:item",
@@ -35,7 +35,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:andesite"
+              "name": "minecraft:brain_coral_block"
             },
             {
               "type": "minecraft:item",
@@ -50,7 +50,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:diorite"
+              "name": "minecraft:bubble_coral_block"
             },
             {
               "type": "minecraft:item",
@@ -65,7 +65,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:granite"
+              "name": "minecraft:fire_coral_block"
             },
             {
               "type": "minecraft:item",
@@ -80,7 +80,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:deepslate"
+              "name": "minecraft:horn_coral_block"
             },
             {
               "type": "minecraft:item",
@@ -95,7 +95,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:calcite"
+              "name": "minecraft:tube_coral"
             },
             {
               "type": "minecraft:item",
@@ -110,7 +110,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:tuff"
+              "name": "minecraft:brain_coral"
             },
             {
               "type": "minecraft:item",
@@ -125,7 +125,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:dripstone_block"
+              "name": "minecraft:bubble_coral"
             },
             {
               "type": "minecraft:item",
@@ -140,7 +140,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:sandstone"
+              "name": "minecraft:fire_coral"
             },
             {
               "type": "minecraft:item",
@@ -155,7 +155,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:red_sandstone"
+              "name": "minecraft:horn_coral"
             },
             {
               "type": "minecraft:item",
@@ -170,7 +170,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:prismarine"
+              "name": "minecraft:tube_coral_fan"
             },
             {
               "type": "minecraft:item",
@@ -185,7 +185,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:netherrack"
+              "name": "minecraft:brain_coral_fan"
             },
             {
               "type": "minecraft:item",
@@ -200,7 +200,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:basalt"
+              "name": "minecraft:bubble_coral_fan"
             },
             {
               "type": "minecraft:item",
@@ -215,7 +215,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:blackstone"
+              "name": "minecraft:fire_coral_fan"
             },
             {
               "type": "minecraft:item",
@@ -230,127 +230,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:end_stone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "minecraft:magma_block"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "minecraft:obsidian"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "minecraft:glowstone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "aether:holystone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "aether:icestone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "aether:carved_stone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "aether:angelic_stone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "aether:hellfire_stone"
+              "name": "minecraft:horn_coral_fan"
             }
           ]
         }
@@ -358,5 +238,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "aether_genesis:selectors/continuum_orb/stone"
+  "random_sequence": "aether_genesis:selectors/continuum_orb/coral"
 }

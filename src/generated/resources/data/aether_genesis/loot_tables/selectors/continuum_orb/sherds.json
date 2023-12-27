@@ -20,7 +20,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:stone"
+              "name": "minecraft:angler_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -35,7 +35,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:andesite"
+              "name": "minecraft:archer_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -50,7 +50,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:diorite"
+              "name": "minecraft:arms_up_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -65,7 +65,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:granite"
+              "name": "minecraft:blade_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -80,7 +80,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:deepslate"
+              "name": "minecraft:brewer_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -95,7 +95,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:calcite"
+              "name": "minecraft:burn_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -110,7 +110,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:tuff"
+              "name": "minecraft:danger_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -125,7 +125,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:dripstone_block"
+              "name": "minecraft:explorer_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -140,7 +140,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:sandstone"
+              "name": "minecraft:friend_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -155,7 +155,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:red_sandstone"
+              "name": "minecraft:heart_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -170,7 +170,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:prismarine"
+              "name": "minecraft:heartbreak_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -185,7 +185,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:netherrack"
+              "name": "minecraft:howl_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -200,7 +200,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:basalt"
+              "name": "minecraft:miner_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -215,7 +215,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:blackstone"
+              "name": "minecraft:mourner_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -230,7 +230,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:end_stone"
+              "name": "minecraft:plenty_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -245,7 +245,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:magma_block"
+              "name": "minecraft:prize_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -260,7 +260,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:obsidian"
+              "name": "minecraft:sheaf_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -275,7 +275,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:glowstone"
+              "name": "minecraft:shelter_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -290,7 +290,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:holystone"
+              "name": "minecraft:skull_pottery_sherd"
             },
             {
               "type": "minecraft:item",
@@ -305,52 +305,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:icestone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "aether:carved_stone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "aether:angelic_stone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "aether:hellfire_stone"
+              "name": "minecraft:snort_pottery_sherd"
             }
           ]
         }
@@ -358,5 +313,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "aether_genesis:selectors/continuum_orb/stone"
+  "random_sequence": "aether_genesis:selectors/continuum_orb/sherds"
 }

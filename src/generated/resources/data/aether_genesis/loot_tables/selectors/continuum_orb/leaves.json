@@ -20,7 +20,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:stone"
+              "name": "minecraft:oak_leaves"
             },
             {
               "type": "minecraft:item",
@@ -35,7 +35,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:andesite"
+              "name": "minecraft:spruce_leaves"
             },
             {
               "type": "minecraft:item",
@@ -50,7 +50,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:diorite"
+              "name": "minecraft:birch_leaves"
             },
             {
               "type": "minecraft:item",
@@ -65,7 +65,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:granite"
+              "name": "minecraft:jungle_leaves"
             },
             {
               "type": "minecraft:item",
@@ -80,7 +80,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:deepslate"
+              "name": "minecraft:acacia_leaves"
             },
             {
               "type": "minecraft:item",
@@ -95,7 +95,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:calcite"
+              "name": "minecraft:dark_oak_leaves"
             },
             {
               "type": "minecraft:item",
@@ -110,7 +110,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:tuff"
+              "name": "minecraft:mangrove_leaves"
             },
             {
               "type": "minecraft:item",
@@ -125,7 +125,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:dripstone_block"
+              "name": "minecraft:cherry_leaves"
             },
             {
               "type": "minecraft:item",
@@ -140,7 +140,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:sandstone"
+              "name": "minecraft:azalea_leaves"
             },
             {
               "type": "minecraft:item",
@@ -155,7 +155,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:red_sandstone"
+              "name": "minecraft:flowering_azalea_leaves"
             },
             {
               "type": "minecraft:item",
@@ -170,7 +170,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:prismarine"
+              "name": "minecraft:brown_mushroom_block"
             },
             {
               "type": "minecraft:item",
@@ -185,7 +185,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:netherrack"
+              "name": "minecraft:red_mushroom_block"
             },
             {
               "type": "minecraft:item",
@@ -200,7 +200,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:basalt"
+              "name": "minecraft:nether_wart_block"
             },
             {
               "type": "minecraft:item",
@@ -215,7 +215,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:blackstone"
+              "name": "minecraft:warped_wart_block"
             },
             {
               "type": "minecraft:item",
@@ -230,7 +230,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:end_stone"
+              "name": "aether:skyroot_leaves"
             },
             {
               "type": "minecraft:item",
@@ -245,7 +245,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:magma_block"
+              "name": "aether:golden_oak_leaves"
             },
             {
               "type": "minecraft:item",
@@ -260,7 +260,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:obsidian"
+              "name": "aether:crystal_leaves"
             },
             {
               "type": "minecraft:item",
@@ -275,7 +275,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:glowstone"
+              "name": "aether:holiday_leaves"
             },
             {
               "type": "minecraft:item",
@@ -290,7 +290,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:holystone"
+              "name": "aether:decorated_holiday_leaves"
             },
             {
               "type": "minecraft:item",
@@ -305,7 +305,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:icestone"
+              "name": "aether_genesis:blue_skyroot_leaves"
             },
             {
               "type": "minecraft:item",
@@ -320,7 +320,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:carved_stone"
+              "name": "aether_genesis:dark_blue_skyroot_leaves"
             },
             {
               "type": "minecraft:item",
@@ -335,22 +335,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:angelic_stone"
-            },
-            {
-              "type": "minecraft:item",
-              "functions": [
-                {
-                  "add": false,
-                  "count": {
-                    "type": "minecraft:uniform",
-                    "max": 32.0,
-                    "min": 16.0
-                  },
-                  "function": "minecraft:set_count"
-                }
-              ],
-              "name": "aether:hellfire_stone"
+              "name": "aether_genesis:purple_crystal_leaves"
             }
           ]
         }
@@ -358,5 +343,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "aether_genesis:selectors/continuum_orb/stone"
+  "random_sequence": "aether_genesis:selectors/continuum_orb/leaves"
 }

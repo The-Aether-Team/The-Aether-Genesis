@@ -20,7 +20,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:stone"
+              "name": "minecraft:oak_sapling"
             },
             {
               "type": "minecraft:item",
@@ -35,7 +35,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:andesite"
+              "name": "minecraft:spruce_sapling"
             },
             {
               "type": "minecraft:item",
@@ -50,7 +50,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:diorite"
+              "name": "minecraft:birch_sapling"
             },
             {
               "type": "minecraft:item",
@@ -65,7 +65,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:granite"
+              "name": "minecraft:jungle_sapling"
             },
             {
               "type": "minecraft:item",
@@ -80,7 +80,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:deepslate"
+              "name": "minecraft:acacia_sapling"
             },
             {
               "type": "minecraft:item",
@@ -95,7 +95,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:calcite"
+              "name": "minecraft:dark_oak_sapling"
             },
             {
               "type": "minecraft:item",
@@ -110,7 +110,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:tuff"
+              "name": "minecraft:mangrove_propagule"
             },
             {
               "type": "minecraft:item",
@@ -125,7 +125,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:dripstone_block"
+              "name": "minecraft:cherry_sapling"
             },
             {
               "type": "minecraft:item",
@@ -140,7 +140,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:sandstone"
+              "name": "minecraft:bamboo"
             },
             {
               "type": "minecraft:item",
@@ -155,7 +155,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:red_sandstone"
+              "name": "minecraft:sugar_cane"
             },
             {
               "type": "minecraft:item",
@@ -170,7 +170,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:prismarine"
+              "name": "minecraft:cactus"
             },
             {
               "type": "minecraft:item",
@@ -185,7 +185,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:netherrack"
+              "name": "minecraft:chorus_flower"
             },
             {
               "type": "minecraft:item",
@@ -200,7 +200,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:basalt"
+              "name": "minecraft:wheat_seeds"
             },
             {
               "type": "minecraft:item",
@@ -215,7 +215,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:blackstone"
+              "name": "minecraft:cocoa_beans"
             },
             {
               "type": "minecraft:item",
@@ -230,7 +230,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:end_stone"
+              "name": "minecraft:pumpkin_seeds"
             },
             {
               "type": "minecraft:item",
@@ -245,7 +245,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:magma_block"
+              "name": "minecraft:melon_seeds"
             },
             {
               "type": "minecraft:item",
@@ -260,7 +260,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:obsidian"
+              "name": "minecraft:beetroot_seeds"
             },
             {
               "type": "minecraft:item",
@@ -275,7 +275,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "minecraft:glowstone"
+              "name": "minecraft:torchflower_seeds"
             },
             {
               "type": "minecraft:item",
@@ -290,7 +290,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:holystone"
+              "name": "minecraft:pitcher_pod"
             },
             {
               "type": "minecraft:item",
@@ -305,7 +305,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:icestone"
+              "name": "minecraft:glow_berries"
             },
             {
               "type": "minecraft:item",
@@ -320,7 +320,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:carved_stone"
+              "name": "minecraft:sweet_berries"
             },
             {
               "type": "minecraft:item",
@@ -335,7 +335,7 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:angelic_stone"
+              "name": "minecraft:kelp"
             },
             {
               "type": "minecraft:item",
@@ -350,7 +350,112 @@
                   "function": "minecraft:set_count"
                 }
               ],
-              "name": "aether:hellfire_stone"
+              "name": "minecraft:nether_wart"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 32.0,
+                    "min": 16.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:skyroot_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 32.0,
+                    "min": 16.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:golden_oak_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 32.0,
+                    "min": 16.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether_genesis:blue_skyroot_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 32.0,
+                    "min": 16.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether_genesis:dark_blue_skyroot_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 32.0,
+                    "min": 16.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether_genesis:purple_crystal_tree_sapling"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 32.0,
+                    "min": 16.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether:berry_bush_stem"
+            },
+            {
+              "type": "minecraft:item",
+              "functions": [
+                {
+                  "add": false,
+                  "count": {
+                    "type": "minecraft:uniform",
+                    "max": 32.0,
+                    "min": 16.0
+                  },
+                  "function": "minecraft:set_count"
+                }
+              ],
+              "name": "aether_genesis:orange_tree"
             }
           ]
         }
@@ -358,5 +463,5 @@
       "rolls": 1.0
     }
   ],
-  "random_sequence": "aether_genesis:selectors/continuum_orb/stone"
+  "random_sequence": "aether_genesis:selectors/continuum_orb/farmable"
 }
