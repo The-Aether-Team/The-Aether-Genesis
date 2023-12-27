@@ -8,7 +8,7 @@ import com.aetherteam.aether.network.AetherPacketHandler;
 import com.aetherteam.aether.network.packet.serverbound.BossInfoPacket;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
-import com.aetherteam.aether_genesis.entity.miscellaneous.HostEyeProjectile;
+import com.aetherteam.aether_genesis.entity.projectile.HostEyeProjectile;
 import com.aetherteam.nitrogen.entity.BossRoomTracker;
 import com.aetherteam.nitrogen.network.PacketRelay;
 import net.minecraft.core.particles.ParticleTypes;

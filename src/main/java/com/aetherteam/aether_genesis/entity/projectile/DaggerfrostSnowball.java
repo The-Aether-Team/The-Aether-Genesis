@@ -1,5 +1,6 @@
-package com.aetherteam.aether_genesis.entity;
+package com.aetherteam.aether_genesis.entity.projectile;
 
+import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.monster.Blaze;

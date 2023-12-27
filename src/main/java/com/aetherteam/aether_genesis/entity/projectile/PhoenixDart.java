@@ -1,6 +1,7 @@
-package com.aetherteam.aether_genesis.entity;
+package com.aetherteam.aether_genesis.entity.projectile;
 
 import com.aetherteam.aether.entity.projectile.dart.GoldenDart;
+import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;

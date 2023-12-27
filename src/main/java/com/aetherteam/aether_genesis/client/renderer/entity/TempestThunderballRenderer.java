@@ -1,7 +1,7 @@
 package com.aetherteam.aether_genesis.client.renderer.entity;
 
 import com.aetherteam.aether_genesis.Genesis;
-import com.aetherteam.aether_genesis.entity.projectile.DaggerfrostSnowball;
+import com.aetherteam.aether_genesis.entity.projectile.TempestThunderBall;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
@@ -10,37 +10,41 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.projectile.DragonFireball;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
-public class DaggerfrostSnowballRenderer extends EntityRenderer<DaggerfrostSnowball> {
-    private static final ResourceLocation DAGGERFROST_SNOWBALL_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/projectile/daggerfrost_snowball.png");
+public class TempestThunderballRenderer extends EntityRenderer<TempestThunderBall> {
+    private static final ResourceLocation TEMPEST_PROJECTILE_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/projectile/tempest_projectile.png");
 
-    public DaggerfrostSnowballRenderer(EntityRendererProvider.Context context) {
+    public TempestThunderballRenderer(EntityRendererProvider.Context context) {
         super(context);
     }
 
-    /**
-     * [CODE COPY] - {@link net.minecraft.client.renderer.entity.DragonFireballRenderer}
-     */
     @Override
-    public void render(DaggerfrostSnowball snowball, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        if (snowball.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(snowball) < 12.25)) {
+    public void render(TempestThunderBall thunderball, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+        if (thunderball.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(thunderball) < 12.25)) {
             poseStack.pushPose();
-            poseStack.scale(0.5F, 0.5F, 0.5F);
+            poseStack.scale(1.0F, 1.0F, 1.0F);
             poseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
             poseStack.mulPose(Axis.YP.rotationDegrees(180.0F));
             PoseStack.Pose pose = poseStack.last();
             Matrix4f matrix4f = pose.pose();
             Matrix3f matrix3f = pose.normal();
-            VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.entityCutoutNoCull(this.getTextureLocation(snowball)));
+            VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.entityCutoutNoCull(this.getTextureLocation(thunderball)));
             vertex(vertexconsumer, matrix4f, matrix3f, packedLight, 0.0F, 0, 0, 1);
             vertex(vertexconsumer, matrix4f, matrix3f, packedLight, 1.0F, 0, 1, 1);
             vertex(vertexconsumer, matrix4f, matrix3f, packedLight, 1.0F, 1, 1, 0);
             vertex(vertexconsumer, matrix4f, matrix3f, packedLight, 0.0F, 1, 0, 0);
+            VertexConsumer glint = buffer.getBuffer(RenderType.glint());
+            vertex(glint, matrix4f, matrix3f, packedLight, 0.0F, 0, 0, 1);
+            vertex(glint, matrix4f, matrix3f, packedLight, 1.0F, 0, 1, 1);
+            vertex(glint, matrix4f, matrix3f, packedLight, 1.0F, 1, 1, 0);
+            vertex(glint, matrix4f, matrix3f, packedLight, 0.0F, 1, 0, 0);
             poseStack.popPose();
-            super.render(snowball, entityYaw, partialTicks, poseStack, buffer, packedLight);
+            super.render(thunderball, entityYaw, partialTicks, poseStack, buffer, packedLight);
         }
     }
 
@@ -55,7 +59,12 @@ public class DaggerfrostSnowballRenderer extends EntityRenderer<DaggerfrostSnowb
     }
 
     @Override
-    public ResourceLocation getTextureLocation(DaggerfrostSnowball snowball) {
-        return DAGGERFROST_SNOWBALL_TEXTURE;
+    protected int getBlockLightLevel(TempestThunderBall entity, BlockPos pos) {
+        return 15;
+    }
+
+    @Override
+    public ResourceLocation getTextureLocation(TempestThunderBall snowball) {
+        return TEMPEST_PROJECTILE_TEXTURE;
     }
 }

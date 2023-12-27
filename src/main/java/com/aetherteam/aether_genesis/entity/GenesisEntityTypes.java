@@ -14,6 +14,7 @@ import com.aetherteam.aether_genesis.entity.monster.boss.LabyrinthEye;
 import com.aetherteam.aether_genesis.entity.monster.boss.SentryGuardian;
 import com.aetherteam.aether_genesis.entity.monster.boss.SliderHostMimic;
 import com.aetherteam.aether_genesis.entity.passive.CarrionSprout;
+import com.aetherteam.aether_genesis.entity.projectile.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.SpawnPlacements;

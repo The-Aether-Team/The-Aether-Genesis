@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.entity.miscellaneous;
+package com.aetherteam.aether_genesis.entity.projectile;
 
 import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.entity.monster.dungeon.Sentry;

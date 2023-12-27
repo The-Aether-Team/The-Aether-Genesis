@@ -17,7 +17,7 @@ import com.aetherteam.aether_genesis.client.renderer.blockentity.SkyrootChestRen
 import com.aetherteam.aether_genesis.client.renderer.entity.*;
 import com.aetherteam.aether_genesis.client.renderer.entity.model.*;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
-import com.aetherteam.aether_genesis.entity.PhoenixDart;
+import com.aetherteam.aether_genesis.entity.projectile.PhoenixDart;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.SlimeModel;
@@ -63,7 +63,7 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.BABY_PINK_SWET.get(), BabyPinkSwetRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.DAGGERFROST_SNOWBALL.get(), DaggerfrostSnowballRenderer::new);
-        event.registerEntityRenderer(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), IceCrystalRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), TempestThunderballRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.PHOENIX_DART.get(), PhoenixDartRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.COG_ARROW.get(), CogProjectileRenderer::new);
 

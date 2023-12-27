@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.client.renderer.entity;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
-import com.aetherteam.aether_genesis.entity.miscellaneous.CogProjectile;
+import com.aetherteam.aether_genesis.entity.projectile.CogProjectile;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.geom.ModelPart;
