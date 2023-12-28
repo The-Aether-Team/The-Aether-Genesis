@@ -38,8 +38,8 @@ public class TempestRenderer extends MobRenderer<Tempest, TempestModel> {
         float f2 = (8.0F + f1) / 2.0F;
         float f3 = (8.0F + 1.0F / f1) / 2.0F;
         poseStack.scale(f3, f2, f3);
-        poseStack.translate(0.0, 0.5, 0.0);
-        poseStack.scale(0.8F, 0.8F, 0.8F);
+        poseStack.translate(0.0, 0.375, 0.0);
+        poseStack.scale(0.55F, 0.55F, 0.55F);
         poseStack.translate(0.0, -0.1, 0.0);
         float sin = Mth.sin((tempest.tickCount + partialTickTime) / 6);
         poseStack.translate(0.0, sin / 15, 0.0);

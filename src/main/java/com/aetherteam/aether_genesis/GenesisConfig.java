@@ -6,6 +6,7 @@ import org.apache.commons.lang3.tuple.Pair;
 public class GenesisConfig {
     public static class Common {
         public final ForgeConfigSpec.ConfigValue<Boolean> gold_aercloud_ability;
+        public final ForgeConfigSpec.ConfigValue<Boolean> tan_zephyr_variation;
         public final ForgeConfigSpec.ConfigValue<Boolean> improved_slider_message;
         public final ForgeConfigSpec.ConfigValue<Integer> biome_weight;
         public final ForgeConfigSpec.ConfigValue<Boolean> aether_ii_portal_sounds;
@@ -16,6 +17,10 @@ public class GenesisConfig {
                     .comment("Changes Gold Aercloud and respective parachute behavior to launch entities downwards")
                     .translation("config.aether_genesis.common.gameplay.gold_aercloud_ability")
                     .define("Gold Aerclouds launch entities downwards", true);
+            tan_zephyr_variation = builder
+                    .comment("Allows a smaller, tan variation of Zephyrs to spawn")
+                    .translation("config.aether_genesis.common.gameplay.tan_zephyr_variation")
+                    .define("Tan Zephyr variant", true);
             improved_slider_message = builder
                     .comment("Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe")
                     .translation("config.aether_genesis.common.gameplay.improved_slider_message")

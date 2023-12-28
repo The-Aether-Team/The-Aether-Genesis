@@ -3,7 +3,6 @@ package com.aetherteam.aether_genesis.client.renderer;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.capability.player.AetherPlayer;
 import com.aetherteam.aether.client.renderer.accessory.PendantRenderer;
-import com.aetherteam.aether.client.renderer.entity.IceCrystalRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
 import com.aetherteam.aether.client.renderer.entity.model.MimicModel;
 import com.aetherteam.aether.client.renderer.player.layer.DartLayer;
