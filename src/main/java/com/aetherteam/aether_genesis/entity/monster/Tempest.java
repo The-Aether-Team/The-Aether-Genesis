@@ -137,13 +137,13 @@ public class Tempest extends Zephyr {
                 Level level = this.parentEntity.level();
                 this.parentEntity.setChargeTime(this.parentEntity.getChargeTime() + 1);
                 if (this.parentEntity.getChargeTime() == 10) {
-                    this.parentEntity.playSound(this.parentEntity.getAmbientSound(), 3.0F, (level.random.nextFloat() - level.random.nextFloat()) * 0.2F + 1.0F);
+                    this.parentEntity.playSound(this.parentEntity.getAmbientSound(), 0.75F, (level.random.nextFloat() - level.random.nextFloat()) * 0.2F + 1.0F);
                 } else if (this.parentEntity.getChargeTime() == 20) {
                     Vec3 look = this.parentEntity.getViewVector(1.0F);
                     double accelX = target.getX() - (this.parentEntity.getX() + look.x * 4.0);
                     double accelY = target.getY(0.5) - (0.5 + this.parentEntity.getY(0.5));
                     double accelZ = target.getZ() - (this.parentEntity.getZ() + look.z * 4.0);
-                    this.parentEntity.playSound(GenesisSoundEvents.ENTITY_TEMPEST_SHOOT.get(), 3.0F, (level.random.nextFloat() - level.random.nextFloat()) * 0.2F + 1.0F);
+                    this.parentEntity.playSound(GenesisSoundEvents.ENTITY_TEMPEST_SHOOT.get(), 0.75F, (level.random.nextFloat() - level.random.nextFloat()) * 0.2F + 1.0F);
                     TempestThunderBall thunderBall = new TempestThunderBall(level, this.parentEntity, accelX, accelY, accelZ);
                     thunderBall.setPos(this.parentEntity.getX() + look.x * 4.0, this.parentEntity.getY(0.5) + 0.5, this.parentEntity.getZ() + look.z * 4.0);
                     level.addFreshEntity(thunderBall);

@@ -2,6 +2,7 @@ package com.aetherteam.aether_genesis.network;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.network.packet.GenesisPlayerSyncPacket;
+import com.aetherteam.aether_genesis.network.packet.ZephyrColorSyncPacket;
 import com.aetherteam.nitrogen.network.BasePacket;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -22,6 +23,7 @@ public class GenesisPacketHandler {
 	public static synchronized void register() {
 		// BOTH
 		register(GenesisPlayerSyncPacket.class, GenesisPlayerSyncPacket::decode);
+		register(ZephyrColorSyncPacket.class, ZephyrColorSyncPacket::decode);
 	}
 
 	private static <MSG extends BasePacket> void register(final Class<MSG> packet, Function<FriendlyByteBuf, MSG> decoder) {
