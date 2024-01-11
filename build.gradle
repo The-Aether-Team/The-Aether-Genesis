@@ -87,6 +87,18 @@ dependencies {
     implementation fg.deobf("curse.maven:aeroblender-879879:${project.aeroblender_version}")
     implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${project.terrablender_version}")
 
+    jarJar fg.deobf("curse.maven:aeroblender-879879:${project.aeroblender_version}") {
+        jarJar.ranged(it, "[${project.aeroblender_version},)")
+        jarJar.pin(it, "${project.aeroblender_version}")
+    }
+
+    jarJar fg.deobf("com.github.glitchfiend:TerraBlender-forge:${project.terrablender_version}") {
+        jarJar.ranged(it, "[${project.terrablender_version_minimum},${project.terrablender_version_maximum})")
+        jarJar.pin(it, "${project.terrablender_version}")
+    }
+
+
+
     //runtimeOnly fg.deobf("io.github.flemmli97:debugutils:${project.mc_version}-${project.debugutils_version}-forge")
 }
 
