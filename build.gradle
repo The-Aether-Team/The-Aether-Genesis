@@ -12,7 +12,7 @@ plugins {
 }
 
 version = "${mc_version}-${mod_version}-neoforge"
-group = 'com.aetherteam.aether_genesis' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'com.aetherteam.aether_genesis'
 
 base {
     archivesName = mod_id
@@ -131,6 +131,18 @@ tasks.named('jar', Jar).configure {
     }
 
     finalizedBy 'reobfJar'
+
+    archiveClassifier = 'no-embeds'
+}
+
+tasks.named('jarJar', JarJar).configure {
+    archiveClassifier = ''
+}
+
+tasks.jarJar.finalizedBy('reobfJarJar')
+
+tasks.named(sourceSets.main.compileJavaTaskName) {
+    outputs.file("${it.temporaryDir}/${it.name}-refmap.json").withPropertyName("mixin refmap")
 }
 
 compileJava {
@@ -186,4 +198,8 @@ compileJava {
 mixin {
     config "${project.mod_id}.mixins.json"
     add sourceSets.main, "${project.mod_id}.refmap.json"
+}
+
+build {
+    dependsOn 'jarJar'
 }
