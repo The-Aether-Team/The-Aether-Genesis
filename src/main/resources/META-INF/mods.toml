@@ -10,7 +10,7 @@ displayName = "The Aether: Genesis"
 updateJSONURL = "https://github.com/The-Aether-Team/The-Aether-Genesis/raw/1.20.1-develop/update.json"
 displayURL = "https://modrinth.com/mod/aether-genesis"
 logoFile = "genesis.png"
-credits = "The Aether Team, former Aether Team Collaborators for their prior work on The Aether Mod, GitHub contributors for their additional help, and C4 for Curios API, the source code of which can be found at https://github.com/TheIllusiveC4/Curios"
+credits = "The Aether Team, former Aether Team Collaborators for their prior work on The Aether Mod, GitHub contributors for their additional help, Glitchfiend for TerraBlender, the source code of which can be found at https://github.com/Glitchfiend/TerraBlender, and RazorDevs for AeroBlender, the source code of which can be found at https://github.com/RazorDevs/AeroBlender"
 authors = "bconlon"
 description = '''
     WIP
