@@ -1,4 +1,4 @@
-import net.minecraftforge.gradle.userdev.tasks.JarJar 
+import net.minecraftforge.gradle.userdev.tasks.JarJar
 
 plugins {
     id 'eclipse'
