@@ -12,6 +12,10 @@ public class GenesisSoundEvents {
 
     public static final RegistryObject<SoundEvent> ENTITY_CARRION_SPROUT_HURT = register("entity.carrion_sprout.hurt");
     public static final RegistryObject<SoundEvent> ENTITY_CARRION_SPROUT_DEATH = register("entity.carrion_sprout.death");
+    public static final RegistryObject<SoundEvent> ENTITY_ZEPHYROO_AMBIENT = register("entity.zephyroo.ambient");
+    public static final RegistryObject<SoundEvent> ENTITY_ZEPHYROO_HURT = register("entity.zephyroo.hurt");
+    public static final RegistryObject<SoundEvent> ENTITY_ZEPHYROO_DEATH = register("entity.zephyroo.death");
+    public static final RegistryObject<SoundEvent> ENTITY_ZEPHYROO_JUMP = register("entity.zephyroo.jump");
 
     public static final RegistryObject<SoundEvent> ENTITY_TRACKING_GOLEM_HIT = register("entity.tracking_golem.hit");
     public static final RegistryObject<SoundEvent> ENTITY_TRACKING_GOLEM_DEATH = register("entity.tracking_golem.death");
