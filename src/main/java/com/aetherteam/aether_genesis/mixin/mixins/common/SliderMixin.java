@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(Slider.class)
 public class SliderMixin {
-    @Redirect(method = "hurt", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;sendSystemMessage(Lnet/minecraft/network/chat/Component;)V"))
+    @Redirect(method = "sendInvalidToolMessage", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;sendSystemMessage(Lnet/minecraft/network/chat/Component;)V"))
     public void displayInvalidToolMessage(Player player, Component component) {
         if (GenesisConfig.COMMON.improved_slider_message.get()) {
             ItemStack stack = player.getMainHandItem();
