@@ -59,7 +59,7 @@ dependencies {
 
     implementation "com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}"
     implementation "com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}"
-    implementation "top.theillusivec4.curios:curios-forge:${project.curios_version}+${project.mc_version}"
+    implementation "top.theillusivec4.curios:curios-neoforge:${project.curios_version}+${project.mc_version}"
 
 //    implementation fg.deobf("curse.maven:aeroblender-879879:${project.aeroblender_version}")
 //    implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${project.terrablender_version}")

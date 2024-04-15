@@ -24,13 +24,13 @@ public class CapeLayerMixin {
     private void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, AbstractClientPlayer livingEntity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, CallbackInfo ci) {
         CapeLayer capeLayer = (CapeLayer) (Object) this;
         SlotResult slotResult = EquipmentUtil.getCurio(livingEntity, GenesisItems.CAPE.get());
-        if (slotResult != null) {
+        if (slotResult != null && livingEntity.getSkin().capeTexture() != null) {
             DyeableCape dyeableItem = (DyeableCape) slotResult.stack().getItem();
             int i = ((DyeableLeatherItem) dyeableItem).getColor(slotResult.stack());
             float red = (float) (i >> 16 & 255) / 255.0F;
             float green = (float) (i >> 8 & 255) / 255.0F;
             float blue = (float) (i & 255) / 255.0F;
-            VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.entitySolid(livingEntity.getCloakTextureLocation()));
+            VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.entitySolid(livingEntity.getSkin().capeTexture()));
             ((PlayerModelAccessor) capeLayer.getParentModel()).aether_genesis$getCloak().render(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY, red, green, blue, 1.0F);
         }
     }

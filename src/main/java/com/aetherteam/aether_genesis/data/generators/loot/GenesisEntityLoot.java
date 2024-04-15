@@ -29,7 +29,7 @@ public class GenesisEntityLoot extends EntityLootSubProvider {
         this.add(GenesisEntityTypes.CARRION_SPROUT.get(), LootTable.lootTable()
                 .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(GenesisItems.WYNDBERRY.get())
-                                .apply(CarrionSproutSize.setAmount(ConstantValue.exactly(3), ConstantValue.exactly(1), ConstantValue.exactly(3)))
+                                .apply(CarrionSproutSize.builder(ConstantValue.exactly(3), ConstantValue.exactly(1), ConstantValue.exactly(3)))
                                 .apply(LootingEnchantFunction.lootingMultiplier(UniformGenerator.between(0.0F, 1.0F)))
                         )
                 )

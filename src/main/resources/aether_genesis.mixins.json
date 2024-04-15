@@ -23,7 +23,6 @@
   "client": [
     "client.CapeLayerMixin",
     "client.EffectRenderingInventoryScreenMixin",
-    "client.ElytraLayerMixin",
     "client.ZephyrRendererMixin",
     "client.ZephyrTransparencyLayerMixin",
     "client.accessor.ElytraLayerAccessor",

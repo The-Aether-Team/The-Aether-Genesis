@@ -1,6 +1,6 @@
 package com.aetherteam.aether_genesis.item.accessories.companion;
 
-import com.aetherteam.aether_genesis.capability.player.GenesisPlayer;
+import com.aetherteam.aether_genesis.capability.GenesisDataAttachments;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -18,7 +18,7 @@ public interface Companion<T extends Entity> {
             tag.putUUID("Owner", wearer.getUUID());
             Entity entity = this.getCompanionType().spawn(serverLevel, tag, null, wearer.blockPosition(), MobSpawnType.MOB_SUMMONED, false, false);
             if (entity != null && wearer instanceof Player player) {
-                GenesisPlayer.get(player).ifPresent(genesisPlayer -> genesisPlayer.addCompanion(entity));
+                player.getData(GenesisDataAttachments.GENESIS_PLAYER).addCompanion(player, entity);
             }
         }
     }
@@ -26,7 +26,7 @@ public interface Companion<T extends Entity> {
     default void unequip(SlotContext slotContext) {
         LivingEntity wearer = slotContext.entity();
         if (wearer instanceof Player player) {
-            GenesisPlayer.get(player).ifPresent(genesisPlayer -> genesisPlayer.removeCompanion((entity) -> entity.getType() == this.getCompanionType()));
+            player.getData(GenesisDataAttachments.GENESIS_PLAYER).removeCompanion((entity) -> entity.getType() == this.getCompanionType());
         }
     }
 

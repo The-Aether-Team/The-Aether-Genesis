@@ -67,7 +67,6 @@ public class BattleSentry extends Slime {
         if (reason == Entity.RemovalReason.KILLED) {
             this.gameEvent(GameEvent.ENTITY_DIE);
         }
-        this.invalidateCaps();
     }
 
     public boolean isAwake() {

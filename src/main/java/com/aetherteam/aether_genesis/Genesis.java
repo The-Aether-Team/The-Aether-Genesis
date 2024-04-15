@@ -25,6 +25,7 @@ import com.aetherteam.aether_genesis.world.foliageplacer.GenesisFoliagePlacerTyp
 import com.aetherteam.aether_genesis.world.treedecorator.GenesisTreeDecoratorTypes;
 import com.aetherteam.aether_genesis.world.trunkplacer.GenesisTrunkPlacerTypes;
 import com.mojang.logging.LogUtils;
+import net.minecraft.DetectedVersion;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
@@ -35,7 +36,9 @@ import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackCompatibility;
 import net.minecraft.server.packs.repository.PackSource;
+import net.minecraft.util.InclusiveRange;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.ComposterBlock;
@@ -55,7 +58,8 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 
 import java.nio.file.Path;
-import java.util.Map;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 @Mod(Genesis.MODID)
@@ -130,7 +134,7 @@ public class Genesis {
 
         // Server Data
         generator.addProvider(event.includeServer(), new GenesisRegistrySets(packOutput, lookupProvider));
-        generator.addProvider(event.includeServer(), new GenesisRecipeData(packOutput));
+        generator.addProvider(event.includeServer(), new GenesisRecipeData(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), GenesisLootTableData.create(packOutput));
         generator.addProvider(event.includeServer(), new GenesisLootModifierData(packOutput));
         GenesisBlockTagData blockTags = new GenesisBlockTagData(packOutput, lookupProvider, fileHelper);
@@ -140,10 +144,10 @@ public class Genesis {
         generator.addProvider(event.includeServer(), new GenesisBiomeTagData(packOutput, lookupProvider, fileHelper));
 
         // pack.mcmeta
-        PackMetadataGenerator packMeta = new PackMetadataGenerator(packOutput);
-        Map<PackType, Integer> packTypes = Map.of(PackType.SERVER_DATA, SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA));
-        packMeta.add(PackMetadataSection.TYPE, new PackMetadataSection(Component.translatable("pack.aether_genesis.mod.description"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES), packTypes));
-        generator.addProvider(true, packMeta);
+        generator.addProvider(true, new PackMetadataGenerator(packOutput).add(PackMetadataSection.TYPE, new PackMetadataSection(
+                Component.translatable("pack.aether_genesis.mod.description"),
+                DetectedVersion.BUILT_IN.getPackVersion(PackType.SERVER_DATA),
+                Optional.of(new InclusiveRange<>(0, Integer.MAX_VALUE)))));
     }
 
     public void packSetup(AddPackFindersEvent event) {
@@ -157,16 +161,14 @@ public class Genesis {
     private void setupClassicPack(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
             Path resourcePath = ModList.get().getModFileById(Genesis.MODID).getFile().findResource("packs/classic");
-            PathPackResources pack = new PathPackResources(ModList.get().getModFileById(Genesis.MODID).getFile().getFileName() + ":" + resourcePath, true, resourcePath);
             PackMetadataSection metadata = new PackMetadataSection(Component.translatable("pack.aether_genesis.classic.description"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));
             event.addRepositorySource((source) ->
                     source.accept(Pack.create(
                             "builtin/genesis_classic",
                             Component.translatable("pack.aether_genesis.classic.title"),
                             false,
-                            (string) -> pack,
-                            new Pack.Info(metadata.getDescription(), metadata.getPackFormat(PackType.SERVER_DATA), metadata.getPackFormat(PackType.CLIENT_RESOURCES), FeatureFlagSet.of(), pack.isHidden()),
-                            PackType.CLIENT_RESOURCES,
+                            new PathPackResources.PathResourcesSupplier(resourcePath, true),
+                            new Pack.Info(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
                             Pack.Position.TOP,
                             false,
                             PackSource.BUILT_IN)
@@ -177,16 +179,14 @@ public class Genesis {
     private void setupDataOverridePack(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.SERVER_DATA) {
             Path resourcePath = ModList.get().getModFileById(Genesis.MODID).getFile().findResource("packs/data_override");
-            PathPackResources pack = new PathPackResources(ModList.get().getModFileById(Genesis.MODID).getFile().getFileName() + ":" + resourcePath, true, resourcePath);
             PackMetadataSection metadata = new PackMetadataSection(Component.literal(""), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA));
             event.addRepositorySource((source) ->
                     source.accept(Pack.create(
                             "builtin/genesis_data_override",
                             Component.literal(""),
                             true,
-                            (string) -> pack,
-                            new Pack.Info(metadata.getDescription(), metadata.getPackFormat(PackType.SERVER_DATA), metadata.getPackFormat(PackType.CLIENT_RESOURCES), FeatureFlagSet.of(), true),
-                            PackType.SERVER_DATA,
+                            new PathPackResources.PathResourcesSupplier(resourcePath, true),
+                            new Pack.Info(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), true),
                             Pack.Position.TOP,
                             false,
                             PackSource.BUILT_IN)
@@ -195,7 +195,7 @@ public class Genesis {
         }
     }
 
-    private void registerComposting() {
+    private void registerComposting() { //todo
         this.addCompost(0.3F, GenesisBlocks.BLUE_SKYROOT_LEAVES.get().asItem());
         this.addCompost(0.3F, GenesisBlocks.BLUE_SKYROOT_SAPLING.get());
         this.addCompost(0.3F, GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get().asItem());

@@ -4,13 +4,13 @@ import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether.client.renderer.entity.layers.ZephyrTransparencyLayer;
 import com.aetherteam.aether.entity.monster.Zephyr;
 import com.aetherteam.aether_genesis.Genesis;
-import com.aetherteam.aether_genesis.capability.zephyr.ZephyrColor;
+import com.aetherteam.aether_genesis.capability.GenesisDataAttachments;
+import com.aetherteam.aether_genesis.capability.ZephyrColorAttachment;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
-import net.neoforged.neoforge.common.util.LazyOptional;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,12 +27,9 @@ public class ZephyrTransparencyLayerMixin {
     )
     private VertexConsumer injected(VertexConsumer consumer, @Local MultiBufferSource buffer, @Local Zephyr zephyr) {
         if (!AetherConfig.CLIENT.legacy_models.get()) {
-            LazyOptional<ZephyrColor> zephyrColorLazy = ZephyrColor.get(zephyr);
-            if (zephyrColorLazy.isPresent() && zephyrColorLazy.resolve().isPresent()) {
-                ZephyrColor color = zephyrColorLazy.resolve().get();
-                if (color.isTan()) {
-                    return buffer.getBuffer(RenderType.entityTranslucent(ZEPHYR_TAN_TRANSPARENCY_TEXTURE));
-                }
+            ZephyrColorAttachment attachment = zephyr.getData(GenesisDataAttachments.ZEPHYR_COLOR);
+            if (attachment.isTan()) {
+                return buffer.getBuffer(RenderType.entityTranslucent(ZEPHYR_TAN_TRANSPARENCY_TEXTURE));
             }
         }
         return consumer;

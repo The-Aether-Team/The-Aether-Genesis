@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public class RandomEntry extends CompositeEntryBase {
-    RandomEntry(LootPoolEntryContainer[] children, LootItemCondition[] conditions) {
+    RandomEntry(List<LootPoolEntryContainer> children, List<LootItemCondition> conditions) {
         super(children, conditions);
     }
 
@@ -26,10 +26,10 @@ public class RandomEntry extends CompositeEntryBase {
      * Compose the given children into one container.
      */
     @Override
-    protected ComposableEntryContainer compose(ComposableEntryContainer[] entries) {
-        return switch (entries.length) {
+    protected ComposableEntryContainer compose(List<? extends ComposableEntryContainer> entries) {
+        return switch (entries.size()) {
             case 0 -> ALWAYS_FALSE;
-            case 1 -> entries[0];
+            case 1 -> entries.get(0);
             default -> (context, entry) -> {
                 List<ComposableEntryContainer> entriesList = Lists.newArrayList(entries);
                 Collections.shuffle(entriesList);
@@ -72,7 +72,7 @@ public class RandomEntry extends CompositeEntryBase {
 
         @Override
         public LootPoolEntryContainer build() {
-            return new RandomEntry(this.entries.toArray(new LootPoolEntryContainer[0]), this.getConditions());
+            return new RandomEntry(this.entries, this.getConditions());
         }
     }
 }

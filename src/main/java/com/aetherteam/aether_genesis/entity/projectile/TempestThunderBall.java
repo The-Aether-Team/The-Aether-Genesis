@@ -2,14 +2,11 @@ package com.aetherteam.aether_genesis.entity.projectile;
 
 import com.aetherteam.aether.attachment.AetherDataAttachments;
 import com.aetherteam.aether.attachment.LightningTrackerAttachment;
-import com.aetherteam.aether.capability.lightning.LightningTracker;
 import com.aetherteam.aether_genesis.block.miscellaneous.ColdFireBlock;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -149,8 +146,8 @@ public class TempestThunderBall extends AbstractHurtingProjectile {
 		return false;
 	}
 
-	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
-	}
+//	@Override
+//	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+//		return NetworkHooks.getEntitySpawningPacket(this);
+//	}
 }

@@ -1,7 +1,8 @@
 package com.aetherteam.aether_genesis.event.hooks;
 
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
-import com.aetherteam.aether_genesis.capability.player.GenesisPlayer;
+import com.aetherteam.aether_genesis.capability.GenesisDataAttachments;
+import com.aetherteam.aether_genesis.capability.GenesisPlayerAttachment;
 import com.aetherteam.aether_genesis.entity.projectile.PhoenixDart;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.world.damagesource.DamageSource;
@@ -38,7 +39,8 @@ public class AbilityHooks {
             if (entity instanceof Player player && !player.level().isClientSide()) {
                 Entity sourceEntity = source.getDirectEntity();
                 if (sourceEntity instanceof PhoenixDart) {
-                    GenesisPlayer.get(player).ifPresent(genesisPlayer -> genesisPlayer.setPhoenixDartCount(genesisPlayer.getPhoenixDartCount() + 1));
+                    GenesisPlayerAttachment attachment = player.getData(GenesisDataAttachments.GENESIS_PLAYER);
+                    attachment.setPhoenixDartCount(attachment.getPhoenixDartCount() + 1);
                 }
             }
         }

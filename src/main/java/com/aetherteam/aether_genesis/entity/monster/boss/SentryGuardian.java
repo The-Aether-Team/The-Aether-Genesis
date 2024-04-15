@@ -5,8 +5,7 @@ import com.aetherteam.aether.entity.AetherBossMob;
 import com.aetherteam.aether.entity.ai.goal.ContinuousMeleeAttackGoal;
 import com.aetherteam.aether.entity.monster.dungeon.Sentry;
 import com.aetherteam.aether.entity.monster.dungeon.boss.BossNameGenerator;
-import com.aetherteam.aether.network.AetherPacketHandler;
-import com.aetherteam.aether.network.packet.serverbound.BossInfoPacket;
+import com.aetherteam.aether.network.packet.clientbound.BossInfoPacket;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.nitrogen.entity.BossRoomTracker;
 import com.aetherteam.nitrogen.network.PacketRelay;
@@ -46,14 +45,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.entity.IEntityAdditionalSpawnData;
+import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
 
 import static com.aetherteam.aether.entity.AetherEntityTypes.SENTRY;
 
-public class SentryGuardian extends PathfinderMob implements AetherBossMob<SentryGuardian>, Enemy, IEntityAdditionalSpawnData {
+public class SentryGuardian extends PathfinderMob implements AetherBossMob<SentryGuardian>, Enemy, IEntityWithComplexSpawn {
     public static final EntityDataAccessor<Boolean> DATA_AWAKE_ID = SynchedEntityData.defineId(SentryGuardian.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Component> DATA_BOSS_NAME_ID = SynchedEntityData.defineId(SentryGuardian.class, EntityDataSerializers.COMPONENT);
 
@@ -261,6 +260,12 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         return new ResourceLocation(Aether.MODID, "textures/gui/boss_bar_slider.png");
     }
 
+    @Nullable
+    @Override
+    public ResourceLocation getBossBarBackgroundTexture() {
+        return null; //todo
+    }
+
     @Override
     public BossRoomTracker<SentryGuardian> getDungeon() {
         return this.bronzeDungeon;
@@ -300,7 +305,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     @Override
     public void startSeenByPlayer( ServerPlayer player) {
         super.startSeenByPlayer(player);
-        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Display(this.bossFight.getId(), this.getId()), player);
+        PacketRelay.sendToPlayer(new BossInfoPacket.Display(this.bossFight.getId(), this.getId()), player);
         if (this.getDungeon() == null || this.getDungeon().isPlayerTracked(player)) {
             this.bossFight.addPlayer(player);
         }
@@ -316,7 +321,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     @Override
     public void stopSeenByPlayer( ServerPlayer player) {
         super.stopSeenByPlayer(player);
-        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()), player);
+        PacketRelay.sendToPlayer(new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()), player);
         this.bossFight.removePlayer(player);
     }
 

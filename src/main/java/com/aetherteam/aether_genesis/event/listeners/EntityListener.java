@@ -3,7 +3,8 @@ package com.aetherteam.aether_genesis.event.listeners;
 import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.monster.Zephyr;
 import com.aetherteam.aether_genesis.GenesisConfig;
-import com.aetherteam.aether_genesis.capability.zephyr.ZephyrColor;
+import com.aetherteam.aether_genesis.capability.GenesisDataAttachments;
+import com.aetherteam.aether_genesis.capability.ZephyrColorAttachment;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.LivingEntity;
@@ -22,7 +23,7 @@ public class EntityListener {
         if (GenesisConfig.COMMON.tan_zephyr_variation.get()) {
             if (entity.getType() == AetherEntityTypes.ZEPHYR.get() && entity instanceof Zephyr zephyr) {
                 if (zephyr.getRandom().nextInt(10) == 0) {
-                    ZephyrColor.get(zephyr).ifPresent((zephyrColor) -> zephyrColor.setTan(true));
+                    zephyr.getData(GenesisDataAttachments.ZEPHYR_COLOR).setTan(true);
                     zephyr.refreshDimensions();
                 }
             }
@@ -33,11 +34,10 @@ public class EntityListener {
     public static void onSize(EntityEvent.Size event) {
         Entity entity = event.getEntity();
         if (entity.getType() == AetherEntityTypes.ZEPHYR.get() && entity instanceof Zephyr zephyr) {
-            ZephyrColor.get(zephyr).ifPresent((zephyrColor) -> {
-                if (zephyrColor.isTan()) {
-                    event.setNewSize(EntityDimensions.fixed(3.5F, 2.25F), true);
-                }
-            });
+            ZephyrColorAttachment attachment = zephyr.getData(GenesisDataAttachments.ZEPHYR_COLOR);
+            if (attachment.isTan()) {
+                event.setNewSize(EntityDimensions.fixed(3.5F, 2.25F), true);
+            }
         }
     }
 

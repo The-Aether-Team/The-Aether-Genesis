@@ -142,9 +142,10 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
     /**
      * [CODE COPY] - {@link net.minecraft.world.level.block.DoublePlantBlock#playerWillDestroy(Level, BlockPos, BlockState, Player)}.<br><br>
      * Behavior depends on the Orange Tree's age being at the point of it being a double tall block instead of a single block.
+     * @return
      */
     @Override
-    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         int age = state.getValue(AGE);
         if (age > SINGLE_AGE_MAX) {
             if (!level.isClientSide()) {
@@ -155,7 +156,7 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
                 }
             }
         }
-        super.playerWillDestroy(level, pos, state, player);
+        return super.playerWillDestroy(level, pos, state, player);
     }
 
     /**
@@ -264,11 +265,10 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
      * @param level The {@link Level} the block is in.
      * @param pos The {@link BlockPos} of the block.
      * @param state The {@link BlockState} of the block.
-     * @param isClient Whether the game's side is the client, as a {@link Boolean}.
      * @return Whether this block is valid to use bone meal on, as a {@link Boolean}.
      */
     @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
         return state.getValue(AGE) < DOUBLE_AGE_MAX;
     }
 

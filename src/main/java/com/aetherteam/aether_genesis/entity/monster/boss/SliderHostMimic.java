@@ -4,6 +4,7 @@ import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.entity.AetherBossMob;
 import com.aetherteam.aether.entity.monster.dungeon.boss.BossNameGenerator;
+import com.aetherteam.aether.network.packet.clientbound.BossInfoPacket;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.entity.projectile.HostEyeProjectile;
@@ -260,7 +261,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     @Override
     public void startSeenByPlayer( ServerPlayer player) {
         super.startSeenByPlayer(player);
-        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Display(this.bossFight.getId(), this.getId()), player);
+        PacketRelay.sendToPlayer(new BossInfoPacket.Display(this.bossFight.getId(), this.getId()), player);
         if (this.getDungeon() == null || this.getDungeon().isPlayerTracked(player)) {
             this.bossFight.addPlayer(player);
         }
@@ -269,7 +270,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     @Override
     public void stopSeenByPlayer( ServerPlayer player) {
         super.stopSeenByPlayer(player);
-        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()), player);
+        PacketRelay.sendToPlayer(new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()), player);
         this.bossFight.removePlayer(player);
     }
 
@@ -335,6 +336,12 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     @Override
     public ResourceLocation getBossBarTexture() {
         return new ResourceLocation(Aether.MODID, "textures/gui/boss_bar_slider.png");
+    }
+
+    @Nullable
+    @Override
+    public ResourceLocation getBossBarBackgroundTexture() {
+        return null; //todo
     }
 
     protected SoundEvent getAwakenSound() {

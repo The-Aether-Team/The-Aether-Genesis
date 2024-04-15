@@ -1,5 +1,7 @@
 package com.aetherteam.aether_genesis.client.renderer.entity;
 
+import com.aetherteam.aether.attachment.AetherDataAttachments;
+import com.aetherteam.aether.attachment.AetherPlayerAttachment;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.aether_genesis.entity.companion.Wisp;
@@ -22,18 +24,17 @@ public class EtherealWispRenderer extends WispRenderer {
         if (owner != null) {
             Player player = wisp.level().getPlayerByUUID(owner);
             if (player != null) {
-                AetherPlayer.get(player).ifPresent((aetherPlayer) -> {
-                    if (!aetherPlayer.isWearingInvisibilityCloak()) {
-                        super.render(wisp, entityYaw, partialTicks, poseStack, buffer, packedLight);
-                        if (this.shadowRadius < 0.25F) {
-                            this.shadowRadius = 0.25F;
-                        }
-                    } else {
-                        if (this.shadowRadius > 0.0F) {
-                            this.shadowRadius = 0.0F;
-                        }
+                AetherPlayerAttachment attachment = player.getData(AetherDataAttachments.AETHER_PLAYER);
+                if (!attachment.isWearingInvisibilityCloak()) {
+                    super.render(wisp, entityYaw, partialTicks, poseStack, buffer, packedLight);
+                    if (this.shadowRadius < 0.25F) {
+                        this.shadowRadius = 0.25F;
                     }
-                });
+                } else {
+                    if (this.shadowRadius > 0.0F) {
+                        this.shadowRadius = 0.0F;
+                    }
+                }
             }
         }
     }

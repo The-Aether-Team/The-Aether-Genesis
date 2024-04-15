@@ -1,6 +1,6 @@
 package com.aetherteam.aether_genesis.entity.miscellaneous;
 
-import com.aetherteam.aether_genesis.advancement.ContinuumOrbLootTrigger;
+import com.aetherteam.aether_genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.loot.GenesisLoot;
@@ -55,7 +55,7 @@ public class ContinuumBomb extends ThrowableItemProjectile {
                         List<ItemStack> loot = this.createLoot();
                         for (ItemStack reward : loot) {
                             if (this.getOwner() instanceof ServerPlayer serverPlayer) {
-                                ContinuumOrbLootTrigger.INSTANCE.trigger(serverPlayer, reward);
+                                GenesisAdvancementTriggers.CONTINUUM_ORB.get().trigger(serverPlayer, reward);
                             }
                             RewardItem entity = new RewardItem(this.level(), this.getX(), this.getY(), this.getZ(), reward);
                             entity.setDeltaMovement(motX, motY, motZ);

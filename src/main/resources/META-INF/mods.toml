@@ -24,13 +24,16 @@ description = '''
     side="BOTH"
 [[dependencies.aether_genesis]]
     modId = "aether"
-    mandatory = true
+    type = "required"
     versionRange = "[1.20.4-1.4.0-neoforge,)"
     ordering = "NONE"
     side = "BOTH"
 [[dependencies.aether_genesis]]
     modId = "minecraft"
-    mandatory = true
+    type = "required"
     versionRange = "[1.20.4]"
     ordering = "NONE"
     side = "BOTH"
+
+[[mixins]]
+    config="aether_genesis.mixins.json"

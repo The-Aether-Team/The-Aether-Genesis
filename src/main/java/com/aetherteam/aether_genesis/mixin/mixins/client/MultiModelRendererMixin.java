@@ -5,7 +5,8 @@ import com.aetherteam.aether.client.renderer.entity.MultiModelRenderer;
 import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.monster.Zephyr;
 import com.aetherteam.aether_genesis.Genesis;
-import com.aetherteam.aether_genesis.capability.zephyr.ZephyrColor;
+import com.aetherteam.aether_genesis.capability.GenesisDataAttachments;
+import com.aetherteam.aether_genesis.capability.ZephyrColorAttachment;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -24,11 +25,10 @@ public class MultiModelRendererMixin<T extends Mob, M extends EntityModel<T>, N 
     @Inject(at = @At(value = "HEAD"), method = "getTextureLocation(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/resources/ResourceLocation;", cancellable = true)
     private void getDefaultTexture(Entity entity, CallbackInfoReturnable<ResourceLocation> cir) {
         if (entity.getType() == AetherEntityTypes.ZEPHYR.get() && entity instanceof Zephyr zephyr && !AetherConfig.CLIENT.legacy_models.get()) {
-            ZephyrColor.get(zephyr).ifPresent((zephyrColor) -> {
-                if (zephyrColor.isTan()) {
-                    cir.setReturnValue(ZEPHYR_TAN_TEXTURE);
-                }
-            });
+            ZephyrColorAttachment attachment = zephyr.getData(GenesisDataAttachments.ZEPHYR_COLOR);
+            if (attachment.isTan()) {
+                cir.setReturnValue(ZEPHYR_TAN_TEXTURE);
+            }
         }
     }
 }

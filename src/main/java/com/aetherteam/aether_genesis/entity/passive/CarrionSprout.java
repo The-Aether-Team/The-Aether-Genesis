@@ -178,11 +178,6 @@ public class CarrionSprout extends Mob {
     }
 
     @Override
-    public double getMyRidingOffset() {
-        return this.getVehicle() != null && this.getVehicle().isCrouching() ? 0.1D : 0.275D;
-    }
-
-    @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
         return GenesisSoundEvents.ENTITY_CARRION_SPROUT_HURT.get();
     }

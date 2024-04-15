@@ -3,8 +3,7 @@ package com.aetherteam.aether_genesis.entity.monster.boss;
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.entity.AetherBossMob;
 import com.aetherteam.aether.entity.monster.dungeon.boss.BossNameGenerator;
-import com.aetherteam.aether.network.AetherPacketHandler;
-import com.aetherteam.aether.network.packet.serverbound.BossInfoPacket;
+import com.aetherteam.aether.network.packet.clientbound.BossInfoPacket;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.entity.projectile.CogProjectile;
 import com.aetherteam.nitrogen.entity.BossRoomTracker;
@@ -42,12 +41,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.entity.IEntityAdditionalSpawnData;
+import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
 
-public class LabyrinthEye extends PathfinderMob implements AetherBossMob<LabyrinthEye>, Enemy, IEntityAdditionalSpawnData {
+public class LabyrinthEye extends PathfinderMob implements AetherBossMob<LabyrinthEye>, Enemy, IEntityWithComplexSpawn {
     public static final EntityDataAccessor<Boolean> DATA_AWAKE_ID = SynchedEntityData.defineId(LabyrinthEye.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Component> DATA_BOSS_NAME_ID = SynchedEntityData.defineId(LabyrinthEye.class, EntityDataSerializers.COMPONENT);
     public static final EntityDataAccessor<Integer> DATA_BOSS_STAGE = SynchedEntityData.defineId(LabyrinthEye.class, EntityDataSerializers.INT);
@@ -250,6 +249,12 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
         return new ResourceLocation(Aether.MODID, "textures/gui/boss_bar_slider.png");
     }
 
+    @Nullable
+    @Override
+    public ResourceLocation getBossBarBackgroundTexture() {
+        return null; //todo
+    }
+
     @Override
     public BossRoomTracker<LabyrinthEye> getDungeon() {
         return this.bronzeDungeon;
@@ -289,7 +294,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     @Override
     public void startSeenByPlayer( ServerPlayer player) {
         super.startSeenByPlayer(player);
-        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Display(this.bossFight.getId(), this.getId()), player);
+        PacketRelay.sendToPlayer(new BossInfoPacket.Display(this.bossFight.getId(), this.getId()), player);
         if (this.getDungeon() == null || this.getDungeon().isPlayerTracked(player)) {
             this.bossFight.addPlayer(player);
         }
@@ -305,7 +310,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     @Override
     public void stopSeenByPlayer( ServerPlayer player) {
         super.stopSeenByPlayer(player);
-        PacketRelay.sendToPlayer(AetherPacketHandler.INSTANCE, new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()), player);
+        PacketRelay.sendToPlayer(new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()), player);
         this.bossFight.removePlayer(player);
     }
 

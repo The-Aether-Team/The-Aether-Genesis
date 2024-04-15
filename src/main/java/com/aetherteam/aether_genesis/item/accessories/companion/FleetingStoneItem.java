@@ -36,7 +36,7 @@ public class FleetingStoneItem extends CompanionItem<FleetingWisp> {
                 stepHeight.addTransientModifier(this.getStepHeightModifier());
             }
             if (livingEntity.isShiftKeyDown()) {
-                stepHeight.removeModifier(this.getStepHeightModifier());
+                stepHeight.removeModifier(this.getStepHeightModifier().getId());
             }
         }
     }
@@ -50,10 +50,10 @@ public class FleetingStoneItem extends CompanionItem<FleetingWisp> {
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         LivingEntity livingEntity = slotContext.entity();
-        AttributeInstance stepHeight = livingEntity.getAttribute(ForgeMod.STEP_HEIGHT_ADDITION.get());
+        AttributeInstance stepHeight = livingEntity.getAttribute(NeoForgeMod.STEP_HEIGHT.value());
         if (stepHeight != null) {
             if (stepHeight.hasModifier(this.getStepHeightModifier())) {
-                stepHeight.removeModifier(this.getStepHeightModifier());
+                stepHeight.removeModifier(this.getStepHeightModifier().getId());
             }
         }
         super.onUnequip(slotContext, newStack, stack);

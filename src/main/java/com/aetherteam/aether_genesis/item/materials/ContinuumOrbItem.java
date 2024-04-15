@@ -1,7 +1,7 @@
 package com.aetherteam.aether_genesis.item.materials;
 
 import com.aetherteam.aether.item.miscellaneous.ConsumableItem;
-import com.aetherteam.aether_genesis.advancement.ContinuumOrbLootTrigger;
+import com.aetherteam.aether_genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.aether_genesis.loot.GenesisLoot;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -31,7 +31,7 @@ public class ContinuumOrbItem extends Item implements ConsumableItem {
             this.consume(this, heldStack, player);
             List<ItemStack> lootItems = this.createLoot(player);
             if (player instanceof ServerPlayer serverPlayer) {
-                ContinuumOrbLootTrigger.INSTANCE.trigger(serverPlayer, lootItems);
+                GenesisAdvancementTriggers.CONTINUUM_ORB.get().trigger(serverPlayer, lootItems);
             }
             return InteractionResultHolder.consume(heldStack);
         } else {
