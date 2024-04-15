@@ -23,7 +23,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -78,7 +78,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
     public void travel(Vec3 travelVector) {
         if (this.isControlledByLocalInstance()) {
             double gravityValue;
-            AttributeInstance gravity = this.getAttribute(ForgeMod.ENTITY_GRAVITY.get());
+            AttributeInstance gravity = this.getAttribute(NeoForgeMod.ENTITY_GRAVITY.value());
             boolean isFalling = this.getDeltaMovement().y() <= 0.0;
             if (isFalling && this.hasEffect(MobEffects.SLOW_FALLING)) {
                 if (!gravity.hasModifier(SLOW_FALLING)) {
@@ -86,12 +86,12 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
                 }
                 this.resetFallDistance();
             } else if (gravity.hasModifier(SLOW_FALLING)) {
-                gravity.removeModifier(SLOW_FALLING);
+                gravity.removeModifier(SLOW_FALLING.getId());
             }
             gravityValue = gravity.getValue();
 
             FluidState fluidState = this.level().getFluidState(this.blockPosition());
-            if ((this.isInWater() || (this.isInFluidType(fluidState) && fluidState.getFluidType() != ForgeMod.LAVA_TYPE.get())) && this.isAffectedByFluids() && !this.canStandOnFluid(fluidState)) {
+            if ((this.isInWater() || (this.isInFluidType(fluidState) && fluidState.getFluidType() != NeoForgeMod.LAVA_TYPE.value())) && this.isAffectedByFluids() && !this.canStandOnFluid(fluidState)) {
                 if (this.isInWater() || (this.isInFluidType(fluidState) && !this.moveInFluid(fluidState, travelVector, gravityValue))) {
                     double y = this.getY();
                     float speedModifier = this.isSprinting() ? 0.9F : this.getWaterSlowDown();
@@ -114,7 +114,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
                         speedModifier = 0.96F;
                     }
 
-                    speed *= (float) this.getAttribute(ForgeMod.SWIM_SPEED.get()).getValue();
+                    speed *= (float) this.getAttribute(NeoForgeMod.SWIM_SPEED.value()).getValue();
                     this.moveRelative(speed, travelVector);
                     this.move(MoverType.SELF, this.getDeltaMovement());
                     Vec3 movement = this.getDeltaMovement();

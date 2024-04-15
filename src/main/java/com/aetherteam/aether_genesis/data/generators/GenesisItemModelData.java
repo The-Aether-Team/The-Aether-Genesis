@@ -7,7 +7,7 @@ import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.data.providers.GenesisItemModelProvider;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class GenesisItemModelData extends GenesisItemModelProvider {
     public GenesisItemModelData(PackOutput output, ExistingFileHelper helper) {

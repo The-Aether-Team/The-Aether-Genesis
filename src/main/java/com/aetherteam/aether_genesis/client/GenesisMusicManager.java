@@ -39,7 +39,7 @@ public class GenesisMusicManager {
         Music musicOpposite = getSituationalOppositeDaytimeMusic();
         if (music != null && musicOpposite != null) {
             if (currentMusic != null) {
-                if (!music.getEvent().get().getLocation().equals(currentMusic.getLocation()) && !musicOpposite.getEvent().get().getLocation().equals(currentMusic.getLocation()) && music.replaceCurrentMusic()) {
+                if (!music.getEvent().value().getLocation().equals(currentMusic.getLocation()) && !musicOpposite.getEvent().value().getLocation().equals(currentMusic.getLocation()) && music.replaceCurrentMusic()) {
                     minecraft.getSoundManager().stop(currentMusic);
                     nextSongDelay = Mth.nextInt(random, 0, music.getMinDelay() / 2);
                 }
@@ -64,7 +64,7 @@ public class GenesisMusicManager {
 
     public static void startPlaying(Music music) {
         musicManager.stopPlaying();
-        currentMusic = SimpleSoundInstance.forMusic(music.getEvent().get());
+        currentMusic = SimpleSoundInstance.forMusic(music.getEvent().value());
         if (currentMusic.getSound() != SoundManager.EMPTY_SOUND) {
             minecraft.getSoundManager().play(currentMusic);
         }

@@ -13,8 +13,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -44,8 +42,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.entity.IEntityAdditionalSpawnData;
-import net.minecraftforge.network.NetworkHooks;
+import net.neoforged.neoforge.entity.IEntityAdditionalSpawnData;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
@@ -188,11 +185,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
         this.entityData.define(DATA_BOSS_STAGE, 13);
         this.entityData.define(DATA_BOSS_NAME_ID, Component.literal("Labyrinth Eye"));
     }
-
-    @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
+ 
 
     @Override
     public void addAdditionalSaveData( CompoundTag tag) {

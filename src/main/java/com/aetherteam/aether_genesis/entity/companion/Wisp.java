@@ -7,7 +7,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
 
 import java.util.function.Supplier;
 
@@ -26,7 +26,7 @@ public class Wisp extends CompanionMob {
     @Override
     public void tick() {
         super.tick();
-        AttributeInstance gravity = this.getAttribute(ForgeMod.ENTITY_GRAVITY.get());
+        AttributeInstance gravity = this.getAttribute(NeoForgeMod.ENTITY_GRAVITY.value());
         if (gravity != null) {
             double fallSpeed = Math.max(gravity.getValue() * -1.25, -0.1); // Entity isn't allowed to fall too slowly from gravity.
             if (this.getDeltaMovement().y() < fallSpeed) {

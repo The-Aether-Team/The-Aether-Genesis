@@ -2,6 +2,7 @@ package com.aetherteam.aether_genesis.block.utility;
 
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.blockentity.HolystoneFurnaceBlockEntity;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -19,8 +20,15 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 public class HolystoneFurnaceBlock extends AbstractFurnaceBlock {
+    public static final MapCodec<HolystoneFurnaceBlock> CODEC = simpleCodec(HolystoneFurnaceBlock::new);
+
     public HolystoneFurnaceBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    protected MapCodec<? extends AbstractFurnaceBlock> codec() {
+        return CODEC;
     }
 
     @Override

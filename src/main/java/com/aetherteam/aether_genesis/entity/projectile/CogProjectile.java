@@ -5,8 +5,6 @@ import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -29,7 +27,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.network.NetworkHooks;
 
 public class CogProjectile extends Projectile {
     public static final EntityDataAccessor<Boolean> SIZE = SynchedEntityData.defineId(CogProjectile.class, EntityDataSerializers.BOOLEAN);
@@ -88,7 +85,7 @@ public class CogProjectile extends Projectile {
                 flag = true;
             }
         }
-        if (result.getType() != HitResult.Type.MISS && !flag && !net.minecraftforge.event.ForgeEventFactory.onProjectileImpact(this, result)) {
+        if (result.getType() != HitResult.Type.MISS && !flag && !net.neoforged.neoforge.event.EventHooks.onProjectileImpact(this, result)) {
             this.onHit(result);
         }
         this.checkInsideBlocks();
@@ -110,11 +107,7 @@ public class CogProjectile extends Projectile {
         return 300;
     }
 
-    
-    @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
-        return NetworkHooks.getEntitySpawningPacket(this);
-    }
+
 
     /**
      * @param shooter - The entity that created this projectile

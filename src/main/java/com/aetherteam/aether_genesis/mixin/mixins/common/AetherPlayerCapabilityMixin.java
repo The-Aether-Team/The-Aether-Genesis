@@ -3,7 +3,7 @@ package com.aetherteam.aether_genesis.mixin.mixins.common;
 import com.aetherteam.aether.capability.player.AetherPlayerCapability;
 import com.aetherteam.aether_genesis.GenesisConfig;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.RegistryObject;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;

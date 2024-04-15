@@ -4,10 +4,10 @@ import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.item.accessories.cape.DyeableCape;
 import com.aetherteam.aether_genesis.item.accessories.miscellaneous.DyeableEars;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, modid = Genesis.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GenesisColorResolvers {

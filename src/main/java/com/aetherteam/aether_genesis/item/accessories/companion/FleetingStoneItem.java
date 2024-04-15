@@ -6,7 +6,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.UUID;
@@ -30,7 +30,7 @@ public class FleetingStoneItem extends CompanionItem<FleetingWisp> {
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         LivingEntity livingEntity = slotContext.entity();
-        AttributeInstance stepHeight = livingEntity.getAttribute(ForgeMod.STEP_HEIGHT_ADDITION.get());
+        AttributeInstance stepHeight = livingEntity.getAttribute(NeoForgeMod.STEP_HEIGHT.value());
         if (stepHeight != null) {
             if (!stepHeight.hasModifier(this.getStepHeightModifier()) && !livingEntity.isShiftKeyDown()) {
                 stepHeight.addTransientModifier(this.getStepHeightModifier());

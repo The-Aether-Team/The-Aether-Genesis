@@ -1,5 +1,7 @@
 package com.aetherteam.aether_genesis.entity.projectile;
 
+import com.aetherteam.aether.attachment.AetherDataAttachments;
+import com.aetherteam.aether.attachment.LightningTrackerAttachment;
 import com.aetherteam.aether.capability.lightning.LightningTracker;
 import com.aetherteam.aether_genesis.block.miscellaneous.ColdFireBlock;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
@@ -22,8 +24,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.ForgeEventFactory;
-import net.minecraftforge.network.NetworkHooks;
+import net.neoforged.neoforge.event.EventHooks;
 
 
 public class TempestThunderBall extends AbstractHurtingProjectile {
@@ -51,7 +52,7 @@ public class TempestThunderBall extends AbstractHurtingProjectile {
 
 		if (this.level().isClientSide() || (this.getOwner() == null || this.getOwner().isAlive()) && this.level().hasChunkAt(this.blockPosition())) {
 			HitResult hitResult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
-			if (hitResult.getType() != HitResult.Type.MISS && !ForgeEventFactory.onProjectileImpact(this, hitResult)) {
+			if (hitResult.getType() != HitResult.Type.MISS && !EventHooks.onProjectileImpact(this, hitResult)) {
 				this.onHit(hitResult);
 			}
 
@@ -90,7 +91,8 @@ public class TempestThunderBall extends AbstractHurtingProjectile {
 		if (!this.level().isClientSide()) {
 			LightningBolt lightningBolt = EntityType.LIGHTNING_BOLT.create(this.level());
 			if (lightningBolt != null) {
-				LightningTracker.get(lightningBolt).ifPresent(lightningTracker -> lightningTracker.setOwner(this.getOwner()));
+				LightningTrackerAttachment attachment = lightningBolt.getData(AetherDataAttachments.LIGHTNING_TRACKER);
+				attachment.setOwner(this.getOwner());
 				lightningBolt.setPos(this.getX(), this.getY(), this.getZ());
 				lightningBolt.setVisualOnly(true);
 				this.level().addFreshEntity(lightningBolt);

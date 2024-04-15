@@ -1,6 +1,5 @@
 package com.aetherteam.aether_genesis.client.renderer.entity;
 
-import com.aetherteam.aether.capability.player.AetherPlayer;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.aether_genesis.entity.companion.Wisp;

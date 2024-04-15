@@ -3,8 +3,8 @@ package com.aetherteam.aether_genesis.data.generators;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.SoundDefinitionsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
 
 public class GenesisSoundData extends SoundDefinitionsProvider {
     public GenesisSoundData(PackOutput output, ExistingFileHelper helper) {

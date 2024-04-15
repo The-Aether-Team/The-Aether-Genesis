@@ -12,14 +12,14 @@ import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.client.ForgeHooksClient;
+import net.neoforged.neoforge.client.ClientHooks;
 
 import javax.annotation.Nullable;
 
 public interface DisplayItemPlate<T extends Mob & Companion<T>> {
     default void renderDisplayItem(T entity, PoseStack poseStack, MultiBufferSource buffer, EntityRenderDispatcher entityRenderDispatcher, ItemRenderer itemRenderer) {
         double distance = entityRenderDispatcher.distanceToSqr(entity);
-        if (ForgeHooksClient.isNameplateInRenderDistance(entity, distance)) {
+        if (ClientHooks.isNameplateInRenderDistance(entity, distance)) {
             float height = entity.getBbHeight() + 0.5F;
             poseStack.pushPose();
             poseStack.translate(0.0F, height, 0.0F);

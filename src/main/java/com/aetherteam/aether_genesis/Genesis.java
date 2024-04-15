@@ -1,9 +1,9 @@
 package com.aetherteam.aether_genesis;
 
-import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether_genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
+import com.aetherteam.aether_genesis.capability.GenesisDataAttachments;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.data.generators.*;
@@ -17,8 +17,8 @@ import com.aetherteam.aether_genesis.item.GenesisItems;
 import com.aetherteam.aether_genesis.loot.entries.GenesisLootPoolEntries;
 import com.aetherteam.aether_genesis.loot.functions.GenesisLootFunctions;
 import com.aetherteam.aether_genesis.loot.modifiers.GenesisLootModifiers;
-import com.aetherteam.aether_genesis.network.GenesisPacketHandler;
-import com.aetherteam.aether_genesis.world.GenesisRegion;
+import com.aetherteam.aether_genesis.network.packet.GenesisPlayerSyncPacket;
+import com.aetherteam.aether_genesis.network.packet.ZephyrColorSyncPacket;
 import com.aetherteam.aether_genesis.world.biomemodifier.GenesisBiomeModifierSerializers;
 import com.aetherteam.aether_genesis.world.feature.GenesisFeatures;
 import com.aetherteam.aether_genesis.world.foliageplacer.GenesisFoliagePlacerTypes;
@@ -31,29 +31,28 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.metadata.PackMetadataGenerator;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
 import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.ComposterBlock;
-import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.data.event.GatherDataEvent;
-import net.minecraftforge.event.AddPackFindersEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.resource.PathPackResources;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
+import net.neoforged.neoforge.event.AddPackFindersEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent;
+import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
-import terrablender.api.Regions;
 
 import java.nio.file.Path;
 import java.util.Map;
@@ -64,13 +63,11 @@ public class Genesis {
     public static final String MODID = "aether_genesis";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public Genesis() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
-        modEventBus.addListener(this::commonSetup);
-        modEventBus.addListener(this::dataSetup);
-        modEventBus.addListener(this::clientSetup);
-        modEventBus.addListener(this::packSetup);
+    public Genesis(IEventBus bus, Dist dist) {
+        bus.addListener(this::commonSetup);
+        bus.addListener(this::registerPackets);
+        bus.addListener(this::dataSetup);
+        bus.addListener(this::packSetup);
 
         DeferredRegister<?>[] registers = {
                 GenesisBlocks.BLOCKS,
@@ -87,11 +84,13 @@ public class Genesis {
                 GenesisTreeDecoratorTypes.TREE_DECORATORS,
                 GenesisParticleTypes.PARTICLES,
                 GenesisSoundEvents.SOUNDS,
-                GenesisBiomeModifierSerializers.BIOME_MODIFIER_SERIALIZERS
+                GenesisBiomeModifierSerializers.BIOME_MODIFIER_SERIALIZERS,
+                GenesisAdvancementTriggers.TRIGGERS,
+                GenesisDataAttachments.ATTACHMENTS
         };
 
         for (DeferredRegister<?> register : registers) {
-            register.register(modEventBus);
+            register.register(bus);
         }
 
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, GenesisConfig.COMMON_SPEC);
@@ -99,26 +98,22 @@ public class Genesis {
     }
 
     public void commonSetup(FMLCommonSetupEvent event) {
-        GenesisPacketHandler.register();
-
-        GenesisAdvancementTriggers.init();
-
         event.enqueueWork(() -> {
             GenesisBlocks.registerPots();
             GenesisBlocks.registerFlammability();
 
             this.registerComposting();
 
-            Regions.register(new GenesisRegion(new ResourceLocation(MODID, MODID), GenesisConfig.COMMON.biome_weight.get()));
+//            Regions.register(new GenesisRegion(new ResourceLocation(MODID, MODID), GenesisConfig.COMMON.biome_weight.get()));
         });
     }
 
-    public void clientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            if (GenesisConfig.CLIENT.night_music_tracks.get()) {
-                AetherConfig.CLIENT.disable_music_manager.set(true);
-            }
-        });
+    public void registerPackets(RegisterPayloadHandlerEvent event) {
+        IPayloadRegistrar registrar = event.registrar(MODID).versioned("1.0.0").optional();
+
+        // BOTH
+        registrar.play(GenesisPlayerSyncPacket.ID, GenesisPlayerSyncPacket::decode, GenesisPlayerSyncPacket::handle);
+        registrar.play(ZephyrColorSyncPacket.ID, ZephyrColorSyncPacket::decode, ZephyrColorSyncPacket::handle);
     }
 
     public void dataSetup(GatherDataEvent event) {

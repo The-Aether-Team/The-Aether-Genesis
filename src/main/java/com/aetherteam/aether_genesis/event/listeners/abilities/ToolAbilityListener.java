@@ -3,10 +3,10 @@ package com.aetherteam.aether_genesis.event.listeners.abilities;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.event.hooks.AbilityHooks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ToolAction;
-import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.common.ToolAction;
+import net.neoforged.neoforge.event.level.BlockEvent;
 
 @Mod.EventBusSubscriber(modid = Genesis.MODID)
 public class ToolAbilityListener {
