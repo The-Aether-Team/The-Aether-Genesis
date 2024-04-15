@@ -254,16 +254,22 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         this.bossFight.setVisible(isFighting);
     }
 
+    /**
+     * @return The {@link ResourceLocation} for this boss's health bar.
+     */
     @Nullable
     @Override
     public ResourceLocation getBossBarTexture() {
-        return new ResourceLocation(Aether.MODID, "textures/gui/boss_bar_slider.png");
+        return new ResourceLocation(Aether.MODID, "boss_bar/slider");
     }
 
+    /**
+     * @return The {@link ResourceLocation} for this boss's health bar background.
+     */
     @Nullable
     @Override
     public ResourceLocation getBossBarBackgroundTexture() {
-        return null; //todo
+        return new ResourceLocation(Aether.MODID, "boss_bar/slider_background");
     }
 
     @Override

@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "aether_genesis.refmap.json",
   "mixins": [
+    "client.ElytraLayerMixin",
     "client.MultiModelRendererMixin",
     "client.accessor.SoundEngineAccessor",
     "common.AercloudBlockMixin",

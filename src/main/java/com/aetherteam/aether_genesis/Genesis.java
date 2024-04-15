@@ -40,8 +40,6 @@ import net.minecraft.server.packs.repository.PackCompatibility;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.util.InclusiveRange;
 import net.minecraft.world.flag.FeatureFlagSet;
-import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.ComposterBlock;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
@@ -106,8 +104,6 @@ public class Genesis {
             GenesisBlocks.registerPots();
             GenesisBlocks.registerFlammability();
 
-            this.registerComposting();
-
 //            Regions.register(new GenesisRegion(new ResourceLocation(MODID, MODID), GenesisConfig.COMMON.biome_weight.get()));
         });
     }
@@ -137,6 +133,7 @@ public class Genesis {
         generator.addProvider(event.includeServer(), new GenesisRecipeData(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), GenesisLootTableData.create(packOutput));
         generator.addProvider(event.includeServer(), new GenesisLootModifierData(packOutput));
+        generator.addProvider(event.includeServer(), new GenesisDataMapData(packOutput, lookupProvider));
         GenesisBlockTagData blockTags = new GenesisBlockTagData(packOutput, lookupProvider, fileHelper);
         generator.addProvider(event.includeServer(), blockTags);
         generator.addProvider(event.includeServer(), new GenesisItemTagData(packOutput, lookupProvider, blockTags.contentsGetter(), fileHelper));
@@ -193,19 +190,5 @@ public class Genesis {
                     )
             );
         }
-    }
-
-    private void registerComposting() { //todo
-        this.addCompost(0.3F, GenesisBlocks.BLUE_SKYROOT_LEAVES.get().asItem());
-        this.addCompost(0.3F, GenesisBlocks.BLUE_SKYROOT_SAPLING.get());
-        this.addCompost(0.3F, GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get().asItem());
-        this.addCompost(0.3F, GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get());
-        this.addCompost(0.3F, GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get().asItem());
-        this.addCompost(0.3F, GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get());
-        this.addCompost(0.3F, GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get());
-    }
-
-    private void addCompost(float chance, ItemLike item) {
-        ComposterBlock.COMPOSTABLES.put(item.asItem(), chance);
     }
 }
