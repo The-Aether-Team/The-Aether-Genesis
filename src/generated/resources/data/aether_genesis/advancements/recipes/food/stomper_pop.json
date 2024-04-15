@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_baby_pink_swet",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_baby_pink_swet"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:stomper_pop"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

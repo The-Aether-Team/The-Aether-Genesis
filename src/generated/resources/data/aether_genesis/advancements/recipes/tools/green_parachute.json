@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_green_aercloud",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_green_aercloud"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:green_parachute"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

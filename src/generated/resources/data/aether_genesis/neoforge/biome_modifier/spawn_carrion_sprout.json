@@ -1,5 +1,5 @@
 {
-  "type": "forge:add_spawns",
+  "type": "neoforge:add_spawns",
   "biomes": "#aether_genesis:has_carrion_sprout",
   "spawners": {
     "type": "aether_genesis:carrion_sprout",

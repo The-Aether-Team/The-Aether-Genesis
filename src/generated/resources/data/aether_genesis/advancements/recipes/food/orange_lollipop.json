@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_orange",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_orange"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:orange_lollipop"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

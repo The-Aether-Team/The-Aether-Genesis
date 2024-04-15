@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_cocoa_beans",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_cocoa_beans"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:cocoatrice"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

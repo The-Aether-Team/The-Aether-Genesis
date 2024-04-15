@@ -9,9 +9,15 @@
           "functions": [
             {
               "function": "aether_genesis:carrion_sprout_size",
-              "maximum": 3.0,
-              "minimum": 1.0,
-              "randomBound": 3.0
+              "maximum": {
+                "value": 3.0
+              },
+              "minimum": {
+                "value": 1.0
+              },
+              "random_bound": {
+                "value": 3.0
+              }
             },
             {
               "count": {

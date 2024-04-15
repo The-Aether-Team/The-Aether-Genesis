@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_icestone",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_icestone"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:icestone_poprocks"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

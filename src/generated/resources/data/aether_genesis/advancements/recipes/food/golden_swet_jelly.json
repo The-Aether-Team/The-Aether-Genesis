@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_golden_swet_ball",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_golden_swet_ball"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:golden_swet_jelly"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

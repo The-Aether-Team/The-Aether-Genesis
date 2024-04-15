@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_continuum_bomb",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_continuum_bomb"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:continuum_orb_from_bomb"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

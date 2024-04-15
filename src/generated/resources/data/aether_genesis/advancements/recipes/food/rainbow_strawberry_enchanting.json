@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_wyndberry",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_wyndberry"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:rainbow_strawberry_enchanting"
     ]
-  },
-  "sends_telemetry_event": true
+  }
 }

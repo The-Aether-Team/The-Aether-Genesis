@@ -20,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_skyroot_ladder",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_skyroot_ladder"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:skyroot_ladder"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

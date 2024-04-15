@@ -1,5 +1,5 @@
 {
-  "type": "forge:add_features",
+  "type": "neoforge:add_features",
   "biomes": "#aether_genesis:has_woodland_trees",
   "features": [
     "aether_genesis:skyroot_woodland_large_green_skyroot_trees",

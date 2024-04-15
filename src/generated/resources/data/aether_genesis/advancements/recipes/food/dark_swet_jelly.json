@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_dark_swet_ball",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_dark_swet_ball"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:dark_swet_jelly"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

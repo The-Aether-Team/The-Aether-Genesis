@@ -3,6 +3,10 @@
     "description": {
       "translate": "pack.aether_genesis.mod.description"
     },
-    "pack_format": 15
+    "pack_format": 26,
+    "supported_formats": [
+      0,
+      2147483647
+    ]
   }
 }

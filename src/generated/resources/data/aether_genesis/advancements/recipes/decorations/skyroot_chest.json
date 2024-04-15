@@ -20,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_skyroot_chest",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_skyroot_chest"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:skyroot_chest"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

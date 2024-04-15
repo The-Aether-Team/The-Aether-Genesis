@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_skyroot_wood",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_skyroot_wood"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:skyroot_wood_wall"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

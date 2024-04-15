@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_smooth_stone",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_smooth_stone"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:holystone_blast_furnace"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
