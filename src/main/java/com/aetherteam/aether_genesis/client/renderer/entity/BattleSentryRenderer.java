@@ -6,7 +6,6 @@ import com.aetherteam.aether_genesis.client.renderer.entity.layers.BattleSentryL
 import com.aetherteam.aether_genesis.entity.monster.BattleSentry;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.SlimeModel;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -28,16 +27,8 @@ public class BattleSentryRenderer extends MobRenderer<BattleSentry, SlimeModel<B
         float f2 = 0.0F;
         float f3 = 1.0F / (f2 + 1.0F);
         poseStack.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
-    }
-
-    public void render(BattleSentry sentry, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        if (sentry.isAwake() && !sentry.hurtMarked)
-            super.render(sentry, entityYaw, partialTicks, poseStack, buffer, packedLight);
-        if (!sentry.isAwake() || sentry.hurtMarked) {
-            poseStack.pushPose();
-            poseStack.translate(0.0F, -0.75F, 0.0F);
-            super.render(sentry, entityYaw, partialTicks, poseStack, buffer, packedLight);
-            poseStack.popPose();
+        if (sentry.isAwake() && !sentry.hurtMarked) {
+            poseStack.translate(0.0F, 0.5F, 0.0F);
         }
     }
 

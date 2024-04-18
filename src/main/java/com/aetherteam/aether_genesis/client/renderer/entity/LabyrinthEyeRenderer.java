@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class LabyrinthEyeRenderer extends MobRenderer<LabyrinthEye, LabyrinthEyeModel> {
     private static final ResourceLocation LABYRINTH_EYE_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_sleep.png");
-    private static final ResourceLocation LABYRINTH_EYE_TEXTURE_LIT = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_awake.png");
+    private static final ResourceLocation LABYRINTH_EYE_AWAKE_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_awake.png");
 
     public LabyrinthEyeRenderer(EntityRendererProvider.Context context) {
         super(context, new LabyrinthEyeModel(context.bakeLayer(GenesisModelLayers.LABYRINTH_EYE)), 0.5F);
@@ -20,6 +20,6 @@ public class LabyrinthEyeRenderer extends MobRenderer<LabyrinthEye, LabyrinthEye
 
     @Override
     public ResourceLocation getTextureLocation(LabyrinthEye labyrinthEye) {
-        return labyrinthEye.isAwake() ? LABYRINTH_EYE_TEXTURE_LIT : LABYRINTH_EYE_TEXTURE;
+        return labyrinthEye.isAwake() ? LABYRINTH_EYE_AWAKE_TEXTURE : LABYRINTH_EYE_TEXTURE;
     }
 }

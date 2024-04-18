@@ -23,8 +23,8 @@ public class TempestThunderballRenderer extends EntityRenderer<TempestThunderBal
     }
 
     @Override
-    public void render(TempestThunderBall thunderball, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        if (thunderball.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(thunderball) < 12.25)) {
+    public void render(TempestThunderBall thunderBall, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+        if (thunderBall.tickCount >= 2 || !(this.entityRenderDispatcher.camera.getEntity().distanceToSqr(thunderBall) < 12.25)) {
             poseStack.pushPose();
             poseStack.scale(1.0F, 1.0F, 1.0F);
             poseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
@@ -32,7 +32,7 @@ public class TempestThunderballRenderer extends EntityRenderer<TempestThunderBal
             PoseStack.Pose pose = poseStack.last();
             Matrix4f matrix4f = pose.pose();
             Matrix3f matrix3f = pose.normal();
-            VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.entityCutoutNoCull(this.getTextureLocation(thunderball)));
+            VertexConsumer vertexconsumer = buffer.getBuffer(RenderType.entityCutoutNoCull(this.getTextureLocation(thunderBall)));
             vertex(vertexconsumer, matrix4f, matrix3f, packedLight, 0.0F, 0, 0, 1);
             vertex(vertexconsumer, matrix4f, matrix3f, packedLight, 1.0F, 0, 1, 1);
             vertex(vertexconsumer, matrix4f, matrix3f, packedLight, 1.0F, 1, 1, 0);
@@ -43,7 +43,7 @@ public class TempestThunderballRenderer extends EntityRenderer<TempestThunderBal
             vertex(glint, matrix4f, matrix3f, packedLight, 1.0F, 1, 1, 0);
             vertex(glint, matrix4f, matrix3f, packedLight, 0.0F, 1, 0, 0);
             poseStack.popPose();
-            super.render(thunderball, entityYaw, partialTicks, poseStack, buffer, packedLight);
+            super.render(thunderBall, entityYaw, partialTicks, poseStack, buffer, packedLight);
         }
     }
 
@@ -58,12 +58,12 @@ public class TempestThunderballRenderer extends EntityRenderer<TempestThunderBal
     }
 
     @Override
-    protected int getBlockLightLevel(TempestThunderBall entity, BlockPos pos) {
+    protected int getBlockLightLevel(TempestThunderBall thunderBall, BlockPos pos) {
         return 15;
     }
 
     @Override
-    public ResourceLocation getTextureLocation(TempestThunderBall snowball) {
+    public ResourceLocation getTextureLocation(TempestThunderBall thunderBall) {
         return TEMPEST_PROJECTILE_TEXTURE;
     }
 }

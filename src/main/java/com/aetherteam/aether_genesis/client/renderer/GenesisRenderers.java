@@ -1,11 +1,9 @@
 package com.aetherteam.aether_genesis.client.renderer;
 
-import com.aetherteam.aether.attachment.AetherPlayerAttachment;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.client.renderer.accessory.PendantRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
 import com.aetherteam.aether.client.renderer.entity.model.MimicModel;
-import com.aetherteam.aether.client.renderer.player.layer.DartLayer;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.attachment.GenesisPlayerAttachment;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;

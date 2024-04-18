@@ -17,7 +17,7 @@ public class ShadeOfArkenzusRenderer extends CompanionRenderer<ShadeOfArkenzus, 
     }
 
     @Override
-    public ResourceLocation getTextureLocation(ShadeOfArkenzus p_entity) {
+    public ResourceLocation getTextureLocation(ShadeOfArkenzus shadeOfArkenzus) {
         return SHADE_OF_ARKENZUS_TEXTURE;
     }
 }

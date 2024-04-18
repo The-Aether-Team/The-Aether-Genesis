@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.client.event.listeners;
 
+import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;
 import com.aetherteam.aether_genesis.client.event.hooks.GenesisAudioHooks;
 import net.minecraft.client.Minecraft;
@@ -16,7 +17,7 @@ import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
 import net.neoforged.neoforge.client.event.sound.PlaySoundEvent;
 import net.neoforged.neoforge.event.TickEvent;
 
-@Mod.EventBusSubscriber(Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = Genesis.MODID, value = Dist.CLIENT)
 public class GenesisAudioListener {
     /**
      * @see GenesisAudioHooks#shouldCancelMusic(SoundInstance)

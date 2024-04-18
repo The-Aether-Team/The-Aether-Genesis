@@ -9,13 +9,13 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class TempestMarkingsLayer extends EyesLayer<Tempest, TempestModel> {
-    private static final RenderType TEMPEST_EYES = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/tempest/tempest_emissive.png"));
+    private static final RenderType TEMPEST_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/tempest/tempest_emissive.png"));
 
     public TempestMarkingsLayer(RenderLayerParent<Tempest, TempestModel> entityRenderer) {
         super(entityRenderer);
     }
 
     public RenderType renderType() {
-        return TEMPEST_EYES;
+        return TEMPEST_GLOW;
     }
 }

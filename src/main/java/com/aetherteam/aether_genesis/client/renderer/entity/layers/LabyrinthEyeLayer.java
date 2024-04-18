@@ -14,8 +14,8 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class LabyrinthEyeLayer extends EyesLayer<LabyrinthEye, LabyrinthEyeModel> {
-    private static final RenderType COG_EYE = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_sleep_glow.png"));
-    private static final RenderType COG_EYE_LIT = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_awake_glow.png"));
+    private static final RenderType LABYRINTH_EYE_ASLEEP_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_sleep_glow.png"));
+    private static final RenderType LABYRINTH_EYE_AWAKE_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_awake_glow.png"));
 
     public LabyrinthEyeLayer(RenderLayerParent<LabyrinthEye, LabyrinthEyeModel> entityRenderer) {
         super(entityRenderer);
@@ -29,13 +29,13 @@ public class LabyrinthEyeLayer extends EyesLayer<LabyrinthEye, LabyrinthEyeModel
     
     public RenderType renderType(LabyrinthEye eye) {
         if (eye.isAwake()) {
-            return COG_EYE_LIT;
+            return LABYRINTH_EYE_AWAKE_GLOW;
         }
         return this.renderType();
     }
     
     @Override
     public RenderType renderType() {
-        return COG_EYE;
+        return LABYRINTH_EYE_ASLEEP_GLOW;
     }
 }

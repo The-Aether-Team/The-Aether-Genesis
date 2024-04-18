@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class TempestTransparencyGlowLayer extends EyesLayer<Tempest, TempestModel> {
-    private static final RenderType LAYER_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/tempest/tempest_layer_glow.png"));
+    private static final RenderType TEMPEST_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/tempest/tempest_layer_glow.png"));
 
     public TempestTransparencyGlowLayer(RenderLayerParent<Tempest, TempestModel> entityRenderer) {
         super(entityRenderer);
@@ -17,6 +17,6 @@ public class TempestTransparencyGlowLayer extends EyesLayer<Tempest, TempestMode
 
     @Override
     public RenderType renderType() {
-        return LAYER_GLOW;
+        return TEMPEST_GLOW;
     }
 }

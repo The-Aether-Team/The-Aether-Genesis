@@ -7,9 +7,8 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.util.Mth;
 
-public class CogProtectileModel<T extends CogProjectile> extends EntityModel<T> {
+public class CogProtectileModel extends EntityModel<CogProjectile> {
 	public final ModelPart cog;
 
 	public CogProtectileModel(ModelPart root) {
@@ -55,7 +54,7 @@ public class CogProtectileModel<T extends CogProjectile> extends EntityModel<T> 
 
 	@Override
 	public void setupAnim(CogProjectile cog, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.cog.xRot = -Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		this.cog.xRot += 0.15F;
 		this.cog.yRot = this.cog.xRot;
 		this.cog.zRot = this.cog.xRot;
 	}

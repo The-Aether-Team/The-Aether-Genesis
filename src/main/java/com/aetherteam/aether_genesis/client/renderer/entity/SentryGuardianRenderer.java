@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class SentryGuardianRenderer extends MobRenderer<SentryGuardian, SentryGuardianModel> {
     private static final ResourceLocation SENTRY_GUARDIAN_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/sentry_guardian/sentry_guardian.png");
-    private static final ResourceLocation SENTRY_GUARDIAN_TEXTURE_GLOW = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/sentry_guardian/sentry_guardian_critical.png");
+    private static final ResourceLocation SENTRY_GUARDIAN_CRITICAL_GLOW = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/sentry_guardian/sentry_guardian_critical.png");
 
     public SentryGuardianRenderer(EntityRendererProvider.Context context) {
         super(context, new SentryGuardianModel(context.bakeLayer(GenesisModelLayers.SENTRY_GUARDIAN)), 0.5F);
@@ -20,6 +20,6 @@ public class SentryGuardianRenderer extends MobRenderer<SentryGuardian, SentryGu
     
     @Override
     public ResourceLocation getTextureLocation(SentryGuardian sentryGuardian) {
-        return sentryGuardian.isAwake() ? SENTRY_GUARDIAN_TEXTURE_GLOW : SENTRY_GUARDIAN_TEXTURE;
+        return sentryGuardian.isAwake() ? SENTRY_GUARDIAN_CRITICAL_GLOW : SENTRY_GUARDIAN_TEXTURE;
     }
 }

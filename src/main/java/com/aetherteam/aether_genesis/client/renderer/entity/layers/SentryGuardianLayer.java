@@ -14,8 +14,8 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class SentryGuardianLayer extends EyesLayer<SentryGuardian, SentryGuardianModel> {
-	private static final RenderType GUARDIAN_EYE = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/sentry_guardian/sentry_guardian_glow.png"));
-	private static final RenderType GUARDIAN_EYE_LIT = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/sentry_guardian/sentry_guardian_critical_glow.png"));
+	private static final RenderType SENTRY_GUARDIAN_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/sentry_guardian/sentry_guardian_glow.png"));
+	private static final RenderType SENTRY_GUARDIAN_CRITICAL_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/sentry_guardian/sentry_guardian_critical_glow.png"));
 
 	public SentryGuardianLayer(RenderLayerParent<SentryGuardian, SentryGuardianModel> entityRenderer) {
 		super(entityRenderer);
@@ -29,13 +29,13 @@ public class SentryGuardianLayer extends EyesLayer<SentryGuardian, SentryGuardia
 
 	public RenderType renderType(SentryGuardian guardian) {
 		if (guardian.isAwake()) {
-			return GUARDIAN_EYE_LIT;
+			return SENTRY_GUARDIAN_CRITICAL_GLOW;
 		}
 		return this.renderType();
 	}
 
 	@Override
 	public RenderType renderType() {
-		return GUARDIAN_EYE;
+		return SENTRY_GUARDIAN_GLOW;
 	}
 }

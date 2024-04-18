@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class HostMimicLayer extends EyesLayer<SliderHostMimic, SliderHostMimicModel> {
-	private static final RenderType HOST_MIMIC_EYE_LIT = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/slider_host_mimic/slider_host_mimic_critical_glow.png"));
+	private static final RenderType HOST_MIMIC_CRITICAL_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/slider_host_mimic/slider_host_mimic_critical_glow.png"));
 
 	public HostMimicLayer(RenderLayerParent<SliderHostMimic, SliderHostMimicModel> entityRenderer) {
 		super(entityRenderer);
@@ -30,6 +30,6 @@ public class HostMimicLayer extends EyesLayer<SliderHostMimic, SliderHostMimicMo
 
 	@Override
 	public RenderType renderType() {
-		return HOST_MIMIC_EYE_LIT;
+		return HOST_MIMIC_CRITICAL_GLOW;
 	}
 }

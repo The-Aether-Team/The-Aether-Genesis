@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class BattleSentryLayer extends EyesLayer<BattleSentry, SlimeModel<BattleSentry>> {
-	private static final RenderType SENTRY_EYE = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/battle_sentry/eye.png"));
+	private static final RenderType BATTLE_SENTRY_EYE = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/battle_sentry/eye.png"));
 
 	public BattleSentryLayer(RenderLayerParent<BattleSentry, SlimeModel<BattleSentry>> entityRenderer) {
 		super(entityRenderer);
@@ -30,6 +30,6 @@ public class BattleSentryLayer extends EyesLayer<BattleSentry, SlimeModel<Battle
 
 	@Override
 	public RenderType renderType() {
-		return SENTRY_EYE;
+		return BATTLE_SENTRY_EYE;
 	}
 }

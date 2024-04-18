@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * Modified to handle nighttime music.
  */
 public class GenesisMusicManager {
+    public static final Music AETHER_NIGHT = Musics.createGameMusic(GenesisSoundEvents.MUSIC_AETHER_NIGHT);
+
     private static final RandomSource random = RandomSource.create();
     private static final Minecraft minecraft = Minecraft.getInstance();
     private static final MusicManager musicManager = Minecraft.getInstance().getMusicManager();
@@ -116,7 +118,7 @@ public class GenesisMusicManager {
                 boolean night = time >= 39000 && time < 69000;
 
                 if (night) {
-                    return GenesisMusic.getNightMusicForBiome(holder);
+                    return AETHER_NIGHT;
                 } else if (isCreative(holder, minecraft.player)) {
                     return holder.value().getBackgroundMusic().orElse(Musics.GAME);
                 }
@@ -136,7 +138,7 @@ public class GenesisMusicManager {
                 boolean night = time >= 39000 && time < 69000;
 
                 if (!night) {
-                    return GenesisMusic.getNightMusicForBiome(holder);
+                    return AETHER_NIGHT;
                 } else if (isCreative(holder, minecraft.player)) {
                     return holder.value().getBackgroundMusic().orElse(Musics.GAME);
                 }

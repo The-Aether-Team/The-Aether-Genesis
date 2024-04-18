@@ -14,8 +14,8 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class TrackingGolemLayer extends EyesLayer<TrackingGolem, TrackingGolemModel> {
-	private static final RenderType SENTRY_EYE = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/tracking_golem/sentry_golem_glow.png"));
-	private static final RenderType SENTRY_EYE_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/tracking_golem/sentry_golem_hostile_glow.png"));
+	private static final RenderType TRACKING_GOLEM_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/tracking_golem/sentry_golem_glow.png"));
+	private static final RenderType TRACKING_GOLEM_HOSTILE_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/tracking_golem/sentry_golem_hostile_glow.png"));
 
 	public TrackingGolemLayer(RenderLayerParent<TrackingGolem, TrackingGolemModel> entityRenderer) {
 		super(entityRenderer);
@@ -29,13 +29,13 @@ public class TrackingGolemLayer extends EyesLayer<TrackingGolem, TrackingGolemMo
 	
 	public RenderType renderType(TrackingGolem golem) {
 		if (golem.getSeenEnemy()) {
-			return SENTRY_EYE_GLOW;
+			return TRACKING_GOLEM_HOSTILE_GLOW;
 		}
 		return this.renderType();
 	}
 	
 	@Override
 	public RenderType renderType() {
-		return SENTRY_EYE;
+		return TRACKING_GOLEM_GLOW;
 	}
 }
