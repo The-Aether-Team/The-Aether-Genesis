@@ -2,8 +2,8 @@ package com.aetherteam.aether_genesis.mixin.mixins.client;
 
 import com.aetherteam.aether.client.renderer.entity.ZephyrRenderer;
 import com.aetherteam.aether.entity.monster.Zephyr;
-import com.aetherteam.aether_genesis.capability.GenesisDataAttachments;
-import com.aetherteam.aether_genesis.capability.ZephyrColorAttachment;
+import com.aetherteam.aether_genesis.attachment.GenesisDataAttachments;
+import com.aetherteam.aether_genesis.attachment.ZephyrColorAttachment;
 import com.mojang.blaze3d.vertex.PoseStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,7 +16,7 @@ public class ZephyrRendererMixin {
     private void scale(Zephyr zephyr, PoseStack poseStack, float partialTicks, CallbackInfo ci) {
         ZephyrColorAttachment attachment = zephyr.getData(GenesisDataAttachments.ZEPHYR_COLOR);
         if (attachment.isTan()) {
-            poseStack.scale(0.75F, 0.75F, 0.75F);
+            poseStack.scale(0.5F, 0.5F, 0.5F);
         }
     }
 }

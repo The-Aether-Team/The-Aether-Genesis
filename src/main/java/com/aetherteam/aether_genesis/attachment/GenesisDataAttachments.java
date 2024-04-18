@@ -1,14 +1,11 @@
-package com.aetherteam.aether_genesis.capability;
+package com.aetherteam.aether_genesis.attachment;
 
-import com.aetherteam.aether.Aether;
 import com.aetherteam.aether_genesis.Genesis;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
-@Mod.EventBusSubscriber(modid = Aether.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GenesisDataAttachments {
 	public static final DeferredRegister<AttachmentType<?>> ATTACHMENTS = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, Genesis.MODID);
 

@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.capability;
+package com.aetherteam.aether_genesis.attachment;
 
 import com.aetherteam.aether_genesis.network.packet.ZephyrColorSyncPacket;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
@@ -14,6 +14,9 @@ import java.util.function.Supplier;
 public class ZephyrColorAttachment implements INBTSynchable {
     private boolean isTan = false;
 
+    /**
+     * Stores the following methods as able to be synced between client and server and vice-versa.
+     */
     private final Map<String, Triple<Type, Consumer<Object>, Supplier<Object>>> synchableFunctions = Map.ofEntries(
             Map.entry("setTan", Triple.of(Type.BOOLEAN, (object) -> this.setTan((boolean) object), this::isTan))
     );
@@ -39,6 +42,9 @@ public class ZephyrColorAttachment implements INBTSynchable {
         this.isTan = tan;
     }
 
+    /**
+     * @return A {@link Boolean} for whether this Zephyr has tan runes instead of blue runes.
+     */
     public boolean isTan() {
         return this.isTan;
     }

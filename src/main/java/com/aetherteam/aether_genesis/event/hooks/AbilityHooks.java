@@ -1,8 +1,8 @@
 package com.aetherteam.aether_genesis.event.hooks;
 
+import com.aetherteam.aether_genesis.attachment.GenesisDataAttachments;
+import com.aetherteam.aether_genesis.attachment.GenesisPlayerAttachment;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
-import com.aetherteam.aether_genesis.capability.GenesisDataAttachments;
-import com.aetherteam.aether_genesis.capability.GenesisPlayerAttachment;
 import com.aetherteam.aether_genesis.entity.projectile.PhoenixDart;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.world.damagesource.DamageSource;

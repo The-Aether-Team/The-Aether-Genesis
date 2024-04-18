@@ -7,6 +7,7 @@ import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
 import com.aetherteam.aether.client.renderer.entity.model.MimicModel;
 import com.aetherteam.aether.client.renderer.player.layer.DartLayer;
 import com.aetherteam.aether_genesis.Genesis;
+import com.aetherteam.aether_genesis.attachment.GenesisPlayerAttachment;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.client.renderer.accessory.MouseEarCapRenderer;
@@ -15,6 +16,7 @@ import com.aetherteam.aether_genesis.client.renderer.blockentity.SkyrootChestMim
 import com.aetherteam.aether_genesis.client.renderer.blockentity.SkyrootChestRenderer;
 import com.aetherteam.aether_genesis.client.renderer.entity.*;
 import com.aetherteam.aether_genesis.client.renderer.entity.model.*;
+import com.aetherteam.aether_genesis.client.renderer.player.layer.PhoenixDartLayer;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.entity.projectile.PhoenixDart;
 import com.aetherteam.aether_genesis.item.GenesisItems;
@@ -113,7 +115,7 @@ public class GenesisRenderers {
         for (PlayerSkin.Model type : models) {
             PlayerRenderer playerRenderer = event.getSkin(type);
             if (playerRenderer != null) {
-                playerRenderer.addLayer(new DartLayer<>(renderDispatcher, playerRenderer, (entity) -> new PhoenixDart(GenesisEntityTypes.PHOENIX_DART.get(), entity.level()), AetherPlayerAttachment::getGoldenDartCount, 1.0F));
+                playerRenderer.addLayer(new PhoenixDartLayer<>(renderDispatcher, playerRenderer, (entity) -> new PhoenixDart(GenesisEntityTypes.PHOENIX_DART.get(), entity.level()), GenesisPlayerAttachment::getPhoenixDartCount, 0.5F));
             }
         }
     }

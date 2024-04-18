@@ -1,6 +1,6 @@
 package com.aetherteam.aether_genesis.item.accessories.companion;
 
-import com.aetherteam.aether_genesis.capability.GenesisDataAttachments;
+import com.aetherteam.aether_genesis.attachment.GenesisDataAttachments;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;

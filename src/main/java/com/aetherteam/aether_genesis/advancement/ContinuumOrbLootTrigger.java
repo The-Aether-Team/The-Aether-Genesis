@@ -14,10 +14,13 @@ import net.minecraft.world.item.ItemStack;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Criterion trigger used for checking when Continuum loot has given a specific item.
+ */
 public class ContinuumOrbLootTrigger extends SimpleCriterionTrigger<ContinuumOrbLootTrigger.Instance> {
     @Override
     public Codec<ContinuumOrbLootTrigger.Instance> codec() {
-        return ContinuumOrbLootTrigger.Instance.CODEC;
+        return Instance.CODEC;
     }
 
     public void trigger(ServerPlayer player, ItemStack stack) {

@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.capability;
+package com.aetherteam.aether_genesis.attachment;
 
 import com.aetherteam.aether_genesis.entity.companion.Companion;
 import com.aetherteam.aether_genesis.network.packet.GenesisPlayerSyncPacket;
@@ -18,6 +18,7 @@ import java.util.function.Supplier;
 public class GenesisPlayerAttachment implements INBTSynchable {
     private List<Entity> companions = new ArrayList<>();
     private int phoenixDartCount;
+    private int removePhoenixDartTime;
 
     /**
      * Stores the following methods as able to be synced between client and server and vice-versa.
@@ -54,12 +55,32 @@ public class GenesisPlayerAttachment implements INBTSynchable {
      */
     public void onUpdate(Player player) {
         this.syncAfterJoin(player);
+        this.handleRemoveDarts(player);
     }
 
     private void syncAfterJoin(Player player) {
         if (this.shouldSyncAfterJoin) {
             this.forceSync(player.getId(), INBTSynchable.Direction.CLIENT);
             this.shouldSyncAfterJoin = false;
+        }
+    }
+
+
+    /**
+     * Slowly removes darts that are rendered as stuck on the player by {@link com.aetherteam.aether.client.renderer.player.layer.DartLayer}.
+     */
+    private void handleRemoveDarts(Player player) {
+        if (!player.level().isClientSide()) {
+            if (this.getPhoenixDartCount() > 0) {
+                if (this.removePhoenixDartTime <= 0) {
+                    this.removePhoenixDartTime = 20 * (30 - this.getPhoenixDartCount());
+                }
+
+                --this.removePhoenixDartTime;
+                if (this.removePhoenixDartTime <= 0) {
+                    this.setSynched(player.getId(), INBTSynchable.Direction.CLIENT, "setPhoenixDartCount", this.getPhoenixDartCount() - 1);
+                }
+            }
         }
     }
 
@@ -103,6 +124,7 @@ public class GenesisPlayerAttachment implements INBTSynchable {
         return this.phoenixDartCount;
     }
 
+    @Override
     public BasePacket getSyncPacket(int entityID, String key, Type type, Object value) {
         return new GenesisPlayerSyncPacket(entityID, key, type, value);
     }

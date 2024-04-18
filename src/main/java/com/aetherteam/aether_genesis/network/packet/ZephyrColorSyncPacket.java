@@ -1,9 +1,8 @@
 package com.aetherteam.aether_genesis.network.packet;
 
-import com.aetherteam.aether.Aether;
 import com.aetherteam.aether_genesis.Genesis;
-import com.aetherteam.aether_genesis.capability.GenesisDataAttachments;
-import com.aetherteam.aether_genesis.capability.ZephyrColorAttachment;
+import com.aetherteam.aether_genesis.attachment.GenesisDataAttachments;
+import com.aetherteam.aether_genesis.attachment.ZephyrColorAttachment;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
 import com.aetherteam.nitrogen.network.packet.SyncEntityPacket;
 import net.minecraft.network.FriendlyByteBuf;

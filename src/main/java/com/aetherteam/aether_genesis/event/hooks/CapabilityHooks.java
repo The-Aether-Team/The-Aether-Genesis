@@ -1,6 +1,6 @@
 package com.aetherteam.aether_genesis.event.hooks;
 
-import com.aetherteam.aether_genesis.capability.GenesisDataAttachments;
+import com.aetherteam.aether_genesis.attachment.GenesisDataAttachments;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 

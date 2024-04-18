@@ -4,8 +4,6 @@ import com.aetherteam.aether_genesis.Genesis;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.fml.common.Mod;
 
 public class GenesisAtlases {
 	public static Material SKYROOT_CHEST_MATERIAL;
