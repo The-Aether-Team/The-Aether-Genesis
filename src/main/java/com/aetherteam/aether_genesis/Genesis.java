@@ -19,6 +19,7 @@ import com.aetherteam.aether_genesis.loot.functions.GenesisLootFunctions;
 import com.aetherteam.aether_genesis.loot.modifiers.GenesisLootModifiers;
 import com.aetherteam.aether_genesis.network.packet.GenesisPlayerSyncPacket;
 import com.aetherteam.aether_genesis.network.packet.ZephyrColorSyncPacket;
+import com.aetherteam.aether_genesis.world.GenesisRegion;
 import com.aetherteam.aether_genesis.world.biomemodifier.GenesisBiomeModifierSerializers;
 import com.aetherteam.aether_genesis.world.feature.GenesisFeatures;
 import com.aetherteam.aether_genesis.world.foliageplacer.GenesisFoliagePlacerTypes;
@@ -32,6 +33,7 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.metadata.PackMetadataGenerator;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
@@ -54,6 +56,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent;
 import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
+import terrablender.api.Regions;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -104,7 +107,7 @@ public class Genesis {
             GenesisBlocks.registerPots();
             GenesisBlocks.registerFlammability();
 
-//            Regions.register(new GenesisRegion(new ResourceLocation(MODID, MODID), GenesisConfig.COMMON.biome_weight.get()));
+            Regions.register(new GenesisRegion(new ResourceLocation(MODID, MODID), GenesisConfig.COMMON.biome_weight.get()));
         });
     }
 
