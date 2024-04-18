@@ -19,6 +19,10 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
+/**
+ * [CODE COPY] - {@link net.minecraft.world.level.block.FurnaceBlock}.<br><br>
+ * Uses soul fire particles.
+ */
 public class HolystoneFurnaceBlock extends AbstractFurnaceBlock {
     public static final MapCodec<HolystoneFurnaceBlock> CODEC = simpleCodec(HolystoneFurnaceBlock::new);
 
@@ -29,6 +33,12 @@ public class HolystoneFurnaceBlock extends AbstractFurnaceBlock {
     @Override
     protected MapCodec<? extends AbstractFurnaceBlock> codec() {
         return CODEC;
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new HolystoneFurnaceBlockEntity(pos, state);
     }
 
     @Override
@@ -44,12 +54,6 @@ public class HolystoneFurnaceBlock extends AbstractFurnaceBlock {
                 player.openMenu(furnaceBlockEntity);
             }
         }
-    }
-
-    @Nullable
-    @Override
-    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new HolystoneFurnaceBlockEntity(pos, state);
     }
 
     @Override

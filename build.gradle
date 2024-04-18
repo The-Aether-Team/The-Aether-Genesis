@@ -74,6 +74,7 @@ dependencies {
         jarJar.pin(it, "${project.terrablender_version}")
     }
 
+    compileOnly "curse.maven:jade-324717:${project.jade_version}"
 
 
     //runtimeOnly fg.deobf("io.github.flemmli97:debugutils:${project.mc_version}-${project.debugutils_version}-forge")

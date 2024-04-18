@@ -142,7 +142,6 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
     /**
      * [CODE COPY] - {@link net.minecraft.world.level.block.DoublePlantBlock#playerWillDestroy(Level, BlockPos, BlockState, Player)}.<br><br>
      * Behavior depends on the Orange Tree's age being at the point of it being a double tall block instead of a single block.
-     * @return
      */
     @Override
     public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
