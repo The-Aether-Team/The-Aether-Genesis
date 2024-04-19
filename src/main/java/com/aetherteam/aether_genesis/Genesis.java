@@ -158,6 +158,9 @@ public class Genesis {
         this.setupDataOverridePack(event);
     }
 
+    /**
+     * A built-in resource pack for programmer art.
+     */
     private void setupClassicPack(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
             Path resourcePath = ModList.get().getModFileById(Genesis.MODID).getFile().findResource("packs/classic");
@@ -176,6 +179,9 @@ public class Genesis {
         }
     }
 
+    /**
+     * A built-in data pack for overriding some datapack files in the Aether mod.
+     */
     private void setupDataOverridePack(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.SERVER_DATA) {
             Path resourcePath = ModList.get().getModFileById(Genesis.MODID).getFile().findResource("packs/data_override");
