@@ -10,6 +10,9 @@ import net.neoforged.neoforge.event.level.BlockEvent;
 
 @Mod.EventBusSubscriber(modid = Genesis.MODID)
 public class ToolAbilityListener {
+    /**
+     * @see AbilityHooks.ToolHooks#setupToolActions(BlockState, ToolAction)
+     */
     @SubscribeEvent
     public static void setupToolModifications(BlockEvent.BlockToolModificationEvent event) {
         BlockState oldState = event.getState();

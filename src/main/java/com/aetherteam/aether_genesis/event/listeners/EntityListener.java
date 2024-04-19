@@ -1,10 +1,7 @@
 package com.aetherteam.aether_genesis.event.listeners;
 
-import com.aetherteam.aether.entity.AetherEntityTypes;
-import com.aetherteam.aether.entity.monster.Zephyr;
-import com.aetherteam.aether_genesis.GenesisConfig;
-import com.aetherteam.aether_genesis.attachment.GenesisDataAttachments;
-import com.aetherteam.aether_genesis.attachment.ZephyrColorAttachment;
+import com.aetherteam.aether_genesis.Genesis;
+import com.aetherteam.aether_genesis.event.hooks.EntityHooks;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,47 +11,49 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.EntityEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.MobSpawnEvent;
+import org.apache.commons.lang3.tuple.Pair;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(modid = Genesis.MODID)
 public class EntityListener {
+    /**
+     * @see EntityHooks#setZephyrColor(Entity)
+     */
     @SubscribeEvent
     public static void onJoin(EntityJoinLevelEvent event) {
         Entity entity = event.getEntity();
-        if (GenesisConfig.COMMON.tan_zephyr_variation.get()) {
-            if (entity.getType() == AetherEntityTypes.ZEPHYR.get() && entity instanceof Zephyr zephyr) {
-                if (zephyr.getRandom().nextInt(10) == 0) {
-                    zephyr.getData(GenesisDataAttachments.ZEPHYR_COLOR).setTan(true);
-                    zephyr.refreshDimensions();
-                }
-            }
-        }
+        EntityHooks.setZephyrColor(entity);
     }
 
+    /**
+     * @see EntityHooks#determineZephyrSize(Entity)
+     */
     @SubscribeEvent
     public static void onSize(EntityEvent.Size event) {
         Entity entity = event.getEntity();
-        if (entity.getType() == AetherEntityTypes.ZEPHYR.get() && entity instanceof Zephyr zephyr) {
-            ZephyrColorAttachment attachment = zephyr.getData(GenesisDataAttachments.ZEPHYR_COLOR);
-            if (attachment.isTan()) {
-                event.setNewSize(EntityDimensions.fixed(3.5F, 2.25F), true);
-            }
+        Pair<EntityDimensions, Boolean> size = EntityHooks.determineZephyrSize(entity);
+        if (size != null) {
+            event.setNewSize(size.getLeft(), size.getRight());
         }
     }
 
+    /**
+     * @see EntityHooks#shouldStopZephyrSpawn(LivingEntity)
+     */
     @SubscribeEvent
     public static void finalizeSpawn(MobSpawnEvent.FinalizeSpawn event) {
         LivingEntity zephyr = event.getEntity();
-        if (zephyr.getType() == AetherEntityTypes.ZEPHYR.get() && !zephyr.level().isClientSide()) {
-            if (zephyr.level().isNight()) {
-                event.setSpawnCancelled(true);
-            }
+        if (EntityHooks.shouldStopZephyrSpawn(zephyr)) {
+            event.setSpawnCancelled(true);
         }
     }
 
+    /**
+     * @see EntityHooks#shouldZephyrDespawn(LivingEntity)
+     */
     @SubscribeEvent
     public static void allowDespawn(MobSpawnEvent.AllowDespawn event) {
         LivingEntity zephyr = event.getEntity();
-        if (zephyr.getType() == AetherEntityTypes.ZEPHYR.get() && !zephyr.level().isClientSide() && zephyr.level().isNight() && zephyr.getRandom().nextInt(100) == 0) {
+        if (EntityHooks.shouldZephyrDespawn(zephyr)) {
             event.setResult(Event.Result.ALLOW);
         }
     }

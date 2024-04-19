@@ -12,6 +12,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
+/**
+ * [CODE COPY] - {@link net.minecraft.world.level.storage.loot.entries.AlternativesEntry}.
+ * Shuffles the entry list for randomization instead of alternatives.
+ */
 public class RandomEntry extends CompositeEntryBase {
     RandomEntry(List<LootPoolEntryContainer> children, List<LootItemCondition> conditions) {
         super(children, conditions);

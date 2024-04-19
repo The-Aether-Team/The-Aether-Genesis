@@ -35,6 +35,13 @@ public class CarrionSproutSize extends LootItemConditionalFunction {
         this.maximum = maximum;
     }
 
+    /**
+     * Determines the drop count of Wyndberries based on a Carrion Sprout's size.
+     *
+     * @param stack   The {@link ItemStack} for the loot pool.
+     * @param context The {@link LootContext}.
+     * @return The {@link ItemStack} for the loot pool.
+     */
     @Override
     protected ItemStack run(ItemStack stack, LootContext context) {
         Entity entity = context.getParamOrNull(LootContextParams.THIS_ENTITY);
