@@ -7,6 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.data.DataMapProvider;
 import net.neoforged.neoforge.registries.datamaps.builtin.Compostable;
+import net.neoforged.neoforge.registries.datamaps.builtin.FurnaceFuel;
 import net.neoforged.neoforge.registries.datamaps.builtin.NeoForgeDataMaps;
 
 import java.util.concurrent.CompletableFuture;
@@ -26,6 +27,10 @@ public class GenesisDataMapData extends DataMapProvider {
         this.addCompost(compostables, GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get().asItem(), 0.3F);
         this.addCompost(compostables, GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get(), 0.3F);
         this.addCompost(compostables, GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), 0.3F);
+
+        var fuels = this.builder(NeoForgeDataMaps.FURNACE_FUELS);
+        fuels.add(GenesisBlocks.SKYROOT_CRAFTING_TABLE.asItem().builtInRegistryHolder(), new FurnaceFuel(300), false);
+        fuels.add(GenesisBlocks.SKYROOT_LADDER.asItem().builtInRegistryHolder(), new FurnaceFuel(300), false);
     }
 
     private void addCompost(DataMapProvider.Builder<Compostable, Item> map, ItemLike item, float chance) {

@@ -17,24 +17,37 @@ public class FrostpineTotemItem extends CompanionItem<FrostpineTotem> {
         super(companionType, properties);
     }
 
+    /**
+     * Applies a night vision effect to players if they do not already have it.
+     *
+     * @param slotContext The {@link SlotContext} of the Curio.
+     * @param stack       The Curio {@link ItemStack}.
+     */
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         LivingEntity livingEntity = slotContext.entity();
         if (!livingEntity.level().isClientSide()) {
             boolean noEffect = true;
             for (MobEffectInstance effect : livingEntity.getActiveEffects()) {
-                if (effect.toString().equals(TOTEM_NIGHT_VISION_EFFECT.toString())) {
+                if (effect.toString().equals(TOTEM_NIGHT_VISION_EFFECT.toString())) { // Checks if the player already has the effect.
                     noEffect = false;
                     break;
                 }
             }
-            if (noEffect) {
+            if (noEffect) { // Applies the effect.
                 MobEffectInstance nightVisionEffect = new MobEffectInstance(TOTEM_NIGHT_VISION_EFFECT);
                 livingEntity.addEffect(nightVisionEffect, livingEntity);
             }
         }
     }
 
+    /**
+     * Removes the night vision effect when the Frostpine Totem is unequipped.
+     *
+     * @param slotContext The {@link SlotContext} of the Curio.
+     * @param newStack    The new {@link ItemStack} in the slot.
+     * @param stack       The {@link ItemStack} of the Curio.
+     */
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
         LivingEntity livingEntity = slotContext.entity();
@@ -53,6 +66,9 @@ public class FrostpineTotemItem extends CompanionItem<FrostpineTotem> {
         super.onUnequip(slotContext, newStack, stack);
     }
 
+    /**
+     * @return The night vision {@link MobEffectInstance}. It is infinite and does not display visible particles.
+     */
     public static MobEffectInstance getTotemNightVisionEffect() {
         return TOTEM_NIGHT_VISION_EFFECT;
     }

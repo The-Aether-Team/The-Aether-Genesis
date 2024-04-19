@@ -37,7 +37,7 @@ public class GenesisAudioListener {
         if (level != null) {
             RandomSource random = level.getRandom();
             if (GenesisAudioHooks.shouldReplacePortalHum(sound)) { // Parameters based on Nether Portal hum.
-                event.setSound(new SimpleSoundInstance(GenesisSoundEvents.PORTAL_HUM.get(), SoundSource.BLOCKS, 0.5F, random.nextFloat() * 0.4F + 0.8F, RandomSource.create(random.nextLong()), sound.getX(), sound.getY(), sound.getZ()));
+                event.setSound(new SimpleSoundInstance(GenesisSoundEvents.BLOCK_AETHER_PORTAL_HUM.get(), SoundSource.BLOCKS, 0.5F, random.nextFloat() * 0.4F + 0.8F, RandomSource.create(random.nextLong()), sound.getX(), sound.getY(), sound.getZ()));
             }
         }
 

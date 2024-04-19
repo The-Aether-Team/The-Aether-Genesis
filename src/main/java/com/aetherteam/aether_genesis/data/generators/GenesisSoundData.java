@@ -14,24 +14,50 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
     @Override
     public void registerSounds() {
         // Blocks
-        this.add(GenesisSoundEvents.PORTAL_HUM,
+        this.add(GenesisSoundEvents.BLOCK_AETHER_PORTAL_HUM,
                 definition().with(sound("aether_genesis:block/portal/hum"))
                         .subtitle("subtitles.aether_genesis.block.portal.hum")
         );
-        this.add(GenesisSoundEvents.PORTAL_TRAVEL,
+        this.add(GenesisSoundEvents.BLOCK_AETHER_PORTAL_TRAVEL,
                 definition().with(sound("aether_genesis:block/portal/travel"))
         );
-        this.add(GenesisSoundEvents.PORTAL_TRIGGER,
+        this.add(GenesisSoundEvents.BLOCK_AETHER_PORTAL_TRIGGER,
                 definition().with(sound("aether_genesis:block/portal/trigger"))
                         .subtitle("subtitles.aether_genesis.block.portal.trigger")
         );
-        this.add(GenesisSoundEvents.BLUE_AERCLOUD_BOUNCE,
+        this.add(GenesisSoundEvents.BLOCK_BLUE_AERCLOUD_BOUNCE,
                 definition().with(sound("aether_genesis:block/aercloud/blue_aercloud_bounce"))
                         .subtitle("subtitles.aether_genesis.block.aercloud.blue_aercloud_bounce")
         );
 
 
         // Items
+        this.add(GenesisSoundEvents.ITEM_BONE_RING_EQUIP,
+                definition().with(
+                        sound("mob/skeleton/say1"),
+                        sound( "mob/skeleton/say2"),
+                        sound("mob/skeleton/say3")
+                ).subtitle("subtitles.aether_genesis.item.accessory.equip_bone_ring")
+        );
+        this.add(GenesisSoundEvents.ITEM_CANDY_RING_EQUIP,
+                definition().with(
+                        sound("minecraft:item/armor/equip_chain1"),
+                        sound("minecraft:item/armor/equip_chain2"),
+                        sound("minecraft:item/armor/equip_chain3"),
+                        sound("minecraft:item/armor/equip_chain4"),
+                        sound("minecraft:item/armor/equip_chain5"),
+                        sound("minecraft:item/armor/equip_chain6")
+                ).subtitle("subtitles.aether_genesis.item.accessory.equip_candy_ring")
+        );
+        this.add(GenesisSoundEvents.ITEM_SKYROOT_RING_EQUIP,
+                definition().with(
+                        sound("dig/wood1"),
+                        sound("dig/wood2"),
+                        sound("dig/wood3"),
+                        sound("dig/wood4")
+                ).subtitle("subtitles.aether_genesis.item.accessory.equip_skyroot_wing")
+        );
+
         this.add(GenesisSoundEvents.ITEM_MUSIC_DISC_AERWHALE,
                 definition().with(sound("aether_genesis:item/records/aerwhale").stream())
         );

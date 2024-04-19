@@ -10,7 +10,12 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
 import top.theillusivec4.curios.api.SlotContext;
 
-public interface Companion<T extends Entity> {
+public interface CompanionAccessory<T extends Entity> {
+    /**
+     * Attaches a companion entity to the player for tracking using {@link com.aetherteam.aether_genesis.attachment.GenesisPlayerAttachment}.
+     *
+     * @param slotContext The {@link SlotContext} of the Companion accessory.
+     */
     default void equip(SlotContext slotContext) {
         LivingEntity wearer = slotContext.entity();
         if (wearer.level() instanceof ServerLevel serverLevel) {
@@ -23,6 +28,11 @@ public interface Companion<T extends Entity> {
         }
     }
 
+    /**
+     * Removes a companion entity from being tracked with the player through {@link com.aetherteam.aether_genesis.attachment.GenesisPlayerAttachment}.
+     *
+     * @param slotContext The {@link SlotContext} of the Companion accessory.
+     */
     default void unequip(SlotContext slotContext) {
         LivingEntity wearer = slotContext.entity();
         if (wearer instanceof Player player) {
@@ -30,5 +40,8 @@ public interface Companion<T extends Entity> {
         }
     }
 
+    /**
+     * @return The companion {@link EntityType}.
+     */
     EntityType<T> getCompanionType();
 }

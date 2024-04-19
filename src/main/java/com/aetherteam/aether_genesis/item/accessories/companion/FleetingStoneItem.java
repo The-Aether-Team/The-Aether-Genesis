@@ -12,6 +12,9 @@ import top.theillusivec4.curios.api.SlotContext;
 import java.util.UUID;
 import java.util.function.Supplier;
 
+/**
+ * [CODE COPY] - {@link com.aetherteam.aether.item.accessories.cape.AgilityCapeItem}
+ */
 public class FleetingStoneItem extends CompanionItem<FleetingWisp> {
     /**
      * The unique identifier for the item's step height modifier.
@@ -24,6 +27,7 @@ public class FleetingStoneItem extends CompanionItem<FleetingWisp> {
 
     /**
      * Applies a step height modifier to the wearer as long as they aren't holding shift. If they are, the modifier is removed until they stop holding shift.
+     *
      * @param slotContext The {@link SlotContext} of the Curio.
      * @param stack The Curio {@link ItemStack}.
      */
@@ -43,6 +47,7 @@ public class FleetingStoneItem extends CompanionItem<FleetingWisp> {
 
     /**
      * Removes the step height modifier when the Agility Cape is unequipped.
+     *
      * @param slotContext The {@link SlotContext} of the Curio.
      * @param newStack The new {@link ItemStack} in the slot.
      * @param stack The {@link ItemStack} of the Curio.

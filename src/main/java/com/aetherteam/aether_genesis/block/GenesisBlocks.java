@@ -21,7 +21,6 @@ import com.aetherteam.aether_genesis.blockentity.SkyrootChestBlockEntity;
 import com.aetherteam.aether_genesis.blockentity.SkyrootChestMimicBlockEntity;
 import com.aetherteam.aether_genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.aether_genesis.item.GenesisItems;
-import com.aetherteam.aether_genesis.item.block.WoodenBlockItem;
 import com.aetherteam.aether_genesis.world.treegrower.GenesisTreeGrowers;
 import com.aetherteam.nitrogen.item.block.EntityBlockItem;
 import net.minecraft.core.BlockPos;
@@ -147,9 +146,7 @@ public class GenesisBlocks {
     private static <B extends Block> Supplier<BlockItem> registerBlockItem(final DeferredBlock<B> blockDeferredBlock) {
         return () -> {
             B block = Objects.requireNonNull(blockDeferredBlock.get());
-            if (block == SKYROOT_CRAFTING_TABLE.get() || block == SKYROOT_LADDER.get()) {
-                return new WoodenBlockItem(block, new Item.Properties());
-            } else if (block == SKYROOT_CHEST.get()) {
+            if (block == SKYROOT_CHEST.get()) {
                 return new EntityBlockItem(block, SkyrootChestBlockEntity::new, new Item.Properties());
             }else if (block == SKYROOT_CHEST_MIMIC.get()) {
                 return new EntityBlockItem(block, SkyrootChestMimicBlockEntity::new, new Item.Properties());

@@ -16,6 +16,9 @@ import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.function.Supplier;
 
+/**
+ * [CODE COPY] - {@link com.aetherteam.aether.item.accessories.cape.InvisibilityCloakItem}
+ */
 public class EtherealStoneItem extends CompanionItem<EtherealWisp> {
     public EtherealStoneItem(Supplier<EntityType<EtherealWisp>> companionType, Properties properties) {
         super(companionType, properties);

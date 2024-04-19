@@ -47,9 +47,9 @@ public class GenesisAudioHooks {
     public static boolean shouldCancelPortalSound(SoundEngine soundEngine, SoundInstance sound) {
         if (sound != null) {
             if (sound.getSource() == SoundSource.BLOCKS) {
-                if (sound.getLocation().equals(GenesisSoundEvents.PORTAL_HUM.get().getLocation())
-                        || sound.getLocation().equals(GenesisSoundEvents.PORTAL_TRAVEL.get().getLocation())
-                        || sound.getLocation().equals(GenesisSoundEvents.PORTAL_TRIGGER.get().getLocation())) {
+                if (sound.getLocation().equals(GenesisSoundEvents.BLOCK_AETHER_PORTAL_HUM.get().getLocation())
+                        || sound.getLocation().equals(GenesisSoundEvents.BLOCK_AETHER_PORTAL_TRAVEL.get().getLocation())
+                        || sound.getLocation().equals(GenesisSoundEvents.BLOCK_AETHER_PORTAL_TRIGGER.get().getLocation())) {
                     List<ResourceLocation> activeSounds = ((SoundEngineAccessor) soundEngine).aether_genesis$getInstanceToChannel().keySet().stream().map(SoundInstance::getLocation).toList();
                     return activeSounds.contains(sound.getLocation());
                 }

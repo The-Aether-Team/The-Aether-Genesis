@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Swet.class)
 public class SwetMixin {
     @Inject(at = @At(value = "HEAD"), method = "isFriendlyTowardEntity", cancellable = true, remap = false)
-    private void getDefaultCollisionShape(LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
+    private void isFriendlyTowardEntity(LivingEntity entity, CallbackInfoReturnable<Boolean> cir) {
         if (EquipmentUtil.hasCurio(entity, GenesisItems.BABY_PINK_SWET.get())) {
             cir.setReturnValue(true);
         }

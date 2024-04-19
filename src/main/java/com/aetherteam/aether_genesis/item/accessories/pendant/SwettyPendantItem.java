@@ -18,6 +18,12 @@ public class SwettyPendantItem extends PendantItem {
         super(new ResourceLocation(Genesis.MODID, "swetty_pendant"), AetherSoundEvents.ITEM_ACCESSORY_EQUIP_ICE_PENDANT, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT));
     }
 
+    /**
+     * Slows the wearer's downwards and horizontal movement when colliding against a wall.
+     *
+     * @param slotContext The {@link SlotContext} of the Curio.
+     * @param stack       The Curio {@link ItemStack}.
+     */
     @Override
     public void curioTick(SlotContext slotContext, ItemStack stack) {
         LivingEntity livingEntity = slotContext.entity();

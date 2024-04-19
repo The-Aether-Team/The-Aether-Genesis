@@ -110,6 +110,8 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.RECORDING_892, "Recording #892");
         this.addDiscDesc(GenesisItems.RECORDING_892, "Emile van Krieken - ???");
 
+        this.addGeneric("experience.desc", "Experience (%s inside)");
+
         this.addEntityType(GenesisEntityTypes.CARRION_SPROUT, "Carrion Sprout");
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");
