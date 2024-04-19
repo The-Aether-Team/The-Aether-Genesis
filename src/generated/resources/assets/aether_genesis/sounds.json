@@ -139,6 +139,34 @@
     ],
     "subtitle": "subtitles.aether_genesis.entity.tracking_golem.seen_enemy"
   },
+  "item.accessory.equip_bone_ring": {
+    "sounds": [
+      "mob/skeleton/say1",
+      "mob/skeleton/say2",
+      "mob/skeleton/say3"
+    ],
+    "subtitle": "subtitles.aether_genesis.item.accessory.equip_bone_ring"
+  },
+  "item.accessory.equip_candy_ring": {
+    "sounds": [
+      "item/armor/equip_chain1",
+      "item/armor/equip_chain2",
+      "item/armor/equip_chain3",
+      "item/armor/equip_chain4",
+      "item/armor/equip_chain5",
+      "item/armor/equip_chain6"
+    ],
+    "subtitle": "subtitles.aether_genesis.item.accessory.equip_candy_ring"
+  },
+  "item.accessory.equip_skyroot_ring": {
+    "sounds": [
+      "dig/wood1",
+      "dig/wood2",
+      "dig/wood3",
+      "dig/wood4"
+    ],
+    "subtitle": "subtitles.aether_genesis.item.accessory.equip_skyroot_ring"
+  },
   "item.music_disc.aerwhale": {
     "sounds": [
       {

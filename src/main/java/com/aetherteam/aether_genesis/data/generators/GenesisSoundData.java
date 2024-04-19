@@ -55,7 +55,7 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                         sound("dig/wood2"),
                         sound("dig/wood3"),
                         sound("dig/wood4")
-                ).subtitle("subtitles.aether_genesis.item.accessory.equip_skyroot_wing")
+                ).subtitle("subtitles.aether_genesis.item.accessory.equip_skyroot_ring")
         );
 
         this.add(GenesisSoundEvents.ITEM_MUSIC_DISC_AERWHALE,
