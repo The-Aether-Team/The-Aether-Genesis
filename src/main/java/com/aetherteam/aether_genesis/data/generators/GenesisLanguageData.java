@@ -150,6 +150,8 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addBlock(GenesisBlocks.COLD_FIRE, "Cold Fire");
 
         //todo missing subtitles
+        this.addSubtitle("block", "portal.hum", "Aether Portal hums");
+        this.addSubtitle("block", "portal.trigger", "Aether Portal hum intensifies");
         this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");
         this.addSubtitle("block", "aercloud.blue_aercloud_bounce", "Blue Aercloud bounces");
@@ -157,9 +159,6 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addSubtitle("entity", "tempest.ambient", "Tempest blows");
         this.addSubtitle("entity", "tempest.death", "Tempest dies");
         this.addSubtitle("entity", "tempest.hurt", "Tempest hurts");
-
-        this.addSubtitle("block", "portal.hum", "Aether Portal hums");
-        this.addSubtitle("block", "portal.trigger", "Aether Portal hum intensifies");
 
         this.addContainerType(GenesisMenuTypes.HOLYSTONE_FURNACE, "Holystone Furnace");
 
