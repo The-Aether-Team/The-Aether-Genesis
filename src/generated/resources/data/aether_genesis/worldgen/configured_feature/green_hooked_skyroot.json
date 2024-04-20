@@ -28,7 +28,7 @@
       }
     },
     "foliage_placer": {
-      "type": "aether_genesis:hooked_foliage_placer",
+      "type": "nitrogen_internals:hooked_foliage_placer",
       "offset": 1,
       "radius": 2,
       "trunk_height": 2
@@ -54,7 +54,7 @@
       "upper_size": 4
     },
     "trunk_placer": {
-      "type": "aether_genesis:hooked_trunk_placer",
+      "type": "nitrogen_internals:hooked_trunk_placer",
       "base_height": 8,
       "height_rand_a": 14,
       "height_rand_b": 14

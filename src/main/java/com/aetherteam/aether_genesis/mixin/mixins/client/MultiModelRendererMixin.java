@@ -23,7 +23,7 @@ public class MultiModelRendererMixin<T extends Mob, M extends EntityModel<T>, N 
     private static final ResourceLocation ZEPHYR_TAN_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/zephyr/zephyr_tan.png");
 
     @Inject(at = @At(value = "HEAD"), method = "getTextureLocation(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/resources/ResourceLocation;", cancellable = true)
-    private void getDefaultTexture(Entity entity, CallbackInfoReturnable<ResourceLocation> cir) {
+    private void getTextureLocation(Entity entity, CallbackInfoReturnable<ResourceLocation> cir) {
         if (entity.getType() == AetherEntityTypes.ZEPHYR.get() && entity instanceof Zephyr zephyr && !AetherConfig.CLIENT.legacy_models.get()) {
             ZephyrColorAttachment attachment = zephyr.getData(GenesisDataAttachments.ZEPHYR_COLOR);
             if (attachment.isTan()) {

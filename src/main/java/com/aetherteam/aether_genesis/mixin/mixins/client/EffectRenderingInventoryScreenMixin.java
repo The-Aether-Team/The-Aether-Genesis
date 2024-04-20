@@ -12,7 +12,7 @@ import java.util.stream.StreamSupport;
 
 @Mixin(EffectRenderingInventoryScreen.class)
 public class EffectRenderingInventoryScreenMixin {
-    @ModifyVariable(method = "renderEffects", at = @At(value = "STORE"), index = 10)
+    @ModifyVariable(method = "renderEffects(Lnet/minecraft/client/gui/GuiGraphics;II)V", at = @At(value = "STORE"), index = 10)
     private Iterable<MobEffectInstance> injected(Iterable<MobEffectInstance> effects) {
         return StreamSupport.stream(effects.spliterator(), false).filter((effectInstance) -> !(effectInstance.toString().equals(FrostpineTotemItem.getTotemNightVisionEffect().toString()))).sorted().collect(Collectors.toList());
     }

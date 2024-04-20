@@ -9,7 +9,7 @@
       }
     },
     "foliage_placer": {
-      "type": "aether_genesis:aether_pine_foliage_placer",
+      "type": "nitrogen_internals:aether_pine_foliage_placer",
       "offset": 1,
       "radius": 2,
       "trunk_height": 2

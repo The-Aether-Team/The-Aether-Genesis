@@ -1,5 +1,5 @@
 {
-  "type": "aether_genesis:add_mob_charge",
+  "type": "nitrogen_internals:add_mob_charge",
   "biomes": "#aether_genesis:has_tempest",
   "charge": 0.6,
   "energy_budget": 0.16,

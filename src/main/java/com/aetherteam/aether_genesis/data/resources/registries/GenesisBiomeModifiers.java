@@ -3,7 +3,7 @@ package com.aetherteam.aether_genesis.data.resources.registries;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.GenesisTags;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
-import com.aetherteam.aether_genesis.world.biomemodifier.AddMobChargeBiomeModifier;
+import com.aetherteam.nitrogen.world.biomemodifier.AddMobChargeBiomeModifier;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;

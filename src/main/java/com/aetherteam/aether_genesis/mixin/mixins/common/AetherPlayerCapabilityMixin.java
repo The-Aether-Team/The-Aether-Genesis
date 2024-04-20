@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(AetherPlayerAttachment.class)
 public class AetherPlayerCapabilityMixin {
-    @Redirect(remap = false, method = "playPortalSound", at = @At(value = "INVOKE", target = "Lnet/neoforged/neoforge/registries/DeferredHolder;get()Ljava/lang/Object;"))
-    private Object replacePortalTravelSound(DeferredHolder<?, ?> instance) {
+    @Redirect(remap = false, method = "playPortalSound(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/entity/player/Player;)V", at = @At(value = "INVOKE", target = "Lnet/neoforged/neoforge/registries/DeferredHolder;get()Ljava/lang/Object;"))
+    private Object playPortalSound(DeferredHolder<?, ?> instance) {
         return GenesisConfig.COMMON.aether_ii_portal_sounds.get() ? GenesisSoundEvents.BLOCK_AETHER_PORTAL_TRIGGER.get() : instance.get();
     }
 }

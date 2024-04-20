@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Item.class)
 public class ItemMixin {
-    @Inject(at = @At(value = "HEAD"), method = "getMaxDamage", cancellable = true)
+    @Inject(at = @At(value = "HEAD"), method = "getMaxDamage()I", cancellable = true)
     private void getMaxDamage(CallbackInfoReturnable<Integer> cir) {
         Item item = (Item) (Object) this;
         if (item == AetherItems.GOLDEN_PARACHUTE.get() && GenesisConfig.COMMON.gold_aercloud_ability.get()) {

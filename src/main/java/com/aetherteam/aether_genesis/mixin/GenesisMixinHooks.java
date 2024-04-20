@@ -11,13 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GenesisMixinHooks {
-    public static List<StructurePieceType> getValidPieceTypes() {
-        List<StructurePieceType> types = new ArrayList<>();
-        types.add(AetherStructurePieceTypes.SILVER_DUNGEON_ROOM.get());
-        types.add(AetherStructurePieceTypes.BRONZE_DUNGEON_ROOM.get());
-        return types;
-    }
-
     public static BlockState replaceChest(BlockState state, StructurePieceType structurePieceType) {
         if (getValidPieceTypes().contains(structurePieceType)) {
             if (state.is(Blocks.CHEST)) {
@@ -27,5 +20,12 @@ public class GenesisMixinHooks {
             }
         }
         return state;
+    }
+
+    public static List<StructurePieceType> getValidPieceTypes() {
+        List<StructurePieceType> types = new ArrayList<>();
+        types.add(AetherStructurePieceTypes.SILVER_DUNGEON_ROOM.get());
+        types.add(AetherStructurePieceTypes.BRONZE_DUNGEON_ROOM.get());
+        return types;
     }
 }

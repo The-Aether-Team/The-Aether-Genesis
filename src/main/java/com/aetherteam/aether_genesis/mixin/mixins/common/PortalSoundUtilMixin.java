@@ -10,8 +10,8 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(PortalSoundUtil.class)
 public class PortalSoundUtilMixin {
-    @Redirect(remap = false, method = "playPortalSound", at = @At(value = "INVOKE", target = "Lnet/neoforged/neoforge/registries/DeferredHolder;get()Ljava/lang/Object;"))
-    private static Object replacePortalTravelSound(DeferredHolder<?, ?> instance) {
+    @Redirect(remap = false, method = "playPortalSound(Lnet/minecraft/client/player/LocalPlayer;)V", at = @At(value = "INVOKE", target = "Lnet/neoforged/neoforge/registries/DeferredHolder;get()Ljava/lang/Object;"))
+    private static Object playPortalSound(DeferredHolder<?, ?> instance) {
         return GenesisConfig.COMMON.aether_ii_portal_sounds.get() ? GenesisSoundEvents.BLOCK_AETHER_PORTAL_TRAVEL.get() : instance.get();
     }
 }

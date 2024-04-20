@@ -1,5 +1,5 @@
 {
-  "type": "aether_genesis:add_mob_charge",
+  "type": "nitrogen_internals:add_mob_charge",
   "biomes": "#aether_genesis:has_carrion_sprout",
   "charge": 0.4,
   "energy_budget": 0.11,

@@ -20,9 +20,7 @@ import com.aetherteam.aether_genesis.loot.modifiers.GenesisLootModifiers;
 import com.aetherteam.aether_genesis.network.packet.GenesisPlayerSyncPacket;
 import com.aetherteam.aether_genesis.network.packet.ZephyrColorSyncPacket;
 import com.aetherteam.aether_genesis.world.GenesisRegion;
-import com.aetherteam.aether_genesis.world.biomemodifier.GenesisBiomeModifierSerializers;
 import com.aetherteam.aether_genesis.world.feature.GenesisFeatures;
-import com.aetherteam.aether_genesis.world.foliageplacer.GenesisFoliagePlacerTypes;
 import com.aetherteam.aether_genesis.world.treedecorator.GenesisTreeDecoratorTypes;
 import com.aetherteam.aether_genesis.world.trunkplacer.GenesisTrunkPlacerTypes;
 import com.mojang.logging.LogUtils;
@@ -84,12 +82,10 @@ public class Genesis {
                 GenesisLootFunctions.LOOT_FUNCTION_TYPES,
                 GenesisLootModifiers.GLOBAL_LOOT_MODIFIERS,
                 GenesisFeatures.FEATURES,
-                GenesisFoliagePlacerTypes.FOLIAGE_PLACERS,
-                GenesisTrunkPlacerTypes.TRUNK_PLACERS,
                 GenesisTreeDecoratorTypes.TREE_DECORATORS,
+                GenesisTrunkPlacerTypes.TRUNK_PLACERS,
                 GenesisParticleTypes.PARTICLES,
                 GenesisSoundEvents.SOUNDS,
-                GenesisBiomeModifierSerializers.BIOME_MODIFIER_SERIALIZERS,
                 GenesisAdvancementTriggers.TRIGGERS,
                 GenesisDataAttachments.ATTACHMENTS
         };

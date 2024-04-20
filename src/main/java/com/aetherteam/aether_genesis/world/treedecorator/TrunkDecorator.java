@@ -12,7 +12,10 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 
-public class TrunkDecorator extends TreeDecorator { //todo docs
+/**
+ * Creates a trunk of log walls surrounding the bottom of a tree.
+ */
+public class TrunkDecorator extends TreeDecorator {
     public static final Codec<TrunkDecorator> CODEC = BlockStateProvider.CODEC.fieldOf("provider").xmap(TrunkDecorator::new, (decorator) -> decorator.provider).codec();
     private final BlockStateProvider provider;
 
@@ -34,7 +37,7 @@ public class TrunkDecorator extends TreeDecorator { //todo docs
             int j = (int) Mth.cos(f);
             int k = (int) Mth.sin(f);
             Direction direction = Direction.fromDelta(j, 0, k);
-            if (direction != null) {
+            if (direction != null) { // Creates three log walls in a triangular position for each of the cardinal directions.
                 if (direction == Direction.NORTH) {
                     BlockPos pos = basePos.offset(j, 0, k);
                     this.placeBlockAt(context, pos, this.provider.getState(context.random(), pos).setValue(WallBlock.SOUTH_WALL, WallSide.TALL).setValue(WallBlock.NORTH_WALL, WallSide.LOW));
