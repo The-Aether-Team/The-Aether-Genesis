@@ -21,6 +21,9 @@ public class ZephyrTransparencyLayerMixin {
     @Unique
     private static final ResourceLocation ZEPHYR_TAN_TRANSPARENCY_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/zephyr/zephyr_tan_layer.png");
 
+    /**
+     * Sets the Zephyr texture to be tan according to the {@link ZephyrColorAttachment}.
+     */
     @ModifyVariable(method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILcom/aetherteam/aether/entity/monster/Zephyr;FFFFFF)V", at = @At(value = "STORE"), remap = false)
     private VertexConsumer injected(VertexConsumer consumer, @Local MultiBufferSource buffer, @Local Zephyr zephyr) {
         if (!AetherConfig.CLIENT.legacy_models.get()) {

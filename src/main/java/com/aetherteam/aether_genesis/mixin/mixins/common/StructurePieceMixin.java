@@ -11,6 +11,9 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(StructurePiece.class)
 public abstract class StructurePieceMixin {
+    /**
+     * Replaces chests in Aether dungeons with Skyroot Chests.
+     */
     @ModifyVariable(
             method = "createChest(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/level/levelgen/structure/BoundingBox;Lnet/minecraft/util/RandomSource;Lnet/minecraft/core/BlockPos;Lnet/minecraft/resources/ResourceLocation;Lnet/minecraft/world/level/block/state/BlockState;)Z",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/ServerLevelAccessor;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z", shift = At.Shift.BY, by = -2),
@@ -21,6 +24,9 @@ public abstract class StructurePieceMixin {
         return GenesisMixinHooks.replaceChest(state, structurePiece.getType());
     }
 
+    /**
+     * Replaces chests in Aether dungeons with Skyroot Chests.
+     */
     @ModifyVariable(
             method = "placeBlock(Lnet/minecraft/world/level/WorldGenLevel;Lnet/minecraft/world/level/block/state/BlockState;IIILnet/minecraft/world/level/levelgen/structure/BoundingBox;)V",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/WorldGenLevel;setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;I)Z", shift = At.Shift.BY, by = -2),

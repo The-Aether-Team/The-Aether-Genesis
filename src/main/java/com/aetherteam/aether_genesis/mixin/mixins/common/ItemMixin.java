@@ -10,6 +10,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Item.class)
 public class ItemMixin {
+    /**
+     * Changes Golden Parachutes to have only one use.
+     */
     @Inject(at = @At(value = "HEAD"), method = "getMaxDamage()I", cancellable = true)
     private void getMaxDamage(CallbackInfoReturnable<Integer> cir) {
         Item item = (Item) (Object) this;

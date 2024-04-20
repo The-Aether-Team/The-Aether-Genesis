@@ -19,6 +19,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AercloudBlock.class)
 public class AercloudBlockMixin {
+    /**
+     * Changes Gold Aercloud behavior to launch an entity downwards.
+     */
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;resetFallDistance()V", shift = At.Shift.AFTER), method = "entityInside(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/Level;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/entity/Entity;)V", cancellable = true)
     private void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, CallbackInfo ci) {
         AercloudBlock block = (AercloudBlock) (Object) this;
@@ -30,6 +33,9 @@ public class AercloudBlockMixin {
         }
     }
 
+    /**
+     * Changes Gold Aerclouds to have no collision.
+     */
     @Inject(at = @At(value = "HEAD"), method = "getDefaultCollisionShape(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/phys/shapes/CollisionContext;)Lnet/minecraft/world/phys/shapes/VoxelShape;", cancellable = true, remap = false)
     private void getDefaultCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context, CallbackInfoReturnable<VoxelShape> cir) {
         AercloudBlock block = (AercloudBlock) (Object) this;

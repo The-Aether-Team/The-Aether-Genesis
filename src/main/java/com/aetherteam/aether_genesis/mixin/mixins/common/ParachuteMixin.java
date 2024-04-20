@@ -13,7 +13,10 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Parachute.class)
-public class ParachuteMixin {
+public class ParachuteMixin { //todo: make this method public in the base aether mod so it can just be overridden in the parachute class.
+    /**
+     * Makes Gold Parachutes descend with faster motion than normal parachutes.
+     */
     @Inject(at = @At(value = "INVOKE", target = "Lcom/aetherteam/aether/entity/miscellaneous/Parachute;setYRot(F)V", shift = At.Shift.BEFORE), method = "moveParachute(Lnet/minecraft/world/entity/LivingEntity;)V", cancellable = true)
     private void moveParachute(LivingEntity passenger, CallbackInfo ci) {
         Parachute parachute = (Parachute) (Object) this;

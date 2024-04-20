@@ -9,7 +9,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(AetherPlayerAttachment.class)
-public class AetherPlayerCapabilityMixin {
+public class AetherPlayerCapabilityMixin { //todo: replace with a config-enabled resource pack that overrides the sounds.json
+    /**
+     * Changes the Aether Portal's sound.
+     */
     @Redirect(remap = false, method = "playPortalSound(Lnet/minecraft/client/Minecraft;Lnet/minecraft/world/entity/player/Player;)V", at = @At(value = "INVOKE", target = "Lnet/neoforged/neoforge/registries/DeferredHolder;get()Ljava/lang/Object;"))
     private Object playPortalSound(DeferredHolder<?, ?> instance) {
         return GenesisConfig.COMMON.aether_ii_portal_sounds.get() ? GenesisSoundEvents.BLOCK_AETHER_PORTAL_TRIGGER.get() : instance.get();

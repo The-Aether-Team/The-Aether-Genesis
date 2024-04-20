@@ -12,6 +12,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ZephyrRenderer.class)
 public class ZephyrRendererMixin {
+    /**
+     * Shrinks a Zephyr's scale if it is tan according to the {@link ZephyrColorAttachment}.
+     */
     @Inject(at = @At(value = "TAIL"), method = "scale(Lcom/aetherteam/aether/entity/monster/Zephyr;Lcom/mojang/blaze3d/vertex/PoseStack;F)V", remap = false)
     private void scale(Zephyr zephyr, PoseStack poseStack, float partialTicks, CallbackInfo ci) {
         ZephyrColorAttachment attachment = zephyr.getData(GenesisDataAttachments.ZEPHYR_COLOR);

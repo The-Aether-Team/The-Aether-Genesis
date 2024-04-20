@@ -11,6 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GenesisMixinHooks {
+    /**
+     * Changes chests or chest mimics to their skyroot counterparts.
+     * @param state The chest's {@link BlockState}.
+     * @param structurePieceType The {@link StructurePieceType} that the chest is in.
+     * @return The new chest {@link BlockState}.
+     */
     public static BlockState replaceChest(BlockState state, StructurePieceType structurePieceType) {
         if (getValidPieceTypes().contains(structurePieceType)) {
             if (state.is(Blocks.CHEST)) {
@@ -22,6 +28,9 @@ public class GenesisMixinHooks {
         return state;
     }
 
+    /**
+     * @return The {@link StructurePieceType}s that can have their chests replaced.
+     */
     public static List<StructurePieceType> getValidPieceTypes() {
         List<StructurePieceType> types = new ArrayList<>();
         types.add(AetherStructurePieceTypes.SILVER_DUNGEON_ROOM.get());
