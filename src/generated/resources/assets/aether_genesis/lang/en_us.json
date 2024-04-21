@@ -69,6 +69,7 @@
   "gui.aether_genesis.sentry_guardian.title": "the Sentry Guardian",
   "gui.aether_genesis.slider.message.attack.invalid_fist": "Hmm. It's a rock-solid block. My fist wouldn't work on this.",
   "gui.aether_genesis.slider.message.attack.invalid_item": "Hmm. It's a rock-solid block. My %1$s wouldn't work on this.",
+  "item.aether.skyroot_pickaxe.aether_genesis.ability.tooltip": "§9Ability:§r Double Drops",
   "item.aether_genesis.baby_pink_swet": "Baby Pink Swet",
   "item.aether_genesis.battle_sentry_spawn_egg": "Battle Sentry Spawn Egg",
   "item.aether_genesis.blue_parachute": "Blue Parachute",

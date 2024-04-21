@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.data.generators;
 
+import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.data.providers.GenesisLanguageProvider;
@@ -111,6 +112,8 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addDiscDesc(GenesisItems.RECORDING_892, "Emile van Krieken - ???");
 
         this.addGeneric("experience.desc", "Experience (%s inside)");
+
+        this.addAbilityTooltip(AetherItems.SKYROOT_PICKAXE.get(), "\u00A79Ability:\u00A7r Double Drops");
 
         this.addEntityType(GenesisEntityTypes.CARRION_SPROUT, "Carrion Sprout");
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
