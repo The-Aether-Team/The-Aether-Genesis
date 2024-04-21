@@ -17,11 +17,11 @@ public class CompanionItem<T extends CompanionMob> extends AccessoryItem impleme
     }
 
     /**
-     * @see CompanionAccessory#equip(SlotContext)
+     * @see CompanionAccessory#equip(SlotContext, ItemStack)
      */
     @Override
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
-        CompanionAccessory.super.equip(slotContext);
+        CompanionAccessory.super.equip(slotContext, stack);
         super.onEquip(slotContext, prevStack, stack);
     }
 

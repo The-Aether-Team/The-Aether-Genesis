@@ -5,6 +5,7 @@ import com.aetherteam.aether.attachment.AetherDataAttachments;
 import com.aetherteam.aether.client.AetherKeys;
 import com.aetherteam.aether.mixin.mixins.common.accessor.LivingEntityAccessor;
 import com.aetherteam.aether.network.packet.clientbound.SetInvisibilityPacket;
+import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.entity.companion.EtherealWisp;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
 import com.aetherteam.nitrogen.network.PacketRelay;
@@ -20,8 +21,8 @@ import java.util.function.Supplier;
  * [CODE COPY] - {@link com.aetherteam.aether.item.accessories.cape.InvisibilityCloakItem}
  */
 public class EtherealStoneItem extends CompanionItem<EtherealWisp> {
-    public EtherealStoneItem(Supplier<EntityType<EtherealWisp>> companionType, Properties properties) {
-        super(companionType, properties);
+    public EtherealStoneItem(Properties properties) {
+        super(GenesisEntityTypes.ETHEREAL_WISP, properties);
     }
 
     @Override

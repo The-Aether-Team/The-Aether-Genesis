@@ -69,13 +69,13 @@ public class GenesisItems {
 
     public static final DeferredItem<Item> FANGRIN_CAPSULE = ITEMS.register("fangrin_capsule", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> KRAISITH_CAPSULE = ITEMS.register("kraisith_capsule", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> FLEETING_STONE = ITEMS.register("fleeting_stone", () -> new FleetingStoneItem(GenesisEntityTypes.FLEETING_WISP, new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> SOARING_STONE = ITEMS.register("soaring_stone", () -> new SoaringStoneItem(GenesisEntityTypes.SOARING_WISP, new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> ETHEREAL_STONE = ITEMS.register("ethereal_stone", () -> new EtherealStoneItem(GenesisEntityTypes.ETHEREAL_WISP, new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> ORB_OF_ARKENZUS = ITEMS.register("orb_of_arkenzus", () -> new OrbOfArkenzusItem(GenesisEntityTypes.SHADE_OF_ARKENZUS, new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> FROSTPINE_TOTEM = ITEMS.register("frostpine_totem", () -> new FrostpineTotemItem(GenesisEntityTypes.FROSTPINE_TOTEM, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> FLEETING_STONE = ITEMS.register("fleeting_stone", () -> new FleetingStoneItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> SOARING_STONE = ITEMS.register("soaring_stone", () -> new SoaringStoneItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> ETHEREAL_STONE = ITEMS.register("ethereal_stone", () -> new EtherealStoneItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> ORB_OF_ARKENZUS = ITEMS.register("orb_of_arkenzus", () -> new OrbOfArkenzusItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> FROSTPINE_TOTEM = ITEMS.register("frostpine_totem", () -> new FrostpineTotemItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> FROSTBOUND_STONE = ITEMS.register("frostbound_stone", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> DEATH_SEAL = ITEMS.register("death_seal", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> DEATH_SEAL = ITEMS.register("death_seal", () -> new DeathSealItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> BABY_PINK_SWET = ITEMS.register("baby_pink_swet", BabyPinkSwetItem::new);
 
     public static final DeferredItem<Item> PHOENIX_DART_SHOOTER = ITEMS.register("phoenix_dart_shooter", PhoenixDartShooterItem::new);

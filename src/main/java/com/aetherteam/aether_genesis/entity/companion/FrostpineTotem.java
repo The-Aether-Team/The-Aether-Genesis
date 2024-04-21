@@ -12,8 +12,4 @@ public class FrostpineTotem extends CompanionMob {
     public FrostpineTotem(EntityType<FrostpineTotem> entityType, Level level) {
         super(entityType, level, () -> new ItemStack(GenesisItems.FROSTPINE_TOTEM.get()), true);
     }
-
-    public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 1.0).add(Attributes.MOVEMENT_SPEED, 0.25).add(Attributes.FOLLOW_RANGE, 48.0);
-    }
 }

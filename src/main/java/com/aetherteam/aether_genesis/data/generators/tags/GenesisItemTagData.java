@@ -150,6 +150,7 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.ETHEREAL_STONE.get(),
                 GenesisItems.ORB_OF_ARKENZUS.get(),
                 GenesisItems.FROSTPINE_TOTEM.get(),
+                GenesisItems.DEATH_SEAL.get(),
                 GenesisItems.BABY_PINK_SWET.get());
         this.tag(AetherTags.Items.ACCESSORIES_MISCELLANEOUS).add(GenesisItems.MOUSE_EAR_CAP.get());
 

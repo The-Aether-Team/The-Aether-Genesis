@@ -5,6 +5,7 @@ import com.aetherteam.aether_genesis.attachment.GenesisDataAttachments;
 import com.aetherteam.aether_genesis.attachment.GenesisPlayerAttachment;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
+import com.aetherteam.aether_genesis.entity.companion.NexSpirit;
 import com.aetherteam.aether_genesis.entity.projectile.DaggerfrostSnowball;
 import com.aetherteam.aether_genesis.entity.projectile.PhoenixDart;
 import com.aetherteam.aether_genesis.item.GenesisItems;
@@ -15,14 +16,17 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Snowball;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.ToolAction;
 import net.neoforged.neoforge.common.ToolActions;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
+import top.theillusivec4.curios.api.SlotResult;
 
 import java.util.Map;
 
@@ -44,6 +48,31 @@ public class AbilityHooks {
                             daggerfrostSnowball.setItem(snowball.getItem());
                             level.addFreshEntity(daggerfrostSnowball);
                             return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        /**
+         * @see com.aetherteam.aether_genesis.event.listeners.abilities.AccessoryAbilityListener#entityDie(LivingDeathEvent)
+         */
+        public static boolean saveFromDeath(LivingEntity entity) {
+            if (entity instanceof Player player) {
+                GenesisPlayerAttachment attachment = player.getData(GenesisDataAttachments.GENESIS_PLAYER);
+                for (Entity companion : attachment.getCompanions()) {
+                    if (companion instanceof NexSpirit nexSpirit) {
+                        if (!nexSpirit.isBroken()) {
+                            for (SlotResult curio : EquipmentUtil.getCurios(player, GenesisItems.DEATH_SEAL.get())) {
+                                ItemStack stack = curio.stack();
+                                if (stack.getTag() == null || !stack.getTag().contains("Cooldown") || stack.getTag().getInt("Cooldown") <= 0) {
+                                    player.setHealth(player.getMaxHealth());
+                                    nexSpirit.setBroken(true);
+                                    stack.getOrCreateTag().putInt("Cooldown", 100);
+                                    return true;
+                                }
+                            }
                         }
                     }
                 }

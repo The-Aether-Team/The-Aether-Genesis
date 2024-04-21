@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.item.accessories.companion;
 
+import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.entity.companion.SoaringWisp;
 import com.aetherteam.aether_genesis.item.accessories.abilities.SpeedAccessory;
 import com.google.common.collect.Multimap;
@@ -18,8 +19,8 @@ public class SoaringStoneItem extends CompanionItem<SoaringWisp> implements Spee
      */
     private static final UUID SPEED_MODIFIER_UUID = UUID.fromString("D0AF3952-D70E-4A7E-B686-90CFA5C465ED");
 
-    public SoaringStoneItem(Supplier<EntityType<SoaringWisp>> companionType, Properties properties) {
-        super(companionType, properties);
+    public SoaringStoneItem(Properties properties) {
+        super(GenesisEntityTypes.SOARING_WISP, properties);
     }
 
     @Override

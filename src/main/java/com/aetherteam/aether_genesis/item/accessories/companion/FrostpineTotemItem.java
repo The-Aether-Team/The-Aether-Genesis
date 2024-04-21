@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.item.accessories.companion;
 
+import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.entity.companion.FrostpineTotem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -13,8 +14,8 @@ import java.util.function.Supplier;
 public class FrostpineTotemItem extends CompanionItem<FrostpineTotem> {
     private static final MobEffectInstance TOTEM_NIGHT_VISION_EFFECT = new MobEffectInstance(MobEffects.NIGHT_VISION, MobEffectInstance.INFINITE_DURATION, 0, false, false, false);
 
-    public FrostpineTotemItem(Supplier<EntityType<FrostpineTotem>> companionType, Properties properties) {
-        super(companionType, properties);
+    public FrostpineTotemItem(Properties properties) {
+        super(GenesisEntityTypes.FROSTPINE_TOTEM, properties);
     }
 
     /**

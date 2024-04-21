@@ -18,7 +18,7 @@ public class BabyPinkSwetItem extends AccessoryItem implements CompanionAccessor
 
     @Override
     public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
-        CompanionAccessory.super.equip(slotContext);
+        CompanionAccessory.super.equip(slotContext, stack);
         super.onEquip(slotContext, prevStack, stack);
     }
 

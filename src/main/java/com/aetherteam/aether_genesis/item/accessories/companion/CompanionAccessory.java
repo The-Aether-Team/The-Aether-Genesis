@@ -8,6 +8,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
 
 public interface CompanionAccessory<T extends Entity> {
@@ -16,13 +17,14 @@ public interface CompanionAccessory<T extends Entity> {
      *
      * @param slotContext The {@link SlotContext} of the Companion accessory.
      */
-    default void equip(SlotContext slotContext) {
+    default void equip(SlotContext slotContext, ItemStack stack) {
         LivingEntity wearer = slotContext.entity();
         if (wearer.level() instanceof ServerLevel serverLevel) {
             CompoundTag tag = new CompoundTag();
             tag.putUUID("Owner", wearer.getUUID());
             Entity entity = this.getCompanionType().spawn(serverLevel, tag, null, wearer.blockPosition(), MobSpawnType.MOB_SUMMONED, false, false);
             if (entity != null && wearer instanceof Player player) {
+                entity.setCustomName(stack.getHoverName().plainCopy());
                 player.getData(GenesisDataAttachments.GENESIS_PLAYER).addCompanion(player, entity);
             }
         }

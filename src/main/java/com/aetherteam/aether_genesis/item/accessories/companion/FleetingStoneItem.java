@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.item.accessories.companion;
 
+import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.entity.companion.FleetingWisp;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,8 +22,8 @@ public class FleetingStoneItem extends CompanionItem<FleetingWisp> {
      */
     private static final UUID STEP_HEIGHT_UUID = UUID.fromString("FC022E1C-E2D5-4A0B-9562-55C75FE53A1E");
 
-    public FleetingStoneItem(Supplier<EntityType<FleetingWisp>> companionType, Properties properties) {
-        super(companionType, properties);
+    public FleetingStoneItem(Properties properties) {
+        super(GenesisEntityTypes.FLEETING_WISP, properties);
     }
 
     /**

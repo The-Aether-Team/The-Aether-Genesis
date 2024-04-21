@@ -19,10 +19,6 @@ public class Wisp extends CompanionMob {
         super(entityType, level, summoningItem, true);
     }
 
-    public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 1.0).add(Attributes.MOVEMENT_SPEED, 0.25).add(Attributes.FOLLOW_RANGE, 48.0);
-    }
-
     @Override
     public void tick() {
         super.tick();
