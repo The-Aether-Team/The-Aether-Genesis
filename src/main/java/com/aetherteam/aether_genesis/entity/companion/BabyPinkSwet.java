@@ -70,6 +70,16 @@ public class BabyPinkSwet extends Swet implements Companion<BabyPinkSwet> {
     }
 
     @Override
+    public void onEquip(ItemStack itemStack) {
+
+    }
+
+    @Override
+    public void onUnequip(ItemStack itemStack) {
+
+    }
+
+    @Override
     public void consumePassenger(LivingEntity livingEntity) { }
 
     @Override

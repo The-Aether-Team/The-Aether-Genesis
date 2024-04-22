@@ -1,6 +1,7 @@
 package com.aetherteam.aether_genesis.item.accessories.companion;
 
 import com.aetherteam.aether_genesis.attachment.GenesisDataAttachments;
+import com.aetherteam.aether_genesis.entity.companion.Companion;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -22,9 +23,15 @@ public interface CompanionAccessory<T extends Entity> {
         if (wearer.level() instanceof ServerLevel serverLevel) {
             CompoundTag tag = new CompoundTag();
             tag.putUUID("Owner", wearer.getUUID());
-            Entity entity = this.getCompanionType().spawn(serverLevel, tag, null, wearer.blockPosition(), MobSpawnType.MOB_SUMMONED, false, false);
+            Entity entity = this.getCompanionType().create(serverLevel, tag, null, wearer.blockPosition(), MobSpawnType.MOB_SUMMONED, false, false);
             if (entity != null && wearer instanceof Player player) {
-                entity.setCustomName(stack.getHoverName().plainCopy());
+                if (entity instanceof Companion<?> companion) {
+                    companion.onEquip(stack);
+                }
+                if (stack.hasCustomHoverName()) {
+                    entity.setCustomName(stack.getHoverName().plainCopy());
+                }
+                serverLevel.addFreshEntityWithPassengers(entity);
                 player.getData(GenesisDataAttachments.GENESIS_PLAYER).addCompanion(player, entity);
             }
         }
@@ -35,10 +42,18 @@ public interface CompanionAccessory<T extends Entity> {
      *
      * @param slotContext The {@link SlotContext} of the Companion accessory.
      */
-    default void unequip(SlotContext slotContext) {
+    default void unequip(SlotContext slotContext, ItemStack itemStack) {
         LivingEntity wearer = slotContext.entity();
         if (wearer instanceof Player player) {
-            player.getData(GenesisDataAttachments.GENESIS_PLAYER).removeCompanion((entity) -> entity.getType() == this.getCompanionType());
+            player.getData(GenesisDataAttachments.GENESIS_PLAYER).removeCompanion((entity) -> {
+                if (entity.getType() == this.getCompanionType()) {
+                    if (entity instanceof Companion<?> companion) {
+                        companion.onUnequip(itemStack);
+                    }
+                    return true;
+                }
+                return false;
+            });
         }
     }
 

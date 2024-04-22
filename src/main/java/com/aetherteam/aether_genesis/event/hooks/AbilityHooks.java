@@ -64,15 +64,9 @@ public class AbilityHooks {
                 for (Entity companion : attachment.getCompanions()) {
                     if (companion instanceof NexSpirit nexSpirit) {
                         if (!nexSpirit.isBroken()) {
-                            for (SlotResult curio : EquipmentUtil.getCurios(player, GenesisItems.DEATH_SEAL.get())) {
-                                ItemStack stack = curio.stack();
-                                if (stack.getTag() == null || !stack.getTag().contains("Cooldown") || stack.getTag().getInt("Cooldown") <= 0) {
-                                    player.setHealth(player.getMaxHealth());
-                                    nexSpirit.setBroken(true);
-                                    stack.getOrCreateTag().putInt("Cooldown", 100);
-                                    return true;
-                                }
-                            }
+                            player.setHealth(player.getMaxHealth());
+                            nexSpirit.setCooldown(100); //todo balance
+                            return true;
                         }
                     }
                 }

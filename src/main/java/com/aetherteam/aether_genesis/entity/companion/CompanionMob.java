@@ -36,6 +36,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
     private static final UUID SLOW_FALLING_ID = UUID.fromString("A5B6CF2A-2F7C-31EF-9022-7C3E7D5E6ABA");
     private static final AttributeModifier SLOW_FALLING = new AttributeModifier(SLOW_FALLING_ID, "Slow falling acceleration reduction", -0.07, AttributeModifier.Operation.ADDITION); // Add -0.07 to 0.08 so we get the vanilla default of 0.01
     private static final EntityDataAccessor<Optional<UUID>> DATA_OWNER_ID = SynchedEntityData.defineId(CompanionMob.class, EntityDataSerializers.OPTIONAL_UUID);
+    private static final EntityDataAccessor<ItemStack> DATA_ITEM_ID = SynchedEntityData.defineId(CompanionMob.class, EntityDataSerializers.ITEM_STACK);
 
     private final Supplier<ItemStack> summoningItem;
     private final boolean isFloating;
@@ -61,6 +62,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.getEntityData().define(DATA_OWNER_ID, Optional.empty());
+        this.getEntityData().define(DATA_ITEM_ID, ItemStack.EMPTY);
     }
 
     @Nullable
@@ -185,12 +187,30 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
         this.calculateEntityAnimation(false);
     }
 
+    @Override
+    public void onEquip(ItemStack itemStack) {
+        this.setItem(itemStack);
+    }
+
+    @Override
+    public void onUnequip(ItemStack itemStack) {
+        this.setItem(ItemStack.EMPTY);
+    }
+
     public UUID getOwner() {
         return this.getEntityData().get(DATA_OWNER_ID).orElse(null);
     }
 
     public void setOwner(UUID owner) {
         this.getEntityData().set(DATA_OWNER_ID, Optional.ofNullable(owner));
+    }
+
+    public ItemStack getItem() {
+        return this.getEntityData().get(DATA_ITEM_ID);
+    }
+
+    public void setItem(ItemStack stack) {
+        this.getEntityData().set(DATA_ITEM_ID, stack);
     }
 
     public ItemStack getSummonItem() {
@@ -223,5 +243,19 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
     @Override
     public ItemStack getPickResult() {
         return this.getSummonItem();
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.put("Item", this.getItem().getOrCreateTag());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        if (tag.contains("Item")) {
+            this.setItem(ItemStack.of(tag.getCompound("Item")));
+        }
     }
 }

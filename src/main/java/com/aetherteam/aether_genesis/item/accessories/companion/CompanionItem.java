@@ -26,11 +26,11 @@ public class CompanionItem<T extends CompanionMob> extends AccessoryItem impleme
     }
 
     /**
-     * @see CompanionAccessory#unequip(SlotContext)
+     * @see CompanionAccessory#unequip(SlotContext, ItemStack)
      */
     @Override
     public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
-        CompanionAccessory.super.unequip(slotContext);
+        CompanionAccessory.super.unequip(slotContext, stack);
         super.onUnequip(slotContext, newStack, stack);
     }
 
