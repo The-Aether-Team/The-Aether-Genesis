@@ -62,6 +62,7 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.ETHEREAL_WISP.get(), EtherealWispRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.SHADE_OF_ARKENZUS.get(), ShadeOfArkenzusRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.FROSTPINE_TOTEM.get(), FrostpineTotemRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.FROSTBOUND_SPRITE.get(), FrostboundSpriteRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.NEX_SPIRIT.get(), NexSpiritRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.BABY_PINK_SWET.get(), BabyPinkSwetRenderer::new);
 
@@ -96,6 +97,7 @@ public class GenesisRenderers {
         event.registerLayerDefinition(GenesisModelLayers.ETHEREAL_WISP, WispModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SHADE_OF_ARKENZUS, ShadeOfArkenzusModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.FROSTPINE_TOTEM, FrostpineTotemModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.FROSTBOUND_SPRITE, FrostboundSpriteModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.NEX_SPIRIT, NexSpiritModel::createBodyLayer);
 
         event.registerLayerDefinition(GenesisModelLayers.MOUSE_EAR_CAP, MouseEarCapModel::createLayer);

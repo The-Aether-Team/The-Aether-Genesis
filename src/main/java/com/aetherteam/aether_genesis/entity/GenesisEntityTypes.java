@@ -73,6 +73,8 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.of(ShadeOfArkenzus::new, MobCategory.MISC).sized(0.4F, 1.0F).clientTrackingRange(10).build("shade_of_arkenzus"));
     public static final  DeferredHolder<EntityType<?>, EntityType<FrostpineTotem>> FROSTPINE_TOTEM = ENTITY_TYPES.register("frostpine_totem",
             () -> EntityType.Builder.of(FrostpineTotem::new, MobCategory.MISC).sized(0.8F, 1.8F).clientTrackingRange(10).build("frostpine_totem"));
+    public static final  DeferredHolder<EntityType<?>, EntityType<FrostboundSprite>> FROSTBOUND_SPRITE = ENTITY_TYPES.register("frostbound_sprite",
+            () -> EntityType.Builder.of(FrostboundSprite::new, MobCategory.MISC).sized(0.8F, 1.8F).clientTrackingRange(10).build("frostbound_sprite"));
     public static final  DeferredHolder<EntityType<?>, EntityType<NexSpirit>> NEX_SPIRIT = ENTITY_TYPES.register("nex_spirit",
             () -> EntityType.Builder.of(NexSpirit::new, MobCategory.MISC).sized(0.8F, 1.8F).clientTrackingRange(10).build("nex_spirit"));
     public static final  DeferredHolder<EntityType<?>, EntityType<BabyPinkSwet>> BABY_PINK_SWET = ENTITY_TYPES.register("baby_pink_swet",
@@ -118,6 +120,7 @@ public class GenesisEntityTypes {
         event.put(GenesisEntityTypes.ETHEREAL_WISP.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.SHADE_OF_ARKENZUS.get(), ShadeOfArkenzus.createAttributes().build());
         event.put(GenesisEntityTypes.FROSTPINE_TOTEM.get(), CompanionMob.createAttributes().build());
+        event.put(GenesisEntityTypes.FROSTBOUND_SPRITE.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.NEX_SPIRIT.get(), NexSpirit.createAttributes().build());
         event.put(GenesisEntityTypes.BABY_PINK_SWET.get(), BabyPinkSwet.createAttributes().build());
     }

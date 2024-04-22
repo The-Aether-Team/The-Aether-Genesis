@@ -74,7 +74,7 @@ public class GenesisItems {
     public static final DeferredItem<Item> ETHEREAL_STONE = ITEMS.register("ethereal_stone", () -> new EtherealStoneItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> ORB_OF_ARKENZUS = ITEMS.register("orb_of_arkenzus", () -> new OrbOfArkenzusItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> FROSTPINE_TOTEM = ITEMS.register("frostpine_totem", () -> new FrostpineTotemItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> FROSTBOUND_STONE = ITEMS.register("frostbound_stone", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> FROSTBOUND_STONE = ITEMS.register("frostbound_stone", () -> new FrostboundStoneItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> DEATH_SEAL = ITEMS.register("death_seal", () -> new DeathSealItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> BABY_PINK_SWET = ITEMS.register("baby_pink_swet", BabyPinkSwetItem::new);
 
