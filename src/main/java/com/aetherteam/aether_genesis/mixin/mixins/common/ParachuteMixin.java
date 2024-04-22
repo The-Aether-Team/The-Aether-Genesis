@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Parachute.class)
-public class ParachuteMixin { //todo: make this method public in the base aether mod so it can just be overridden in the parachute class.
+public class ParachuteMixin {
     /**
      * Makes Gold Parachutes descend with faster motion than normal parachutes.
      */
