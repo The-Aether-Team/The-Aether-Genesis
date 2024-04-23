@@ -45,7 +45,7 @@ public class NexSpiritRenderer extends CompanionRenderer<NexSpirit, NexSpiritMod
             String name = nexSpirit.getName().getString();
             if (name.toLowerCase(Locale.ROOT).contains("wot") || name.toLowerCase(Locale.ROOT).contains("anger") || name.toLowerCase(Locale.ROOT).contains("angr")) {
                 return NEX_SPIRIT_ANGERED_TEXTURE;
-            } else if (name.toLowerCase(Locale.ROOT).contains("huh") || name.toLowerCase(Locale.ROOT).contains("confus")) {
+            } else if (name.toLowerCase(Locale.ROOT).contains("huh") || name.toLowerCase(Locale.ROOT).contains("confus") || name.toLowerCase(Locale.ROOT).contains("wha")) {
                 return NEX_SPIRIT_CONFUSED_TEXTURE;
             } else if (name.toLowerCase(Locale.ROOT).contains("sin") || name.toLowerCase(Locale.ROOT).contains("flush") || name.toLowerCase(Locale.ROOT).contains("floosh")) {
                 return NEX_SPIRIT_FLUSHED_TEXTURE;
