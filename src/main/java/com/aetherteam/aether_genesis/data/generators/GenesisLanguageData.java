@@ -114,6 +114,9 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addGeneric("experience.desc", "Experience (%s inside)");
 
         this.addAbilityTooltip(AetherItems.SKYROOT_PICKAXE.get(), "\u00A79Ability:\u00A7r Double Drops");
+        this.addAbilityTooltip(AetherItems.POISON_DART.get(), "\u00A79Ability:\u00A7r Inflict Poison");
+        this.addAbilityTooltip(AetherItems.REGENERATION_STONE.get(), "\u00A79Ability:\u00A7r Regenerates Health\n");
+        this.addAbilityTooltip(AetherItems.GRAVITITE_GLOVES.get(), "\u00A77When Wearing Full Set:\u00A7r\n\u00A79Ability:\u00A7r Super Jump\n\u00A73Use:\u00A7r Shift + Space Bar\n");
 
         this.addEntityType(GenesisEntityTypes.CARRION_SPROUT, "Carrion Sprout");
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
