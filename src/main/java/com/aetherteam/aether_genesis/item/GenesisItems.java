@@ -67,8 +67,8 @@ public class GenesisItems {
 
     public static final DeferredItem<Item> MOUSE_EAR_CAP = ITEMS.register("mouse_ear_cap", MouseEarCapItem::new);
 
-    public static final DeferredItem<Item> FANGRIN_CAPSULE = ITEMS.register("fangrin_capsule", () -> new Item(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> KRAISITH_CAPSULE = ITEMS.register("kraisith_capsule", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> FANGRIN_CAPSULE = ITEMS.register("fangrin_capsule", () -> new FangrinCapsuleItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> KRAISITH_CAPSULE = ITEMS.register("kraisith_capsule", () -> new KraisithCapsuleItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> FLEETING_STONE = ITEMS.register("fleeting_stone", () -> new FleetingStoneItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> SOARING_STONE = ITEMS.register("soaring_stone", () -> new SoaringStoneItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> ETHEREAL_STONE = ITEMS.register("ethereal_stone", () -> new EtherealStoneItem(new Item.Properties().stacksTo(1)));

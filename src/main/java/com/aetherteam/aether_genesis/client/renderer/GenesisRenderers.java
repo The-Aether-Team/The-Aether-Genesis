@@ -16,6 +16,7 @@ import com.aetherteam.aether_genesis.client.renderer.entity.*;
 import com.aetherteam.aether_genesis.client.renderer.entity.model.*;
 import com.aetherteam.aether_genesis.client.renderer.player.layer.PhoenixDartLayer;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
+import com.aetherteam.aether_genesis.entity.companion.Fangrin;
 import com.aetherteam.aether_genesis.entity.projectile.PhoenixDart;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.client.Minecraft;
@@ -57,6 +58,8 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.GREEN_PARACHUTE.get(), (context) -> new ParachuteRenderer(context, GenesisBlocks.GREEN_AERCLOUD));
         event.registerEntityRenderer(GenesisEntityTypes.PURPLE_PARACHUTE.get(), (context) -> new ParachuteRenderer(context, GenesisBlocks.PURPLE_AERCLOUD));
 
+        event.registerEntityRenderer(GenesisEntityTypes.FANGRIN.get(), FangrinRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.KRAISITH.get(), KraisithRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.FLEETING_WISP.get(), (context) -> new WispRenderer(context, GenesisModelLayers.FLEETING_WISP, new ResourceLocation(Genesis.MODID, "textures/entity/companions/fleeting_wisp.png")));
         event.registerEntityRenderer(GenesisEntityTypes.SOARING_WISP.get(), (context) -> new WispRenderer(context, GenesisModelLayers.SOARING_WISP, new ResourceLocation(Genesis.MODID, "textures/entity/companions/soaring_wisp.png")));
         event.registerEntityRenderer(GenesisEntityTypes.ETHEREAL_WISP.get(), EtherealWispRenderer::new);
@@ -92,6 +95,8 @@ public class GenesisRenderers {
         event.registerLayerDefinition(GenesisModelLayers.HOST_EYE_PROJECTILE, HostEyeProjectileModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.COG_PROJECTILE, CogProtectileModel::createBodyLayer);
 
+        event.registerLayerDefinition(GenesisModelLayers.FANGRIN, FangrinModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.KRAISITH, KraisithModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.FLEETING_WISP, WispModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SOARING_WISP, WispModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.ETHEREAL_WISP, WispModel::createBodyLayer);

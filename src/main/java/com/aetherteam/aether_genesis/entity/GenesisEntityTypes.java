@@ -63,6 +63,10 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.of(PurpleParachute::new, MobCategory.MISC).sized(1.0F, 1.0F).clientTrackingRange(8).build("purple_parachute"));
 
     // Companions
+    public static final  DeferredHolder<EntityType<?>, EntityType<Fangrin>> FANGRIN = ENTITY_TYPES.register("fangrin",
+            () -> EntityType.Builder.of(Fangrin::new, MobCategory.MISC).sized(0.8F, 0.8F).clientTrackingRange(10).build("fangrin"));
+    public static final  DeferredHolder<EntityType<?>, EntityType<Kraisith>> KRAISITH = ENTITY_TYPES.register("kraisith",
+            () -> EntityType.Builder.of(Kraisith::new, MobCategory.MISC).sized(0.8F, 0.8F).clientTrackingRange(10).build("kraisith"));
     public static final  DeferredHolder<EntityType<?>, EntityType<FleetingWisp>> FLEETING_WISP = ENTITY_TYPES.register("fleeting_wisp",
             () -> EntityType.Builder.of(FleetingWisp::new, MobCategory.MISC).sized(0.8F, 1.8F).clientTrackingRange(10).build("fleeting_wisp"));
     public static final  DeferredHolder<EntityType<?>, EntityType<SoaringWisp>> SOARING_WISP = ENTITY_TYPES.register("soaring_wisp",
@@ -115,6 +119,8 @@ public class GenesisEntityTypes {
         event.put(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), SliderHostMimic.createHostAttributes().build());
         event.put(GenesisEntityTypes.LABYRINTH_EYE.get(), LabyrinthEye.createMobAttributes().build());
         event.put(GenesisEntityTypes.HOST_EYE.get(), HostEyeProjectile.createMobAttributes().build());
+        event.put(GenesisEntityTypes.FANGRIN.get(), CompanionMob.createAttributes().build());
+        event.put(GenesisEntityTypes.KRAISITH.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.FLEETING_WISP.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.SOARING_WISP.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.ETHEREAL_WISP.get(), CompanionMob.createAttributes().build());

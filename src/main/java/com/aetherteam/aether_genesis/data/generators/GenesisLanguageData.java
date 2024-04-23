@@ -125,6 +125,8 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.TRACKING_GOLEM, "Tracking Golem");
         this.addEntityType(GenesisEntityTypes.SKYROOT_MIMIC, "Skyroot Mimic");
 
+        this.addEntityType(GenesisEntityTypes.FANGRIN, "Fangrin");
+        this.addEntityType(GenesisEntityTypes.KRAISITH, "Kraisith");
         this.addEntityType(GenesisEntityTypes.FLEETING_WISP, "Fleeting Wisp");
         this.addEntityType(GenesisEntityTypes.SOARING_WISP, "Soaring Wisp");
         this.addEntityType(GenesisEntityTypes.ETHEREAL_WISP, "Ethereal Wisp");

@@ -18,6 +18,8 @@ public class GenesisModelLayers {
     public static final ModelLayerLocation HOST_EYE_PROJECTILE = register("host_eye");
     public static final ModelLayerLocation COG_PROJECTILE = register("cog_arrow");
 
+    public static final ModelLayerLocation FANGRIN = register("fangrin");
+    public static final ModelLayerLocation KRAISITH = register("kraisith");
     public static final ModelLayerLocation FLEETING_WISP = register("fleeting_wisp");
     public static final ModelLayerLocation SOARING_WISP = register("soaring_wisp");
     public static final ModelLayerLocation ETHEREAL_WISP = register("ethereal_wisp");

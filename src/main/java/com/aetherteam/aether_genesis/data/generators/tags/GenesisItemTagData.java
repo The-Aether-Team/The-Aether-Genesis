@@ -145,7 +145,9 @@ public class GenesisItemTagData extends ItemTagsProvider {
         this.tag(AetherTags.Items.ACCESSORIES_CAPES).add(
                 GenesisItems.CAPE.get(),
                 GenesisItems.DEXTERITY_CAPE.get(),
-                GenesisItems.FLEETING_STONE.get(), //todo temporary
+                GenesisItems.FANGRIN_CAPSULE.get(), //todo temporary
+                GenesisItems.KRAISITH_CAPSULE.get(),
+                GenesisItems.FLEETING_STONE.get(),
                 GenesisItems.SOARING_STONE.get(),
                 GenesisItems.ETHEREAL_STONE.get(),
                 GenesisItems.ORB_OF_ARKENZUS.get(),
