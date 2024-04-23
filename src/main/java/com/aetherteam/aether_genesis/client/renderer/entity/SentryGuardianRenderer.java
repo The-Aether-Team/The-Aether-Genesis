@@ -4,7 +4,7 @@ import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.aether_genesis.client.renderer.entity.layers.SentryGuardianLayer;
 import com.aetherteam.aether_genesis.client.renderer.entity.model.SentryGuardianModel;
-import com.aetherteam.aether_genesis.entity.monster.boss.SentryGuardian;
+import com.aetherteam.aether_genesis.entity.monster.dungeon.boss.SentryGuardian;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;

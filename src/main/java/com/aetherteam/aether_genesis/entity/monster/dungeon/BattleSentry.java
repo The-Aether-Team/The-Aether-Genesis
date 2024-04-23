@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.entity.monster;
+package com.aetherteam.aether_genesis.entity.monster.dungeon;
 
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.client.AetherSoundEvents;

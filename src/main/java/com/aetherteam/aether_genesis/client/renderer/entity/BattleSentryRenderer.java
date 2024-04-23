@@ -3,7 +3,7 @@ package com.aetherteam.aether_genesis.client.renderer.entity;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.aether_genesis.client.renderer.entity.layers.BattleSentryLayer;
-import com.aetherteam.aether_genesis.entity.monster.BattleSentry;
+import com.aetherteam.aether_genesis.entity.monster.dungeon.BattleSentry;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.model.SlimeModel;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

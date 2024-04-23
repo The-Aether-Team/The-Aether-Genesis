@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.entity.monster.boss;
+package com.aetherteam.aether_genesis.entity.monster.dungeon.boss;
 
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.client.AetherSoundEvents;

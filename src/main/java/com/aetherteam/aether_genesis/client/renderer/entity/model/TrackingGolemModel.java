@@ -1,6 +1,6 @@
 package com.aetherteam.aether_genesis.client.renderer.entity.model;
 
-import com.aetherteam.aether_genesis.entity.monster.TrackingGolem;
+import com.aetherteam.aether_genesis.entity.monster.dungeon.TrackingGolem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;

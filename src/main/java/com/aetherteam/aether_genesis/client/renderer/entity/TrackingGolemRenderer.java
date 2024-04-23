@@ -4,7 +4,7 @@ import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.aether_genesis.client.renderer.entity.layers.TrackingGolemLayer;
 import com.aetherteam.aether_genesis.client.renderer.entity.model.TrackingGolemModel;
-import com.aetherteam.aether_genesis.entity.monster.TrackingGolem;
+import com.aetherteam.aether_genesis.entity.monster.dungeon.TrackingGolem;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;

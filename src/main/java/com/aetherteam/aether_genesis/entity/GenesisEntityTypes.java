@@ -6,13 +6,13 @@ import com.aetherteam.aether.entity.monster.dungeon.Mimic;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.entity.companion.*;
 import com.aetherteam.aether_genesis.entity.miscellaneous.*;
-import com.aetherteam.aether_genesis.entity.monster.BattleSentry;
-import com.aetherteam.aether_genesis.entity.monster.SkyrootMimic;
+import com.aetherteam.aether_genesis.entity.monster.dungeon.BattleSentry;
+import com.aetherteam.aether_genesis.entity.monster.dungeon.SkyrootMimic;
 import com.aetherteam.aether_genesis.entity.monster.Tempest;
-import com.aetherteam.aether_genesis.entity.monster.TrackingGolem;
-import com.aetherteam.aether_genesis.entity.monster.boss.LabyrinthEye;
-import com.aetherteam.aether_genesis.entity.monster.boss.SentryGuardian;
-import com.aetherteam.aether_genesis.entity.monster.boss.SliderHostMimic;
+import com.aetherteam.aether_genesis.entity.monster.dungeon.TrackingGolem;
+import com.aetherteam.aether_genesis.entity.monster.dungeon.boss.LabyrinthEye;
+import com.aetherteam.aether_genesis.entity.monster.dungeon.boss.SentryGuardian;
+import com.aetherteam.aether_genesis.entity.monster.dungeon.boss.SliderHostMimic;
 import com.aetherteam.aether_genesis.entity.passive.CarrionSprout;
 import com.aetherteam.aether_genesis.entity.projectile.*;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -93,8 +93,8 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.<PhoenixDart>of(PhoenixDart::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("phoenix_dart"));
     public static final  DeferredHolder<EntityType<?>, EntityType<ContinuumBomb>> CONTINUUM_BOMB = ENTITY_TYPES.register("continuum_bomb",
             () -> EntityType.Builder.<ContinuumBomb>of(ContinuumBomb::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("continuum_bomb"));
-    public static final  DeferredHolder<EntityType<?>, EntityType<RewardItem>> REWARD_ITEM = ENTITY_TYPES.register("reward_item",
-            () -> EntityType.Builder.<RewardItem>of(RewardItem::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("reward_item"));
+    public static final  DeferredHolder<EntityType<?>, EntityType<RewardItemEntity>> REWARD_ITEM = ENTITY_TYPES.register("reward_item",
+            () -> EntityType.Builder.<RewardItemEntity>of(RewardItemEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("reward_item"));
     public static final  DeferredHolder<EntityType<?>, EntityType<HostEyeProjectile>> HOST_EYE = ENTITY_TYPES.register("host_eye",
             () -> EntityType.Builder.of(HostEyeProjectile::new, MobCategory.MISC).sized(0.4F, 0.4F).clientTrackingRange(10).fireImmune().build("host_eye"));
     public static final  DeferredHolder<EntityType<?>, EntityType<CogProjectile>> COG_ARROW = ENTITY_TYPES.register("cog_arrow",

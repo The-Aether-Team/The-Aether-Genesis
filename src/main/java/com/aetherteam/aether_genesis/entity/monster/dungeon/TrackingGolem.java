@@ -1,4 +1,4 @@
-package com.aetherteam.aether_genesis.entity.monster;
+package com.aetherteam.aether_genesis.entity.monster.dungeon;
 
 import com.aetherteam.aether.entity.ai.goal.ContinuousMeleeAttackGoal;
 import com.aetherteam.aether_genesis.client.GenesisSoundEvents;

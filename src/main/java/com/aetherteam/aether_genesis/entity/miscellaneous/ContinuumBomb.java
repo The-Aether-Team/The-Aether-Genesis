@@ -25,76 +25,84 @@ import java.util.List;
 
 public class ContinuumBomb extends ThrowableItemProjectile {
     private boolean hasHit;
-    
     private double hitX;
-
     private double hitY;
-
     private double hitZ;
+    private int activeTime;
 
-    private int partyTimeNeeded = 100, partyTime, presentCount = 9;
-
-    public ContinuumBomb(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+    public ContinuumBomb(EntityType<ContinuumBomb> entityType, Level level) {
+        super(entityType, level);
     }
 
-    public ContinuumBomb(Level pLevel, LivingEntity pShooter) {
-        super(GenesisEntityTypes.CONTINUUM_BOMB.get(), pShooter, pLevel);
+    public ContinuumBomb(Level level, LivingEntity owner) {
+        super(GenesisEntityTypes.CONTINUUM_BOMB.get(), owner, level);
     }
     
     @Override
     public void tick() {
         if (this.hasHit) {
-            setPos(new Vec3(this.hitX, this.hitY, this.hitZ));
-            if (this.partyTime < this.partyTimeNeeded) {
-                if (this.partyTime % 10 == 0) {
-                    double motX = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-                    double motY = 1.0D;
-                    double motZ = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-                    if (!this.level().isClientSide) {
-                        List<ItemStack> loot = this.createLoot();
+            this.setPos(new Vec3(this.hitX, this.hitY, this.hitZ)); // Sticks the Continuum Bomb to the spot it landed at.
+            if (this.activeTime < 100) {
+                if (this.activeTime % 10 == 0) { // The Continuum Bomb spawns items over 99 ticks every 10 ticks; so new loot is queried for spawning 9 times.
+                    if (!this.level().isClientSide() && this.level() instanceof ServerLevel serverLevel) {
+                        double motX = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
+                        double motY = 1.0;
+                        double motZ = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
+                        List<ItemStack> loot = this.createLoot(serverLevel);
                         for (ItemStack reward : loot) {
                             if (this.getOwner() instanceof ServerPlayer serverPlayer) {
-                                GenesisAdvancementTriggers.CONTINUUM_ORB.get().trigger(serverPlayer, reward);
+                                GenesisAdvancementTriggers.CONTINUUM_ORB.get().trigger(serverPlayer, reward); // Advancement trigger for if a player gets a specified reward through Continuum.
                             }
-                            RewardItem entity = new RewardItem(this.level(), this.getX(), this.getY(), this.getZ(), reward);
+                            RewardItemEntity entity = new RewardItemEntity(this.level(), this.getX(), this.getY(), this.getZ(), reward); // Creates the loot reward items.
                             entity.setDeltaMovement(motX, motY, motZ);
                             this.level().addFreshEntity(entity);
                         }
                     }
-                    for (int sparkCount = 1; sparkCount <= 10; sparkCount++) {
-                        motX = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-                        motY = this.random.nextDouble();
-                        motZ = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-                        this.level().addParticle(ParticleTypes.AMBIENT_ENTITY_EFFECT, this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
-                        this.level().addParticle(ParticleTypes.CLOUD, this.getX(), this.getY(), this.getZ(), motX / 6.0D, motY / 6.0D, motZ / 6.0D);
-                    }
+                    this.spawnParticles();
                 }
-                this.partyTime++;
+                this.activeTime++;
             } else {
-                for (int sparkCount = 1; sparkCount <= 10; sparkCount++) {
-                    double motX = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-                    double motY = this.random.nextDouble();
-                    double motZ = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-                    this.level().addParticle(ParticleTypes.AMBIENT_ENTITY_EFFECT, this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
-                    this.level().addParticle(ParticleTypes.CLOUD, this.getX(), this.getY(), this.getZ(), motX / 6.0D, motY / 6.0D, motZ / 6.0D);
-                }
-                discard();
+                this.spawnParticles();
+                this.discard();
             }
         } else {
             super.tick();
         }
     }
 
-    protected List<ItemStack> createLoot() {
-        LootParams parameters = new LootParams.Builder((ServerLevel) this.level()).withParameter(LootContextParams.ORIGIN, this.position()).withParameter(LootContextParams.THIS_ENTITY, this).create(LootContextParamSets.SELECTOR);
-        LootTable lootTable = ((ServerLevel) this.level()).getServer().getLootData().getLootTable(GenesisLoot.CONTINUUM_ORB);
+    /**
+     * Spawns particle effects with loot creation and at the end of loot creation.
+     */
+    private void spawnParticles() {
+        for (int sparkCount = 1; sparkCount <= 10; sparkCount++) {
+            double motX = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
+            double motY = this.random.nextDouble();
+            double motZ = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
+            this.level().addParticle(ParticleTypes.AMBIENT_ENTITY_EFFECT, this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
+            this.level().addParticle(ParticleTypes.CLOUD, this.getX(), this.getY(), this.getZ(), motX / 6.0, motY / 6.0, motZ / 6.0);
+        }
+    }
+
+    /**
+     * This method creates the list of loot items that can be spawned by this Continuum Bomb.
+     * @param serverLevel The {@link ServerLevel} provider.
+     * @return The {@link ItemStack} {@link List}
+     */
+    private List<ItemStack> createLoot(ServerLevel serverLevel) {
+        LootParams parameters = new LootParams.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, this.position()).withParameter(LootContextParams.THIS_ENTITY, this).create(LootContextParamSets.SELECTOR);
+        LootTable lootTable = serverLevel.getServer().getLootData().getLootTable(GenesisLoot.CONTINUUM_ORB);
         List<ItemStack> list = lootTable.getRandomItems(parameters);
         return new ArrayList<>(list);
     }
 
-    protected void onHit(HitResult pResult) {
-        super.onHit(pResult);
+    /**
+     * Determines the position that the Continuum Bomb will stick at.
+     *
+     * @param result The {@link HitResult} of the projectile.
+     */
+    @Override
+    protected void onHit(HitResult result) {
+        super.onHit(result);
         if (!this.hasHit) {
             this.hasHit = true;
             this.hitX = this.getX();
