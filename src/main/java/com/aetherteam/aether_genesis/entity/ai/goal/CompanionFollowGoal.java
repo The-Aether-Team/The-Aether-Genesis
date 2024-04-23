@@ -18,6 +18,10 @@ import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import java.util.EnumSet;
 import java.util.UUID;
 
+/**
+ * [CODE COPY] - {@link net.minecraft.world.entity.ai.goal.FollowOwnerGoal}.<br><br>
+ * Adapted to Companions.
+ */
 public class CompanionFollowGoal<T extends Mob & Companion<T>> extends Goal {
     private final T companion;
     private LivingEntity owner;
@@ -36,7 +40,7 @@ public class CompanionFollowGoal<T extends Mob & Companion<T>> extends Goal {
         this.canFly = false;
         this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
         if (!(companion.getNavigation() instanceof GroundPathNavigation) && !(companion.getNavigation() instanceof FlyingPathNavigation)) {
-            throw new IllegalArgumentException("Unsupported mob type for FollowOwnerGoal");
+            throw new IllegalArgumentException("Unsupported mob type for CompanionFollowGoal");
         }
     }
 
