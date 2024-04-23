@@ -8,7 +8,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class Fangrin extends CompanionMob {
+public class Fangrin extends CompanionMob { //todo melee?
     public Fangrin(EntityType<Fangrin> entityType, Level level) {
         super(entityType, level, () -> new ItemStack(GenesisItems.FANGRIN_CAPSULE.get()), false);
     }
