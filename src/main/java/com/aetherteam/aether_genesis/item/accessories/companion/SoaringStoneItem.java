@@ -4,14 +4,12 @@ import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.entity.companion.SoaringWisp;
 import com.aetherteam.aether_genesis.item.accessories.abilities.SpeedAccessory;
 import com.google.common.collect.Multimap;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.UUID;
-import java.util.function.Supplier;
 
 public class SoaringStoneItem extends CompanionItem<SoaringWisp> implements SpeedAccessory {
     /**

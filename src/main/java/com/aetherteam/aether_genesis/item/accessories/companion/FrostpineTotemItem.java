@@ -4,12 +4,9 @@ import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.entity.companion.FrostpineTotem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
-
-import java.util.function.Supplier;
 
 public class FrostpineTotemItem extends CompanionItem<FrostpineTotem> {
     private static final MobEffectInstance TOTEM_NIGHT_VISION_EFFECT = new MobEffectInstance(MobEffects.NIGHT_VISION, MobEffectInstance.INFINITE_DURATION, 0, false, false, false);

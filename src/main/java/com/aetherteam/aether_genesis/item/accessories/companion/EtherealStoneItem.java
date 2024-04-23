@@ -9,13 +9,10 @@ import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.entity.companion.EtherealWisp;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
 import com.aetherteam.nitrogen.network.PacketRelay;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import top.theillusivec4.curios.api.SlotContext;
-
-import java.util.function.Supplier;
 
 /**
  * [CODE COPY] - {@link com.aetherteam.aether.item.accessories.cape.InvisibilityCloakItem}

@@ -16,7 +16,6 @@ import com.aetherteam.aether_genesis.client.renderer.entity.*;
 import com.aetherteam.aether_genesis.client.renderer.entity.model.*;
 import com.aetherteam.aether_genesis.client.renderer.player.layer.PhoenixDartLayer;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
-import com.aetherteam.aether_genesis.entity.companion.Fangrin;
 import com.aetherteam.aether_genesis.entity.projectile.PhoenixDart;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.client.Minecraft;

@@ -4,8 +4,6 @@ import com.aetherteam.aether.data.providers.AetherLanguageProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 
-import java.util.function.Supplier;
-
 public abstract class GenesisLanguageProvider extends AetherLanguageProvider {
     public GenesisLanguageProvider(PackOutput output, String id) {
         super(output, id);

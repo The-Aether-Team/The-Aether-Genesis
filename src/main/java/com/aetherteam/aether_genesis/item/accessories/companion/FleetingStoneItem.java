@@ -2,7 +2,6 @@ package com.aetherteam.aether_genesis.item.accessories.companion;
 
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
 import com.aetherteam.aether_genesis.entity.companion.FleetingWisp;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -11,7 +10,6 @@ import net.neoforged.neoforge.common.NeoForgeMod;
 import top.theillusivec4.curios.api.SlotContext;
 
 import java.util.UUID;
-import java.util.function.Supplier;
 
 /**
  * [CODE COPY] - {@link com.aetherteam.aether.item.accessories.cape.AgilityCapeItem}
