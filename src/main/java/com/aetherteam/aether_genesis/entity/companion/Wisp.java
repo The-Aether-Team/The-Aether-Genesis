@@ -11,33 +11,22 @@ import net.neoforged.neoforge.common.NeoForgeMod;
 
 import java.util.function.Supplier;
 
-public class Wisp extends CompanionMob {
+public class Wisp extends FloatingCompanion {
     private float armRotO;
     private float armRot;
 
     public Wisp(EntityType<? extends Wisp> entityType, Level level, Supplier<ItemStack> summoningItem) {
-        super(entityType, level, summoningItem, true);
+        super(entityType, level, summoningItem);
     }
 
     @Override
     public void tick() {
         super.tick();
-        AttributeInstance gravity = this.getAttribute(NeoForgeMod.ENTITY_GRAVITY.value());
-        if (gravity != null) {
-            double fallSpeed = Math.max(gravity.getValue() * -1.25, -0.1); // Entity isn't allowed to fall too slowly from gravity.
-            if (this.getDeltaMovement().y() < fallSpeed) {
-                this.setDeltaMovement(this.getDeltaMovement().x(), fallSpeed, this.getDeltaMovement().z());
-                this.hasImpulse = true;
-            }
-        }
         if (this.level().isClientSide()) {
             this.armRotO = this.armRot;
             this.armRot += 0.5F;
         }
     }
-
-    @Override
-    protected void jumpFromGround() { }
 
     public float getArmRotO() {
         return this.armRotO;
@@ -45,10 +34,5 @@ public class Wisp extends CompanionMob {
 
     public float getArmRot() {
         return this.armRot;
-    }
-
-    @Override
-    public boolean onClimbable() {
-        return this.horizontalCollision;
     }
 }

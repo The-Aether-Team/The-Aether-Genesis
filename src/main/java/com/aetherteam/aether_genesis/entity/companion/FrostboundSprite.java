@@ -6,9 +6,9 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class FrostboundSprite extends CompanionMob {
+public class FrostboundSprite extends FloatingCompanion {
     public FrostboundSprite(EntityType<FrostboundSprite> entityType, Level level) {
-        super(entityType, level, () -> new ItemStack(GenesisItems.FROSTBOUND_STONE.get()), true);
+        super(entityType, level, () -> new ItemStack(GenesisItems.FROSTBOUND_STONE.get()));
     }
 
     @Override
@@ -16,7 +16,7 @@ public class FrostboundSprite extends CompanionMob {
         super.tick();
         if (this.level().isClientSide()) {
             boolean isMoving = this.getDeltaMovement().x() > 0.01D || this.getDeltaMovement().y() > 0.1D || this.getDeltaMovement().z() > 0.01D || this.getDeltaMovement().x() < -0.01D || this.getDeltaMovement().y() < -0.1D || this.getDeltaMovement().z() < -0.01D;
-            if (this.tickCount % 40 == 0 || isMoving && this.tickCount % 3 == 0) {
+            if (this.tickCount % 40 == 0 || isMoving && this.tickCount % 8 == 0) {
                 double radius = 0.2D;
 
                 for (double y = this.position().y(); y <= this.position().y() + 1.5D; y += 0.1D) {

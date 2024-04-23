@@ -8,8 +8,8 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class FrostpineTotem extends CompanionMob {
+public class FrostpineTotem extends FloatingCompanion {
     public FrostpineTotem(EntityType<FrostpineTotem> entityType, Level level) {
-        super(entityType, level, () -> new ItemStack(GenesisItems.FROSTPINE_TOTEM.get()), true);
+        super(entityType, level, () -> new ItemStack(GenesisItems.FROSTPINE_TOTEM.get()));
     }
 }

@@ -2,6 +2,8 @@ package com.aetherteam.aether_genesis.client.renderer.entity;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
+import com.aetherteam.aether_genesis.client.renderer.entity.layers.FangrinEyesLayer;
+import com.aetherteam.aether_genesis.client.renderer.entity.layers.FrostpineTotemEyesLayer;
 import com.aetherteam.aether_genesis.client.renderer.entity.model.FangrinModel;
 import com.aetherteam.aether_genesis.entity.companion.Fangrin;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -12,6 +14,7 @@ public class FangrinRenderer extends CompanionRenderer<Fangrin, FangrinModel> {
 
     public FangrinRenderer(EntityRendererProvider.Context context) {
         super(context, new FangrinModel(context.bakeLayer(GenesisModelLayers.FANGRIN)), 0.45F);
+        this.addLayer(new FangrinEyesLayer(this));
     }
 
     @Override

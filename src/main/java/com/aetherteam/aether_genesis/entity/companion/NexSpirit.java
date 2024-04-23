@@ -5,16 +5,15 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class NexSpirit extends CompanionMob {
+public class NexSpirit extends FloatingCompanion {
     public static final EntityDataAccessor<Boolean> DATA_BROKEN_ID = SynchedEntityData.defineId(NexSpirit.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Integer> DATA_COOLDOWN_ID = SynchedEntityData.defineId(NexSpirit.class, EntityDataSerializers.INT);
 
-    public NexSpirit(EntityType<? extends PathfinderMob> entityType, Level level) {
-        super(entityType, level, () -> new ItemStack(GenesisItems.DEATH_SEAL.get()), true);
+    public NexSpirit(EntityType<NexSpirit> entityType, Level level) {
+        super(entityType, level, () -> new ItemStack(GenesisItems.DEATH_SEAL.get()));
     }
 
     @Override
@@ -85,22 +84,4 @@ public class NexSpirit extends CompanionMob {
     public void setCooldown(int cooldown) {
         this.getEntityData().set(DATA_COOLDOWN_ID, cooldown);
     }
-//
-//    @Override
-//    public void addAdditionalSaveData(CompoundTag tag) {
-//        super.addAdditionalSaveData(tag);
-//        tag.putBoolean("Broken", this.isBroken());
-//        tag.putInt("Cooldown", this.getCooldown());
-//    }
-//
-//    @Override
-//    public void readAdditionalSaveData(CompoundTag tag) {
-//        super.readAdditionalSaveData(tag);
-//        if (tag.contains("Broken")) {
-//            this.setBroken(tag.getBoolean("Broken"));
-//        }
-//        if (tag.contains("Cooldown")) {
-//            this.setCooldown(tag.getInt("Cooldown"));
-//        }
-//    }
 }

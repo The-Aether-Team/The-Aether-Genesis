@@ -16,6 +16,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.player.Player;
@@ -53,6 +54,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
 
     @Override
     protected void registerGoals() {
+        this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(0, new CompanionFollowGoal<>(this, 1.0D));
         this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));

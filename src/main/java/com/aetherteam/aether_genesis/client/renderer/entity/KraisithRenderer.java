@@ -2,6 +2,8 @@ package com.aetherteam.aether_genesis.client.renderer.entity;
 
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
+import com.aetherteam.aether_genesis.client.renderer.entity.layers.FangrinEyesLayer;
+import com.aetherteam.aether_genesis.client.renderer.entity.layers.KraisithEyesLayer;
 import com.aetherteam.aether_genesis.client.renderer.entity.model.KraisithModel;
 import com.aetherteam.aether_genesis.entity.companion.Kraisith;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -12,6 +14,7 @@ public class KraisithRenderer extends CompanionRenderer<Kraisith, KraisithModel>
 
     public KraisithRenderer(EntityRendererProvider.Context context) {
         super(context, new KraisithModel(context.bakeLayer(GenesisModelLayers.KRAISITH)), 0.45F);
+        this.addLayer(new KraisithEyesLayer(this));
     }
 
     @Override

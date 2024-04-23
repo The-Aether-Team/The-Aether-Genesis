@@ -64,9 +64,9 @@ public class GenesisEntityTypes {
 
     // Companions
     public static final  DeferredHolder<EntityType<?>, EntityType<Fangrin>> FANGRIN = ENTITY_TYPES.register("fangrin",
-            () -> EntityType.Builder.of(Fangrin::new, MobCategory.MISC).sized(0.8F, 0.8F).clientTrackingRange(10).build("fangrin"));
+            () -> EntityType.Builder.of(Fangrin::new, MobCategory.MISC).sized(0.8F, 0.75F).clientTrackingRange(10).build("fangrin"));
     public static final  DeferredHolder<EntityType<?>, EntityType<Kraisith>> KRAISITH = ENTITY_TYPES.register("kraisith",
-            () -> EntityType.Builder.of(Kraisith::new, MobCategory.MISC).sized(0.8F, 0.8F).clientTrackingRange(10).build("kraisith"));
+            () -> EntityType.Builder.of(Kraisith::new, MobCategory.MISC).sized(0.8F, 0.9F).clientTrackingRange(10).build("kraisith"));
     public static final  DeferredHolder<EntityType<?>, EntityType<FleetingWisp>> FLEETING_WISP = ENTITY_TYPES.register("fleeting_wisp",
             () -> EntityType.Builder.of(FleetingWisp::new, MobCategory.MISC).sized(0.8F, 1.8F).clientTrackingRange(10).build("fleeting_wisp"));
     public static final  DeferredHolder<EntityType<?>, EntityType<SoaringWisp>> SOARING_WISP = ENTITY_TYPES.register("soaring_wisp",
@@ -76,11 +76,11 @@ public class GenesisEntityTypes {
     public static final  DeferredHolder<EntityType<?>, EntityType<ShadeOfArkenzus>> SHADE_OF_ARKENZUS = ENTITY_TYPES.register("shade_of_arkenzus",
             () -> EntityType.Builder.of(ShadeOfArkenzus::new, MobCategory.MISC).sized(0.4F, 1.0F).clientTrackingRange(10).build("shade_of_arkenzus"));
     public static final  DeferredHolder<EntityType<?>, EntityType<FrostpineTotem>> FROSTPINE_TOTEM = ENTITY_TYPES.register("frostpine_totem",
-            () -> EntityType.Builder.of(FrostpineTotem::new, MobCategory.MISC).sized(0.8F, 1.8F).clientTrackingRange(10).build("frostpine_totem"));
+            () -> EntityType.Builder.of(FrostpineTotem::new, MobCategory.MISC).sized(0.8F, 2.0F).clientTrackingRange(10).build("frostpine_totem"));
     public static final  DeferredHolder<EntityType<?>, EntityType<FrostboundSprite>> FROSTBOUND_SPRITE = ENTITY_TYPES.register("frostbound_sprite",
-            () -> EntityType.Builder.of(FrostboundSprite::new, MobCategory.MISC).sized(0.8F, 1.8F).clientTrackingRange(10).build("frostbound_sprite"));
+            () -> EntityType.Builder.of(FrostboundSprite::new, MobCategory.MISC).sized(0.8F, 2.0F).clientTrackingRange(10).build("frostbound_sprite"));
     public static final  DeferredHolder<EntityType<?>, EntityType<NexSpirit>> NEX_SPIRIT = ENTITY_TYPES.register("nex_spirit",
-            () -> EntityType.Builder.of(NexSpirit::new, MobCategory.MISC).sized(0.8F, 1.8F).clientTrackingRange(10).build("nex_spirit"));
+            () -> EntityType.Builder.of(NexSpirit::new, MobCategory.MISC).sized(0.8F, 2.0F).clientTrackingRange(10).build("nex_spirit"));
     public static final  DeferredHolder<EntityType<?>, EntityType<BabyPinkSwet>> BABY_PINK_SWET = ENTITY_TYPES.register("baby_pink_swet",
             () -> EntityType.Builder.of(BabyPinkSwet::new, MobCategory.MISC).sized(0.9F, 0.95F).clientTrackingRange(10).build("baby_pink_swet"));
 
@@ -119,15 +119,15 @@ public class GenesisEntityTypes {
         event.put(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), SliderHostMimic.createHostAttributes().build());
         event.put(GenesisEntityTypes.LABYRINTH_EYE.get(), LabyrinthEye.createMobAttributes().build());
         event.put(GenesisEntityTypes.HOST_EYE.get(), HostEyeProjectile.createMobAttributes().build());
-        event.put(GenesisEntityTypes.FANGRIN.get(), CompanionMob.createAttributes().build());
-        event.put(GenesisEntityTypes.KRAISITH.get(), CompanionMob.createAttributes().build());
+        event.put(GenesisEntityTypes.FANGRIN.get(), Fangrin.createAttributes().build());
+        event.put(GenesisEntityTypes.KRAISITH.get(), Kraisith.createAttributes().build());
         event.put(GenesisEntityTypes.FLEETING_WISP.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.SOARING_WISP.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.ETHEREAL_WISP.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.SHADE_OF_ARKENZUS.get(), ShadeOfArkenzus.createAttributes().build());
         event.put(GenesisEntityTypes.FROSTPINE_TOTEM.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.FROSTBOUND_SPRITE.get(), CompanionMob.createAttributes().build());
-        event.put(GenesisEntityTypes.NEX_SPIRIT.get(), NexSpirit.createAttributes().build());
+        event.put(GenesisEntityTypes.NEX_SPIRIT.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.BABY_PINK_SWET.get(), BabyPinkSwet.createAttributes().build());
     }
 }

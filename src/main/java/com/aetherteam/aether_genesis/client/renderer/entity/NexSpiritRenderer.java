@@ -27,7 +27,7 @@ public class NexSpiritRenderer extends CompanionRenderer<NexSpirit, NexSpiritMod
 
     @Override
     protected void scale(NexSpirit nexSpirit, PoseStack poseStack, float partialTickTime) {
-        poseStack.translate(0.0, -0.45, 0.0);
+        poseStack.translate(0.0, -0.4, 0.0);
         float sin = Mth.sin((nexSpirit.tickCount + partialTickTime) / 6);
         poseStack.translate(0.0, sin / 15, 0.0);
     }
