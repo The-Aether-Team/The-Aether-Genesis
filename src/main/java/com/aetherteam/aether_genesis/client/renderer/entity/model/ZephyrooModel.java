@@ -1,19 +1,15 @@
 package com.aetherteam.aether_genesis.client.renderer.entity.model;
 
+import com.aetherteam.aether_genesis.entity.passive.Zephyroo;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.Entity;
 
-public class ZephyrooModel<T extends Entity> extends EntityModel<T> {
-	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("modid", "zephyroo"), "main");
+public class ZephyrooModel<T extends Zephyroo> extends EntityModel<T> {
 
 	public final ModelPart body;
 	public final ModelPart head;
@@ -21,6 +17,8 @@ public class ZephyrooModel<T extends Entity> extends EntityModel<T> {
 	public final ModelPart leftArm;
 	public final ModelPart rightLeg;
 	public final ModelPart leftLeg;
+
+	private float headXRot = 0;
 
 	public ZephyrooModel(ModelPart root) {
 		this.body = root.getChild("body");
@@ -67,6 +65,12 @@ public class ZephyrooModel<T extends Entity> extends EntityModel<T> {
 		this.head.xRot = headPitch * Mth.PI / 180;
 		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
 		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		this.head.xRot += this.headXRot;
+	}
+
+	@Override
+	public void prepareMobModel(T zephyroo, float pLimbSwing, float pLimbSwingAmount, float pPartialTick) {
+		this.headXRot = zephyroo.getHeadEatAngleScale(pPartialTick);
 	}
 
 	@Override
