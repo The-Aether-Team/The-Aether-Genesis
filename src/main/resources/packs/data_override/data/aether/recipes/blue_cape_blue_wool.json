@@ -1,8 +1,7 @@
 {
-  "type": "forge:conditional",
-  "conditions": [
+  "neoforge:conditions": [
     {
-      "type": "forge:false"
+      "type": "neoforge:false"
     }
   ]
 }

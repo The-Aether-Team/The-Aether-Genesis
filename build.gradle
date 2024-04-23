@@ -1,18 +1,16 @@
+import net.neoforged.gradle.common.tasks.JarJar
+
 plugins {
     id 'eclipse'
     id 'maven-publish'
-    id 'net.neoforged.gradle' version '[6.0.13, 6.2)'
-    id 'org.spongepowered.mixin' version '[0.7,0.8)'
-    id 'org.parchmentmc.librarian.forgegradle' version '[1,2)'
-    id 'org.moddingx.modgradle.mapping' version '[4,5)'
-    id 'org.moddingx.modgradle.sourcejar' version '[4,5)' apply false
+    id 'net.neoforged.gradle.userdev' version '7.0.+'
     id 'io.github.0ffz.github-packages' version '[1,2)'
     id 'com.matthewprenger.cursegradle' version '[1.4,1.5)'
     id 'com.modrinth.minotaur' version '[2,3)'
 }
 
 version = "${mc_version}-${mod_version}-neoforge"
-group = 'com.aetherteam.aether_genesis' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+group = 'com.aetherteam.aether_genesis'
 
 base {
     archivesName = mod_id
@@ -20,49 +18,32 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-apply plugin: 'org.moddingx.modgradle.sourcejar'
+minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 
-minecraft {
-    mappings channel: 'sugarcane', version: project.mappings
+runs {
+    configureEach {
+        workingDirectory project.file('run')
+        systemProperty "${mod_id}.iside", 'true'
+        systemProperty  'forge.logging.console.level', 'info'
 
-    copyIdeResources = true
+        modSource project.sourceSets.main
+    }
 
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+    client {
+        systemProperty 'forge.enabledGameTestNamespaces', mod_id
+    }
 
-    runs {
-        configureEach {
-            workingDirectory project.file('run')
+    server {
+        systemProperty 'forge.enabledGameTestNamespaces', mod_id
+        programArgument '--nogui'
+    }
 
-            property "${mod_id}.iside", 'true'
-//            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'info' // info is the default for production
+    gameTestServer {
+        systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+    }
 
-            mods {
-                "${mod_id}" {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        client {
-            property 'forge.enabledGameTestNamespaces', mod_id
-        }
-
-        server {
-            property 'forge.enabledGameTestNamespaces', mod_id
-
-            args '--nogui'
-        }
-
-        gameTestServer {
-            property 'forge.enabledGameTestNamespaces', mod_id
-        }
-
-        data {
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/'), '--existing', file('src/generated/resources/'), '--existing-mod', 'aether'
-
-            environment 'target', 'fmluserdevdata'
-        }
+    data {
+        programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing', file('src/generated/resources/').getAbsolutePath(), '--existing-mod', 'aether', '--existing-mod', 'nitrogen_internals', '--existing-mod', 'cumulus_menus'
     }
 }
 
@@ -71,24 +52,36 @@ sourceSets.main.resources {
 }
 
 dependencies {
-    minecraft "net.neoforged:forge:${project.mc_version}-${project.neoforge_version}"
+    implementation "net.neoforged:neoforge:${project.neoforge_version}"
 
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
-
-    implementation fg.deobf("com.aetherteam.aether:aether:${project.aether_version}")
+    implementation "com.aetherteam.aether:aether:${project.aether_version}"
 //    implementation fg.deobf("local:aether:${project.aether_version}")
 
-    implementation fg.deobf("com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}")
-    implementation fg.deobf("com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}")
-    implementation fg.deobf("top.theillusivec4.curios:curios-forge:${project.curios_version}+${project.mc_version}")
+    implementation "com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}"
+    implementation "com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}"
+    implementation "top.theillusivec4.curios:curios-neoforge:${project.curios_version}+${project.mc_version}"
 
-    implementation fg.deobf("curse.maven:aeroblender-879879:${project.aeroblender_version}")
-    implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${project.terrablender_version}")
+    implementation "curse.maven:aeroblender-879879:${project.aeroblender_version}"
+    implementation "com.github.glitchfiend:TerraBlender-neoforge:${project.terrablender_version}"
+
+    jarJar("curse.maven:aeroblender-879879:${project.aeroblender_version}") {
+        jarJar.ranged(it, "[${project.aeroblender_version},)")
+        jarJar.pin(it, "${project.aeroblender_version}")
+    }
+
+    jarJar("com.github.glitchfiend:TerraBlender-neoforge:${project.terrablender_version}") {
+        jarJar.ranged(it, "[${project.terrablender_version_minimum},${project.terrablender_version_maximum})")
+        jarJar.pin(it, "${project.terrablender_version}")
+    }
+
+    compileOnly "curse.maven:jade-324717:${project.jade_version}"
+
 
     //runtimeOnly fg.deobf("io.github.flemmli97:debugutils:${project.mc_version}-${project.debugutils_version}-forge")
 }
 
 repositories {
+    maven { url = "https://jitpack.io" }
     maven { url = "https://maven.blamejared.com" }
     maven { url = "https://maven.theillusivec4.top/" }
     maven { url = "https://www.cursemaven.com" }
@@ -114,12 +107,21 @@ tasks.named('jar', Jar).configure {
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+    archiveClassifier = 'no-embeds'
+}
 
-    finalizedBy 'reobfJar'
+tasks.named('jarJar', JarJar).configure {
+    archiveClassifier = ''
 }
 
 compileJava {
     options.incremental = false
+}
+
+tasks.register('sourceJar', Jar) {
+    dependsOn 'classes'
+    from sourceSets.main.allSource
+    archiveClassifier = 'sources'
 }
 
 //publishing {
@@ -168,7 +170,6 @@ compileJava {
 //    loaders = ["forge"]
 //}
 
-mixin {
-    config "${project.mod_id}.mixins.json"
-    add sourceSets.main, "${project.mod_id}.refmap.json"
+build {
+    dependsOn 'jarJar'
 }

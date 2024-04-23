@@ -43,11 +43,11 @@ public abstract class GenesisBlockLootSubProvider extends AetherBlockLootSubProv
                         .add(this.applyExplosionDecay(block, LootItem.lootTableItem(drop))
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 3.0F)).when(LocationCheck.checkLocation(
                                         LocationPredicate.Builder.location().setBlock(
-                                                BlockPredicate.Builder.block().of(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get()).build()),
+                                                BlockPredicate.Builder.block().of(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get())),
                                         new BlockPos(0, -1, 0)).invert()))
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F)).when(LocationCheck.checkLocation(
                                         LocationPredicate.Builder.location().setBlock(
-                                                BlockPredicate.Builder.block().of(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get()).build()),
+                                                BlockPredicate.Builder.block().of(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get())),
                                         new BlockPos(0, -1, 0))))
                                 .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
                         .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(OrangeTreeBlock.AGE, 4)))

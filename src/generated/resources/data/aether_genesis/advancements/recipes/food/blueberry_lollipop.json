@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_blue_berry",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_blue_berry"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:blueberry_lollipop"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

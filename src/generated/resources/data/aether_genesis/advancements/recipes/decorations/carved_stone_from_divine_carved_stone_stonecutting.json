@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_divine_carved_stone",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_divine_carved_stone"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:carved_stone_from_divine_carved_stone_stonecutting"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

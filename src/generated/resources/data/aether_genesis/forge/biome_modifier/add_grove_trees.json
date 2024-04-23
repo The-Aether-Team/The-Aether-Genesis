@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#aether_genesis:has_grove_trees",
-  "features": "aether_genesis:skyroot_grove_large_green_skyroot_trees",
-  "step": "vegetal_decoration"
-}

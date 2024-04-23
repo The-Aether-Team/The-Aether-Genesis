@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.client.renderer.accessory;
 
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.aether_genesis.client.renderer.accessory.model.MouseEarCapModel;
-import com.aetherteam.aether_genesis.item.accessories.MouseEarCapItem;
+import com.aetherteam.aether_genesis.item.accessories.miscellaneous.MouseEarCapItem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;

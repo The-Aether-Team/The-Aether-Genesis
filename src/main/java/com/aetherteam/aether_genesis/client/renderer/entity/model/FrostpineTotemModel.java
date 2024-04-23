@@ -40,7 +40,7 @@ public class FrostpineTotemModel extends EntityModel<FrostpineTotem> {
 	}
 
 	@Override
-	public void setupAnim(FrostpineTotem entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) { }
+	public void setupAnim(FrostpineTotem totem, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) { }
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {

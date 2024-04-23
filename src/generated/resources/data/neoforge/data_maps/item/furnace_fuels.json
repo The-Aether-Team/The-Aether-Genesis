@@ -1,0 +1,10 @@
+{
+  "values": {
+    "aether_genesis:skyroot_crafting_table": {
+      "burn_time": 300
+    },
+    "aether_genesis:skyroot_ladder": {
+      "burn_time": 300
+    }
+  }
+}

@@ -12,8 +12,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.common.loot.LootModifier;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.common.loot.LootModifier;
 
 public class ChanceDoubleDropsModifier extends LootModifier {
     public static final Codec<ChanceDoubleDropsModifier> CODEC = RecordCodecBuilder.create((instance) -> LootModifier.codecStart(instance).apply(instance, ChanceDoubleDropsModifier::new));
@@ -22,6 +22,13 @@ public class ChanceDoubleDropsModifier extends LootModifier {
         super(conditions);
     }
 
+    /**
+     * Has a chance to double mob drops if an attacker is wearing a Skyroot Ring and if the killed mob isn't tagged with {@link AetherTags.Entities#NO_SKYROOT_DOUBLE_DROPS} and the drop isn't tagged with {@link AetherTags.Items#NO_SKYROOT_DOUBLE_DROPS}.
+     *
+     * @param lootStacks Result items from a loot table as an {@link ObjectArrayList} of {@link ItemStack}s.
+     * @param context    The {@link LootContext}.
+     * @return A new {@link ObjectArrayList} of {@link ItemStack}s that a loot table will give.
+     */
     @Override
     public ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> lootStacks, LootContext context) {
         Entity entity = context.getParamOrNull(LootContextParams.DIRECT_KILLER_ENTITY);

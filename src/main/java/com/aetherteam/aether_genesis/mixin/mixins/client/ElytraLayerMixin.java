@@ -2,7 +2,7 @@ package com.aetherteam.aether_genesis.mixin.mixins.client;
 
 import com.aetherteam.aether.item.EquipmentUtil;
 import com.aetherteam.aether_genesis.item.GenesisItems;
-import com.aetherteam.aether_genesis.item.accessories.DyeableCape;
+import com.aetherteam.aether_genesis.item.accessories.cape.DyeableCape;
 import com.aetherteam.aether_genesis.mixin.mixins.client.accessor.ElytraLayerAccessor;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -24,15 +24,18 @@ import top.theillusivec4.curios.api.SlotResult;
 
 @Mixin(ElytraLayer.class)
 public class ElytraLayerMixin<T extends LivingEntity, M extends EntityModel<T>> {
+    /**
+     * Used to render a colored Elytra for dyed capes.
+     */
     @Inject(at = @At(value = "INVOKE", target = "Lnet/minecraft/client/model/ElytraModel;renderToBuffer(Lcom/mojang/blaze3d/vertex/PoseStack;Lcom/mojang/blaze3d/vertex/VertexConsumer;IIFFFF)V", shift = At.Shift.BEFORE), method = "render(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;ILnet/minecraft/world/entity/LivingEntity;FFFFFF)V", cancellable = true)
     private void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, T livingEntity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, CallbackInfo ci) {
         if (livingEntity instanceof AbstractClientPlayer abstractClientPlayer) {
             ElytraLayer<T, M> elytraLayer = (ElytraLayer<T, M>) (Object) this;
             SlotResult slotResult = EquipmentUtil.getCurio(livingEntity, GenesisItems.CAPE.get());
-            if (slotResult != null && abstractClientPlayer.isCapeLoaded() && abstractClientPlayer.getCloakTextureLocation() != null && abstractClientPlayer.isModelPartShown(PlayerModelPart.CAPE)) {
-                ResourceLocation location = abstractClientPlayer.getCloakTextureLocation();
+            if (slotResult != null && abstractClientPlayer.isModelPartShown(PlayerModelPart.CAPE) && abstractClientPlayer.getSkin().capeTexture() != null) {
+                ResourceLocation location = abstractClientPlayer.getSkin().capeTexture();
                 DyeableCape dyeableItem = (DyeableCape) slotResult.stack().getItem();
-                int i = ((net.minecraft.world.item.DyeableLeatherItem) dyeableItem).getColor(slotResult.stack());
+                int i = dyeableItem.getColor(slotResult.stack());
                 float red = (float) (i >> 16 & 255) / 255.0F;
                 float green = (float) (i >> 8 & 255) / 255.0F;
                 float blue = (float) (i & 255) / 255.0F;

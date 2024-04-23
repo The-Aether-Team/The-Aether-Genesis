@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_holystone_furnace",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_holystone_furnace"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:holystone_furnace"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_cornstarch_bowl",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_cornstarch_bowl"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:candy_corn"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

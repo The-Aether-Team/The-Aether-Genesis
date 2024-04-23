@@ -2,6 +2,7 @@ package com.aetherteam.aether_genesis.block.miscellaneous;
 
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.google.common.collect.ImmutableMap;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -38,6 +39,7 @@ import java.util.stream.Collectors;
  */
 @SuppressWarnings("deprecation")
 public class ColdFireBlock extends BaseFireBlock {
+    public static final MapCodec<ColdFireBlock> CODEC = simpleCodec(ColdFireBlock::new);
     public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
     public static final BooleanProperty NORTH = PipeBlock.NORTH;
     public static final BooleanProperty EAST = PipeBlock.EAST;
@@ -56,6 +58,11 @@ public class ColdFireBlock extends BaseFireBlock {
         super(properties, 1.0F);
         this.registerDefaultState(this.getStateDefinition().any().setValue(AGE, 0).setValue(NORTH, Boolean.FALSE).setValue(EAST, Boolean.FALSE).setValue(SOUTH, Boolean.FALSE).setValue(WEST, Boolean.FALSE).setValue(UP, Boolean.FALSE));
         this.shapesCache = ImmutableMap.copyOf(this.getStateDefinition().getPossibleStates().stream().filter((p_53497_) -> p_53497_.getValue(AGE) == 0).collect(Collectors.toMap(Function.identity(), ColdFireBlock::calculateShape)));
+    }
+
+    @Override
+    protected MapCodec<? extends BaseFireBlock> codec() {
+        return CODEC;
     }
 
     private static VoxelShape calculateShape(BlockState state) {
@@ -196,7 +203,7 @@ public class ColdFireBlock extends BaseFireBlock {
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         entity.hurt(level.damageSources().inFire(), 1.0F);
         if (entity instanceof LivingEntity livingEntity) {
-            livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 4)); //todo balance
+            livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 30, 4));
         }
     }
 

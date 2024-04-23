@@ -7,7 +7,7 @@ import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.data.providers.GenesisItemModelProvider;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.data.PackOutput;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class GenesisItemModelData extends GenesisItemModelProvider {
     public GenesisItemModelData(PackOutput output, ExistingFileHelper helper) {
@@ -111,8 +111,8 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.lookalikeBlock(GenesisBlocks.SKYROOT_CHEST.get(), this.mcLoc("item/chest"));
         this.itemBlockFlat(GenesisBlocks.SKYROOT_LADDER.get(), "construction/");
 
+        this.itemBlock(GenesisBlocks.CARVED_PILLAR_TOP.get());
         this.itemBlock(GenesisBlocks.CARVED_PILLAR.get());
-        this.itemBlock(GenesisBlocks.CARVED_PILLAR_SIDE.get());
         this.lookalikeBlock(GenesisBlocks.SKYROOT_CHEST_MIMIC.get(), this.mcLoc("item/chest"));
         this.itemBlock(GenesisBlocks.DIVINE_SENTRY_STONE.get());
         this.itemBlock(GenesisBlocks.DIVINE_CARVED_STONE.get());

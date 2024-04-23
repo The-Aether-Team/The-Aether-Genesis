@@ -1,11 +1,22 @@
-// 1.20.1	2023-12-14T20:57:09.4363909	Tags for minecraft:item mod id aether_genesis
+// 1.20.4	2024-04-22T17:56:32.0914124	Tags for minecraft:item mod id aether_genesis
+330a2f26e92f1bd1695fdccd7ba2749180f2e600 data/aether/tags/items/accessories_capes.json
+42d9429c4a2caa607369eda48e154467b6961a23 data/aether/tags/items/accessories_miscellaneous.json
+d1a8d412e7c7c9bcae51c0760965af276c050ebd data/aether/tags/items/accessories_pendants.json
+7c30d78b6d916d4e1b51830e71de008f47a23174 data/aether/tags/items/accessories_rings.json
+7238fc566ecc944690f0e6fbcbffb28b3022d09a data/aether/tags/items/aerbunny_temptation_items.json
 770c4531b8e49765e8558a6ca3a88e6b7a5f7600 data/aether/tags/items/boss_doorway_dungeon_blocks.json
+bd93c69f8def06ae585a2b73dfee1f4ee2c2e28f data/aether/tags/items/bronze_dungeon_loot.json
 1d7eabfa746881c14275fb87c139d44dd7a797ac data/aether/tags/items/crafts_skyroot_planks.json
 fd648a6cd6467b295cc98e642efbef3aecef70b9 data/aether/tags/items/deployable_parachutes.json
-1ebc3204079eb2a045496cc7bce2e16427144833 data/aether/tags/items/dungeon_blocks.json
+d6d5abc3b0854d7d0be26ad1f0e3e0c6bd589640 data/aether/tags/items/dungeon_blocks.json
 a3eac039548e1059b71778bc8e17558b8f2aea4f data/aether/tags/items/dungeon_keys.json
+7238fc566ecc944690f0e6fbcbffb28b3022d09a data/aether/tags/items/flying_cow_temptation_items.json
+033effccfd047e284a1308ebe504746e668e4fe7 data/aether/tags/items/gold_dungeon_loot.json
 3dcf10b82a2080a9bd10b8d2b5d01a41fb6bd7b8 data/aether/tags/items/locked_dungeon_blocks.json
-e927d26e41772ff1076938a9f5704f9c82b83067 data/aether/tags/items/sentry_blocks.json
+7238fc566ecc944690f0e6fbcbffb28b3022d09a data/aether/tags/items/phyg_temptation_items.json
+f48538930063aff5b41d26facd21331ba0343bae data/aether/tags/items/sentry_blocks.json
+7238fc566ecc944690f0e6fbcbffb28b3022d09a data/aether/tags/items/sheepuff_temptation_items.json
+70ad3dab872facdce98d5712750b637a80231132 data/aether/tags/items/silver_dungeon_loot.json
 02cf034bd729e8c7a6ec5b8f896d165a730f115a data/aether/tags/items/swet_balls.json
 9422525eb9d5e84c5ea326a8882a93ac364a19c3 data/aether/tags/items/trapped_dungeon_blocks.json
 11a0385ec3734993a320caf3d189391e9407878d data/aether/tags/items/treasure_doorway_dungeon_blocks.json
@@ -14,12 +25,11 @@ e927d26e41772ff1076938a9f5704f9c82b83067 data/aether/tags/items/sentry_blocks.js
 1d7eabfa746881c14275fb87c139d44dd7a797ac data/aether_genesis/tags/items/log_walls.json
 829f90b2789d000dd0bda389a343b48a97d2ad03 data/aether_genesis/tags/items/skyroot_ladder_crafting.json
 88f5568b143ff5a6bc6f2dc45fedbf8589285638 data/aether_genesis/tags/items/swet_jelly.json
-42d9429c4a2caa607369eda48e154467b6961a23 data/curios/tags/items/aether_accessory.json
-d4b5882231fe2923626d0fc337ffa4338b4eec00 data/curios/tags/items/aether_cape.json
-d1a8d412e7c7c9bcae51c0760965af276c050ebd data/curios/tags/items/aether_pendant.json
-7c30d78b6d916d4e1b51830e71de008f47a23174 data/curios/tags/items/aether_ring.json
 c21725ee872d7defc7979eb8d4fd016267f6facb data/forge/tags/items/chests/wooden.json
+6ff9b23d7f59d105370ad06adf8429d94d62fccd data/forge/tags/items/ores.json
+6ff9b23d7f59d105370ad06adf8429d94d62fccd data/forge/tags/items/ore_rates/singular.json
 beac0a1e118252eaf09f2d527230162fdb9a1a72 data/minecraft/tags/items/leaves.json
+21ba05af990cf6d402d13ff2f1286d2126ff491a data/minecraft/tags/items/logs_that_burn.json
 d80078b8cef8da6515b4b903017fe5783101c46f data/minecraft/tags/items/music_discs.json
 20cb9cd9fdec4548c290b66338a6eae5fe5d6d2d data/minecraft/tags/items/saplings.json
 46e9ea9c45d8b0ab9890101bbcdd4b390036a2b5 data/minecraft/tags/items/slabs.json

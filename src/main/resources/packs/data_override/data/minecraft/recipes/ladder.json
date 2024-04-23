@@ -3,9 +3,9 @@
   "category": "misc",
   "key": {
     "#": {
-      "type": "forge:difference",
+      "type": "neoforge:difference",
       "base": {
-        "tag": "forge:rods/wooden"
+        "tag": "neoforge:rods/wooden"
       },
       "subtracted": {
         "tag": "aether_genesis:skyroot_ladder_crafting"

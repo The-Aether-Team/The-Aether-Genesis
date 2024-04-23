@@ -43,10 +43,7 @@ public class BabyPinkSwet extends Swet implements Companion<BabyPinkSwet> {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 1.0)
-                .add(Attributes.MOVEMENT_SPEED, 0.4)
-                .add(Attributes.FOLLOW_RANGE, 48.0);
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 1.0).add(Attributes.MOVEMENT_SPEED, 0.4).add(Attributes.FOLLOW_RANGE, 48.0);
     }
 
     @Override
@@ -70,6 +67,16 @@ public class BabyPinkSwet extends Swet implements Companion<BabyPinkSwet> {
     public void tick() {
         super.tick();
         this.tickCompanion(this);
+    }
+
+    @Override
+    public void onEquip(ItemStack itemStack) {
+
+    }
+
+    @Override
+    public void onUnequip(ItemStack itemStack) {
+
     }
 
     @Override

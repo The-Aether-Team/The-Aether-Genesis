@@ -9,14 +9,14 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class FrostpineTotemEyesLayer extends EyesLayer<FrostpineTotem, FrostpineTotemModel> {
-    private static final RenderType FROSTPINE_TOTEM_EYES = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/companions/frostpine_totem/frostpine_totem_emissive.png"));
+    private static final RenderType FROSTPINE_TOTEM_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/companions/frostpine_totem/frostpine_totem_emissive.png"));
 
-    public FrostpineTotemEyesLayer(RenderLayerParent<FrostpineTotem, FrostpineTotemModel> renderer) {
-        super(renderer);
+    public FrostpineTotemEyesLayer(RenderLayerParent<FrostpineTotem, FrostpineTotemModel> entityRenderer) {
+        super(entityRenderer);
     }
 
     @Override
     public RenderType renderType() {
-        return FROSTPINE_TOTEM_EYES;
+        return FROSTPINE_TOTEM_GLOW;
     }
 }

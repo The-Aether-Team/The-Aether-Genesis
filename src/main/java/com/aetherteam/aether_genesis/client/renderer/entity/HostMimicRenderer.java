@@ -4,12 +4,10 @@ import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.aether_genesis.client.renderer.entity.layers.HostMimicLayer;
 import com.aetherteam.aether_genesis.client.renderer.entity.model.SliderHostMimicModel;
-import com.aetherteam.aether_genesis.entity.monster.boss.SliderHostMimic;
+import com.aetherteam.aether_genesis.entity.monster.dungeon.boss.SliderHostMimic;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-
-import javax.annotation.Nonnull;
 
 public class HostMimicRenderer extends MobRenderer<SliderHostMimic, SliderHostMimicModel> {
     private static final ResourceLocation HOST_MIMIC_ASLEEP_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/slider_host_mimic/slider_host_mimic_asleep.png");
@@ -20,9 +18,8 @@ public class HostMimicRenderer extends MobRenderer<SliderHostMimic, SliderHostMi
         this.addLayer(new HostMimicLayer(this));
     }
 
-    @Nonnull
     @Override
-    public ResourceLocation getTextureLocation(@Nonnull SliderHostMimic sentryGuardian) {
-        return sentryGuardian.isAwake() ? HOST_MIMIC_AWAKE_TEXTURE : HOST_MIMIC_ASLEEP_TEXTURE;
+    public ResourceLocation getTextureLocation(SliderHostMimic hostMimic) {
+        return hostMimic.isAwake() ? HOST_MIMIC_AWAKE_TEXTURE : HOST_MIMIC_ASLEEP_TEXTURE;
     }
 }

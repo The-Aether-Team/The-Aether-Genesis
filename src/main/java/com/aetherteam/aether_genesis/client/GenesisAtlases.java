@@ -4,11 +4,7 @@ import com.aetherteam.aether_genesis.Genesis;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
-@EventBusSubscriber(modid = Genesis.MODID, value = Dist.CLIENT, bus = Bus.MOD)
 public class GenesisAtlases {
 	public static Material SKYROOT_CHEST_MATERIAL;
 	public static Material SKYROOT_CHEST_LEFT_MATERIAL;

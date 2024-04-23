@@ -14,8 +14,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraftforge.common.loot.IGlobalLootModifier;
-import net.minecraftforge.common.loot.LootModifier;
+import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
+import net.neoforged.neoforge.common.loot.LootModifier;
 
 public class PresentDropsModifier extends LootModifier {
     public static final Codec<PresentDropsModifier> CODEC = RecordCodecBuilder.create((instance) -> LootModifier.codecStart(instance).apply(instance, PresentDropsModifier::new));
@@ -24,6 +24,13 @@ public class PresentDropsModifier extends LootModifier {
         super(conditions);
     }
 
+    /**
+     * Has a 1/5 chance to drop a present if a mob is attacked with full strength with an item while wearing a Lucky Bell if the mob isn't tagged with {@link GenesisTags.Entities#NO_PRESENT_DROPS}.
+     *
+     * @param lootStacks Result items from a loot table as an {@link ObjectArrayList} of {@link ItemStack}s.
+     * @param context    The {@link LootContext}.
+     * @return A new {@link ObjectArrayList} of {@link ItemStack}s that a loot table will give.
+     */
     @Override
     public ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> lootStacks, LootContext context) {
         Entity entity = context.getParamOrNull(LootContextParams.DIRECT_KILLER_ENTITY);

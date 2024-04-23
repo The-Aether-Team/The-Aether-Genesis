@@ -2,33 +2,46 @@ package com.aetherteam.aether_genesis.loot.functions;
 
 import com.aetherteam.aether_genesis.entity.passive.CarrionSprout;
 import com.aetherteam.aether_genesis.item.GenesisItems;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSerializationContext;
-import net.minecraft.util.GsonHelper;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.functions.LootItemConditionalFunction;
-import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunctionType;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
+import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+
+import java.util.List;
 
 public class CarrionSproutSize extends LootItemConditionalFunction {
-    private final NumberProvider randomBound;
-    private final NumberProvider minimum;
-    private final NumberProvider maximum;
+    public static final Codec<CarrionSproutSize> CODEC = RecordCodecBuilder.create(instance -> commonFields(instance)
+            .and(ConstantValue.CODEC.fieldOf("random_bound").forGetter(carrionSproutSize -> carrionSproutSize.randomBound))
+            .and(ConstantValue.CODEC.fieldOf("minimum").forGetter(carrionSproutSize -> carrionSproutSize.minimum))
+            .and(ConstantValue.CODEC.fieldOf("maximum").forGetter(carrionSproutSize -> carrionSproutSize.maximum))
+            .apply(instance, CarrionSproutSize::new)
+    );
 
-    protected CarrionSproutSize(LootItemCondition[] conditions, NumberProvider randomBound, NumberProvider minimum, NumberProvider maximum) {
+    private final ConstantValue randomBound;
+    private final ConstantValue minimum;
+    private final ConstantValue maximum;
+
+    protected CarrionSproutSize(List<LootItemCondition> conditions, ConstantValue randomBound, ConstantValue minimum, ConstantValue maximum) {
         super(conditions);
         this.randomBound = randomBound;
         this.minimum = minimum;
         this.maximum = maximum;
     }
 
+    /**
+     * Determines the drop count of Wyndberries based on a Carrion Sprout's size.
+     *
+     * @param stack   The {@link ItemStack} for the loot pool.
+     * @param context The {@link LootContext}.
+     * @return The {@link ItemStack} for the loot pool.
+     */
     @Override
     protected ItemStack run(ItemStack stack, LootContext context) {
         Entity entity = context.getParamOrNull(LootContextParams.THIS_ENTITY);
@@ -38,64 +51,12 @@ public class CarrionSproutSize extends LootItemConditionalFunction {
         return stack;
     }
 
-    public static CarrionSproutSize.Builder setAmount(NumberProvider randomBound, NumberProvider minimum, NumberProvider maximum) {
-        return new CarrionSproutSize.Builder(randomBound, minimum, maximum);
+    public static LootItemConditionalFunction.Builder<?> builder(ConstantValue randomBound, ConstantValue minimum, ConstantValue maximum) {
+        return LootItemConditionalFunction.simpleBuilder((lootItemConditions) -> new CarrionSproutSize(lootItemConditions, randomBound, minimum, maximum));
     }
 
     @Override
     public LootItemFunctionType getType() {
         return GenesisLootFunctions.CARRION_SPROUT_SIZE.get();
-    }
-
-    public static class Builder extends LootItemConditionalFunction.Builder<CarrionSproutSize.Builder> {
-        private NumberProvider randomBound;
-        private NumberProvider minimum;
-        private NumberProvider maximum;
-
-        public Builder(NumberProvider randomBound, NumberProvider minimum, NumberProvider maximum) {
-            this.randomBound = randomBound;
-            this.minimum = minimum;
-            this.maximum = maximum;
-        }
-
-        @Override
-        protected CarrionSproutSize.Builder getThis() {
-            return this;
-        }
-
-        public void setRandomBound(NumberProvider randomBound) {
-            this.randomBound = randomBound;
-        }
-
-        public void setMinimum(NumberProvider minimum) {
-            this.minimum = minimum;
-        }
-
-        public void setMaximum(NumberProvider maximum) {
-            this.maximum = maximum;
-        }
-
-        @Override
-        public LootItemFunction build() {
-            return new CarrionSproutSize(this.getConditions(), this.randomBound, this.minimum, this.maximum);
-        }
-    }
-
-    public static class Serializer extends LootItemConditionalFunction.Serializer<CarrionSproutSize> {
-        @Override
-        public void serialize(JsonObject json, CarrionSproutSize instance, JsonSerializationContext context) {
-            super.serialize(json, instance, context);
-            json.add("randomBound", context.serialize(instance.randomBound));
-            json.add("minimum", context.serialize(instance.minimum));
-            json.add("maximum", context.serialize(instance.maximum));
-        }
-
-        @Override
-        public CarrionSproutSize deserialize(JsonObject json, JsonDeserializationContext context, LootItemCondition[] conditions) {
-            NumberProvider randomBound = GsonHelper.getAsObject(json, "randomBound", context, NumberProvider.class);
-            NumberProvider minimum = GsonHelper.getAsObject(json, "minimum", context, NumberProvider.class);
-            NumberProvider maximum = GsonHelper.getAsObject(json, "maximum", context, NumberProvider.class);
-            return new CarrionSproutSize(conditions, randomBound, minimum, maximum);
-        }
     }
 }

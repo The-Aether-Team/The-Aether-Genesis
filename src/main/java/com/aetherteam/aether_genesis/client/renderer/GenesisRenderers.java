@@ -1,13 +1,11 @@
 package com.aetherteam.aether_genesis.client.renderer;
 
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.capability.player.AetherPlayer;
 import com.aetherteam.aether.client.renderer.accessory.PendantRenderer;
-import com.aetherteam.aether.client.renderer.entity.IceCrystalRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
 import com.aetherteam.aether.client.renderer.entity.model.MimicModel;
-import com.aetherteam.aether.client.renderer.player.layer.DartLayer;
 import com.aetherteam.aether_genesis.Genesis;
+import com.aetherteam.aether_genesis.attachment.GenesisPlayerAttachment;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.aether_genesis.client.renderer.accessory.MouseEarCapRenderer;
@@ -16,8 +14,9 @@ import com.aetherteam.aether_genesis.client.renderer.blockentity.SkyrootChestMim
 import com.aetherteam.aether_genesis.client.renderer.blockentity.SkyrootChestRenderer;
 import com.aetherteam.aether_genesis.client.renderer.entity.*;
 import com.aetherteam.aether_genesis.client.renderer.entity.model.*;
+import com.aetherteam.aether_genesis.client.renderer.player.layer.PhoenixDartLayer;
 import com.aetherteam.aether_genesis.entity.GenesisEntityTypes;
-import com.aetherteam.aether_genesis.entity.PhoenixDart;
+import com.aetherteam.aether_genesis.entity.projectile.PhoenixDart;
 import com.aetherteam.aether_genesis.item.GenesisItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.SlimeModel;
@@ -26,12 +25,15 @@ import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemEntityRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.client.resources.PlayerSkin;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
+
+import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = Genesis.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GenesisRenderers {
@@ -56,21 +58,25 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.GREEN_PARACHUTE.get(), (context) -> new ParachuteRenderer(context, GenesisBlocks.GREEN_AERCLOUD));
         event.registerEntityRenderer(GenesisEntityTypes.PURPLE_PARACHUTE.get(), (context) -> new ParachuteRenderer(context, GenesisBlocks.PURPLE_AERCLOUD));
 
+        event.registerEntityRenderer(GenesisEntityTypes.FANGRIN.get(), FangrinRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.KRAISITH.get(), KraisithRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.FLEETING_WISP.get(), (context) -> new WispRenderer(context, GenesisModelLayers.FLEETING_WISP, new ResourceLocation(Genesis.MODID, "textures/entity/companions/fleeting_wisp.png")));
         event.registerEntityRenderer(GenesisEntityTypes.SOARING_WISP.get(), (context) -> new WispRenderer(context, GenesisModelLayers.SOARING_WISP, new ResourceLocation(Genesis.MODID, "textures/entity/companions/soaring_wisp.png")));
         event.registerEntityRenderer(GenesisEntityTypes.ETHEREAL_WISP.get(), EtherealWispRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.SHADE_OF_ARKENZUS.get(), ShadeOfArkenzusRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.FROSTPINE_TOTEM.get(), FrostpineTotemRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.FROSTBOUND_SPRITE.get(), FrostboundSpriteRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.NEX_SPIRIT.get(), NexSpiritRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.BABY_PINK_SWET.get(), BabyPinkSwetRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.DAGGERFROST_SNOWBALL.get(), DaggerfrostSnowballRenderer::new);
-        event.registerEntityRenderer(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), IceCrystalRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), TempestThunderballRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.PHOENIX_DART.get(), PhoenixDartRenderer::new);
-        event.registerEntityRenderer(GenesisEntityTypes.COG_ARROW.get(), CogArrowRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.COG_ARROW.get(), CogProjectileRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.CONTINUUM_BOMB.get(), (context) -> new ThrownItemRenderer<>(context, 1.0F, true));
         event.registerEntityRenderer(GenesisEntityTypes.REWARD_ITEM.get(), ItemEntityRenderer::new);
-        event.registerEntityRenderer(GenesisEntityTypes.HOST_EYE.get(), HostEyeRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.HOST_EYE.get(), HostEyeProjectileRenderer::new);
     }
 
     @SubscribeEvent
@@ -87,14 +93,18 @@ public class GenesisRenderers {
         event.registerLayerDefinition(GenesisModelLayers.SENTRY_GUARDIAN, SentryGuardianModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SLIDER_HOST_MIMIC, SliderHostMimicModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.LABYRINTH_EYE, LabyrinthEyeModel::createBodyLayer);
-        event.registerLayerDefinition(GenesisModelLayers.HOST_EYE, HostEyeModel::createBodyLayer);
-        event.registerLayerDefinition(GenesisModelLayers.COG_ARROW, CogArrowModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.HOST_EYE_PROJECTILE, HostEyeProjectileModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.COG_PROJECTILE, CogProtectileModel::createBodyLayer);
 
+        event.registerLayerDefinition(GenesisModelLayers.FANGRIN, FangrinModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.KRAISITH, KraisithModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.FLEETING_WISP, WispModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SOARING_WISP, WispModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.ETHEREAL_WISP, WispModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SHADE_OF_ARKENZUS, ShadeOfArkenzusModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.FROSTPINE_TOTEM, FrostpineTotemModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.FROSTBOUND_SPRITE, FrostboundSpriteModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.NEX_SPIRIT, NexSpiritModel::createBodyLayer);
 
         event.registerLayerDefinition(GenesisModelLayers.MOUSE_EAR_CAP, MouseEarCapModel::createLayer);
     }
@@ -109,11 +119,11 @@ public class GenesisRenderers {
     @SubscribeEvent
     public static void addPlayerLayers(EntityRenderersEvent.AddLayers event) {
         EntityRenderDispatcher renderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
-        String[] types = new String[]{"default", "slim"};
-        for (String type : types) {
+        Set<PlayerSkin.Model> models = event.getSkins();
+        for (PlayerSkin.Model type : models) {
             PlayerRenderer playerRenderer = event.getSkin(type);
             if (playerRenderer != null) {
-                playerRenderer.addLayer(new DartLayer<>(renderDispatcher, playerRenderer, (entity) -> new PhoenixDart(GenesisEntityTypes.PHOENIX_DART.get(), entity.level()), AetherPlayer::getGoldenDartCount, 1.0F));
+                playerRenderer.addLayer(new PhoenixDartLayer<>(renderDispatcher, playerRenderer, (entity) -> new PhoenixDart(GenesisEntityTypes.PHOENIX_DART.get(), entity.level()), GenesisPlayerAttachment::getPhoenixDartCount, 0.5F));
             }
         }
     }

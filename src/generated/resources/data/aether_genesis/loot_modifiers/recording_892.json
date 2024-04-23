@@ -1,8 +1,8 @@
 {
-  "type": "aether_genesis:add_dungeon_loot",
+  "type": "nitrogen_internals:add_dungeon_loot",
   "conditions": [
     {
-      "condition": "forge:loot_table_id",
+      "condition": "neoforge:loot_table_id",
       "loot_table_id": "aether:chests/dungeon/gold/gold_dungeon_reward"
     }
   ],

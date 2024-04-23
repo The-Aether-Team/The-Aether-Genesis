@@ -1,0 +1,25 @@
+{
+  "values": {
+    "aether_genesis:blue_skyroot_leaves": {
+      "chance": 0.3
+    },
+    "aether_genesis:blue_skyroot_sapling": {
+      "chance": 0.3
+    },
+    "aether_genesis:dark_blue_skyroot_leaves": {
+      "chance": 0.3
+    },
+    "aether_genesis:dark_blue_skyroot_sapling": {
+      "chance": 0.3
+    },
+    "aether_genesis:purple_crystal_fruit_leaves": {
+      "chance": 0.3
+    },
+    "aether_genesis:purple_crystal_leaves": {
+      "chance": 0.3
+    },
+    "aether_genesis:purple_crystal_tree_sapling": {
+      "chance": 0.3
+    }
+  }
+}

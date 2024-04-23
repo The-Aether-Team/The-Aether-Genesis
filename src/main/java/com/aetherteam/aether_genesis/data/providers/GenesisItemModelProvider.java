@@ -8,7 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public abstract class GenesisItemModelProvider extends AetherItemModelProvider {
     public GenesisItemModelProvider(PackOutput output, String id, ExistingFileHelper helper) {

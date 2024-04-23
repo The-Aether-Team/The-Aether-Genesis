@@ -12,9 +12,7 @@ import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 
-import javax.annotation.Nonnull;
-
-public class TempestModel<T extends Tempest> extends EntityModel<T> {
+public class TempestModel extends EntityModel<Tempest> {
     public ModelPart mouth;
     public ModelPart body;
     public ModelPart bodyRightSideFront;
@@ -55,7 +53,7 @@ public class TempestModel<T extends Tempest> extends EntityModel<T> {
         return LayerDefinition.create(meshDefinition, 128, 32);
     }
 
-    public void setupAnim(@Nonnull Tempest tempest, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(Tempest tempest, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         float motion = Mth.sin(limbSwing * 20.0F / 57.295776F) * limbSwingAmount * 0.5F;
         this.bodyRightSideFront.y = 8.0F - motion * 0.5F;
         this.bodyRightSideBack.y = 9.0F + motion * 0.5F;
@@ -72,7 +70,7 @@ public class TempestModel<T extends Tempest> extends EntityModel<T> {
         this.tailEnd.yRot = this.tailMiddle.yRot + 0.35F;
     }
 
-    public void renderToBuffer(@Nonnull PoseStack poseStack, @Nonnull VertexConsumer consumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer consumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         this.mouth.render(poseStack, consumer, packedLight, packedOverlay);
         this.body.render(poseStack, consumer, packedLight, packedOverlay);
         this.bodyRightSideFront.render(poseStack, consumer, packedLight, packedOverlay);

@@ -1,28 +1,26 @@
 package com.aetherteam.aether_genesis.advancement;
 
-import com.aetherteam.aether.Aether;
-import com.google.gson.JsonObject;
-import net.minecraft.advancements.critereon.*;
-import net.minecraft.resources.ResourceLocation;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.advancements.Criterion;
+import net.minecraft.advancements.critereon.ContextAwarePredicate;
+import net.minecraft.advancements.critereon.EntityPredicate;
+import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
 
 import java.util.List;
+import java.util.Optional;
 
+/**
+ * Criterion trigger used for checking when Continuum loot has given a specific item.
+ */
 public class ContinuumOrbLootTrigger extends SimpleCriterionTrigger<ContinuumOrbLootTrigger.Instance> {
-    private static final ResourceLocation ID = new ResourceLocation(Aether.MODID, "continuum_orb_loot");
-    public static final ContinuumOrbLootTrigger INSTANCE = new ContinuumOrbLootTrigger();
-
     @Override
-    public ResourceLocation getId() {
-        return ID;
-    }
-
-    @Override
-    public ContinuumOrbLootTrigger.Instance createInstance(JsonObject json, ContextAwarePredicate predicate, DeserializationContext context) {
-        ItemPredicate itemPredicate = ItemPredicate.fromJson(json.get("item"));
-        return new ContinuumOrbLootTrigger.Instance(predicate, itemPredicate);
+    public Codec<ContinuumOrbLootTrigger.Instance> codec() {
+        return Instance.CODEC;
     }
 
     public void trigger(ServerPlayer player, ItemStack stack) {
@@ -40,35 +38,18 @@ public class ContinuumOrbLootTrigger extends SimpleCriterionTrigger<ContinuumOrb
         });
     }
 
-    public static class Instance extends AbstractCriterionTriggerInstance {
-        private final ItemPredicate item;
+    public record Instance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item) implements SimpleInstance {
+        public static final Codec<ContinuumOrbLootTrigger.Instance> CODEC = RecordCodecBuilder.create(instance -> instance.group(
+                        ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "player").forGetter(ContinuumOrbLootTrigger.Instance::player),
+                        ExtraCodecs.strictOptionalField(ItemPredicate.CODEC, "item").forGetter(ContinuumOrbLootTrigger.Instance::item))
+                .apply(instance, ContinuumOrbLootTrigger.Instance::new));
 
-        public Instance(ContextAwarePredicate predicate, ItemPredicate item) {
-            super(ContinuumOrbLootTrigger.ID, predicate);
-            this.item = item;
-        }
-
-        public static ContinuumOrbLootTrigger.Instance forItem(ItemPredicate item) {
-            return new ContinuumOrbLootTrigger.Instance(ContextAwarePredicate.ANY, item);
-        }
-
-        public static ContinuumOrbLootTrigger.Instance forItem(ItemLike item) {
-            return forItem(ItemPredicate.Builder.item().of(item).build());
-        }
-
-        public static ContinuumOrbLootTrigger.Instance forAny() {
-            return forItem(ItemPredicate.ANY);
+        public static Criterion<ContinuumOrbLootTrigger.Instance> forItem(ItemPredicate item) {
+            return GenesisAdvancementTriggers.CONTINUUM_ORB.get().createCriterion(new ContinuumOrbLootTrigger.Instance(Optional.empty(), Optional.of(item)));
         }
 
         public boolean test(ItemStack stack) {
-            return this.item.matches(stack);
-        }
-
-        @Override
-        public JsonObject serializeToJson(SerializationContext context) {
-            JsonObject jsonObject = super.serializeToJson(context);
-            jsonObject.add("item", this.item.serializeToJson());
-            return jsonObject;
+            return this.item.isEmpty() || this.item.get().matches(stack);
         }
     }
 }

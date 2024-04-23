@@ -1,7 +1,0 @@
-{
-  "type": "aether_genesis:add_mob_charge",
-  "biomes": "#aether_genesis:has_dark_swet",
-  "charge": 0.5,
-  "energy_budget": 0.1,
-  "entity_type": "aether_genesis:dark_swet"
-}

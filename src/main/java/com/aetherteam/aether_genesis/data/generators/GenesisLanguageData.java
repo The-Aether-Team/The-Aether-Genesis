@@ -1,5 +1,6 @@
 package com.aetherteam.aether_genesis.data.generators;
 
+import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether_genesis.Genesis;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.data.providers.GenesisLanguageProvider;
@@ -111,6 +112,13 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.RECORDING_892, "Recording #892");
         this.addDiscDesc(GenesisItems.RECORDING_892, "Emile van Krieken - ???");
 
+        this.addGeneric("experience.desc", "Experience (%s inside)");
+
+        this.addAbilityTooltip(AetherItems.SKYROOT_PICKAXE.get(), "\u00A79Ability:\u00A7r Double Drops");
+        this.addAbilityTooltip(AetherItems.POISON_DART.get(), "\u00A79Ability:\u00A7r Inflict Poison");
+        this.addAbilityTooltip(AetherItems.REGENERATION_STONE.get(), "\u00A79Ability:\u00A7r Regenerates Health\n");
+        this.addAbilityTooltip(AetherItems.GRAVITITE_GLOVES.get(), "\u00A77When Wearing Full Set:\u00A7r\n\u00A79Ability:\u00A7r Super Jump\n\u00A73Use:\u00A7r Shift + Space Bar\n");
+
         this.addEntityType(GenesisEntityTypes.CARRION_SPROUT, "Carrion Sprout");
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");
@@ -118,19 +126,23 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.TRACKING_GOLEM, "Tracking Golem");
         this.addEntityType(GenesisEntityTypes.SKYROOT_MIMIC, "Skyroot Mimic");
 
+        this.addEntityType(GenesisEntityTypes.FANGRIN, "Fangrin");
+        this.addEntityType(GenesisEntityTypes.KRAISITH, "Kraisith");
         this.addEntityType(GenesisEntityTypes.FLEETING_WISP, "Fleeting Wisp");
         this.addEntityType(GenesisEntityTypes.SOARING_WISP, "Soaring Wisp");
         this.addEntityType(GenesisEntityTypes.ETHEREAL_WISP, "Ethereal Wisp");
         this.addEntityType(GenesisEntityTypes.SHADE_OF_ARKENZUS, "Shade of Arkenzus");
         this.addEntityType(GenesisEntityTypes.FROSTPINE_TOTEM, "Frostpine Totem");
+        this.addEntityType(GenesisEntityTypes.FROSTBOUND_SPRITE, "Frostbound Sprite");
+        this.addEntityType(GenesisEntityTypes.NEX_SPIRIT, "Nex Spirit");
         this.addEntityType(GenesisEntityTypes.BABY_PINK_SWET, "Baby Pink Swet");
 
         this.addEntityType(GenesisEntityTypes.SENTRY_GUARDIAN, "Sentry Guardian");
         this.addEntityType(GenesisEntityTypes.SLIDER_HOST_MIMIC, "Slider Host Mimic");
         this.addEntityType(GenesisEntityTypes.HOST_EYE, "Host Eye");
 
+        this.addBlock(GenesisBlocks.CARVED_PILLAR_TOP, "Carved Pillar Top");
         this.addBlock(GenesisBlocks.CARVED_PILLAR, "Carved Pillar");
-        this.addBlock(GenesisBlocks.CARVED_PILLAR_SIDE, "Carved Pillar Side");
         this.addBlock(GenesisBlocks.SKYROOT_CHEST_MIMIC, "Skyroot Chest Mimic");
         this.addBlock(GenesisBlocks.DIVINE_CARVED_STONE, "Divine Carved Stone");
         this.addBlock(GenesisBlocks.DIVINE_SENTRY_STONE, "Divine Sentry Stone");
@@ -150,6 +162,9 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addBlock(GenesisBlocks.COLD_FIRE, "Cold Fire");
 
+        //todo missing subtitles
+        this.addSubtitle("block", "portal.hum", "Aether Portal hums");
+        this.addSubtitle("block", "portal.trigger", "Aether Portal hum intensifies");
         this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");
         this.addSubtitle("block", "aercloud.blue_aercloud_bounce", "Blue Aercloud bounces");
@@ -157,9 +172,6 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addSubtitle("entity", "tempest.ambient", "Tempest blows");
         this.addSubtitle("entity", "tempest.death", "Tempest dies");
         this.addSubtitle("entity", "tempest.hurt", "Tempest hurts");
-
-        this.addSubtitle("block", "portal.hum", "Aether Portal hums");
-        this.addSubtitle("block", "portal.trigger", "Aether Portal hum intensifies");
 
         this.addContainerType(GenesisMenuTypes.HOLYSTONE_FURNACE, "Holystone Furnace");
 

@@ -20,14 +20,13 @@
   },
   "requirements": [
     [
-      "has_skyroot_crafting_table",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_skyroot_crafting_table"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:skyroot_crafting_table"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

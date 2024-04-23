@@ -24,7 +24,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ForgeHooks;
+import net.neoforged.neoforge.common.CommonHooks;
 
 import javax.annotation.Nullable;
 
@@ -112,7 +112,7 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         DoubleBlockHalf doubleBlockHalf = state.getValue(HALF);
         int age = state.getValue(AGE);
-        if (age < DOUBLE_AGE_MAX && level.getRawBrightness(pos.above(), 0) >= 9 && ForgeHooks.onCropsGrowPre(level, pos, state, random.nextInt(85) == 0)) { // Whether the Orange Tree is able to grow.
+        if (age < DOUBLE_AGE_MAX && level.getRawBrightness(pos.above(), 0) >= 9 && CommonHooks.onCropsGrowPre(level, pos, state, random.nextInt(85) == 0)) { // Whether the Orange Tree is able to grow.
             age += 1;
             BlockState blockState = state.setValue(AetherBlockStateProperties.DOUBLE_DROPS, state.getValue(AetherBlockStateProperties.DOUBLE_DROPS)).setValue(AGE, age);
             if (age > SINGLE_AGE_MAX && doubleBlockHalf == DoubleBlockHalf.LOWER) { // Growing for the double block state.
@@ -121,7 +121,7 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
                 level.setBlock(pos, blockState, 2);
             }
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(blockState));
-            ForgeHooks.onCropsGrowPost(level, pos, state);
+            CommonHooks.onCropsGrowPost(level, pos, state);
         }
     }
 
@@ -144,7 +144,7 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
      * Behavior depends on the Orange Tree's age being at the point of it being a double tall block instead of a single block.
      */
     @Override
-    public void playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
         int age = state.getValue(AGE);
         if (age > SINGLE_AGE_MAX) {
             if (!level.isClientSide()) {
@@ -155,7 +155,7 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
                 }
             }
         }
-        super.playerWillDestroy(level, pos, state, player);
+        return super.playerWillDestroy(level, pos, state, player);
     }
 
     /**
@@ -264,11 +264,10 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
      * @param level The {@link Level} the block is in.
      * @param pos The {@link BlockPos} of the block.
      * @param state The {@link BlockState} of the block.
-     * @param isClient Whether the game's side is the client, as a {@link Boolean}.
      * @return Whether this block is valid to use bone meal on, as a {@link Boolean}.
      */
     @Override
-    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
         return state.getValue(AGE) < DOUBLE_AGE_MAX;
     }
 

@@ -1,6 +1,7 @@
 package com.aetherteam.aether_genesis.world.trunkplacer;
 
 import com.aetherteam.aether_genesis.GenesisTags;
+import com.aetherteam.nitrogen.world.trunkplacer.BaseHookedTrunkPlacer;
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -17,10 +18,13 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.TrunkPlacerType;
 import java.util.List;
 import java.util.function.BiConsumer;
 
+/**
+ * Creates wall block log branches in an upwards curving "hooked" pattern.
+ */
 public class SkinnyHookedTrunkPlacer extends BaseHookedTrunkPlacer {
     public static final Codec<SkinnyHookedTrunkPlacer> CODEC = RecordCodecBuilder.create((codec) -> trunkPlacerParts(codec)
-            .and(BlockStateProvider.CODEC.fieldOf("skinnyTrunkProvider").forGetter((placer) -> placer.skinnyTrunkProvider))
-            .apply(codec, SkinnyHookedTrunkPlacer::new));
+        .and(BlockStateProvider.CODEC.fieldOf("skinnyTrunkProvider").forGetter((placer) -> placer.skinnyTrunkProvider))
+        .apply(codec, SkinnyHookedTrunkPlacer::new));
     private final BlockStateProvider skinnyTrunkProvider;
 
     public SkinnyHookedTrunkPlacer(int height, int heightRandA, int heightRandB, BlockStateProvider skinnyTrunkProvider) {

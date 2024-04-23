@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_skyroot_log",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_skyroot_log"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:skyroot_log_wall"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

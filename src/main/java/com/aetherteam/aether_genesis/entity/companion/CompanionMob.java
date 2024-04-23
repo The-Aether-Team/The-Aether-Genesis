@@ -14,6 +14,9 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
+import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
+import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.player.Player;
@@ -23,7 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.ForgeMod;
+import net.neoforged.neoforge.common.NeoForgeMod;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -34,6 +37,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
     private static final UUID SLOW_FALLING_ID = UUID.fromString("A5B6CF2A-2F7C-31EF-9022-7C3E7D5E6ABA");
     private static final AttributeModifier SLOW_FALLING = new AttributeModifier(SLOW_FALLING_ID, "Slow falling acceleration reduction", -0.07, AttributeModifier.Operation.ADDITION); // Add -0.07 to 0.08 so we get the vanilla default of 0.01
     private static final EntityDataAccessor<Optional<UUID>> DATA_OWNER_ID = SynchedEntityData.defineId(CompanionMob.class, EntityDataSerializers.OPTIONAL_UUID);
+    private static final EntityDataAccessor<ItemStack> DATA_ITEM_ID = SynchedEntityData.defineId(CompanionMob.class, EntityDataSerializers.ITEM_STACK);
 
     private final Supplier<ItemStack> summoningItem;
     private final boolean isFloating;
@@ -44,8 +48,13 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
         this.isFloating = isFloating;
     }
 
+    public static AttributeSupplier.Builder createAttributes() {
+        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 1.0).add(Attributes.MOVEMENT_SPEED, 0.25).add(Attributes.FOLLOW_RANGE, 48.0);
+    }
+
     @Override
     protected void registerGoals() {
+        this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(0, new CompanionFollowGoal<>(this, 1.0D));
         this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(2, new RandomLookAroundGoal(this));
@@ -55,6 +64,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.getEntityData().define(DATA_OWNER_ID, Optional.empty());
+        this.getEntityData().define(DATA_ITEM_ID, ItemStack.EMPTY);
     }
 
     @Nullable
@@ -78,7 +88,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
     public void travel(Vec3 travelVector) {
         if (this.isControlledByLocalInstance()) {
             double gravityValue;
-            AttributeInstance gravity = this.getAttribute(ForgeMod.ENTITY_GRAVITY.get());
+            AttributeInstance gravity = this.getAttribute(NeoForgeMod.ENTITY_GRAVITY.value());
             boolean isFalling = this.getDeltaMovement().y() <= 0.0;
             if (isFalling && this.hasEffect(MobEffects.SLOW_FALLING)) {
                 if (!gravity.hasModifier(SLOW_FALLING)) {
@@ -86,12 +96,12 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
                 }
                 this.resetFallDistance();
             } else if (gravity.hasModifier(SLOW_FALLING)) {
-                gravity.removeModifier(SLOW_FALLING);
+                gravity.removeModifier(SLOW_FALLING.getId());
             }
             gravityValue = gravity.getValue();
 
             FluidState fluidState = this.level().getFluidState(this.blockPosition());
-            if ((this.isInWater() || (this.isInFluidType(fluidState) && fluidState.getFluidType() != ForgeMod.LAVA_TYPE.get())) && this.isAffectedByFluids() && !this.canStandOnFluid(fluidState)) {
+            if ((this.isInWater() || (this.isInFluidType(fluidState) && fluidState.getFluidType() != NeoForgeMod.LAVA_TYPE.value())) && this.isAffectedByFluids() && !this.canStandOnFluid(fluidState)) {
                 if (this.isInWater() || (this.isInFluidType(fluidState) && !this.moveInFluid(fluidState, travelVector, gravityValue))) {
                     double y = this.getY();
                     float speedModifier = this.isSprinting() ? 0.9F : this.getWaterSlowDown();
@@ -114,7 +124,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
                         speedModifier = 0.96F;
                     }
 
-                    speed *= (float) this.getAttribute(ForgeMod.SWIM_SPEED.get()).getValue();
+                    speed *= (float) this.getAttribute(NeoForgeMod.SWIM_SPEED.value()).getValue();
                     this.moveRelative(speed, travelVector);
                     this.move(MoverType.SELF, this.getDeltaMovement());
                     Vec3 movement = this.getDeltaMovement();
@@ -179,12 +189,30 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
         this.calculateEntityAnimation(false);
     }
 
+    @Override
+    public void onEquip(ItemStack itemStack) {
+        this.setItem(itemStack);
+    }
+
+    @Override
+    public void onUnequip(ItemStack itemStack) {
+        this.setItem(ItemStack.EMPTY);
+    }
+
     public UUID getOwner() {
         return this.getEntityData().get(DATA_OWNER_ID).orElse(null);
     }
 
     public void setOwner(UUID owner) {
         this.getEntityData().set(DATA_OWNER_ID, Optional.ofNullable(owner));
+    }
+
+    public ItemStack getItem() {
+        return this.getEntityData().get(DATA_ITEM_ID);
+    }
+
+    public void setItem(ItemStack stack) {
+        this.getEntityData().set(DATA_ITEM_ID, stack);
     }
 
     public ItemStack getSummonItem() {
@@ -217,5 +245,19 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
     @Override
     public ItemStack getPickResult() {
         return this.getSummonItem();
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.put("Item", this.getItem().getOrCreateTag());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        if (tag.contains("Item")) {
+            this.setItem(ItemStack.of(tag.getCompound("Item")));
+        }
     }
 }

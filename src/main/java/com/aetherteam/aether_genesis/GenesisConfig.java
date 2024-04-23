@@ -1,21 +1,26 @@
 package com.aetherteam.aether_genesis;
 
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class GenesisConfig {
     public static class Common {
-        public final ForgeConfigSpec.ConfigValue<Boolean> gold_aercloud_ability;
-        public final ForgeConfigSpec.ConfigValue<Boolean> improved_slider_message;
-        public final ForgeConfigSpec.ConfigValue<Integer> biome_weight;
-        public final ForgeConfigSpec.ConfigValue<Boolean> aether_ii_portal_sounds;
+        public final ModConfigSpec.ConfigValue<Boolean> gold_aercloud_ability;
+        public final ModConfigSpec.ConfigValue<Boolean> tan_zephyr_variation;
+        public final ModConfigSpec.ConfigValue<Boolean> improved_slider_message;
+        public final ModConfigSpec.ConfigValue<Integer> biome_weight;
+        public final ModConfigSpec.ConfigValue<Boolean> aether_ii_portal_sounds;
 
-        public Common(ForgeConfigSpec.Builder builder) { //todo server config
+        public Common(ModConfigSpec.Builder builder) { //todo server config
             builder.push("Gameplay");
             gold_aercloud_ability = builder
                     .comment("Changes Gold Aercloud and respective parachute behavior to launch entities downwards")
                     .translation("config.aether_genesis.common.gameplay.gold_aercloud_ability")
                     .define("Gold Aerclouds launch entities downwards", true);
+            tan_zephyr_variation = builder
+                    .comment("Allows a smaller, tan variation of Zephyrs to spawn")
+                    .translation("config.aether_genesis.common.gameplay.tan_zephyr_variation")
+                    .define("Tan Zephyr variant", true);
             improved_slider_message = builder
                     .comment("Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe")
                     .translation("config.aether_genesis.common.gameplay.improved_slider_message")
@@ -37,11 +42,11 @@ public class GenesisConfig {
     }
 
     public static class Client {
-        public final ForgeConfigSpec.ConfigValue<Boolean> genesis_menu_layout;
-        public final ForgeConfigSpec.ConfigValue<Boolean> night_music_tracks;
-        public final ForgeConfigSpec.ConfigValue<Boolean> blue_aercloud_bounce_sfx;
+        public final ModConfigSpec.ConfigValue<Boolean> genesis_menu_layout;
+        public final ModConfigSpec.ConfigValue<Boolean> night_music_tracks;
+        public final ModConfigSpec.ConfigValue<Boolean> blue_aercloud_bounce_sfx;
 
-        public Client(ForgeConfigSpec.Builder builder) {
+        public Client(ModConfigSpec.Builder builder) {
             builder.push("Gui");
             genesis_menu_layout = builder
                     .comment("Replaces the menu toggle buttons with the Cumulus' menu switcher")
@@ -62,18 +67,18 @@ public class GenesisConfig {
         }
     }
 
-    public static final ForgeConfigSpec COMMON_SPEC;
+    public static final ModConfigSpec COMMON_SPEC;
     public static final Common COMMON;
 
-    public static final ForgeConfigSpec CLIENT_SPEC;
+    public static final ModConfigSpec CLIENT_SPEC;
     public static final Client CLIENT;
 
     static {
-        final Pair<Common, ForgeConfigSpec> commonSpecPair = new ForgeConfigSpec.Builder().configure(Common::new);
+        final Pair<Common, ModConfigSpec> commonSpecPair = new ModConfigSpec.Builder().configure(Common::new);
         COMMON_SPEC = commonSpecPair.getRight();
         COMMON = commonSpecPair.getLeft();
 
-        final Pair<Client, ForgeConfigSpec> clientSpecPair = new ForgeConfigSpec.Builder().configure(Client::new);
+        final Pair<Client, ModConfigSpec> clientSpecPair = new ModConfigSpec.Builder().configure(Client::new);
         CLIENT_SPEC = clientSpecPair.getRight();
         CLIENT = clientSpecPair.getLeft();
     }

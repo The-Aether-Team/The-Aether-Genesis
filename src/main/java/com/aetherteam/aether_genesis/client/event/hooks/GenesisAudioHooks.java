@@ -11,9 +11,6 @@ import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.client.sounds.SoundEngine;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
-import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
-import net.minecraftforge.client.event.sound.PlaySoundEvent;
-import net.minecraftforge.event.TickEvent;
 
 import java.util.List;
 
@@ -24,7 +21,7 @@ public class GenesisAudioHooks {
      */
     public static boolean shouldCancelMusic(SoundInstance sound) {
         if (sound.getSource() == SoundSource.MUSIC && GenesisConfig.CLIENT.night_music_tracks.get()) {
-            return ((GenesisMusicManager.getSituationalMusic() != null && !sound.getLocation().equals(SimpleSoundInstance.forMusic(GenesisMusicManager.getSituationalMusic().getEvent().get()).getLocation())) && (GenesisMusicManager.getSituationalOppositeDaytimeMusic() != null && !sound.getLocation().equals(SimpleSoundInstance.forMusic(GenesisMusicManager.getSituationalOppositeDaytimeMusic().getEvent().get()).getLocation())))
+            return ((GenesisMusicManager.getSituationalMusic() != null && !sound.getLocation().equals(SimpleSoundInstance.forMusic(GenesisMusicManager.getSituationalMusic().getEvent().value()).getLocation())) && (GenesisMusicManager.getSituationalOppositeDaytimeMusic() != null && !sound.getLocation().equals(SimpleSoundInstance.forMusic(GenesisMusicManager.getSituationalOppositeDaytimeMusic().getEvent().value()).getLocation())))
                     || GenesisMusicManager.getCurrentMusic() != null && !sound.getLocation().equals(GenesisMusicManager.getCurrentMusic().getLocation());
         } else {
             return false;
@@ -50,9 +47,9 @@ public class GenesisAudioHooks {
     public static boolean shouldCancelPortalSound(SoundEngine soundEngine, SoundInstance sound) {
         if (sound != null) {
             if (sound.getSource() == SoundSource.BLOCKS) {
-                if (sound.getLocation().equals(GenesisSoundEvents.PORTAL_HUM.get().getLocation())
-                        || sound.getLocation().equals(GenesisSoundEvents.PORTAL_TRAVEL.get().getLocation())
-                        || sound.getLocation().equals(GenesisSoundEvents.PORTAL_TRIGGER.get().getLocation())) {
+                if (sound.getLocation().equals(GenesisSoundEvents.BLOCK_AETHER_PORTAL_HUM.get().getLocation())
+                        || sound.getLocation().equals(GenesisSoundEvents.BLOCK_AETHER_PORTAL_TRAVEL.get().getLocation())
+                        || sound.getLocation().equals(GenesisSoundEvents.BLOCK_AETHER_PORTAL_TRIGGER.get().getLocation())) {
                     List<ResourceLocation> activeSounds = ((SoundEngineAccessor) soundEngine).aether_genesis$getInstanceToChannel().keySet().stream().map(SoundInstance::getLocation).toList();
                     return activeSounds.contains(sound.getLocation());
                 }

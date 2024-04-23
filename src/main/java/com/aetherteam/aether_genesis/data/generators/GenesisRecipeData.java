@@ -8,24 +8,25 @@ import com.aetherteam.aether_genesis.GenesisTags;
 import com.aetherteam.aether_genesis.block.GenesisBlocks;
 import com.aetherteam.aether_genesis.data.providers.GenesisRecipeProvider;
 import com.aetherteam.aether_genesis.item.GenesisItems;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
-import java.util.function.Consumer;
+import java.util.concurrent.CompletableFuture;
 
 public class GenesisRecipeData extends GenesisRecipeProvider {
-    public GenesisRecipeData(PackOutput output) {
-        super(output, Genesis.MODID);
+    public GenesisRecipeData(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
+        super(output, lookupProvider, Genesis.MODID);
     }
 
     @Override
-    protected void buildRecipes(Consumer<FinishedRecipe> consumer) {
+    protected void buildRecipes(RecipeOutput consumer) {
         makeSwetJelly(GenesisItems.BLUE_SWET_JELLY, AetherItems.SWET_BALL).save(consumer);
         makeSwetJelly(GenesisItems.GOLDEN_SWET_JELLY, GenesisItems.GOLDEN_SWET_BALL).save(consumer);
         makeSwetJelly(GenesisItems.DARK_SWET_JELLY, GenesisItems.DARK_SWET_BALL).save(consumer);
@@ -58,7 +59,7 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
         wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get());
         wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_WOOD.get());
 
-        oreBlockStorageRecipesRecipesWithCustomUnpacking(consumer, RecipeCategory.MISC, GenesisItems.CONTINUUM_ORB.get(), RecipeCategory.MISC, GenesisItems.CONTINUUM_BOMB.get(), "continuum_orb_from_bomb", "continuum_bomb"); //todo recipe locations are incorrect
+        this.oreBlockStorageRecipesRecipesWithCustomUnpacking(consumer, RecipeCategory.MISC, GenesisItems.CONTINUUM_ORB.get(), RecipeCategory.MISC, GenesisItems.CONTINUUM_BOMB.get(), "continuum_orb_from_bomb", "continuum_bomb");
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_CRAFTING_TABLE.get())
                 .define('#', AetherBlocks.SKYROOT_PLANKS.get())
@@ -115,33 +116,33 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
         this.stairs(GenesisBlocks.DIVINE_CARVED_STAIRS, GenesisBlocks.DIVINE_CARVED_STONE).save(consumer);
         slab(consumer, RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.DIVINE_CARVED_SLAB.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
 
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HEADSTONE.get(), AetherBlocks.HOLYSTONE.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), AetherBlocks.HOLYSTONE.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), AetherBlocks.HOLYSTONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HEADSTONE.get(), AetherBlocks.HOLYSTONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), AetherBlocks.HOLYSTONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), AetherBlocks.HOLYSTONE.get());
 
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HEADSTONE.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HEADSTONE.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
 
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR.get(), AetherBlocks.CARVED_STONE.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR.get(), GenesisBlocks.CARVED_PILLAR_SIDE.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR_SIDE.get(), AetherBlocks.CARVED_STONE.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR_SIDE.get(), GenesisBlocks.CARVED_PILLAR.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR_TOP.get(), AetherBlocks.CARVED_STONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR_TOP.get(), GenesisBlocks.CARVED_PILLAR.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR.get(), AetherBlocks.CARVED_STONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR.get(), GenesisBlocks.CARVED_PILLAR_TOP.get());
 
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_STONE.get(), AetherBlocks.CARVED_STONE.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_SENTRY_STONE.get(), AetherBlocks.CARVED_STONE.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_SENTRY_STONE.get(), AetherBlocks.SENTRY_STONE.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, AetherBlocks.CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, AetherBlocks.SENTRY_STONE.get(), GenesisBlocks.DIVINE_SENTRY_STONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_STONE.get(), AetherBlocks.CARVED_STONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_SENTRY_STONE.get(), AetherBlocks.CARVED_STONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_SENTRY_STONE.get(), AetherBlocks.SENTRY_STONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, AetherBlocks.CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, AetherBlocks.SENTRY_STONE.get(), GenesisBlocks.DIVINE_SENTRY_STONE.get());
 
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_WALL.get(), AetherBlocks.CARVED_STONE.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_STAIRS.get(), AetherBlocks.CARVED_STONE.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_SLAB.get(), AetherBlocks.CARVED_STONE.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_WALL.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_STAIRS.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
-        stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_SLAB.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_WALL.get(), AetherBlocks.CARVED_STONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_STAIRS.get(), AetherBlocks.CARVED_STONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_SLAB.get(), AetherBlocks.CARVED_STONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_WALL.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_STAIRS.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
+        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_SLAB.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
 
-        enchantingRecipe(RecipeCategory.FOOD, GenesisItems.RAINBOW_STRAWBERRY.get(), GenesisItems.WYNDBERRY.get(), 0.35F, 500).save(consumer, this.name("rainbow_strawberry_enchanting"));
+        this.enchantingRecipe(RecipeCategory.FOOD, GenesisItems.RAINBOW_STRAWBERRY.get(), GenesisItems.WYNDBERRY.get(), 0.35F, 500).save(consumer, this.name("rainbow_strawberry_enchanting"));
         this.enchantingRecipe(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.GREEN_AERCLOUD.get(), GenesisBlocks.PURPLE_AERCLOUD.get(), 0.1F, 1000).save(consumer, this.name("green_aercloud_enchanting"));
 
     }

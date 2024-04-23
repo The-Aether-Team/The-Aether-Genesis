@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#aether_genesis:has_green_aerclouds",
+  "features": "aether_genesis:green_aercloud_8",
+  "step": "top_layer_modification"
+}

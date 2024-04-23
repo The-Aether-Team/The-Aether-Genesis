@@ -22,14 +22,13 @@
   },
   "requirements": [
     [
-      "has_aechor_petal",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_aechor_petal"
     ]
   ],
   "rewards": {
     "recipes": [
       "aether_genesis:wrapped_chocolates"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

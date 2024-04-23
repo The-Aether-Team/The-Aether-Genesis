@@ -1,19 +1,18 @@
 package com.aetherteam.aether_genesis.item.combat;
 
 import com.aetherteam.aether.entity.projectile.dart.AbstractDart;
+import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.item.combat.DartShooterItem;
 import com.aetherteam.aether_genesis.GenesisTags;
-import com.aetherteam.aether_genesis.entity.PhoenixDart;
+import com.aetherteam.aether_genesis.entity.projectile.PhoenixDart;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 public class PhoenixDartShooterItem extends DartShooterItem {
-
-    public PhoenixDartShooterItem(Supplier<? extends Item> dartType, Properties properties) {
-        super(dartType, properties);
+    public PhoenixDartShooterItem() {
+        super(AetherItems.GOLDEN_DART, new Item.Properties().stacksTo(1).rarity(AetherItems.AETHER_LOOT));
     }
 
     @Override
@@ -21,11 +20,13 @@ public class PhoenixDartShooterItem extends DartShooterItem {
         return (stack) -> stack.is(GenesisTags.Items.DARTS);
     }
 
+    @Override
     public AbstractDart customDart(AbstractDart dart) {
-        PhoenixDart phoenixdart = new PhoenixDart(dart.level());
-        phoenixdart.setOwner(dart.getOwner());
-        if(phoenixdart.getOwner() != null)
-        phoenixdart.setPos(phoenixdart.getOwner().getX(), phoenixdart.getOwner().getEyeY() - 0.1D, phoenixdart.getOwner().getZ());
-        return phoenixdart;
+        PhoenixDart phoenixDart = new PhoenixDart(dart.level());
+        phoenixDart.setOwner(dart.getOwner());
+        if (phoenixDart.getOwner() != null) {
+            phoenixDart.setPos(phoenixDart.getOwner().getX(), phoenixDart.getOwner().getEyeY() - 0.1, phoenixDart.getOwner().getZ());
+        }
+        return phoenixDart;
     }
 }
