@@ -7,6 +7,10 @@ import net.minecraft.world.item.ItemStack;
 import java.util.UUID;
 
 public interface Companion<T extends Mob & Companion<T>> {
+    /**
+     * Discards the companion if its owner can't be found.
+     * @param companion The companion entity.
+     */
     default void tickCompanion(T companion) {
         if (this.getOwner() != null) {
             Player player = companion.level().getPlayerByUUID(this.getOwner());

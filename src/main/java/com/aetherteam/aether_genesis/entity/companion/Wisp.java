@@ -17,16 +17,22 @@ public class Wisp extends FloatingCompanion {
     @Override
     public void tick() {
         super.tick();
-        if (this.level().isClientSide()) {
+        if (this.level().isClientSide()) { // Rotates the arm parts around the Wisp.
             this.armRotO = this.armRot;
             this.armRot += 0.5F;
         }
     }
 
+    /**
+     * @return The old {@link Float} rotation value for the arms of the Wisp.
+     */
     public float getArmRotO() {
         return this.armRotO;
     }
 
+    /**
+     * @return The {@link Float} rotation value for the arms of the Wisp.
+     */
     public float getArmRot() {
         return this.armRot;
     }

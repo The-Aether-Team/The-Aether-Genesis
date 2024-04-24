@@ -124,7 +124,7 @@ public class GenesisEntityTypes {
         event.put(GenesisEntityTypes.FLEETING_WISP.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.SOARING_WISP.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.ETHEREAL_WISP.get(), CompanionMob.createAttributes().build());
-        event.put(GenesisEntityTypes.SHADE_OF_ARKENZUS.get(), ShadeOfArkenzus.createAttributes().build());
+        event.put(GenesisEntityTypes.SHADE_OF_ARKENZUS.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.FROSTPINE_TOTEM.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.FROSTBOUND_SPRITE.get(), CompanionMob.createAttributes().build());
         event.put(GenesisEntityTypes.NEX_SPIRIT.get(), CompanionMob.createAttributes().build());

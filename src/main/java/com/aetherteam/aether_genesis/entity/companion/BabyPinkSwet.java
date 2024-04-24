@@ -29,6 +29,11 @@ import java.util.EnumSet;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * [CODE COPY] - {@link Swet}<br>
+ * [CODE COPY] - {@link CompanionMob}<br><br>
+ * A Swet that acts as a companion and is always passive.
+ */
 public class BabyPinkSwet extends Swet implements Companion<BabyPinkSwet> {
     private static final EntityDataAccessor<Optional<UUID>> DATA_OWNER_ID = SynchedEntityData.defineId(BabyPinkSwet.class, EntityDataSerializers.OPTIONAL_UUID);
 

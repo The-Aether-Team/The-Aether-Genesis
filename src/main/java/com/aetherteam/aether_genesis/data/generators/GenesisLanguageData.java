@@ -112,6 +112,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addDiscDesc(GenesisItems.RECORDING_892, "Emile van Krieken - ???");
 
         this.addGeneric("experience.desc", "Experience (%s inside)");
+        this.addGeneric("death_seal.desc", "Repairing Seal: %s%");
 
         this.addAbilityTooltip(AetherItems.SKYROOT_PICKAXE.get(), "\u00A79Ability:\u00A7r Double Drops");
         this.addAbilityTooltip(AetherItems.POISON_DART.get(), "\u00A79Ability:\u00A7r Inflict Poison");

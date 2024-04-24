@@ -26,9 +26,15 @@ public class FloatingCompanion extends CompanionMob {
         }
     }
 
+    /**
+     * Disallows floating companions from jumping, instead they "climb" to give the appearance of hovering up blocks.
+     */
     @Override
     protected void jumpFromGround() { }
 
+    /**
+     * @return True for allowing the floating companion to climb up a block as long as it is horizontally colliding, to give the appearance of hovering up blocks.
+     */
     @Override
     public boolean onClimbable() {
         return this.horizontalCollision;
