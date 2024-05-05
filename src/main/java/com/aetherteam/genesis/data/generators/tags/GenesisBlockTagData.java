@@ -129,6 +129,7 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get(),
                 GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get());
         this.tag(BlockTags.LOGS_THAT_BURN).addTag(GenesisTags.Blocks.LOG_WALLS);
+        this.tag(BlockTags.LOGS).addTag(GenesisTags.Blocks.LOG_WALLS);
         this.tag(BlockTags.STAIRS).add(
                 GenesisBlocks.DIVINE_CARVED_STAIRS.get());
         this.tag(BlockTags.SLABS).add(

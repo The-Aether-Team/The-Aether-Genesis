@@ -49,6 +49,6 @@ public class SkinnyHookedTrunkPlacer extends BaseHookedTrunkPlacer {
 
     @Override
     public boolean isTrunk(LevelSimulatedReader level, BlockPos pos) {
-        return level.isStateAtPosition(pos, (state) -> state.is(BlockTags.LOGS) || state.is(GenesisTags.Blocks.LOG_WALLS));
+        return level.isStateAtPosition(pos, (state) -> state.is(BlockTags.LOGS));
     }
 }
