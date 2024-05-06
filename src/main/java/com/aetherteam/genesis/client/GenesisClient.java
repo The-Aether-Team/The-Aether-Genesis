@@ -1,7 +1,7 @@
 package com.aetherteam.genesis.client;
 
 import com.aetherteam.aether.AetherConfig;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.GenesisConfig;
 import com.aetherteam.genesis.client.gui.screen.inventory.HolystoneFurnaceScreen;
 import com.aetherteam.genesis.client.renderer.GenesisRenderers;
@@ -13,7 +13,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
-@Mod.EventBusSubscriber(modid = Genesis.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = AetherGenesis.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GenesisClient {
     @SubscribeEvent
     public static void clientSetup(FMLClientSetupEvent event) {

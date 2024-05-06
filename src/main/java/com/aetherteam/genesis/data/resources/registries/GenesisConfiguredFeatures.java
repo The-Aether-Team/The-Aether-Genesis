@@ -9,7 +9,7 @@ import com.aetherteam.aether.world.configuration.AercloudConfiguration;
 import com.aetherteam.aether.world.feature.AetherFeatures;
 import com.aetherteam.aether.world.foliageplacer.GoldenOakFoliagePlacer;
 import com.aetherteam.aether.world.trunkplacer.GoldenOakTrunkPlacer;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.block.natural.OrangeTreeBlock;
 import com.aetherteam.genesis.block.natural.PurpleAercloudBlock;
@@ -65,7 +65,7 @@ public class GenesisConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> ORE_CONTINUUM_CONFIGURATION = createKey("ore_continuum");
 
     private static ResourceKey<ConfiguredFeature<?, ?>> createKey(String name) {
-        return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(Genesis.MODID, name));
+        return ResourceKey.create(Registries.CONFIGURED_FEATURE, new ResourceLocation(AetherGenesis.MODID, name));
     }
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {

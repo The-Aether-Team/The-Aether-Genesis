@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer.entity.layers;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.renderer.entity.model.TempestModel;
 import com.aetherteam.genesis.entity.monster.Tempest;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class TempestTransparencyLayer extends RenderLayer<Tempest, TempestModel> {
-    private static final ResourceLocation TEMPEST_TRANSPARENCY_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/tempest/tempest_layer.png");
+    private static final ResourceLocation TEMPEST_TRANSPARENCY_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/tempest/tempest_layer.png");
     private final TempestModel transparency;
 
     public TempestTransparencyLayer(RenderLayerParent<Tempest, TempestModel> entityRenderer, TempestModel transparencyModel) {

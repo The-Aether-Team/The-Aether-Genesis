@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer.entity.layers;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.renderer.entity.model.LabyrinthEyeModel;
 import com.aetherteam.genesis.entity.monster.dungeon.boss.LabyrinthEye;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -14,8 +14,8 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class LabyrinthEyeLayer extends EyesLayer<LabyrinthEye, LabyrinthEyeModel> {
-    private static final RenderType LABYRINTH_EYE_ASLEEP_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_sleep_glow.png"));
-    private static final RenderType LABYRINTH_EYE_AWAKE_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_awake_glow.png"));
+    private static final RenderType LABYRINTH_EYE_ASLEEP_GLOW = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_sleep_glow.png"));
+    private static final RenderType LABYRINTH_EYE_AWAKE_GLOW = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_awake_glow.png"));
 
     public LabyrinthEyeLayer(RenderLayerParent<LabyrinthEye, LabyrinthEyeModel> entityRenderer) {
         super(entityRenderer);

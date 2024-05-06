@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.ResourceLocation;
 
@@ -35,7 +35,7 @@ public class GenesisModelLayers {
     }
 
     private static ModelLayerLocation register(String name, String type) {
-        return register(new ResourceLocation(Genesis.MODID, name), type);
+        return register(new ResourceLocation(AetherGenesis.MODID, name), type);
     }
 
     private static ModelLayerLocation register(ResourceLocation identifier, String type) {

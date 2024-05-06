@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer.entity;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.genesis.client.renderer.entity.model.NexSpiritModel;
 import com.aetherteam.genesis.entity.companion.NexSpirit;
@@ -12,14 +12,14 @@ import net.minecraft.util.Mth;
 import java.util.Locale;
 
 public class NexSpiritRenderer extends CompanionRenderer<NexSpirit, NexSpiritModel> {
-    private static final ResourceLocation NEX_SPIRIT_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit.png");
-    private static final ResourceLocation NEX_SPIRIT_BROKEN_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit_broken.png");
-    private static final ResourceLocation NEX_SPIRIT_ANGERED_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit_angered.png");
-    private static final ResourceLocation NEX_SPIRIT_CONFUSED_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit_confused.png");
-    private static final ResourceLocation NEX_SPIRIT_FLUSHED_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit_flushed.png");
-    private static final ResourceLocation NEX_SPIRIT_NAUSEATED_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit_nauseated.png");
-    private static final ResourceLocation NEX_SPIRIT_SADDENED_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit_saddened.png");
-    private static final ResourceLocation NEX_SPIRIT_SUSPICIOUS_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit_suspicious.png");
+    private static final ResourceLocation NEX_SPIRIT_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit.png");
+    private static final ResourceLocation NEX_SPIRIT_BROKEN_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit_broken.png");
+    private static final ResourceLocation NEX_SPIRIT_ANGERED_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit_angered.png");
+    private static final ResourceLocation NEX_SPIRIT_CONFUSED_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit_confused.png");
+    private static final ResourceLocation NEX_SPIRIT_FLUSHED_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit_flushed.png");
+    private static final ResourceLocation NEX_SPIRIT_NAUSEATED_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit_nauseated.png");
+    private static final ResourceLocation NEX_SPIRIT_SADDENED_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit_saddened.png");
+    private static final ResourceLocation NEX_SPIRIT_SUSPICIOUS_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/nex_spirit/nex_spirit_suspicious.png");
 
     public NexSpiritRenderer(EntityRendererProvider.Context context) {
         super(context, new NexSpiritModel(context.bakeLayer(GenesisModelLayers.NEX_SPIRIT)), 0.45F);

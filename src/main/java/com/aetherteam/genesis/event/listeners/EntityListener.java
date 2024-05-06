@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.event.listeners;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.event.hooks.EntityHooks;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
@@ -13,7 +13,7 @@ import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.MobSpawnEvent;
 import org.apache.commons.lang3.tuple.Pair;
 
-@Mod.EventBusSubscriber(modid = Genesis.MODID)
+@Mod.EventBusSubscriber(modid = AetherGenesis.MODID)
 public class EntityListener {
     /**
      * @see EntityHooks#setZephyrColor(Entity)

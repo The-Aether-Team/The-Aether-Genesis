@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.blockentity;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.inventory.menu.HolystoneFurnaceMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -16,7 +16,7 @@ public class HolystoneFurnaceBlockEntity extends AbstractFurnaceBlockEntity {
     }
 
     protected Component getDefaultName() {
-        return Component.translatable("menu." + Genesis.MODID + ".holystone_furnace");
+        return Component.translatable("menu." + AetherGenesis.MODID + ".holystone_furnace");
     }
 
     protected AbstractContainerMenu createMenu(int id, Inventory playerInventory) {

@@ -3,7 +3,7 @@ package com.aetherteam.genesis.data.generators;
 import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherItems;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.GenesisTags;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.data.providers.GenesisRecipeProvider;
@@ -22,7 +22,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class GenesisRecipeData extends GenesisRecipeProvider {
     public GenesisRecipeData(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider) {
-        super(output, lookupProvider, Genesis.MODID);
+        super(output, lookupProvider, AetherGenesis.MODID);
     }
 
     @Override

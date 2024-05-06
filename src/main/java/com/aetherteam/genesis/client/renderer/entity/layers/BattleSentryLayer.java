@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer.entity.layers;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.entity.monster.dungeon.BattleSentry;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class BattleSentryLayer extends EyesLayer<BattleSentry, SlimeModel<BattleSentry>> {
-	private static final RenderType BATTLE_SENTRY_EYE = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/battle_sentry/eye.png"));
+	private static final RenderType BATTLE_SENTRY_EYE = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/battle_sentry/eye.png"));
 
 	public BattleSentryLayer(RenderLayerParent<BattleSentry, SlimeModel<BattleSentry>> entityRenderer) {
 		super(entityRenderer);

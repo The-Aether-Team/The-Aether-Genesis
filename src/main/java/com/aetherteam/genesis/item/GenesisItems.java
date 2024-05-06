@@ -6,7 +6,7 @@ import com.aetherteam.aether.item.food.GummySwetItem;
 import com.aetherteam.aether.item.materials.SwetBallItem;
 import com.aetherteam.aether.item.miscellaneous.DungeonKeyItem;
 import com.aetherteam.aether.item.miscellaneous.ParachuteItem;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.item.accessories.cape.DexterityCapeItem;
@@ -31,7 +31,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import static com.aetherteam.aether.item.AetherItems.AETHER_LOOT;
 
 public class GenesisItems {
-    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Genesis.MODID);
+    public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(AetherGenesis.MODID);
 
     public static final DeferredItem<Item> GOLDEN_SWET_BALL = ITEMS.register("golden_swet_ball", () -> new SwetBallItem(new Item.Properties()));
     public static final DeferredItem<Item> DARK_SWET_BALL = ITEMS.register("dark_swet_ball", () -> new SwetBallItem(new Item.Properties()));
@@ -58,9 +58,9 @@ public class GenesisItems {
     public static final DeferredItem<Item> CANDY_RING = ITEMS.register("candy_ring", CandyRingItem::new);
     public static final DeferredItem<Item> SKYROOT_RING = ITEMS.register("skyroot_ring", SkyrootRingItem::new);
 
-    public static final DeferredItem<Item> LUCKY_BELL = ITEMS.register("lucky_bell", () -> new PendantItem(new ResourceLocation(Genesis.MODID, "lucky_bell"), AetherSoundEvents.ITEM_ACCESSORY_EQUIP_ICE_PENDANT, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final DeferredItem<Item> LUCKY_BELL = ITEMS.register("lucky_bell", () -> new PendantItem(new ResourceLocation(AetherGenesis.MODID, "lucky_bell"), AetherSoundEvents.ITEM_ACCESSORY_EQUIP_ICE_PENDANT, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final DeferredItem<Item> SWETTY_PENDANT = ITEMS.register("swetty_pendant", SwettyPendantItem::new);
-    public static final DeferredItem<Item> DAGGERFROST_LOCKET = ITEMS.register("daggerfrost_locket", () -> new PendantItem(new ResourceLocation(Genesis.MODID, "daggerfrost_locket"), AetherSoundEvents.ITEM_ACCESSORY_EQUIP_ICE_PENDANT, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final DeferredItem<Item> DAGGERFROST_LOCKET = ITEMS.register("daggerfrost_locket", () -> new PendantItem(new ResourceLocation(AetherGenesis.MODID, "daggerfrost_locket"), AetherSoundEvents.ITEM_ACCESSORY_EQUIP_ICE_PENDANT, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
 
     public static final DeferredItem<Item> CAPE = ITEMS.register("cape", () -> new DyeableCapeItem("white_cape", new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> DEXTERITY_CAPE = ITEMS.register("dexterity_cape", () -> new DexterityCapeItem("dexterity_cape", new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
@@ -91,9 +91,9 @@ public class GenesisItems {
     public static final DeferredItem<Item> GREEN_PARACHUTE = ITEMS.register("green_parachute", () -> new ParachuteItem(GenesisEntityTypes.GREEN_PARACHUTE, new Item.Properties().durability(1)));
     public static final DeferredItem<Item> PURPLE_PARACHUTE = ITEMS.register("purple_parachute", () -> new ParachuteItem(GenesisEntityTypes.PURPLE_PARACHUTE, new Item.Properties().durability(1)));
 
-    public static final DeferredItem<Item> GUARDIAN_KEY = ITEMS.register("guardian_key", () -> new DungeonKeyItem(new ResourceLocation(Genesis.MODID, "guardian"), new Item.Properties().stacksTo(1).rarity(AETHER_LOOT).fireResistant()));
-    public static final DeferredItem<Item> HOST_KEY = ITEMS.register("host_key", () -> new DungeonKeyItem(new ResourceLocation(Genesis.MODID, "host"), new Item.Properties().stacksTo(1).rarity(AETHER_LOOT).fireResistant()));
-    public static final DeferredItem<Item> COG_KEY = ITEMS.register("cog_key", () -> new DungeonKeyItem(new ResourceLocation(Genesis.MODID, "cog"), new Item.Properties().stacksTo(1).rarity(AETHER_LOOT).fireResistant()));
+    public static final DeferredItem<Item> GUARDIAN_KEY = ITEMS.register("guardian_key", () -> new DungeonKeyItem(new ResourceLocation(AetherGenesis.MODID, "guardian"), new Item.Properties().stacksTo(1).rarity(AETHER_LOOT).fireResistant()));
+    public static final DeferredItem<Item> HOST_KEY = ITEMS.register("host_key", () -> new DungeonKeyItem(new ResourceLocation(AetherGenesis.MODID, "host"), new Item.Properties().stacksTo(1).rarity(AETHER_LOOT).fireResistant()));
+    public static final DeferredItem<Item> COG_KEY = ITEMS.register("cog_key", () -> new DungeonKeyItem(new ResourceLocation(AetherGenesis.MODID, "cog"), new Item.Properties().stacksTo(1).rarity(AETHER_LOOT).fireResistant()));
 
     public static final DeferredItem<SpawnEggItem> CARRION_SPROUT_SPAWN_EGG = ITEMS.register("carrion_sprout_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.CARRION_SPROUT, 0xC9D8E9, 0x597898, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> DARK_SWET_SPAWN_EGG = ITEMS.register("dark_swet_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.DARK_SWET, 0x947DC4, 0x4FB1DA, new Item.Properties()));

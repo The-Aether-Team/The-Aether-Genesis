@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.network.packet;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
 import com.aetherteam.genesis.attachment.ZephyrColorAttachment;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
@@ -16,7 +16,7 @@ import java.util.function.Supplier;
  * Sync packet for values in the {@link ZephyrColorAttachment} class.
  */
 public class ZephyrColorSyncPacket extends SyncEntityPacket<ZephyrColorAttachment> {
-    public static final ResourceLocation ID = new ResourceLocation(Genesis.MODID, "sync_zephyr_color_attachment");
+    public static final ResourceLocation ID = new ResourceLocation(AetherGenesis.MODID, "sync_zephyr_color_attachment");
 
     public ZephyrColorSyncPacket(Quartet<Integer, String, INBTSynchable.Type, Object> values) {
         super(values);

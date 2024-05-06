@@ -5,7 +5,7 @@ import com.aetherteam.aether.block.AetherBlockStateProperties;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.block.miscellaneous.FacingPillarBlock;
 import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.block.miscellaneous.ColdFireBlock;
 import com.aetherteam.genesis.block.natural.OrangeTreeBlock;
@@ -256,7 +256,7 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
     }
 
     public void dungeonPillar(RotatedPillarBlock block) {
-        this.axisBlock(block, this.extend(this.texture(this.name(block), "dungeon/"), "_side"), new ResourceLocation(Genesis.MODID, "block/dungeon/carved_pillar_top"));
+        this.axisBlock(block, this.extend(this.texture(this.name(block), "dungeon/"), "_side"), new ResourceLocation(AetherGenesis.MODID, "block/dungeon/carved_pillar_top"));
     }
 
     public void dungeonPillarTop(FacingPillarBlock block) {

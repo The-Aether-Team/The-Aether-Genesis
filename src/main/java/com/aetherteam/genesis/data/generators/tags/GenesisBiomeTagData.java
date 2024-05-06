@@ -2,7 +2,7 @@ package com.aetherteam.genesis.data.generators.tags;
 
 import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.data.resources.registries.AetherBiomes;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.GenesisTags;
 import com.aetherteam.genesis.data.resources.registries.GenesisBiomes;
 import net.minecraft.core.HolderLookup;
@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class GenesisBiomeTagData extends BiomeTagsProvider {
     public GenesisBiomeTagData(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, @Nullable ExistingFileHelper helper) {
-        super(output, registries, Genesis.MODID, helper);
+        super(output, registries, AetherGenesis.MODID, helper);
     }
 
     @Override

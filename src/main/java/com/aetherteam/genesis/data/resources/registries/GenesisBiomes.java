@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.data.resources.registries;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.data.resources.builders.GenesisBiomeBuilders;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -18,7 +18,7 @@ public class GenesisBiomes {
     public static final ResourceKey<Biome> VIBRANT_FOREST = createKey("vibrant_forest");
 
     private static ResourceKey<Biome> createKey(String name) {
-        return ResourceKey.create(Registries.BIOME, new ResourceLocation(Genesis.MODID, name));
+        return ResourceKey.create(Registries.BIOME, new ResourceLocation(AetherGenesis.MODID, name));
     }
 
     public static void bootstrap(BootstapContext<Biome> context) {

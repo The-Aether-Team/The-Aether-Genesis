@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer.entity;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.genesis.client.renderer.entity.layers.TempestMarkingsLayer;
 import com.aetherteam.genesis.client.renderer.entity.layers.TempestTransparencyGlowLayer;
@@ -17,7 +17,7 @@ import net.minecraft.util.Mth;
  * [CODE COPY] - {@link com.aetherteam.aether.client.renderer.entity.ZephyrRenderer}.
  */
 public class TempestRenderer extends MobRenderer<Tempest, TempestModel> {
-    private static final ResourceLocation TEMPEST_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/tempest/tempest.png");
+    private static final ResourceLocation TEMPEST_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/tempest/tempest.png");
 
     public TempestRenderer(EntityRendererProvider.Context context) {
         super(context, new TempestModel(context.bakeLayer(GenesisModelLayers.TEMPEST)), 0.5F);

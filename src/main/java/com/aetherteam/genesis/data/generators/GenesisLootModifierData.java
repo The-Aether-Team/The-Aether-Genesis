@@ -3,7 +3,7 @@ package com.aetherteam.genesis.data.generators;
 import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.loot.AetherLoot;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.item.GenesisItems;
 import com.aetherteam.genesis.loot.modifiers.ChanceDoubleDropsModifier;
 import com.aetherteam.genesis.loot.modifiers.PresentDropsModifier;
@@ -29,7 +29,7 @@ import java.util.List;
 
 public class GenesisLootModifierData extends GlobalLootModifierProvider {
     public GenesisLootModifierData(PackOutput output) {
-        super(output, Genesis.MODID);
+        super(output, AetherGenesis.MODID);
     }
 
     @Override

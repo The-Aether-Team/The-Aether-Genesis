@@ -2,7 +2,7 @@ package com.aetherteam.genesis.data.generators.tags;
 
 import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.GenesisTags;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import net.minecraft.core.HolderLookup;
@@ -17,7 +17,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class GenesisBlockTagData extends BlockTagsProvider {
     public GenesisBlockTagData(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, @Nullable ExistingFileHelper helper) {
-        super(output, registries, Genesis.MODID, helper);
+        super(output, registries, AetherGenesis.MODID, helper);
     }
 
     @Override

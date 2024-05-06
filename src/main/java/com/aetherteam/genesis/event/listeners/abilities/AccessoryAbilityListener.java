@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.event.listeners.abilities;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.event.hooks.AbilityHooks;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -10,7 +10,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 
-@Mod.EventBusSubscriber(modid = Genesis.MODID)
+@Mod.EventBusSubscriber(modid = AetherGenesis.MODID)
 public class AccessoryAbilityListener {
     /**
      * @see AbilityHooks.AccessoryHooks#convertSnowball(Entity, Level)

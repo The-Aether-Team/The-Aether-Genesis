@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer.entity;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.genesis.client.renderer.entity.layers.BattleSentryLayer;
 import com.aetherteam.genesis.entity.monster.dungeon.BattleSentry;
@@ -11,8 +11,8 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public class BattleSentryRenderer extends MobRenderer<BattleSentry, SlimeModel<BattleSentry>> {
-    private static final ResourceLocation BATTLE_SENTRY_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/battle_sentry/battle_sentry.png");
-    private static final ResourceLocation BATTLE_SENTRY_LIT_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/battle_sentry/battle_sentry_lit.png");
+    private static final ResourceLocation BATTLE_SENTRY_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/battle_sentry/battle_sentry.png");
+    private static final ResourceLocation BATTLE_SENTRY_LIT_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/battle_sentry/battle_sentry_lit.png");
 
     public BattleSentryRenderer(EntityRendererProvider.Context context) {
         super(context, new SlimeModel<>(context.bakeLayer(GenesisModelLayers.BATTLE_SENTRY)), 0.3F);

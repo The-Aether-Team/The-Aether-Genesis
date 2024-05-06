@@ -61,12 +61,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-@Mod(Genesis.MODID)
-public class Genesis {
+@Mod(AetherGenesis.MODID)
+public class AetherGenesis {
     public static final String MODID = "aether_genesis";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public Genesis(IEventBus bus, Dist dist) {
+    public AetherGenesis(IEventBus bus, Dist dist) {
         bus.addListener(this::commonSetup);
         bus.addListener(this::registerPackets);
         bus.addListener(this::dataSetup);
@@ -159,7 +159,7 @@ public class Genesis {
      */
     private void setupClassicPack(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.CLIENT_RESOURCES) {
-            Path resourcePath = ModList.get().getModFileById(Genesis.MODID).getFile().findResource("packs/classic");
+            Path resourcePath = ModList.get().getModFileById(AetherGenesis.MODID).getFile().findResource("packs/classic");
             PackMetadataSection metadata = new PackMetadataSection(Component.translatable("pack.aether_genesis.classic.description"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));
             event.addRepositorySource((source) ->
                     source.accept(Pack.create(
@@ -180,7 +180,7 @@ public class Genesis {
      */
     private void setupDataOverridePack(AddPackFindersEvent event) {
         if (event.getPackType() == PackType.SERVER_DATA) {
-            Path resourcePath = ModList.get().getModFileById(Genesis.MODID).getFile().findResource("packs/data_override");
+            Path resourcePath = ModList.get().getModFileById(AetherGenesis.MODID).getFile().findResource("packs/data_override");
             PackMetadataSection metadata = new PackMetadataSection(Component.literal(""), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA));
             event.addRepositorySource((source) ->
                     source.accept(Pack.create(

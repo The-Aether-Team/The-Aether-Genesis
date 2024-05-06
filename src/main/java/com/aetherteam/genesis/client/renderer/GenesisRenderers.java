@@ -4,7 +4,7 @@ import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.client.renderer.accessory.PendantRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
 import com.aetherteam.aether.client.renderer.entity.model.MimicModel;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.attachment.GenesisPlayerAttachment;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.blockentity.GenesisBlockEntityTypes;
@@ -35,7 +35,7 @@ import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 import java.util.Set;
 
-@Mod.EventBusSubscriber(modid = Genesis.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = AetherGenesis.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GenesisRenderers {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
@@ -59,8 +59,8 @@ public class GenesisRenderers {
 
         event.registerEntityRenderer(GenesisEntityTypes.FANGRIN.get(), FangrinRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.KRAISITH.get(), KraisithRenderer::new);
-        event.registerEntityRenderer(GenesisEntityTypes.FLEETING_WISP.get(), (context) -> new WispRenderer(context, GenesisModelLayers.FLEETING_WISP, new ResourceLocation(Genesis.MODID, "textures/entity/companions/fleeting_wisp.png")));
-        event.registerEntityRenderer(GenesisEntityTypes.SOARING_WISP.get(), (context) -> new WispRenderer(context, GenesisModelLayers.SOARING_WISP, new ResourceLocation(Genesis.MODID, "textures/entity/companions/soaring_wisp.png")));
+        event.registerEntityRenderer(GenesisEntityTypes.FLEETING_WISP.get(), (context) -> new WispRenderer(context, GenesisModelLayers.FLEETING_WISP, new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/fleeting_wisp.png")));
+        event.registerEntityRenderer(GenesisEntityTypes.SOARING_WISP.get(), (context) -> new WispRenderer(context, GenesisModelLayers.SOARING_WISP, new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/soaring_wisp.png")));
         event.registerEntityRenderer(GenesisEntityTypes.ETHEREAL_WISP.get(), EtherealWispRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.SHADE_OF_ARKENZUS.get(), ShadeOfArkenzusRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.FROSTPINE_TOTEM.get(), FrostpineTotemRenderer::new);

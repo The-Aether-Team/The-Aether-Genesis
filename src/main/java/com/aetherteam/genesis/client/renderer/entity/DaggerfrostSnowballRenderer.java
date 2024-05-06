@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer.entity;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.entity.projectile.DaggerfrostSnowball;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -15,7 +15,7 @@ import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 public class DaggerfrostSnowballRenderer extends EntityRenderer<DaggerfrostSnowball> {
-    private static final ResourceLocation DAGGERFROST_SNOWBALL_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/projectile/daggerfrost_snowball.png");
+    private static final ResourceLocation DAGGERFROST_SNOWBALL_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/projectile/daggerfrost_snowball.png");
 
     public DaggerfrostSnowballRenderer(EntityRendererProvider.Context context) {
         super(context);

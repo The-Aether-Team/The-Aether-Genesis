@@ -2,7 +2,7 @@ package com.aetherteam.genesis.data.generators;
 
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.data.providers.GenesisItemModelProvider;
 import com.aetherteam.genesis.item.GenesisItems;
@@ -11,7 +11,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class GenesisItemModelData extends GenesisItemModelProvider {
     public GenesisItemModelData(PackOutput output, ExistingFileHelper helper) {
-        super(output, Genesis.MODID, helper);
+        super(output, AetherGenesis.MODID, helper);
     }
 
     @Override

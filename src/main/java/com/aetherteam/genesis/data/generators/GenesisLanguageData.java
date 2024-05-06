@@ -1,7 +1,7 @@
 package com.aetherteam.genesis.data.generators;
 
 import com.aetherteam.aether.item.AetherItems;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.data.providers.GenesisLanguageProvider;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
@@ -11,7 +11,7 @@ import net.minecraft.data.PackOutput;
 
 public class GenesisLanguageData extends GenesisLanguageProvider {
     public GenesisLanguageData(PackOutput output) {
-        super(output, Genesis.MODID);
+        super(output, AetherGenesis.MODID);
     }
 
     @Override

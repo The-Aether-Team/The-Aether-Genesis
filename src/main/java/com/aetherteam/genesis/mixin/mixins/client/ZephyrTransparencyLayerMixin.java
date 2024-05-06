@@ -3,7 +3,7 @@ package com.aetherteam.genesis.mixin.mixins.client;
 import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether.client.renderer.entity.layers.ZephyrTransparencyLayer;
 import com.aetherteam.aether.entity.monster.Zephyr;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
 import com.aetherteam.genesis.attachment.ZephyrColorAttachment;
 import com.llamalad7.mixinextras.sugar.Local;
@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(ZephyrTransparencyLayer.class)
 public class ZephyrTransparencyLayerMixin {
     @Unique
-    private static final ResourceLocation ZEPHYR_TAN_TRANSPARENCY_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/zephyr/zephyr_tan_layer.png");
+    private static final ResourceLocation ZEPHYR_TAN_TRANSPARENCY_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/zephyr/zephyr_tan_layer.png");
 
     /**
      * Sets the Zephyr texture to be tan according to the {@link ZephyrColorAttachment}.

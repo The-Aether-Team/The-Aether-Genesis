@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.event.listeners;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.event.hooks.LevelHooks;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
@@ -11,7 +11,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.level.SaplingGrowTreeEvent;
 
-@Mod.EventBusSubscriber(modid = Genesis.MODID)
+@Mod.EventBusSubscriber(modid = AetherGenesis.MODID)
 public class LevelListener {
     /**
      * @see LevelHooks#modifyGrownSapling(LevelAccessor, RandomSource, Holder)

@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.data.resources.registries;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.GenesisTags;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.nitrogen.world.biomemodifier.AddMobChargeBiomeModifier;
@@ -37,7 +37,7 @@ public class GenesisBiomeModifiers {
     public static final ResourceKey<BiomeModifier> SPAWN_TEMPEST = createKey("spawn_tempest");
 
     private static ResourceKey<BiomeModifier> createKey(String name) {
-        return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(Genesis.MODID, name));
+        return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(AetherGenesis.MODID, name));
     }
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {

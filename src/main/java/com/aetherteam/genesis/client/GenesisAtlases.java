@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.resources.model.Material;
 import net.minecraft.resources.ResourceLocation;
@@ -17,6 +17,6 @@ public class GenesisAtlases {
 	}
 
 	public static Material getChestMaterial(String chestName) {
-		return new Material(Sheets.CHEST_SHEET, new ResourceLocation(Genesis.MODID, "entity/tiles/chest/" + chestName));
+		return new Material(Sheets.CHEST_SHEET, new ResourceLocation(AetherGenesis.MODID, "entity/tiles/chest/" + chestName));
 	}
 }

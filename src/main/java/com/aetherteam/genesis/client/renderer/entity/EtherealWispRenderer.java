@@ -2,7 +2,7 @@ package com.aetherteam.genesis.client.renderer.entity;
 
 import com.aetherteam.aether.attachment.AetherDataAttachments;
 import com.aetherteam.aether.attachment.AetherPlayerAttachment;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.genesis.entity.companion.Wisp;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class EtherealWispRenderer extends WispRenderer {
     public EtherealWispRenderer(EntityRendererProvider.Context context) {
-        super(context, GenesisModelLayers.ETHEREAL_WISP, new ResourceLocation(Genesis.MODID, "textures/entity/companions/ethereal_wisp.png"));
+        super(context, GenesisModelLayers.ETHEREAL_WISP, new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/ethereal_wisp.png"));
     }
 
     @Override

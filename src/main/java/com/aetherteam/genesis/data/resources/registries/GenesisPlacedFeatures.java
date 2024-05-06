@@ -3,7 +3,7 @@ package com.aetherteam.genesis.data.resources.registries;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.data.resources.builders.AetherPlacedFeatureBuilders;
 import com.aetherteam.aether.world.placementmodifier.ImprovedLayerPlacementModifier;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.data.resources.builders.GenesisPlacedFeatureBuilders;
 import com.aetherteam.nitrogen.data.resources.builders.NitrogenPlacedFeatureBuilders;
 import net.minecraft.core.Holder;
@@ -46,7 +46,7 @@ public class GenesisPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ORE_CONTINUUM_PLACEMENT = createKey("ore_continuum");
 
     private static ResourceKey<PlacedFeature> createKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(Genesis.MODID, name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(AetherGenesis.MODID, name));
     }
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {

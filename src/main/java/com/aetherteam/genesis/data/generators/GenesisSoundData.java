@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.data.generators;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -8,7 +8,7 @@ import net.neoforged.neoforge.common.data.SoundDefinitionsProvider;
 
 public class GenesisSoundData extends SoundDefinitionsProvider {
     public GenesisSoundData(PackOutput output, ExistingFileHelper helper) {
-        super(output,   Genesis.MODID, helper);
+        super(output,   AetherGenesis.MODID, helper);
     }
 
     @Override

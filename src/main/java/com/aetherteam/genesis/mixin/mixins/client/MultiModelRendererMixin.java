@@ -4,7 +4,7 @@ import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether.client.renderer.entity.MultiModelRenderer;
 import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.entity.monster.Zephyr;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
 import com.aetherteam.genesis.attachment.ZephyrColorAttachment;
 import net.minecraft.client.model.EntityModel;
@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(MultiModelRenderer.class)
 public class MultiModelRendererMixin<T extends Mob, M extends EntityModel<T>, N extends M, O extends M> {
     @Unique
-    private static final ResourceLocation ZEPHYR_TAN_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/mobs/zephyr/zephyr_tan.png");
+    private static final ResourceLocation ZEPHYR_TAN_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/zephyr/zephyr_tan.png");
 
     /**
      * Sets the Zephyr texture to be tan according to the {@link ZephyrColorAttachment}.

@@ -2,7 +2,7 @@ package com.aetherteam.genesis.item.accessories.pendant;
 
 import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.item.accessories.pendant.PendantItem;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,7 +15,7 @@ import static com.aetherteam.aether.item.AetherItems.AETHER_LOOT;
 
 public class SwettyPendantItem extends PendantItem {
     public SwettyPendantItem() {
-        super(new ResourceLocation(Genesis.MODID, "swetty_pendant"), AetherSoundEvents.ITEM_ACCESSORY_EQUIP_ICE_PENDANT, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT));
+        super(new ResourceLocation(AetherGenesis.MODID, "swetty_pendant"), AetherSoundEvents.ITEM_ACCESSORY_EQUIP_ICE_PENDANT, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT));
     }
 
     /**

@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer.entity;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.genesis.client.renderer.entity.layers.KraisithEyesLayer;
 import com.aetherteam.genesis.client.renderer.entity.model.KraisithModel;
@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 
 public class KraisithRenderer extends CompanionRenderer<Kraisith, KraisithModel> {
-    private static final ResourceLocation KRAISITH_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/companions/kraisith/kraisith.png");
+    private static final ResourceLocation KRAISITH_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/kraisith/kraisith.png");
 
     public KraisithRenderer(EntityRendererProvider.Context context) {
         super(context, new KraisithModel(context.bakeLayer(GenesisModelLayers.KRAISITH)), 0.45F);

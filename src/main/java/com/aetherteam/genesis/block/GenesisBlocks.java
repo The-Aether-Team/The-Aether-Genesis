@@ -9,7 +9,7 @@ import com.aetherteam.aether.block.natural.AetherDoubleDropsLeaves;
 import com.aetherteam.aether.block.natural.LeavesWithParticlesBlock;
 import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.mixin.mixins.common.accessor.FireBlockAccessor;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.block.dungeon.SkyrootChestMimicBlock;
 import com.aetherteam.genesis.block.miscellaneous.ColdFireBlock;
 import com.aetherteam.genesis.block.natural.*;
@@ -43,7 +43,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class GenesisBlocks {
-    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Genesis.MODID);
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(AetherGenesis.MODID);
 
     public static final DeferredBlock<Block> ENCHANTED_GRASS_BLOCK = register("enchanted_grass_block", () -> new EnchantedGrassBlock(Block.Properties.of().mapColor(MapColor.GOLD).randomTicks().strength(0.2F).sound(SoundType.GRASS)));
 

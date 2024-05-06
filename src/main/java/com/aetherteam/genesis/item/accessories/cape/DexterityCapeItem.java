@@ -1,7 +1,7 @@
 package com.aetherteam.genesis.item.accessories.cape;
 
 import com.aetherteam.aether.item.accessories.cape.CapeItem;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.item.accessories.abilities.SpeedAccessory;
 import com.google.common.collect.Multimap;
 import net.minecraft.resources.ResourceLocation;
@@ -19,7 +19,7 @@ public class DexterityCapeItem extends CapeItem implements SpeedAccessory {
     private static final UUID SPEED_MODIFIER_UUID = UUID.fromString("779AFB2C-54DC-4F43-8A0B-1A2DD1F77C09");
 
     public DexterityCapeItem(String capeLocation, Properties properties) {
-        super(new ResourceLocation(Genesis.MODID, capeLocation), properties);
+        super(new ResourceLocation(AetherGenesis.MODID, capeLocation), properties);
     }
 
     @Override

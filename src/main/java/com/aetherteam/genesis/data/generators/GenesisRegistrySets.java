@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.data.generators;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.data.resources.registries.GenesisBiomeModifiers;
 import com.aetherteam.genesis.data.resources.registries.GenesisBiomes;
 import com.aetherteam.genesis.data.resources.registries.GenesisConfiguredFeatures;
@@ -23,6 +23,6 @@ public class GenesisRegistrySets extends DatapackBuiltinEntriesProvider {
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, GenesisBiomeModifiers::bootstrap);
 
     public GenesisRegistrySets(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, BUILDER, Collections.singleton(Genesis.MODID));
+        super(output, registries, BUILDER, Collections.singleton(AetherGenesis.MODID));
     }
 }

@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer.entity.layers;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.renderer.entity.model.TrackingGolemModel;
 import com.aetherteam.genesis.entity.monster.dungeon.TrackingGolem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -14,8 +14,8 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class TrackingGolemLayer extends EyesLayer<TrackingGolem, TrackingGolemModel> {
-	private static final RenderType TRACKING_GOLEM_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/tracking_golem/sentry_golem_glow.png"));
-	private static final RenderType TRACKING_GOLEM_HOSTILE_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/tracking_golem/sentry_golem_hostile_glow.png"));
+	private static final RenderType TRACKING_GOLEM_GLOW = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/tracking_golem/sentry_golem_glow.png"));
+	private static final RenderType TRACKING_GOLEM_HOSTILE_GLOW = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/tracking_golem/sentry_golem_hostile_glow.png"));
 
 	public TrackingGolemLayer(RenderLayerParent<TrackingGolem, TrackingGolemModel> entityRenderer) {
 		super(entityRenderer);

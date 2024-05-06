@@ -3,7 +3,7 @@ package com.aetherteam.genesis.data.generators.tags;
 import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherItems;
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.GenesisTags;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.item.GenesisItems;
@@ -20,7 +20,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class GenesisItemTagData extends ItemTagsProvider {
     public GenesisItemTagData(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, CompletableFuture<TagLookup<Block>> blockTags, @Nullable ExistingFileHelper helper) {
-        super(output, registries, blockTags, Genesis.MODID, helper);
+        super(output, registries, blockTags, AetherGenesis.MODID, helper);
     }
 
     @Override

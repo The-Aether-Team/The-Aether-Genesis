@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer.entity;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.genesis.client.renderer.entity.model.CogProtectileModel;
 import com.aetherteam.genesis.entity.projectile.CogProjectile;
@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class CogProjectileRenderer extends EntityRenderer<CogProjectile> {
-    private static final ResourceLocation COG_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/projectile/cog.png");
+    private static final ResourceLocation COG_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/projectile/cog.png");
     private final CogProtectileModel cog;
 
     public CogProjectileRenderer(EntityRendererProvider.Context context) {

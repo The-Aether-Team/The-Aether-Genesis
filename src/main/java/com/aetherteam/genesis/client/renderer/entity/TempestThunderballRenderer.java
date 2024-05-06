@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer.entity;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.entity.projectile.TempestThunderBall;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -16,7 +16,7 @@ import org.joml.Matrix3f;
 import org.joml.Matrix4f;
 
 public class TempestThunderballRenderer extends EntityRenderer<TempestThunderBall> {
-    private static final ResourceLocation TEMPEST_PROJECTILE_TEXTURE = new ResourceLocation(Genesis.MODID, "textures/entity/projectile/tempest_projectile.png");
+    private static final ResourceLocation TEMPEST_PROJECTILE_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/projectile/tempest_projectile.png");
 
     public TempestThunderballRenderer(EntityRendererProvider.Context context) {
         super(context);

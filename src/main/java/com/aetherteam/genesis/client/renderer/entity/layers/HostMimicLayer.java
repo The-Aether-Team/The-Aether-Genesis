@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer.entity.layers;
 
-import com.aetherteam.genesis.Genesis;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.renderer.entity.model.SliderHostMimicModel;
 import com.aetherteam.genesis.entity.monster.dungeon.boss.SliderHostMimic;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class HostMimicLayer extends EyesLayer<SliderHostMimic, SliderHostMimicModel> {
-	private static final RenderType HOST_MIMIC_CRITICAL_GLOW = RenderType.eyes(new ResourceLocation(Genesis.MODID, "textures/entity/mobs/slider_host_mimic/slider_host_mimic_critical_glow.png"));
+	private static final RenderType HOST_MIMIC_CRITICAL_GLOW = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/slider_host_mimic/slider_host_mimic_critical_glow.png"));
 
 	public HostMimicLayer(RenderLayerParent<SliderHostMimic, SliderHostMimicModel> entityRenderer) {
 		super(entityRenderer);
