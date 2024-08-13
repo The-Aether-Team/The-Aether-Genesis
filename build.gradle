@@ -54,8 +54,8 @@ sourceSets.main.resources {
 dependencies {
     implementation "net.neoforged:neoforge:${project.neoforge_version}"
 
-    implementation "com.aetherteam.aether:aether:${project.aether_version}"
-//    implementation fg.deobf("local:aether:${project.aether_version}")
+//    implementation "com.aetherteam.aether:aether:${project.aether_version}"
+    implementation "local:aether:${project.aether_version}"
 
     implementation "com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}"
     implementation "com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}"

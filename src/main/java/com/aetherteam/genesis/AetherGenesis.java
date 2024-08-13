@@ -1,5 +1,6 @@
 package com.aetherteam.genesis;
 
+import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonBuilder;
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
 import com.aetherteam.genesis.block.GenesisBlocks;
@@ -21,6 +22,9 @@ import com.aetherteam.genesis.network.packet.GenesisPlayerSyncPacket;
 import com.aetherteam.genesis.network.packet.ZephyrColorSyncPacket;
 import com.aetherteam.genesis.world.GenesisRegion;
 import com.aetherteam.genesis.world.feature.GenesisFeatures;
+import com.aetherteam.genesis.world.structurepiece.GenesisStructurePieceTypes;
+import com.aetherteam.genesis.world.structurepiece.bronzedungeon.GenesisBronzeBossRoom;
+import com.aetherteam.genesis.world.structurepiece.bronzedungeon.GenesisBronzeDungeonRoom;
 import com.aetherteam.genesis.world.treedecorator.GenesisTreeDecoratorTypes;
 import com.aetherteam.genesis.world.trunkplacer.GenesisTrunkPlacerTypes;
 import com.mojang.logging.LogUtils;
@@ -87,7 +91,8 @@ public class AetherGenesis {
                 GenesisParticleTypes.PARTICLES,
                 GenesisSoundEvents.SOUNDS,
                 GenesisAdvancementTriggers.TRIGGERS,
-                GenesisDataAttachments.ATTACHMENTS
+                GenesisDataAttachments.ATTACHMENTS,
+                GenesisStructurePieceTypes.STRUCTURE_PIECE_TYPES
         };
 
         for (DeferredRegister<?> register : registers) {
@@ -104,6 +109,10 @@ public class AetherGenesis {
             GenesisBlocks.registerFlammability();
 
             Regions.register(new GenesisRegion(new ResourceLocation(MODID, MODID), GenesisConfig.COMMON.biome_weight.get()));
+
+            //todo balance distribution
+            BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("chest_room").add((manager, pos, rot, processors) -> new GenesisBronzeDungeonRoom(manager, "spawner_room", pos, rot, processors), 10);
+            BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("boss_room").add((manager, pos, rot, processors) -> new GenesisBronzeBossRoom(manager, "host_mimic_boss_room", pos, rot, processors), 10);
         });
     }
 
