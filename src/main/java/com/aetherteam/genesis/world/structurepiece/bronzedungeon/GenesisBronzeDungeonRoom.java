@@ -1,5 +1,6 @@
 package com.aetherteam.genesis.world.structurepiece.bronzedungeon;
 
+import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.loot.AetherLoot;
 import com.aetherteam.aether.world.structurepiece.AetherTemplateStructurePiece;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonPiece;
@@ -48,8 +49,7 @@ public class GenesisBronzeDungeonRoom extends BronzeDungeonPiece {
                 level.setBlock(pos, state, 2);
                 BlockEntity blockentity = level.getBlockEntity(pos);
                 if (blockentity instanceof SpawnerBlockEntity spawnerBlockEntity) {
-                    List<EntityType<?>> mobs = new ArrayList<>();
-                    mobs.add(GenesisEntityTypes.TRACKING_GOLEM.get());
+                    List<EntityType<?>> mobs = List.of(GenesisEntityTypes.TRACKING_GOLEM.get(), GenesisEntityTypes.BATTLE_SENTRY.get(), AetherEntityTypes.SENTRY.get()); //todo sentry golem
                     EntityType<?> mob = mobs.get(random.nextInt(mobs.size()));
                     spawnerBlockEntity.setEntityId(mob, random);
                 }
