@@ -3,6 +3,7 @@ package com.aetherteam.genesis.mixin;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.world.structurepiece.AetherStructurePieceTypes;
 import com.aetherteam.genesis.block.GenesisBlocks;
+import com.aetherteam.genesis.world.structurepiece.GenesisStructurePieceTypes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
@@ -35,6 +36,7 @@ public class GenesisMixinHooks {
         List<StructurePieceType> types = new ArrayList<>();
         types.add(AetherStructurePieceTypes.SILVER_DUNGEON_ROOM.get());
         types.add(AetherStructurePieceTypes.BRONZE_DUNGEON_ROOM.get());
+        types.add(GenesisStructurePieceTypes.BRONZE_DUNGEON_ROOM.get());
         return types;
     }
 }
