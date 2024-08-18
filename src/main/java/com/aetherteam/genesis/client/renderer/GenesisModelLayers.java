@@ -16,6 +16,7 @@ public class GenesisModelLayers {
     public static final ModelLayerLocation SENTRY_GUARDIAN = register("sentry_guardian");
     public static final ModelLayerLocation SLIDER_HOST_MIMIC = register("slider_host_mimic");
     public static final ModelLayerLocation LABYRINTH_EYE = register("labyrinth_eye");
+    public static final ModelLayerLocation DETONATION_PROJECTILE = register("detonation");
     public static final ModelLayerLocation HOST_EYE_PROJECTILE = register("host_eye");
     public static final ModelLayerLocation COG_PROJECTILE = register("cog_arrow");
 
