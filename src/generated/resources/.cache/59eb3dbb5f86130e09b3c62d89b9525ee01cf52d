@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-14T23:53:02.7464615	Loot Tables
+// 1.20.4	2024-08-17T11:12:43.7051798	Loot Tables
 9ad2ec631303e607b95b33edf0d72bcc71257a54 data/aether_genesis/loot_tables/blocks/blue_skyroot_leaves.json
 7ecb374e2147a8693b4ded2eb27280a1362ff491 data/aether_genesis/loot_tables/blocks/blue_skyroot_sapling.json
 23387232a36e56cbc262b9d327330feb72ea684c data/aether_genesis/loot_tables/blocks/boss_doorway_divine_carved_stone.json
@@ -47,6 +47,7 @@ fadec43460fe319579d1cea6c6078a22d7586451 data/aether_genesis/loot_tables/blocks/
 7273fe5066412741043422d3600574d71a05c0d2 data/aether_genesis/loot_tables/entities/carrion_sprout.json
 b801a3b4ea34892f4580baa0a480603ded8b96d5 data/aether_genesis/loot_tables/entities/dark_swet.json
 853ac86fb9b5f6363f8e1c87e4eb18f85ec2c87f data/aether_genesis/loot_tables/entities/labyrinth_eye.json
+b2a0ebee6edc473890e45742528b1ad813b0b21f data/aether_genesis/loot_tables/entities/sentry_golem.json
 3965eca89c9f4dd2c61c6f50027ebd80469378ff data/aether_genesis/loot_tables/entities/sentry_guardian.json
 373c1095c8b23c2b4c5183ec1ca29f0eecd7317b data/aether_genesis/loot_tables/entities/skyroot_mimic.json
 b14931f124c57ad3b2d530e608ab40d591476a78 data/aether_genesis/loot_tables/entities/slider_host_mimic.json

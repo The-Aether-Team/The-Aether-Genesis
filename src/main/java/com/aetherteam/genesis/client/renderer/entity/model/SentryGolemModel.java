@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer.entity.model;
 
-import com.aetherteam.genesis.entity.monster.dungeon.TrackingGolem;
+import com.aetherteam.genesis.entity.monster.dungeon.SentryGolem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
@@ -9,7 +9,7 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 
-public class TrackingGolemModel extends EntityModel<TrackingGolem> {
+public class SentryGolemModel extends EntityModel<SentryGolem> {
     protected final ModelPart body;
     protected final ModelPart head;
     protected final ModelPart leftArm;
@@ -17,7 +17,7 @@ public class TrackingGolemModel extends EntityModel<TrackingGolem> {
     protected final ModelPart leftLeg;
     protected final ModelPart rightLeg;
 
-    public TrackingGolemModel(ModelPart root) {
+    public SentryGolemModel(ModelPart root) {
         this.body = root.getChild("body");
         this.head = this.body.getChild("head");
         this.leftArm = this.body.getChild("left_arm");
@@ -49,10 +49,28 @@ public class TrackingGolemModel extends EntityModel<TrackingGolem> {
     }
 
     @Override
-    public void setupAnim(TrackingGolem golem, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
+    public void setupAnim(SentryGolem golem, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.head.yRot = netHeadYaw * Mth.DEG_TO_RAD;
-        this.rightArm.xRot = -Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-        this.leftArm.xRot = -Mth.cos(limbSwing * 0.6662F + Mth.PI) * 1.4F * limbSwingAmount;
+        this.rightArm.resetPose();
+        this.leftArm.resetPose();
+        if (golem.getBombCharge() > 0) {
+            float f = Mth.sin(Mth.PI);
+            float f1 = Mth.sin(Mth.PI);
+            this.rightArm.zRot = 0.0F;
+            this.leftArm.zRot = 0.0F;
+            this.rightArm.yRot = -(0.2F - f * 0.6F);
+            this.leftArm.yRot = 0.2F - f * 0.6F;
+            float f2 = -Mth.PI / 2.25F;
+            this.rightArm.xRot = f2;
+            this.leftArm.xRot = f2;
+            this.rightArm.xRot += f * 1.2F - f1 * 0.4F;
+            this.leftArm.xRot += f * 1.2F - f1 * 0.4F;
+        } else if (golem.getBombCharge() >= 100) {
+
+        } else {
+            this.rightArm.xRot = -Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+            this.leftArm.xRot = -Mth.cos(limbSwing * 0.6662F + Mth.PI) * 1.4F * limbSwingAmount;
+        }
         this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
         this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F + Mth.PI) * 1.4F * limbSwingAmount;
     }

@@ -4,6 +4,7 @@ import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.client.renderer.accessory.PendantRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
 import com.aetherteam.aether.client.renderer.entity.model.MimicModel;
+import com.aetherteam.aether.entity.monster.dungeon.Sentry;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.attachment.GenesisPlayerAttachment;
 import com.aetherteam.genesis.block.GenesisBlocks;
@@ -46,6 +47,7 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.DARK_SWET.get(), DarkSwetRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TEMPEST.get(), TempestRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.BATTLE_SENTRY.get(), BattleSentryRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.SENTRY_GOLEM.get(), SentryGolemRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TRACKING_GOLEM.get(), TrackingGolemRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.SKYROOT_MIMIC.get(), SkyrootMimicRenderer::new);
 
@@ -87,6 +89,7 @@ public class GenesisRenderers {
         event.registerLayerDefinition(GenesisModelLayers.TEMPEST, TempestModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.TEMPEST_TRANSPARENCY, TempestModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.BATTLE_SENTRY, SlimeModel::createOuterBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.SENTRY_GOLEM, SentryGolemModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.TRACKING_GOLEM, TrackingGolemModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SENTRY_GUARDIAN, SentryGuardianModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SLIDER_HOST_MIMIC, SliderHostMimicModel::createBodyLayer);

@@ -18,6 +18,7 @@
     "common.StructurePieceMixin",
     "common.SwetMixin",
     "common.accessor.LootPoolEntryContainerAccessor",
+    "common.accessor.RangedAttackGoalAccessor",
     "common.accessor.RegistrySetBuilderAccessor",
     "common.accessor.WallBlockAccessor"
   ],

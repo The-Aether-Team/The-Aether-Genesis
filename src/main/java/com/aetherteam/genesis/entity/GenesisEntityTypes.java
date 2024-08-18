@@ -8,6 +8,7 @@ import com.aetherteam.genesis.entity.companion.*;
 import com.aetherteam.genesis.entity.miscellaneous.*;
 import com.aetherteam.genesis.entity.monster.Tempest;
 import com.aetherteam.genesis.entity.monster.dungeon.BattleSentry;
+import com.aetherteam.genesis.entity.monster.dungeon.SentryGolem;
 import com.aetherteam.genesis.entity.monster.dungeon.SkyrootMimic;
 import com.aetherteam.genesis.entity.monster.dungeon.TrackingGolem;
 import com.aetherteam.genesis.entity.monster.dungeon.boss.LabyrinthEye;
@@ -42,6 +43,8 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.of(Tempest::new, AetherMobCategory.AETHER_SKY_MONSTER).sized(2.5F, 1.75F).fireImmune().clientTrackingRange(10).build("tempest"));
     public static final  DeferredHolder<EntityType<?>, EntityType<BattleSentry>> BATTLE_SENTRY = ENTITY_TYPES.register("battle_sentry",
             () -> EntityType.Builder.of(BattleSentry::new, MobCategory.MONSTER).sized(2.0F, 2.0F).clientTrackingRange(10).build("battle_sentry"));
+    public static final  DeferredHolder<EntityType<?>, EntityType<SentryGolem>> SENTRY_GOLEM = ENTITY_TYPES.register("sentry_golem",
+            () -> EntityType.Builder.of(SentryGolem::new, MobCategory.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build("sentry_golem"));
     public static final  DeferredHolder<EntityType<?>, EntityType<TrackingGolem>> TRACKING_GOLEM = ENTITY_TYPES.register("tracking_golem",
             () -> EntityType.Builder.of(TrackingGolem::new, MobCategory.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build("tracking_golem"));
     public static final  DeferredHolder<EntityType<?>, EntityType<SkyrootMimic>> SKYROOT_MIMIC = ENTITY_TYPES.register("skyroot_mimic",
@@ -113,6 +116,7 @@ public class GenesisEntityTypes {
         event.put(GenesisEntityTypes.DARK_SWET.get(), Swet.createMobAttributes().build());
         event.put(GenesisEntityTypes.TEMPEST.get(), Tempest.createMobAttributes().build());
         event.put(GenesisEntityTypes.BATTLE_SENTRY.get(), BattleSentry.createMobAttributes().build());
+        event.put(GenesisEntityTypes.SENTRY_GOLEM.get(), SentryGolem.createMobAttributes().build());
         event.put(GenesisEntityTypes.TRACKING_GOLEM.get(), TrackingGolem.createMobAttributes().build());
         event.put(GenesisEntityTypes.SKYROOT_MIMIC.get(), Mimic.createMobAttributes().build());
         event.put(GenesisEntityTypes.SENTRY_GUARDIAN.get(), SentryGuardian.createMobAttributes().build());
