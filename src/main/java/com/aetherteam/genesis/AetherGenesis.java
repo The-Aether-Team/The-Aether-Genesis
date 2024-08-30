@@ -91,8 +91,7 @@ public class AetherGenesis {
                 GenesisParticleTypes.PARTICLES,
                 GenesisSoundEvents.SOUNDS,
                 GenesisAdvancementTriggers.TRIGGERS,
-                GenesisDataAttachments.ATTACHMENTS,
-                GenesisStructurePieceTypes.STRUCTURE_PIECE_TYPES
+                GenesisDataAttachments.ATTACHMENTS
         };
 
         for (DeferredRegister<?> register : registers) {

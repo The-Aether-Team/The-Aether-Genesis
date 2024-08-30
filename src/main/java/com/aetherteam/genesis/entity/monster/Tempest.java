@@ -17,12 +17,15 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
+
+import java.util.EnumSet;
 
 public class Tempest extends Zephyr {
     public static final EntityDataAccessor<Integer> DATA_ATTACK_CHARGE_ID = SynchedEntityData.defineId(Tempest.class, EntityDataSerializers.INT);
@@ -35,9 +38,10 @@ public class Tempest extends Zephyr {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(5, new Zephyr.RandomFloatAroundGoal(this));
-        this.goalSelector.addGoal(7, new Zephyr.ZephyrLookGoal(this));
+        this.goalSelector.addGoal(5, new Tempest.RandomFloatAroundGoal(this));
         this.goalSelector.addGoal(5, new Tempest.ThunderballAttackGoal(this));
+        this.goalSelector.addGoal(7, new Zephyr.ZephyrLookGoal(this));
+
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true, false));
     }
 
@@ -151,6 +155,52 @@ public class Tempest extends Zephyr {
                 }
             } else if (this.parentEntity.getChargeTime() > 0) {
                 this.parentEntity.setChargeTime(this.parentEntity.getChargeTime() - 1);
+            }
+        }
+    }
+
+    protected static class RandomFloatAroundGoal extends Goal {
+        private final Tempest tempest;
+
+        public RandomFloatAroundGoal(Tempest tempest) {
+            this.tempest = tempest;
+            this.setFlags(EnumSet.of(Flag.MOVE));
+        }
+
+        @Override
+        public boolean canUse() {
+            MoveControl moveControl = this.tempest.getMoveControl();
+            if (!moveControl.hasWanted()) {
+                return true;
+            } else {
+                double d0 = moveControl.getWantedX() - this.tempest.getX();
+                double d1 = moveControl.getWantedY() - this.tempest.getY();
+                double d2 = moveControl.getWantedZ() - this.tempest.getZ();
+                double d3 = d0 * d0 + d1 * d1 + d2 * d2;
+                return d3 < 1.0 || d3 > 3600.0;
+            }
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return false;
+        }
+
+        @Override
+        public void start() {
+            LivingEntity livingEntity = this.tempest.getTarget();
+            if (livingEntity != null) {
+                RandomSource random = this.tempest.getRandom();
+                double d0 = livingEntity.getX() + (random.nextFloat() * 2.0F - 1.0F) * 8.0F;
+                double d1 = livingEntity.getY() + random.nextFloat() * 3.0F;
+                double d2 = livingEntity.getZ() + (random.nextFloat() * 2.0F - 1.0F) * 8.0F;
+                this.tempest.getMoveControl().setWantedPosition(d0, d1, d2, 0.6);
+            } else {
+                RandomSource random = this.tempest.getRandom();
+                double d0 = this.tempest.getX() + (random.nextFloat() * 2.0F - 1.0F) * 12.0F;
+                double d1 = this.tempest.getY() + (random.nextFloat() * 2.0F - 1.0F) * 4.0F;
+                double d2 = this.tempest.getZ() + (random.nextFloat() * 2.0F - 1.0F) * 12.0F;
+                this.tempest.getMoveControl().setWantedPosition(d0, d1, d2, 0.6);
             }
         }
     }
