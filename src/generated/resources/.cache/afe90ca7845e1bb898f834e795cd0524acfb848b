@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-14T23:53:02.7514592	Tags for minecraft:worldgen/biome mod id aether_genesis
+// 1.20.4	2024-08-30T12:09:25.5672506	Tags for minecraft:worldgen/biome mod id aether_genesis
 02bf558e4afc5ecdd647139229d117ee0c214af5 data/aether/tags/worldgen/biome/is_aether.json
 a65395f96f1079c37ca0378a2b321278602657ed data/aether_genesis/tags/worldgen/biome/has_carrion_sprout.json
 a65395f96f1079c37ca0378a2b321278602657ed data/aether_genesis/tags/worldgen/biome/has_continuum_ore.json
@@ -11,3 +11,4 @@ a65395f96f1079c37ca0378a2b321278602657ed data/aether_genesis/tags/worldgen/biome
 a65395f96f1079c37ca0378a2b321278602657ed data/aether_genesis/tags/worldgen/biome/has_storm_aerclouds.json
 a65395f96f1079c37ca0378a2b321278602657ed data/aether_genesis/tags/worldgen/biome/has_tempest.json
 0ccb8251b610bc44aeba2b7394da9458f9ada3cc data/aether_genesis/tags/worldgen/biome/has_woodland_trees.json
+a65395f96f1079c37ca0378a2b321278602657ed data/aether_genesis/tags/worldgen/biome/has_zephyroo.json

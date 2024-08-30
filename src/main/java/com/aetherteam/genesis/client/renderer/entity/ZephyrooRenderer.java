@@ -5,6 +5,7 @@ import com.aetherteam.genesis.client.renderer.GenesisModelLayers;
 import com.aetherteam.genesis.client.renderer.entity.model.ZephyrooModel;
 import com.aetherteam.genesis.entity.passive.Zephyroo;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public class ZephyrooRenderer extends MobRenderer<Zephyroo, ZephyrooModel<Zephyroo>> {

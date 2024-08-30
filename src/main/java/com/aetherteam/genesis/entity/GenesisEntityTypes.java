@@ -31,7 +31,7 @@ public class GenesisEntityTypes {
     public static final DeferredHolder<EntityType<?>, EntityType<CarrionSprout>> CARRION_SPROUT = ENTITY_TYPES.register("carrion_sprout",
             () -> EntityType.Builder.of(CarrionSprout::new, MobCategory.CREATURE).sized(1.0F, 1.0F).clientTrackingRange(8).build("carrion_sprout"));
     public static final DeferredHolder<EntityType<?>, EntityType<Zephyroo>> ZEPHYROO = ENTITY_TYPES.register("zephyroo",
-            () -> EntityType.Builder.of(Zephyroo::new, MobCategory.CREATURE).sized(0.9F, 1.95F).build("zephyroo"));
+            () -> EntityType.Builder.of(Zephyroo::new, MobCategory.CREATURE).sized(0.9F, 1.25F).build("zephyroo"));
 
     // Hostile Mobs
     public static final  DeferredHolder<EntityType<?>, EntityType<Swet>> DARK_SWET = ENTITY_TYPES.register("dark_swet",

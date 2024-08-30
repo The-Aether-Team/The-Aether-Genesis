@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.client.renderer.entity.model;
 
-import com.aetherteam.aether_genesis.entity.passive.Zephyroo;
+import com.aetherteam.genesis.entity.passive.Zephyroo;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;
@@ -10,13 +10,13 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.util.Mth;
 
 public class ZephyrooModel<T extends Zephyroo> extends EntityModel<T> {
-
 	public final ModelPart body;
 	public final ModelPart head;
 	public final ModelPart rightArm;
 	public final ModelPart leftArm;
 	public final ModelPart rightLeg;
 	public final ModelPart leftLeg;
+	private float jumpRotation;
 
 	private float headXRot = 0;
 
@@ -61,20 +61,37 @@ public class ZephyrooModel<T extends Zephyroo> extends EntityModel<T> {
 
 	@Override
 	public void setupAnim(T zephyroo, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.head.yRot = netHeadYaw * Mth.PI / 180;
-		this.head.xRot = headPitch * Mth.PI / 180;
-		this.rightLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.leftLeg.xRot = Mth.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
+		float f = ageInTicks - (float) zephyroo.tickCount;
+		this.head.yRot = netHeadYaw * (Mth.PI / 180);
+		this.head.xRot = headPitch * (Mth.PI / 180) * 0.2F;
 		this.head.xRot += this.headXRot;
+		this.jumpRotation = Mth.sin(zephyroo.getJumpCompletion(f) * 3.1415927F);
+		this.leftLeg.xRot = (this.jumpRotation * 50.0F) * Mth.PI / 180;
+		this.rightLeg.xRot = (this.jumpRotation * 50.0F) * Mth.PI / 180;
+		this.leftArm.xRot = (this.jumpRotation * 40.0F + 5.0F) * (Mth.PI / 180) * 0.5F;
+		this.rightArm.xRot = (this.jumpRotation * 40.0F + 5.0F) * (Mth.PI / 180) * 0.5F;
 	}
 
 	@Override
 	public void prepareMobModel(T zephyroo, float pLimbSwing, float pLimbSwingAmount, float pPartialTick) {
 		this.headXRot = zephyroo.getHeadEatAngleScale(pPartialTick);
+		this.jumpRotation = Mth.sin(zephyroo.getJumpCompletion(pPartialTick) * 3.1415927F);
 	}
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+		if (this.young) {
+			poseStack.pushPose();
+			poseStack.scale(0.65F, 0.65F, 0.65F);
+			poseStack.translate(0.0F, 0.8F, 0.0F);
+			this.body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+			poseStack.popPose();
+		} else {
+			poseStack.pushPose();
+			poseStack.scale(1.15F, 1.15F, 1.15F);
+			poseStack.translate(0.0F, -0.2F, 0.0F);
+			this.body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+			poseStack.popPose();
+		}
 	}
 }

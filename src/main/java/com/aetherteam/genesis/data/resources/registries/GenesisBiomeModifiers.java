@@ -33,6 +33,7 @@ public class GenesisBiomeModifiers {
     public static final ResourceKey<BiomeModifier> COST_TEMPEST = createKey("cost_tempest");
 
     public static final ResourceKey<BiomeModifier> SPAWN_CARRION_SPROUT = createKey("spawn_carrion_sprout");
+    public static final ResourceKey<BiomeModifier> SPAWN_ZEPHYROO = createKey("spawn_zephyroo");
     public static final ResourceKey<BiomeModifier> SPAWN_DARK_SWET = createKey("spawn_dark_swet");
     public static final ResourceKey<BiomeModifier> SPAWN_TEMPEST = createKey("spawn_tempest");
 
@@ -106,6 +107,10 @@ public class GenesisBiomeModifiers {
         context.register(SPAWN_CARRION_SPROUT, new BiomeModifiers.AddSpawnsBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_CARRION_SPROUT),
                 List.of(new MobSpawnSettings.SpawnerData(GenesisEntityTypes.CARRION_SPROUT.get(), 6, 1, 1))));
+
+        context.register(SPAWN_ZEPHYROO, new BiomeModifiers.AddSpawnsBiomeModifier(
+                context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_ZEPHYROO),
+                List.of(new MobSpawnSettings.SpawnerData(GenesisEntityTypes.ZEPHYROO.get(), 4, 1, 2))));
 
         context.register(SPAWN_DARK_SWET, new BiomeModifiers.AddSpawnsBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_DARK_SWET),
