@@ -8,6 +8,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -24,12 +25,16 @@ public class TrackingGolemLayer extends EyesLayer<TrackingGolem, TrackingGolemMo
 	@Override
 	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, TrackingGolem golem, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
 		VertexConsumer consumer = buffer.getBuffer(this.renderType(golem));
+
+//		this.getParentModel().renderToBuffer(poseStack, buffer.getBuffer(RenderType.outline(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/tracking_golem/tracking_golem_hostile_glow.png"))),
+//				packedLight, LivingEntityRenderer.getOverlayCoords(golem, 0.0F), 1.0F, 1.0F, 1.0F, 0.15F);
+
 		this.getParentModel().renderToBuffer(poseStack, consumer, LightTexture.FULL_SKY, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 	}
 	
 	public RenderType renderType(TrackingGolem golem) {
 		if (golem.getSeenEnemy()) {
-			return TRACKING_GOLEM_HOSTILE_GLOW;
+			return RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/tracking_golem/tracking_golem_hostile_glow.png"));
 		}
 		return this.renderType();
 	}
