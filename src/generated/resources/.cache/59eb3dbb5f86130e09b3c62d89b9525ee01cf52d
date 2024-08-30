@@ -1,4 +1,4 @@
-// 1.20.4	2024-08-30T11:38:04.2289462	Loot Tables
+// 1.20.4	2024-08-30T15:34:58.4340242	Loot Tables
 9ad2ec631303e607b95b33edf0d72bcc71257a54 data/aether_genesis/loot_tables/blocks/blue_skyroot_leaves.json
 7ecb374e2147a8693b4ded2eb27280a1362ff491 data/aether_genesis/loot_tables/blocks/blue_skyroot_sapling.json
 23387232a36e56cbc262b9d327330feb72ea684c data/aether_genesis/loot_tables/blocks/boss_doorway_divine_carved_stone.json
@@ -52,7 +52,7 @@ b801a3b4ea34892f4580baa0a480603ded8b96d5 data/aether_genesis/loot_tables/entitie
 b14931f124c57ad3b2d530e608ab40d591476a78 data/aether_genesis/loot_tables/entities/slider_host_mimic.json
 10db7281d5f8022a902efd10228142c607245255 data/aether_genesis/loot_tables/entities/tempest.json
 e4e4b3a9df68262f388b3f4e4661d1be84a1d891 data/aether_genesis/loot_tables/entities/tracking_golem.json
-425cac7be54d4ae56b1a11854ad20ccfaefdd855 data/aether_genesis/loot_tables/entities/zephyroo.json
+83923a08268c7435cc605a65d9a6d8ec1ace3a1f data/aether_genesis/loot_tables/entities/zephyroo.json
 392563c7408e62bf71abd24597254b34df98b420 data/aether_genesis/loot_tables/selectors/continuum_orb.json
 eb9284fd99dd70e9a0ae148057d7870ecabd05fa data/aether_genesis/loot_tables/selectors/continuum_orb/books.json
 a0c4324c0d5694f4565ab7ce9bdb9ead241a3eb6 data/aether_genesis/loot_tables/selectors/continuum_orb/coral.json
