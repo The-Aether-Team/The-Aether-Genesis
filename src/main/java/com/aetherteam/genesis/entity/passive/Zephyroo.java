@@ -57,7 +57,7 @@ public class Zephyroo extends AetherAnimal {
     }
 
     public static AttributeSupplier.Builder createZephyrooAttributes() {
-        return createMobAttributes().add(Attributes.MAX_HEALTH, 40).add(Attributes.MOVEMENT_SPEED, 0.2);
+        return createMobAttributes().add(Attributes.MAX_HEALTH, 20).add(Attributes.MOVEMENT_SPEED, 0.2);
     }
 
     @Override
