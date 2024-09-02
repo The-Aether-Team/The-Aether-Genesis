@@ -1,8 +1,8 @@
-// 1.20.4	2024-04-18T19:49:57.4618782	Tags for minecraft:entity_type mod id aether_genesis
+// 1.20.4	2024-08-30T12:09:25.6222504	Tags for minecraft:entity_type mod id aether_genesis
 98adcc48926a85b2b9847ec815a45733a1c4c2bb data/aether/tags/entity_types/deflectable_projectiles.json
 3ba64203e2bb4a5411185b86dbda00e306ad1426 data/aether/tags/entity_types/dungeon_entities.json
 d320098398784bc4b5bd20f3857af4b83db9dbdc data/aether/tags/entity_types/swets.json
-e7abe5d260baed7296571dda5a3ef7b9851814bd data/aether/tags/entity_types/treated_as_aether_entity.json
+d7a3138784ebe237dc5b154d1354e2f1d265a463 data/aether/tags/entity_types/treated_as_aether_entity.json
 da9b9e8983c9a4ae60a53d70813ae392558ba9b9 data/aether/tags/entity_types/unhookable.json
 da9b9e8983c9a4ae60a53d70813ae392558ba9b9 data/aether/tags/entity_types/unlaunchable.json
 da9b9e8983c9a4ae60a53d70813ae392558ba9b9 data/aether/tags/entity_types/whirlwind_unaffected.json

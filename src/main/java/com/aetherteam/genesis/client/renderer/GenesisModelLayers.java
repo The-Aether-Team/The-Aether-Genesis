@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class GenesisModelLayers {
     public static final ModelLayerLocation CARRION_SPROUT = register("carrion_sprout");
+    public static final ModelLayerLocation ZEPHYROO = register("zephyroo");
     public static final ModelLayerLocation TEMPEST = register("tempest");
     public static final ModelLayerLocation TEMPEST_TRANSPARENCY = register("tempest", "transparency");
     public static final ModelLayerLocation BATTLE_SENTRY = register("battle_sentry");

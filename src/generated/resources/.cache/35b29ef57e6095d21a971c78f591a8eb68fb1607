@@ -1,4 +1,4 @@
-// 1.20.4	2024-04-22T17:56:32.0914124	Tags for minecraft:item mod id aether_genesis
+// 1.20.4	2024-08-30T12:11:57.5776033	Tags for minecraft:item mod id aether_genesis
 330a2f26e92f1bd1695fdccd7ba2749180f2e600 data/aether/tags/items/accessories_capes.json
 42d9429c4a2caa607369eda48e154467b6961a23 data/aether/tags/items/accessories_miscellaneous.json
 d1a8d412e7c7c9bcae51c0760965af276c050ebd data/aether/tags/items/accessories_pendants.json
@@ -25,6 +25,7 @@ f48538930063aff5b41d26facd21331ba0343bae data/aether/tags/items/sentry_blocks.js
 1d7eabfa746881c14275fb87c139d44dd7a797ac data/aether_genesis/tags/items/log_walls.json
 829f90b2789d000dd0bda389a343b48a97d2ad03 data/aether_genesis/tags/items/skyroot_ladder_crafting.json
 88f5568b143ff5a6bc6f2dc45fedbf8589285638 data/aether_genesis/tags/items/swet_jelly.json
+0f9ded2d64026b8dc8f5f154d6b28be23ffd0f9b data/aether_genesis/tags/items/zephyroo_temptation_items.json
 c21725ee872d7defc7979eb8d4fd016267f6facb data/forge/tags/items/chests/wooden.json
 6ff9b23d7f59d105370ad06adf8429d94d62fccd data/forge/tags/items/ores.json
 6ff9b23d7f59d105370ad06adf8429d94d62fccd data/forge/tags/items/ore_rates/singular.json

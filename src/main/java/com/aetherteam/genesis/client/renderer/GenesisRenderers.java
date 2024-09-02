@@ -43,6 +43,7 @@ public class GenesisRenderers {
         event.registerBlockEntityRenderer(GenesisBlockEntityTypes.SKYROOT_CHEST_MIMIC.get(), SkyrootChestMimicRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.CARRION_SPROUT.get(), CarrionSproutRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.ZEPHYROO.get(), ZephyrooRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.DARK_SWET.get(), DarkSwetRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TEMPEST.get(), TempestRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.BATTLE_SENTRY.get(), BattleSentryRenderer::new);
@@ -85,6 +86,7 @@ public class GenesisRenderers {
         event.registerLayerDefinition(GenesisModelLayers.SKYROOT_CHEST_MIMIC, ChestRenderer::createSingleBodyLayer);
 
         event.registerLayerDefinition(GenesisModelLayers.CARRION_SPROUT, CarrionSproutModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.ZEPHYROO, ZephyrooModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SKYROOT_MIMIC, MimicModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.TEMPEST, TempestModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.TEMPEST_TRANSPARENCY, TempestModel::createBodyLayer);

@@ -98,6 +98,7 @@ public class GenesisItems {
     public static final DeferredItem<SpawnEggItem> CARRION_SPROUT_SPAWN_EGG = ITEMS.register("carrion_sprout_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.CARRION_SPROUT, 0xC9D8E9, 0x597898, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> DARK_SWET_SPAWN_EGG = ITEMS.register("dark_swet_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.DARK_SWET, 0x947DC4, 0x4FB1DA, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> TEMPEST_SPAWN_EGG = ITEMS.register("tempest_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.TEMPEST, 0x3C464C, 0xC3E6F0, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> ZEPHYROO_SPAWN_EGG = ITEMS.register("zephyroo", () -> new DeferredSpawnEggItem(GenesisEntityTypes.ZEPHYROO, 0xC9D8E9, 0x597898, new Item.Properties()));
 
     public static final DeferredItem<SpawnEggItem> SKYROOT_CHEST_MIMIC_SPAWN_EGG = ITEMS.register("skyroot_chest_mimic_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.SKYROOT_MIMIC, 0x696B51,0x47443A, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> BATTLE_SENTRY_SPAWN_EGG = ITEMS.register("battle_sentry_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.BATTLE_SENTRY, 0x808080,0x3A8AEC, new Item.Properties()));
