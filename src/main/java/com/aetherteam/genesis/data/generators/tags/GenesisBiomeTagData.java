@@ -80,6 +80,15 @@ public class GenesisBiomeTagData extends BiomeTagsProvider {
                 .add(GenesisBiomes.VIBRANT_GROVE)
                 .add(GenesisBiomes.VIBRANT_WOODLAND)
                 .add(GenesisBiomes.VIBRANT_FOREST);
+        this.tag(GenesisTags.Biomes.HAS_ZEPHYROO)
+                .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
+                .addOptional(AetherBiomes.SKYROOT_GROVE.location())
+                .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
+                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
+                .add(GenesisBiomes.VIBRANT_MEADOW)
+                .add(GenesisBiomes.VIBRANT_GROVE)
+                .add(GenesisBiomes.VIBRANT_WOODLAND)
+                .add(GenesisBiomes.VIBRANT_FOREST);
         this.tag(GenesisTags.Biomes.HAS_DARK_SWET)
                 .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
                 .addOptional(AetherBiomes.SKYROOT_GROVE.location())

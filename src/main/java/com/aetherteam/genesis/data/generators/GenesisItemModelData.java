@@ -76,6 +76,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.CONTINUUM_BOMB.get(), "miscellaneous/");
 
         this.eggItem(GenesisItems.CARRION_SPROUT_SPAWN_EGG.get());
+        this.eggItem(GenesisItems.ZEPHYROO_SPAWN_EGG.get());
         this.eggItem(GenesisItems.DARK_SWET_SPAWN_EGG.get());
         this.eggItem(GenesisItems.TEMPEST_SPAWN_EGG.get());
         this.eggItem(GenesisItems.SKYROOT_CHEST_MIMIC_SPAWN_EGG.get());

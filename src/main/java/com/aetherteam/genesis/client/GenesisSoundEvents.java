@@ -49,6 +49,11 @@ public class GenesisSoundEvents {
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_TEMPEST_DEATH = register("entity.tempest.death");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_TEMPEST_SHOOT = register("entity.tempest.shoot");
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_ZEPHYROO_AMBIENT = register("entity.zephyroo.ambient");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_ZEPHYROO_HURT = register("entity.zephyroo.hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_ZEPHYROO_DEATH = register("entity.zephyroo.death");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_ZEPHYROO_JUMP = register("entity.zephyroo.jump");
+
     public static final DeferredHolder<SoundEvent, SoundEvent> MUSIC_AETHER_NIGHT = register("music.aether_night");
 
     private static DeferredHolder<SoundEvent, SoundEvent> register(String name) {

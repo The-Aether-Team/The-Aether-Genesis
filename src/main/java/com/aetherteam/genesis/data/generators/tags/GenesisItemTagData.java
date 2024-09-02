@@ -32,6 +32,9 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 AetherTags.Items.SKYROOT_STICKS);
         this.tag(GenesisTags.Items.HOLYSTONE_FURNACE_CRAFTING).add(
                 AetherBlocks.HOLYSTONE.get().asItem());
+        this.tag(GenesisTags.Items.ZEPHYROO_TEMPTATION_ITEMS).add(
+                AetherItems.BLUE_BERRY.get(),
+                GenesisItems.ORANGE.get());
         this.tag(GenesisTags.Items.SWET_JELLY).add(
                 GenesisItems.BLUE_SWET_JELLY.get(),
                 GenesisItems.DARK_SWET_JELLY.get(),

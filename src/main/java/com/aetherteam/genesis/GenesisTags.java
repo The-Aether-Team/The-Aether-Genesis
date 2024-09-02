@@ -24,6 +24,8 @@ public class GenesisTags {
         public static final TagKey<Item> SKYROOT_LADDER_CRAFTING = tag("skyroot_ladder_crafting");
         public static final TagKey<Item> HOLYSTONE_FURNACE_CRAFTING = tag("holystone_furnace_crafting");
 
+        public static final TagKey<Item> ZEPHYROO_TEMPTATION_ITEMS = tag("zephyroo_temptation_items");
+
         public static final TagKey<Item> SWET_JELLY = tag("swet_jelly");
         public static final TagKey<Item> DARTS = tag("darts");
 
@@ -51,6 +53,7 @@ public class GenesisTags {
         public static final TagKey<Biome> HAS_WOODLAND_TREES = tag("has_woodland_trees");
         public static final TagKey<Biome> HAS_FOREST_TREES = tag("has_forest_trees");
         public static final TagKey<Biome> HAS_CARRION_SPROUT = tag("has_carrion_sprout");
+        public static final TagKey<Biome> HAS_ZEPHYROO = tag("has_zephyroo");
         public static final TagKey<Biome> HAS_DARK_SWET = tag("has_dark_swet");
         public static final TagKey<Biome> HAS_TEMPEST = tag("has_tempest");
 
