@@ -1,10 +1,7 @@
 package com.aetherteam.genesis.world.structurepiece.bronzedungeon;
 
-import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.loot.AetherLoot;
-import com.aetherteam.aether.world.structurepiece.AetherTemplateStructurePiece;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonPiece;
-import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonRoom;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.world.structurepiece.GenesisStructurePieceTypes;
@@ -13,6 +10,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
+import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
@@ -26,8 +24,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 public class GenesisBronzeDungeonRoom extends BronzeDungeonPiece {
     public GenesisBronzeDungeonRoom(StructureTemplateManager manager, String name, BlockPos pos, Rotation rotation, Holder<StructureProcessorList> processors) {
@@ -49,9 +46,13 @@ public class GenesisBronzeDungeonRoom extends BronzeDungeonPiece {
                 level.setBlock(pos, state, 2);
                 BlockEntity blockentity = level.getBlockEntity(pos);
                 if (blockentity instanceof SpawnerBlockEntity spawnerBlockEntity) {
-                    List<EntityType<?>> mobs = List.of(GenesisEntityTypes.TRACKING_GOLEM.get(), GenesisEntityTypes.BATTLE_SENTRY.get(), AetherEntityTypes.SENTRY.get()); //todo sentry golem
-                    EntityType<?> mob = mobs.get(random.nextInt(mobs.size()));
-                    spawnerBlockEntity.setEntityId(mob, random);
+                    SimpleWeightedRandomList<EntityType<?>> mobs = SimpleWeightedRandomList.<EntityType<?>>builder()
+                            .add(GenesisEntityTypes.BATTLE_SENTRY.get(), 3)
+                            .add(GenesisEntityTypes.SENTRY_GOLEM.get(), 2)
+                            .add(GenesisEntityTypes.TRACKING_GOLEM.get(), 1)
+                            .build();
+                    Optional<EntityType<?>> mob = mobs.getRandomValue(random);
+                    mob.ifPresent(entityType -> spawnerBlockEntity.setEntityId(entityType, random));
                 }
             }
         }
