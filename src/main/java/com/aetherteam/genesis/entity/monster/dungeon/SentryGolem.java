@@ -46,7 +46,7 @@ public class SentryGolem extends Monster implements RangedAttackMob {
         return Monster.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 20.0)
                 .add(Attributes.ATTACK_DAMAGE, 3.0)
-                .add(Attributes.MOVEMENT_SPEED, 1.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.28)
                 .add(Attributes.FOLLOW_RANGE, 50.0);
     }
 
