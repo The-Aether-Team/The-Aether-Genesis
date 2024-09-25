@@ -47,8 +47,8 @@ public class GenesisBronzeDungeonRoom extends BronzeDungeonPiece {
                 BlockEntity blockentity = level.getBlockEntity(pos);
                 if (blockentity instanceof SpawnerBlockEntity spawnerBlockEntity) {
                     SimpleWeightedRandomList<EntityType<?>> mobs = SimpleWeightedRandomList.<EntityType<?>>builder()
-                            .add(GenesisEntityTypes.BATTLE_SENTRY.get(), 3)
-                            .add(GenesisEntityTypes.SENTRY_GOLEM.get(), 2)
+                            .add(GenesisEntityTypes.BATTLE_SENTRY.get(), 8)
+                            .add(GenesisEntityTypes.SENTRY_GOLEM.get(), 3)
                             .add(GenesisEntityTypes.TRACKING_GOLEM.get(), 1)
                             .build();
                     Optional<EntityType<?>> mob = mobs.getRandomValue(random);
