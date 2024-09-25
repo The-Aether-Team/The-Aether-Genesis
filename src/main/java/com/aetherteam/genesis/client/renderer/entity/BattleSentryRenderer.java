@@ -24,10 +24,8 @@ public class BattleSentryRenderer extends MobRenderer<BattleSentry, SlimeModel<B
         float f = 0.879F;
         poseStack.scale(f, f, f);
         float f1 = sentry.getSize() + 1.0F;
-        float f2 = 0.0F;
-        float f3 = 1.0F / (f2 + 1.0F);
-        poseStack.scale(f3 * f1, 1.0F / f3 * f1, f3 * f1);
-        if (sentry.isAwake() && !sentry.hurtMarked) {
+        poseStack.scale(f1, f1, f1);
+        if (!sentry.isAwake() && sentry.isStalking()) {
             poseStack.translate(0.0F, 0.5F, 0.0F);
         }
     }

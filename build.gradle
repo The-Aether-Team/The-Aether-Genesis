@@ -1,7 +1,9 @@
 import net.neoforged.gradle.common.tasks.JarJar
 
 plugins {
+    id 'java-library'
     id 'eclipse'
+    id 'idea'
     id 'maven-publish'
     id 'net.neoforged.gradle.userdev' version '7.0.108'
     id 'io.github.0ffz.github-packages' version '[1,2)'
@@ -54,8 +56,8 @@ sourceSets.main.resources {
 dependencies {
     implementation "net.neoforged:neoforge:${project.neoforge_version}"
 
-    implementation "com.aetherteam.aether:aether:${project.aether_version}"
-//    implementation fg.deobf("local:aether:${project.aether_version}")
+//    implementation "com.aetherteam.aether:aether:${project.aether_version}"
+    implementation "local:aether:${project.aether_version}"
 
     implementation "com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}"
     implementation "com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}"
@@ -172,4 +174,12 @@ tasks.register('sourceJar', Jar) {
 
 build {
     dependsOn 'jarJar'
+}
+
+// IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
+idea {
+    module {
+        downloadSources = true
+        downloadJavadoc = true
+    }
 }

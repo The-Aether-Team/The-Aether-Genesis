@@ -93,6 +93,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.TEMPEST_SPAWN_EGG, "Tempest Spawn Egg");
         this.addItem(GenesisItems.SKYROOT_CHEST_MIMIC_SPAWN_EGG, "Skyroot Chest Mimic Spawn Egg");
         this.addItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG, "Battle Sentry Spawn Egg");
+        this.addItem(GenesisItems.SENTRY_GOLEM_SPAWN_EGG, "Sentry Golem Spawn Egg");
         this.addItem(GenesisItems.TRACKING_GOLEM_SPAWN_EGG, "Tracking Golem Spawn Egg");
 
         this.addItem(GenesisItems.BLUE_PARACHUTE, "Blue Parachute");
@@ -242,6 +243,7 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
         this.addEntityType(GenesisEntityTypes.TEMPEST, "Tempest");
         this.addEntityType(GenesisEntityTypes.BATTLE_SENTRY, "Battle Sentry");
+        this.addEntityType(GenesisEntityTypes.SENTRY_GOLEM, "Sentry Golem");
         this.addEntityType(GenesisEntityTypes.TRACKING_GOLEM, "Tracking Golem");
         this.addEntityType(GenesisEntityTypes.SKYROOT_MIMIC, "Skyroot Mimic");
 

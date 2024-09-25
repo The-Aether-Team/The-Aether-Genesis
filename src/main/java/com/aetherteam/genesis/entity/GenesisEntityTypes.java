@@ -40,6 +40,8 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.of(Tempest::new, AetherMobCategory.AETHER_SKY_MONSTER).sized(2.5F, 1.75F).fireImmune().clientTrackingRange(10).build("tempest"));
     public static final  DeferredHolder<EntityType<?>, EntityType<BattleSentry>> BATTLE_SENTRY = ENTITY_TYPES.register("battle_sentry",
             () -> EntityType.Builder.of(BattleSentry::new, MobCategory.MONSTER).sized(2.0F, 2.0F).clientTrackingRange(10).build("battle_sentry"));
+    public static final  DeferredHolder<EntityType<?>, EntityType<SentryGolem>> SENTRY_GOLEM = ENTITY_TYPES.register("sentry_golem",
+            () -> EntityType.Builder.of(SentryGolem::new, MobCategory.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build("sentry_golem"));
     public static final  DeferredHolder<EntityType<?>, EntityType<TrackingGolem>> TRACKING_GOLEM = ENTITY_TYPES.register("tracking_golem",
             () -> EntityType.Builder.of(TrackingGolem::new, MobCategory.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build("tracking_golem"));
     public static final  DeferredHolder<EntityType<?>, EntityType<SkyrootMimic>> SKYROOT_MIMIC = ENTITY_TYPES.register("skyroot_mimic",
@@ -93,6 +95,8 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.<ContinuumBomb>of(ContinuumBomb::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("continuum_bomb"));
     public static final  DeferredHolder<EntityType<?>, EntityType<RewardItemEntity>> REWARD_ITEM = ENTITY_TYPES.register("reward_item",
             () -> EntityType.Builder.<RewardItemEntity>of(RewardItemEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("reward_item"));
+    public static final  DeferredHolder<EntityType<?>, EntityType<DetonationProjectile>> DETONATION_PROJECTILE = ENTITY_TYPES.register("detonation_projectile",
+            () -> EntityType.Builder.<DetonationProjectile>of(DetonationProjectile::new, MobCategory.MISC).clientTrackingRange(4).updateInterval(10).sized(0.9F, 0.9F).fireImmune().build("detonation_projectile"));
     public static final  DeferredHolder<EntityType<?>, EntityType<HostEyeProjectile>> HOST_EYE = ENTITY_TYPES.register("host_eye",
             () -> EntityType.Builder.of(HostEyeProjectile::new, MobCategory.MISC).sized(0.4F, 0.4F).clientTrackingRange(10).fireImmune().build("host_eye"));
     public static final  DeferredHolder<EntityType<?>, EntityType<CogProjectile>> COG_ARROW = ENTITY_TYPES.register("cog_arrow",
@@ -113,6 +117,7 @@ public class GenesisEntityTypes {
         event.put(GenesisEntityTypes.DARK_SWET.get(), Swet.createMobAttributes().build());
         event.put(GenesisEntityTypes.TEMPEST.get(), Tempest.createMobAttributes().build());
         event.put(GenesisEntityTypes.BATTLE_SENTRY.get(), BattleSentry.createMobAttributes().build());
+        event.put(GenesisEntityTypes.SENTRY_GOLEM.get(), SentryGolem.createMobAttributes().build());
         event.put(GenesisEntityTypes.TRACKING_GOLEM.get(), TrackingGolem.createMobAttributes().build());
         event.put(GenesisEntityTypes.SKYROOT_MIMIC.get(), Mimic.createMobAttributes().build());
         event.put(GenesisEntityTypes.SENTRY_GUARDIAN.get(), SentryGuardian.createMobAttributes().build());

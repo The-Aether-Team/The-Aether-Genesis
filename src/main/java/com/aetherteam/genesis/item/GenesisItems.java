@@ -102,5 +102,6 @@ public class GenesisItems {
 
     public static final DeferredItem<SpawnEggItem> SKYROOT_CHEST_MIMIC_SPAWN_EGG = ITEMS.register("skyroot_chest_mimic_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.SKYROOT_MIMIC, 0x696B51,0x47443A, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> BATTLE_SENTRY_SPAWN_EGG = ITEMS.register("battle_sentry_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.BATTLE_SENTRY, 0x808080,0x3A8AEC, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> SENTRY_GOLEM_SPAWN_EGG = ITEMS.register("sentry_golem_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.SENTRY_GOLEM, 0x808080,0x3A8AEC, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> TRACKING_GOLEM_SPAWN_EGG = ITEMS.register("tracking_golem_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.TRACKING_GOLEM, 0x808080,0x3A8AEC, new Item.Properties()));
 }
