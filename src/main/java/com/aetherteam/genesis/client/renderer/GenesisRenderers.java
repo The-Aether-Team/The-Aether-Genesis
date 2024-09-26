@@ -47,6 +47,7 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.DARK_SWET.get(), DarkSwetRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TEMPEST.get(), TempestRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.BATTLE_SENTRY.get(), BattleSentryRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.SENTRY_GOLEM.get(), SentryGolemRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TRACKING_GOLEM.get(), TrackingGolemRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.SKYROOT_MIMIC.get(), SkyrootMimicRenderer::new);
 
@@ -72,6 +73,7 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.DAGGERFROST_SNOWBALL.get(), DaggerfrostSnowballRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), TempestThunderballRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.PHOENIX_DART.get(), PhoenixDartRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.DETONATION_PROJECTILE.get(), DetonationProjectileRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.COG_ARROW.get(), CogProjectileRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.CONTINUUM_BOMB.get(), (context) -> new ThrownItemRenderer<>(context, 1.0F, true));
@@ -89,10 +91,12 @@ public class GenesisRenderers {
         event.registerLayerDefinition(GenesisModelLayers.TEMPEST, TempestModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.TEMPEST_TRANSPARENCY, TempestModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.BATTLE_SENTRY, SlimeModel::createOuterBodyLayer);
-        event.registerLayerDefinition(GenesisModelLayers.TRACKING_GOLEM, TrackingGolemModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.SENTRY_GOLEM, AbstractGolemModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.TRACKING_GOLEM, AbstractGolemModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SENTRY_GUARDIAN, SentryGuardianModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.SLIDER_HOST_MIMIC, SliderHostMimicModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.LABYRINTH_EYE, LabyrinthEyeModel::createBodyLayer);
+        event.registerLayerDefinition(GenesisModelLayers.DETONATION_PROJECTILE, DetonationProjectileModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.HOST_EYE_PROJECTILE, HostEyeProjectileModel::createBodyLayer);
         event.registerLayerDefinition(GenesisModelLayers.COG_PROJECTILE, CogProtectileModel::createBodyLayer);
 

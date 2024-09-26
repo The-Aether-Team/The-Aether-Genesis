@@ -23,7 +23,7 @@ public class BattleSentryLayer extends EyesLayer<BattleSentry, SlimeModel<Battle
 	@Override
 	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, BattleSentry sentry, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
 		VertexConsumer consumer = buffer.getBuffer(this.renderType());
-		if (sentry.isAwake()) {
+		if (sentry.isAwake() || !sentry.isStalking()) {
 			this.getParentModel().renderToBuffer(poseStack, consumer, LightTexture.FULL_SKY, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
 		}
 	}
