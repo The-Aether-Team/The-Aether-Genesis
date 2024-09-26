@@ -164,6 +164,7 @@ public class AetherGenesis {
     public void packSetup(AddPackFindersEvent event) {
         // Resource Packs
         this.setupClassicPack(event);
+        this.setupResourceOverridePack(event);
 
         // Data Packs
         this.setupDataOverridePack(event);
@@ -187,6 +188,28 @@ public class AetherGenesis {
                             false,
                             PackSource.BUILT_IN)
                     ));
+        }
+    }
+
+    /**
+     * A built-in resource pack for overriding some asset files in the Aether mod.
+     */
+    private void setupResourceOverridePack(AddPackFindersEvent event) {
+        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+            Path resourcePath = ModList.get().getModFileById(AetherGenesis.MODID).getFile().findResource("packs/resource_override");
+            PackMetadataSection metadata = new PackMetadataSection(Component.literal(""), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));
+            event.addRepositorySource((source) ->
+                    source.accept(Pack.create(
+                            "builtin/genesis_resource_override",
+                            Component.literal(""),
+                            true,
+                            new PathPackResources.PathResourcesSupplier(resourcePath, true),
+                            new Pack.Info(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), true),
+                            Pack.Position.TOP,
+                            false,
+                            PackSource.BUILT_IN)
+                    )
+            );
         }
     }
 

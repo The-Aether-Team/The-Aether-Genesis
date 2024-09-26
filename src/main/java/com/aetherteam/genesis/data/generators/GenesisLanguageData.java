@@ -149,8 +149,6 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addPerItemAbilityTooltip(GenesisItems.DARK_GUMMY_SWET.get(), 1,"\u00A7aBuff:\u00A7r Fills Hunger");
         this.addPerItemAbilityTooltip(GenesisItems.RAINBOW_STRAWBERRY.get(), 1,"\u00A7aBuff:\u00A7r Increases Mining Speed & Resistance");
 
-        this.addPerItemAbilityTooltip(AetherItems.GOLDEN_PARACHUTE.get(), 1,"\u00A79Ability:\u00A7r Fast Descent"); //todo move to overrides pack
-        this.addPerItemAbilityTooltip(AetherItems.GOLDEN_PARACHUTE.get(), 2,"\u00A73Use:\u00A7r Right-Click");
         this.addPerItemAbilityTooltip(GenesisItems.PURPLE_PARACHUTE.get(), 1,"\u00A79Ability:\u00A7r Directional Descent");
         this.addPerItemAbilityTooltip(GenesisItems.PURPLE_PARACHUTE.get(), 2,"\u00A73Use:\u00A7r Right-Click");
         this.addPerItemAbilityTooltip(GenesisItems.GREEN_PARACHUTE.get(), 1,"\u00A79Ability:\u00A7r Forward Descent");

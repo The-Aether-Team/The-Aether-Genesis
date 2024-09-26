@@ -75,8 +75,6 @@
   "gui.aether_genesis.sentry_guardian.title": "the Sentry Guardian",
   "gui.aether_genesis.slider.message.attack.invalid_fist": "Hmm. It's a rock-solid block. My fist wouldn't work on this.",
   "gui.aether_genesis.slider.message.attack.invalid_item": "Hmm. It's a rock-solid block. My %1$s wouldn't work on this.",
-  "item.aether.golden_parachute.nitrogen_internals.ability.tooltip.1": "§9Ability:§r Fast Descent",
-  "item.aether.golden_parachute.nitrogen_internals.ability.tooltip.2": "§3Use:§r Right-Click",
   "item.aether_genesis.baby_pink_swet": "Baby Pink Swet",
   "item.aether_genesis.baby_pink_swet.nitrogen_internals.ability.tooltip.1": "§9Ability:§r Allows Swet Riding",
   "item.aether_genesis.battle_sentry_spawn_egg": "Battle Sentry Spawn Egg",
