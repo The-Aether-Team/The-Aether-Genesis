@@ -158,6 +158,8 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addPerItemAbilityTooltip(GenesisItems.CONTINUUM_BOMB.get(), 1,"\u00A79Ability:\u00A7r Creates Festive Party!");
         this.addPerItemAbilityTooltip(GenesisItems.CONTINUUM_BOMB.get(), 2,"\u00A73Use:\u00A7r Right-Click");
 
+        this.addPerItemAbilityTooltip(AetherItems.GOLDEN_PARACHUTE.get(), 1, "genesis", "\u00A79Ability:\u00A7r Fast Descent");
+
         this.addEntityType(GenesisEntityTypes.CARRION_SPROUT, "Carrion Sprout");
         this.addEntityType(GenesisEntityTypes.ZEPHYROO, "Zephyroo");
         this.addEntityType(GenesisEntityTypes.DARK_SWET, "Dark Swet");
