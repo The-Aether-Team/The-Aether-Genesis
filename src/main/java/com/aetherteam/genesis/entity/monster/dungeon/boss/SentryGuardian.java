@@ -359,6 +359,11 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
+    public boolean isPushable() {
+        return false;
+    }
+
+    @Override
     public void setBossName(Component component) {
         this.entityData.set(DATA_BOSS_NAME_ID, component);
         this.bossFight.setName(component);

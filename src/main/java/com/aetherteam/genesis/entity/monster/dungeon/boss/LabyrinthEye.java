@@ -348,6 +348,11 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     }
 
     @Override
+    public boolean isPushable() {
+        return false;
+    }
+
+    @Override
     public void setBossName(Component component) {
         this.entityData.set(DATA_BOSS_NAME_ID, component);
         this.bossFight.setName(component);
