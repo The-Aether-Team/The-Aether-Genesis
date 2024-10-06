@@ -115,7 +115,7 @@ public class AetherGenesis {
             BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("chest_room").add((manager, pos, rot, processors) -> new GenesisBronzeDungeonRoom(manager, "spawner_room", pos, rot, processors), 4);
             BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("chest_room").add((manager, pos, rot, processors) -> new GenesisBronzeDungeonRoom(manager, "spawner_room_pillars", pos, rot, processors), 3);
 
-            BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("boss_room").add((manager, pos, rot, processors) -> new GenesisBronzeBossRoom(manager, "host_mimic_boss_room", pos, rot, processors), 3);
+            BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("boss_room").add((manager, pos, rot, processors) -> new GenesisBronzeBossRoom(manager, "host_mimic_boss_room", pos, rot, processors), 1);
         });
     }
 
