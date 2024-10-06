@@ -164,5 +164,10 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                         sound("aether_genesis:music/aether_night2").stream()
                 )
         );
+        this.add(GenesisSoundEvents.MUSIC_MINIBOSS,
+                definition().with(
+                        sound("aether_genesis:music/boss/miniboss_fight").stream()
+                )
+        );
     }
 }

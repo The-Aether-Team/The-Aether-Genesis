@@ -1,6 +1,7 @@
 package com.aetherteam.genesis.entity.monster.dungeon.boss;
 
 import com.aetherteam.aether.Aether;
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.entity.AetherBossMob;
 import com.aetherteam.aether.entity.monster.dungeon.boss.BossNameGenerator;
 import com.aetherteam.aether.network.packet.clientbound.BossInfoPacket;
@@ -18,6 +19,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.DamageTypeTags;
@@ -39,17 +41,29 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
+import java.util.Map;
+import java.util.function.Function;
 
 public class LabyrinthEye extends PathfinderMob implements AetherBossMob<LabyrinthEye>, Enemy, IEntityWithComplexSpawn {
     public static final EntityDataAccessor<Boolean> DATA_AWAKE_ID = SynchedEntityData.defineId(LabyrinthEye.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Component> DATA_BOSS_NAME_ID = SynchedEntityData.defineId(LabyrinthEye.class, EntityDataSerializers.COMPONENT);
     public static final EntityDataAccessor<Integer> DATA_BOSS_STAGE = SynchedEntityData.defineId(LabyrinthEye.class, EntityDataSerializers.INT);
+    private static final Music MINIBOSS_MUSIC = new Music(GenesisSoundEvents.MUSIC_MINIBOSS, 0, 0, true);
+    public static final Map<Block, Function<BlockState, BlockState>> DUNGEON_BLOCK_CONVERSIONS = Map.ofEntries(
+            Map.entry(AetherBlocks.LOCKED_CARVED_STONE.get(), (blockState) -> AetherBlocks.CARVED_STONE.get().defaultBlockState()),
+            Map.entry(AetherBlocks.LOCKED_SENTRY_STONE.get(), (blockState) -> AetherBlocks.SENTRY_STONE.get().defaultBlockState()),
+            Map.entry(AetherBlocks.BOSS_DOORWAY_CARVED_STONE.get(), (blockState) -> Blocks.AIR.defaultBlockState()),
+            Map.entry(AetherBlocks.TREASURE_DOORWAY_CARVED_STONE.get(), (blockState) -> AetherBlocks.SKYROOT_TRAPDOOR.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, blockState.getValue(HorizontalDirectionalBlock.FACING)))
+    );
 
     public int chatTime;
     private final boolean[] stageDone = new boolean[13];
@@ -261,6 +275,15 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
         return new ResourceLocation(Aether.MODID, "boss_bar/slider_background");
     }
 
+    /**
+     * @return The {@link Music} for this boss's fight.
+     */
+    @Nullable
+    @Override
+    public Music getBossMusic() {
+        return MINIBOSS_MUSIC;
+    }
+
     @Override
     public BossRoomTracker<LabyrinthEye> getDungeon() {
         return this.bronzeDungeon;
@@ -278,8 +301,8 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
 
     @Nullable
     @Override
-    public BlockState convertBlock(BlockState blockState) {
-        return null;
+    public BlockState convertBlock(BlockState state) {
+        return DUNGEON_BLOCK_CONVERSIONS.getOrDefault(state.getBlock(), (blockState) -> null).apply(state);
     }
 
     @Override

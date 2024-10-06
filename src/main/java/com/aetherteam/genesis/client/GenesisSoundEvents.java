@@ -55,6 +55,7 @@ public class GenesisSoundEvents {
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_ZEPHYROO_JUMP = register("entity.zephyroo.jump");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> MUSIC_AETHER_NIGHT = register("music.aether_night");
+    public static final DeferredHolder<SoundEvent, SoundEvent> MUSIC_MINIBOSS = register("music.miniboss");
 
     private static DeferredHolder<SoundEvent, SoundEvent> register(String name) {
         return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(AetherGenesis.MODID, name)));

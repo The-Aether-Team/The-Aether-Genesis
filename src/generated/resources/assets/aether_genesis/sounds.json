@@ -210,5 +210,13 @@
         "stream": true
       }
     ]
+  },
+  "music.miniboss": {
+    "sounds": [
+      {
+        "name": "aether_genesis:music/boss/miniboss_fight",
+        "stream": true
+      }
+    ]
   }
 }
