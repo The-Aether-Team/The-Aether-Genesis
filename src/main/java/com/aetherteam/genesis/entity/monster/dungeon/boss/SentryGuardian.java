@@ -6,6 +6,7 @@ import com.aetherteam.aether.entity.AetherBossMob;
 import com.aetherteam.aether.entity.ai.goal.ContinuousMeleeAttackGoal;
 import com.aetherteam.aether.entity.monster.dungeon.Sentry;
 import com.aetherteam.aether.entity.monster.dungeon.boss.BossNameGenerator;
+import com.aetherteam.aether.event.AetherEventDispatch;
 import com.aetherteam.aether.network.packet.clientbound.BossInfoPacket;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.nitrogen.entity.BossRoomTracker;
@@ -20,6 +21,7 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvent;
@@ -140,8 +142,16 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     public void die(DamageSource source) {
+        this.setDeltaMovement(Vec3.ZERO);
         this.level().explode(this, this.position().x, this.position().y, this.position().z, 0.3F, false, Level.ExplosionInteraction.TNT);
         spawnSentry();
+        if (this.level() instanceof ServerLevel) {
+            this.bossFight.setProgress(this.getHealth() / this.getMaxHealth());
+            if (this.getDungeon() != null) {
+                this.getDungeon().grantAdvancements(source);
+                this.tearDownRoom();
+            }
+        }
         super.die(source);
     }
 
@@ -179,6 +189,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
             this.setPos(this.getDungeon().originCoordinates());
             this.openRoom();
         }
+        AetherEventDispatch.onBossFightStop(this, this.getDungeon());
     }
 
     public boolean doHurtTarget(Entity pEntity) {
@@ -244,8 +255,13 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
             return false;
         }
         if (!this.isBossFight()) {
+            this.setHealth(this.getMaxHealth());
             this.setAwake(true);
             this.setBossFight(true);
+            if (this.getDungeon() != null) {
+                this.closeRoom();
+            }
+            AetherEventDispatch.onBossFightStart(this, this.getDungeon());
         }
         return super.hurt(source, damage);
     }
@@ -431,7 +447,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
-    public void setCustomName(@javax.annotation.Nullable Component name) {
+    public void setCustomName(@Nullable Component name) {
         super.setCustomName(name);
         this.setBossName(name);
     }
