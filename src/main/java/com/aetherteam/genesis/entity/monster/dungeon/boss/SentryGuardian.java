@@ -332,14 +332,14 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
-    public void onDungeonPlayerAdded(@javax.annotation.Nullable Player player) {
+    public void onDungeonPlayerAdded(@Nullable Player player) {
         if (player instanceof ServerPlayer serverPlayer) {
             this.bossFight.addPlayer(serverPlayer);
         }
     }
 
     @Override
-    public void onDungeonPlayerRemoved(@javax.annotation.Nullable Player player) {
+    public void onDungeonPlayerRemoved(@Nullable Player player) {
         if (player instanceof ServerPlayer serverPlayer) {
             this.bossFight.removePlayer(serverPlayer);
         }
