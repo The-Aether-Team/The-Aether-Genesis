@@ -190,14 +190,12 @@ public class GenesisMusicManager {
                 long time = minecraft.player.clientLevel.getLevelData().getDayTime() % 72000L;
                 boolean night = time >= 39000 && time < 69000;
 
-               // if (isAetherBossMusicActive()) { //TODO
-                    T boss = getBossFromFight();
-                    if (boss != null && boss.getHealth() > 0) {
-                        Music bossMusic = boss.getBossMusic();
-                        if (bossMusic != null) {
-                            return boss.getBossMusic();
-                        }
-                   // }
+                T boss = getBossFromFight();
+                if (boss != null && boss.getHealth() > 0) {
+                    Music bossMusic = boss.getBossMusic();
+                    if (bossMusic != null) {
+                        return boss.getBossMusic();
+                    }
                 } else if (night) {
                     return AETHER_NIGHT;
                 } else if (isCreative(holder, minecraft.player)) {
