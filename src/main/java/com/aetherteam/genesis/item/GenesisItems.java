@@ -104,7 +104,7 @@ public class GenesisItems {
     public static final DeferredItem<SpawnEggItem> BATTLE_SENTRY_SPAWN_EGG = ITEMS.register("battle_sentry_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.BATTLE_SENTRY, 0x808080,0x79D06A, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> SENTRY_GOLEM_SPAWN_EGG = ITEMS.register("sentry_golem_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.SENTRY_GOLEM, 0x555561,0xB9FFA3, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> TRACKING_GOLEM_SPAWN_EGG = ITEMS.register("tracking_golem_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.TRACKING_GOLEM, 0x555561,0x5CBEFF, new Item.Properties()));
-    public static final DeferredItem<SpawnEggItem> SLIDER_HOST_MIMIC_SPAWN_EGG = ITEMS.register("slider_host_mimic_spawn_egg", () -> new SliderSpawnEggItem(GenesisEntityTypes.SLIDER_HOST_MIMIC, 0xFF1932,0xA7A7A7, new Item.Properties()));
-    public static final DeferredItem<SpawnEggItem> SENTRY_GUARDIAN_SPAWN_EGG = ITEMS.register("sentry_guardian_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.SENTRY_GUARDIAN, 0x5C9FF2,0x555561, new Item.Properties()));
-    public static final DeferredItem<SpawnEggItem> LABYRINTH_EYE_SPAWN_EGG = ITEMS.register("labyrinth_eye_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.LABYRINTH_EYE, 0x5CBEFF,0x808080, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> SLIDER_HOST_MIMIC_SPAWN_EGG = ITEMS.register("slider_host_mimic_spawn_egg", () -> new SliderSpawnEggItem(GenesisEntityTypes.SLIDER_HOST_MIMIC, 0x604645,0xB3180C, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> SENTRY_GUARDIAN_SPAWN_EGG = ITEMS.register("sentry_guardian_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.SENTRY_GUARDIAN, 0x555561,0x990C0C, new Item.Properties()));
+    public static final DeferredItem<SpawnEggItem> LABYRINTH_EYE_SPAWN_EGG = ITEMS.register("labyrinth_eye_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.LABYRINTH_EYE, 0x585858,0xFF1E05, new Item.Properties()));
 }
