@@ -196,8 +196,8 @@ public class HostEyeProjectile extends PathfinderMob {
             boolean flag = entity.hurt(this.damageSources().thrown(this, this.host), 4.0F);
             if (flag && entity instanceof LivingEntity) {
                 this.level().playSound(this, this.blockPosition(), AetherSoundEvents.ENTITY_SLIDER_COLLIDE.get(), SoundSource.AMBIENT, 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
-                LivingEntity ek = (LivingEntity)entity;
-                ek.setDeltaMovement(ek.getDeltaMovement().x + 0.35D,ek.getDeltaMovement().y +  2.0D,ek.getDeltaMovement().z +  2.0D);
+                LivingEntity living = (LivingEntity)entity;
+                living.setDeltaMovement(living.getDeltaMovement().x + 0.35D,living.getDeltaMovement().y +  2.0D,living.getDeltaMovement().z +  2.0D);
                 stop();
             }
         }

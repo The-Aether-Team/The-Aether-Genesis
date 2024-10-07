@@ -260,7 +260,9 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addEntityType(GenesisEntityTypes.SENTRY_GUARDIAN, "Sentry Guardian");
         this.addEntityType(GenesisEntityTypes.SLIDER_HOST_MIMIC, "Slider Host Mimic");
+        this.addEntityType(GenesisEntityTypes.LABYRINTH_EYE, "Labyrinth's Eye");
         this.addEntityType(GenesisEntityTypes.HOST_EYE, "Host Eye");
+        this.addEntityType(GenesisEntityTypes.FLYING_COG, "Flying Cog");
 
         this.addBlock(GenesisBlocks.CARVED_PILLAR_TOP, "Carved Pillar Top");
         this.addBlock(GenesisBlocks.CARVED_PILLAR, "Carved Pillar");

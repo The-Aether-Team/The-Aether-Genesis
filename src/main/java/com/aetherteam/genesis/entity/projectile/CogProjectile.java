@@ -42,9 +42,9 @@ public class CogProjectile extends Projectile {
     }
 
     @Override
-    public void remove(RemovalReason pReason) {
+    public void remove(RemovalReason reason) {
         this.playSound(GenesisSoundEvents.ENTITY_COG_BREAK.get(), 2.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.2F);
-        super.remove(pReason);
+        super.remove(reason);
     }
 
     @Override
@@ -104,7 +104,7 @@ public class CogProjectile extends Projectile {
     }
 
     public int getLifeSpan() {
-        return 300;
+        return 500;
     }
 
 
@@ -113,7 +113,7 @@ public class CogProjectile extends Projectile {
      * @param shooter - The entity that created this projectile
      */
     public CogProjectile(Level level, Entity shooter, Boolean large) {
-        this(GenesisEntityTypes.COG_ARROW.get(), level);
+        this(GenesisEntityTypes.FLYING_COG.get(), level);
         this.setLarge(large);
         this.setOwner(shooter);
         this.setPos(shooter.getX(), shooter.getY() + 1, shooter.getZ());
@@ -163,9 +163,9 @@ public class CogProjectile extends Projectile {
                 if (!this.level().isClientSide) {
                     Vec3 vec3 = entity.getLookAngle();
                     this.setDeltaMovement(vec3);
-                    this.xPower = vec3.x * 0.25;
-                    this.yPower = vec3.y * 0.15;
-                    this.zPower = vec3.z * 0.25;
+                    this.xPower = vec3.x * 0.375;
+                    this.yPower = vec3.y * 0.25;
+                    this.zPower = vec3.z * 0.375;
                 }
 
                 return true;
