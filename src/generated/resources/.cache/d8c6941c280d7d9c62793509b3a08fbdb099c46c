@@ -1,4 +1,4 @@
-// 1.20.4	2024-09-02T15:02:52.3163355	Item Models: aether_genesis
+// 1.20.4	2024-10-07T22:05:33.1157434	Item Models: aether_genesis
 a1f4e59bd85e14a40e0f96656878f1d867da93d8 assets/aether_genesis/models/item/baby_pink_swet.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/battle_sentry_spawn_egg.json
 b951ae61814ccb898428dd794f3adf77d4e02a6c assets/aether_genesis/models/item/blood_moss_holystone.json
@@ -56,6 +56,7 @@ e57fece52152ad5a0a840331ff3239caf3a82adb assets/aether_genesis/models/item/host_
 9f640e4b842b63436e3c3f2d57357d3fb50903f4 assets/aether_genesis/models/item/icestone_poprocks.json
 e7762c42599c23b8e50bf33100cbb5ca52c0198c assets/aether_genesis/models/item/jelly_pumpkin.json
 ee7b870f2314f9342b18b1c0c60bffa947c69089 assets/aether_genesis/models/item/kraisith_capsule.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/labyrinth_eye_spawn_egg.json
 e64c6d18eda98a6a15b1c5471abebc2c6c2594a2 assets/aether_genesis/models/item/locked_divine_carved_stone.json
 8d1a7bd47d658c52fd9bf57527babb6b7967d175 assets/aether_genesis/models/item/locked_divine_sentry_stone.json
 6997fa5d822a7e3ce1eb0d553d6c6639172e95b3 assets/aether_genesis/models/item/lucky_bell.json
@@ -76,6 +77,7 @@ bc972fad4b94952d244ce10b948eb1ae63d9960f assets/aether_genesis/models/item/purpl
 46eb40131dfe4ccb8536e9f0f4094813e5334ecb assets/aether_genesis/models/item/rainbow_strawberry.json
 036add890fb66464717193f7cd328d09783cee78 assets/aether_genesis/models/item/recording_892.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/sentry_golem_spawn_egg.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/sentry_guardian_spawn_egg.json
 f6caba399494a58683561699d72ad1cc86e3d339 assets/aether_genesis/models/item/skyroot_chest.json
 f6caba399494a58683561699d72ad1cc86e3d339 assets/aether_genesis/models/item/skyroot_chest_mimic.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/skyroot_chest_mimic_spawn_egg.json
@@ -84,6 +86,7 @@ f1bb6f0b931bc6cccfce308e6e12c540bf3f83b1 assets/aether_genesis/models/item/skyro
 eea36a4b004881a3c4883bf36377d685c77cc2b4 assets/aether_genesis/models/item/skyroot_log_wall.json
 1b0c690ce570e6dc726e9ad9b31f28b7f87556fc assets/aether_genesis/models/item/skyroot_ring.json
 c8f56969ced222c056949091764a24f7a2d41bda assets/aether_genesis/models/item/skyroot_wood_wall.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/slider_host_mimic_spawn_egg.json
 d15c3851bc1c8ae26d08c76bef2e7544a2e5a847 assets/aether_genesis/models/item/soaring_stone.json
 8a2911a0fbc4bf26f0b287d6024c82a2cb1f70c6 assets/aether_genesis/models/item/stomper_pop.json
 19b7f69f4c39de05ea9b7f9a3bd2930b21778800 assets/aether_genesis/models/item/storm_aercloud.json

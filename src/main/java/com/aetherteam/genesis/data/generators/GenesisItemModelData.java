@@ -83,6 +83,9 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.eggItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG.get());
         this.eggItem(GenesisItems.SENTRY_GOLEM_SPAWN_EGG.get());
         this.eggItem(GenesisItems.TRACKING_GOLEM_SPAWN_EGG.get());
+        this.eggItem(GenesisItems.SLIDER_HOST_MIMIC_SPAWN_EGG.get());
+        this.eggItem(GenesisItems.SENTRY_GUARDIAN_SPAWN_EGG.get());
+        this.eggItem(GenesisItems.LABYRINTH_EYE_SPAWN_EGG.get());
 
         this.itemBlock(GenesisBlocks.ENCHANTED_GRASS_BLOCK.get());
         this.itemBlock(GenesisBlocks.GREEN_AERCLOUD.get());

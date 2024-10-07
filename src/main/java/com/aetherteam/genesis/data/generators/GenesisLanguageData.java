@@ -95,6 +95,9 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG, "Battle Sentry Spawn Egg");
         this.addItem(GenesisItems.SENTRY_GOLEM_SPAWN_EGG, "Sentry Golem Spawn Egg");
         this.addItem(GenesisItems.TRACKING_GOLEM_SPAWN_EGG, "Tracking Golem Spawn Egg");
+        this.addItem(GenesisItems.SLIDER_HOST_MIMIC_SPAWN_EGG, "Sentry Host Mimic Spawn Egg");
+        this.addItem(GenesisItems.SENTRY_GUARDIAN_SPAWN_EGG, "Sentry Guardian Spawn Egg");
+        this.addItem(GenesisItems.LABYRINTH_EYE_SPAWN_EGG, "Labyrinth's Eye Spawn Egg");
 
         this.addItem(GenesisItems.BLUE_PARACHUTE, "Blue Parachute");
         this.addItem(GenesisItems.GREEN_PARACHUTE, "Green Parachute");
