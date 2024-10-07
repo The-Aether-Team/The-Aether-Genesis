@@ -2,16 +2,17 @@ package com.aetherteam.genesis.client;
 
 import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether.AetherTags;
+import com.aetherteam.aether.api.AetherMenus;
 import com.aetherteam.aether.client.AetherMenuUtil;
 import com.aetherteam.aether.client.WorldDisplayHelper;
 import com.aetherteam.aether.client.event.hooks.GuiHooks;
 import com.aetherteam.aether.client.sound.MusicSoundInstance;
 import com.aetherteam.aether.entity.AetherBossMob;
 import com.aetherteam.aether.mixin.mixins.client.accessor.BossHealthOverlayAccessor;
+import com.aetherteam.cumulus.api.Menus;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.LerpingBossEvent;
 import net.minecraft.client.gui.screens.WinScreen;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.client.sounds.MusicManager;
 import net.minecraft.client.sounds.SoundManager;
@@ -48,6 +49,10 @@ public class GenesisMusicManager {
     private static int nextSongDelay = 100;
     private static Integer fade = null;
 
+    /**
+     * [CODE COPY] - {@link MusicManager#tick()}.<br><br>
+     * Modified to have a {@link Music} null check.
+     */
     public static void tick() {
         Music music = getSituationalMusic();
         Music musicOpposite = getSituationalOppositeDaytimeMusic();
@@ -83,8 +88,7 @@ public class GenesisMusicManager {
                 }
             }
         }
-
-        if (music != null && musicOpposite != null) {
+        else if (music != null && musicOpposite != null) {
             if (currentMusic != null) {
                 if (!music.getEvent().value().getLocation().equals(currentMusic.getLocation()) && !musicOpposite.getEvent().value().getLocation().equals(currentMusic.getLocation()) && music.replaceCurrentMusic()) {
                     minecraft.getSoundManager().stop(currentMusic);
@@ -109,8 +113,11 @@ public class GenesisMusicManager {
         }
     }
 
+    /**
+     * [CODE COPY] - {@link MusicManager#startPlaying(Music)}.
+     */
     public static void startPlaying(Music music) {
-        musicManager.stopPlaying();
+        musicManager.stopPlaying(); // Non-copy, cancels vanilla music if Aether music starts
         if (isAetherBossMusic(music)) {
             currentMusic = MusicSoundInstance.forBossMusic(music.getEvent().value());
         } else {
@@ -122,9 +129,12 @@ public class GenesisMusicManager {
         nextSongDelay = Integer.MAX_VALUE;
     }
 
+    /**
+     * [CODE COPY] - {@link MusicManager#stopPlaying()}.
+     */
     public static void stopPlaying() {
         if (currentMusic != null) {
-            minecraft.getSoundManager().stop(currentMusic);
+            minecraft.getSoundManager().stop(currentMusic); // Non-copy, cancels vanilla music if Aether music starts
             currentMusic = null;
         }
         nextSongDelay += 100;
@@ -133,6 +143,43 @@ public class GenesisMusicManager {
     @Nullable
     public static SoundInstance getCurrentMusic() {
         return currentMusic;
+    }
+
+    /**
+     * Determines when to play different music.
+     *
+     * @return The {@link Music} to play.
+     */
+    @Nullable
+    public static <T extends LivingEntity & AetherBossMob<?>> Music getSituationalMusic() {
+        if (!(minecraft.screen instanceof WinScreen)) {
+            if (isAetherWorldPreviewEnabled()) { // Play Aether menu music when the Aether menu world preview is enabled.
+                return AetherMenus.THE_AETHER.get().getMusic();
+            } else if (isVanillaWorldPreviewEnabled()) { // Play Minecraft menu music when the Minecraft menu world preview is enabled.
+                return Menus.MINECRAFT.get().getMusic();
+            } else if (minecraft.player != null) { // Otherwise replace creative music with biome music in the Aether.
+                if (isAetherBossMusicActive()) {
+                    T boss = getBossFromFight();
+                    if (boss != null && boss.getHealth() > 0) {
+                        Music bossMusic = boss.getBossMusic();
+                        if (bossMusic != null) {
+                            return boss.getBossMusic();
+                        }
+                    }
+                } else {
+                    Holder<Biome> holder = minecraft.player.level().getBiome(minecraft.player.blockPosition());
+                    long time = minecraft.player.clientLevel.getLevelData().getDayTime() % 72000L;
+                    boolean night = time >= 39000 && time < 69000;
+
+                    if (night) {
+                        return AETHER_NIGHT;
+                    } else if (isCreative(holder, minecraft.player)) {
+                        return holder.value().getBackgroundMusic().orElse(Musics.GAME);
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     public static boolean isAetherBossMusic(Music music) {
@@ -160,51 +207,26 @@ public class GenesisMusicManager {
     }
 
     /**
-     * @return Whether the current world preview display is on the Aether menu, as a {@link Boolean}.
+     * @return Whether the world preview is enabled for an Aether menu, and the music isn't cancelled through {@link AetherConfig.Client#disable_aether_world_preview_menu_music}.
      */
     public static boolean isAetherWorldPreviewEnabled() {
         return AetherMenuUtil.isAetherMenu() && isWorldPreviewEnabled() && !AetherConfig.CLIENT.disable_aether_world_preview_menu_music.get();
     }
 
     /**
-     * @return Whether the current world preview display is on a default menu, as a {@link Boolean}.
+     * @return Whether the world preview is enabled for a Minecraft menu, and the music isn't cancelled through {@link AetherConfig.Client#disable_vanilla_world_preview_menu_music}.
      */
     public static boolean isVanillaWorldPreviewEnabled() {
         return AetherMenuUtil.isMinecraftMenu() && isWorldPreviewEnabled() && !AetherConfig.CLIENT.disable_vanilla_world_preview_menu_music.get();
     }
 
     /**
-     * @return Whether the world preview display is enabled and active, as a {@link Boolean}.
+     * @return Whether the world preview is enabled, according to {@link WorldDisplayHelper#isActive()}, and if the player exists.
      */
     public static boolean isWorldPreviewEnabled() {
         return minecraft.player != null && WorldDisplayHelper.isActive();
     }
 
-    /**
-     * @return Regular {@link Music}, or nighttime {@link Music}, when it is nighttime.
-     */
-    public static <T extends LivingEntity & AetherBossMob<?>> Music getSituationalMusic() {
-        if (!(minecraft.screen instanceof WinScreen)) {
-            if (!isVanillaWorldPreviewEnabled() && !isAetherWorldPreviewEnabled() && minecraft.player != null) {
-                Holder<Biome> holder = minecraft.player.level().getBiome(minecraft.player.blockPosition());
-                long time = minecraft.player.clientLevel.getLevelData().getDayTime() % 72000L;
-                boolean night = time >= 39000 && time < 69000;
-
-                T boss = getBossFromFight();
-                if (boss != null && boss.getHealth() > 0) {
-                    Music bossMusic = boss.getBossMusic();
-                    if (bossMusic != null) {
-                        return boss.getBossMusic();
-                    }
-                } else if (night) {
-                    return AETHER_NIGHT;
-                } else if (isCreative(holder, minecraft.player)) {
-                    return holder.value().getBackgroundMusic().orElse(Musics.GAME);
-                }
-            }
-        }
-        return null;
-    }
 
     /**
      * @return Regular {@link Music}, or nighttime {@link Music}, when it is not nighttime.
@@ -226,6 +248,10 @@ public class GenesisMusicManager {
         return null;
     }
 
+    /**
+     * [CODE COPY] - {@link Minecraft#getSituationalMusic()}.<br><br>
+     * Based on vanilla creative music checks, but also checks if the biome plays Aether music.
+     */
     public static boolean isCreative(Holder<Biome> holder, Player player) {
         return player.level().dimension() != Level.END && player.level().dimension() != Level.NETHER && holder.is(AetherTags.Biomes.AETHER_MUSIC)
                 && !musicManager.isPlayingMusic(Musics.UNDER_WATER) && (!player.isUnderWater() || !holder.is(BiomeTags.PLAYS_UNDERWATER_MUSIC))
