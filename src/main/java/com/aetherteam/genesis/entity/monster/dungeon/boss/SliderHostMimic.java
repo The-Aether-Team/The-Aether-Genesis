@@ -141,8 +141,9 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
 
     public static AttributeSupplier.Builder createHostAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 175)
-                .add(Attributes.MOVEMENT_SPEED, 0.28)
+                .add(Attributes.MAX_HEALTH, 400)
+                .add(Attributes.MOVEMENT_SPEED, 0.25)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.75)
                 .add(Attributes.FOLLOW_RANGE, 64.0);
     }
 
@@ -392,7 +393,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return GenesisSoundEvents.ENTITY_TRACKING_GOLEM_CREEPY_SEEN.get();
+        return random.nextInt(5) == 0 ? GenesisSoundEvents.ENTITY_TRACKING_GOLEM_CREEPY_SEEN.get() : null;
     }
 
     @Override

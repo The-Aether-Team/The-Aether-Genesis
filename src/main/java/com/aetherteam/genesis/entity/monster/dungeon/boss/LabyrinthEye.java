@@ -78,9 +78,11 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     
     public static AttributeSupplier.Builder createMobAttributes() {
         return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 250)
-                .add(Attributes.MOVEMENT_SPEED, 0.28)
-                .add(Attributes.FOLLOW_RANGE, 8.0);
+                .add(Attributes.MAX_HEALTH, 400)
+                .add(Attributes.MOVEMENT_SPEED, 0.27)
+                .add(Attributes.ATTACK_DAMAGE, 3.0)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.75)
+                .add(Attributes.FOLLOW_RANGE, 64.0);
     }
 
     @Override
@@ -103,21 +105,21 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
             this.stageDone[i] = false;
     }
 
-    private boolean isBossStage(int stage) {
+    private boolean isBossStage(int stage) { //TODO
         return switch (stage) {
-            case 1 -> (getHealth() <= 250.0F && getHealth() >= 231.0F);
-            case 2 -> (getHealth() < 231.0F && getHealth() >= 212.0F);
-            case 3 -> (getHealth() < 212.0F && getHealth() >= 193.0F);
-            case 4 -> (getHealth() < 193.0F && getHealth() >= 174.0F);
-            case 5 -> (getHealth() < 174.0F && getHealth() >= 155.0F);
-            case 6 -> (getHealth() < 155.0F && getHealth() >= 136.0F);
-            case 7 -> (getHealth() < 136.0F && getHealth() >= 117.0F);
-            case 8 -> (getHealth() < 117.0F && getHealth() >= 98.0F);
-            case 9 -> (getHealth() < 98.0F && getHealth() >= 79.0F);
-            case 10 -> (getHealth() < 79.0F && getHealth() >= 60.0F);
-            case 11 -> (getHealth() < 60.0F && getHealth() >= 41.0F);
-            case 12 -> (getHealth() < 41.0F && getHealth() >= 22.0F);
-            case 13 -> (getHealth() < 3.0F);
+            case 1 -> (getHealth() <= getMaxHealth() && getHealth() >= getMaxHealth() * 0.9);
+            case 2 -> (getHealth() < getMaxHealth() * 0.9 && getHealth() >= getMaxHealth() * 0.8);
+            case 3 -> (getHealth() < getMaxHealth() * 0.8 && getHealth() >= getMaxHealth() * 0.725);
+            case 4 -> (getHealth() < getMaxHealth() * 0.65 && getHealth() >= getMaxHealth() * 0.575);
+            case 5 -> (getHealth() < getMaxHealth() * 0.575 && getHealth() >= getMaxHealth() * 0.5);
+            case 6 -> (getHealth() < getMaxHealth() * 0.45 && getHealth() >= getMaxHealth() * 0.4);
+            case 7 -> (getHealth() < getMaxHealth() * 0.4 && getHealth() >= getMaxHealth() * 0.35);
+            case 8 -> (getHealth() < getMaxHealth() * 0.35 && getHealth() >= getMaxHealth() * 0.3);
+            case 9 -> (getHealth() < getMaxHealth() * 0.3 && getHealth() >= getMaxHealth() * 0.25);
+            case 10 -> (getHealth() < getMaxHealth() * 0.25 && getHealth() >= getMaxHealth() * 0.2);
+            case 11 -> (getHealth() < getMaxHealth() * 0.2 && getHealth() >= getMaxHealth() * 0.15);
+            case 12 -> (getHealth() < getMaxHealth() * 0.15 && getHealth() >= getMaxHealth() * 0.1);
+            case 13 -> (getHealth() < getMaxHealth() * 0.1);
             default -> false;
         };
     }
