@@ -193,7 +193,7 @@ public class HostEyeProjectile extends PathfinderMob {
         if (this.movement) {
             if (entity instanceof Sentry || entity instanceof  TrackingGolem || entity instanceof  SliderHostMimic || entity instanceof SentryGuardian || entity instanceof BattleSentry)
                 return;
-            boolean flag = entity.hurt(this.damageSources().thrown(this, this.host), 6.0F);
+            boolean flag = entity.hurt(this.damageSources().thrown(this, this.host), 4.0F);
             if (flag && entity instanceof LivingEntity) {
                 this.level().playSound(this, this.blockPosition(), AetherSoundEvents.ENTITY_SLIDER_COLLIDE.get(), SoundSource.AMBIENT, 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
                 LivingEntity ek = (LivingEntity)entity;
