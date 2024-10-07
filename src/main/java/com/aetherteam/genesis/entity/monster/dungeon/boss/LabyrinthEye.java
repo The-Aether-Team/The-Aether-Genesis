@@ -78,7 +78,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     
     public static AttributeSupplier.Builder createMobAttributes() {
         return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 400)
+                .add(Attributes.MAX_HEALTH, 500)
                 .add(Attributes.MOVEMENT_SPEED, 0.27)
                 .add(Attributes.ATTACK_DAMAGE, 3.0)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.75)

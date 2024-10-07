@@ -130,7 +130,7 @@ public class CogProjectile extends Projectile {
     protected void onHitEntity(EntityHitResult result) {
         Entity entity = result.getEntity();
         if (entity instanceof LivingEntity livingEntity && livingEntity != this.getOwner()) {
-            if (livingEntity.hurt(AetherDamageTypes.indirectEntityDamageSource(this.level(), AetherDamageTypes.FLOATING_BLOCK, this, this.getOwner()), 8.0F)) {
+            if (livingEntity.hurt(AetherDamageTypes.indirectEntityDamageSource(this.level(), AetherDamageTypes.FLOATING_BLOCK, this, this.getOwner()), 5.0F + random.nextInt(2))) {
                 this.level().playSound(null, this.getX(), this.getY(), this.getZ(), this.getImpactExplosionSoundEvent(), SoundSource.HOSTILE, 2.0F, this.random.nextFloat() - this.random.nextFloat() * 0.2F + 1.2F);
             }
         }
