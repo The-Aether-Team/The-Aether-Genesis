@@ -105,16 +105,15 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
      * Generates a name for the boss and adjusts its position.
      */
     @Override
-    public SpawnGroupData finalizeSpawn( ServerLevelAccessor pLevel,  DifficultyInstance pDifficulty,  MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level,  DifficultyInstance difficulty,  MobSpawnType reason, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag) {
         this.alignSpawnPos();
-        SpawnGroupData data = super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
+        SpawnGroupData data = super.finalizeSpawn(level, difficulty, reason, spawnData, dataTag);
         this.setBossName(this.generateHostName());
         return data;
     }
 
     public void sendEye() {
-        while (this.eyes.size() > 4)
-            (this.eyes.remove(0)).setHealth(0);
+        while (this.eyes.size() > 4) (this.eyes.remove(0)).setHealth(0);
         HostEyeProjectile eye = new HostEyeProjectile(GenesisEntityTypes.HOST_EYE.get(), level());
         this.level().addFreshEntity(eye);
         eye.setPos(this.position());

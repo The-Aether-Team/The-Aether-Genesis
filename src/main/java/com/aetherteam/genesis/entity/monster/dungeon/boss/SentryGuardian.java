@@ -85,7 +85,6 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         return Monster.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 350)
                 .add(Attributes.MOVEMENT_SPEED, 0.265)
-                .add(Attributes.ATTACK_DAMAGE, 7.0)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.5)
                 .add(Attributes.FOLLOW_RANGE, 64.0);
     }
@@ -194,28 +193,26 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         AetherEventDispatch.onBossFightStop(this, this.getDungeon());
     }
 
-    public boolean doHurtTarget(Entity pEntity) {
-        this.attackTime = 10;
+    public boolean doHurtTarget(Entity entity) {
+        this.attackTime = 4 + this.random.nextInt(4);
         this.level().broadcastEntityEvent(this, (byte)4);
-        float f = 7 + this.random.nextInt(15);
-        float f1 = (int)f > 0 ? f / 2.0F + (float)this.random.nextInt((int)f) : f;
-        boolean flag = pEntity.hurt(this.damageSources().mobAttack(this), f1);
+        boolean flag = entity.hurt(this.damageSources().mobAttack(this), 5 + this.random.nextInt(3));
         if (flag) {
             double d2;
-            if (pEntity instanceof LivingEntity) {
-                LivingEntity livingentity = (LivingEntity)pEntity;
-                d2 = livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
+            if (entity instanceof LivingEntity) {
+                LivingEntity living = (LivingEntity)entity;
+                d2 = living.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
             } else {
                 d2 = 0.0D;
             }
 
             double d0 = d2;
             double d1 = Math.max(0.0D, 1.0D - d0);
-            pEntity.setDeltaMovement(pEntity.getDeltaMovement().add(0.0D, (double)0.4F * d1, 0.0D));
-            this.doEnchantDamageEffects(this, pEntity);
+            entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, (double)0.4F * d1, 0.0D));
+            this.doEnchantDamageEffects(this, entity);
         }
 
-        this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
+        this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F); //TODO
         return flag;
     }
 
