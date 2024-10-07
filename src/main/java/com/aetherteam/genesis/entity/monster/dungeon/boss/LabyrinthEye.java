@@ -207,7 +207,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
         super.defineSynchedData();
         this.entityData.define(DATA_AWAKE_ID, false);
         this.entityData.define(DATA_BOSS_STAGE, 13);
-        this.entityData.define(DATA_BOSS_NAME_ID, Component.literal("Labyrinth Eye"));
+        this.entityData.define(DATA_BOSS_NAME_ID, Component.literal("Labyrinth's Eye"));
     }
  
 

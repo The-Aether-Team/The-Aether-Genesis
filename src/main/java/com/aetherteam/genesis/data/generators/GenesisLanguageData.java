@@ -314,8 +314,8 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addGuiText("host.title", "the Slider Host Mimic");
         this.addGuiText("sentry_guardian.title", "the Sentry Guardian");
-        this.addGuiText("labyrinth_eye.title", "the Labyrinth Eye");
+        this.addGuiText("labyrinth_eye.title", "the Labyrinth's Eye");
 
-        this.addGuiText("boss.message.projectile", "Hmm... Better switch to a sword");
+        this.addGuiText("boss.message.projectile", "Hmm... Ranged Weapons will not work here");
     }
 }
