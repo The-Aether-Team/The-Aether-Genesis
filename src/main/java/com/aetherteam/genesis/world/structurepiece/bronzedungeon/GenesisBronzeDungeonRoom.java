@@ -1,6 +1,5 @@
 package com.aetherteam.genesis.world.structurepiece.bronzedungeon;
 
-import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.loot.AetherLoot;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonPiece;
 import com.aetherteam.genesis.AetherGenesis;
