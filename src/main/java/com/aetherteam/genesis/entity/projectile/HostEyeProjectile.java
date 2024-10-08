@@ -1,267 +1,330 @@
 package com.aetherteam.genesis.entity.projectile;
 
 import com.aetherteam.aether.client.AetherSoundEvents;
-import com.aetherteam.aether.entity.monster.dungeon.Sentry;
+import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
-import com.aetherteam.genesis.entity.monster.dungeon.BattleSentry;
-import com.aetherteam.genesis.entity.monster.dungeon.TrackingGolem;
-import com.aetherteam.genesis.entity.monster.dungeon.boss.SentryGuardian;
-import com.aetherteam.genesis.entity.monster.dungeon.boss.SliderHostMimic;
-import net.minecraft.network.syncher.EntityDataAccessor;
-import net.minecraft.network.syncher.EntityDataSerializers;
-import net.minecraft.network.syncher.SynchedEntityData;
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.util.Mth;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Explosion;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.event.EventHooks;
 
-public class HostEyeProjectile extends PathfinderMob {
-    public static final EntityDataAccessor<Boolean> MOVEMENT = SynchedEntityData.defineId(HostEyeProjectile.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<Integer> TIMER = SynchedEntityData.defineId(HostEyeProjectile.class, EntityDataSerializers.INT);
-    public static final EntityDataAccessor<Integer> DIRECTION = SynchedEntityData.defineId(HostEyeProjectile.class, EntityDataSerializers.INT);
-    public static final EntityDataAccessor<Float> SPEEDY = SynchedEntityData.defineId(HostEyeProjectile.class, EntityDataSerializers.FLOAT);
+public class HostEyeProjectile extends Projectile {
+    @Nullable
+    private Entity finalTarget;
+    @Nullable
+    private Direction currentMoveDirection;
+    private int flightSteps;
+    private double targetDeltaX;
+    private double targetDeltaY;
+    private double targetDeltaZ;
+    @Nullable
+    private UUID targetId;
 
-    private final SliderHostMimic host;
-    private boolean movement;
-    private int timer;
-    private int direction;
-    public float speedy;
-    public float harvey;
-
-    public HostEyeProjectile(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
+    public HostEyeProjectile(EntityType<? extends HostEyeProjectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        host = new SliderHostMimic(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), this.level());
+        this.noPhysics = true;
     }
 
-
-    protected float getJumpPower() {
-        return 0.0F;
+    public HostEyeProjectile(Level level, LivingEntity shooter, Entity finalTarget, Direction.Axis axis) {
+        this(GenesisEntityTypes.HOST_EYE.get(), level);
+        this.setOwner(shooter);
+        BlockPos pos = shooter.blockPosition();
+        double d0 = pos.getX() + 0.5;
+        double d1 = pos.getY() + 0.5;
+        double d2 = pos.getZ() + 0.5;
+        this.moveTo(d0, d1, d2, this.getYRot(), this.getXRot());
+        this.finalTarget = finalTarget;
+        this.currentMoveDirection = Direction.UP;
+        this.selectNextMoveDirection(axis);
     }
 
     @Override
-    public boolean isInvulnerableTo(DamageSource source) {
-        return this.isRemoved() || !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY);
+    public SoundSource getSoundSource() {
+        return SoundSource.HOSTILE;
     }
 
-    protected void dealDamage(LivingEntity pLivingEntity) {
+    @Override
+    protected void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        if (this.finalTarget != null) {
+            tag.putUUID("Target", this.finalTarget.getUUID());
+        }
+
+        if (this.currentMoveDirection != null) {
+            tag.putInt("Dir", this.currentMoveDirection.get3DDataValue());
+        }
+
+        tag.putInt("Steps", this.flightSteps);
+        tag.putDouble("TXD", this.targetDeltaX);
+        tag.putDouble("TYD", this.targetDeltaY);
+        tag.putDouble("TZD", this.targetDeltaZ);
+    }
+
+    /**
+     * (abstract) Protected helper method to read subclass entity data from NBT.
+     */
+    @Override
+    protected void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        this.flightSteps = tag.getInt("Steps");
+        this.targetDeltaX = tag.getDouble("TXD");
+        this.targetDeltaY = tag.getDouble("TYD");
+        this.targetDeltaZ = tag.getDouble("TZD");
+        if (tag.contains("Dir", 99)) {
+            this.currentMoveDirection = Direction.from3DDataValue(tag.getInt("Dir"));
+        }
+
+        if (tag.hasUUID("Target")) {
+            this.targetId = tag.getUUID("Target");
+        }
+    }
+
+    @Override
+    protected void defineSynchedData() {
+    }
+
+    private void setMoveDirection(@Nullable Direction pDirection) {
+        this.currentMoveDirection = pDirection;
+    }
+
+    private void selectNextMoveDirection(@Nullable Direction.Axis axis) {
+        double d0 = 0.5;
+        BlockPos posBelow;
+        if (this.finalTarget == null) {
+            posBelow = this.blockPosition().below();
+        } else {
+            d0 = (double)this.finalTarget.getBbHeight() * 0.5;
+            posBelow = BlockPos.containing(this.finalTarget.getX(), this.finalTarget.getY() + d0, this.finalTarget.getZ());
+        }
+
+        double d1 = (double)posBelow.getX() + 0.5;
+        double d2 = (double)posBelow.getY() + d0;
+        double d3 = (double)posBelow.getZ() + 0.5;
+        Direction direction = null;
+        if (!posBelow.closerToCenterThan(this.position(), 2.0)) {
+            BlockPos pos = this.blockPosition();
+            List<Direction> list = Lists.newArrayList();
+            if (axis != Direction.Axis.X) {
+                if (pos.getX() < posBelow.getX() && this.level().isEmptyBlock(pos.east())) {
+                    list.add(Direction.EAST);
+                } else if (pos.getX() > posBelow.getX() && this.level().isEmptyBlock(pos.west())) {
+                    list.add(Direction.WEST);
+                }
+            }
+
+            if (axis != Direction.Axis.Y) {
+                if (pos.getY() < posBelow.getY() && this.level().isEmptyBlock(pos.above())) {
+                    list.add(Direction.UP);
+                } else if (pos.getY() > posBelow.getY() && this.level().isEmptyBlock(pos.below())) {
+                    list.add(Direction.DOWN);
+                }
+            }
+
+            if (axis != Direction.Axis.Z) {
+                if (pos.getZ() < posBelow.getZ() && this.level().isEmptyBlock(pos.south())) {
+                    list.add(Direction.SOUTH);
+                } else if (pos.getZ() > posBelow.getZ() && this.level().isEmptyBlock(pos.north())) {
+                    list.add(Direction.NORTH);
+                }
+            }
+
+            direction = Direction.getRandom(this.random);
+            if (list.isEmpty()) {
+                for(int i = 5; !this.level().isEmptyBlock(pos.relative(direction)) && i > 0; --i) {
+                    direction = Direction.getRandom(this.random);
+                }
+            } else {
+                direction = list.get(this.random.nextInt(list.size()));
+            }
+
+            d1 = this.getX() + (double)direction.getStepX();
+            d2 = this.getY() + (double)direction.getStepY();
+            d3 = this.getZ() + (double)direction.getStepZ();
+        }
+
+        this.setMoveDirection(direction);
+        double d6 = d1 - this.getX();
+        double d7 = d2 - this.getY();
+        double d4 = d3 - this.getZ();
+        double d5 = Math.sqrt(d6 * d6 + d7 * d7 + d4 * d4);
+        if (d5 == 0.0) {
+            this.targetDeltaX = 0.0;
+            this.targetDeltaY = 0.0;
+            this.targetDeltaZ = 0.0;
+        } else {
+            this.targetDeltaX = d6 / d5 * 0.15;
+            this.targetDeltaY = d7 / d5 * 0.15;
+            this.targetDeltaZ = d4 / d5 * 0.15;
+        }
+
+        this.hasImpulse = true;
+        this.flightSteps = 10 + this.random.nextInt(5) * 10;
+    }
+
+    /**
+     * Makes the entity despawn if requirements are reached
+     */
+    @Override
+    public void checkDespawn() {
+        if (this.level().getDifficulty() == Difficulty.PEACEFUL) {
+            this.discard();
+        }
+    }
+
+    /**
+     * Called to update the entity's position/logic.
+     */
+    @Override
+    public void tick() {
+        super.tick();
+        if (!this.level().isClientSide) {
+            if (this.finalTarget == null && this.targetId != null) {
+                this.finalTarget = ((ServerLevel)this.level()).getEntity(this.targetId);
+                if (this.finalTarget == null) {
+                    this.targetId = null;
+                }
+            }
+
+            if (this.finalTarget == null || !this.finalTarget.isAlive() || this.finalTarget instanceof Player && this.finalTarget.isSpectator()) {
+                if (!this.isNoGravity()) {
+                    this.setDeltaMovement(this.getDeltaMovement().add(0.0, -0.04, 0.0));
+                }
+            } else {
+                this.targetDeltaX = Mth.clamp(this.targetDeltaX * 1.025, -1.0, 1.0);
+                this.targetDeltaY = Mth.clamp(this.targetDeltaY * 1.025, -1.0, 1.0);
+                this.targetDeltaZ = Mth.clamp(this.targetDeltaZ * 1.025, -1.0, 1.0);
+                Vec3 vec3 = this.getDeltaMovement();
+                this.setDeltaMovement(vec3.add((this.targetDeltaX - vec3.x) * 0.2, (this.targetDeltaY - vec3.y) * 0.2, (this.targetDeltaZ - vec3.z) * 0.2));
+            }
+
+            HitResult result = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
+            if (result.getType() != HitResult.Type.MISS && !EventHooks.onProjectileImpact(this, result)) {
+                this.onHit(result);
+            }
+        }
+
+        this.checkInsideBlocks();
+        Vec3 vec3 = this.getDeltaMovement();
+        this.setPos(this.getX() + vec3.x, this.getY() + vec3.y, this.getZ() + vec3.z);
+        ProjectileUtil.rotateTowardsMovement(this, 0.5F);
+
+        if (this.finalTarget != null && !this.finalTarget.isRemoved()) {
+            if (this.flightSteps > 0) {
+                --this.flightSteps;
+                if (this.flightSteps == 0) {
+                    this.selectNextMoveDirection(this.currentMoveDirection == null ? null : this.currentMoveDirection.getAxis());
+                }
+            }
+
+            if (this.currentMoveDirection != null) {
+                BlockPos pos = this.blockPosition();
+                Direction.Axis axis = this.currentMoveDirection.getAxis();
+                if (this.level().loadedAndEntityCanStandOn(pos.relative(this.currentMoveDirection), this)) {
+                    this.selectNextMoveDirection(axis);
+                } else {
+                    BlockPos posFinal = this.finalTarget.blockPosition();
+                    if (axis == Direction.Axis.X && pos.getX() == posFinal.getX()
+                            || axis == Direction.Axis.Z && pos.getZ() == posFinal.getZ()
+                            || axis == Direction.Axis.Y && pos.getY() == posFinal.getY()) {
+                        this.selectNextMoveDirection(axis);
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    protected boolean canHitEntity(Entity entity) {
+        return super.canHitEntity(entity) && !entity.noPhysics;
+    }
+
+    /**
+     * Returns {@code true} if the entity is on fire. Used by render to add the fire effect on rendering.
+     */
+    @Override
+    public boolean isOnFire() {
+        return false;
+    }
+
+    /**
+     * Checks if the entity is in range to render.
+     */
+    @Override
+    public boolean shouldRenderAtSqrDistance(double distance) {
+        return distance < 16384.0;
+    }
+
+    @Override
+    public float getLightLevelDependentMagicValue() {
+        return 1.0F;
+    }
+
+    protected void dealDamage(LivingEntity living) {
         if (this.isAlive()) {
-            if (this.hasLineOfSight(pLivingEntity) && pLivingEntity.hurt(this.damageSources().mobAttack(this), 4)) {
+            if (living.hurt(this.damageSources().mobProjectile(this, living), 4)) {
                 this.playSound(AetherSoundEvents.ENTITY_SLIDER_COLLIDE.get(), 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
-                this.doEnchantDamageEffects(this, pLivingEntity);
+                this.doEnchantDamageEffects(Objects.requireNonNull(this.getControllingPassenger()), living);
             }
         }
     }
 
     public void playerTouch(Player pEntity) {
-            this.dealDamage(pEntity);
-    }
-
-    public void tick() {
-        super.tick();
-        this.jumping = false;
-        this.setRot(0, 0);
-        if (this.getTarget() != null && this.getTarget() instanceof LivingEntity) {
-            LivingEntity e1 = this.getTarget();
-            if (e1.getHealth() <= 0.0F || !canAttack(this.getTarget())) {
-                this.setTarget(null);
-                stop();
-                this.timer = 0;
-                return;
-            }
-        } else {
-            if (this.getTarget() != null && this.getTarget().isDeadOrDying()) {
-                this.setTarget(null);
-                stop();
-                this.timer = 0;
-                return;
-            }
-            if (this.getTarget() == null) {
-                this.setTarget(level().getNearestPlayer(this, -1.0));
-                if (this.getTarget() == null) {
-                    this.setTarget(null);
-                    stop();
-                    this.timer = 0;
-                    if (!this.level().isClientSide)
-                        discard();
-                    return;
-                }
-            }
-        }
-        if (this.host == null || this.host.isDeadOrDying()) {
-            this.setTarget(null);
-            stop();
-            this.timer = 0;
-            if (!this.level().isClientSide)
-                discard();
-            return;
-        }
-        if (!this.host.canAttack(this.getTarget())) {
-            this.setTarget(null);
-            stop();
-            this.timer = 0;
-            if (!this.level().isClientSide)
-                discard();
-            return;
-        }
-        this.fallDistance = 0.0F;
-        if (this.movement) {
-            if (this.isPushable()) {
-                this.level().playLocalSound(this.position().x, this.position().y, this.position().z, SoundEvents.GENERIC_EXPLODE, SoundSource.AMBIENT, 3.0F, (0.625F + (this.level().random.nextFloat() - this.level().random.nextFloat()) * 0.2F) * 0.7F, false);
-                this.level().playSound(this, this.blockPosition(), AetherSoundEvents.ENTITY_SLIDER_COLLIDE.get(), SoundSource.AMBIENT, 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
-                stop();
-            } else {
-                if (this.speedy < 2.0F)
-                    this.speedy += 0.035F;
-                this.setDeltaMovement(0, 0, 0);
-                if (this.direction == 0) {
-                    this.addDeltaMovement(new Vec3(0, this.speedy, 0));
-                    if (this.getBoundingBox().minY > this.getTarget().getBoundingBox().minY + 0.35D) {
-                        stop();
-                        this.timer = 8;
-                    }
-                } else if (this.direction == 1) {
-                    this.addDeltaMovement(new Vec3(0, this.getDeltaMovement().y -this.speedy, 0));
-                    if (this.getBoundingBox().minY < this.getTarget().getBoundingBox().minY - 0.25D) {
-                        stop();
-                        this.timer = 8;
-                    }
-                } else if (this.direction == 2) {
-                    this.addDeltaMovement(new Vec3(this.speedy, 0, 0));
-                    if (this.position().x > this.getTarget().position().x + 0.125D) {
-                        stop();
-                        this.timer = 8;
-                    }
-                } else if (this.direction == 3) {
-                    this.addDeltaMovement(new Vec3(this.getDeltaMovement().x -this.speedy, 0, 0));
-                    if (this.position().x < this.getTarget().position().x - 0.125D) {
-                        stop();
-                        this.timer = 8;
-                    }
-                } else if (this.direction == 4) {
-                    this.addDeltaMovement(new Vec3(0, 0, this.speedy));
-                    if (this.position().z > this.getTarget().position().z + 0.125D) {
-                        stop();
-                        this.timer = 8;
-                    }
-                } else if (this.direction == 5) {
-                    this.addDeltaMovement(new Vec3(0, 0, this.getDeltaMovement().z -this.speedy));
-                    if (this.position().z < this.getTarget().position().z - 0.125D) {
-                        stop();
-                        this.timer = 8;
-                    }
-                }
-            }
-        } else {
-            this.setDeltaMovement(this.getDeltaMovement().x, 0, this.getDeltaMovement().z);
-            if (this.timer > 0) {
-                this.timer--;
-                this.setDeltaMovement(0, 0, 0);
-            } else {
-                double a = Math.abs(this.position().x - this.getTarget().position().x);
-                double b = Math.abs(this.getBoundingBox().minY - this.getTarget().getBoundingBox().minY);
-                double c = Math.abs(this.position().z - this.getTarget().position().z);
-                if (a > c) {
-                    this.direction = 2;
-                    if (this.position().x > this.getTarget().position().x)
-                        this.direction = 3;
-                } else {
-                    this.direction = 4;
-                    if (this.position().z > this.getTarget().position().z)
-                        this.direction = 5;
-                }
-                if ((b > a && b > c) || (b > 0.25D && this.random.nextInt(5) == 0)) {
-                    this.direction = 0;
-                    if (this.position().y > this.getTarget().position().y)
-                        this.direction = 1;
-                }
-                this.movement = true;
-            }
-        }
-        if (this.harvey > 0.01F)
-            this.harvey *= 0.8F;
-    }
-
-    public void push(Entity entity) {
-        if (this.movement) {
-            if (entity instanceof Sentry || entity instanceof  TrackingGolem || entity instanceof  SliderHostMimic || entity instanceof SentryGuardian || entity instanceof BattleSentry)
-                return;
-            boolean flag = entity.hurt(this.damageSources().thrown(this, this.host), 4.0F);
-            if (flag && entity instanceof LivingEntity) {
-                this.level().playSound(this, this.blockPosition(), AetherSoundEvents.ENTITY_SLIDER_COLLIDE.get(), SoundSource.AMBIENT, 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
-                LivingEntity living = (LivingEntity)entity;
-                living.setDeltaMovement(living.getDeltaMovement().x + 0.35D,living.getDeltaMovement().y +  2.0D,living.getDeltaMovement().z +  2.0D);
-                stop();
-            }
-        }
+        this.dealDamage(pEntity);
     }
 
     @Override
-    public void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(MOVEMENT, movement);
-        this.entityData.define(TIMER, timer);
-        this.entityData.define(DIRECTION, direction);
-        this.entityData.define(SPEEDY, speedy);
+    protected void onHitBlock(BlockHitResult result) {
+        super.onHitBlock(result);
+        this.destroy();
     }
 
-    public void stop() {
-        this.movement = false;
-        this.timer = 12;
-        this.direction = 0;
-        this.speedy = 0.0F;
-        this.setDeltaMovement(0, 0, 0);
+    private void destroy() {
+        this.discard();
+        this.level().gameEvent(GameEvent.ENTITY_DAMAGE, this.position(), GameEvent.Context.of(this));
     }
 
+    /**
+     * Returns {@code true} if other Entities should be prevented from moving through this Entity.
+     */
     @Override
-    public void knockback(double pStrength, double pX, double pZ) {
-
-    }
-
-    @Override
-    public void push(double x, double y, double z) {
-
-    }
-
-    @Override
-    public boolean ignoreExplosion(Explosion explosion) {
+    public boolean isPickable() {
         return true;
     }
 
     @Override
-    public float getYRot() {
-        return 0;
-    }
-
-    @Override
-    protected boolean canRide( Entity vehicle) {
-        return false;
-    }
-
-    @Override
-    public boolean canBeCollidedWith() {
-        return true;
-    }
-
-    @Override
-    public boolean isPushable() {
-        return false;
-    }
-
-    @Override
-    public boolean isNoGravity() {
-        return true;
-    }
-
-    @Override
-    public boolean shouldDiscardFriction() {
-        return true;
+    public void recreateFromPacket(ClientboundAddEntityPacket packet) {
+        super.recreateFromPacket(packet);
+        double d0 = packet.getXa();
+        double d1 = packet.getYa();
+        double d2 = packet.getZa();
+        this.setDeltaMovement(d0, d1, d2);
     }
 }
