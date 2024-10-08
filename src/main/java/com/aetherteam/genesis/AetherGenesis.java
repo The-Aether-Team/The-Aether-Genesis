@@ -1,6 +1,5 @@
 package com.aetherteam.genesis;
 
-import com.aetherteam.aether.network.packet.clientbound.SetVehiclePacket;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonBuilder;
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;

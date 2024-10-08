@@ -301,6 +301,10 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addContainerType(GenesisMenuTypes.HOLYSTONE_FURNACE, "Holystone Furnace");
 
+        this.addContainerType("host_treasure_chest", "Host Treasure Chest");
+        this.addContainerType("guardian_treasure_chest", "Guardian Treasure Chest");
+        this.addContainerType("cog_treasure_chest", "Cog Treasure Chest");
+
         this.addGuiText("slider.message.attack.invalid_item", "Hmm. It's a rock-solid block. My %1$s wouldn't work on this.");
         this.addGuiText("slider.message.attack.invalid_fist", "Hmm. It's a rock-solid block. My fist wouldn't work on this.");
 

@@ -1,6 +1,5 @@
 package com.aetherteam.genesis.world.structurepiece.bronzedungeon;
 
-import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.blockentity.TreasureChestBlockEntity;
 import com.aetherteam.aether.loot.AetherLoot;
 import com.aetherteam.aether.world.structurepiece.AetherTemplateStructurePiece;
@@ -24,6 +23,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 
 public class GenesisBronzeBossRoom extends BronzeDungeonPiece {
+
     public GenesisBronzeBossRoom(StructureTemplateManager manager, String name, BlockPos pos, Rotation rotation, Holder<StructureProcessorList> processors) {
         super(GenesisStructurePieceTypes.BRONZE_BOSS_ROOM.get(), manager, new ResourceLocation(AetherGenesis.MODID, "bronze_dungeon/" + name), AetherTemplateStructurePiece.makeSettingsWithPivot(makeSettings(), manager, BronzeDungeonPiece.makeLocation(name), rotation), pos, processors);
     }
@@ -43,7 +43,6 @@ public class GenesisBronzeBossRoom extends BronzeDungeonPiece {
             if (entity instanceof RandomizableContainerBlockEntity container) {
                 container.setLootTable(AetherLoot.BRONZE_DUNGEON_REWARD, random.nextLong());
             }
-            TreasureChestBlockEntity.setDungeonType(level, chest, new ResourceLocation(Aether.MODID, "bronze"));
             level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
         }
     }
