@@ -10,7 +10,6 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class GenesisSoundEvents {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, AetherGenesis.MODID);
 
-    public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_BLUE_AERCLOUD_BOUNCE = register("block.aercloud.blue_aercloud_bounce");
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_AETHER_PORTAL_HUM = register("block.portal.hum");
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_AETHER_PORTAL_TRAVEL = register("block.portal.travel");
     public static final DeferredHolder<SoundEvent, SoundEvent> BLOCK_AETHER_PORTAL_TRIGGER = register("block.portal.trigger");
@@ -39,7 +38,7 @@ public class GenesisSoundEvents {
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SENTRY_GUARDIAN_LIVING = register("entity.sentry_guardian.living");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_LABYRINTH_EYE_DEATH = register("entity.labyrinth_eye.death");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_LABYRINTH_EYE_COGLOSS = register("entity.labyrinth_eye.cogloss");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_LABYRINTH_EYE_COG_LOSS = register("entity.labyrinth_eye.cog_loss");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_LABYRINTH_EYE_MOVE = register("entity.labyrinth_eye.move");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_COG_BREAK = register("entity.cog.break");

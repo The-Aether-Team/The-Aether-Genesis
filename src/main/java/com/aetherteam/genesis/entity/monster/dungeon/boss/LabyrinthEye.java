@@ -168,7 +168,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
         if (!this.level().isClientSide) {
             float distance = var9 * 0.075F;
             cog.shoot(var3, var5 + (var9 * 0.2F), var7, distance, 0.0F);
-            this.playSound(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COGLOSS.get(), 2.0F, 1.0F);
+            this.playSound(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COG_LOSS.get(), 2.0F, 1.0F);
             this.playSound(SoundEvents.ITEM_BREAK, 0.8F, 0.8F + this.level().random.nextFloat() * 0.4F);
             this.level().addFreshEntity(cog);
         }

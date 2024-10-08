@@ -25,10 +25,6 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                 definition().with(sound("aether_genesis:block/portal/trigger"))
                         .subtitle("subtitles.aether_genesis.block.portal.trigger")
         );
-        this.add(GenesisSoundEvents.BLOCK_BLUE_AERCLOUD_BOUNCE,
-                definition().with(sound("aether_genesis:block/aercloud/blue_aercloud_bounce"))
-                        .subtitle("subtitles.aether_genesis.block.aercloud.blue_aercloud_bounce")
-        );
 
 
         // Items
@@ -138,13 +134,13 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                         .subtitle("subtitles.aether_genesis.entity.sentry_guardian.hit")
         );
 
-        this.add(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COGLOSS,
-                definition().with(sound("aether_genesis:entity/labyrinth_eye/cogloss"))
-                        .subtitle("subtitles.aether_genesis.entity.labyrinth_eye.cogloss")
+        this.add(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COG_LOSS,
+                definition().with(sound("aether_genesis:entity/labyrinth_eye/cog_loss"))
+                        .subtitle("subtitles.aether_genesis.entity.labyrinth_eye.cog_loss")
         );
         this.add(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_DEATH,
-                definition().with(sound("aether_genesis:entity/labyrinth_eye/eyedeath"))
-                        .subtitle("subtitles.aether_genesis.entity.labyrinth_eye.eyedeath")
+                definition().with(sound("aether_genesis:entity/labyrinth_eye/death"))
+                        .subtitle("subtitles.aether_genesis.entity.labyrinth_eye.death")
         );
         this.add(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_MOVE,
                 definition().with(sound("aether_genesis:entity/labyrinth_eye/move_1"),
