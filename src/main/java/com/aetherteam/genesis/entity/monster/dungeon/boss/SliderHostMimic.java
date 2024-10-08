@@ -41,9 +41,7 @@ import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Enemy;
-import net.minecraft.world.entity.monster.Shulker;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ShulkerBullet;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
@@ -115,9 +113,9 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     }
 
     public void sendEye() {
-        while (this.eyes.size() > 4) (this.eyes.remove(0)).kill();
+        while (this.eyes.size() > 4) (this.eyes.remove(0)).setHealth(0);
         HostEyeProjectile eye = new HostEyeProjectile(GenesisEntityTypes.HOST_EYE.get(), level());
-        this.level().addFreshEntity(new HostEyeProjectile(this.level(), this, livingentity, Shulker.this.getAttachFace().getAxis()));
+        this.level().addFreshEntity(eye);
         eye.setPos(this.position());
         this.level().playSound(this, this.blockPosition(), AetherSoundEvents.ENTITY_SLIDER_AWAKEN.get(), SoundSource.HOSTILE, 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
         this.eyes.add(eye);
