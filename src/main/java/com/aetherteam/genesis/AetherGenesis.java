@@ -1,6 +1,5 @@
 package com.aetherteam.genesis;
 
-import com.aetherteam.aether.network.packet.clientbound.SetVehiclePacket;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonBuilder;
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
@@ -112,10 +111,12 @@ public class AetherGenesis {
 
             Regions.register(new GenesisRegion(new ResourceLocation(MODID, MODID), GenesisConfig.COMMON.biome_weight.get()));
 
-            //todo balance distributions
-            BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("chest_room").add((manager, pos, rot, processors) -> new GenesisBronzeDungeonRoom(manager, "spawner_room", pos, rot, processors), 2);
+            BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("chest_room").add((manager, pos, rot, processors) -> new GenesisBronzeDungeonRoom(manager, "spawner_room", pos, rot, processors), 3);
             BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("chest_room").add((manager, pos, rot, processors) -> new GenesisBronzeDungeonRoom(manager, "spawner_room_pillars", pos, rot, processors), 2);
-//            BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("boss_room").add((manager, pos, rot, processors) -> new GenesisBronzeBossRoom(manager, "host_mimic_boss_room", pos, rot, processors), 5);
+
+            BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("boss_room").add((manager, pos, rot, processors) -> new GenesisBronzeBossRoom(manager, "sentry_guardian_boss_room", pos, rot, processors), 6);
+            BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("boss_room").add((manager, pos, rot, processors) -> new GenesisBronzeBossRoom(manager, "host_mimic_boss_room", pos, rot, processors), 6);
+            BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("boss_room").add((manager, pos, rot, processors) -> new GenesisBronzeBossRoom(manager, "labyrinth_eye_boss_room", pos, rot, processors), 6);
         });
     }
 

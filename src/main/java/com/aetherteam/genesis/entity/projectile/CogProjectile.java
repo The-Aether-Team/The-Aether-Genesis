@@ -27,6 +27,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.event.EventHooks;
 
 public class CogProjectile extends Projectile {
     public static final EntityDataAccessor<Boolean> SIZE = SynchedEntityData.defineId(CogProjectile.class, EntityDataSerializers.BOOLEAN);
@@ -42,9 +43,9 @@ public class CogProjectile extends Projectile {
     }
 
     @Override
-    public void remove(RemovalReason pReason) {
+    public void remove(RemovalReason reason) {
         this.playSound(GenesisSoundEvents.ENTITY_COG_BREAK.get(), 2.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.2F);
-        super.remove(pReason);
+        super.remove(reason);
     }
 
     @Override
@@ -85,7 +86,7 @@ public class CogProjectile extends Projectile {
                 flag = true;
             }
         }
-        if (result.getType() != HitResult.Type.MISS && !flag && !net.neoforged.neoforge.event.EventHooks.onProjectileImpact(this, result)) {
+        if (result.getType() != HitResult.Type.MISS && !flag && !EventHooks.onProjectileImpact(this, result)) {
             this.onHit(result);
         }
         this.checkInsideBlocks();
@@ -104,16 +105,14 @@ public class CogProjectile extends Projectile {
     }
 
     public int getLifeSpan() {
-        return 300;
+        return 500;
     }
-
-
 
     /**
      * @param shooter - The entity that created this projectile
      */
     public CogProjectile(Level level, Entity shooter, Boolean large) {
-        this(GenesisEntityTypes.COG_ARROW.get(), level);
+        this(GenesisEntityTypes.FLYING_COG.get(), level);
         this.setLarge(large);
         this.setOwner(shooter);
         this.setPos(shooter.getX(), shooter.getY() + 1, shooter.getZ());
@@ -131,7 +130,7 @@ public class CogProjectile extends Projectile {
     protected void onHitEntity(EntityHitResult result) {
         Entity entity = result.getEntity();
         if (entity instanceof LivingEntity livingEntity && livingEntity != this.getOwner()) {
-            if (livingEntity.hurt(AetherDamageTypes.indirectEntityDamageSource(this.level(), AetherDamageTypes.FLOATING_BLOCK, this, this.getOwner()), 6.0F)) {
+            if (livingEntity.hurt(AetherDamageTypes.indirectEntityDamageSource(this.level(), AetherDamageTypes.FLOATING_BLOCK, this, this.getOwner()), 5.0F + random.nextInt(2))) {
                 this.level().playSound(null, this.getX(), this.getY(), this.getZ(), this.getImpactExplosionSoundEvent(), SoundSource.HOSTILE, 2.0F, this.random.nextFloat() - this.random.nextFloat() * 0.2F + 1.2F);
             }
         }
@@ -167,7 +166,6 @@ public class CogProjectile extends Projectile {
                     this.yPower = vec3.y * 0.15;
                     this.zPower = vec3.z * 0.25;
                 }
-
                 return true;
             } else {
                 return false;
@@ -181,7 +179,7 @@ public class CogProjectile extends Projectile {
     }
 
     @Override
-    public void addAdditionalSaveData( CompoundTag tag) {
+    public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         tag.putInt("TicksInAir", this.ticksInAir);
         tag.putDouble("XSpeed", this.xPower);
@@ -190,7 +188,7 @@ public class CogProjectile extends Projectile {
     }
 
     @Override
-    public void readAdditionalSaveData( CompoundTag tag) {
+    public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         if (tag.contains("TicksInAir")) {
             this.ticksInAir = tag.getInt("TicksInAir");

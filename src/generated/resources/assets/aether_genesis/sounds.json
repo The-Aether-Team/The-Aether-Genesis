@@ -1,10 +1,4 @@
 {
-  "block.aercloud.blue_aercloud_bounce": {
-    "sounds": [
-      "aether_genesis:block/aercloud/blue_aercloud_bounce"
-    ],
-    "subtitle": "subtitles.aether_genesis.block.aercloud.blue_aercloud_bounce"
-  },
   "block.portal.hum": {
     "sounds": [
       "aether_genesis:block/portal/hum"
@@ -42,17 +36,17 @@
     ],
     "subtitle": "subtitles.aether_genesis.entity.cog.break"
   },
-  "entity.labyrinth_eye.cogloss": {
+  "entity.labyrinth_eye.cog_loss": {
     "sounds": [
-      "aether_genesis:entity/labyrinth_eye/cogloss"
+      "aether_genesis:entity/labyrinth_eye/cog_loss"
     ],
-    "subtitle": "subtitles.aether_genesis.entity.labyrinth_eye.cogloss"
+    "subtitle": "subtitles.aether_genesis.entity.labyrinth_eye.cog_loss"
   },
   "entity.labyrinth_eye.death": {
     "sounds": [
-      "aether_genesis:entity/labyrinth_eye/eyedeath"
+      "aether_genesis:entity/labyrinth_eye/death"
     ],
-    "subtitle": "subtitles.aether_genesis.entity.labyrinth_eye.eyedeath"
+    "subtitle": "subtitles.aether_genesis.entity.labyrinth_eye.death"
   },
   "entity.labyrinth_eye.move": {
     "sounds": [
@@ -207,6 +201,14 @@
       },
       {
         "name": "aether_genesis:music/aether_night2",
+        "stream": true
+      }
+    ]
+  },
+  "music.miniboss": {
+    "sounds": [
+      {
+        "name": "aether_genesis:music/boss/miniboss_fight",
         "stream": true
       }
     ]

@@ -99,8 +99,8 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.<DetonationProjectile>of(DetonationProjectile::new, MobCategory.MISC).clientTrackingRange(4).updateInterval(10).sized(0.9F, 0.9F).fireImmune().build("detonation_projectile"));
     public static final  DeferredHolder<EntityType<?>, EntityType<HostEyeProjectile>> HOST_EYE = ENTITY_TYPES.register("host_eye",
             () -> EntityType.Builder.of(HostEyeProjectile::new, MobCategory.MISC).sized(0.4F, 0.4F).clientTrackingRange(10).fireImmune().build("host_eye"));
-    public static final  DeferredHolder<EntityType<?>, EntityType<CogProjectile>> COG_ARROW = ENTITY_TYPES.register("cog_arrow",
-            () -> EntityType.Builder.<CogProjectile>of(CogProjectile::new, MobCategory.MISC).clientTrackingRange(4).updateInterval(10).sized(0.9F, 0.9F).fireImmune().build("cog_arrow"));
+    public static final  DeferredHolder<EntityType<?>, EntityType<CogProjectile>> FLYING_COG = ENTITY_TYPES.register("flying_cog",
+            () -> EntityType.Builder.<CogProjectile>of(CogProjectile::new, MobCategory.MISC).clientTrackingRange(4).updateInterval(10).sized(1.5F, 1.5F).fireImmune().build("flying_Cog"));
 
     @SubscribeEvent
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {

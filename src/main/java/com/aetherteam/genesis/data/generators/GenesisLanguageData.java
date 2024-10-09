@@ -95,6 +95,9 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG, "Battle Sentry Spawn Egg");
         this.addItem(GenesisItems.SENTRY_GOLEM_SPAWN_EGG, "Sentry Golem Spawn Egg");
         this.addItem(GenesisItems.TRACKING_GOLEM_SPAWN_EGG, "Tracking Golem Spawn Egg");
+        this.addItem(GenesisItems.SLIDER_HOST_MIMIC_SPAWN_EGG, "Sentry Host Mimic Spawn Egg");
+        this.addItem(GenesisItems.SENTRY_GUARDIAN_SPAWN_EGG, "Sentry Guardian Spawn Egg");
+        this.addItem(GenesisItems.LABYRINTH_EYE_SPAWN_EGG, "Labyrinth's Eye Spawn Egg");
 
         this.addItem(GenesisItems.BLUE_PARACHUTE, "Blue Parachute");
         this.addItem(GenesisItems.GREEN_PARACHUTE, "Green Parachute");
@@ -260,7 +263,9 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addEntityType(GenesisEntityTypes.SENTRY_GUARDIAN, "Sentry Guardian");
         this.addEntityType(GenesisEntityTypes.SLIDER_HOST_MIMIC, "Slider Host Mimic");
+        this.addEntityType(GenesisEntityTypes.LABYRINTH_EYE, "Labyrinth's Eye");
         this.addEntityType(GenesisEntityTypes.HOST_EYE, "Host Eye");
+        this.addEntityType(GenesisEntityTypes.FLYING_COG, "Flying Cog");
 
         this.addBlock(GenesisBlocks.CARVED_PILLAR_TOP, "Carved Pillar Top");
         this.addBlock(GenesisBlocks.CARVED_PILLAR, "Carved Pillar");
@@ -288,7 +293,6 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
         this.addSubtitle("block", "portal.trigger", "Aether Portal hum intensifies");
         this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");
-        this.addSubtitle("block", "aercloud.blue_aercloud_bounce", "Blue Aercloud bounces");
         this.addSubtitle("entity", "tempest.shoot", "Tempest spits");
         this.addSubtitle("entity", "tempest.ambient", "Tempest blows");
         this.addSubtitle("entity", "tempest.death", "Tempest dies");
@@ -296,13 +300,16 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addContainerType(GenesisMenuTypes.HOLYSTONE_FURNACE, "Holystone Furnace");
 
+        this.addContainerType("host_treasure_chest", "Host Treasure Chest");
+        this.addContainerType("guardian_treasure_chest", "Guardian Treasure Chest");
+        this.addContainerType("cog_treasure_chest", "Cog Treasure Chest");
+
         this.addGuiText("slider.message.attack.invalid_item", "Hmm. It's a rock-solid block. My %1$s wouldn't work on this.");
         this.addGuiText("slider.message.attack.invalid_fist", "Hmm. It's a rock-solid block. My fist wouldn't work on this.");
 
         this.addCommonConfig("gameplay", "gold_aercloud_ability", "Changes Gold Aercloud and respective parachute behavior to launch entities downwards");
         this.addCommonConfig("gameplay", "improved_slider_message", "Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe");
         this.addClientConfig("gui", "genesis_menu_layout", "Replaces the menu toggle buttons with the Cumulus' menu switcher");
-        this.addClientConfig("audio", "blue_aercloud_bounce_sfx", "Makes Blue Aerclouds have their wobbly sounds that play when bouncing on them");
         this.addClientConfig("audio", "night_music_tracks", "Adds some nice night tracks to the Aether's music selection. Also disables the default music manager for the Aether, to prevent overlap");
 
         this.addPackTitle("classic", "Genesis of the Void Textures");
@@ -312,8 +319,8 @@ public class GenesisLanguageData extends GenesisLanguageProvider {
 
         this.addGuiText("host.title", "the Slider Host Mimic");
         this.addGuiText("sentry_guardian.title", "the Sentry Guardian");
-        this.addGuiText("labyrinth_eye.title", "the Labyrinth Eye");
+        this.addGuiText("labyrinth_eye.title", "the Labyrinth's Eye");
 
-        this.addGuiText("boss.message.projectile", "Hmm... Better switch to a sword");
+        this.addGuiText("boss.message.projectile", "Hmm... Ranged Weapons will not work here");
     }
 }

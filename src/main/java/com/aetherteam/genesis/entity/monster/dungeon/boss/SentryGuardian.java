@@ -1,10 +1,12 @@
 package com.aetherteam.genesis.entity.monster.dungeon.boss;
 
 import com.aetherteam.aether.Aether;
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.entity.AetherBossMob;
 import com.aetherteam.aether.entity.ai.goal.ContinuousMeleeAttackGoal;
 import com.aetherteam.aether.entity.monster.dungeon.Sentry;
 import com.aetherteam.aether.entity.monster.dungeon.boss.BossNameGenerator;
+import com.aetherteam.aether.event.AetherEventDispatch;
 import com.aetherteam.aether.network.packet.clientbound.BossInfoPacket;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.nitrogen.entity.BossRoomTracker;
@@ -19,7 +21,9 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -43,18 +47,30 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
+import java.util.Map;
+import java.util.function.Function;
 
 import static com.aetherteam.aether.entity.AetherEntityTypes.SENTRY;
 
 public class SentryGuardian extends PathfinderMob implements AetherBossMob<SentryGuardian>, Enemy, IEntityWithComplexSpawn {
     public static final EntityDataAccessor<Boolean> DATA_AWAKE_ID = SynchedEntityData.defineId(SentryGuardian.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Component> DATA_BOSS_NAME_ID = SynchedEntityData.defineId(SentryGuardian.class, EntityDataSerializers.COMPONENT);
+    private static final Music MINIBOSS_MUSIC = new Music(GenesisSoundEvents.MUSIC_MINIBOSS, 0, 0, true);
+    public static final Map<Block, Function<BlockState, BlockState>> DUNGEON_BLOCK_CONVERSIONS = Map.ofEntries(
+            Map.entry(AetherBlocks.LOCKED_CARVED_STONE.get(), (blockState) -> AetherBlocks.CARVED_STONE.get().defaultBlockState()),
+            Map.entry(AetherBlocks.LOCKED_SENTRY_STONE.get(), (blockState) -> AetherBlocks.SENTRY_STONE.get().defaultBlockState()),
+            Map.entry(AetherBlocks.BOSS_DOORWAY_CARVED_STONE.get(), (blockState) -> Blocks.AIR.defaultBlockState()),
+            Map.entry(AetherBlocks.TREASURE_DOORWAY_CARVED_STONE.get(), (blockState) -> AetherBlocks.SKYROOT_TRAPDOOR.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, blockState.getValue(HorizontalDirectionalBlock.FACING)))
+    );
 
     public int chatTime;
     private int attackTime = 0;
@@ -67,9 +83,10 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     
     public static AttributeSupplier.Builder createMobAttributes() {
         return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 250)
-                .add(Attributes.MOVEMENT_SPEED, 0.28)
-                .add(Attributes.FOLLOW_RANGE, 8.0);
+                .add(Attributes.MAX_HEALTH, 350)
+                .add(Attributes.MOVEMENT_SPEED, 0.265)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.5)
+                .add(Attributes.FOLLOW_RANGE, 64.0);
     }
 
     @Override
@@ -126,8 +143,16 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     public void die(DamageSource source) {
+        this.setDeltaMovement(Vec3.ZERO);
         this.level().explode(this, this.position().x, this.position().y, this.position().z, 0.3F, false, Level.ExplosionInteraction.TNT);
         spawnSentry();
+        if (this.level() instanceof ServerLevel) {
+            this.bossFight.setProgress(this.getHealth() / this.getMaxHealth());
+            if (this.getDungeon() != null) {
+                this.getDungeon().grantAdvancements(source);
+                this.tearDownRoom();
+            }
+        }
         super.die(source);
     }
 
@@ -165,30 +190,29 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
             this.setPos(this.getDungeon().originCoordinates());
             this.openRoom();
         }
+        AetherEventDispatch.onBossFightStop(this, this.getDungeon());
     }
 
-    public boolean doHurtTarget(Entity pEntity) {
-        this.attackTime = 10;
+    public boolean doHurtTarget(Entity entity) {
+        this.attackTime = 4 + this.random.nextInt(4);
         this.level().broadcastEntityEvent(this, (byte)4);
-        float f = 7 + this.random.nextInt(15);
-        float f1 = (int)f > 0 ? f / 2.0F + (float)this.random.nextInt((int)f) : f;
-        boolean flag = pEntity.hurt(this.damageSources().mobAttack(this), f1);
+        boolean flag = entity.hurt(this.damageSources().mobAttack(this), 5 + this.random.nextInt(3));
         if (flag) {
             double d2;
-            if (pEntity instanceof LivingEntity) {
-                LivingEntity livingentity = (LivingEntity)pEntity;
-                d2 = livingentity.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
+            if (entity instanceof LivingEntity) {
+                LivingEntity living = (LivingEntity)entity;
+                d2 = living.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
             } else {
                 d2 = 0.0D;
             }
 
             double d0 = d2;
             double d1 = Math.max(0.0D, 1.0D - d0);
-            pEntity.setDeltaMovement(pEntity.getDeltaMovement().add(0.0D, (double)0.4F * d1, 0.0D));
-            this.doEnchantDamageEffects(this, pEntity);
+            entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, (double)0.4F * d1, 0.0D));
+            this.doEnchantDamageEffects(this, entity);
         }
 
-        this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
+        this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F); //TODO
         return flag;
     }
 
@@ -230,8 +254,13 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
             return false;
         }
         if (!this.isBossFight()) {
+            this.setHealth(this.getMaxHealth());
             this.setAwake(true);
             this.setBossFight(true);
+            if (this.getDungeon() != null) {
+                this.closeRoom();
+            }
+            AetherEventDispatch.onBossFightStart(this, this.getDungeon());
         }
         return super.hurt(source, damage);
     }
@@ -272,6 +301,15 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         return new ResourceLocation(Aether.MODID, "boss_bar/slider_background");
     }
 
+    /**
+     * @return The {@link Music} for this boss's fight.
+     */
+    @Nullable
+    @Override
+    public Music getBossMusic() {
+        return MINIBOSS_MUSIC;
+    }
+
     @Override
     public BossRoomTracker<SentryGuardian> getDungeon() {
         return this.bronzeDungeon;
@@ -289,8 +327,8 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
 
     @Nullable
     @Override
-    public BlockState convertBlock(BlockState blockState) {
-        return null;
+    public BlockState convertBlock(BlockState state) {
+        return DUNGEON_BLOCK_CONVERSIONS.getOrDefault(state.getBlock(), (blockState) -> null).apply(state);
     }
 
     @Override
@@ -332,14 +370,14 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
-    public void onDungeonPlayerAdded(@javax.annotation.Nullable Player player) {
+    public void onDungeonPlayerAdded(@Nullable Player player) {
         if (player instanceof ServerPlayer serverPlayer) {
             this.bossFight.addPlayer(serverPlayer);
         }
     }
 
     @Override
-    public void onDungeonPlayerRemoved(@javax.annotation.Nullable Player player) {
+    public void onDungeonPlayerRemoved(@Nullable Player player) {
         if (player instanceof ServerPlayer serverPlayer) {
             this.bossFight.removePlayer(serverPlayer);
         }
@@ -356,6 +394,11 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     @Override
     public Component getBossName() {
         return this.entityData.get(DATA_BOSS_NAME_ID);
+    }
+
+    @Override
+    public boolean isPushable() {
+        return false;
     }
 
     @Override
@@ -403,7 +446,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
-    public void setCustomName(@javax.annotation.Nullable Component name) {
+    public void setCustomName(@Nullable Component name) {
         super.setCustomName(name);
         this.setBossName(name);
     }

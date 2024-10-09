@@ -61,7 +61,7 @@ public class HostEyeProjectile extends PathfinderMob {
     }
 
     public void playerTouch(Player pEntity) {
-            this.dealDamage(pEntity);
+        this.dealDamage(pEntity);
     }
 
     public void tick() {

@@ -74,7 +74,7 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), TempestThunderballRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.PHOENIX_DART.get(), PhoenixDartRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.DETONATION_PROJECTILE.get(), DetonationProjectileRenderer::new);
-        event.registerEntityRenderer(GenesisEntityTypes.COG_ARROW.get(), CogProjectileRenderer::new);
+        event.registerEntityRenderer(GenesisEntityTypes.FLYING_COG.get(), CogProjectileRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.CONTINUUM_BOMB.get(), (context) -> new ThrownItemRenderer<>(context, 1.0F, true));
         event.registerEntityRenderer(GenesisEntityTypes.REWARD_ITEM.get(), ItemEntityRenderer::new);
