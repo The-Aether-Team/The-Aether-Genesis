@@ -1,13 +1,17 @@
 package com.aetherteam.genesis.client;
 
 import com.aetherteam.aether.AetherConfig;
+import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.GenesisConfig;
 import com.aetherteam.genesis.client.gui.screen.inventory.HolystoneFurnaceScreen;
 import com.aetherteam.genesis.client.renderer.GenesisRenderers;
 import com.aetherteam.genesis.inventory.menu.GenesisMenuTypes;
 import com.aetherteam.cumulus.CumulusConfig;
+import com.aetherteam.nitrogen.event.listeners.TooltipListeners;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -25,6 +29,7 @@ public class GenesisClient {
             if (GenesisConfig.CLIENT.night_music_tracks.get()) {
                 AetherConfig.CLIENT.disable_music_manager.set(true);
             }
+            registerTooltipOverrides();
         });
     }
 
@@ -39,5 +44,15 @@ public class GenesisClient {
 
     public static void registerGuiFactories() {
         MenuScreens.register(GenesisMenuTypes.HOLYSTONE_FURNACE.get(), HolystoneFurnaceScreen::new);
+    }
+
+    public static void registerTooltipOverrides() {
+        TooltipListeners.PREDICATES.put(AetherItems.GOLDEN_PARACHUTE.getId(), (player, stack, components, component) -> {
+            if (GenesisConfig.COMMON.gold_aercloud_ability.get() && component.getContents() instanceof TranslatableContents contents && contents.getKey().endsWith(".1")) {
+                return Component.translatable(contents.getKey() + ".genesis");
+            } else {
+                return component;
+            }
+        });
     }
 }
