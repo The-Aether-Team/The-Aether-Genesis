@@ -76,11 +76,11 @@ public class GenesisCreativeTabs {
             event.getEntries().putAfter(new ItemStack(GenesisItems.BLUE_PARACHUTE.get()), new ItemStack(GenesisItems.GREEN_PARACHUTE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.GREEN_PARACHUTE.get()), new ItemStack(GenesisItems.PURPLE_PARACHUTE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(AetherItems.PHOENIX_BOW.get()), new ItemStack(GenesisItems.PHOENIX_DART_SHOOTER.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putBefore(new ItemStack(AetherItems.MUSIC_DISC_ASCENDING_DAWN.get()), new ItemStack(GenesisItems.MUSIC_DISC_DEMISE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(AetherItems.MUSIC_DISC_ASCENDING_DAWN.get()), new ItemStack(GenesisItems.MUSIC_DISC_APPROACHES.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(GenesisItems.MUSIC_DISC_APPROACHES.get()), new ItemStack(GenesisItems.RECORDING_892.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(GenesisItems.RECORDING_892.get()), new ItemStack(GenesisItems.MUSIC_DISC_AERWHALE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.getEntries().putAfter(new ItemStack(GenesisItems.MUSIC_DISC_AERWHALE.get()), new ItemStack(GenesisItems.CONTINUUM_BOMB.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(AetherItems.MUSIC_DISC_SLIDERS_WRATH.get()), new ItemStack(GenesisItems.MUSIC_DISC_AERWHALE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.MUSIC_DISC_AERWHALE.get()), new ItemStack(GenesisItems.MUSIC_DISC_APPROACHES.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.MUSIC_DISC_APPROACHES.get()), new ItemStack(GenesisItems.MUSIC_DISC_DEMISE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.MUSIC_DISC_DEMISE.get()), new ItemStack(GenesisItems.RECORDING_892.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.getEntries().putAfter(new ItemStack(GenesisItems.RECORDING_892.get()), new ItemStack(GenesisItems.CONTINUUM_BOMB.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.CONTINUUM_BOMB.get()), new ItemStack(GenesisItems.CRYSTAL_EXPERIENCE_BOTTLE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(AetherItems.BRONZE_DUNGEON_KEY.get()), new ItemStack(GenesisItems.GUARDIAN_KEY.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.getEntries().putAfter(new ItemStack(GenesisItems.GUARDIAN_KEY.get()), new ItemStack(GenesisItems.COG_KEY.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);

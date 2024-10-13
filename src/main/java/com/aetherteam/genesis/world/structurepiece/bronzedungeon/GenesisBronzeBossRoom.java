@@ -1,7 +1,5 @@
 package com.aetherteam.genesis.world.structurepiece.bronzedungeon;
 
-import com.aetherteam.aether.Aether;
-import com.aetherteam.aether.blockentity.TreasureChestBlockEntity;
 import com.aetherteam.aether.loot.AetherLoot;
 import com.aetherteam.aether.world.structurepiece.AetherTemplateStructurePiece;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonPiece;
@@ -23,7 +21,8 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 
-public class GenesisBronzeBossRoom extends BronzeDungeonPiece { //todo host mimic room doesnt have proper structure voids
+public class GenesisBronzeBossRoom extends BronzeDungeonPiece {
+
     public GenesisBronzeBossRoom(StructureTemplateManager manager, String name, BlockPos pos, Rotation rotation, Holder<StructureProcessorList> processors) {
         super(GenesisStructurePieceTypes.BRONZE_BOSS_ROOM.get(), manager, new ResourceLocation(AetherGenesis.MODID, "bronze_dungeon/" + name), AetherTemplateStructurePiece.makeSettingsWithPivot(makeSettings(), manager, BronzeDungeonPiece.makeLocation(name), rotation), pos, processors);
     }
@@ -43,7 +42,6 @@ public class GenesisBronzeBossRoom extends BronzeDungeonPiece { //todo host mimi
             if (entity instanceof RandomizableContainerBlockEntity container) {
                 container.setLootTable(AetherLoot.BRONZE_DUNGEON_REWARD, random.nextLong());
             }
-            TreasureChestBlockEntity.setDungeonType(level, chest, new ResourceLocation(Aether.MODID, "bronze"));
             level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
         }
     }

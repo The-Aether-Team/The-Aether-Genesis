@@ -51,8 +51,8 @@ public class GenesisPlacedFeatures {
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
-        register(context, GREEN_AERCLOUD_4_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.GREEN_AERCLOUD_4_CONFIGURATION), AetherPlacedFeatureBuilders.aercloudPlacement(0, 32, 24));
-        register(context, GREEN_AERCLOUD_8_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.GREEN_AERCLOUD_8_CONFIGURATION), AetherPlacedFeatureBuilders.aercloudPlacement(32, 64, 7));
+        register(context, GREEN_AERCLOUD_4_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.GREEN_AERCLOUD_4_CONFIGURATION), AetherPlacedFeatureBuilders.aercloudPlacement(0, 32, 16));
+        register(context, GREEN_AERCLOUD_8_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.GREEN_AERCLOUD_8_CONFIGURATION), AetherPlacedFeatureBuilders.aercloudPlacement(32, 64, 8));
         register(context, PURPLE_AERCLOUD_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.PURPLE_AERCLOUD_CONFIGURATION), AetherPlacedFeatureBuilders.aercloudPlacement(0, 32, 24));
         register(context, STORM_AERCLOUD_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.STORM_AERCLOUD_CONFIGURATION), AetherPlacedFeatureBuilders.aercloudPlacement(0, 32, 24));
 

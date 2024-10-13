@@ -44,7 +44,6 @@ public class GenesisConfig {
     public static class Client {
         public final ModConfigSpec.ConfigValue<Boolean> genesis_menu_layout;
         public final ModConfigSpec.ConfigValue<Boolean> night_music_tracks;
-        public final ModConfigSpec.ConfigValue<Boolean> blue_aercloud_bounce_sfx;
 
         public Client(ModConfigSpec.Builder builder) {
             builder.push("Gui");
@@ -59,11 +58,6 @@ public class GenesisConfig {
                     .comment("Adds some nice night tracks to the Aether's music selection. Also disables the default music manager for the Aether, to prevent overlap")
                     .translation("config.aether_genesis.client.audio.night_music_tracks")
                     .define("Nighttime music tracks", true);
-            blue_aercloud_bounce_sfx = builder
-                    .comment("Makes Blue Aerclouds have their wobbly sounds that play when bouncing on them")
-                    .translation("config.aether_genesis.client.audio.blue_aercloud_bounce_sfx")
-                    .define("Blue Aercloud bouncing sounds", true);
-            builder.pop();
         }
     }
 
