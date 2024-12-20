@@ -12,19 +12,21 @@ import com.aetherteam.genesis.entity.monster.dungeon.boss.*;
 import com.aetherteam.genesis.entity.passive.*;
 import com.aetherteam.genesis.entity.projectile.*;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
-import net.neoforged.neoforge.event.entity.SpawnPlacementRegisterEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-@Mod.EventBusSubscriber(modid = AetherGenesis.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GenesisEntityTypes {
+
+    public static void listen(IEventBus bus) {
+        bus.addListener(GenesisEntityTypes::registerSpawnPlacements);
+        bus.addListener(GenesisEntityTypes::registerEntityAttributes);
+    }
+
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, AetherGenesis.MODID);
 
     // Passive Mobs
@@ -39,7 +41,7 @@ public class GenesisEntityTypes {
     public static final  DeferredHolder<EntityType<?>, EntityType<Tempest>> TEMPEST = ENTITY_TYPES.register("tempest",
             () -> EntityType.Builder.of(Tempest::new, AetherMobCategory.AETHER_SKY_MONSTER).sized(2.5F, 1.75F).fireImmune().clientTrackingRange(10).build("tempest"));
     public static final  DeferredHolder<EntityType<?>, EntityType<BattleSentry>> BATTLE_SENTRY = ENTITY_TYPES.register("battle_sentry",
-            () -> EntityType.Builder.of(BattleSentry::new, MobCategory.MONSTER).sized(2.0F, 2.0F).clientTrackingRange(10).build("battle_sentry"));
+            () -> EntityType.Builder.of(BattleSentry::new, MobCategory.MONSTER).sized(2.0F, 2.0F).spawnDimensionsScale(1.76F).clientTrackingRange(10).build("battle_sentry"));
     public static final  DeferredHolder<EntityType<?>, EntityType<SentryGolem>> SENTRY_GOLEM = ENTITY_TYPES.register("sentry_golem",
             () -> EntityType.Builder.of(SentryGolem::new, MobCategory.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build("sentry_golem"));
     public static final  DeferredHolder<EntityType<?>, EntityType<TrackingGolem>> TRACKING_GOLEM = ENTITY_TYPES.register("tracking_golem",
@@ -102,15 +104,13 @@ public class GenesisEntityTypes {
     public static final  DeferredHolder<EntityType<?>, EntityType<CogProjectile>> FLYING_COG = ENTITY_TYPES.register("flying_cog",
             () -> EntityType.Builder.<CogProjectile>of(CogProjectile::new, MobCategory.MISC).clientTrackingRange(4).updateInterval(10).sized(1.5F, 1.5F).fireImmune().build("flying_Cog"));
 
-    @SubscribeEvent
-    public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
-        event.register(GenesisEntityTypes.CARRION_SPROUT.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CarrionSprout::checkCarrionSproutSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
-        event.register(GenesisEntityTypes.ZEPHYROO.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Zephyroo::checkAetherAnimalSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
-        event.register(GenesisEntityTypes.DARK_SWET.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Swet::checkSwetSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
-        event.register(GenesisEntityTypes.TEMPEST.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Tempest::checkTempestSpawnRules, SpawnPlacementRegisterEvent.Operation.OR);
+    public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
+        event.register(GenesisEntityTypes.CARRION_SPROUT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CarrionSprout::checkCarrionSproutSpawnRules, RegisterSpawnPlacementsEvent.Operation.OR);
+        event.register(GenesisEntityTypes.ZEPHYROO.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Zephyroo::checkAetherAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.OR);
+        event.register(GenesisEntityTypes.DARK_SWET.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Swet::checkSwetSpawnRules, RegisterSpawnPlacementsEvent.Operation.OR);
+        event.register(GenesisEntityTypes.TEMPEST.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Tempest::checkTempestSpawnRules, RegisterSpawnPlacementsEvent.Operation.OR);
     }
 
-    @SubscribeEvent
     public static void registerEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(GenesisEntityTypes.CARRION_SPROUT.get(), CarrionSprout.createMobAttributes().build());
         event.put(GenesisEntityTypes.ZEPHYROO.get(), Zephyroo.createZephyrooAttributes().build());

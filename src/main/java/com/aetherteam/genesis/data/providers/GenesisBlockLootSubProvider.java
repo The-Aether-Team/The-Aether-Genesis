@@ -9,6 +9,7 @@ import net.minecraft.advancements.critereon.BlockPredicate;
 import net.minecraft.advancements.critereon.LocationPredicate;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -28,13 +29,13 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import java.util.Set;
 
 public abstract class GenesisBlockLootSubProvider extends AetherBlockLootSubProvider {
-    public GenesisBlockLootSubProvider(Set<Item> items, FeatureFlagSet flags) {
-        super(items, flags);
+    public GenesisBlockLootSubProvider(Set<Item> items, FeatureFlagSet flags, HolderLookup.Provider registries) {
+        super(items, flags, registries);
     }
 
     public LootTable.Builder droppingWithChancesAndFruitAndSkyrootSticks(Block block, Block sapling, Item fruit, float... chances) {
         return droppingWithChancesAndSkyrootSticks(block, sapling, chances)
-                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(BlockLootAccessor.aether$hasShearsOrSilkTouch().invert())
+                .withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(this.hasSilkTouch().invert())
                         .add(this.applyExplosionCondition(block, LootItem.lootTableItem(fruit))));
     }
 
@@ -49,7 +50,7 @@ public abstract class GenesisBlockLootSubProvider extends AetherBlockLootSubProv
                                         LocationPredicate.Builder.location().setBlock(
                                                 BlockPredicate.Builder.block().of(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get())),
                                         new BlockPos(0, -1, 0))))
-                                .apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE)))
+                                .apply(ApplyBonusCount.addUniformBonusCount(this.registries.holderOrThrow(Enchantments.FORTUNE))))
                         .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(OrangeTreeBlock.AGE, 4)))
                         .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(DoublePlantBlock.HALF, DoubleBlockHalf.LOWER)))
                         .apply(DoubleDrops.builder())

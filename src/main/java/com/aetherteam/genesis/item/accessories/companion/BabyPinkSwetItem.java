@@ -3,10 +3,11 @@ package com.aetherteam.genesis.item.accessories.companion;
 import com.aetherteam.aether.item.accessories.AccessoryItem;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.entity.companion.BabyPinkSwet;
+import io.wispforest.accessories.api.slot.SlotReference;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import top.theillusivec4.curios.api.SlotContext;
+
 
 /**
  * Behavior is handled in {@link com.aetherteam.genesis.mixin.mixins.common.SwetMixin}.
@@ -17,15 +18,15 @@ public class BabyPinkSwetItem extends AccessoryItem implements CompanionAccessor
     }
 
     @Override
-    public void onEquip(SlotContext slotContext, ItemStack prevStack, ItemStack stack) {
-        CompanionAccessory.super.equip(slotContext, stack);
-        super.onEquip(slotContext, prevStack, stack);
+    public void onEquip(ItemStack stack, SlotReference reference) {
+        CompanionAccessory.super.equip(stack, reference);
+        super.onEquip(stack, reference);
     }
 
     @Override
-    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
-        CompanionAccessory.super.unequip(slotContext, stack);
-        super.onUnequip(slotContext, newStack, stack);
+    public void onUnequip(ItemStack stack, SlotReference reference) {
+        CompanionAccessory.super.unequip(stack, reference);
+        super.onUnequip(stack, reference);
     }
 
     public EntityType<BabyPinkSwet> getCompanionType() {

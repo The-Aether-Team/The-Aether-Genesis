@@ -187,7 +187,7 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get().asItem(),
                 GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get().asItem(),
                 GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get().asItem());
-        this.tag(ItemTags.MUSIC_DISCS).add(
+        this.tag(Tags.Items.MUSIC_DISCS).add(
                 GenesisItems.MUSIC_DISC_AERWHALE.get(),
                 GenesisItems.MUSIC_DISC_APPROACHES.get(),
                 GenesisItems.MUSIC_DISC_DEMISE.get(),

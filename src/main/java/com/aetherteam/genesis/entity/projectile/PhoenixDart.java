@@ -25,7 +25,7 @@ public class PhoenixDart extends GoldenDart {
         super.onHitEntity(pResult);
         if (!this.level().isClientSide) {
             Entity entity = pResult.getEntity();
-            entity.setSecondsOnFire(5);
+            entity.igniteForSeconds(5);
         }
     }
 
@@ -42,7 +42,7 @@ public class PhoenixDart extends GoldenDart {
             for (int i = 0; i < 2; i++)
                 this.spawnParticles(this);
         }else
-            this.setSecondsOnFire(1);
+            this.igniteForSeconds(1);
     }
 
     private void spawnParticles(AbstractArrow arrow) {

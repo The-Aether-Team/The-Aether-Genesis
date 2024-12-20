@@ -8,11 +8,11 @@ import com.aetherteam.aether.network.packet.clientbound.SetInvisibilityPacket;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.entity.companion.EtherealWisp;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
-import com.aetherteam.nitrogen.network.PacketRelay;
+import io.wispforest.accessories.api.slot.SlotReference;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import top.theillusivec4.curios.api.SlotContext;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 /**
  * [CODE COPY] - {@link com.aetherteam.aether.item.accessories.cape.InvisibilityCloakItem}
@@ -23,8 +23,8 @@ public class EtherealStoneItem extends CompanionItem<EtherealWisp> {
     }
 
     @Override
-    public void curioTick(SlotContext slotContext, ItemStack stack) {
-        LivingEntity livingEntity = slotContext.entity();
+    public void tick(ItemStack stack, SlotReference reference) {
+        LivingEntity livingEntity = reference.entity();
         if (livingEntity.level().isClientSide() && livingEntity instanceof Player player) {
             if (AetherKeys.INVISIBILITY_TOGGLE.consumeClick()) {
                 var data = player.getData(AetherDataAttachments.AETHER_PLAYER);
@@ -53,7 +53,7 @@ public class EtherealStoneItem extends CompanionItem<EtherealWisp> {
                     var data = player.getData(AetherDataAttachments.AETHER_PLAYER);
                     if (data.isWearingInvisibilityCloak()) {
                         player.setInvisible(true);
-                        PacketRelay.sendToAll(new SetInvisibilityPacket(player.getId(), true));
+                        PacketDistributor.sendToAllPlayers(new SetInvisibilityPacket(player.getId(), true));
                     }
                 } else {
                     livingEntity.setInvisible(true);
@@ -63,7 +63,7 @@ public class EtherealStoneItem extends CompanionItem<EtherealWisp> {
                     var data = player.getData(AetherDataAttachments.AETHER_PLAYER);
                     if (!data.isWearingInvisibilityCloak()) {
                         player.setInvisible(false);
-                        PacketRelay.sendToAll(new SetInvisibilityPacket(player.getId(), false));
+                        PacketDistributor.sendToAllPlayers(new SetInvisibilityPacket(player.getId(), false));
                     }
                 }
             }
@@ -71,13 +71,13 @@ public class EtherealStoneItem extends CompanionItem<EtherealWisp> {
     }
 
     @Override
-    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
-        LivingEntity livingEntity = slotContext.entity();
+    public void onUnequip(ItemStack stack, SlotReference reference) {
+        LivingEntity livingEntity = reference.entity();
         if (!livingEntity.level().isClientSide() && livingEntity instanceof Player player) {
             player.getData(AetherDataAttachments.AETHER_PLAYER).setSynched(player.getId(), INBTSynchable.Direction.CLIENT, "setWearingInvisibilityCloak", false);
         }
         livingEntity.setInvisible(false);
         ((LivingEntityAccessor) livingEntity).callUpdateEffectVisibility();
-        super.onUnequip(slotContext, newStack, stack);
+        super.onUnequip(stack, reference);
     }
 }

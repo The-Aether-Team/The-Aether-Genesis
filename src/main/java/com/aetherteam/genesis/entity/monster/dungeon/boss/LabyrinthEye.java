@@ -9,9 +9,9 @@ import com.aetherteam.aether.network.packet.clientbound.BossInfoPacket;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.entity.projectile.CogProjectile;
 import com.aetherteam.nitrogen.entity.BossRoomTracker;
-import com.aetherteam.nitrogen.network.PacketRelay;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -49,6 +49,7 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
@@ -203,25 +204,25 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     public void checkDespawn() {}
 
     @Override
-    public void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_AWAKE_ID, false);
-        this.entityData.define(DATA_BOSS_STAGE, 13);
-        this.entityData.define(DATA_BOSS_NAME_ID, Component.literal("Labyrinth's Eye"));
+    public void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_AWAKE_ID, false);
+        builder.define(DATA_BOSS_STAGE, 13);
+        builder.define(DATA_BOSS_NAME_ID, Component.literal("Labyrinth's Eye"));
     }
  
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
-        this.addBossSaveData(tag);
+        this.addBossSaveData(tag, this.registryAccess());
         tag.putBoolean("Awake", this.isAwake());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
-        this.readBossSaveData(tag);
+        this.readBossSaveData(tag, this.registryAccess());
         if (tag.contains("Awake")) {
             this.setAwake(tag.getBoolean("Awake"));
         }
@@ -279,7 +280,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     @Nullable
     @Override
     public ResourceLocation getBossBarTexture() {
-        return new ResourceLocation(Aether.MODID, "boss_bar/slider");
+        return ResourceLocation.fromNamespaceAndPath(Aether.MODID, "boss_bar/slider");
     }
 
     /**
@@ -288,7 +289,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     @Nullable
     @Override
     public ResourceLocation getBossBarBackgroundTexture() {
-        return new ResourceLocation(Aether.MODID, "boss_bar/slider_background");
+        return ResourceLocation.fromNamespaceAndPath(Aether.MODID, "boss_bar/slider_background");
     }
 
     /**
@@ -322,24 +323,24 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     }
 
     @Override
-    public void writeSpawnData(FriendlyByteBuf buffer) {
+    public void writeSpawnData(RegistryFriendlyByteBuf buffer) {
         CompoundTag tag = new CompoundTag();
-        this.addBossSaveData(tag);
+        this.addBossSaveData(tag, this.registryAccess());
         buffer.writeNbt(tag);
     }
 
     @Override
-    public void readSpawnData(FriendlyByteBuf additionalData) {
+    public void readSpawnData(RegistryFriendlyByteBuf additionalData) {
         CompoundTag tag = additionalData.readNbt();
         if (tag != null) {
-            this.readBossSaveData(tag);
+            this.readBossSaveData(tag, this.registryAccess());
         }
     }
 
     @Override
     public void startSeenByPlayer(ServerPlayer player) {
         super.startSeenByPlayer(player);
-        PacketRelay.sendToPlayer(new BossInfoPacket.Display(this.bossFight.getId(), this.getId()), player);
+        PacketDistributor.sendToPlayer(player, new BossInfoPacket.Display(this.bossFight.getId(), this.getId()));
         if (this.getDungeon() == null || this.getDungeon().isPlayerTracked(player)) {
             this.bossFight.addPlayer(player);
         }
@@ -355,7 +356,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     @Override
     public void stopSeenByPlayer(ServerPlayer player) {
         super.stopSeenByPlayer(player);
-        PacketRelay.sendToPlayer(new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()), player);
+        PacketDistributor.sendToPlayer(player, new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()));
         this.bossFight.removePlayer(player);
     }
 
@@ -417,9 +418,9 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level,  DifficultyInstance difficulty,  MobSpawnType reason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag dataTag) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level,  DifficultyInstance difficulty,  MobSpawnType reason, @Nullable SpawnGroupData pSpawnData) {
         this.alignSpawnPos();
-        SpawnGroupData data = super.finalizeSpawn(level, difficulty, reason, pSpawnData, dataTag);
+        SpawnGroupData data = super.finalizeSpawn(level, difficulty, reason, pSpawnData);
         this.setBossName(generateGuardianName());
         return data;
     }

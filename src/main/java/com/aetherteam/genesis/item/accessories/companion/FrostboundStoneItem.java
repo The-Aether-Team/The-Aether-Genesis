@@ -2,11 +2,11 @@ package com.aetherteam.genesis.item.accessories.companion;
 
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.entity.companion.FrostboundSprite;
+import io.wispforest.accessories.api.slot.SlotReference;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import top.theillusivec4.curios.api.SlotContext;
 
 public class FrostboundStoneItem extends CompanionItem<FrostboundSprite> {
     public FrostboundStoneItem(Properties properties) {
@@ -14,8 +14,8 @@ public class FrostboundStoneItem extends CompanionItem<FrostboundSprite> {
     }
 
     @Override
-    public void curioTick(SlotContext slotContext, ItemStack stack) {
-        LivingEntity livingEntity = slotContext.entity();
+    public void tick(ItemStack stack, SlotReference reference) {
+        LivingEntity livingEntity = reference.entity();
         if (livingEntity instanceof Player player) {
             if (player.tickCount % 25 == 0) {
                 int i = player.getInventory().findSlotMatchingItem(new ItemStack(Items.SNOWBALL));

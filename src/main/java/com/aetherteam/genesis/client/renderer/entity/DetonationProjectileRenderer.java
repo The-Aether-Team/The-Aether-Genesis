@@ -15,8 +15,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class DetonationProjectileRenderer extends EntityRenderer<DetonationProjectile> {
-    private static final ResourceLocation SENTRY_LIT_TEXTURE = new ResourceLocation(Aether.MODID, "textures/entity/mobs/sentry/sentry_lit.png");
-    private static final RenderType SENTRY_EYE = RenderType.eyes(new ResourceLocation(Aether.MODID, "textures/entity/mobs/sentry/eye.png"));
+    private static final ResourceLocation SENTRY_LIT_TEXTURE = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/mobs/sentry/sentry_lit.png");
+    private static final RenderType SENTRY_EYE = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/mobs/sentry/eye.png"));
     private final DetonationProjectileModel projectile;
 
     public DetonationProjectileRenderer(EntityRendererProvider.Context context) {
@@ -31,8 +31,8 @@ public class DetonationProjectileRenderer extends EntityRenderer<DetonationProje
         poseStack.mulPose(Axis.YP.rotationDegrees(yRot));
         poseStack.mulPose(Axis.XP.rotationDegrees(180.0F));
         this.projectile.setupAnim(projectile, 0.0F, 0.0F, projectile.tickCount, yRot, 180.0F);
-        this.projectile.renderToBuffer(poseStack, buffer.getBuffer(RenderType.entityCutoutNoCull(this.getTextureLocation(projectile))), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
-        this.projectile.renderToBuffer(poseStack, buffer.getBuffer(SENTRY_EYE), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        this.projectile.renderToBuffer(poseStack, buffer.getBuffer(RenderType.entityCutoutNoCull(this.getTextureLocation(projectile))), packedLight, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
+        this.projectile.renderToBuffer(poseStack, buffer.getBuffer(SENTRY_EYE), packedLight, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
         poseStack.popPose();
         super.render(projectile, entityYaw, partialTicks, poseStack, buffer, packedLight);
     }

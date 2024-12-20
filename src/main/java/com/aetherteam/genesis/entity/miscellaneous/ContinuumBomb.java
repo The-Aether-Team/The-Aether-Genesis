@@ -4,6 +4,7 @@ import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.item.GenesisItems;
 import com.aetherteam.genesis.loot.GenesisLoot;
+import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -78,7 +79,8 @@ public class ContinuumBomb extends ThrowableItemProjectile {
             double motX = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
             double motY = this.random.nextDouble();
             double motZ = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-            this.level().addParticle(ParticleTypes.AMBIENT_ENTITY_EFFECT, this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
+            // TODO: COLOR NEEDS TO BE DECIDED OR THIS IS JUST WRONG...
+            this.level().addParticle(ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, 0xFFFFFFFF), this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
             this.level().addParticle(ParticleTypes.CLOUD, this.getX(), this.getY(), this.getZ(), motX / 6.0, motY / 6.0, motZ / 6.0);
         }
     }
@@ -90,7 +92,7 @@ public class ContinuumBomb extends ThrowableItemProjectile {
      */
     private List<ItemStack> createLoot(ServerLevel serverLevel) {
         LootParams parameters = new LootParams.Builder(serverLevel).withParameter(LootContextParams.ORIGIN, this.position()).withParameter(LootContextParams.THIS_ENTITY, this).create(LootContextParamSets.SELECTOR);
-        LootTable lootTable = serverLevel.getServer().getLootData().getLootTable(GenesisLoot.CONTINUUM_ORB);
+        LootTable lootTable = serverLevel.getServer().reloadableRegistries().getLootTable(GenesisLoot.CONTINUUM_ORB);
         List<ItemStack> list = lootTable.getRandomItems(parameters);
         return new ArrayList<>(list);
     }

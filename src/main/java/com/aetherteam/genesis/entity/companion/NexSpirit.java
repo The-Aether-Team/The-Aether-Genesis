@@ -1,6 +1,8 @@
 package com.aetherteam.genesis.entity.companion;
 
+import com.aetherteam.genesis.item.GenesisDataComponents;
 import com.aetherteam.genesis.item.GenesisItems;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -17,10 +19,10 @@ public class NexSpirit extends FloatingCompanion {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.getEntityData().define(DATA_BROKEN_ID, false);
-        this.getEntityData().define(DATA_COOLDOWN_ID, 0);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_BROKEN_ID, false);
+        builder.define(DATA_COOLDOWN_ID, 0);
     }
 
     @Override
@@ -40,13 +42,13 @@ public class NexSpirit extends FloatingCompanion {
 
     @Override
     public void onEquip(ItemStack itemStack) {
-        if (itemStack.getTag() != null && itemStack.getTag().contains("Cooldown")) {
-            int cooldown = itemStack.getTag().getInt("Cooldown");
+        if (itemStack.has(GenesisDataComponents.NEX_SPIRIT_COOLDOWN)) {
+            int cooldown = itemStack.get(GenesisDataComponents.NEX_SPIRIT_COOLDOWN);
             if (cooldown > 0) {
                 this.setCooldown(cooldown); // Set cooldown tag that was stored with the Death Seal to the Nex Spirit
                 this.setBroken(true);
             }
-            itemStack.getTag().remove("Cooldown"); // Remove cooldown tag from Death Seal after transfer.
+            itemStack.remove(GenesisDataComponents.NEX_SPIRIT_COOLDOWN); // Remove cooldown tag from Death Seal after transfer.
         }
         super.onEquip(itemStack);
     }
@@ -65,7 +67,7 @@ public class NexSpirit extends FloatingCompanion {
 
     private void setItemCooldown() {
         if (this.getCooldown() > 0) { // Apply the current cooldown value to the Death Seal.
-            this.getItem().getOrCreateTag().putInt("Cooldown", this.getCooldown());
+            this.getItem().set(GenesisDataComponents.NEX_SPIRIT_COOLDOWN, this.getCooldown());
         }
     }
 

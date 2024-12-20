@@ -2,12 +2,12 @@ package com.aetherteam.genesis.world;
 
 import com.aetherteam.genesis.data.resources.registries.GenesisBiomes;
 import com.mojang.datafixers.util.Pair;
+import io.github.razordevs.aeroblender.aether.AetherRegionType;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Climate;
-import teamrazor.aeroblender.aether.AetherRegionType;
 import terrablender.api.Region;
 
 import java.util.function.Consumer;

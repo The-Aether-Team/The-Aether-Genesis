@@ -24,7 +24,7 @@ public class WispRenderer extends CompanionRenderer<Wisp, WispModel> {
     }
 
     @Override
-    protected void setupRotations(Wisp wisp, PoseStack poseStack, float ageInTicks, float rotationYaw, float partialTicks) { }
+    protected void setupRotations(Wisp entity, PoseStack poseStack, float bob, float yBodyRot, float partialTick, float scale) {}
 
     @Override
     protected float getBob(Wisp wisp, float partialTick) {

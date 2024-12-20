@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 
 public class KraisithRenderer extends CompanionRenderer<Kraisith, KraisithModel> {
-    private static final ResourceLocation KRAISITH_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/kraisith/kraisith.png");
+    private static final ResourceLocation KRAISITH_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/companions/kraisith/kraisith.png");
 
     public KraisithRenderer(EntityRendererProvider.Context context) {
         super(context, new KraisithModel(context.bakeLayer(GenesisModelLayers.KRAISITH)), 0.45F);

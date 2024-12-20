@@ -15,7 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class CogProjectileRenderer extends EntityRenderer<CogProjectile> {
-    private static final ResourceLocation COG_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/projectile/cog.png");
+    private static final ResourceLocation COG_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/projectile/cog.png");
     private final CogProtectileModel cog;
 
     public CogProjectileRenderer(EntityRendererProvider.Context context) {
@@ -34,7 +34,7 @@ public class CogProjectileRenderer extends EntityRenderer<CogProjectile> {
         }
         VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.entityTranslucent(this.getTextureLocation(cog)));
         this.cog.setupAnim(cog, 0.0F, 0.0F, cog.tickCount, yRot, xRot);
-        this.cog.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        this.cog.renderToBuffer(poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
         poseStack.popPose();
         super.render(cog, entityYaw, partialTicks, poseStack, buffer, packedLight);
     }

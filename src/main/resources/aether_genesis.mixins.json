@@ -5,10 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "aether_genesis.refmap.json",
   "mixins": [
-    "common.AetherPlayerCapabilityMixin",
-    "common.ItemMixin",
+    "client.PortalClientUtilMixin",
     "common.ParachuteMixin",
-    "common.PortalSoundUtilMixin",
     "common.SliderMixin",
     "common.StructurePieceMixin",
     "common.SwetMixin",

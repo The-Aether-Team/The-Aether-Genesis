@@ -1,51 +1,65 @@
-import net.neoforged.gradle.common.tasks.JarJar
-
 plugins {
     id 'java-library'
     id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.neoforged.gradle.userdev' version '7.0.108'
+    id 'net.neoforged.moddev' version "${moddevgradle_version}"
     id 'io.github.0ffz.github-packages' version '[1,2)'
     id 'com.matthewprenger.cursegradle' version '[1.4,1.5)'
     id 'com.modrinth.minotaur' version '[2,3)'
 }
 
-version = "${mc_version}-${mod_version}-neoforge"
-group = 'com.aetherteam.genesis'
+tasks.named('wrapper', Wrapper).configure {
+    distributionType = Wrapper.DistributionType.BIN
+}
+
+version = "${minecraft_version}-${mod_version}-neoforge"
+group = mod_group
 
 base {
     archivesName = mod_id
 }
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
+//minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
 
-runs {
-    configureEach {
-        workingDirectory project.file('run')
-        systemProperty "${mod_id}.iside", 'true'
-        systemProperty  'forge.logging.console.level', 'info'
+neoForge {
+    version = project.neo_version
 
-        modSource project.sourceSets.main
+    runs {
+        configureEach {
+            systemProperty 'forge.logging.markers', 'REGISTRIES'
+            systemProperty 'owo.forceDisableDebug', 'true'
+            logLevel = org.slf4j.event.Level.INFO
+        }
+
+        client {
+            client()
+            systemProperty 'forge.enabledGameTestNamespaces', mod_id
+        }
+
+        server {
+            server()
+            systemProperty 'forge.enabledGameTestNamespaces', mod_id
+            programArgument '--nogui'
+        }
+
+        gameTestServer {
+            type = "gameTestServer"
+            systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
+        }
+
+        data {
+            data()
+            programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing', file('src/generated/resources/').getAbsolutePath(), '--existing-mod', 'nitrogen_internals', '--existing-mod', 'cumulus_menus'
+        }
     }
 
-    client {
-        systemProperty 'forge.enabledGameTestNamespaces', mod_id
-    }
-
-    server {
-        systemProperty 'forge.enabledGameTestNamespaces', mod_id
-        programArgument '--nogui'
-    }
-
-    gameTestServer {
-        systemProperty 'neoforge.enabledGameTestNamespaces', mod_id
-    }
-
-    data {
-        programArguments.addAll '--mod', mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing', file('src/generated/resources/').getAbsolutePath(), '--existing-mod', 'aether', '--existing-mod', 'nitrogen_internals', '--existing-mod', 'cumulus_menus'
+    mods {
+        "${mod_id}" {
+            sourceSet(sourceSets.main)
+        }
     }
 }
 
@@ -53,31 +67,39 @@ sourceSets.main.resources {
     srcDir 'src/generated/resources'
 }
 
-dependencies {
-    implementation "net.neoforged:neoforge:${project.neoforge_version}"
+processResources {
+    exclude '.cache/'
+}
 
-//    implementation "com.aetherteam.aether:aether:${project.aether_version}"
-    implementation "local:aether:${project.aether_version}"
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+
+dependencies {
+    implementation "com.aetherteam.aether:aether:${project.aether_version}"
 
     implementation "com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}"
     implementation "com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}"
-    implementation "top.theillusivec4.curios:curios-neoforge:${project.curios_version}+${project.mc_version}"
+    implementation "io.wispforest:accessories-neoforge:${project.accessories_version}+${project.minecraft_version}"
 
-    implementation "curse.maven:aeroblender-879879:${project.aeroblender_version}"
+    implementation "maven.modrinth:aeroblender:${project.aeroblender_version}"
     implementation "com.github.glitchfiend:TerraBlender-neoforge:${project.terrablender_version}"
 
-    jarJar("curse.maven:aeroblender-879879:${project.aeroblender_version}") {
-        jarJar.ranged(it, "[${project.aeroblender_version},)")
-        jarJar.pin(it, "${project.aeroblender_version}")
+    jarJar("maven.modrinth:aeroblender:${project.aeroblender_version}") {
+        version {
+            strictly "[${project.aeroblender_version},)"
+            prefer "${project.aeroblender_version}"
+        }
     }
 
     jarJar("com.github.glitchfiend:TerraBlender-neoforge:${project.terrablender_version}") {
-        jarJar.ranged(it, "[${project.terrablender_version_minimum},${project.terrablender_version_maximum})")
-        jarJar.pin(it, "${project.terrablender_version}")
+        version {
+            strictly "[${project.terrablender_version_minimum},${project.terrablender_version_maximum})"
+            prefer "${project.terrablender_version}"
+        }
     }
 
-    compileOnly "curse.maven:jade-324717:${project.jade_version}"
-
+    compileOnly "maven.modrinth:jade:${project.jade_version}"
 
     //runtimeOnly fg.deobf("io.github.flemmli97:debugutils:${project.mc_version}-${project.debugutils_version}-forge")
 }
@@ -86,16 +108,56 @@ repositories {
     maven { url = "https://jitpack.io" }
     maven { url = "https://maven.blamejared.com" }
     maven { url = "https://maven.theillusivec4.top/" }
-    maven { url = "https://www.cursemaven.com" }
+    maven { url = "https://api.modrinth.com/maven" }
     maven { url = "https://gitlab.com/api/v4/projects/21830712/packages/maven" }
     maven { url = 'https://maven.minecraftforge.net/' }
+    maven { url = "https://maven.wispforest.io/releases" }
+    maven { url = "https://maven.fabricmc.net" }
+    maven { url = "https://maven.su5ed.dev/releases" }
     maven githubPackage.invoke("The-Aether-Team/The-Aether")
     maven githubPackage.invoke("The-Aether-Team/Nitrogen")
     maven githubPackage.invoke("The-Aether-Team/Cumulus")
-    flatDir {
-        dir 'libs'
-    }
 }
+
+var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
+    var replaceProperties = [
+            mod_id                 : mod_id,
+            mod_name               : mod_name,
+            mod_version            : mod_version,
+            mod_license            : mod_license,
+            mod_url                : mod_url,
+            mod_update             : mod_update,
+            mod_tracker            : mod_tracker,
+            mod_credits            : mod_credits,
+            mod_authors            : mod_authors,
+            mod_description        : mod_description,
+            minecraft_version      : minecraft_version,
+            minecraft_version_range: minecraft_version_range,
+            neo_version            : neo_version,
+            neo_version_range      : neo_version_range,
+            loader_version_range   : loader_version_range,
+            aether_version         : aether_version,
+            aether_version_range   : aether_version_range
+    ]
+    inputs.properties replaceProperties
+    expand replaceProperties
+    from "src/main/templates"
+    into "build/generated/sources/modMetadata"
+}
+sourceSets.main.resources.srcDir generateModMetadata
+neoForge.ideSyncTask generateModMetadata
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    options.compilerArgs << "-Xmaxerrs" << "9000"
+}
+
+tasks.register('sourceJar', Jar) {
+    dependsOn 'classes'
+    from sourceSets.main.allSource
+    archiveClassifier = 'sources'
+}
+
 
 tasks.named('jar', Jar).configure {
     manifest {
@@ -112,18 +174,8 @@ tasks.named('jar', Jar).configure {
     archiveClassifier = 'no-embeds'
 }
 
-tasks.named('jarJar', JarJar).configure {
-    archiveClassifier = ''
-}
-
 compileJava {
     options.incremental = false
-}
-
-tasks.register('sourceJar', Jar) {
-    dependsOn 'classes'
-    from sourceSets.main.allSource
-    archiveClassifier = 'sources'
 }
 
 //publishing {
@@ -171,10 +223,6 @@ tasks.register('sourceJar', Jar) {
 //    gameVersions = ["${project.mc_version}"]
 //    loaders = ["forge"]
 //}
-
-build {
-    dependsOn 'jarJar'
-}
 
 // IDEA no longer automatically downloads sources/javadoc jars for dependencies, so we need to explicitly enable the behavior.
 idea {

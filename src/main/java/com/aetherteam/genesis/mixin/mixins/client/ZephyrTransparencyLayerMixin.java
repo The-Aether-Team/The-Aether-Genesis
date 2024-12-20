@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(ZephyrTransparencyLayer.class)
 public class ZephyrTransparencyLayerMixin {
     @Unique
-    private static final ResourceLocation ZEPHYR_TAN_TRANSPARENCY_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/zephyr/zephyr_tan_layer.png");
+    private static final ResourceLocation ZEPHYR_TAN_TRANSPARENCY_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/mobs/zephyr/zephyr_tan_layer.png");
 
     /**
      * Sets the Zephyr texture to be tan according to the {@link ZephyrColorAttachment}.

@@ -11,8 +11,8 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public class BattleSentryRenderer extends MobRenderer<BattleSentry, SlimeModel<BattleSentry>> {
-    private static final ResourceLocation BATTLE_SENTRY_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/battle_sentry/battle_sentry.png");
-    private static final ResourceLocation BATTLE_SENTRY_LIT_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/battle_sentry/battle_sentry_lit.png");
+    private static final ResourceLocation BATTLE_SENTRY_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/mobs/battle_sentry/battle_sentry.png");
+    private static final ResourceLocation BATTLE_SENTRY_LIT_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/mobs/battle_sentry/battle_sentry_lit.png");
 
     public BattleSentryRenderer(EntityRendererProvider.Context context) {
         super(context, new SlimeModel<>(context.bakeLayer(GenesisModelLayers.BATTLE_SENTRY)), 0.3F);

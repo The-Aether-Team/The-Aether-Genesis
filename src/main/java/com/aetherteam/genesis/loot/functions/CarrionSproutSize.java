@@ -3,6 +3,7 @@ package com.aetherteam.genesis.loot.functions;
 import com.aetherteam.genesis.entity.passive.CarrionSprout;
 import com.aetherteam.genesis.item.GenesisItems;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
@@ -17,7 +18,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import java.util.List;
 
 public class CarrionSproutSize extends LootItemConditionalFunction {
-    public static final Codec<CarrionSproutSize> CODEC = RecordCodecBuilder.create(instance -> commonFields(instance)
+    public static final MapCodec<CarrionSproutSize> CODEC = RecordCodecBuilder.mapCodec(instance -> commonFields(instance)
             .and(ConstantValue.CODEC.fieldOf("random_bound").forGetter(carrionSproutSize -> carrionSproutSize.randomBound))
             .and(ConstantValue.CODEC.fieldOf("minimum").forGetter(carrionSproutSize -> carrionSproutSize.minimum))
             .and(ConstantValue.CODEC.fieldOf("maximum").forGetter(carrionSproutSize -> carrionSproutSize.maximum))

@@ -18,6 +18,7 @@ import com.aetherteam.genesis.client.renderer.player.layer.PhoenixDartLayer;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.entity.projectile.PhoenixDart;
 import com.aetherteam.genesis.item.GenesisItems;
+import io.wispforest.accessories.api.client.AccessoriesRendererRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.SlimeModel;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
@@ -27,17 +28,20 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.resources.PlayerSkin;
 import net.minecraft.resources.ResourceLocation;
-import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import top.theillusivec4.curios.api.client.CuriosRendererRegistry;
 
 import java.util.Set;
 
-@Mod.EventBusSubscriber(modid = AetherGenesis.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GenesisRenderers {
-    @SubscribeEvent
+
+    public static void listener(IEventBus eventBus){
+        eventBus.addListener(GenesisRenderers::registerEntityRenderers);
+        eventBus.addListener(GenesisRenderers::registerLayerDefinitions);
+        eventBus.addListener(GenesisRenderers::addPlayerLayers);
+    }
+
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(GenesisBlockEntityTypes.SKYROOT_CHEST.get(), SkyrootChestRenderer::new);
         event.registerBlockEntityRenderer(GenesisBlockEntityTypes.SKYROOT_CHEST_MIMIC.get(), SkyrootChestMimicRenderer::new);
@@ -61,8 +65,8 @@ public class GenesisRenderers {
 
         event.registerEntityRenderer(GenesisEntityTypes.FANGRIN.get(), FangrinRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.KRAISITH.get(), KraisithRenderer::new);
-        event.registerEntityRenderer(GenesisEntityTypes.FLEETING_WISP.get(), (context) -> new WispRenderer(context, GenesisModelLayers.FLEETING_WISP, new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/fleeting_wisp.png")));
-        event.registerEntityRenderer(GenesisEntityTypes.SOARING_WISP.get(), (context) -> new WispRenderer(context, GenesisModelLayers.SOARING_WISP, new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/soaring_wisp.png")));
+        event.registerEntityRenderer(GenesisEntityTypes.FLEETING_WISP.get(), (context) -> new WispRenderer(context, GenesisModelLayers.FLEETING_WISP, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/companions/fleeting_wisp.png")));
+        event.registerEntityRenderer(GenesisEntityTypes.SOARING_WISP.get(), (context) -> new WispRenderer(context, GenesisModelLayers.SOARING_WISP, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/companions/soaring_wisp.png")));
         event.registerEntityRenderer(GenesisEntityTypes.ETHEREAL_WISP.get(), EtherealWispRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.SHADE_OF_ARKENZUS.get(), ShadeOfArkenzusRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.FROSTPINE_TOTEM.get(), FrostpineTotemRenderer::new);
@@ -81,7 +85,6 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.HOST_EYE.get(), HostEyeProjectileRenderer::new);
     }
 
-    @SubscribeEvent
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(GenesisModelLayers.SKYROOT_CHEST_MIMIC, ChestRenderer::createSingleBodyLayer);
 
@@ -114,13 +117,12 @@ public class GenesisRenderers {
     }
 
     public static void registerCuriosRenderers() {
-        CuriosRendererRegistry.register(GenesisItems.LUCKY_BELL.get(), PendantRenderer::new);
-        CuriosRendererRegistry.register(GenesisItems.SWETTY_PENDANT.get(), PendantRenderer::new);
-        CuriosRendererRegistry.register(GenesisItems.DAGGERFROST_LOCKET.get(), PendantRenderer::new);
-        CuriosRendererRegistry.register(GenesisItems.MOUSE_EAR_CAP.get(), MouseEarCapRenderer::new);
+        AccessoriesRendererRegistry.registerRenderer(GenesisItems.LUCKY_BELL.get(), PendantRenderer::new);
+        AccessoriesRendererRegistry.registerRenderer(GenesisItems.SWETTY_PENDANT.get(), PendantRenderer::new);
+        AccessoriesRendererRegistry.registerRenderer(GenesisItems.DAGGERFROST_LOCKET.get(), PendantRenderer::new);
+        AccessoriesRendererRegistry.registerRenderer(GenesisItems.MOUSE_EAR_CAP.get(), MouseEarCapRenderer::new);
     }
 
-    @SubscribeEvent
     public static void addPlayerLayers(EntityRenderersEvent.AddLayers event) {
         EntityRenderDispatcher renderDispatcher = Minecraft.getInstance().getEntityRenderDispatcher();
         Set<PlayerSkin.Model> models = event.getSkins();

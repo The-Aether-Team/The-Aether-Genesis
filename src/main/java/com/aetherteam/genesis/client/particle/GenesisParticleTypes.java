@@ -11,7 +11,6 @@ import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-@Mod.EventBusSubscriber(modid = AetherGenesis.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GenesisParticleTypes {
     public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, AetherGenesis.MODID);
 
@@ -19,7 +18,6 @@ public class GenesisParticleTypes {
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> TEMPEST_ELECTRICITY = PARTICLES.register("tempest_electricity", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> TRACKING_GOLEM_WARNING = PARTICLES.register("tracking_golem_warning", () -> new SimpleParticleType(true));
 
-    @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(PURPLE_CRYSTAL_LEAVES.get(), PurpleCrystalLeavesParticle.Factory::new);
         event.registerSpriteSet(TEMPEST_ELECTRICITY.get(), TempestElectricityParticle.Factory::new);

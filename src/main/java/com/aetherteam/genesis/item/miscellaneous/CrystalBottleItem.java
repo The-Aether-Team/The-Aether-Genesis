@@ -1,5 +1,6 @@
 package com.aetherteam.genesis.item.miscellaneous;
 
+import com.aetherteam.genesis.item.GenesisDataComponents;
 import net.minecraft.Util;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -36,24 +37,24 @@ public class CrystalBottleItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)  {
         ItemStack heldItem = player.getItemInHand(hand);
-        float exp = heldItem.getOrCreateTag().getFloat("Experience");
+        float exp = heldItem.getOrDefault(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT, 0f);
         if (player.isShiftKeyDown()) { // Store experience to the bottle.
             if (player.experienceProgress > 0.0F) {
-                heldItem.getOrCreateTag().putFloat("Experience", exp + 0.1F);
+                heldItem.set(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT, exp + 0.1F);
                 player.experienceProgress -= 0.1F;
                 return InteractionResultHolder.success(heldItem);
             } else if (player.experienceLevel > 0) {
-                heldItem.getOrCreateTag().putFloat("Experience", exp + 1.0F);
+                heldItem.set(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT, exp + 1.0F);
                 player.experienceLevel--;
                 player.experienceProgress = 1;
                 return InteractionResultHolder.success(heldItem);
             }
         } else if (exp > 0.0F) { // Extract experience from the bottle.
             if (player.experienceProgress < 1.0F) {
-                heldItem.getOrCreateTag().putFloat("Experience", exp - 0.1F);
+                heldItem.set(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT, exp - 0.1F);
                 player.experienceProgress += 0.1F;
             } else {
-                heldItem.getOrCreateTag().putFloat("Experience", exp - 1.0F);
+                heldItem.set(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT, exp - 1.0F);
                 player.experienceLevel = (int) (player.experienceLevel + 1.0F);
                 player.experienceProgress = 0;
             }
@@ -67,15 +68,12 @@ public class CrystalBottleItem extends Item {
      * Displays how much experience is stored in the Crystal Experience Bottle.
      *
      * @param stack The item's {@link ItemStack}.
-     * @param level The {@link Level}.
-     * @param components The existing tooltip {@link Component}s.
-     * @param flag The {@link TooltipFlag}.
      */
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
-        if (stack.getTag() != null && stack.getTag().contains("Experience")) {
-            components.add(Component.translatable("aether_genesis.experience.desc", EXPERIENCE_FORMAT.format(stack.getTag().getFloat("Experience"))));
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
+        if (stack.has(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT)) {
+            components.add(Component.translatable("aether_genesis.experience.desc", EXPERIENCE_FORMAT.format(stack.get(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT))));
         }
-        super.appendHoverText(stack, level, components, flag);
+        super.appendHoverText(stack, context, components, flag);
     }
 }

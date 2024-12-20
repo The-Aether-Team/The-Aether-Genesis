@@ -3,7 +3,6 @@ package com.aetherteam.genesis.entity.monster.dungeon;
 import com.aetherteam.aether.entity.ai.goal.ContinuousMeleeAttackGoal;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.network.packet.clientbound.TrackingGolemWarningPacket;
-import com.aetherteam.nitrogen.network.PacketRelay;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -23,6 +22,7 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public class TrackingGolem extends Monster {
 	public static final EntityDataAccessor<Boolean> DATA_CAN_SEE_ENEMY_ID = SynchedEntityData.defineId(TrackingGolem.class, EntityDataSerializers.BOOLEAN);
@@ -42,9 +42,9 @@ public class TrackingGolem extends Monster {
 	}
 
 	@Override
-	protected void defineSynchedData() {
-		super.defineSynchedData();
-		this.entityData.define(DATA_CAN_SEE_ENEMY_ID, false);
+	protected void defineSynchedData(SynchedEntityData.Builder builder) {
+		super.defineSynchedData(builder);
+		builder.define(DATA_CAN_SEE_ENEMY_ID, false);
 	}
 
 	public static AttributeSupplier.Builder createMobAttributes() {
@@ -67,7 +67,7 @@ public class TrackingGolem extends Monster {
 						|| this.getTarget().getEffect(MobEffects.BLINDNESS).endsWithin(duration - 1)) {
 					if (!this.getTarget().hasEffect(MobEffects.BLINDNESS)) {
 						if (this.getTarget() instanceof ServerPlayer serverPlayer) {
-							PacketRelay.sendToPlayer(new TrackingGolemWarningPacket(serverPlayer.getId()), serverPlayer);
+							PacketDistributor.sendToPlayer(serverPlayer, new TrackingGolemWarningPacket(serverPlayer.getId()));
 						}
 					}
 					this.getTarget().addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 350), this);

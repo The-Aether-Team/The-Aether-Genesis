@@ -13,7 +13,7 @@ import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class TempestTransparencyLayer extends RenderLayer<Tempest, TempestModel> {
-    private static final ResourceLocation TEMPEST_TRANSPARENCY_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/tempest/tempest_layer.png");
+    private static final ResourceLocation TEMPEST_TRANSPARENCY_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/mobs/tempest/tempest_layer.png");
     private final TempestModel transparency;
 
     public TempestTransparencyLayer(RenderLayerParent<Tempest, TempestModel> entityRenderer, TempestModel transparencyModel) {
@@ -27,7 +27,7 @@ public class TempestTransparencyLayer extends RenderLayer<Tempest, TempestModel>
             this.transparency.prepareMobModel(tempest, limbSwing, limbSwingAmount, partialTicks);
             this.transparency.setupAnim(tempest, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
             VertexConsumer consumer = buffer.getBuffer(RenderType.entityTranslucent(TEMPEST_TRANSPARENCY_TEXTURE));
-            this.transparency.renderToBuffer(poseStack, consumer, packedLight, LivingEntityRenderer.getOverlayCoords(tempest, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
+            this.transparency.renderToBuffer(poseStack, consumer, packedLight, LivingEntityRenderer.getOverlayCoords(tempest, 0.0F), 0xFFFFFFFF);
         }
     }
 }

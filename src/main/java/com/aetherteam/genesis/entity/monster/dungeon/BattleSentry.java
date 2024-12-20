@@ -45,10 +45,10 @@ public class BattleSentry extends Slime {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_AWAKE_ID, false);
-        this.entityData.define(DATA_STALKING_ID, true);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_AWAKE_ID, false);
+        builder.define(DATA_STALKING_ID, true);
     }
 
     @Override
@@ -85,7 +85,7 @@ public class BattleSentry extends Slime {
         }
     }
 
-    protected void jumpFromGround() {
+    public void jumpFromGround() {
         if (this.canAttack(true)) {
             Vec3 vec3 = this.getDeltaMovement();
             this.setDeltaMovement(vec3.x * 1.25, 0.25, vec3.z * 1.25);
@@ -186,11 +186,6 @@ public class BattleSentry extends Slime {
     @Override
     protected boolean isDealsDamage() {
         return this.isEffectiveAi();
-    }
-    
-    @Override
-    public EntityDimensions getDimensions(Pose pose) {
-        return super.getDimensions(pose).scale(1.76F);
     }
     
     @Override

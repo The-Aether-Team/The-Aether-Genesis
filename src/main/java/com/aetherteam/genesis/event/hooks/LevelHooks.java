@@ -7,11 +7,11 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.neoforged.neoforge.event.level.SaplingGrowTreeEvent;
+import net.neoforged.neoforge.event.level.BlockGrowFeatureEvent;
 
 public class LevelHooks {
     /**
-     * @see com.aetherteam.genesis.event.listeners.LevelListener#onSaplingGrow(SaplingGrowTreeEvent)
+     * @see com.aetherteam.genesis.event.listeners.LevelListener#onSaplingGrow(BlockGrowFeatureEvent)
      */
     public static ResourceKey<ConfiguredFeature<?, ?>> modifyGrownSapling(LevelAccessor levelAccessor, RandomSource random, Holder<ConfiguredFeature<?, ?>> feature) {
         if (feature != null) {

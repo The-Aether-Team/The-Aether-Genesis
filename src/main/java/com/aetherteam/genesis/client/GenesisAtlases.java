@@ -17,6 +17,6 @@ public class GenesisAtlases {
 	}
 
 	public static Material getChestMaterial(String chestName) {
-		return new Material(Sheets.CHEST_SHEET, new ResourceLocation(AetherGenesis.MODID, "entity/tiles/chest/" + chestName));
+		return new Material(Sheets.CHEST_SHEET, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "entity/tiles/chest/" + chestName));
 	}
 }

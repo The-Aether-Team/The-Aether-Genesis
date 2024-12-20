@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 
 public class FangrinRenderer extends CompanionRenderer<Fangrin, FangrinModel> {
-    private static final ResourceLocation FANGRIN_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/fangrin/fangrin.png");
+    private static final ResourceLocation FANGRIN_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/companions/fangrin/fangrin.png");
 
     public FangrinRenderer(EntityRendererProvider.Context context) {
         super(context, new FangrinModel(context.bakeLayer(GenesisModelLayers.FANGRIN)), 0.45F);

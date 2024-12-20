@@ -21,7 +21,7 @@ public class PhoenixDartShooterItem extends DartShooterItem {
     }
 
     @Override
-    public AbstractDart customDart(AbstractDart dart) {
+    public AbstractDart customDart(AbstractDart dart, ItemStack projectileStack, ItemStack weaponStack) {
         PhoenixDart phoenixDart = new PhoenixDart(dart.level());
         phoenixDart.setOwner(dart.getOwner());
         if (phoenixDart.getOwner() != null) {

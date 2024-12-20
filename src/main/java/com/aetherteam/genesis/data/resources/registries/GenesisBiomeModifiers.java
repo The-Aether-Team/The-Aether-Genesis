@@ -6,7 +6,7 @@ import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.nitrogen.world.biomemodifier.AddMobChargeBiomeModifier;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.MobSpawnSettings;
@@ -38,10 +38,10 @@ public class GenesisBiomeModifiers {
     public static final ResourceKey<BiomeModifier> SPAWN_TEMPEST = createKey("spawn_tempest");
 
     private static ResourceKey<BiomeModifier> createKey(String name) {
-        return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(AetherGenesis.MODID, name));
+        return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, name));
     }
 
-    public static void bootstrap(BootstapContext<BiomeModifier> context) {
+    public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         context.register(ADD_GREEN_AERCLOUD_4, new BiomeModifiers.AddFeaturesBiomeModifier(
                 context.lookup(Registries.BIOME).getOrThrow(GenesisTags.Biomes.HAS_GREEN_AERCLOUDS),
                 HolderSet.direct(context.lookup(Registries.PLACED_FEATURE).getOrThrow(GenesisPlacedFeatures.GREEN_AERCLOUD_4_PLACEMENT)),

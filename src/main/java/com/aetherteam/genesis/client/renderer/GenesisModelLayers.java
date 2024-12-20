@@ -38,7 +38,7 @@ public class GenesisModelLayers {
     }
 
     private static ModelLayerLocation register(String name, String type) {
-        return register(new ResourceLocation(AetherGenesis.MODID, name), type);
+        return register(ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, name), type);
     }
 
     private static ModelLayerLocation register(ResourceLocation identifier, String type) {

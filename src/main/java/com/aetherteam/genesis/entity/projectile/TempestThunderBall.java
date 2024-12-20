@@ -33,7 +33,7 @@ public class TempestThunderBall extends AbstractHurtingProjectile {
 	}
 
 	public TempestThunderBall(Level level, LivingEntity shooter, double accelX, double accelY, double accelZ) {
-		super(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), shooter, accelX, accelY, accelZ, level);
+		super(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), shooter, new Vec3(accelX, accelY, accelZ), level);
 		this.setNoGravity(true);
 	}
 
@@ -68,7 +68,7 @@ public class TempestThunderBall extends AbstractHurtingProjectile {
 				f = 0.8F;
 			}
 
-			this.setDeltaMovement(vec3.add(this.xPower, this.yPower, this.zPower).scale((double)f));
+			this.setDeltaMovement(vec3.add(vec3.normalize().scale(this.accelerationPower)).scale(f));
 			double xOffset = this.position().x() + (level().getRandom().nextDouble() * 1.5) - 0.75;
 			double yOffset = this.position().y() + (level().getRandom().nextDouble() * 2) - 0.5;
 			double zOffset = this.position().z() + (level().getRandom().nextDouble() * 1.5) - 0.75;
@@ -107,7 +107,8 @@ public class TempestThunderBall extends AbstractHurtingProjectile {
 			Entity entity1 = this.getOwner();
 			entity.hurt(this.damageSources().indirectMagic(this, entity1), 4.0F);
 			if (entity1 instanceof LivingEntity) {
-				this.doEnchantDamageEffects((LivingEntity)entity1, entity);
+				// TODO: [PORTING] FIGURE OUT IF THIS IS STILL NEEDED
+				//this.doEnchantDamageEffects((LivingEntity)entity1, entity);
 			}
 		}
 	}

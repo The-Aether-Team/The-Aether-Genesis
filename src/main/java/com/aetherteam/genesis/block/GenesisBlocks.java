@@ -105,7 +105,7 @@ public class GenesisBlocks {
     public static final DeferredBlock<WallBlock> DIVINE_CARVED_WALL = register("divine_carved_wall", () -> new WallBlock(Block.Properties.ofFullCopy(DIVINE_CARVED_STONE.get())));
 
     public static final DeferredBlock<StairBlock> DIVINE_CARVED_STAIRS = register("divine_carved_stairs",
-            () -> new StairBlock(() -> DIVINE_CARVED_STONE.get().defaultBlockState(), Block.Properties.ofFullCopy(DIVINE_CARVED_STONE.get())));
+            () -> new StairBlock(DIVINE_CARVED_STONE.get().defaultBlockState(), Block.Properties.ofFullCopy(DIVINE_CARVED_STONE.get())));
 
     public static final DeferredBlock<SlabBlock> DIVINE_CARVED_SLAB = register("divine_carved_slab",
             () -> new SlabBlock(Block.Properties.ofFullCopy(DIVINE_CARVED_STONE.get()).strength(0.5F, 6.0F)));

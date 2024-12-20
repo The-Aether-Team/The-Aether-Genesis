@@ -11,7 +11,7 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public class BabyPinkSwetRenderer extends SwetRenderer implements DisplayItemPlate<BabyPinkSwet> {
-    private static final ResourceLocation BABY_PINK_SWET_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/baby_pink_swet.png");
+    private static final ResourceLocation BABY_PINK_SWET_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/companions/baby_pink_swet.png");
     protected final ItemRenderer itemRenderer;
 
     public BabyPinkSwetRenderer(EntityRendererProvider.Context context) {

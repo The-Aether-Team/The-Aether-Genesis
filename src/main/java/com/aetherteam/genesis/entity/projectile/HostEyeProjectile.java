@@ -55,7 +55,8 @@ public class HostEyeProjectile extends PathfinderMob {
         if (this.isAlive()) {
             if (this.hasLineOfSight(pLivingEntity) && pLivingEntity.hurt(this.damageSources().mobAttack(this), 4)) {
                 this.playSound(AetherSoundEvents.ENTITY_SLIDER_COLLIDE.get(), 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
-                this.doEnchantDamageEffects(this, pLivingEntity);
+                // TODO: [PORTING] FIGURE OUT IF THIS IS STILL NEEDED
+                //this.doEnchantDamageEffects(this, pLivingEntity);
             }
         }
     }
@@ -114,7 +115,7 @@ public class HostEyeProjectile extends PathfinderMob {
         this.fallDistance = 0.0F;
         if (this.movement) {
             if (this.isPushable()) {
-                this.level().playLocalSound(this.position().x, this.position().y, this.position().z, SoundEvents.GENERIC_EXPLODE, SoundSource.AMBIENT, 3.0F, (0.625F + (this.level().random.nextFloat() - this.level().random.nextFloat()) * 0.2F) * 0.7F, false);
+                this.level().playLocalSound(this.position().x, this.position().y, this.position().z, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.AMBIENT, 3.0F, (0.625F + (this.level().random.nextFloat() - this.level().random.nextFloat()) * 0.2F) * 0.7F, false);
                 this.level().playSound(this, this.blockPosition(), AetherSoundEvents.ENTITY_SLIDER_COLLIDE.get(), SoundSource.AMBIENT, 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
                 stop();
             } else {
@@ -204,12 +205,12 @@ public class HostEyeProjectile extends PathfinderMob {
     }
 
     @Override
-    public void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(MOVEMENT, movement);
-        this.entityData.define(TIMER, timer);
-        this.entityData.define(DIRECTION, direction);
-        this.entityData.define(SPEEDY, speedy);
+    public void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(MOVEMENT, movement);
+        builder.define(TIMER, timer);
+        builder.define(DIRECTION, direction);
+        builder.define(SPEEDY, speedy);
     }
 
     public void stop() {

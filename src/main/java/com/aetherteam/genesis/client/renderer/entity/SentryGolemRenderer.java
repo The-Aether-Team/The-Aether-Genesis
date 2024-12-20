@@ -18,9 +18,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class SentryGolemRenderer extends MobRenderer<SentryGolem, SentryGolemModel> {
-    private static final ResourceLocation SENTRY_GOLEM_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/sentry_golem/sentry_golem.png");
-    private static final ResourceLocation SENTRY_LIT_TEXTURE = new ResourceLocation(Aether.MODID, "textures/entity/mobs/sentry/sentry_lit.png");
-    private static final RenderType SENTRY_EYE = RenderType.eyes(new ResourceLocation(Aether.MODID, "textures/entity/mobs/sentry/eye.png"));
+    private static final ResourceLocation SENTRY_GOLEM_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/mobs/sentry_golem/sentry_golem.png");
+    private static final ResourceLocation SENTRY_LIT_TEXTURE = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/mobs/sentry/sentry_lit.png");
+    private static final RenderType SENTRY_EYE = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/entity/mobs/sentry/eye.png"));
     private final DetonationProjectileModel projectile;
 
     public SentryGolemRenderer(EntityRendererProvider.Context context) {
@@ -55,8 +55,8 @@ public class SentryGolemRenderer extends MobRenderer<SentryGolem, SentryGolemMod
         poseStack.mulPose(Axis.YP.rotationDegrees(Mth.rotLerp(partialTicks, golem.yBodyRotO, golem.yBodyRot)));
         poseStack.translate(0.0, Math.sin(1.0F - progress) * 2.4 + 1.65, Math.sin(1.0F - progress) * -1.4);
         poseStack.scale(scale, scale, scale);
-        this.projectile.renderToBuffer(poseStack, buffer.getBuffer(RenderType.entityCutoutNoCull(SENTRY_LIT_TEXTURE)), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
-        this.projectile.renderToBuffer(poseStack, buffer.getBuffer(SENTRY_EYE), packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        this.projectile.renderToBuffer(poseStack, buffer.getBuffer(RenderType.entityCutoutNoCull(SENTRY_LIT_TEXTURE)), packedLight, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
+        this.projectile.renderToBuffer(poseStack, buffer.getBuffer(SENTRY_EYE), packedLight, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
         poseStack.popPose();
     }
 

@@ -3,7 +3,7 @@ package com.aetherteam.genesis.attachment;
 import com.aetherteam.genesis.entity.companion.Companion;
 import com.aetherteam.genesis.network.packet.GenesisPlayerSyncPacket;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
-import com.aetherteam.nitrogen.network.BasePacket;
+import com.aetherteam.nitrogen.network.packet.SyncPacket;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import org.apache.commons.lang3.tuple.Triple;
@@ -125,7 +125,7 @@ public class GenesisPlayerAttachment implements INBTSynchable {
     }
 
     @Override
-    public BasePacket getSyncPacket(int entityID, String key, Type type, Object value) {
+    public SyncPacket getSyncPacket(int entityID, String key, Type type, Object value) {
         return new GenesisPlayerSyncPacket(entityID, key, type, value);
     }
 }

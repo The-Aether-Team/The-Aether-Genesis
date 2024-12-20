@@ -51,10 +51,10 @@ public class SentryGolem extends Monster implements RangedAttackMob {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_HAND_STATE_ID, (byte) 2);
-        this.entityData.define(DATA_FIRE_TIME_ID, 0);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_HAND_STATE_ID, (byte) 2);
+        builder.define(DATA_FIRE_TIME_ID, 0);
     }
 
     @Override

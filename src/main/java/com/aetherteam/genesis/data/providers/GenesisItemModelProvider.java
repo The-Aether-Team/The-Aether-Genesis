@@ -16,7 +16,7 @@ public abstract class GenesisItemModelProvider extends AetherItemModelProvider {
     }
 
     public void dyeableCape(Item item) {
-        this.withExistingParent(this.itemName(item), this.mcLoc("item/generated")).texture("layer0", new ResourceLocation(Aether.MODID, "item/accessories/white_cape"));
+        this.withExistingParent(this.itemName(item), this.mcLoc("item/generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(Aether.MODID, "item/accessories/white_cape"));
     }
 
     public void orangeTree(Block block) {
@@ -24,7 +24,7 @@ public abstract class GenesisItemModelProvider extends AetherItemModelProvider {
     }
 
     public void itemLogWallBlock(Block block, Block baseBlock, String location, String modid) {
-        ResourceLocation baseTexture = new ResourceLocation(modid, "block/" + location + this.blockName(baseBlock));
+        ResourceLocation baseTexture = ResourceLocation.fromNamespaceAndPath(modid, "block/" + location + this.blockName(baseBlock));
         this.withExistingParent(this.blockName(block), this.mcLoc("block/block"))
                 .transforms()
                 .transform(ItemDisplayContext.GUI).rotation(30.0F, 135.0F, 0.0F).translation(0.0F, 0.0F, 0.0F).scale(0.625F, 0.625F, 0.625F).end()
@@ -48,6 +48,6 @@ public abstract class GenesisItemModelProvider extends AetherItemModelProvider {
     }
 
     public void itemWoodWallBlock(Block block, Block baseBlock, String location, String modid) {
-        this.wallInventory(this.blockName(block), new ResourceLocation(modid, "block/" + location + this.blockName(baseBlock)));
+        this.wallInventory(this.blockName(block), ResourceLocation.fromNamespaceAndPath(modid, "block/" + location + this.blockName(baseBlock)));
     }
 }

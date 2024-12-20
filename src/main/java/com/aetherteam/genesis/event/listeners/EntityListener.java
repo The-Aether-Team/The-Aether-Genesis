@@ -1,20 +1,27 @@
 package com.aetherteam.genesis.event.listeners;
 
-import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.event.hooks.EntityHooks;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.LivingEntity;
 import net.neoforged.bus.api.Event;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.EntityEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.event.entity.living.MobDespawnEvent;
 import net.neoforged.neoforge.event.entity.living.MobSpawnEvent;
 import org.apache.commons.lang3.tuple.Pair;
 
-@Mod.EventBusSubscriber(modid = AetherGenesis.MODID)
 public class EntityListener {
+
+    public static void listen(IEventBus bus) {
+        bus.addListener(EntityListener::onJoin);
+        bus.addListener(EntityListener::onSize);
+        bus.addListener(EntityListener::finalizeSpawn);
+        bus.addListener(EntityListener::allowDespawn);
+    }
+
     /**
      * @see EntityHooks#setZephyrColor(Entity)
      */
@@ -30,9 +37,9 @@ public class EntityListener {
     @SubscribeEvent
     public static void onSize(EntityEvent.Size event) {
         Entity entity = event.getEntity();
-        Pair<EntityDimensions, Boolean> size = EntityHooks.determineZephyrSize(entity);
+        EntityDimensions size = EntityHooks.determineZephyrSize(entity);
         if (size != null) {
-            event.setNewSize(size.getLeft(), size.getRight());
+            event.setNewSize(size);
         }
     }
 
@@ -40,10 +47,9 @@ public class EntityListener {
      * @see EntityHooks#shouldStopZephyrSpawn(LivingEntity)
      */
     @SubscribeEvent
-    public static void finalizeSpawn(MobSpawnEvent.FinalizeSpawn event) {
-        LivingEntity zephyr = event.getEntity();
-        if (EntityHooks.shouldStopZephyrSpawn(zephyr)) {
-            event.setSpawnCancelled(true);
+    public static void finalizeSpawn(MobSpawnEvent.SpawnPlacementCheck event) {
+        if (EntityHooks.shouldStopZephyrSpawn(event.getEntityType(), event.getLevel())) {
+            event.setResult(MobSpawnEvent.SpawnPlacementCheck.Result.FAIL);
         }
     }
 
@@ -51,10 +57,10 @@ public class EntityListener {
      * @see EntityHooks#shouldZephyrDespawn(LivingEntity)
      */
     @SubscribeEvent
-    public static void allowDespawn(MobSpawnEvent.AllowDespawn event) {
+    public static void allowDespawn(MobDespawnEvent event) {
         LivingEntity zephyr = event.getEntity();
         if (EntityHooks.shouldZephyrDespawn(zephyr)) {
-            event.setResult(Event.Result.ALLOW);
+            event.setResult(MobDespawnEvent.Result.ALLOW);
         }
     }
 }

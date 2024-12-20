@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 
 public class ShadeOfArkenzusRenderer extends CompanionRenderer<ShadeOfArkenzus, ShadeOfArkenzusModel> {
-    private static final ResourceLocation SHADE_OF_ARKENZUS_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/shade_of_arkenzus/shade_of_arkenzus.png");
+    private static final ResourceLocation SHADE_OF_ARKENZUS_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/companions/shade_of_arkenzus/shade_of_arkenzus.png");
 
     public ShadeOfArkenzusRenderer(EntityRendererProvider.Context context) {
         super(context, new ShadeOfArkenzusModel(context.bakeLayer(GenesisModelLayers.SHADE_OF_ARKENZUS)), 0.35F);

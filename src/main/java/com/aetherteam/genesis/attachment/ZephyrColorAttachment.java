@@ -2,7 +2,7 @@ package com.aetherteam.genesis.attachment;
 
 import com.aetherteam.genesis.network.packet.ZephyrColorSyncPacket;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
-import com.aetherteam.nitrogen.network.BasePacket;
+import com.aetherteam.nitrogen.network.packet.SyncPacket;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import org.apache.commons.lang3.tuple.Triple;
@@ -49,7 +49,7 @@ public class ZephyrColorAttachment implements INBTSynchable {
         return this.isTan;
     }
 
-    public BasePacket getSyncPacket(int entityID, String key, Type type, Object value) {
+    public SyncPacket getSyncPacket(int entityID, String key, Type type, Object value) {
         return new ZephyrColorSyncPacket(entityID, key, type, value);
     }
 }

@@ -1,6 +1,7 @@
 package com.aetherteam.genesis.entity.projectile;
 
 import com.aetherteam.genesis.entity.monster.dungeon.SentryGolem;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableProjectile;
@@ -23,9 +24,7 @@ public class DetonationProjectile extends ThrowableProjectile {
     }
 
     @Override
-    protected void defineSynchedData() {
-
-    }
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {}
 
     @Override
     protected void onHitBlock(BlockHitResult result) {

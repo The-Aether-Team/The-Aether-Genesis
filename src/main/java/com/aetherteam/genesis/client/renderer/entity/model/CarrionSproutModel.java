@@ -11,7 +11,10 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
+import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
+
+import java.util.Map;
 
 public class CarrionSproutModel extends EntityModel<CarrionSprout> {
     public ModelPart stemBottom;
@@ -105,11 +108,43 @@ public class CarrionSproutModel extends EntityModel<CarrionSprout> {
     }
 
     @Override
-    public void renderToBuffer( PoseStack poseStack,  VertexConsumer consumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+    public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
         if (this.size < this.maxSize) {
-            red = Mth.clamp(red * this.size, 0.0F, 1.0F);
-            blue = Mth.clamp(blue * this.size, 0.6F, 1.0F);
+            var red = Mth.clamp((FastColor.ARGB32.red(color) / 255f) * this.size, 0.0F, 1.0F);
+            var blue = Mth.clamp((FastColor.ARGB32.blue(color) / 255f) * this.size, 0.6F, 1.0F);
+
+            color = colorFloat(color, Map.of("red", red, "blue", blue));
         }
-        this.stemBottom.render(poseStack, consumer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.stemBottom.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
+    }
+
+    public static int colorInt(int color, Map<String, Integer> colorComponents) {
+        for (var entry : colorComponents.entrySet()) {
+            color = switch (entry.getKey().toLowerCase()) {
+                case "alpha", "a" -> color | entry.getValue() << 24;
+                case "red", "r" -> color | entry.getValue() << 16;
+                case "green", "g" -> color | entry.getValue() << 8;
+                case "blue", "b" -> color | entry.getValue();
+                default -> throw new IllegalStateException("Unexpected value: " + entry.getKey());
+            };
+        }
+
+        return color;
+    }
+
+    public static int colorFloat(int color, Map<String, Float> colorComponents) {
+        for (var entry : colorComponents.entrySet()) {
+            var colorInt = Math.clamp(Math.round(entry.getValue() * 255), 0, 255);
+
+            color = switch (entry.getKey().toLowerCase()) {
+                case "alpha", "a" -> color | colorInt << 24;
+                case "red", "r" -> color | colorInt << 16;
+                case "green", "g" -> color | colorInt << 8;
+                case "blue", "b" -> color | colorInt;
+                default -> throw new IllegalStateException("Unexpected value: " + entry.getKey());
+            };
+        }
+
+        return color;
     }
 }

@@ -7,7 +7,10 @@ import com.aetherteam.genesis.attachment.GenesisDataAttachments;
 import com.aetherteam.genesis.attachment.ZephyrColorAttachment;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.neoforged.neoforge.event.entity.EntityEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.MobSpawnEvent;
@@ -31,24 +34,21 @@ public class EntityHooks {
     /**
      * @see com.aetherteam.genesis.event.listeners.EntityListener#onSize(EntityEvent.Size)
      */
-    public static Pair<EntityDimensions, Boolean> determineZephyrSize(Entity entity) {
+    public static EntityDimensions determineZephyrSize(Entity entity) {
         if (entity.getType() == AetherEntityTypes.ZEPHYR.get() && entity instanceof Zephyr zephyr) {
             ZephyrColorAttachment attachment = zephyr.getData(GenesisDataAttachments.ZEPHYR_COLOR);
             if (attachment.isTan()) {
-                return Pair.of(EntityDimensions.fixed(3.5F, 2.25F), true);
+                return EntityDimensions.fixed(3.5F, 2.25F);
             }
         }
         return null;
     }
 
     /**
-     * @see com.aetherteam.genesis.event.listeners.EntityListener#finalizeSpawn(MobSpawnEvent.FinalizeSpawn)
+     * @see com.aetherteam.genesis.event.listeners.EntityListener#finalizeSpawn(MobSpawnEvent.SpawnPlacementCheck)
      */
-    public static boolean shouldStopZephyrSpawn(LivingEntity zephyr) {
-        if (zephyr.getType() == AetherEntityTypes.ZEPHYR.get() && !zephyr.level().isClientSide()) {
-            return zephyr.level().isNight();
-        }
-        return false;
+    public static boolean shouldStopZephyrSpawn(EntityType<?> entityType, ServerLevelAccessor level) {
+        return entityType == AetherEntityTypes.ZEPHYR.get() && level.getLevel().isNight();
     }
 
     /**

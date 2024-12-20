@@ -1,6 +1,5 @@
 package com.aetherteam.genesis.client.event.listeners;
 
-import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.client.event.hooks.GenesisAudioHooks;
 import net.minecraft.client.Minecraft;
@@ -10,21 +9,24 @@ import net.minecraft.client.sounds.SoundEngine;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.client.event.ClientPlayerNetworkEvent;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.sound.PlaySoundEvent;
-import net.neoforged.neoforge.event.TickEvent;
 
-@Mod.EventBusSubscriber(modid = AetherGenesis.MODID, value = Dist.CLIENT)
 public class GenesisAudioListener {
+
+    public static void listeners(IEventBus eventBus) {
+        eventBus.addListener(GenesisAudioListener::onPlaySound);
+        eventBus.addListener(GenesisAudioListener::onClientTick);
+        eventBus.addListener(GenesisAudioListener::onPlayerRespawn);
+    }
+
     /**
      * @see GenesisAudioHooks#shouldCancelMusic(SoundInstance)
      * @see GenesisAudioHooks#shouldReplacePortalHum(SoundInstance)
      * @see GenesisAudioHooks#shouldCancelPortalSound(SoundEngine, SoundInstance)
      */
-    @SubscribeEvent
     public static void onPlaySound(PlaySoundEvent event) {
         SoundEngine soundEngine = event.getEngine();
         SoundInstance sound = event.getOriginalSound();
@@ -50,17 +52,13 @@ public class GenesisAudioListener {
     /**
      * @see GenesisAudioHooks#tick()
      */
-    @SubscribeEvent
-    public static void onClientTick(TickEvent.ClientTickEvent event) {
-        if (event.phase == TickEvent.Phase.END) {
-            GenesisAudioHooks.tick();
-        }
+    public static void onClientTick(ClientTickEvent.Post event) {
+        GenesisAudioHooks.tick();
     }
 
     /**
      * @see GenesisAudioHooks#stop()
      */
-    @SubscribeEvent
     public static void onPlayerRespawn(ClientPlayerNetworkEvent.Clone event) {
         GenesisAudioHooks.stop();
     }

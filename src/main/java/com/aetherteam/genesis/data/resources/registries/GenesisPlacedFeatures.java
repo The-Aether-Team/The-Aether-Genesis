@@ -9,7 +9,7 @@ import com.aetherteam.nitrogen.data.resources.builders.NitrogenPlacedFeatureBuil
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -46,10 +46,10 @@ public class GenesisPlacedFeatures {
     public static final ResourceKey<PlacedFeature> ORE_CONTINUUM_PLACEMENT = createKey("ore_continuum");
 
     private static ResourceKey<PlacedFeature> createKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(AetherGenesis.MODID, name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, name));
     }
 
-    public static void bootstrap(BootstapContext<PlacedFeature> context) {
+    public static void bootstrap(BootstrapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
         register(context, GREEN_AERCLOUD_4_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.GREEN_AERCLOUD_4_CONFIGURATION), AetherPlacedFeatureBuilders.aercloudPlacement(0, 32, 16));
         register(context, GREEN_AERCLOUD_8_PLACEMENT, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.GREEN_AERCLOUD_8_CONFIGURATION), AetherPlacedFeatureBuilders.aercloudPlacement(32, 64, 8));
@@ -87,11 +87,11 @@ public class GenesisPlacedFeatures {
                 NitrogenPlacedFeatureBuilders.commonOrePlacement(4, HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.aboveBottom(128))));
     }
 
-    private static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers) {
+    private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration, List<PlacementModifier> modifiers) {
         context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
     }
 
-    private static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers) {
+    private static void register(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration, PlacementModifier... modifiers) {
         register(context, key, configuration, List.of(modifiers));
     }
 }

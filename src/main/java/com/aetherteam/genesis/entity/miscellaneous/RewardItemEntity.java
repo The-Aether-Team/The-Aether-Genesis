@@ -1,6 +1,7 @@
 package com.aetherteam.genesis.entity.miscellaneous;
 
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
+import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -43,7 +44,7 @@ public class RewardItemEntity extends ItemEntity {
                 double motX = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
                 double motY = this.random.nextDouble();
                 double motZ = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-                this.level().addParticle(ParticleTypes.ENTITY_EFFECT, this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
+                this.level().addParticle(ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, 0xFFFFFFFF), this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
             }
             if (this.tickCount % 5 == 0) {
                 for (int sparkCount = 1; sparkCount <= 10; sparkCount++) {

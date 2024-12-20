@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 
 public class FangrinEyesLayer extends EyesLayer<Fangrin, FangrinModel> {
-    private static final RenderType FANGRIN_GLOW = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/fangrin/fangrin_emissive.png"));
+    private static final RenderType FANGRIN_GLOW = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/companions/fangrin/fangrin_emissive.png"));
 
     public FangrinEyesLayer(RenderLayerParent<Fangrin, FangrinModel> entityRenderer) {
         super(entityRenderer);

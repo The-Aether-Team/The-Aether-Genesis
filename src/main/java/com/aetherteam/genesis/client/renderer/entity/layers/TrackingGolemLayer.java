@@ -15,8 +15,8 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class TrackingGolemLayer extends EyesLayer<TrackingGolem, TrackingGolemModel> {
-	private static final RenderType TRACKING_GOLEM_GLOW = GenesisRenderTypes.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/tracking_golem/tracking_golem_glow.png"));
-	private static final RenderType TRACKING_GOLEM_HOSTILE_GLOW = GenesisRenderTypes.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/tracking_golem/tracking_golem_hostile_glow.png"));
+	private static final RenderType TRACKING_GOLEM_GLOW = GenesisRenderTypes.eyes(ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/mobs/tracking_golem/tracking_golem_glow.png"));
+	private static final RenderType TRACKING_GOLEM_HOSTILE_GLOW = GenesisRenderTypes.eyes(ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/mobs/tracking_golem/tracking_golem_hostile_glow.png"));
 
 	public TrackingGolemLayer(RenderLayerParent<TrackingGolem, TrackingGolemModel> entityRenderer) {
 		super(entityRenderer);
@@ -25,7 +25,7 @@ public class TrackingGolemLayer extends EyesLayer<TrackingGolem, TrackingGolemMo
 	@Override
 	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, TrackingGolem golem, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
 		VertexConsumer consumer = buffer.getBuffer(this.renderType(golem));
-		this.getParentModel().renderToBuffer(poseStack, consumer, LightTexture.FULL_SKY, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+		this.getParentModel().renderToBuffer(poseStack, consumer, LightTexture.FULL_SKY, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
 	}
 	
 	public RenderType renderType(TrackingGolem golem) {

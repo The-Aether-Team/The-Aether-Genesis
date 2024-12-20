@@ -9,6 +9,7 @@ import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.SimpleCriterionTrigger;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.ExtraCodecs;
+import net.minecraft.world.entity.animal.Cod;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
@@ -40,8 +41,8 @@ public class ContinuumOrbLootTrigger extends SimpleCriterionTrigger<ContinuumOrb
 
     public record Instance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item) implements SimpleInstance {
         public static final Codec<ContinuumOrbLootTrigger.Instance> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                        ExtraCodecs.strictOptionalField(EntityPredicate.ADVANCEMENT_CODEC, "player").forGetter(ContinuumOrbLootTrigger.Instance::player),
-                        ExtraCodecs.strictOptionalField(ItemPredicate.CODEC, "item").forGetter(ContinuumOrbLootTrigger.Instance::item))
+                        EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(ContinuumOrbLootTrigger.Instance::player),
+                        ItemPredicate.CODEC.optionalFieldOf("item").forGetter(ContinuumOrbLootTrigger.Instance::item))
                 .apply(instance, ContinuumOrbLootTrigger.Instance::new));
 
         public static Criterion<ContinuumOrbLootTrigger.Instance> forItem(ItemPredicate item) {
@@ -49,7 +50,7 @@ public class ContinuumOrbLootTrigger extends SimpleCriterionTrigger<ContinuumOrb
         }
 
         public boolean test(ItemStack stack) {
-            return this.item.isEmpty() || this.item.get().matches(stack);
+            return this.item.isEmpty() || this.item.get().test(stack);
         }
     }
 }

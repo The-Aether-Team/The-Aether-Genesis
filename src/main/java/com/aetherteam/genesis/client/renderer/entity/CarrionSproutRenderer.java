@@ -11,9 +11,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class CarrionSproutRenderer extends MobRenderer<CarrionSprout, CarrionSproutModel> {
-    private static final ResourceLocation CARRION_SPROUT_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/carrion_sprout/carrion_sprout.png");
-    private static final ResourceLocation CARRION_SPROUT_PINK_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/carrion_sprout/carrion_sprout_pink.png");
-    private static final ResourceLocation CARRION_SPROUT_WHITE_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/carrion_sprout/carrion_sprout_white.png");
+    private static final ResourceLocation CARRION_SPROUT_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/mobs/carrion_sprout/carrion_sprout.png");
+    private static final ResourceLocation CARRION_SPROUT_PINK_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/mobs/carrion_sprout/carrion_sprout_pink.png");
+    private static final ResourceLocation CARRION_SPROUT_WHITE_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/mobs/carrion_sprout/carrion_sprout_white.png");
 
     public CarrionSproutRenderer(EntityRendererProvider.Context context) {
         super(context, new CarrionSproutModel(context.bakeLayer(GenesisModelLayers.CARRION_SPROUT)), 0.5F);

@@ -58,11 +58,11 @@ public class CarrionSprout extends Mob {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.getEntityData().define(DATA_MAX_SIZE_ID, 0.0F);
-        this.getEntityData().define(DATA_SIZE_ID, 0.0F);
-        this.getEntityData().define(DATA_COLOR_ID, "blue");
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_MAX_SIZE_ID, 0.0F);
+        builder.define(DATA_SIZE_ID, 0.0F);
+        builder.define(DATA_COLOR_ID, "blue");
     }
 
     @Override
@@ -82,12 +82,11 @@ public class CarrionSprout extends Mob {
      * @param difficulty The {@link DifficultyInstance} of the game.
      * @param reason     The {@link MobSpawnType} reason.
      * @param spawnData  The {@link SpawnGroupData}.
-     * @param tag        The {@link CompoundTag} to apply to this entity.
      * @return The {@link SpawnGroupData} to return.
      */
     @Override
     @SuppressWarnings("deprecation")
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag tag) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData spawnData) {
         this.setPos(Math.floor(this.getX()) + 0.5, this.getY(), Math.floor(this.getZ()) + 0.5);
         this.setMaxSize(Mth.clamp(this.getRandom().nextFloat() * this.getRandom().nextInt(3), 1.0F, 3.0F));
         this.setSize(Mth.clamp(this.getRandom().nextFloat() * this.getRandom().nextInt(2) - 0.3F, Mth.clamp(this.getMaxSize() - this.getRandom().nextFloat(), 0.3F, 0.6F), 0.3F));
@@ -182,13 +181,13 @@ public class CarrionSprout extends Mob {
      * Disallows Carrion Sprout from jumping.
      */
     @Override
-    protected void jumpFromGround() { }
+    public void jumpFromGround() { }
 
     /**
      * Disallows Aechor Plants from being leashed.
      */
     @Override
-    public boolean canBeLeashed(Player player) {
+    public boolean canBeLeashed() {
         return false;
     }
 
@@ -255,8 +254,8 @@ public class CarrionSprout extends Mob {
      * @return The {@link EntityDimensions}.
      */
     @Override
-    public EntityDimensions getDimensions(Pose pose) {
-        return this.createDimensions();
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        return createDimensions();
     }
 
     private EntityDimensions createDimensions() {
@@ -279,7 +278,7 @@ public class CarrionSprout extends Mob {
      * [CODE COPY] - {@link Animal#getExperienceReward()}.
      */
     @Override
-    public int getExperienceReward() {
+    protected int getBaseExperienceReward() {
         return 1 + this.level().getRandom().nextInt(3);
     }
 

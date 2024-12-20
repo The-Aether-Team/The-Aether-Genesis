@@ -4,6 +4,7 @@ import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.item.EquipmentUtil;
 import com.aetherteam.genesis.item.GenesisItems;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.world.entity.Entity;
@@ -16,7 +17,7 @@ import net.neoforged.neoforge.common.loot.IGlobalLootModifier;
 import net.neoforged.neoforge.common.loot.LootModifier;
 
 public class ChanceDoubleDropsModifier extends LootModifier {
-    public static final Codec<ChanceDoubleDropsModifier> CODEC = RecordCodecBuilder.create((instance) -> LootModifier.codecStart(instance).apply(instance, ChanceDoubleDropsModifier::new));
+    public static final MapCodec<ChanceDoubleDropsModifier> CODEC = RecordCodecBuilder.mapCodec((instance) -> LootModifier.codecStart(instance).apply(instance, ChanceDoubleDropsModifier::new));
 
     public ChanceDoubleDropsModifier(LootItemCondition[] conditions) {
         super(conditions);
@@ -31,11 +32,11 @@ public class ChanceDoubleDropsModifier extends LootModifier {
      */
     @Override
     public ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> lootStacks, LootContext context) {
-        Entity entity = context.getParamOrNull(LootContextParams.DIRECT_KILLER_ENTITY);
+        Entity entity = context.getParamOrNull(LootContextParams.DIRECT_ATTACKING_ENTITY);
         Entity target = context.getParamOrNull(LootContextParams.THIS_ENTITY);
         ObjectArrayList<ItemStack> newStacks = new ObjectArrayList<>(lootStacks);
         if (entity instanceof LivingEntity livingEntity && target != null) {
-            if (EquipmentUtil.hasCurio(livingEntity, GenesisItems.SKYROOT_RING.get()) && !target.getType().is(AetherTags.Entities.NO_SKYROOT_DOUBLE_DROPS)) {
+            if (EquipmentUtil.hasAccessory(livingEntity, GenesisItems.SKYROOT_RING.get()) && !target.getType().is(AetherTags.Entities.NO_SKYROOT_DOUBLE_DROPS)) {
                 if (context.getRandom().nextInt(100) < 15) {
                     for (ItemStack stack : lootStacks) {
                         if (!stack.is(AetherTags.Items.NO_SKYROOT_DOUBLE_DROPS)) {
@@ -49,7 +50,7 @@ public class ChanceDoubleDropsModifier extends LootModifier {
     }
 
     @Override
-    public Codec<? extends IGlobalLootModifier> codec() {
+    public MapCodec<? extends IGlobalLootModifier> codec() {
         return ChanceDoubleDropsModifier.CODEC;
     }
 }

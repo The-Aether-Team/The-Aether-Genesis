@@ -24,7 +24,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemp
 public class GenesisBronzeBossRoom extends BronzeDungeonPiece {
 
     public GenesisBronzeBossRoom(StructureTemplateManager manager, String name, BlockPos pos, Rotation rotation, Holder<StructureProcessorList> processors) {
-        super(GenesisStructurePieceTypes.BRONZE_BOSS_ROOM.get(), manager, new ResourceLocation(AetherGenesis.MODID, "bronze_dungeon/" + name), AetherTemplateStructurePiece.makeSettingsWithPivot(makeSettings(), manager, BronzeDungeonPiece.makeLocation(name), rotation), pos, processors);
+        super(GenesisStructurePieceTypes.BRONZE_BOSS_ROOM.get(), manager, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "bronze_dungeon/" + name), AetherTemplateStructurePiece.makeSettingsWithPivot(makeSettings(), manager, BronzeDungeonPiece.makeLocation(name), rotation), pos, processors);
     }
 
     public GenesisBronzeBossRoom(StructurePieceSerializationContext context, CompoundTag tag) {

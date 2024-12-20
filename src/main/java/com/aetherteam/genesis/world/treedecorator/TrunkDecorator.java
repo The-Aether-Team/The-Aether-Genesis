@@ -1,6 +1,7 @@
 package com.aetherteam.genesis.world.treedecorator;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
@@ -16,7 +17,7 @@ import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorTy
  * Creates a trunk of log walls surrounding the bottom of a tree.
  */
 public class TrunkDecorator extends TreeDecorator {
-    public static final Codec<TrunkDecorator> CODEC = BlockStateProvider.CODEC.fieldOf("provider").xmap(TrunkDecorator::new, (decorator) -> decorator.provider).codec();
+    public static final MapCodec<TrunkDecorator> CODEC = BlockStateProvider.CODEC.fieldOf("provider").xmap(TrunkDecorator::new, (decorator) -> decorator.provider);
     private final BlockStateProvider provider;
 
     public TrunkDecorator(BlockStateProvider provider) {

@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class FrostboundSpriteRenderer extends CompanionRenderer<FrostboundSprite, FrostboundSpriteModel> {
-    private static final ResourceLocation FROSTBOUND_SPRITE_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/frostbound_sprite.png");
+    private static final ResourceLocation FROSTBOUND_SPRITE_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/companions/frostbound_sprite.png");
 
     public FrostboundSpriteRenderer(EntityRendererProvider.Context context) {
         super(context, new FrostboundSpriteModel(context.bakeLayer(GenesisModelLayers.FROSTBOUND_SPRITE)), 0.45F);

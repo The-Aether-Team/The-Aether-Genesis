@@ -18,10 +18,10 @@ public class GenesisSoundEvents {
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_CANDY_RING_EQUIP = register("item.accessory.equip_candy_ring");
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_SKYROOT_RING_EQUIP = register("item.accessory.equip_skyroot_ring");
 
-    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_AERWHALE = register("item.music_disc.aerwhale");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_APPROACHES = register("item.music_disc.approaches");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_DEMISE = register("item.music_disc.demise");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_RECORDING_892 = register("item.music_disc.recording_892");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_AERWHALE = register("music_disc.aerwhale");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_APPROACHES = register("music_disc.approaches");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_DEMISE = register("music_disc.demise");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_RECORDING_892 = register("music_disc.recording_892");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_CARRION_SPROUT_HURT = register("entity.carrion_sprout.hurt");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_CARRION_SPROUT_DEATH = register("entity.carrion_sprout.death");
@@ -57,6 +57,6 @@ public class GenesisSoundEvents {
     public static final DeferredHolder<SoundEvent, SoundEvent> MUSIC_MINIBOSS = register("music.miniboss");
 
     private static DeferredHolder<SoundEvent, SoundEvent> register(String name) {
-        return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(new ResourceLocation(AetherGenesis.MODID, name)));
+        return SOUNDS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, name)));
     }
 }

@@ -11,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class FrostpineTotemRenderer extends CompanionRenderer<FrostpineTotem, FrostpineTotemModel> {
-    private static final ResourceLocation FROSTPINE_TOTEM_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/frostpine_totem/frostpine_totem.png");
+    private static final ResourceLocation FROSTPINE_TOTEM_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/companions/frostpine_totem/frostpine_totem.png");
 
     public FrostpineTotemRenderer(EntityRendererProvider.Context context) {
         super(context, new FrostpineTotemModel(context.bakeLayer(GenesisModelLayers.FROSTPINE_TOTEM)), 0.45F);

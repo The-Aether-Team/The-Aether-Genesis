@@ -14,7 +14,7 @@ public class GenesisTags {
         public static final TagKey<Block> CARRION_SPROUT_SPAWNABLE_ON = tag("carrion_sprout_spawnable_on");
 
         private static TagKey<Block> tag(String name) {
-            return TagKey.create(Registries.BLOCK, new ResourceLocation(AetherGenesis.MODID, name));
+            return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, name));
         }
     }
 
@@ -30,7 +30,7 @@ public class GenesisTags {
         public static final TagKey<Item> DARTS = tag("darts");
 
         private static TagKey<Item> tag(String name) {
-            return TagKey.create(Registries.ITEM, new ResourceLocation(AetherGenesis.MODID, name));
+            return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, name));
         }
     }
 
@@ -39,7 +39,7 @@ public class GenesisTags {
         public static final TagKey<EntityType<?>> NO_PRESENT_DROPS = tag("no_present_drops");
 
         private static TagKey<EntityType<?>> tag(String name) {
-            return TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(AetherGenesis.MODID, name));
+            return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, name));
         }
     }
 
@@ -58,7 +58,7 @@ public class GenesisTags {
         public static final TagKey<Biome> HAS_TEMPEST = tag("has_tempest");
 
         private static TagKey<Biome> tag(String name) {
-            return TagKey.create(Registries.BIOME, new ResourceLocation(AetherGenesis.MODID, name));
+            return TagKey.create(Registries.BIOME, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, name));
         }
     }
 }

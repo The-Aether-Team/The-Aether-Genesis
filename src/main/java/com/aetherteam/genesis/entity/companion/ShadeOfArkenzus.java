@@ -3,6 +3,7 @@ package com.aetherteam.genesis.entity.companion;
 import com.aetherteam.genesis.item.GenesisItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.NeoForgeMod;
@@ -15,7 +16,7 @@ public class ShadeOfArkenzus extends CompanionMob {
     @Override
     public void tick() {
         super.tick();
-        AttributeInstance gravity = this.getAttribute(NeoForgeMod.ENTITY_GRAVITY.value());
+        AttributeInstance gravity = this.getAttribute(Attributes.GRAVITY);
         if (gravity != null) {
             double fallSpeed = Math.max(gravity.getValue() * -1.35, -0.1); // Entity isn't allowed to fall too slowly from gravity.
             if (this.getDeltaMovement().y() < fallSpeed) {

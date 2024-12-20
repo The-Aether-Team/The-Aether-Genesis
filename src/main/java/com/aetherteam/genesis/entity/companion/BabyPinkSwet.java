@@ -21,7 +21,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.pathfinder.PathType;
 import net.minecraft.world.level.pathfinder.WalkNodeEvaluator;
 import org.jetbrains.annotations.Nullable;
 
@@ -52,20 +52,14 @@ public class BabyPinkSwet extends Swet implements Companion<BabyPinkSwet> {
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.getEntityData().define(DATA_OWNER_ID, Optional.empty());
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_OWNER_ID, Optional.empty());
     }
 
-    @Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag tag) {
-        if (tag != null) {
-            if (tag.contains("Owner")) {
-                this.setOwner(tag.getUUID("Owner"));
-            }
-        }
-        return spawnData;
+    public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData spawnGroupData) {
+        return spawnGroupData;
     }
 
     @Override
@@ -236,8 +230,8 @@ public class BabyPinkSwet extends Swet implements Companion<BabyPinkSwet> {
         }
 
         private boolean canTeleportTo(BlockPos pos) {
-            BlockPathTypes blockpathtypes = WalkNodeEvaluator.getBlockPathTypeStatic(this.level, pos.mutable());
-            if (blockpathtypes != BlockPathTypes.WALKABLE) {
+            PathType blockpathtypes = WalkNodeEvaluator.getPathTypeStatic(this.swet, pos);
+            if (blockpathtypes != PathType.WALKABLE) {
                 return false;
             } else {
                 BlockState blockstate = this.level.getBlockState(pos.below());

@@ -2,11 +2,11 @@ package com.aetherteam.genesis.item.accessories.companion;
 
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.entity.companion.FrostpineTotem;
+import io.wispforest.accessories.api.slot.SlotReference;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
-import top.theillusivec4.curios.api.SlotContext;
 
 public class FrostpineTotemItem extends CompanionItem<FrostpineTotem> {
     private static final MobEffectInstance TOTEM_NIGHT_VISION_EFFECT = new MobEffectInstance(MobEffects.NIGHT_VISION, MobEffectInstance.INFINITE_DURATION, 0, false, false, false);
@@ -18,12 +18,12 @@ public class FrostpineTotemItem extends CompanionItem<FrostpineTotem> {
     /**
      * Applies a night vision effect to players if they do not already have it.
      *
-     * @param slotContext The {@link SlotContext} of the Curio.
-     * @param stack       The Curio {@link ItemStack}.
+     * @param reference The {@link SlotReference} of the Accessory.
+     * @param stack     The Accessory {@link ItemStack}.
      */
     @Override
-    public void curioTick(SlotContext slotContext, ItemStack stack) {
-        LivingEntity livingEntity = slotContext.entity();
+    public void tick(ItemStack stack, SlotReference reference) {
+        LivingEntity livingEntity = reference.entity();
         if (!livingEntity.level().isClientSide()) {
             boolean noEffect = true;
             for (MobEffectInstance effect : livingEntity.getActiveEffects()) {
@@ -42,13 +42,12 @@ public class FrostpineTotemItem extends CompanionItem<FrostpineTotem> {
     /**
      * Removes the night vision effect when the Frostpine Totem is unequipped.
      *
-     * @param slotContext The {@link SlotContext} of the Curio.
-     * @param newStack    The new {@link ItemStack} in the slot.
-     * @param stack       The {@link ItemStack} of the Curio.
+     * @param reference The {@link SlotReference} of the Accessory.
+     * @param stack     The {@link ItemStack} of the Accessory.
      */
     @Override
-    public void onUnequip(SlotContext slotContext, ItemStack newStack, ItemStack stack) {
-        LivingEntity livingEntity = slotContext.entity();
+    public void onUnequip(ItemStack stack, SlotReference reference) {
+        LivingEntity livingEntity = reference.entity();
         if (!livingEntity.level().isClientSide()) {
             boolean hasEffect = false;
             for (MobEffectInstance effect : livingEntity.getActiveEffects()) {
@@ -61,7 +60,7 @@ public class FrostpineTotemItem extends CompanionItem<FrostpineTotem> {
                 livingEntity.removeEffect(TOTEM_NIGHT_VISION_EFFECT.getEffect());
             }
         }
-        super.onUnequip(slotContext, newStack, stack);
+        super.onUnequip(stack, reference);
     }
 
     /**

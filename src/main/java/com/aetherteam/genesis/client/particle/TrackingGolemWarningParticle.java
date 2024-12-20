@@ -16,6 +16,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
@@ -49,14 +50,14 @@ public class TrackingGolemWarningParticle extends Particle {
         posestack.scale(1.5F, 1.5F, 1.5F);
         MultiBufferSource.BufferSource multibuffersource$buffersource = Minecraft.getInstance().renderBuffers().bufferSource();
         VertexConsumer vertexconsumer = multibuffersource$buffersource.getBuffer(this.renderType);
-        this.model.head.render(posestack, vertexconsumer, 15728880, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, f1);
+        this.model.head.render(posestack, vertexconsumer, 15728880, OverlayTexture.NO_OVERLAY, FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, f1));
         multibuffersource$buffersource.endBatch();
     }
 
-    @Override
-    public boolean shouldCull() {
-        return false;
-    }
+//    @Override
+//    public boolean shouldCull() {
+//        return false;
+//    }
 
     @OnlyIn(Dist.CLIENT)
     public static class Provider implements ParticleProvider<SimpleParticleType> {

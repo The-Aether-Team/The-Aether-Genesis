@@ -1,5 +1,6 @@
 package com.aetherteam.genesis;
 
+import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonBuilder;
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
@@ -13,7 +14,14 @@ import com.aetherteam.genesis.data.generators.tags.GenesisBlockTagData;
 import com.aetherteam.genesis.data.generators.tags.GenesisEntityTagData;
 import com.aetherteam.genesis.data.generators.tags.GenesisItemTagData;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
+import com.aetherteam.genesis.event.listeners.EntityListener;
+import com.aetherteam.genesis.event.listeners.LevelListener;
+import com.aetherteam.genesis.event.listeners.WeaponAbilityListener;
+import com.aetherteam.genesis.event.listeners.abilities.AccessoryAbilityListener;
+import com.aetherteam.genesis.event.listeners.abilities.ToolAbilityListener;
+import com.aetherteam.genesis.event.listeners.capability.GenesisPlayerListener;
 import com.aetherteam.genesis.inventory.menu.GenesisMenuTypes;
+import com.aetherteam.genesis.item.GenesisCreativeTabs;
 import com.aetherteam.genesis.item.GenesisItems;
 import com.aetherteam.genesis.loot.entries.GenesisLootPoolEntries;
 import com.aetherteam.genesis.loot.functions.GenesisLootFunctions;
@@ -32,11 +40,14 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.DetectedVersion;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.metadata.PackMetadataGenerator;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackLocationInfo;
+import net.minecraft.server.packs.PackSelectionConfig;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.PathPackResources;
 import net.minecraft.server.packs.metadata.pack.PackMetadataSection;
@@ -47,16 +58,17 @@ import net.minecraft.util.InclusiveRange;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
-import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
-import net.neoforged.neoforge.network.event.RegisterPayloadHandlerEvent;
-import net.neoforged.neoforge.network.registration.IPayloadRegistrar;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 import terrablender.api.Regions;
@@ -71,11 +83,23 @@ public class AetherGenesis {
     public static final String MODID = "aether_genesis";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public AetherGenesis(IEventBus bus, Dist dist) {
+    public AetherGenesis(ModContainer mod, IEventBus bus) {
         bus.addListener(this::commonSetup);
         bus.addListener(this::registerPackets);
         bus.addListener(this::dataSetup);
         bus.addListener(this::packSetup);
+
+        bus.addListener(GenesisCreativeTabs::buildCreativeModeTabs);
+
+        GenesisEntityTypes.listen(bus);
+
+        bus.addListener((ModifyDefaultComponentsEvent event) -> {
+            if (GenesisConfig.COMMON.gold_aercloud_ability.get()) {
+                event.modify(AetherItems.GOLDEN_PARACHUTE, builder -> builder.set(DataComponents.MAX_DAMAGE, 1));
+            }
+        });
+
+        eventSetup(NeoForge.EVENT_BUS);
 
         DeferredRegister<?>[] registers = {
                 GenesisBlocks.BLOCKS,
@@ -100,8 +124,8 @@ public class AetherGenesis {
             register.register(bus);
         }
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, GenesisConfig.COMMON_SPEC);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, GenesisConfig.CLIENT_SPEC);
+        mod.registerConfig(ModConfig.Type.COMMON, GenesisConfig.COMMON_SPEC);
+        mod.registerConfig(ModConfig.Type.CLIENT, GenesisConfig.CLIENT_SPEC);
     }
 
     public void commonSetup(FMLCommonSetupEvent event) {
@@ -109,7 +133,7 @@ public class AetherGenesis {
             GenesisBlocks.registerPots();
             GenesisBlocks.registerFlammability();
 
-            Regions.register(new GenesisRegion(new ResourceLocation(MODID, MODID), GenesisConfig.COMMON.biome_weight.get()));
+            Regions.register(new GenesisRegion(ResourceLocation.fromNamespaceAndPath(MODID, MODID), GenesisConfig.COMMON.biome_weight.get()));
 
             BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("chest_room").add((manager, pos, rot, processors) -> new GenesisBronzeDungeonRoom(manager, "spawner_room", pos, rot, processors), 3);
             BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("chest_room").add((manager, pos, rot, processors) -> new GenesisBronzeDungeonRoom(manager, "spawner_room_pillars", pos, rot, processors), 2);
@@ -120,15 +144,15 @@ public class AetherGenesis {
         });
     }
 
-    public void registerPackets(RegisterPayloadHandlerEvent event) {
-        IPayloadRegistrar registrar = event.registrar(MODID).versioned("1.0.0").optional();
+    public void registerPackets(RegisterPayloadHandlersEvent event) {
+        var registrar = event.registrar(MODID).versioned("1.0.0").optional();
 
         // CLIENTBOUND
-        registrar.play(TrackingGolemWarningPacket.ID, TrackingGolemWarningPacket::decode, payload -> payload.client(TrackingGolemWarningPacket::handle));
+        registrar.playToClient(TrackingGolemWarningPacket.TYPE, TrackingGolemWarningPacket.STREAM_CODEC, TrackingGolemWarningPacket::execute);
 
         // BOTH
-        registrar.play(GenesisPlayerSyncPacket.ID, GenesisPlayerSyncPacket::decode, GenesisPlayerSyncPacket::handle);
-        registrar.play(ZephyrColorSyncPacket.ID, ZephyrColorSyncPacket::decode, ZephyrColorSyncPacket::handle);
+        registrar.playBidirectional(GenesisPlayerSyncPacket.TYPE, GenesisPlayerSyncPacket.STREAM_CODEC, GenesisPlayerSyncPacket::execute);
+        registrar.playBidirectional(ZephyrColorSyncPacket.TYPE, ZephyrColorSyncPacket.STREAM_CODEC, ZephyrColorSyncPacket::execute);
     }
 
     public void dataSetup(GatherDataEvent event) {
@@ -146,8 +170,8 @@ public class AetherGenesis {
         // Server Data
         generator.addProvider(event.includeServer(), new GenesisRegistrySets(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new GenesisRecipeData(packOutput, lookupProvider));
-        generator.addProvider(event.includeServer(), GenesisLootTableData.create(packOutput));
-        generator.addProvider(event.includeServer(), new GenesisLootModifierData(packOutput));
+        generator.addProvider(event.includeServer(), GenesisLootTableData.create(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new GenesisLootModifierData(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new GenesisDataMapData(packOutput, lookupProvider));
         GenesisBlockTagData blockTags = new GenesisBlockTagData(packOutput, lookupProvider, fileHelper);
         generator.addProvider(event.includeServer(), blockTags);
@@ -178,15 +202,12 @@ public class AetherGenesis {
             Path resourcePath = ModList.get().getModFileById(AetherGenesis.MODID).getFile().findResource("packs/classic");
             PackMetadataSection metadata = new PackMetadataSection(Component.translatable("pack.aether_genesis.classic.description"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));
             event.addRepositorySource((source) ->
-                    source.accept(Pack.create(
-                            "builtin/genesis_classic",
-                            Component.translatable("pack.aether_genesis.classic.title"),
-                            false,
-                            new PathPackResources.PathResourcesSupplier(resourcePath, true),
-                            new Pack.Info(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
-                            Pack.Position.TOP,
-                            false,
-                            PackSource.BUILT_IN)
+                    source.accept(new Pack(
+                            new PackLocationInfo("builtin/genesis_classic", Component.translatable("pack.aether_genesis.classic.title"), PackSource.BUILT_IN, Optional.empty()),
+                            new PathPackResources.PathResourcesSupplier(resourcePath),
+                            new Pack.Metadata(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
+                            new PackSelectionConfig(false, Pack.Position.TOP, false)
+                        )
                     ));
         }
     }
@@ -199,17 +220,24 @@ public class AetherGenesis {
             Path resourcePath = ModList.get().getModFileById(AetherGenesis.MODID).getFile().findResource("packs/data_override");
             PackMetadataSection metadata = new PackMetadataSection(Component.literal(""), SharedConstants.getCurrentVersion().getPackVersion(PackType.SERVER_DATA));
             event.addRepositorySource((source) ->
-                    source.accept(Pack.create(
-                            "builtin/genesis_data_override",
-                            Component.literal(""),
-                            true,
-                            new PathPackResources.PathResourcesSupplier(resourcePath, true),
-                            new Pack.Info(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), true),
-                            Pack.Position.TOP,
-                            false,
-                            PackSource.BUILT_IN)
-                    )
-            );
+                    source.accept(new Pack(
+                            new PackLocationInfo("builtin/genesis_data_override", Component.literal(""),  PackSource.BUILT_IN,Optional.empty()),
+                            new PathPackResources.PathResourcesSupplier(resourcePath),
+                            new Pack.Metadata(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), true),
+                            new PackSelectionConfig(true, Pack.Position.TOP, false)
+                        )
+                    ));
         }
+    }
+
+    public void eventSetup(IEventBus neoBus) {
+        AccessoryAbilityListener.listen(neoBus);
+        ToolAbilityListener.listen(neoBus);
+
+        GenesisPlayerListener.listen(neoBus);
+
+        EntityListener.listen(neoBus);
+        LevelListener.listen(neoBus);
+        WeaponAbilityListener.listen(neoBus);
     }
 }

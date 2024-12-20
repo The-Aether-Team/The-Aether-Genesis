@@ -5,6 +5,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 public class AttachmentHooks {
     public static class GenesisPlayerHooks {
@@ -23,7 +24,7 @@ public class AttachmentHooks {
         }
 
         /**
-         * @see com.aetherteam.genesis.event.listeners.capability.GenesisPlayerListener#onPlayerUpdate(LivingEvent.LivingTickEvent)
+         * @see com.aetherteam.genesis.event.listeners.capability.GenesisPlayerListener#onPlayerUpdate(EntityTickEvent.Post)
          */
         public static void update(LivingEntity entity) {
             if (entity instanceof Player player) {

@@ -5,6 +5,7 @@ import com.aetherteam.aether.mixin.mixins.common.accessor.BlockLootAccessor;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.data.providers.GenesisBlockLootSubProvider;
 import com.aetherteam.genesis.item.GenesisItems;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -18,8 +19,8 @@ import java.util.stream.Collectors;
 public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
     private static final Set<Item> EXPLOSION_RESISTANT = new HashSet<>();
 
-    public GenesisBlockLoot() {
-        super(EXPLOSION_RESISTANT, FeatureFlags.REGISTRY.allFlags());
+    public GenesisBlockLoot(HolderLookup.Provider registries) {
+        super(EXPLOSION_RESISTANT, FeatureFlags.REGISTRY.allFlags(), registries);
     }
 
     @Override

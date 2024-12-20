@@ -14,8 +14,8 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class LabyrinthEyeLayer extends EyesLayer<LabyrinthEye, LabyrinthEyeModel> {
-    private static final RenderType LABYRINTH_EYE_ASLEEP_GLOW = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_sleep_glow.png"));
-    private static final RenderType LABYRINTH_EYE_AWAKE_GLOW = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_awake_glow.png"));
+    private static final RenderType LABYRINTH_EYE_ASLEEP_GLOW = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_sleep_glow.png"));
+    private static final RenderType LABYRINTH_EYE_AWAKE_GLOW = RenderType.eyes(ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_awake_glow.png"));
 
     public LabyrinthEyeLayer(RenderLayerParent<LabyrinthEye, LabyrinthEyeModel> entityRenderer) {
         super(entityRenderer);
@@ -24,7 +24,7 @@ public class LabyrinthEyeLayer extends EyesLayer<LabyrinthEye, LabyrinthEyeModel
     @Override
     public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, LabyrinthEye eye, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
         VertexConsumer consumer = buffer.getBuffer(this.renderType(eye));
-        this.getParentModel().renderToBuffer(poseStack, consumer, LightTexture.FULL_SKY, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
+        this.getParentModel().renderToBuffer(poseStack, consumer, LightTexture.FULL_SKY, OverlayTexture.NO_OVERLAY, 0xFFFFFFFF);
     }
     
     public RenderType renderType(LabyrinthEye eye) {

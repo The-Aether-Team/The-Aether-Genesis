@@ -48,8 +48,8 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
         ResourceLocation back = this.extend(this.texture(this.name(block), "natural/"), "_back");
         ResourceLocation right = this.extend(this.texture(this.name(block), "natural/"), "_right");
         ResourceLocation left = this.extend(this.texture(this.name(block), "natural/"), "_left");
-        ModelFile rightModel = this.models().cubeBottomTop(blockName, right, back, front).renderType(new ResourceLocation("translucent"));
-        ModelFile leftModel = this.models().cubeBottomTop(blockName, left, back, front).renderType(new ResourceLocation("translucent"));
+        ModelFile rightModel = this.models().cubeBottomTop(blockName, right, back, front).renderType(ResourceLocation.withDefaultNamespace("translucent"));
+        ModelFile leftModel = this.models().cubeBottomTop(blockName, left, back, front).renderType(ResourceLocation.withDefaultNamespace("translucent"));
         this.getVariantBuilder(block).forAllStatesExcept((state) -> {
             Direction direction = state.getValue(PurpleAercloudBlock.FACING);
             switch(direction) {
@@ -80,13 +80,13 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
             int topAge = Math.max(age, 2);
             String halfString = lower ? "_bottom_" : "_top_";
             ResourceLocation location = lower ? this.extend(this.texture(blockName, "natural/"), halfString + bottomAge) : this.extend(this.texture(blockName, "natural/"), halfString + topAge);
-            ModelFile model = this.models().cross(blockName + (lower ? (halfString + bottomAge) : (halfString + topAge)), location).renderType(new ResourceLocation("cutout"));
+            ModelFile model = this.models().cross(blockName + (lower ? (halfString + bottomAge) : (halfString + topAge)), location).renderType(ResourceLocation.withDefaultNamespace("cutout"));
             return ConfiguredModel.builder().modelFile(model).build();
         }, AetherBlockStateProperties.DOUBLE_DROPS);
     }
 
     public void pottedOrangeTree(Block block, Block tree) {
-        ModelFile pot = this.models().withExistingParent(this.name(block), this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/natural/" + this.name(tree) + "_bottom_0")).renderType(new ResourceLocation("cutout"));
+        ModelFile pot = this.models().withExistingParent(this.name(block), this.mcLoc("block/flower_pot_cross")).texture("plant", this.modLoc("block/natural/" + this.name(tree) + "_bottom_0")).renderType(ResourceLocation.withDefaultNamespace("cutout"));
         this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(pot));
     }
 
@@ -113,7 +113,7 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
     }
 
     public void logWallBlock(WallBlock block, Block baseBlock, String location, String modid, boolean postUsesTop, ModelFile postBig, ModelFile postShort, ModelFile postTall, ModelFile side, ModelFile sideAlt, ModelFile sideTall, ModelFile sideTallAlt, ModelFile sideShort, ModelFile sideAltShort, ModelFile sideTallShort, ModelFile sideTallAltShort) {
-        this.logWallBlockInternal(block, this.name(block), new ResourceLocation(modid, "block/" + location + this.name(baseBlock)), postUsesTop, postBig, postShort, postTall, side, sideAlt, sideTall, sideTallAlt, sideShort, sideAltShort, sideTallShort, sideTallAltShort);
+        this.logWallBlockInternal(block, this.name(block), ResourceLocation.fromNamespaceAndPath(modid, "block/" + location + this.name(baseBlock)), postUsesTop, postBig, postShort, postTall, side, sideAlt, sideTall, sideTallAlt, sideShort, sideAltShort, sideTallShort, sideTallAltShort);
     }
 
     private void logWallBlockInternal(WallBlock block, String baseName, ResourceLocation texture, boolean postUsesTop, ModelFile postBig, ModelFile postShort, ModelFile postTall, ModelFile side, ModelFile sideAlt, ModelFile sideTall, ModelFile sideTallAlt, ModelFile sideShort, ModelFile sideAltShort, ModelFile sideTallShort, ModelFile sideTallAltShort) {
@@ -182,7 +182,7 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
     }
 
     public void skyrootCraftingTable(Block block, Block baseBlock, String location, String modid) {
-        ResourceLocation baseTexture = new ResourceLocation(modid, "block/" + location + this.name(baseBlock));
+        ResourceLocation baseTexture = ResourceLocation.fromNamespaceAndPath(modid, "block/" + location + this.name(baseBlock));
         ModelFile workbench = this.models().cube(this.name(block),
                 baseTexture,
                 this.extend(this.texture(this.name(block), "utility/"), "_top"),
@@ -241,7 +241,7 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
     public void holystonePillar(FacingPillarBlock block) {
         ResourceLocation side = this.texture(this.name(block), "construction/");
         if (block == GenesisBlocks.HOLYSTONE_HEADSTONE.get()) {
-            side = new ResourceLocation(Aether.MODID, "block/construction/" + this.name(AetherBlocks.HOLYSTONE_BRICKS.get()));
+            side = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "block/construction/" + this.name(AetherBlocks.HOLYSTONE_BRICKS.get()));
         }
         ResourceLocation end = this.extend(this.texture(this.name(block), "construction/"), "_top");
         ModelFile vertical = this.models().cubeColumn(this.name(block), side, end);
@@ -256,7 +256,7 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
     }
 
     public void dungeonPillar(RotatedPillarBlock block) {
-        this.axisBlock(block, this.extend(this.texture(this.name(block), "dungeon/"), "_side"), new ResourceLocation(AetherGenesis.MODID, "block/dungeon/carved_pillar_top"));
+        this.axisBlock(block, this.extend(this.texture(this.name(block), "dungeon/"), "_side"), ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "block/dungeon/carved_pillar_top"));
     }
 
     public void dungeonPillarTop(FacingPillarBlock block) {
@@ -274,13 +274,13 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
     }
 
     public void skyrootChest(Block block) {
-        ModelFile chest = this.models().cubeAll(this.name(block), new ResourceLocation(Aether.MODID, "block/construction/skyroot_planks"));
+        ModelFile chest = this.models().cubeAll(this.name(block), ResourceLocation.fromNamespaceAndPath(Aether.MODID, "block/construction/skyroot_planks"));
         this.chest(block, chest);
     }
 
     public void skyrootLadder(LadderBlock block) {
         ResourceLocation location = this.texture(this.name(block), "construction/");
-        ModelFile ladder = models().withExistingParent(this.name(block), this.mcLoc("block/block")).renderType(new ResourceLocation("cutout")).ao(false)
+        ModelFile ladder = models().withExistingParent(this.name(block), this.mcLoc("block/block")).renderType(ResourceLocation.withDefaultNamespace("cutout")).ao(false)
                 .texture("particle", location).texture("texture", location)
                 .element().from(0.0F, 0.0F, 15.2F).to(16.0F, 16.0F, 15.2F).shade(false)
                 .face(Direction.NORTH).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#texture").end()
@@ -293,25 +293,25 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
     }
 
     public void coldFire(ColdFireBlock block) {
-        ModelFile fireFloor0 = models().withExistingParent(this.name(block) + "_floor0", this.mcLoc("block/template_fire_floor")).renderType(new ResourceLocation("cutout"))
+        ModelFile fireFloor0 = models().withExistingParent(this.name(block) + "_floor0", this.mcLoc("block/template_fire_floor")).renderType(ResourceLocation.withDefaultNamespace("cutout"))
                 .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_0"));
-        ModelFile fireFloor1 = models().withExistingParent(this.name(block) + "_floor1", this.mcLoc("block/template_fire_floor")).renderType(new ResourceLocation("cutout"))
+        ModelFile fireFloor1 = models().withExistingParent(this.name(block) + "_floor1", this.mcLoc("block/template_fire_floor")).renderType(ResourceLocation.withDefaultNamespace("cutout"))
                 .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_1"));
-        ModelFile fireSide0 = models().withExistingParent(this.name(block) + "_side0", this.mcLoc("block/template_fire_side")).renderType(new ResourceLocation("cutout"))
+        ModelFile fireSide0 = models().withExistingParent(this.name(block) + "_side0", this.mcLoc("block/template_fire_side")).renderType(ResourceLocation.withDefaultNamespace("cutout"))
                 .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_0"));
-        ModelFile fireSide1 = models().withExistingParent(this.name(block) + "_side1", this.mcLoc("block/template_fire_side")).renderType(new ResourceLocation("cutout"))
+        ModelFile fireSide1 = models().withExistingParent(this.name(block) + "_side1", this.mcLoc("block/template_fire_side")).renderType(ResourceLocation.withDefaultNamespace("cutout"))
                 .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_1"));
-        ModelFile fireSideAlt0 = models().withExistingParent(this.name(block) + "_side_alt0", this.mcLoc("block/template_fire_side_alt")).renderType(new ResourceLocation("cutout"))
+        ModelFile fireSideAlt0 = models().withExistingParent(this.name(block) + "_side_alt0", this.mcLoc("block/template_fire_side_alt")).renderType(ResourceLocation.withDefaultNamespace("cutout"))
                 .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_0"));
-        ModelFile fireSideAlt1 = models().withExistingParent(this.name(block) + "_side_alt1", this.mcLoc("block/template_fire_side_alt")).renderType(new ResourceLocation("cutout"))
+        ModelFile fireSideAlt1 = models().withExistingParent(this.name(block) + "_side_alt1", this.mcLoc("block/template_fire_side_alt")).renderType(ResourceLocation.withDefaultNamespace("cutout"))
                 .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_1"));
-        ModelFile fireUp0 = models().withExistingParent(this.name(block) + "_up0", this.mcLoc("block/template_fire_up")).renderType(new ResourceLocation("cutout"))
+        ModelFile fireUp0 = models().withExistingParent(this.name(block) + "_up0", this.mcLoc("block/template_fire_up")).renderType(ResourceLocation.withDefaultNamespace("cutout"))
                 .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_0"));
-        ModelFile fireUp1 = models().withExistingParent(this.name(block) + "_up1", this.mcLoc("block/template_fire_up")).renderType(new ResourceLocation("cutout"))
+        ModelFile fireUp1 = models().withExistingParent(this.name(block) + "_up1", this.mcLoc("block/template_fire_up")).renderType(ResourceLocation.withDefaultNamespace("cutout"))
                 .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_1"));
-        ModelFile fireUpAlt0 = models().withExistingParent(this.name(block) + "_up_alt0", this.mcLoc("block/template_fire_up_alt")).renderType(new ResourceLocation("cutout"))
+        ModelFile fireUpAlt0 = models().withExistingParent(this.name(block) + "_up_alt0", this.mcLoc("block/template_fire_up_alt")).renderType(ResourceLocation.withDefaultNamespace("cutout"))
                 .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_0"));
-        ModelFile fireUpAlt1 = models().withExistingParent(this.name(block) + "_up_alt1", this.mcLoc("block/template_fire_up_alt")).renderType(new ResourceLocation("cutout"))
+        ModelFile fireUpAlt1 = models().withExistingParent(this.name(block) + "_up_alt1", this.mcLoc("block/template_fire_up_alt")).renderType(ResourceLocation.withDefaultNamespace("cutout"))
                 .texture("fire", this.extend(this.texture(this.name(block), "miscellaneous/"), "_1"));
         this.getMultipartBuilder(block)
                 .part().modelFile(fireFloor0).nextModel().modelFile(fireFloor1).addModel()

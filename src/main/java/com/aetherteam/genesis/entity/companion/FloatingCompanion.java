@@ -2,6 +2,7 @@ package com.aetherteam.genesis.entity.companion;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.common.NeoForgeMod;
@@ -16,7 +17,7 @@ public class FloatingCompanion extends CompanionMob {
     @Override
     public void tick() {
         super.tick();
-        AttributeInstance gravity = this.getAttribute(NeoForgeMod.ENTITY_GRAVITY.value());
+        AttributeInstance gravity = this.getAttribute(Attributes.GRAVITY);
         if (gravity != null) {
             double fallSpeed = Math.max(gravity.getValue() * -1.25, -0.1); // Entity isn't allowed to fall too slowly from gravity.
             if (this.getDeltaMovement().y() < fallSpeed) {
@@ -30,7 +31,7 @@ public class FloatingCompanion extends CompanionMob {
      * Disallows floating companions from jumping, instead they "climb" to give the appearance of hovering up blocks.
      */
     @Override
-    protected void jumpFromGround() { }
+    public void jumpFromGround() { }
 
     /**
      * @return True for allowing the floating companion to climb up a block as long as it is horizontally colliding, to give the appearance of hovering up blocks.

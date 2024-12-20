@@ -4,12 +4,12 @@ import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.api.AetherMenus;
 import com.aetherteam.aether.client.AetherMenuUtil;
-import com.aetherteam.aether.client.WorldDisplayHelper;
 import com.aetherteam.aether.client.event.hooks.GuiHooks;
 import com.aetherteam.aether.client.sound.MusicSoundInstance;
 import com.aetherteam.aether.entity.AetherBossMob;
 import com.aetherteam.aether.mixin.mixins.client.accessor.BossHealthOverlayAccessor;
 import com.aetherteam.cumulus.api.Menus;
+import com.aetherteam.cumulus.client.WorldDisplayHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.LerpingBossEvent;
 import net.minecraft.client.gui.screens.WinScreen;
@@ -154,9 +154,9 @@ public class GenesisMusicManager {
     public static <T extends LivingEntity & AetherBossMob<?>> Music getSituationalMusic() {
         if (!(minecraft.screen instanceof WinScreen)) {
             if (isAetherWorldPreviewEnabled()) { // Play Aether menu music when the Aether menu world preview is enabled.
-                return AetherMenus.THE_AETHER.get().getMusic();
+                return AetherMenus.THE_AETHER.music();
             } else if (isVanillaWorldPreviewEnabled()) { // Play Minecraft menu music when the Minecraft menu world preview is enabled.
-                return Menus.MINECRAFT.get().getMusic();
+                return Menus.MINECRAFT.music();
             } else if (minecraft.player != null) { // Otherwise replace creative music with biome music in the Aether.
                 if (isAetherBossMusicActive()) {
                     T boss = getBossFromFight();

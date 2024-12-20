@@ -36,7 +36,7 @@ public class SkyrootChestMimicBlock extends ChestMimicBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
         if (!SkyrootChestBlock.isChestBlockedAt(level, pos) && !level.isClientSide()) {
             this.spawnMimic(state, level, pos);
             return InteractionResult.SUCCESS;

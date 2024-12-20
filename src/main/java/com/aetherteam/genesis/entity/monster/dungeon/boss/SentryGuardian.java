@@ -10,10 +10,9 @@ import com.aetherteam.aether.event.AetherEventDispatch;
 import com.aetherteam.aether.network.packet.clientbound.BossInfoPacket;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.nitrogen.entity.BossRoomTracker;
-import com.aetherteam.nitrogen.network.PacketRelay;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -53,6 +52,7 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumSet;
@@ -209,7 +209,8 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
             double d0 = d2;
             double d1 = Math.max(0.0D, 1.0D - d0);
             entity.setDeltaMovement(entity.getDeltaMovement().add(0.0D, (double)0.4F * d1, 0.0D));
-            this.doEnchantDamageEffects(this, entity);
+            // TODO: [PORTING] FIGURE OUT IF THIS IS STILL NEEDED
+            //this.doEnchantDamageEffects(this, entity);
         }
 
         this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F); //TODO
@@ -220,24 +221,24 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     public void checkDespawn() {}
 
     @Override
-    public void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_AWAKE_ID, false);
-        this.entityData.define(DATA_BOSS_NAME_ID, Component.literal("Sentry Guardian"));
+    public void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_AWAKE_ID, false);
+        builder.define(DATA_BOSS_NAME_ID, Component.literal("Sentry Guardian"));
     }
  
 
     @Override
     public void addAdditionalSaveData( CompoundTag tag) {
         super.addAdditionalSaveData(tag);
-        this.addBossSaveData(tag);
+        this.addBossSaveData(tag, this.registryAccess());
         tag.putBoolean("Awake", this.isAwake());
     }
 
     @Override
     public void readAdditionalSaveData( CompoundTag tag) {
         super.readAdditionalSaveData(tag);
-        this.readBossSaveData(tag);
+        this.readBossSaveData(tag, this.registryAccess());
         if (tag.contains("Awake")) {
             this.setAwake(tag.getBoolean("Awake"));
         }
@@ -289,7 +290,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     @Nullable
     @Override
     public ResourceLocation getBossBarTexture() {
-        return new ResourceLocation(Aether.MODID, "boss_bar/slider");
+        return ResourceLocation.fromNamespaceAndPath(Aether.MODID, "boss_bar/slider");
     }
 
     /**
@@ -298,7 +299,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     @Nullable
     @Override
     public ResourceLocation getBossBarBackgroundTexture() {
-        return new ResourceLocation(Aether.MODID, "boss_bar/slider_background");
+        return ResourceLocation.fromNamespaceAndPath(Aether.MODID, "boss_bar/slider_background");
     }
 
     /**
@@ -332,24 +333,24 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
-    public void writeSpawnData(FriendlyByteBuf buffer) {
+    public void writeSpawnData(RegistryFriendlyByteBuf buffer) {
         CompoundTag tag = new CompoundTag();
-        this.addBossSaveData(tag);
+        this.addBossSaveData(tag, this.registryAccess());
         buffer.writeNbt(tag);
     }
 
     @Override
-    public void readSpawnData(FriendlyByteBuf additionalData) {
+    public void readSpawnData(RegistryFriendlyByteBuf additionalData) {
         CompoundTag tag = additionalData.readNbt();
         if (tag != null) {
-            this.readBossSaveData(tag);
+            this.readBossSaveData(tag, this.registryAccess());
         }
     }
 
     @Override
     public void startSeenByPlayer( ServerPlayer player) {
         super.startSeenByPlayer(player);
-        PacketRelay.sendToPlayer(new BossInfoPacket.Display(this.bossFight.getId(), this.getId()), player);
+        PacketDistributor.sendToPlayer(player, new BossInfoPacket.Display(this.bossFight.getId(), this.getId()));
         if (this.getDungeon() == null || this.getDungeon().isPlayerTracked(player)) {
             this.bossFight.addPlayer(player);
         }
@@ -365,7 +366,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     @Override
     public void stopSeenByPlayer( ServerPlayer player) {
         super.stopSeenByPlayer(player);
-        PacketRelay.sendToPlayer(new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()), player);
+        PacketDistributor.sendToPlayer(player, new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()));
         this.bossFight.removePlayer(player);
     }
 
@@ -417,9 +418,9 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn( ServerLevelAccessor pLevel,  DifficultyInstance pDifficulty,  MobSpawnType pReason, @javax.annotation.Nullable SpawnGroupData pSpawnData, @javax.annotation.Nullable CompoundTag pDataTag) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel,  DifficultyInstance pDifficulty,  MobSpawnType pReason, @javax.annotation.Nullable SpawnGroupData pSpawnData) {
         this.alignSpawnPos();
-        SpawnGroupData data = super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
+        SpawnGroupData data = super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData);
         this.setBossName(generateGuardianName());
         return data;
     }

@@ -3,6 +3,8 @@ package com.aetherteam.genesis.item.materials;
 import com.aetherteam.aether.item.miscellaneous.ConsumableItem;
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.loot.GenesisLoot;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -55,7 +57,7 @@ public class ContinuumOrbItem extends Item implements ConsumableItem {
     protected List<ItemStack> createLoot(Player player) {
         List<ItemStack> lootItems = new ArrayList<>();
         LootParams parameters = new LootParams.Builder((ServerLevel) player.level()).withParameter(LootContextParams.ORIGIN, player.position()).withParameter(LootContextParams.THIS_ENTITY, player).create(LootContextParamSets.SELECTOR);
-        LootTable lootTable = ((ServerLevel) player.level()).getServer().getLootData().getLootTable(GenesisLoot.CONTINUUM_ORB);
+        LootTable lootTable = ((ServerLevel) player.level()).getServer().reloadableRegistries().getLootTable(GenesisLoot.CONTINUUM_ORB);
         List<ItemStack> list = lootTable.getRandomItems(parameters);
         for (ItemStack itemStack : list) {
             if (!player.addItem(itemStack)) {

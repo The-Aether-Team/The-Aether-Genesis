@@ -19,11 +19,11 @@ import net.minecraft.world.entity.projectile.Snowball;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.ToolAction;
-import net.neoforged.neoforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 
 import java.util.Map;
@@ -37,7 +37,7 @@ public class AbilityHooks {
             if (entity.getType() == EntityType.SNOWBALL) {
                 Snowball snowball = (Snowball) entity;
                 if (snowball.getOwner() instanceof LivingEntity livingEntity) {
-                    if (EquipmentUtil.hasCurio(livingEntity, GenesisItems.DAGGERFROST_LOCKET.get())) {
+                    if (EquipmentUtil.hasAccessory(livingEntity, GenesisItems.DAGGERFROST_LOCKET.get())) {
                         Entity createdEntity = GenesisEntityTypes.DAGGERFROST_SNOWBALL.get().create(level);
                         if (createdEntity instanceof DaggerfrostSnowball daggerfrostSnowball) {
                             daggerfrostSnowball.setDeltaMovement(snowball.getDeltaMovement());
@@ -82,9 +82,9 @@ public class AbilityHooks {
         /**
          * @see com.aetherteam.genesis.event.listeners.abilities.ToolAbilityListener#setupToolModifications(BlockEvent.BlockToolModificationEvent)
          */
-        public static BlockState setupToolActions(BlockState old, ToolAction action) {
+        public static BlockState setupToolActions(BlockState old, ItemAbility ability) {
             Block oldBlock = old.getBlock();
-            if (action == ToolActions.AXE_STRIP) {
+            if (ability == ItemAbilities.AXE_STRIP) {
                 if (STRIPPABLES.containsKey(oldBlock)) {
                     return STRIPPABLES.get(oldBlock).withPropertiesOf(old);
                 }
@@ -95,7 +95,7 @@ public class AbilityHooks {
 
     public static class WeaponHooks {
         /**
-         * @see com.aetherteam.genesis.event.listeners.WeaponAbilityListener#onDartHurt(LivingHurtEvent)
+         * @see com.aetherteam.genesis.event.listeners.WeaponAbilityListener#onDartHurt(LivingDamageEvent.Pre)
          */
         public static void stickDart(LivingEntity entity, DamageSource source) {
             if (entity instanceof Player player && !player.level().isClientSide()) {

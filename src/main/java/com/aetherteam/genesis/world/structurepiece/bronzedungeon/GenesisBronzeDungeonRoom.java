@@ -28,7 +28,7 @@ import java.util.Optional;
 
 public class GenesisBronzeDungeonRoom extends BronzeDungeonPiece {
     public GenesisBronzeDungeonRoom(StructureTemplateManager manager, String name, BlockPos pos, Rotation rotation, Holder<StructureProcessorList> processors) {
-        super(GenesisStructurePieceTypes.BRONZE_DUNGEON_ROOM.get(), manager, new ResourceLocation(AetherGenesis.MODID, "bronze_dungeon/" + name), new StructurePlaceSettings().setRotation(rotation), pos, processors);
+        super(GenesisStructurePieceTypes.BRONZE_DUNGEON_ROOM.get(), manager, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "bronze_dungeon/" + name), new StructurePlaceSettings().setRotation(rotation), pos, processors);
     }
 
     public GenesisBronzeDungeonRoom(StructurePieceSerializationContext context, CompoundTag tag) {

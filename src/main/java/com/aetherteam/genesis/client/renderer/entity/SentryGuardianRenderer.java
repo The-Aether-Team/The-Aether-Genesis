@@ -10,8 +10,8 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public class SentryGuardianRenderer extends MobRenderer<SentryGuardian, SentryGuardianModel> {
-    private static final ResourceLocation SENTRY_GUARDIAN_TEXTURE = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/sentry_guardian/sentry_guardian.png");
-    private static final ResourceLocation SENTRY_GUARDIAN_CRITICAL_GLOW = new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/sentry_guardian/sentry_guardian_critical.png");
+    private static final ResourceLocation SENTRY_GUARDIAN_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/mobs/sentry_guardian/sentry_guardian.png");
+    private static final ResourceLocation SENTRY_GUARDIAN_CRITICAL_GLOW = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/mobs/sentry_guardian/sentry_guardian_critical.png");
 
     public SentryGuardianRenderer(EntityRendererProvider.Context context) {
         super(context, new SentryGuardianModel(context.bakeLayer(GenesisModelLayers.SENTRY_GUARDIAN)), 0.5F);

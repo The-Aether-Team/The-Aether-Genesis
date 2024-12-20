@@ -6,6 +6,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.common.NeoForgeMod;
@@ -31,7 +32,7 @@ public class PurpleParachute extends Parachute {
             float f1 = 1.25F; // Forward movement is forced.
 
             Vec3 travelVec = new Vec3(f, passenger.yya, f1);
-            AttributeInstance gravity = passenger.getAttribute(NeoForgeMod.ENTITY_GRAVITY.value());
+            AttributeInstance gravity = passenger.getAttribute(Attributes.GRAVITY);
             double d0 = gravity != null ? gravity.getValue() : 0.08;
             Vec3 movement = this.calculateMovement(travelVec);
             double d2 = movement.y;

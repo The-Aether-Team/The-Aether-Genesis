@@ -7,13 +7,13 @@ import com.aetherteam.genesis.item.GenesisItems;
 import com.aetherteam.genesis.loot.GenesisLoot;
 import com.aetherteam.genesis.loot.entries.RandomEntry;
 import net.minecraft.data.loot.LootTableSubProvider;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootTableReference;
+import net.minecraft.world.level.storage.loot.entries.NestedLootTable;
 import net.minecraft.world.level.storage.loot.functions.EnchantRandomlyFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
@@ -22,26 +22,26 @@ import java.util.function.BiConsumer;
 
 public class GenesisSelectorLoot implements LootTableSubProvider {
     @Override
-    public void generate(BiConsumer<ResourceLocation, LootTable.Builder> builder) {
+    public void generate(BiConsumer<ResourceKey<LootTable>, LootTable.Builder> builder) {
         builder.accept(GenesisLoot.CONTINUUM_ORB,
                 LootTable.lootTable().withPool(
                         LootPool.lootPool().add(
                                 RandomEntry.random(
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_WOOD),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_STONE),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_ORE),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_NATURAL),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_FLOWER),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_PLANT),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_FARMABLE),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_LEAVES),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_CORAL),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_MATERIALS),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_DROPS),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_DYES),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_DISCS),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_BOOKS),
-                                        LootTableReference.lootTableReference(GenesisLoot.CONTINUUM_ORB_TREASURE)
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_WOOD),
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_STONE),
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_ORE),
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_NATURAL),
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_FLOWER),
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_PLANT),
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_FARMABLE),
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_LEAVES),
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_CORAL),
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_MATERIALS),
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_DROPS),
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_DYES),
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_DISCS),
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_BOOKS),
+                                        NestedLootTable.lootTableReference(GenesisLoot.CONTINUUM_ORB_TREASURE)
                                 )
                         )
                 )
@@ -349,7 +349,7 @@ public class GenesisSelectorLoot implements LootTableSubProvider {
                                         LootItem.lootTableItem(Items.LEATHER).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 8.0F))),
                                         LootItem.lootTableItem(Items.RABBIT_HIDE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))),
                                         LootItem.lootTableItem(Items.GLOW_INK_SAC).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))),
-                                        LootItem.lootTableItem(Items.SCUTE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))),
+                                        LootItem.lootTableItem(Items.TURTLE_SCUTE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))),
                                         LootItem.lootTableItem(Items.SLIME_BALL).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))),
                                         LootItem.lootTableItem(Items.BLAZE_ROD).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))),
                                         LootItem.lootTableItem(Items.ENDER_PEARL).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))),

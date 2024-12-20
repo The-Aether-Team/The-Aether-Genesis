@@ -1,24 +1,24 @@
 package com.aetherteam.genesis.event.listeners;
 
-import com.aetherteam.aether.Aether;
 import com.aetherteam.genesis.event.hooks.AbilityHooks;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 
-@Mod.EventBusSubscriber(modid = Aether.MODID)
 public class WeaponAbilityListener {
+
+    public static void listen(IEventBus bus) {
+        bus.addListener(WeaponAbilityListener::onDartHurt);
+    }
+
     /**
      * @see AbilityHooks.WeaponHooks#stickDart(LivingEntity, DamageSource)
      */
-    @SubscribeEvent
-    public static void onDartHurt(LivingHurtEvent event) {
+    public static void onDartHurt(LivingDamageEvent.Pre event) {
         LivingEntity livingEntity = event.getEntity();
         DamageSource damageSource = event.getSource();
-        if (!event.isCanceled()) {
-            AbilityHooks.WeaponHooks.stickDart(livingEntity, damageSource);
-        }
+        AbilityHooks.WeaponHooks.stickDart(livingEntity, damageSource);
     }
 }

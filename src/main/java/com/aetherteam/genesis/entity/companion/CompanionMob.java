@@ -51,20 +51,15 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
     }
 
     @Override
-    protected void defineSynchedData() {
-        super.defineSynchedData();
-        this.getEntityData().define(DATA_OWNER_ID, Optional.empty());
-        this.getEntityData().define(DATA_ITEM_ID, ItemStack.EMPTY);
+    protected void defineSynchedData(SynchedEntityData.Builder builder) {
+        super.defineSynchedData(builder);
+        builder.define(DATA_OWNER_ID, Optional.empty());
+        builder.define(DATA_ITEM_ID, ItemStack.EMPTY);
     }
 
     @Nullable
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag tag) {
-        if (tag != null) {
-            if (tag.contains("Owner")) {
-                this.setOwner(tag.getUUID("Owner"));
-            }
-        }
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason, @Nullable SpawnGroupData spawnData) {
         return spawnData;
     }
 

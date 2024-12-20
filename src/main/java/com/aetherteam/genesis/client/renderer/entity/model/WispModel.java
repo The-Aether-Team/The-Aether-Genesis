@@ -39,8 +39,8 @@ public class WispModel extends EntityModel<Wisp> {
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-		this.head.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
-		this.arms.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
+		this.head.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
+		this.arms.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
 	}
 }

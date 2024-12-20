@@ -123,7 +123,7 @@ public class Zephyroo extends AetherAnimal {
     }
 
     @Override
-    protected void jumpFromGround() {
+    public void jumpFromGround() {
         super.jumpFromGround();
         double speed = this.moveControl.getSpeedModifier();
         if (speed > 0.0) {
@@ -210,10 +210,11 @@ public class Zephyroo extends AetherAnimal {
         }
     }
 
-    @Override
-    protected float getStandingEyeHeight(Pose pose, EntityDimensions size) {
-        return this.isBaby() ? size.height * 0.8F : 1.1F;
-    }
+    // TODO: [PORTING] FIGURE OUT REPLACMENT?
+//    @Override
+//    protected float getStandingEyeHeight(Pose pose, EntityDimensions size) {
+//        return this.isBaby() ? size.height * 0.8F : 1.1F;
+//    }
 
     @Override
     public int getMaxFallDistance() {

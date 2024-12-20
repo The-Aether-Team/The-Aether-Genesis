@@ -15,7 +15,7 @@ import java.util.UUID;
 
 public class EtherealWispRenderer extends WispRenderer {
     public EtherealWispRenderer(EntityRendererProvider.Context context) {
-        super(context, GenesisModelLayers.ETHEREAL_WISP, new ResourceLocation(AetherGenesis.MODID, "textures/entity/companions/ethereal_wisp.png"));
+        super(context, GenesisModelLayers.ETHEREAL_WISP, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/companions/ethereal_wisp.png"));
     }
 
     @Override

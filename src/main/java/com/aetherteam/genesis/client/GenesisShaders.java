@@ -12,15 +12,13 @@ import net.neoforged.neoforge.client.event.RegisterShadersEvent;
 
 import java.io.IOException;
 
-@Mod.EventBusSubscriber(value = Dist.CLIENT, modid = AetherGenesis.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GenesisShaders {
     private static ShaderInstance rendertypeTrackingGolemEyes;
 
-    @SubscribeEvent
     public static void registerShaders(RegisterShadersEvent event) {
         ResourceProvider resourceProvider = event.getResourceProvider();
         try {
-            event.registerShader(new ShaderInstance(resourceProvider, new ResourceLocation(AetherGenesis.MODID, "rendertype_tracking_golem_eyes"), DefaultVertexFormat.NEW_ENTITY), instance -> rendertypeTrackingGolemEyes = instance);
+            event.registerShader(new ShaderInstance(resourceProvider, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "rendertype_tracking_golem_eyes"), DefaultVertexFormat.NEW_ENTITY), instance -> rendertypeTrackingGolemEyes = instance);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

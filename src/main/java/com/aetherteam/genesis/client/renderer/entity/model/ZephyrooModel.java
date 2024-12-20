@@ -79,18 +79,18 @@ public class ZephyrooModel<T extends Zephyroo> extends EntityModel<T> {
 	}
 
 	@Override
-	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
 		if (this.young) {
 			poseStack.pushPose();
 			poseStack.scale(0.65F, 0.65F, 0.65F);
 			poseStack.translate(0.0F, 0.8F, 0.0F);
-			this.body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+			this.body.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
 			poseStack.popPose();
 		} else {
 			poseStack.pushPose();
 			poseStack.scale(1.15F, 1.15F, 1.15F);
 			poseStack.translate(0.0F, -0.2F, 0.0F);
-			this.body.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+			this.body.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
 			poseStack.popPose();
 		}
 	}
