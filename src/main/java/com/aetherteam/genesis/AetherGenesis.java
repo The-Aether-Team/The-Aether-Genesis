@@ -102,6 +102,7 @@ public class AetherGenesis {
         eventSetup(NeoForge.EVENT_BUS);
 
         DeferredRegister<?>[] registers = {
+                GenesisDataComponents.DATA_COMPONENTS,
                 GenesisBlocks.BLOCKS,
                 GenesisItems.ITEMS,
                 GenesisEntityTypes.ENTITY_TYPES,
