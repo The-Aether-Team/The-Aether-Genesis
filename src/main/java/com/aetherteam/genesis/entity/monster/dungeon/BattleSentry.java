@@ -5,10 +5,12 @@ import com.aetherteam.aether.client.AetherSoundEvents;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -17,7 +19,9 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.Nullable;
 
 public class BattleSentry extends Slime {
     public static final EntityDataAccessor<Boolean> DATA_AWAKE_ID = SynchedEntityData.defineId(BattleSentry.class, EntityDataSerializers.BOOLEAN);
@@ -29,12 +33,11 @@ public class BattleSentry extends Slime {
         super(pEntityType, pLevel);
     }
 
+    @Nullable
     @Override
-    protected void registerGoals() {
-        this.goalSelector.addGoal(1, new BattleSentry.FloatGoal(this));
-        this.goalSelector.addGoal(2, new BattleSentry.AttackGoal(this));
-        this.goalSelector.addGoal(5, new BattleSentry.KeepOnJumpingGoal(this));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, (entity) -> Math.abs(entity.getY() - this.getY()) <= 4.0));
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor pLevel, DifficultyInstance pDifficulty, MobSpawnType pReason, @Nullable SpawnGroupData pSpawnData, @Nullable CompoundTag pDataTag) {
+        this.setAwake(false);
+        return super.finalizeSpawn(pLevel, pDifficulty, pReason, pSpawnData, pDataTag);
     }
 
     public static AttributeSupplier.Builder createMobAttributes() {
@@ -45,9 +48,17 @@ public class BattleSentry extends Slime {
     }
 
     @Override
+    protected void registerGoals() {
+        this.goalSelector.addGoal(1, new BattleSentry.FloatGoal(this));
+        this.goalSelector.addGoal(2, new BattleSentry.AttackGoal(this));
+        this.goalSelector.addGoal(5, new BattleSentry.KeepOnJumpingGoal(this));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, (entity) -> Math.abs(entity.getY() - this.getY()) <= 4.0));
+    }
+
+    @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(DATA_AWAKE_ID, false);
+        this.entityData.define(DATA_AWAKE_ID, true);
         this.entityData.define(DATA_STALKING_ID, true);
     }
 

@@ -8,6 +8,8 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 
+import java.util.List;
+
 public class LabyrinthEyeModel extends EntityModel<LabyrinthEye> {
 	private final ModelPart labyrinthEye;
 	private final ModelPart cogGroup;
@@ -472,23 +474,32 @@ public class LabyrinthEyeModel extends EntityModel<LabyrinthEye> {
 
 	@Override
 	public void setupAnim(LabyrinthEye eye, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.cogGroup.zRot = ageInTicks * 4000;
-		this.cog.visible = eye.getHealth() >= 212.0F;
-		this.cog2.visible = eye.getHealth() >= 174.0F;
-		this.cog3.visible = eye.getHealth() >= 117.0F;
-		this.cog4.visible = eye.getHealth() >= 79.0F;
-		this.cog5.visible = eye.getHealth() >= 41.0F;
-		this.leftCog.visible = eye.getHealth() >= 231.0F;
-		this.cog6.visible = eye.getHealth() >= 60.0F;
-		this.cog7.visible = eye.getHealth() >= 155.0F;
-		this.cog8.visible = eye.getHealth() >= 193.0F;
-		this.cog9.visible = eye.getHealth() >= 98.0F;
-		this.cog10.visible = eye.getHealth() >= 22.0F;
-		this.rightCog.visible = eye.getHealth() >= 136.0F;
+		this.cogGroup.zRot = ageInTicks * 0.2F;
+		for (int i = 1; i < 13; i++) {
+			ModelPart part = this.cogParts().get(i - 1);
+            part.visible = i >= eye.getStage() && eye.isAlive();
+		}
 	}
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
 		this.labyrinthEye.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+	}
+
+	public List<ModelPart> cogParts() {
+		return List.of(
+				this.rightCog,
+				this.cog4,
+				this.cog3,
+				this.cog,
+				this.cog2,
+				this.cog5,
+				this.leftCog,
+				this.cog9,
+				this.cog8,
+				this.cog6,
+				this.cog7,
+				this.cog10
+		);
 	}
 }

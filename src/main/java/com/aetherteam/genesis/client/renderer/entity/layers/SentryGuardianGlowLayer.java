@@ -13,11 +13,11 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
-public class SentryGuardianLayer extends EyesLayer<SentryGuardian, SentryGuardianModel> {
+public class SentryGuardianGlowLayer extends EyesLayer<SentryGuardian, SentryGuardianModel> {
 	private static final RenderType SENTRY_GUARDIAN_GLOW = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/sentry_guardian/sentry_guardian_glow.png"));
 	private static final RenderType SENTRY_GUARDIAN_CRITICAL_GLOW = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/sentry_guardian/sentry_guardian_critical_glow.png"));
 
-	public SentryGuardianLayer(RenderLayerParent<SentryGuardian, SentryGuardianModel> entityRenderer) {
+	public SentryGuardianGlowLayer(RenderLayerParent<SentryGuardian, SentryGuardianModel> entityRenderer) {
 		super(entityRenderer);
 	}
 

@@ -1,22 +1,23 @@
 package com.aetherteam.genesis.entity.monster.dungeon.boss;
 
 import com.aetherteam.aether.Aether;
+import com.aetherteam.aether.AetherConfig;
+import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.entity.AetherBossMob;
+import com.aetherteam.aether.entity.ai.goal.MostDamageTargetGoal;
 import com.aetherteam.aether.entity.monster.dungeon.boss.BossNameGenerator;
 import com.aetherteam.aether.event.AetherEventDispatch;
 import com.aetherteam.aether.network.packet.clientbound.BossInfoPacket;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
-import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.entity.projectile.HostEyeProjectile;
 import com.aetherteam.nitrogen.entity.BossRoomTracker;
 import com.aetherteam.nitrogen.network.PacketRelay;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -30,19 +31,19 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.ai.util.DefaultRandomPos;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -50,100 +51,71 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.common.ToolActions;
 import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
+import org.apache.commons.lang3.tuple.Pair;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 
 public class SliderHostMimic extends PathfinderMob implements AetherBossMob<SliderHostMimic>, Enemy, IEntityWithComplexSpawn {
     public static final EntityDataAccessor<Boolean> DATA_AWAKE_ID = SynchedEntityData.defineId(SliderHostMimic.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Component> DATA_BOSS_NAME_ID = SynchedEntityData.defineId(SliderHostMimic.class, EntityDataSerializers.COMPONENT);
-    private static final Music MINIBOSS_MUSIC = new Music(GenesisSoundEvents.MUSIC_MINIBOSS, 0, 0, true);
-    public static final Map<Block, Function<BlockState, BlockState>> DUNGEON_BLOCK_CONVERSIONS = Map.ofEntries(
+    private static final Music SLIDER_HOST_MIMIC_MUSIC = new Music(GenesisSoundEvents.MUSIC_MINIBOSS, 0, 0, true);
+    public static final Map<Block, Function<BlockState, BlockState>> DUNGEON_BLOCK_CONVERSIONS = new HashMap<>(Map.ofEntries(
             Map.entry(AetherBlocks.LOCKED_CARVED_STONE.get(), (blockState) -> AetherBlocks.CARVED_STONE.get().defaultBlockState()),
             Map.entry(AetherBlocks.LOCKED_SENTRY_STONE.get(), (blockState) -> AetherBlocks.SENTRY_STONE.get().defaultBlockState()),
             Map.entry(AetherBlocks.BOSS_DOORWAY_CARVED_STONE.get(), (blockState) -> Blocks.AIR.defaultBlockState()),
             Map.entry(AetherBlocks.TREASURE_DOORWAY_CARVED_STONE.get(), (blockState) -> AetherBlocks.SKYROOT_TRAPDOOR.get().defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, blockState.getValue(HorizontalDirectionalBlock.FACING)))
-    );
+    ));
 
-    private BossRoomTracker<SliderHostMimic> bronzeDungeon;
+    /**
+     * Goal for targeting in groups of entities
+     */
+    private MostDamageTargetGoal mostDamageTargetGoal;
+
     private final ServerBossEvent bossFight;
+    private BossRoomTracker<SliderHostMimic> bronzeDungeon;
+    private final List<HostEyeProjectile> eyeProjectiles = new ArrayList<>();
 
+    private int spawnEyeCooldown;
     private int chatCooldown;
-    public int sendDelay = 15;
-    public int sendRespawnDelay = 10;
-    public int scareTime = 0;
-
-    public List<HostEyeProjectile> eyes = new ArrayList<>();
 
     public SliderHostMimic(EntityType<? extends SliderHostMimic> entityType, Level level) {
         super(entityType, level);
         this.bossFight = new ServerBossEvent(this.getBossName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS);
-        this.bossFight.setVisible(false);
+        this.setBossFight(false);
         this.xpReward = XP_REWARD_BOSS;
         this.setPersistenceRequired();
+        this.setMaxUpStep(1.0F);
+    }
+
+    @Override
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level,  DifficultyInstance difficulty,  MobSpawnType reason, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag) {
+        this.setBossName(BossNameGenerator.generateBossName(this.getRandom()).append(Component.translatable("gui.aether_genesis.host.title")));
+        this.moveTo(Mth.floor(this.getX()), this.getY(), Mth.floor(this.getZ()));
+        return spawnData;
+    }
+
+    public static AttributeSupplier.Builder createMobAttributes() {
+        return Mob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 400.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.25)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.75)
+                .add(Attributes.FOLLOW_RANGE, 64.0);
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new DoNothingGoal(this));
-        this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Player.class, 3.0F, 1.25F, 2.0F));
-        this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-        this.targetSelector.addGoal(1, new HurtByTargetGoal(this, SliderHostMimic.class));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, 10, true, false, livingEntity -> this.isBossFight()));
-    }
+        this.goalSelector.addGoal(0, new SliderHostMimic.HostAvoidPlayerGoal(this));
+        this.goalSelector.addGoal(1, new SliderHostMimic.ShootHostEyeGoal(this));
+        this.goalSelector.addGoal(2, new SliderHostMimic.HostRandomMovementGoal(this));
+        this.goalSelector.addGoal(3, new SliderHostMimic.InactiveGoal(this));
 
-    public SliderHostMimic self(){
-        return this;
-    }
-
-    /**
-     * Generates a name for the boss and adjusts its position.
-     */
-    @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level,  DifficultyInstance difficulty,  MobSpawnType reason, @Nullable SpawnGroupData spawnData, @Nullable CompoundTag dataTag) {
-        this.alignSpawnPos();
-        SpawnGroupData data = super.finalizeSpawn(level, difficulty, reason, spawnData, dataTag);
-        this.setBossName(this.generateHostName());
-        return data;
-    }
-
-    public void sendEye() {
-        while (this.eyes.size() > 4) (this.eyes.remove(0)).setHealth(0);
-        HostEyeProjectile eye = new HostEyeProjectile(GenesisEntityTypes.HOST_EYE.get(), level());
-        this.level().addFreshEntity(eye);
-        eye.setPos(this.position());
-        this.level().playSound(this, this.blockPosition(), AetherSoundEvents.ENTITY_SLIDER_AWAKEN.get(), SoundSource.HOSTILE, 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
-        this.eyes.add(eye);
-        this.sendDelay = 30;
-        if (isDeadOrDying())
-            killEyes();
-    }
-
-    public void killEyes() {
-        while (this.eyes.size() != 0)
-            this.eyes.remove(0).discard();
-    }
-
-    public MutableComponent generateHostName() {
-        MutableComponent result = BossNameGenerator.generateBossName(this.getRandom());
-        return result.append(Component.translatable("gui.aether_genesis.host.title"));
-    }
-
-    protected void alignSpawnPos() {
-        this.moveTo(Mth.floor(this.getX()), this.getY(), Mth.floor(this.getZ()));
-    }
-
-    public static AttributeSupplier.Builder createHostAttributes() {
-        return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 300)
-                .add(Attributes.MOVEMENT_SPEED, 0.25)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 0.75)
-                .add(Attributes.FOLLOW_RANGE, 64.0);
+        this.mostDamageTargetGoal = new MostDamageTargetGoal(this);
+        this.targetSelector.addGoal(1, this.mostDamageTargetGoal);
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Player.class, false));
     }
 
     @Override
@@ -159,15 +131,19 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
         if (!this.isAwake() || (this.getTarget() instanceof Player player && (player.isCreative() || player.isSpectator()))) {
             this.setTarget(null);
         }
-        else this.evaporate();
-
+        this.evaporate();
         if (this.getChatCooldown() > 0) {
             this.chatCooldown--;
         }
+        if (this.spawnEyeCooldown > 0) {
+            this.spawnEyeCooldown--;
+        }
     }
 
-    @Override
-    public void checkDespawn() {}
+    private void evaporate() {
+        Pair<BlockPos, BlockPos> minMax = this.getDefaultBounds(this);
+        AetherBossMob.super.evaporate(this, minMax.getLeft(), minMax.getRight(), (blockState) -> true);
+    }
 
     @Override
     public void customServerAiStep() {
@@ -176,38 +152,112 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
         this.trackDungeon();
     }
 
-    public boolean hurt(DamageSource source, float damage) {
-        Entity entity = source.getDirectEntity();
-        Entity attacker = source.getEntity();
-        if (entity != null && source.is(DamageTypeTags.IS_PROJECTILE)) {
-            if (!this.level().isClientSide && attacker instanceof Player && ((Player)attacker).getMainHandItem() != Items.AIR.getDefaultInstance()) {
-                this.chatCooldown = 60;
-                attacker.sendSystemMessage(Component.translatable("gui.aether_genesis.boss.message.projectile"));
+    @Override
+    public boolean hurt(DamageSource source, float amount) {
+        Optional<LivingEntity> damageResult = this.canDamageSliderHostMimic(source);
+        if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
+            super.hurt(source, amount);
+            if (!this.level().isClientSide() && source.getEntity() instanceof LivingEntity living) {
+                this.mostDamageTargetGoal.addAggro(living, amount); // AI goal for being hurt.
+                if (this.spawnEyeCooldown <= 0 && this.getEyeProjectiles().size() == 4) {
+                    this.getEyeProjectiles().remove(0).discard();
+                    this.spawnEyeCooldown = 200;
+                }
             }
-            return false;
+        } else if (damageResult.isPresent()) {
+            if (super.hurt(source, amount) && this.getHealth() > 0) {
+                if (!this.isBossFight()) {
+                    this.start();
+                }
+                if (!this.level().isClientSide() && source.getEntity() instanceof LivingEntity living) {
+                    this.mostDamageTargetGoal.addAggro(living, amount); // AI goal for being hurt.
+                    if (this.spawnEyeCooldown <= 0 && this.getEyeProjectiles().size() == 4) {
+                        this.getEyeProjectiles().remove(0).discard();
+                        this.spawnEyeCooldown = 200;
+                    }
+                }
+                return true;
+            }
         }
-        if (!this.isBossFight()) {
-            if (this.getAwakenSound() != null) {
-                this.playSound(this.getAwakenSound(), 2.5F, 1.0F / (this.random.nextFloat() * 0.2F + 0.9F));
+        return false;
+    }
+
+    private Optional<LivingEntity> canDamageSliderHostMimic(DamageSource source) {
+        if (this.level().getDifficulty() != Difficulty.PEACEFUL) {
+            if (source.getDirectEntity() instanceof LivingEntity attacker) {
+                if (this.getDungeon() == null || this.getDungeon().isPlayerWithinRoomInterior(attacker)) { // Only allow damage within the boss room.
+                    return Optional.of(attacker);
+                } else {
+                    this.sendTooFarMessage(attacker);
+                }
+            } else if (source.getDirectEntity() instanceof Projectile projectile) {
+                if (projectile.getOwner() instanceof LivingEntity attacker) {
+                    if (this.getDungeon() == null || this.getDungeon().isPlayerWithinRoomInterior(attacker)) { // Only allow damage within the boss room.
+                        return Optional.of(attacker);
+                    } else {
+                        return this.sendTooFarMessage(attacker);
+                    }
+                }
             }
-            this.setHealth(this.getMaxHealth());
-            this.setAwake(true);
-            this.setBossFight(true);
-            if (this.getDungeon() != null) {
-                this.closeRoom();
-            }
-            AetherEventDispatch.onBossFightStart(this, this.getDungeon());
         }
-        return super.hurt(source, damage);
+        return Optional.empty();
+    }
+
+    private Optional<LivingEntity> sendInvalidToolMessage(LivingEntity attacker) {
+        if (!this.level().isClientSide() && attacker instanceof Player player) {
+            if (this.getChatCooldown() <= 0) {
+                if (AetherConfig.COMMON.reposition_slider_message.get()) {
+                    player.displayClientMessage(Component.translatable("gui.aether.slider.message.attack.invalid"), true); // Invalid tool.
+                } else {
+                    player.sendSystemMessage(Component.translatable("gui.aether.slider.message.attack.invalid")); // Invalid tool.
+                }
+                this.setChatCooldown(15);
+            }
+        }
+        return Optional.empty();
+    }
+
+    private Optional<LivingEntity> sendTooFarMessage(LivingEntity attacker) {
+        if (!this.level().isClientSide() && attacker instanceof Player player) {
+            if (this.getChatCooldown() <= 0) {
+                this.displayTooFarMessage(player); // Too far from Slider
+                this.setChatCooldown(15);
+            }
+        }
+        return Optional.empty();
+    }
+
+    private void start() {
+        if (this.getAwakenSound() != null) {
+            this.playSound(this.getAwakenSound(), 2.5F, 1.0F / (this.getRandom().nextFloat() * 0.2F + 0.9F));
+        }
+        this.setHealth(this.getMaxHealth());
+        this.setAwake(true);
+        this.setBossFight(true);
+        if (this.getDungeon() != null) {
+            this.closeRoom();
+        }
+        AetherEventDispatch.onBossFightStart(this, this.getDungeon());
+    }
+
+    public void reset() {
+        this.setDeltaMovement(Vec3.ZERO);
+        this.setAwake(false);
+        this.setBossFight(false);
+        this.setTarget(null);
+        if (this.getDungeon() != null) {
+            this.setPos(this.getDungeon().originCoordinates());
+            this.openRoom();
+        }
+        AetherEventDispatch.onBossFightStop(this, this.getDungeon());
     }
 
     @Override
     public void die(DamageSource source) {
         this.setDeltaMovement(Vec3.ZERO);
-        killEyes();
         this.explode();
         if (this.level() instanceof ServerLevel) {
-            this.bossFight.setProgress(this.getHealth() / this.getMaxHealth());
+            this.bossFight.setProgress(this.getHealth() / this.getMaxHealth()); // Forces an update to the boss health meter.
             if (this.getDungeon() != null) {
                 this.getDungeon().grantAdvancements(source);
                 this.tearDownRoom();
@@ -216,52 +266,31 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
         super.die(source);
     }
 
-    private void evaporate() {
-        Player player = this.level().getNearestPlayer(this, 8.5D);
-        if (this.getTarget() == null)
-            if (player != null && canAttack(player) && !player.isDeadOrDying() && !player.isCreative() && !player.isSpectator()) {
-                this.setTarget(player);
-            }
-        if (this.getTarget() != null && canAttack(this.getTarget()) && !this.getTarget().isDeadOrDying()) {
-            if (this.eyes.size() < 4) {
-                    if (this.sendDelay <= 0)
-                        if (!this.level().isClientSide)
-                            sendEye();
-                } else if (this.sendRespawnDelay <= 0) {
-                    if (!this.level().isClientSide) {
-                        sendEye();
-                        this.sendRespawnDelay = 100;
-                    }
-                }
+    private void explode() {
+        for (int i = 0; i < (this.getHealth() <= 0 ? 16 : 48); i++) {
+            double x = this.position().x() + (double) (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 1.5;
+            double y = this.getBoundingBox().minY + 1.75 + (double) (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 1.5;
+            double z = this.position().z() + (double) (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 1.5;
+            this.level().addParticle(ParticleTypes.POOF, x, y, z, 0.0, 0.0, 0.0);
         }
-        if (!this.isAwake())
-            killEyes();
-        if (this.eyes.size() > 4)
-            this.eyes.remove(0).discard();
-        if (this.scareTime > 0)
-            this.scareTime--;
-        if (this.sendDelay > 0)
-            this.sendDelay--;
-        if (this.sendRespawnDelay > 0)
-            this.sendRespawnDelay--;
     }
 
-    private void stop() {
-        this.setDeltaMovement(Vec3.ZERO);
+    @Override
+    public void knockback(double strength, double x, double z) {
+        if (this.isAwake()) {
+            super.knockback(strength, x, z);
+        }
     }
 
-    public void reset() {
-        this.stop();
-        this.setAwake(false);
-        this.setBossFight(false);
-        this.setTarget(null);
-        this.setHealth(this.getMaxHealth());
-        if (this.getDungeon() != null) {
-            this.setPos(this.getDungeon().originCoordinates());
-            this.openRoom();
+    @Override
+    public void push(double x, double y, double z) {
+        if (this.isAwake()) {
+            super.push(x, y, z);
         }
-        AetherEventDispatch.onBossFightStop(this, this.getDungeon());
     }
+
+    @Override
+    public void checkDespawn() { }
 
     /**
      * Called on every block in the boss room when the boss is defeated.
@@ -275,21 +304,13 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
         return DUNGEON_BLOCK_CONVERSIONS.getOrDefault(state.getBlock(), (blockState) -> null).apply(state);
     }
 
-    private void explode() {
-        for (int i = 0; i < (this.getHealth() <= 0 ? 16 : 48); i++) {
-            double x = this.position().x() + (double) (this.random.nextFloat() - this.random.nextFloat()) * 1.5;
-            double y = this.getBoundingBox().minY + 1.75 + (double) (this.random.nextFloat() - this.random.nextFloat()) * 1.5;
-            double z = this.position().z() + (double) (this.random.nextFloat() - this.random.nextFloat()) * 1.5;
-            this.level().addParticle(ParticleTypes.POOF, x, y, z, 0.0, 0.0, 0.0);
-        }
-    }
-
     @Override
     public void startSeenByPlayer(ServerPlayer player) {
         super.startSeenByPlayer(player);
         PacketRelay.sendToPlayer(new BossInfoPacket.Display(this.bossFight.getId(), this.getId()), player);
         if (this.getDungeon() == null || this.getDungeon().isPlayerTracked(player)) {
             this.bossFight.addPlayer(player);
+            AetherEventDispatch.onBossFightPlayerAdd(this, this.getDungeon(), player);
         }
     }
 
@@ -298,12 +319,14 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
         super.stopSeenByPlayer(player);
         PacketRelay.sendToPlayer(new BossInfoPacket.Remove(this.bossFight.getId(), this.getId()), player);
         this.bossFight.removePlayer(player);
+        AetherEventDispatch.onBossFightPlayerRemove(this, this.getDungeon(), player);
     }
 
     @Override
     public void onDungeonPlayerAdded(@Nullable Player player) {
         if (player instanceof ServerPlayer serverPlayer) {
             this.bossFight.addPlayer(serverPlayer);
+            AetherEventDispatch.onBossFightPlayerAdd(this, this.getDungeon(), serverPlayer);
         }
     }
 
@@ -311,6 +334,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     public void onDungeonPlayerRemoved(@Nullable Player player) {
         if (player instanceof ServerPlayer serverPlayer) {
             this.bossFight.removePlayer(serverPlayer);
+            AetherEventDispatch.onBossFightPlayerRemove(this, this.getDungeon(), serverPlayer);
         }
     }
 
@@ -333,19 +357,15 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
         this.bossFight.setName(component);
     }
 
+    @Nullable
     @Override
     public BossRoomTracker<SliderHostMimic> getDungeon() {
         return this.bronzeDungeon;
     }
 
     @Override
-    public void setDungeon(BossRoomTracker<SliderHostMimic> dungeon) {
+    public void setDungeon(@Nullable BossRoomTracker<SliderHostMimic> dungeon) {
         this.bronzeDungeon = dungeon;
-    }
-
-    @Override
-    public int getDeathScore() {
-        return this.deathScore;
     }
 
     @Override
@@ -382,33 +402,32 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     @Nullable
     @Override
     public Music getBossMusic() {
-        return MINIBOSS_MUSIC;
+        return SLIDER_HOST_MIMIC_MUSIC;
     }
 
-    protected SoundEvent getAwakenSound() {
-        return AetherSoundEvents.ENTITY_SLIDER_AWAKEN.get();
+    public List<HostEyeProjectile> getEyeProjectiles() {
+        return this.eyeProjectiles;
     }
 
-    @Nullable
+    /**
+     * @return The {@link Integer} for the cooldown until another chat message can display.
+     */
+    public int getChatCooldown() {
+        return this.chatCooldown;
+    }
+
+    /**
+     * Sets the cooldown for when another chat message can display.
+     *
+     * @param cooldown The {@link Integer} cooldown.
+     */
+    public void setChatCooldown(int cooldown) {
+        this.chatCooldown = cooldown;
+    }
+
     @Override
-    protected SoundEvent getAmbientSound() {
-        return random.nextInt(5) == 0 ? GenesisSoundEvents.ENTITY_TRACKING_GOLEM_CREEPY_SEEN.get() : null;
-    }
-
-    @Override
-    protected SoundEvent getHurtSound( DamageSource damageSource) {
-        return AetherSoundEvents.ENTITY_SLIDER_HURT.get();
-    }
-
-    @Override
-    protected SoundEvent getDeathSound() {
-        return AetherSoundEvents.ENTITY_SLIDER_DEATH.get();
-    }
-
-    
-    @Override
-    public SoundSource getSoundSource() {
-        return SoundSource.HOSTILE;
+    public int getDeathScore() {
+        return this.deathScore;
     }
 
     @Override
@@ -417,18 +436,61 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
         this.setBossName(name);
     }
 
+    protected SoundEvent getScareSound() {
+        return GenesisSoundEvents.ENTITY_SLIDER_HOST_MIMIC_SCARE.get();
+    }
+
+    protected SoundEvent getShootSound() {
+        return GenesisSoundEvents.ENTITY_SLIDER_HOST_MIMIC_SHOOT.get();
+    }
+
+    protected SoundEvent getAwakenSound() {
+        return GenesisSoundEvents.ENTITY_SLIDER_HOST_MIMIC_AWAKEN.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return this.isAwake() ? (random.nextInt(5) == 0 ? GenesisSoundEvents.ENTITY_SLIDER_HOST_MIMIC_SCARE.get() : null) : GenesisSoundEvents.ENTITY_SLIDER_HOST_MIMIC_AMBIENT.get();
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return GenesisSoundEvents.ENTITY_SLIDER_HOST_MIMIC_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return GenesisSoundEvents.ENTITY_SLIDER_HOST_MIMIC_DEATH.get();
+    }
+    
+    @Override
+    public SoundSource getSoundSource() {
+        return SoundSource.HOSTILE;
+    }
+
     @Override
     public boolean canAttack(LivingEntity target) {
         return target.canBeSeenAsEnemy();
     }
 
     @Override
-    public float getYRot() {
-        return !isAwake() ? 0 : super.getYRot();
+    public boolean ignoreExplosion(Explosion explosion) {
+        return !this.isAwake();
     }
 
     @Override
-    protected boolean canRide( Entity vehicle) {
+    public float getYRot() {
+        return !this.isAwake() ? 0 : super.getYRot();
+    }
+
+    @Override
+    public EntityDimensions getDimensions(Pose pose) {
+        return this.isAwake() ? super.getDimensions(pose) : EntityDimensions.fixed(2.0F, 2.0F);
+    }
+
+    @Override
+    protected boolean canRide(Entity vehicle) {
         return false;
     }
 
@@ -444,23 +506,37 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
 
     @Override
     public boolean isNoGravity() {
-        return !isAwake();
+        return !this.isAwake();
     }
 
     @Override
     public boolean shouldDiscardFriction() {
-        return !isAwake();
+        return !this.isAwake();
+    }
+    @Override
+    protected boolean isAffectedByFluids() {
+        return !this.isAwake();
     }
 
     @Override
-    public void addAdditionalSaveData( CompoundTag tag) {
+    public boolean displayFireAnimation() {
+        return false;
+    }
+
+    @Override
+    public boolean isFullyFrozen() {
+        return false;
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         this.addBossSaveData(tag);
         tag.putBoolean("Awake", this.isAwake());
     }
 
     @Override
-    public void readAdditionalSaveData( CompoundTag tag) {
+    public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
         this.readBossSaveData(tag);
         if (tag.contains("Awake")) {
@@ -482,15 +558,216 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
             this.readBossSaveData(tag);
         }
     }
- 
 
-    public int getChatCooldown() {
-        return this.chatCooldown;
+    public static class HostAvoidPlayerGoal extends Goal {
+        private final SliderHostMimic sliderHostMimic;
+        protected double posX;
+        protected double posY;
+        protected double posZ;
+
+        public HostAvoidPlayerGoal(SliderHostMimic sliderHostMimic) {
+            super();
+            this.sliderHostMimic = sliderHostMimic;
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE));
+        }
+
+        @Override
+        public boolean canUse() {
+            if (this.sliderHostMimic.isAwake()) {
+                if (this.sliderHostMimic.getDungeon() != null) {
+                    for (UUID id : this.sliderHostMimic.getDungeon().dungeonPlayers()) {
+                        Player player = this.sliderHostMimic.level().getPlayerByUUID(id);
+                        if (player != null && player.distanceToSqr(this.sliderHostMimic) < 81) {
+                            Vec3 vec3 = this.findRandomPosition(player);
+                            if (vec3 != null) {
+                                if (player.distanceToSqr(vec3.x, vec3.y, vec3.z) < player.distanceToSqr(this.sliderHostMimic)) {
+                                    return false;
+                                } else {
+                                    this.posX = vec3.x;
+                                    this.posY = vec3.y;
+                                    this.posZ = vec3.z;
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        protected Vec3 findRandomPosition(LivingEntity entity) {
+            Vec3 vec3 = DefaultRandomPos.getPosAway(this.sliderHostMimic, 16, 2, entity.position());
+            if (vec3 == null || (this.sliderHostMimic.getDungeon() != null && !this.sliderHostMimic.getDungeon().roomBounds().contains(vec3))) {
+                return null;
+            }
+            return vec3;
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return !this.sliderHostMimic.getBoundingBox().contains(new Vec3(this.posX, this.posY, this.posZ))
+                    && this.sliderHostMimic.isAwake()
+                    && !this.sliderHostMimic.getNavigation().isDone()
+                    && !this.sliderHostMimic.getNavigation().isStuck()
+                    && this.sliderHostMimic.getTarget() != null;
+        }
+
+        @Override
+        public void start() {
+            this.sliderHostMimic.playSound(this.sliderHostMimic.getScareSound(), 2.5F, 1.0F / (this.sliderHostMimic.getRandom().nextFloat() * 0.2F + 0.9F));
+            this.sliderHostMimic.getNavigation().moveTo(this.posX, this.posY, this.posZ, 1.5);
+        }
+
+        @Override
+        public void stop() {
+            this.sliderHostMimic.getNavigation().stop();
+        }
+
+        @Override
+        public void tick() {
+            super.tick();
+            LivingEntity avoid = null;
+            if (this.sliderHostMimic.getDungeon() != null) {
+                for (UUID id : this.sliderHostMimic.getDungeon().dungeonPlayers()) {
+                    Player player = this.sliderHostMimic.level().getPlayerByUUID(id);
+                    if (player != null && player.distanceToSqr(this.sliderHostMimic) < 81) {
+                        avoid = player;
+                    }
+                }
+            } else if (this.sliderHostMimic.getTarget() != null && this.sliderHostMimic.getTarget().distanceToSqr(this.sliderHostMimic) < 81) {
+                avoid = this.sliderHostMimic.getTarget();
+            }
+            if (avoid != null) {
+                Vec3 vec3 = this.findRandomPosition(avoid);
+                if (vec3 != null) {
+                    if (!(avoid.distanceToSqr(vec3.x, vec3.y, vec3.z) < avoid.distanceToSqr(this.sliderHostMimic))) {
+                        this.posX = vec3.x;
+                        this.posY = vec3.y;
+                        this.posZ = vec3.z;
+                        this.sliderHostMimic.getNavigation().moveTo(this.posX, this.posY, this.posZ, 1.5);
+                    }
+                }
+            }
+        }
+
+        @Override
+        public boolean requiresUpdateEveryTick() {
+            return true;
+        }
     }
 
-    public static class DoNothingGoal extends Goal {
+    public static class HostRandomMovementGoal extends Goal {
         private final SliderHostMimic sliderHostMimic;
-        public DoNothingGoal(SliderHostMimic sliderHostMimic) {
+        protected double posX;
+        protected double posY;
+        protected double posZ;
+
+        public HostRandomMovementGoal(SliderHostMimic sliderHostMimic) {
+            super();
+            this.sliderHostMimic = sliderHostMimic;
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE));
+        }
+
+        @Override
+        public boolean canUse() {
+            if (this.sliderHostMimic.isAwake()) {
+                if (this.sliderHostMimic.getDeltaMovement().x() == 0 && this.sliderHostMimic.getDeltaMovement().z() == 0) {
+                    Vec3 vec3 = this.findRandomPosition();
+                    if (vec3 != null) {
+                        this.posX = vec3.x;
+                        this.posY = vec3.y;
+                        this.posZ = vec3.z;
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        protected Vec3 findRandomPosition() {
+            if (this.sliderHostMimic.getDungeon() != null) {
+                List<Vec3> positions = BlockPos.betweenClosedStream(this.sliderHostMimic.getDungeon().roomBounds()).map((pos) -> Vec3.atLowerCornerOf(pos.immutable())).toList();
+                return positions.get(this.sliderHostMimic.getRandom().nextInt(positions.size()));
+            } else {
+                Vec3 vec3 = DefaultRandomPos.getPos(this.sliderHostMimic, 4, 2);
+                if (vec3 == null || (this.sliderHostMimic.getDungeon() != null && !this.sliderHostMimic.getDungeon().roomBounds().contains(vec3))) {
+                    return null;
+                }
+                return vec3;
+            }
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return !this.sliderHostMimic.getBoundingBox().contains(new Vec3(this.posX, this.posY, this.posZ))
+                    && this.sliderHostMimic.isAwake()
+                    && !this.sliderHostMimic.getNavigation().isDone()
+                    && !this.sliderHostMimic.getNavigation().isStuck()
+                    && this.sliderHostMimic.getTarget() != null;
+        }
+
+        @Override
+        public void start() {
+            this.sliderHostMimic.playSound(this.sliderHostMimic.getScareSound(), 2.5F, 1.0F / (this.sliderHostMimic.getRandom().nextFloat() * 0.2F + 0.9F));
+            this.sliderHostMimic.getMoveControl().setWantedPosition(this.posX, this.posY, this.posZ, 1.5);
+            this.sliderHostMimic.getNavigation().moveTo(this.posX, this.posY, this.posZ, 1.5);
+        }
+
+        @Override
+        public void stop() {
+            this.sliderHostMimic.getNavigation().stop();
+        }
+    }
+
+    public static class ShootHostEyeGoal extends Goal {
+        private final SliderHostMimic sliderHostMimic;
+        private int attackTime;
+
+        public ShootHostEyeGoal(SliderHostMimic sliderHostMimic) {
+            this.sliderHostMimic = sliderHostMimic;
+            this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
+        }
+
+        @Override
+        public boolean canUse() {
+            if (this.sliderHostMimic.getEyeProjectiles().size() < 4) {
+                LivingEntity livingentity = this.sliderHostMimic.getTarget();
+                if (livingentity != null && livingentity.isAlive()) {
+                    return this.sliderHostMimic.level().getDifficulty() != Difficulty.PEACEFUL;
+                }
+            }
+            return false;
+        }
+
+        @Override
+        public void start() {
+            this.attackTime = 30;
+        }
+
+        @Override
+        public void tick() {
+            LivingEntity livingentity = this.sliderHostMimic.getTarget();
+            if (livingentity != null) {
+                if (this.sliderHostMimic.eyeProjectiles.size() < 4) {
+                    if (this.attackTime <= 0) {
+                        HostEyeProjectile hostEyeProjectile = new HostEyeProjectile(this.sliderHostMimic.level(), this.sliderHostMimic, this.sliderHostMimic.getDirection());
+                        this.sliderHostMimic.level().addFreshEntity(hostEyeProjectile);
+                        this.sliderHostMimic.playSound(this.sliderHostMimic.getShootSound(), 1.0F, 1.0F / (this.sliderHostMimic.getRandom().nextFloat() * 0.2F + 0.9F));
+                        hostEyeProjectile.setPos(this.sliderHostMimic.position().add(0.0F, (this.sliderHostMimic.getBbHeight() / 2.0F) + 0.2F, 0.0F));
+                        this.sliderHostMimic.eyeProjectiles.add(hostEyeProjectile);
+                        this.attackTime = 30;
+                    }
+                }
+            }
+            --this.attackTime;
+        }
+    }
+
+    public static class InactiveGoal extends Goal {
+        private final SliderHostMimic sliderHostMimic;
+
+        public InactiveGoal(SliderHostMimic sliderHostMimic) {
             this.sliderHostMimic = sliderHostMimic;
             this.sliderHostMimic.setRot(0, 0);
             this.setFlags(EnumSet.of(Flag.MOVE, Flag.JUMP));
@@ -498,15 +775,13 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
 
         @Override
         public boolean canUse() {
-            return !this.sliderHostMimic.isBossFight();
+            return !this.sliderHostMimic.isAwake();
         }
 
         @Override
         public void start() {
             this.sliderHostMimic.setDeltaMovement(Vec3.ZERO);
-            this.sliderHostMimic.setPos(this.sliderHostMimic.position().x,
-                    this.sliderHostMimic.position().y,
-                    this.sliderHostMimic.position().z);
+            this.sliderHostMimic.setPos(this.sliderHostMimic.position().x(), this.sliderHostMimic.position().y(), this.sliderHostMimic.position().z());
         }
     }
 }

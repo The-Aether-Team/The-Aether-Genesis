@@ -28,9 +28,9 @@ public class CogProjectileRenderer extends EntityRenderer<CogProjectile> {
         poseStack.pushPose();
         float yRot = Mth.rotLerp(partialTicks, cog.yRotO, cog.getYRot());
         float xRot = Mth.lerp(partialTicks, cog.xRotO, cog.getXRot());
-        poseStack.translate(1.0, 1.5, 1.0);
-        if (!cog.isLarge()) {
-            poseStack.scale(0.25F, 0.25F, 0.25F);
+        poseStack.translate(0.0, -0.75, 0.0);
+        if (cog.isLarge()) {
+            poseStack.scale(1.5F, 1.5F, 1.5F);
         }
         VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.entityTranslucent(this.getTextureLocation(cog)));
         this.cog.setupAnim(cog, 0.0F, 0.0F, cog.tickCount, yRot, xRot);

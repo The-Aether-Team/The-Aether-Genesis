@@ -13,10 +13,10 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
-public class HostMimicLayer extends EyesLayer<SliderHostMimic, SliderHostMimicModel> {
-	private static final RenderType HOST_MIMIC_CRITICAL_GLOW = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/slider_host_mimic/slider_host_mimic_critical_glow.png"));
+public class HostMimicGlowLayer extends EyesLayer<SliderHostMimic, SliderHostMimicModel> {
+	private static final RenderType HOST_MIMIC_CRITICAL_GLOW = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/slider_host_mimic/slider_host_mimic_glow.png"));
 
-	public HostMimicLayer(RenderLayerParent<SliderHostMimic, SliderHostMimicModel> entityRenderer) {
+	public HostMimicGlowLayer(RenderLayerParent<SliderHostMimic, SliderHostMimicModel> entityRenderer) {
 		super(entityRenderer);
 	}
 

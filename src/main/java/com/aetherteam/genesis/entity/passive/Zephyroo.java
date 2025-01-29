@@ -237,7 +237,13 @@ public class Zephyroo extends AetherAnimal {
     }
 
     protected SoundEvent getJumpSound() {
-        return SoundEvents.RABBIT_JUMP;
+        return GenesisSoundEvents.ENTITY_ZEPHYROO_JUMP.get();
+    }
+
+    @Nullable
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return GenesisSoundEvents.ENTITY_ZEPHYROO_AMBIENT.get();
     }
 
     @Nullable

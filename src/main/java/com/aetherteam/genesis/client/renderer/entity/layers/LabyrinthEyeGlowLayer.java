@@ -13,11 +13,11 @@ import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
-public class LabyrinthEyeLayer extends EyesLayer<LabyrinthEye, LabyrinthEyeModel> {
+public class LabyrinthEyeGlowLayer extends EyesLayer<LabyrinthEye, LabyrinthEyeModel> {
     private static final RenderType LABYRINTH_EYE_ASLEEP_GLOW = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_sleep_glow.png"));
     private static final RenderType LABYRINTH_EYE_AWAKE_GLOW = RenderType.eyes(new ResourceLocation(AetherGenesis.MODID, "textures/entity/mobs/labyrinth_eye/labyrinth_eye_awake_glow.png"));
 
-    public LabyrinthEyeLayer(RenderLayerParent<LabyrinthEye, LabyrinthEyeModel> entityRenderer) {
+    public LabyrinthEyeGlowLayer(RenderLayerParent<LabyrinthEye, LabyrinthEyeModel> entityRenderer) {
         super(entityRenderer);
     }
 

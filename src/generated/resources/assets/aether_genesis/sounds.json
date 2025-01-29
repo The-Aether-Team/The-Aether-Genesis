@@ -36,6 +36,12 @@
     ],
     "subtitle": "subtitles.aether_genesis.entity.cog.break"
   },
+  "entity.host_eye.collide": {
+    "sounds": [
+      "aether:entity/slider/collide"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.host_eye.collide"
+  },
   "entity.labyrinth_eye.cog_loss": {
     "sounds": [
       "aether_genesis:entity/labyrinth_eye/cog_loss"
@@ -78,6 +84,65 @@
       "aether_genesis:entity/sentry_guardian/spawn"
     ],
     "subtitle": "subtitles.aether_genesis.entity.sentry_guardian.spawn"
+  },
+  "entity.slider_host_mimic.ambient": {
+    "sounds": [
+      "ambient/cave/cave1",
+      "ambient/cave/cave2",
+      "ambient/cave/cave3",
+      "ambient/cave/cave4",
+      "ambient/cave/cave5",
+      "ambient/cave/cave6",
+      "ambient/cave/cave7",
+      "ambient/cave/cave8",
+      "ambient/cave/cave9",
+      "ambient/cave/cave10",
+      "ambient/cave/cave11",
+      "ambient/cave/cave12",
+      "ambient/cave/cave13",
+      "ambient/cave/cave14",
+      "ambient/cave/cave15",
+      "ambient/cave/cave16",
+      "ambient/cave/cave17",
+      "ambient/cave/cave18",
+      "ambient/cave/cave19"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.slider_host_mimic.ambient"
+  },
+  "entity.slider_host_mimic.awaken": {
+    "sounds": [
+      "aether:entity/slider/awaken"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.slider_host_mimic.awaken"
+  },
+  "entity.slider_host_mimic.death": {
+    "sounds": [
+      "aether:entity/slider/death"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.slider_host_mimic.death"
+  },
+  "entity.slider_host_mimic.hurt": {
+    "sounds": [
+      "step/stone1",
+      "step/stone2",
+      "step/stone3",
+      "step/stone4",
+      "step/stone5",
+      "step/stone6"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.slider_host_mimic.hurt"
+  },
+  "entity.slider_host_mimic.scare": {
+    "sounds": [
+      "aether_genesis:entity/tracking_golem/creepy_seen"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.slider_host_mimic.scare"
+  },
+  "entity.slider_host_mimic.shoot": {
+    "sounds": [
+      "aether:entity/slider/awaken"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.slider_host_mimic.shoot"
   },
   "entity.tempest.ambient": {
     "sounds": [

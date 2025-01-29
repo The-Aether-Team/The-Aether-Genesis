@@ -7,14 +7,23 @@ import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.util.Mth;
 
 public class SliderHostMimicModel extends EntityModel<SliderHostMimic> {
 	private final ModelPart mimic;
 	private final ModelPart body;
+	private final ModelPart frontLeftLeg;
+	private final ModelPart frontRightLeg;
+	private final ModelPart backRightLeg;
+	private final ModelPart backLeftLeg;
 
 	public SliderHostMimicModel(ModelPart root) {
 		this.mimic = root.getChild("mimic");
 		this.body = root.getChild("body");
+		this.frontLeftLeg = this.body.getChild("leg_front_left");
+		this.frontRightLeg = this.body.getChild("leg_front_right");
+		this.backRightLeg = this.body.getChild("leg_back_right");
+		this.backLeftLeg = this.body.getChild("leg_back_left");
 	}
 
 	public static LayerDefinition createBodyLayer() {
@@ -41,6 +50,10 @@ public class SliderHostMimicModel extends EntityModel<SliderHostMimic> {
 	@Override
 	public void setupAnim(SliderHostMimic hostMimic, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		if (hostMimic.isAwake()) {
+			this.frontRightLeg.xRot = Mth.cos(limbSwing * 0.6662F + Mth.PI) * 0.6F * limbSwingAmount;
+			this.backRightLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 0.6F * limbSwingAmount;
+			this.frontLeftLeg.xRot = Mth.cos(limbSwing * 0.6662F) * 0.6F * limbSwingAmount;
+			this.backLeftLeg.xRot = Mth.cos(limbSwing * 0.6662F + Mth.PI) * 0.6F * limbSwingAmount;
 			this.body.visible = true;
 			this.mimic.visible = false;
 		} else {

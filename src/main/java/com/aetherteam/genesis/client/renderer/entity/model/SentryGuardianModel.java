@@ -43,8 +43,20 @@ public class SentryGuardianModel extends EntityModel<SentryGuardian> {
 
 	@Override
 	public void setupAnim(SentryGuardian guardian, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.leftArm.xRot = -Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
-		this.rightArm.xRot = -Mth.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
+		int i = guardian.getAttackAnimationTick();
+		if (i <= 0) {
+			this.leftArm.xRot = 0.25F - Mth.cos(limbSwing * 0.3662F) * 0.3F * limbSwingAmount;
+			this.rightArm.xRot = 0.25F - Mth.cos(limbSwing * 0.3662F) * 0.3F * limbSwingAmount;
+		}
+	}
+
+	@Override
+	public void prepareMobModel(SentryGuardian guardian, float limbSwing, float limbSwingAmount, float partialTicks) {
+		int i = guardian.getAttackAnimationTick();
+		if (i > 0) {
+			this.rightArm.xRot = -0.25F + Mth.triangleWave((float) i - partialTicks, 10.0F);
+			this.leftArm.xRot = -0.25F + Mth.triangleWave((float) i - partialTicks, 10.0F);
+		}
 	}
 
 	@Override
