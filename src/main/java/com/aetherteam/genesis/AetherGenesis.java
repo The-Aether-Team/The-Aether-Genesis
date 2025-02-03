@@ -1,5 +1,6 @@
 package com.aetherteam.genesis;
 
+import com.aetherteam.aether.data.generators.AetherRegistrySets;
 import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonBuilder;
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
@@ -22,6 +23,7 @@ import com.aetherteam.genesis.event.listeners.abilities.ToolAbilityListener;
 import com.aetherteam.genesis.event.listeners.capability.GenesisPlayerListener;
 import com.aetherteam.genesis.inventory.menu.GenesisMenuTypes;
 import com.aetherteam.genesis.item.GenesisCreativeTabs;
+import com.aetherteam.genesis.item.GenesisDataComponents;
 import com.aetherteam.genesis.item.GenesisItems;
 import com.aetherteam.genesis.loot.entries.GenesisLootPoolEntries;
 import com.aetherteam.genesis.loot.functions.GenesisLootFunctions;
@@ -102,6 +104,7 @@ public class AetherGenesis {
         eventSetup(NeoForge.EVENT_BUS);
 
         DeferredRegister<?>[] registers = {
+                GenesisDataComponents.DATA_COMPONENTS,
                 GenesisBlocks.BLOCKS,
                 GenesisItems.ITEMS,
                 GenesisEntityTypes.ENTITY_TYPES,
@@ -167,8 +170,9 @@ public class AetherGenesis {
         generator.addProvider(event.includeClient(), new GenesisLanguageData(packOutput));
         generator.addProvider(event.includeClient(), new GenesisSoundData(packOutput, fileHelper));
 
+
         // Server Data
-        generator.addProvider(event.includeServer(), new GenesisRegistrySets(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new GenesisRegistrySets(packOutput, new AetherRegistrySets(packOutput, lookupProvider).getRegistryProvider()));
         generator.addProvider(event.includeServer(), new GenesisRecipeData(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), GenesisLootTableData.create(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new GenesisLootModifierData(packOutput, lookupProvider));

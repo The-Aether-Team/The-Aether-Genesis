@@ -9,7 +9,7 @@
   "entries": [
     {
       "data": {
-        "Count": 1,
+        "count": 1,
         "id": "aether_genesis:swetty_pendant"
       },
       "weight": 2
@@ -17,9 +17,7 @@
   ],
   "rolls": {
     "type": "minecraft:uniform",
-    "value": {
-      "max_inclusive": 1,
-      "min_inclusive": 1
-    }
+    "max_inclusive": 1,
+    "min_inclusive": 1
   }
 }

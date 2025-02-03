@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "aether_genesis:baby_pink_swet"
+    },
+    {
+      "item": "aether:skyroot_stick"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "aether_genesis:stomper_pop"
+  }
+}
