@@ -9,8 +9,6 @@ import net.minecraft.world.item.Item;
 public class MouseEarCapItem extends AccessoryItem {
     private final ResourceLocation EARS_LOCATION = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/models/accessory/ears/mouse_ear_cap_accessory.png");
 
-    // DEFAULT COLOR: 10302259
-    // TODO: IMPLEMENT DYE COLORING
     public MouseEarCapItem() {
         super(new Item.Properties().stacksTo(1));
     }

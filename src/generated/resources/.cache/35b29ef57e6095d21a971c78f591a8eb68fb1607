@@ -1,4 +1,4 @@
-// 1.21.1	2024-12-22T17:18:19.6043214	Tags for minecraft:item mod id aether_genesis
+// 1.21.1	2025-02-03T22:28:07.7889145	Tags for minecraft:item mod id aether_genesis
 330a2f26e92f1bd1695fdccd7ba2749180f2e600 data/aether/tags/item/accessories_capes.json
 42d9429c4a2caa607369eda48e154467b6961a23 data/aether/tags/item/accessories_miscellaneous.json
 d1a8d412e7c7c9bcae51c0760965af276c050ebd data/aether/tags/item/accessories_pendants.json
@@ -30,6 +30,7 @@ c21725ee872d7defc7979eb8d4fd016267f6facb data/c/tags/item/chests/wooden.json
 d80078b8cef8da6515b4b903017fe5783101c46f data/c/tags/item/music_discs.json
 6ff9b23d7f59d105370ad06adf8429d94d62fccd data/c/tags/item/ores.json
 6ff9b23d7f59d105370ad06adf8429d94d62fccd data/c/tags/item/ore_rates/singular.json
+78001021977b5474bd564d9be9950fbbcd9f7156 data/minecraft/tags/item/dyeable.json
 beac0a1e118252eaf09f2d527230162fdb9a1a72 data/minecraft/tags/item/leaves.json
 21ba05af990cf6d402d13ff2f1286d2126ff491a data/minecraft/tags/item/logs_that_burn.json
 20cb9cd9fdec4548c290b66338a6eae5fe5d6d2d data/minecraft/tags/item/saplings.json

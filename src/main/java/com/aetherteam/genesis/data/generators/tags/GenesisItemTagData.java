@@ -164,6 +164,11 @@ public class GenesisItemTagData extends ItemTagsProvider {
         this.tag(Tags.Items.CHESTS_WOODEN).add(GenesisBlocks.SKYROOT_CHEST.get().asItem());
         this.tag(Tags.Items.ORE_RATES_SINGULAR).add(GenesisBlocks.CONTINUUM_ORE.get().asItem());
         this.tag(Tags.Items.ORES).add(GenesisBlocks.CONTINUUM_ORE.get().asItem());
+        this.tag(Tags.Items.MUSIC_DISCS).add(
+                GenesisItems.MUSIC_DISC_AERWHALE.get(),
+                GenesisItems.MUSIC_DISC_APPROACHES.get(),
+                GenesisItems.MUSIC_DISC_DEMISE.get(),
+                GenesisItems.RECORDING_892.get());
 
         // Vanilla
         this.tag(ItemTags.SAPLINGS).add(
@@ -187,10 +192,8 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get().asItem(),
                 GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get().asItem(),
                 GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get().asItem());
-        this.tag(Tags.Items.MUSIC_DISCS).add(
-                GenesisItems.MUSIC_DISC_AERWHALE.get(),
-                GenesisItems.MUSIC_DISC_APPROACHES.get(),
-                GenesisItems.MUSIC_DISC_DEMISE.get(),
-                GenesisItems.RECORDING_892.get());
+        this.tag(ItemTags.DYEABLE).add(
+                GenesisItems.CAPE.get(),
+                GenesisItems.MOUSE_EAR_CAP.get());
     }
 }
