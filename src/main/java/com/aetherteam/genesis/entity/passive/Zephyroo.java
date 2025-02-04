@@ -210,11 +210,11 @@ public class Zephyroo extends AetherAnimal {
         }
     }
 
-    // TODO: [PORTING] FIGURE OUT REPLACMENT?
-//    @Override
-//    protected float getStandingEyeHeight(Pose pose, EntityDimensions size) {
-//        return this.isBaby() ? size.height * 0.8F : 1.1F;
-//    }
+    @Override
+    protected EntityDimensions getDefaultDimensions(Pose pose) {
+        EntityDimensions dimensions = super.getDefaultDimensions(pose);
+        return dimensions.withEyeHeight(this.isBaby() ? dimensions.height() * 0.8F : 1.1F);
+    }
 
     @Override
     public int getMaxFallDistance() {
