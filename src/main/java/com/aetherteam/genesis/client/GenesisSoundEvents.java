@@ -32,6 +32,13 @@ public class GenesisSoundEvents {
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_TRACKING_GOLEM_SAY = register("entity.tracking_golem.say");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_TRACKING_GOLEM_CREEPY_SEEN = register("entity.tracking_golem.creepy_seen");
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SLIDER_HOST_MIMIC_AWAKEN = register("entity.slider_host_mimic.awaken");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SLIDER_HOST_MIMIC_AMBIENT = register("entity.slider_host_mimic.ambient");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SLIDER_HOST_MIMIC_SHOOT = register("entity.slider_host_mimic.shoot");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SLIDER_HOST_MIMIC_SCARE = register("entity.slider_host_mimic.scare");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SLIDER_HOST_MIMIC_HURT = register("entity.slider_host_mimic.hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SLIDER_HOST_MIMIC_DEATH = register("entity.slider_host_mimic.death");
+
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SENTRY_GUARDIAN_DEATH = register("entity.sentry_guardian.death");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SENTRY_GUARDIAN_SUMMON = register("entity.sentry_guardian.summon");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SENTRY_GUARDIAN_HIT = register("entity.sentry_guardian.hit");
@@ -39,9 +46,6 @@ public class GenesisSoundEvents {
 
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_LABYRINTH_EYE_DEATH = register("entity.labyrinth_eye.death");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_LABYRINTH_EYE_COG_LOSS = register("entity.labyrinth_eye.cog_loss");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_LABYRINTH_EYE_MOVE = register("entity.labyrinth_eye.move");
-
-    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_COG_BREAK = register("entity.cog.break");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_TEMPEST_AMBIENT = register("entity.tempest.ambient");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_TEMPEST_HURT = register("entity.tempest.hurt");
@@ -52,6 +56,10 @@ public class GenesisSoundEvents {
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_ZEPHYROO_HURT = register("entity.zephyroo.hurt");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_ZEPHYROO_DEATH = register("entity.zephyroo.death");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_ZEPHYROO_JUMP = register("entity.zephyroo.jump");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_LABYRINTH_EYE_MOVE = register("entity.labyrinth_eye.move");
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_HOST_EYE_COLLIDE = register("entity.host_eye.collide");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_COG_BREAK = register("entity.cog.break");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> MUSIC_AETHER_NIGHT = register("music.aether_night");
     public static final DeferredHolder<SoundEvent, SoundEvent> MUSIC_MINIBOSS = register("music.miniboss");

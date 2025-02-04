@@ -54,7 +54,7 @@ public class CogProtectileModel extends EntityModel<CogProjectile> {
 
 	@Override
 	public void setupAnim(CogProjectile cog, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.cog.xRot += 0.15F;
+		this.cog.xRot += 0.01F;
 		this.cog.yRot = this.cog.xRot;
 		this.cog.zRot = this.cog.xRot;
 	}

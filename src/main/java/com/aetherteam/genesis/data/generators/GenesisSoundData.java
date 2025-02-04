@@ -1,5 +1,6 @@
 package com.aetherteam.genesis.data.generators;
 
+import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import net.minecraft.data.PackOutput;
@@ -117,6 +118,54 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                         .subtitle("subtitles.aether_genesis.entity.tracking_golem.seen_enemy")
         );
 
+        this.add(GenesisSoundEvents.ENTITY_SLIDER_HOST_MIMIC_AWAKEN,
+                definition().with(sound("aether:entity/slider/awaken"))
+                        .subtitle("subtitles.aether_genesis.entity.slider_host_mimic.awaken")
+        );
+        this.add(GenesisSoundEvents.ENTITY_SLIDER_HOST_MIMIC_AMBIENT,
+                definition().with(sound("minecraft:ambient/cave/cave1"),
+                                sound("minecraft:ambient/cave/cave2"),
+                                sound("minecraft:ambient/cave/cave3"),
+                                sound("minecraft:ambient/cave/cave4"),
+                                sound("minecraft:ambient/cave/cave5"),
+                                sound("minecraft:ambient/cave/cave6"),
+                                sound("minecraft:ambient/cave/cave7"),
+                                sound("minecraft:ambient/cave/cave8"),
+                                sound("minecraft:ambient/cave/cave9"),
+                                sound("minecraft:ambient/cave/cave10"),
+                                sound("minecraft:ambient/cave/cave11"),
+                                sound("minecraft:ambient/cave/cave12"),
+                                sound("minecraft:ambient/cave/cave13"),
+                                sound("minecraft:ambient/cave/cave14"),
+                                sound("minecraft:ambient/cave/cave15"),
+                                sound("minecraft:ambient/cave/cave16"),
+                                sound("minecraft:ambient/cave/cave17"),
+                                sound("minecraft:ambient/cave/cave18"),
+                                sound("minecraft:ambient/cave/cave19"))
+                        .subtitle("subtitles.aether_genesis.entity.slider_host_mimic.ambient")
+        );
+        this.add(GenesisSoundEvents.ENTITY_SLIDER_HOST_MIMIC_SHOOT,
+                definition().with(sound("aether:entity/slider/awaken"))
+                        .subtitle("subtitles.aether_genesis.entity.slider_host_mimic.shoot")
+        );
+        this.add(GenesisSoundEvents.ENTITY_SLIDER_HOST_MIMIC_SCARE,
+                definition().with(sound("aether_genesis:entity/tracking_golem/creepy_seen"))
+                        .subtitle("subtitles.aether_genesis.entity.slider_host_mimic.scare")
+        );
+        this.add(GenesisSoundEvents.ENTITY_SLIDER_HOST_MIMIC_HURT,
+                definition().with(sound("minecraft:step/stone1"),
+                                sound("minecraft:step/stone2"),
+                                sound("minecraft:step/stone3"),
+                                sound("minecraft:step/stone4"),
+                                sound("minecraft:step/stone5"),
+                                sound("minecraft:step/stone6"))
+                        .subtitle("subtitles.aether_genesis.entity.slider_host_mimic.hurt")
+        );
+        this.add(GenesisSoundEvents.ENTITY_SLIDER_HOST_MIMIC_DEATH,
+                definition().with(sound("aether:entity/slider/death"))
+                        .subtitle("subtitles.aether_genesis.entity.slider_host_mimic.death")
+        );
+
         this.add(GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_DEATH,
                 definition().with(sound("aether_genesis:entity/sentry_guardian/death"))
                         .subtitle("subtitles.aether_genesis.entity.tracking_golem.creepy_seen")
@@ -146,6 +195,11 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                 definition().with(sound("aether_genesis:entity/labyrinth_eye/move_1"),
                                 sound("aether_genesis:entity/labyrinth_eye/move_2"))
                         .subtitle("subtitles.aether_genesis.entity.labyrinth_eye.move")
+        );
+
+        this.add(GenesisSoundEvents.ENTITY_HOST_EYE_COLLIDE,
+                definition().with(sound("aether:entity/slider/collide"))
+                        .subtitle("subtitles.aether_genesis.entity.host_eye.collide")
         );
         this.add(GenesisSoundEvents.ENTITY_COG_BREAK,
                 definition().with(sound("aether_genesis:entity/cog/wall_final"))

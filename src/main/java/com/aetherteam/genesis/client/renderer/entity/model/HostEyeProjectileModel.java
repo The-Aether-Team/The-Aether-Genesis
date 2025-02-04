@@ -19,7 +19,7 @@ public class HostEyeProjectileModel extends EntityModel<HostEyeProjectile> {
 		MeshDefinition meshDefinition = new MeshDefinition();
 		PartDefinition partDefinition = meshDefinition.getRoot();
 
-		partDefinition.addOrReplaceChild("eye", CubeListBuilder.create().texOffs(0, 0).addBox(-5.5F, -11.0F, -5.5F, 11.0F, 11.0F, 11.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+		partDefinition.addOrReplaceChild("eye", CubeListBuilder.create().texOffs(0, 0).addBox(-5.5F, -5.5F, -5.5F, 11.0F, 11.0F, 11.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 5.5F, 0.0F));
 
 		return LayerDefinition.create(meshDefinition, 64, 32);
 	}

@@ -2,7 +2,7 @@ package com.aetherteam.genesis.client.renderer.entity;
 
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.renderer.GenesisModelLayers;
-import com.aetherteam.genesis.client.renderer.entity.layers.LabyrinthEyeLayer;
+import com.aetherteam.genesis.client.renderer.entity.layers.LabyrinthEyeGlowLayer;
 import com.aetherteam.genesis.client.renderer.entity.model.LabyrinthEyeModel;
 import com.aetherteam.genesis.entity.monster.dungeon.boss.LabyrinthEye;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -15,7 +15,7 @@ public class LabyrinthEyeRenderer extends MobRenderer<LabyrinthEye, LabyrinthEye
 
     public LabyrinthEyeRenderer(EntityRendererProvider.Context context) {
         super(context, new LabyrinthEyeModel(context.bakeLayer(GenesisModelLayers.LABYRINTH_EYE)), 0.5F);
-        this.addLayer(new LabyrinthEyeLayer(this));
+        this.addLayer(new LabyrinthEyeGlowLayer(this));
     }
 
     @Override
