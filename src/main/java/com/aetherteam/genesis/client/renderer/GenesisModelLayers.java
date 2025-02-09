@@ -5,6 +5,9 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.resources.ResourceLocation;
 
 public class GenesisModelLayers {
+    public static final ModelLayerLocation ALTAR = register("altar");
+    public static final ModelLayerLocation SKYROOT_CHEST_MIMIC = register("skyroot_chest_mimic");
+
     public static final ModelLayerLocation CARRION_SPROUT = register("carrion_sprout");
     public static final ModelLayerLocation ZEPHYROO = register("zephyroo");
     public static final ModelLayerLocation TEMPEST = register("tempest");
@@ -13,7 +16,6 @@ public class GenesisModelLayers {
     public static final ModelLayerLocation SENTRY_GOLEM = register("sentry_golem");
     public static final ModelLayerLocation TRACKING_GOLEM = register("tracking_golem");
     public static final ModelLayerLocation SKYROOT_MIMIC = register("skyroot_mimic");
-    public static final ModelLayerLocation SKYROOT_CHEST_MIMIC = register("skyroot_chest_mimic");
     public static final ModelLayerLocation SENTRY_GUARDIAN = register("sentry_guardian");
     public static final ModelLayerLocation SLIDER_HOST_MIMIC = register("slider_host_mimic");
     public static final ModelLayerLocation LABYRINTH_EYE = register("labyrinth_eye");
