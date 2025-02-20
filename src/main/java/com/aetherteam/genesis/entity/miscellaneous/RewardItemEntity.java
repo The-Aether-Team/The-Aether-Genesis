@@ -57,7 +57,7 @@ public class RewardItemEntity extends ItemEntity {
                 }
             }
         }
-        if (this.onGround()) {
+        if (this.onGround() || this.isInLiquid()) {
             this.hitGround = true;
         }
         super.tick();
