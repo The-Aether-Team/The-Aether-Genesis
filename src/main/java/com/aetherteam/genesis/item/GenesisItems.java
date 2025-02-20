@@ -2,6 +2,7 @@ package com.aetherteam.genesis.item;
 
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.client.AetherSoundEvents;
+import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.item.accessories.cape.CapeItem;
 import com.aetherteam.aether.item.accessories.pendant.PendantItem;
 import com.aetherteam.aether.item.components.AetherDataComponents;
@@ -25,6 +26,8 @@ import com.aetherteam.genesis.item.food.GenesisFoods;
 import com.aetherteam.genesis.item.materials.ContinuumOrbItem;
 import com.aetherteam.genesis.item.miscellaneous.ContinuumBombItem;
 import com.aetherteam.genesis.item.miscellaneous.CrystalBottleItem;
+import io.wispforest.accessories.api.AccessoriesAPI;
+import io.wispforest.accessories.api.Accessory;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
@@ -109,4 +112,30 @@ public class GenesisItems {
     public static final DeferredItem<SpawnEggItem> SLIDER_HOST_MIMIC_SPAWN_EGG = ITEMS.register("slider_host_mimic_spawn_egg", () -> new SliderSpawnEggItem(GenesisEntityTypes.SLIDER_HOST_MIMIC, 0xA7A7A7,0x81E3FF, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> SENTRY_GUARDIAN_SPAWN_EGG = ITEMS.register("sentry_guardian_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.SENTRY_GUARDIAN, 0x555561,0x81E3FF, new Item.Properties()));
     public static final DeferredItem<SpawnEggItem> LABYRINTH_EYE_SPAWN_EGG = ITEMS.register("labyrinth_eye_spawn_egg", () -> new DeferredSpawnEggItem(GenesisEntityTypes.LABYRINTH_EYE, 0x808080,0x81E3FF, new Item.Properties()));
+
+    public static void registerAccessories() {
+        AccessoriesAPI.registerAccessory(GenesisItems.BONE_RING.get(), (Accessory) GenesisItems.BONE_RING.get());
+        AccessoriesAPI.registerAccessory(GenesisItems.CANDY_RING.get(), (Accessory) GenesisItems.CANDY_RING.get());
+        AccessoriesAPI.registerAccessory(GenesisItems.SKYROOT_RING.get(), (Accessory) GenesisItems.SKYROOT_RING.get());
+
+        AccessoriesAPI.registerAccessory(GenesisItems.LUCKY_BELL.get(), (Accessory) GenesisItems.LUCKY_BELL.get());
+        AccessoriesAPI.registerAccessory(GenesisItems.SWETTY_PENDANT.get(), (Accessory) GenesisItems.SWETTY_PENDANT.get());
+        AccessoriesAPI.registerAccessory(GenesisItems.DAGGERFROST_LOCKET.get(), (Accessory) GenesisItems.DAGGERFROST_LOCKET.get());
+
+        AccessoriesAPI.registerAccessory(GenesisItems.CAPE.get(), (Accessory) GenesisItems.CAPE.get());
+        AccessoriesAPI.registerAccessory(GenesisItems.DEXTERITY_CAPE.get(), (Accessory) GenesisItems.DEXTERITY_CAPE.get());
+
+        AccessoriesAPI.registerAccessory(GenesisItems.MOUSE_EAR_CAP.get(), (Accessory) GenesisItems.MOUSE_EAR_CAP.get());
+
+        AccessoriesAPI.registerAccessory(GenesisItems.FANGRIN_CAPSULE.get(), (Accessory) GenesisItems.FANGRIN_CAPSULE.get());
+        AccessoriesAPI.registerAccessory(GenesisItems.KRAISITH_CAPSULE.get(), (Accessory) GenesisItems.KRAISITH_CAPSULE.get());
+        AccessoriesAPI.registerAccessory(GenesisItems.FLEETING_STONE.get(), (Accessory) GenesisItems.FLEETING_STONE.get());
+        AccessoriesAPI.registerAccessory(GenesisItems.SOARING_STONE.get(), (Accessory) GenesisItems.SOARING_STONE.get());
+        AccessoriesAPI.registerAccessory(GenesisItems.ETHEREAL_STONE.get(), (Accessory) GenesisItems.ETHEREAL_STONE.get());
+        AccessoriesAPI.registerAccessory(GenesisItems.ORB_OF_ARKENZUS.get(), (Accessory) GenesisItems.ORB_OF_ARKENZUS.get());
+        AccessoriesAPI.registerAccessory(GenesisItems.FROSTPINE_TOTEM.get(), (Accessory) GenesisItems.FROSTPINE_TOTEM.get());
+        AccessoriesAPI.registerAccessory(GenesisItems.FROSTBOUND_STONE.get(), (Accessory) GenesisItems.FROSTBOUND_STONE.get());
+        AccessoriesAPI.registerAccessory(GenesisItems.DEATH_SEAL.get(), (Accessory) GenesisItems.DEATH_SEAL.get());
+        AccessoriesAPI.registerAccessory(GenesisItems.BABY_PINK_SWET.get(), (Accessory) GenesisItems.BABY_PINK_SWET.get());
+    }
 }

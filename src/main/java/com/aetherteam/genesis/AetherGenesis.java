@@ -58,7 +58,6 @@ import net.minecraft.server.packs.repository.PackCompatibility;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.util.InclusiveRange;
 import net.minecraft.world.flag.FeatureFlagSet;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
@@ -135,6 +134,8 @@ public class AetherGenesis {
         event.enqueueWork(() -> {
             GenesisBlocks.registerPots();
             GenesisBlocks.registerFlammability();
+
+            GenesisItems.registerAccessories();
 
             Regions.register(new GenesisRegion(ResourceLocation.fromNamespaceAndPath(MODID, MODID), GenesisConfig.COMMON.biome_weight.get()));
 
