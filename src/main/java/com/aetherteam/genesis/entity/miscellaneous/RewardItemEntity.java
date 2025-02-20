@@ -5,8 +5,10 @@ import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.FastColor;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
@@ -44,7 +46,7 @@ public class RewardItemEntity extends ItemEntity {
                 double motX = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
                 double motY = this.random.nextDouble();
                 double motZ = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-                this.level().addParticle(ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, 0xFFFFFFFF), this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
+                this.level().addParticle(ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, FastColor.ARGB32.opaque(DyeColor.values()[this.getRandom().nextInt(DyeColor.values().length)].getFireworkColor())), this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
             }
             if (this.tickCount % 5 == 0) {
                 for (int sparkCount = 1; sparkCount <= 10; sparkCount++) {

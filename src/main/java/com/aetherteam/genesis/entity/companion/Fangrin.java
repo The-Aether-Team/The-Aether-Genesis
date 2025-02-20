@@ -22,7 +22,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class Fangrin extends CompanionMob implements Combative { //todo melee?
+public class Fangrin extends CompanionMob implements Combative {
     public Fangrin(EntityType<Fangrin> entityType, Level level) {
         super(entityType, level, () -> new ItemStack(GenesisItems.FANGRIN_CAPSULE.get()), false);
     }

@@ -8,9 +8,11 @@ import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.FastColor;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -79,8 +81,7 @@ public class ContinuumBomb extends ThrowableItemProjectile {
             double motX = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
             double motY = this.random.nextDouble();
             double motZ = (this.random.nextBoolean() ? -1 : 1) * this.random.nextDouble();
-            // TODO: COLOR NEEDS TO BE DECIDED OR THIS IS JUST WRONG...
-            this.level().addParticle(ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, 0xFFFFFFFF), this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
+            this.level().addParticle(ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, FastColor.ARGB32.opaque(DyeColor.values()[this.getRandom().nextInt(DyeColor.values().length)].getFireworkColor())), this.getX(), this.getY(), this.getZ(), motX, motY, motZ);
             this.level().addParticle(ParticleTypes.CLOUD, this.getX(), this.getY(), this.getZ(), motX / 6.0, motY / 6.0, motZ / 6.0);
         }
     }
