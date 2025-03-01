@@ -126,7 +126,7 @@ public class Kraisith extends CompanionMob implements Combative, RangedAttackMob
 
         @Override
         public void start() {
-            this.kraisith.getNavigation().moveTo(this.posX, this.posY, this.posZ, 1.5);
+            this.kraisith.getNavigation().moveTo(this.posX, this.posY, this.posZ, 1.2);
         }
 
         @Override
@@ -148,7 +148,7 @@ public class Kraisith extends CompanionMob implements Combative, RangedAttackMob
                         this.posX = vec3.x;
                         this.posY = vec3.y;
                         this.posZ = vec3.z;
-                        this.kraisith.getNavigation().moveTo(this.posX, this.posY, this.posZ, 1.5);
+                        this.kraisith.getNavigation().moveTo(this.posX, this.posY, this.posZ, 1.2);
                     }
                 }
             }
