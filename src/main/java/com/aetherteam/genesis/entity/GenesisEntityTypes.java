@@ -87,6 +87,8 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.of(BabyPinkSwet::new, MobCategory.MISC).sized(0.9F, 0.95F).clientTrackingRange(10).build("baby_pink_swet"));
 
     // Projectile
+    public static final  DeferredHolder<EntityType<?>, EntityType<EnchantedNeedle>> ENCHANTED_NEEDLE = ENTITY_TYPES.register("enchanted_needle",
+            () -> EntityType.Builder.<EnchantedNeedle>of(EnchantedNeedle::new, MobCategory.MISC).sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(20).build("enchanted_needle"));
     public static final  DeferredHolder<EntityType<?>, EntityType<DaggerfrostSnowball>> DAGGERFROST_SNOWBALL = ENTITY_TYPES.register("daggerfrost_snowball",
             () -> EntityType.Builder.<DaggerfrostSnowball>of(DaggerfrostSnowball::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("daggerfrost_snowball"));
     public static final  DeferredHolder<EntityType<?>, EntityType<TempestThunderBall>> TEMPEST_THUNDERBALL = ENTITY_TYPES.register("tempest_thunderball",
