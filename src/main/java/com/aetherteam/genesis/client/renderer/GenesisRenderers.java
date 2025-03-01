@@ -74,6 +74,7 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.NEX_SPIRIT.get(), NexSpiritRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.BABY_PINK_SWET.get(), BabyPinkSwetRenderer::new);
 
+        event.registerEntityRenderer(GenesisEntityTypes.ENCHANTED_NEEDLE.get(), EnchantedNeedleRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.DAGGERFROST_SNOWBALL.get(), DaggerfrostSnowballRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TEMPEST_THUNDERBALL.get(), TempestThunderballRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.PHOENIX_DART.get(), PhoenixDartRenderer::new);
