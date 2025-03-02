@@ -107,16 +107,16 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
                 .add(Attributes.MAX_HEALTH, 500.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.27)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.75)
-                .add(Attributes.FOLLOW_RANGE, 4.0)
+                .add(Attributes.FOLLOW_RANGE, 64.0)
                 .add(Attributes.STEP_HEIGHT, 1.0);
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new LabyrinthEye.TrackPlayerGoal(this));
-        this.goalSelector.addGoal(1, new LabyrinthEye.LookAroundGoal(this));
-        this.goalSelector.addGoal(2, new LabyrinthEye.StrollGoal(this, 1.0));
-        this.targetSelector.addGoal(3, new LabyrinthEye.CogAttackGoal(this));
+        this.goalSelector.addGoal(0, new LabyrinthEye.CogAttackGoal(this));
+        this.goalSelector.addGoal(1, new LabyrinthEye.TrackPlayerGoal(this));
+        this.goalSelector.addGoal(2, new LabyrinthEye.LookAroundGoal(this));
+        this.goalSelector.addGoal(3, new LabyrinthEye.StrollGoal(this, 1.0));
         this.goalSelector.addGoal(4, new LabyrinthEye.InactiveGoal(this));
 
         this.mostDamageTargetGoal = new MostDamageTargetGoal(this);
@@ -590,11 +590,6 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
         }
 
         @Override
-        public boolean requiresUpdateEveryTick() {
-            return true;
-        }
-
-        @Override
         public void tick() {
             LivingEntity livingentity = this.labyrinthEye.getTarget();
             if (livingentity != null) {
@@ -654,6 +649,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
 
     public static class CogAttackGoal extends Goal {
         private final LabyrinthEye labyrinthEye;
+        private int attackTime = -1;
 
         public CogAttackGoal(LabyrinthEye labyrinthEye) {
             this.labyrinthEye = labyrinthEye;
@@ -661,31 +657,45 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
 
         @Override
         public boolean canUse() {
-            return this.labyrinthEye.isAwake() && this.labyrinthEye.getTarget() != null && this.labyrinthEye.random.nextInt(20) == 0 ;
+            return this.labyrinthEye.isAwake() && this.labyrinthEye.getTarget() != null;
         }
 
         @Override
         public boolean canContinueToUse() {
-            return super.canContinueToUse() && this.labyrinthEye.isAwake() && this.labyrinthEye.getTarget() != null;
+            return this.labyrinthEye.isAwake() && this.labyrinthEye.getTarget() != null;
         }
 
         @Override
         public void start() {
+            this.attackTime = 20;
+        }
+
+        @Override
+        public void stop() {
+            this.attackTime = -1;
+        }
+
+        @Override
+        public void tick() {
             LivingEntity target = this.labyrinthEye.getTarget();
             if (target != null) {
-                CogProjectile cog = new CogProjectile(this.labyrinthEye.level(), this.labyrinthEye, false);
-                cog.setYRot(this.labyrinthEye.getYRot());
-                cog.setXRot(this.labyrinthEye.getXRot());
-                cog.setPos(this.labyrinthEye.getCogPosition());
-                double x = target.position().x() - cog.getX();
-                double y = target.position().y() - cog.getY();
-                double z = target.position().z() - cog.getZ();
-                float dist = (float) Math.sqrt(x * x + z * z);
-                float distance = dist * 0.075F;
-                cog.shoot(x, y + (dist * 0.2F), z, distance, 20.0F);
-                this.labyrinthEye.playSound(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COG_LOSS.get(), 2.0F, 1.0F);
-                this.labyrinthEye.playSound(SoundEvents.ITEM_BREAK, 0.8F, 0.8F + this.labyrinthEye.level().getRandom().nextFloat() * 0.4F);
-                this.labyrinthEye.level().addFreshEntity(cog);
+                if (--this.attackTime == 0) {
+                    CogProjectile cog = new CogProjectile(this.labyrinthEye.level(), this.labyrinthEye, false);
+                    cog.setYRot(this.labyrinthEye.getYRot());
+                    cog.setXRot(this.labyrinthEye.getXRot());
+                    cog.setPos(this.labyrinthEye.getCogPosition());
+                    double x = target.position().x() - cog.getX();
+                    double y = target.position().y() - cog.getY();
+                    double z = target.position().z() - cog.getZ();
+                    float dist = (float) Math.sqrt(x * x + z * z);
+                    float distance = dist * 0.075F;
+                    cog.shoot(x, y + (dist * 0.2F), z, distance, 20.0F);
+                    this.labyrinthEye.playSound(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COG_LOSS.get(), 2.0F, 1.0F);
+                    this.labyrinthEye.playSound(SoundEvents.ITEM_BREAK, 0.8F, 0.8F + this.labyrinthEye.level().getRandom().nextFloat() * 0.4F);
+                    this.labyrinthEye.level().addFreshEntity(cog);
+                } else if (this.attackTime < 0) {
+                    this.attackTime = 25;
+                }
             }
         }
 
