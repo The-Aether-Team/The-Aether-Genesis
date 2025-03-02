@@ -147,7 +147,8 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.DAGGERFROST_LOCKET.get());
         this.tag(AetherTags.Items.ACCESSORIES_CAPES).add(
                 GenesisItems.CAPE.get(),
-                GenesisItems.DEXTERITY_CAPE.get(),
+                GenesisItems.DEXTERITY_CAPE.get());
+        this.tag(AetherTags.Items.ACCESSORIES_MISCELLANEOUS).add(GenesisItems.MOUSE_EAR_CAP.get()).add(
                 GenesisItems.FANGRIN_CAPSULE.get(), //todo temporary
                 GenesisItems.KRAISITH_CAPSULE.get(),
                 GenesisItems.FLEETING_STONE.get(),
@@ -158,7 +159,6 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.FROSTBOUND_STONE.get(),
                 GenesisItems.DEATH_SEAL.get(),
                 GenesisItems.BABY_PINK_SWET.get());
-        this.tag(AetherTags.Items.ACCESSORIES_MISCELLANEOUS).add(GenesisItems.MOUSE_EAR_CAP.get());
 
         // Forge
         this.tag(Tags.Items.CHESTS_WOODEN).add(GenesisBlocks.SKYROOT_CHEST.get().asItem());

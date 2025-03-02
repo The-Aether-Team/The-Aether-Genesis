@@ -94,11 +94,11 @@ public class AetherGenesis {
 
         GenesisEntityTypes.listen(bus);
 
-        bus.addListener((ModifyDefaultComponentsEvent event) -> {
-            if (GenesisConfig.COMMON.gold_aercloud_ability.get()) {
-                event.modify(AetherItems.GOLDEN_PARACHUTE, builder -> builder.set(DataComponents.MAX_DAMAGE, 1));
-            }
-        });
+//        bus.addListener((ModifyDefaultComponentsEvent event) -> {
+//            if (GenesisConfig.COMMON.gold_aercloud_ability.get()) { //todo the log sometimes says this is config loaded too early and sometimes it doesnt
+//                event.modify(AetherItems.GOLDEN_PARACHUTE, builder -> builder.set(DataComponents.MAX_DAMAGE, 1));
+//            }
+//        });
 
         eventSetup(NeoForge.EVENT_BUS);
 

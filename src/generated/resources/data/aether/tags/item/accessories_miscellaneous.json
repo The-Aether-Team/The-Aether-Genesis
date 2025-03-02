@@ -1,5 +1,15 @@
 {
   "values": [
-    "aether_genesis:mouse_ear_cap"
+    "aether_genesis:mouse_ear_cap",
+    "aether_genesis:fangrin_capsule",
+    "aether_genesis:kraisith_capsule",
+    "aether_genesis:fleeting_stone",
+    "aether_genesis:soaring_stone",
+    "aether_genesis:ethereal_stone",
+    "aether_genesis:orb_of_arkenzus",
+    "aether_genesis:frostpine_totem",
+    "aether_genesis:frostbound_stone",
+    "aether_genesis:death_seal",
+    "aether_genesis:baby_pink_swet"
   ]
 }
