@@ -49,6 +49,10 @@ public class ContinuumOrbLootTrigger extends SimpleCriterionTrigger<ContinuumOrb
             return GenesisAdvancementTriggers.CONTINUUM_ORB.get().createCriterion(new ContinuumOrbLootTrigger.Instance(Optional.empty(), Optional.of(item)));
         }
 
+        public static Criterion<ContinuumOrbLootTrigger.Instance> forAny() {
+            return GenesisAdvancementTriggers.CONTINUUM_ORB.get().createCriterion(new ContinuumOrbLootTrigger.Instance(Optional.empty(), Optional.empty()));
+        }
+
         public boolean test(ItemStack stack) {
             return this.item.isEmpty() || this.item.get().test(stack);
         }

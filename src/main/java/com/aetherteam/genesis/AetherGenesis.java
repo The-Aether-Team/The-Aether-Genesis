@@ -1,5 +1,6 @@
 package com.aetherteam.genesis;
 
+import com.aetherteam.aether.data.generators.AetherAdvancementData;
 import com.aetherteam.aether.data.generators.AetherRegistrySets;
 import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonBuilder;
@@ -94,11 +95,11 @@ public class AetherGenesis {
 
         GenesisEntityTypes.listen(bus);
 
-        bus.addListener((ModifyDefaultComponentsEvent event) -> {
-            if (GenesisConfig.COMMON.gold_aercloud_ability.get()) {
-                event.modify(AetherItems.GOLDEN_PARACHUTE, builder -> builder.set(DataComponents.MAX_DAMAGE, 1));
-            }
-        });
+//        bus.addListener((ModifyDefaultComponentsEvent event) -> {
+//            if (GenesisConfig.COMMON.gold_aercloud_ability.get()) {
+//                event.modify(AetherItems.GOLDEN_PARACHUTE, builder -> builder.set(DataComponents.MAX_DAMAGE, 1));
+//            }
+//        });
 
         eventSetup(NeoForge.EVENT_BUS);
 
@@ -171,12 +172,12 @@ public class AetherGenesis {
         generator.addProvider(event.includeClient(), new GenesisLanguageData(packOutput));
         generator.addProvider(event.includeClient(), new GenesisSoundData(packOutput, fileHelper));
 
-
         // Server Data
         generator.addProvider(event.includeServer(), new GenesisRegistrySets(packOutput, new AetherRegistrySets(packOutput, lookupProvider).getRegistryProvider()));
         generator.addProvider(event.includeServer(), new GenesisRecipeData(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), GenesisLootTableData.create(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new GenesisLootModifierData(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new GenesisAdvancementData(packOutput, lookupProvider, fileHelper));
         generator.addProvider(event.includeServer(), new GenesisDataMapData(packOutput, lookupProvider));
         GenesisBlockTagData blockTags = new GenesisBlockTagData(packOutput, lookupProvider, fileHelper);
         generator.addProvider(event.includeServer(), blockTags);

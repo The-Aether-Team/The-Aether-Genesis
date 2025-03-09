@@ -1,0 +1,33 @@
+{
+  "parent": "aether:bronze_dungeon",
+  "criteria": {
+    "companion": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#aether_genesis:companions"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.aether_genesis.companion.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "aether_genesis:baby_pink_swet"
+    },
+    "title": {
+      "translate": "advancement.aether_genesis.companion"
+    }
+  },
+  "requirements": [
+    [
+      "companion"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
