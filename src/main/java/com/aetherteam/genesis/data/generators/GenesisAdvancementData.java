@@ -1,17 +1,17 @@
 package com.aetherteam.genesis.data.generators;
 
 import com.aetherteam.aether.Aether;
-import com.aetherteam.aether.data.generators.AetherAdvancementData;
-import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.GenesisTags;
 import com.aetherteam.genesis.advancement.ContinuumOrbLootTrigger;
+import com.aetherteam.genesis.advancement.NexReviveTrigger;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.item.GenesisItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
+import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
@@ -19,7 +19,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.DamageTypeTags;
-import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -36,6 +36,15 @@ public class GenesisAdvancementData extends AdvancementProvider {
         @SuppressWarnings("unused")
         @Override
         public void generate(HolderLookup.Provider provider, Consumer<AdvancementHolder> consumer, ExistingFileHelper existingFileHelper) {
+            AdvancementHolder killZephyroo = Advancement.Builder.advancement()
+                    .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "obtain_petal"))
+                    .display(AetherItems.GRAVITITE_SWORD,
+                            Component.translatable("advancement.aether_genesis.kill_zephyroo"),
+                            Component.translatable("advancement.aether_genesis.kill_zephyroo.desc"),
+                            null,
+                            AdvancementType.CHALLENGE, true, true, true)
+                    .addCriterion("kill_zephyroo", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(GenesisEntityTypes.ZEPHYROO.get()), DamageSourcePredicate.Builder.damageType().tag(TagPredicate.is(DamageTypeTags.IS_EXPLOSION))))
+                    .save(consumer, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "kill_zephyroo"), existingFileHelper);
             AdvancementHolder killTempest = Advancement.Builder.advancement()
                     .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "obtain_petal"))
                     .display(GenesisBlocks.STORM_AERCLOUD.get(),
@@ -65,16 +74,6 @@ public class GenesisAdvancementData extends AdvancementProvider {
                     .addCriterion("continuum_bomb", ConsumeItemTrigger.TriggerInstance.usedItem(GenesisItems.CONTINUUM_BOMB.get()))
                     .save(consumer, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "continuum_bomb"), existingFileHelper);
 
-            AdvancementHolder companion = Advancement.Builder.advancement()
-                    .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "bronze_dungeon"))
-                    .display(GenesisItems.BABY_PINK_SWET.get(),
-                            Component.translatable("advancement.aether_genesis.companion"),
-                            Component.translatable("advancement.aether_genesis.companion.desc"),
-                            null,
-                            AdvancementType.TASK, true, true, false)
-                    .addCriterion("companion", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(GenesisTags.Items.COMPANIONS)))
-                    .save(consumer, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "companion"), existingFileHelper);
-
             AdvancementHolder sentryGuardian = Advancement.Builder.advancement()
                     .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "enchanted_gravitite"))
                     .display(GenesisItems.GUARDIAN_KEY.get(),
@@ -102,6 +101,61 @@ public class GenesisAdvancementData extends AdvancementProvider {
                             AdvancementType.GOAL, true, true, false)
                     .addCriterion("kill_labyrinth_eye", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(GenesisEntityTypes.LABYRINTH_EYE.get())))
                     .save(consumer, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "labyrinth_eye"), existingFileHelper);
+
+            AdvancementHolder mouseEars = Advancement.Builder.advancement()
+                    .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "bronze_dungeon"))
+                    .display(GenesisItems.MOUSE_EAR_CAP.get(),
+                            Component.translatable("advancement.aether_genesis.mouse_ears"),
+                            Component.translatable("advancement.aether_genesis.mouse_ears.desc"),
+                            null,
+                            AdvancementType.TASK, true, true, false)
+                    .addCriterion("mouse_ears", InventoryChangeTrigger.TriggerInstance.hasItems(GenesisItems.MOUSE_EAR_CAP))
+                    .save(consumer, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "mouse_ears"), existingFileHelper);
+
+            AdvancementHolder candies = Advancement.Builder.advancement()
+                    .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "bronze_dungeon"))
+                    .display(GenesisItems.CANDY_CORN.get(),
+                            Component.translatable("advancement.aether_genesis.candies"),
+                            Component.translatable("advancement.aether_genesis.candies.desc"),
+                            null,
+                            AdvancementType.TASK, true, true, false)
+                    .requirements(AdvancementRequirements.Strategy.AND)
+                    .addCriterion("blue_swet_jelly", InventoryChangeTrigger.TriggerInstance.hasItems(GenesisItems.BLUE_SWET_JELLY))
+                    .addCriterion("golden_swet_jelly", InventoryChangeTrigger.TriggerInstance.hasItems(GenesisItems.GOLDEN_SWET_JELLY))
+                    .addCriterion("dark_swet_jelly", InventoryChangeTrigger.TriggerInstance.hasItems(GenesisItems.DARK_SWET_JELLY))
+                    .addCriterion("blue_gummy_swet", InventoryChangeTrigger.TriggerInstance.hasItems(AetherItems.BLUE_GUMMY_SWET))
+                    .addCriterion("golden_gummy_swet", InventoryChangeTrigger.TriggerInstance.hasItems(AetherItems.GOLDEN_GUMMY_SWET))
+                    .addCriterion("dark_gummy_swet", InventoryChangeTrigger.TriggerInstance.hasItems(GenesisItems.DARK_GUMMY_SWET))
+                    .addCriterion("icestone_poprocks", InventoryChangeTrigger.TriggerInstance.hasItems(GenesisItems.ICESTONE_POPROCKS))
+                    .addCriterion("blueberry_lollipop", InventoryChangeTrigger.TriggerInstance.hasItems(GenesisItems.BLUEBERRY_LOLLIPOP))
+                    .addCriterion("orange_lollipop", InventoryChangeTrigger.TriggerInstance.hasItems(GenesisItems.ORANGE_LOLLIPOP))
+                    .addCriterion("stomper_pop", InventoryChangeTrigger.TriggerInstance.hasItems(GenesisItems.STOMPER_POP))
+                    .addCriterion("jelly_pumpkin", InventoryChangeTrigger.TriggerInstance.hasItems(GenesisItems.JELLY_PUMPKIN))
+                    .addCriterion("cocoatrice", InventoryChangeTrigger.TriggerInstance.hasItems(GenesisItems.COCOATRICE))
+                    .addCriterion("wrapped_chocolates", InventoryChangeTrigger.TriggerInstance.hasItems(GenesisItems.WRAPPED_CHOCOLATES))
+                    .addCriterion("candy_corn", InventoryChangeTrigger.TriggerInstance.hasItems(GenesisItems.CANDY_CORN))
+                    .addCriterion("ginger_bread_man", InventoryChangeTrigger.TriggerInstance.hasItems(AetherItems.GINGERBREAD_MAN))
+                    .addCriterion("candy_cane", InventoryChangeTrigger.TriggerInstance.hasItems(AetherItems.CANDY_CANE))
+                    .save(consumer, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "candies"), existingFileHelper);
+
+            AdvancementHolder companion = Advancement.Builder.advancement()
+                    .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "bronze_dungeon"))
+                    .display(GenesisItems.BABY_PINK_SWET.get(),
+                            Component.translatable("advancement.aether_genesis.companion"),
+                            Component.translatable("advancement.aether_genesis.companion.desc"),
+                            null,
+                            AdvancementType.TASK, true, true, false)
+                    .addCriterion("companion", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(GenesisTags.Items.COMPANIONS)))
+                    .save(consumer, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "companion"), existingFileHelper);
+            AdvancementHolder nexSpirit = Advancement.Builder.advancement()
+                    .parent(companion)
+                    .display(GenesisItems.DEATH_SEAL.get(),
+                            Component.translatable("advancement.aether_genesis.nex_spirit"),
+                            Component.translatable("advancement.aether_genesis.nex_spirit.desc"),
+                            null,
+                            AdvancementType.TASK, true, true, false)
+                    .addCriterion("resurrect", NexReviveTrigger.Instance.create())
+                    .save(consumer, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "nex_spirit"), existingFileHelper);
         }
     }
 }

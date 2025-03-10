@@ -210,6 +210,30 @@ public class GenesisLanguageData extends AetherLanguageProvider {
 
         this.addBlock(GenesisBlocks.COLD_FIRE, "Cold Fire");
 
+        this.addAdvancement("kill_zephyroo", "The Pain");
+        this.addAdvancement("kill_tempest", "Cold Blooded");
+        this.addAdvancement("continuum_orb", "Time Warp");
+        this.addAdvancement("continuum_bomb", "Space Time Dance Party");
+        this.addAdvancement("sentry_guardian", "Clobberin' Time");
+        this.addAdvancement("slider_host_mimic", "Fool Me Once");
+        this.addAdvancement("labyrinth_eye", "Always Watching");
+        this.addAdvancement("mouse_ears", "Legally Distinct");
+        this.addAdvancement("candies", "Trick or Treat");
+        this.addAdvancement("companion", "Man's Best Friend");
+        this.addAdvancement("nex_spirit", "Postmortem");
+
+        this.addAdvancementDesc("kill_zephyroo", "Vanquish a great evil");
+        this.addAdvancementDesc("kill_tempest", "Kill a Tempest with its own projectile");
+        this.addAdvancementDesc("continuum_orb", "Use a Continuum Orb");
+        this.addAdvancementDesc("continuum_bomb", "Use a Continuum Bomb");
+        this.addAdvancementDesc("sentry_guardian", "Defeat the guardian boss");
+        this.addAdvancementDesc("slider_host_mimic", "Defeat the mimic boss");
+        this.addAdvancementDesc("labyrinth_eye", "Defeat the cog boss");
+        this.addAdvancementDesc("mouse_ears", "Obtain a Mouse Ear Cap");
+        this.addAdvancementDesc("candies", "Collect all the sweets and candies");
+        this.addAdvancementDesc("companion", "Obtain a companion");
+        this.addAdvancementDesc("nex_spirit", "Be resurrected by a Nex Spirit");
+
         //todo missing subtitles
         this.addSubtitle("block", "portal.hum", "Aether Portal hums");
         this.addSubtitle("block", "portal.trigger", "Aether Portal hum intensifies");

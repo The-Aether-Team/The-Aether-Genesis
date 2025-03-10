@@ -1,0 +1,47 @@
+{
+  "parent": "aether:obtain_petal",
+  "criteria": {
+    "kill_zephyroo": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "aether_genesis:zephyroo"
+            }
+          }
+        ],
+        "killing_blow": {
+          "tags": [
+            {
+              "expected": true,
+              "id": "minecraft:is_explosion"
+            }
+          ]
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.aether_genesis.kill_zephyroo.desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "aether:gravitite_sword"
+    },
+    "title": {
+      "translate": "advancement.aether_genesis.kill_zephyroo"
+    }
+  },
+  "requirements": [
+    [
+      "kill_zephyroo"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
