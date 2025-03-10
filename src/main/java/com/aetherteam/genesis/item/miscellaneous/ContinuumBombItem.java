@@ -1,6 +1,8 @@
 package com.aetherteam.genesis.item.miscellaneous;
 
 import com.aetherteam.genesis.entity.miscellaneous.ContinuumBomb;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -33,6 +35,9 @@ public class ContinuumBombItem extends Item {
             bomb.setItem(itemStack);
             bomb.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
             level.addFreshEntity(bomb);
+            if (player instanceof ServerPlayer serverPlayer) {
+                CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, itemStack);
+            }
         }
 
         player.awardStat(Stats.ITEM_USED.get(this));

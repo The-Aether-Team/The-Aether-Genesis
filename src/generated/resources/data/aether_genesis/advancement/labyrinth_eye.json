@@ -1,5 +1,5 @@
 {
-  "parent": "aether:bronze_dungeon",
+  "parent": "aether:enchanted_gravitite",
   "criteria": {
     "kill_labyrinth_eye": {
       "conditions": {

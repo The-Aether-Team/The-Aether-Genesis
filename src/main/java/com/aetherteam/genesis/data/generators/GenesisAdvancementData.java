@@ -7,19 +7,19 @@ import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.GenesisTags;
 import com.aetherteam.genesis.advancement.ContinuumOrbLootTrigger;
+import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.item.GenesisItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementType;
-import net.minecraft.advancements.critereon.EntityPredicate;
-import net.minecraft.advancements.critereon.InventoryChangeTrigger;
-import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.advancements.critereon.KilledTrigger;
+import net.minecraft.advancements.critereon.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.DamageTypeTags;
+import net.minecraft.world.entity.EntityType;
 import net.neoforged.neoforge.common.data.AdvancementProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
@@ -36,6 +36,16 @@ public class GenesisAdvancementData extends AdvancementProvider {
         @SuppressWarnings("unused")
         @Override
         public void generate(HolderLookup.Provider provider, Consumer<AdvancementHolder> consumer, ExistingFileHelper existingFileHelper) {
+            AdvancementHolder killTempest = Advancement.Builder.advancement()
+                    .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "obtain_petal"))
+                    .display(GenesisBlocks.STORM_AERCLOUD.get(),
+                            Component.translatable("advancement.aether_genesis.kill_tempest"),
+                            Component.translatable("advancement.aether_genesis.kill_tempest.desc"),
+                            null,
+                            AdvancementType.CHALLENGE, true, true, true)
+                    .addCriterion("kill_tempest", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(GenesisEntityTypes.TEMPEST.get()), DamageSourcePredicate.Builder.damageType().tag(TagPredicate.is(DamageTypeTags.IS_PROJECTILE)).direct(EntityPredicate.Builder.entity().of(GenesisEntityTypes.TEMPEST_THUNDERBALL.get()))))
+                    .save(consumer, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "kill_tempest"), existingFileHelper);
+
             AdvancementHolder continuumOrb = Advancement.Builder.advancement()
                     .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "enchanted_gravitite"))
                     .display(GenesisItems.CONTINUUM_ORB.get(),
@@ -45,6 +55,15 @@ public class GenesisAdvancementData extends AdvancementProvider {
                             AdvancementType.TASK, true, true, false)
                     .addCriterion("continuum_orb", ContinuumOrbLootTrigger.Instance.forAny())
                     .save(consumer, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "continuum_orb"), existingFileHelper);
+            AdvancementHolder continuumBomb = Advancement.Builder.advancement()
+                    .parent(continuumOrb)
+                    .display(GenesisItems.CONTINUUM_BOMB.get(),
+                            Component.translatable("advancement.aether_genesis.continuum_bomb"),
+                            Component.translatable("advancement.aether_genesis.continuum_bomb.desc"),
+                            null,
+                            AdvancementType.GOAL, true, true, false)
+                    .addCriterion("continuum_bomb", ConsumeItemTrigger.TriggerInstance.usedItem(GenesisItems.CONTINUUM_BOMB.get()))
+                    .save(consumer, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "continuum_bomb"), existingFileHelper);
 
             AdvancementHolder companion = Advancement.Builder.advancement()
                     .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "bronze_dungeon"))
@@ -57,7 +76,7 @@ public class GenesisAdvancementData extends AdvancementProvider {
                     .save(consumer, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "companion"), existingFileHelper);
 
             AdvancementHolder sentryGuardian = Advancement.Builder.advancement()
-                    .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "bronze_dungeon"))
+                    .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "enchanted_gravitite"))
                     .display(GenesisItems.GUARDIAN_KEY.get(),
                             Component.translatable("advancement.aether_genesis.sentry_guardian"),
                             Component.translatable("advancement.aether_genesis.sentry_guardian.desc"),
@@ -66,7 +85,7 @@ public class GenesisAdvancementData extends AdvancementProvider {
                     .addCriterion("kill_sentry_guardian", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(GenesisEntityTypes.SENTRY_GUARDIAN.get())))
                     .save(consumer, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "sentry_guardian"), existingFileHelper);
             AdvancementHolder sliderHostMimic = Advancement.Builder.advancement()
-                    .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "bronze_dungeon"))
+                    .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "enchanted_gravitite"))
                     .display(GenesisItems.HOST_KEY.get(),
                             Component.translatable("advancement.aether_genesis.slider_host_mimic"),
                             Component.translatable("advancement.aether_genesis.slider_host_mimic.desc"),
@@ -75,7 +94,7 @@ public class GenesisAdvancementData extends AdvancementProvider {
                     .addCriterion("kill_slider_host_mimic", KilledTrigger.TriggerInstance.playerKilledEntity(EntityPredicate.Builder.entity().of(GenesisEntityTypes.SLIDER_HOST_MIMIC.get())))
                     .save(consumer, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "slider_host_mimic"), existingFileHelper);
             AdvancementHolder labyrinthEye = Advancement.Builder.advancement()
-                    .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "bronze_dungeon"))
+                    .parent(ResourceLocation.fromNamespaceAndPath(Aether.MODID, "enchanted_gravitite"))
                     .display(GenesisItems.COG_KEY.get(),
                             Component.translatable("advancement.aether_genesis.labyrinth_eye"),
                             Component.translatable("advancement.aether_genesis.labyrinth_eye.desc"),

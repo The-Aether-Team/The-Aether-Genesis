@@ -271,7 +271,7 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addLore(GenesisItems.SWETTY_PENDANT, "");
         this.addLore(GenesisItems.DAGGERFROST_LOCKET, "");
         this.addLore(GenesisItems.CAPE, "A Cape that is crafted using soft White Wool. It is able to be dyed any color!");
-        this.addLore(GenesisItems.DEXTERITY_CAPE, "");
+        this.addLore(GenesisItems.DEXTERITY_CAPE, "A slightly rare Cape found in Bronze Dungeons. It makes the wearer's legs stronger, allowing them to run at a faster speed.");
         this.addLore(GenesisItems.MOUSE_EAR_CAP, "");
         this.addLore(GenesisItems.FANGRIN_CAPSULE, "");
         this.addLore(GenesisItems.KRAISITH_CAPSULE, "");
