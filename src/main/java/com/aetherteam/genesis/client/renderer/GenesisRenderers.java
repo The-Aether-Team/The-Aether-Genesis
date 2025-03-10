@@ -1,15 +1,19 @@
 package com.aetherteam.genesis.client.renderer;
 
 import com.aetherteam.aether.block.AetherBlocks;
+import com.aetherteam.aether.blockentity.AetherBlockEntityTypes;
+import com.aetherteam.aether.blockentity.AltarBlockEntity;
 import com.aetherteam.aether.client.renderer.accessory.PendantRenderer;
 import com.aetherteam.aether.client.renderer.entity.ParachuteRenderer;
 import com.aetherteam.aether.client.renderer.entity.model.MimicModel;
 import com.aetherteam.genesis.AetherGenesis;
+import com.aetherteam.genesis.GenesisConfig;
 import com.aetherteam.genesis.attachment.GenesisPlayerAttachment;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.genesis.client.renderer.accessory.MouseEarCapRenderer;
 import com.aetherteam.genesis.client.renderer.accessory.model.MouseEarCapModel;
+import com.aetherteam.genesis.client.renderer.blockentity.AltarRenderer;
 import com.aetherteam.genesis.client.renderer.blockentity.SkyrootChestMimicRenderer;
 import com.aetherteam.genesis.client.renderer.blockentity.SkyrootChestRenderer;
 import com.aetherteam.genesis.client.renderer.entity.*;
@@ -18,31 +22,62 @@ import com.aetherteam.genesis.client.renderer.player.layer.PhoenixDartLayer;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.entity.projectile.PhoenixDart;
 import com.aetherteam.genesis.item.GenesisItems;
+import com.mojang.blaze3d.vertex.PoseStack;
 import io.wispforest.accessories.api.client.AccessoriesRendererRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.SlimeModel;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.ChestRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.ItemEntityRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.resources.PlayerSkin;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
+import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
+import net.neoforged.neoforge.common.util.Lazy;
 
 import java.util.Set;
+import java.util.function.Supplier;
 
 public class GenesisRenderers {
+    public static final IClientItemExtensions ALTAR_ITEM_RENDERER = new IClientItemExtensions() {
+        private static final Lazy<BlockEntityWithoutLevelRenderer> RENDERER = Lazy.of(() -> new BlockEntityWithoutLevelRenderer(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels()) {
+            private final Supplier<? extends BlockEntity> blockEntity = () -> new AltarBlockEntity(BlockPos.ZERO, AetherBlocks.ALTAR.get().defaultBlockState());
+
+            @Override
+            public void renderByItem(ItemStack stack, ItemDisplayContext displayContext, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
+                if (GenesisConfig.STARTUP.altar_redesign.get()) {
+                    Minecraft.getInstance().getBlockEntityRenderDispatcher().renderItem(this.blockEntity.get(), poseStack, buffer, packedLight, packedOverlay);
+                } else {
+                    super.renderByItem(stack, displayContext, poseStack, buffer, packedLight, packedOverlay);
+                }
+            }
+        });
+
+        @Override
+        public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+            return RENDERER.get();
+        }
+    };
 
     public static void listener(IEventBus eventBus){
         eventBus.addListener(GenesisRenderers::registerEntityRenderers);
         eventBus.addListener(GenesisRenderers::registerLayerDefinitions);
+        eventBus.addListener(GenesisRenderers::registerClientExtensions);
         eventBus.addListener(GenesisRenderers::addPlayerLayers);
     }
 
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer(AetherBlockEntityTypes.ALTAR.get(), AltarRenderer::new);
         event.registerBlockEntityRenderer(GenesisBlockEntityTypes.SKYROOT_CHEST.get(), SkyrootChestRenderer::new);
         event.registerBlockEntityRenderer(GenesisBlockEntityTypes.SKYROOT_CHEST_MIMIC.get(), SkyrootChestMimicRenderer::new);
 
@@ -87,6 +122,7 @@ public class GenesisRenderers {
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(GenesisModelLayers.ALTAR, AltarRenderer::createLayer);
         event.registerLayerDefinition(GenesisModelLayers.SKYROOT_CHEST_MIMIC, ChestRenderer::createSingleBodyLayer);
 
         event.registerLayerDefinition(GenesisModelLayers.CARRION_SPROUT, CarrionSproutModel::createBodyLayer);
@@ -115,6 +151,10 @@ public class GenesisRenderers {
         event.registerLayerDefinition(GenesisModelLayers.NEX_SPIRIT, NexSpiritModel::createBodyLayer);
 
         event.registerLayerDefinition(GenesisModelLayers.MOUSE_EAR_CAP, MouseEarCapModel::createLayer);
+    }
+
+    public static void registerClientExtensions(RegisterClientExtensionsEvent event) {
+        event.registerItem(ALTAR_ITEM_RENDERER, AetherBlocks.ALTAR.asItem());
     }
 
     public static void registerCuriosRenderers() {

@@ -76,7 +76,8 @@ configurations {
 }
 
 dependencies {
-    implementation "com.aetherteam.aether:aether:${project.aether_version}"
+//    implementation "com.aetherteam.aether:aether:${project.aether_version}"
+    implementation "blank:aether-1.21.1-1.5.4:neoforge"
 
     implementation "com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}"
     implementation "com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}"
@@ -117,6 +118,9 @@ repositories {
     maven githubPackage.invoke("The-Aether-Team/The-Aether")
     maven githubPackage.invoke("The-Aether-Team/Nitrogen")
     maven githubPackage.invoke("The-Aether-Team/Cumulus")
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {

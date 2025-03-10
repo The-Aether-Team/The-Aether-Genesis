@@ -4,6 +4,19 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class GenesisConfig {
+    public static class Startup {
+        public final ModConfigSpec.ConfigValue<Boolean> altar_redesign;
+
+        public Startup(ModConfigSpec.Builder builder) {
+            builder.push("Gameplay");
+            altar_redesign = builder
+                    .comment("Changes the Altar design and functionality to be like how it was in the Aether II. WARNING: Due to config limitations, this must be the same on both server and client to work properly")
+                    .translation("config.aether_genesis.startup.gameplay.altar_redesign")
+                    .define("Changes Altar design", true);
+            builder.pop();
+        }
+    }
+
     public static class Common {
         public final ModConfigSpec.ConfigValue<Boolean> gold_aercloud_ability;
         public final ModConfigSpec.ConfigValue<Boolean> tan_zephyr_variation;
@@ -61,6 +74,9 @@ public class GenesisConfig {
         }
     }
 
+    public static final ModConfigSpec STARTUP_SPEC;
+    public static final Startup STARTUP;
+
     public static final ModConfigSpec COMMON_SPEC;
     public static final Common COMMON;
 
@@ -68,6 +84,10 @@ public class GenesisConfig {
     public static final Client CLIENT;
 
     static {
+        final Pair<Startup, ModConfigSpec> startupSpecPair = new ModConfigSpec.Builder().configure(Startup::new);
+        STARTUP_SPEC = startupSpecPair.getRight();
+        STARTUP = startupSpecPair.getLeft();
+
         final Pair<Common, ModConfigSpec> commonSpecPair = new ModConfigSpec.Builder().configure(Common::new);
         COMMON_SPEC = commonSpecPair.getRight();
         COMMON = commonSpecPair.getLeft();
