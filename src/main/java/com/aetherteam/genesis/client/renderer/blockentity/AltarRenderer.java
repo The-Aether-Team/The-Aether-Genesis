@@ -1,6 +1,5 @@
 package com.aetherteam.genesis.client.renderer.blockentity;
 
-import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.blockentity.AltarBlockEntity;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.GenesisConfig;
@@ -30,7 +29,6 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class AltarRenderer implements BlockEntityRenderer<AltarBlockEntity> {
     public static final ResourceLocation ALTAR_LOCATION = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/tiles/altar/altar.png");
-    public static final ResourceLocation AMBROSIUM_LOCATION = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "textures/item/materials/ambrosium_shard.png");
     private final ItemRenderer itemRenderer;
     private final ModelPart altar;
     private final ModelPart ambrosiumCorner1;
@@ -40,7 +38,6 @@ public class AltarRenderer implements BlockEntityRenderer<AltarBlockEntity> {
     private final ModelPart top;
     private float ambRotation = 0.0F;
     private float ambSpinningSpeed = 0.0F;
-    private float itemFloatingSpeed = 0.0F;
     private float ambrosiumFinalRotation = 0.0F;
     private float bobOffs = -1.0F;
     private float inputItemRotation = 0.0F;
@@ -116,12 +113,11 @@ public class AltarRenderer implements BlockEntityRenderer<AltarBlockEntity> {
                     poseStack.popPose();
                 }
 
-                ItemStack ambrosiumStack = altarBlockEntity.getItem(1);
-                this.spin(ambrosiumStack);
-                if (!ambrosiumStack.isEmpty()) {
-                    int amount = ambrosiumStack.getCount();
+                ItemStack fuelStack = altarBlockEntity.getItem(1);
+                this.spin(fuelStack);
+                if (!fuelStack.isEmpty()) {
+                    int amount = fuelStack.getCount();
                     for (int i = 0; i < amount; i++) {
-
                         poseStack.pushPose();
                         float radius = 2.0F;
                         float theta = 5.0F;
@@ -136,26 +132,15 @@ public class AltarRenderer implements BlockEntityRenderer<AltarBlockEntity> {
                         poseStack.scale(0.2F, 0.2F, 0.2F);
                         poseStack.translate(deltaX, y, deltaZ);
 
-
                         this.ambrosiumFinalRotation += this.ambSpinningSpeed / 100.0F;
 
-                        poseStack.mulPose(Minecraft.getInstance().getEntityRenderDispatcher().cameraOrientation());
-                        PoseStack.Pose posestack$pose = poseStack.last();
-                        VertexConsumer vertexconsumer = multiBufferSource.getBuffer(RenderType.entityCutoutNoCull(AMBROSIUM_LOCATION));
-                        vertex(vertexconsumer, posestack$pose, packedLight, 0.0F, 0, 0, 1);
-                        vertex(vertexconsumer, posestack$pose, packedLight, 1.0F, 0, 1, 1);
-                        vertex(vertexconsumer, posestack$pose, packedLight, 1.0F, 1, 1, 0);
-                        vertex(vertexconsumer, posestack$pose, packedLight, 0.0F, 1, 0, 0);
+                        Minecraft.getInstance().getItemRenderer().renderStatic(fuelStack, ItemDisplayContext.FIXED, packedLight, OverlayTexture.NO_OVERLAY, poseStack, multiBufferSource, altarBlockEntity.getLevel(), 0);
 
                         poseStack.popPose();
                     }
                 }
             }
         }
-    }
-
-    private static void vertex(VertexConsumer consumer, PoseStack.Pose pose, int packedLight, float x, int y, int u, int v) {
-        consumer.addVertex(pose, x - 0.5F, (float) y - 0.25F, 0.0F).setColor(-1).setUv((float) u, (float) v).setOverlay(OverlayTexture.NO_OVERLAY).setLight(packedLight).setNormal(pose, 0.0F, 1.0F, 0.0F);
     }
 
     public void spin(ItemStack stack) {
