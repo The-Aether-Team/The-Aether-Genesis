@@ -95,7 +95,7 @@ dependencies {
 
     jarJar("com.github.glitchfiend:TerraBlender-neoforge:${project.terrablender_version}") {
         version {
-            strictly "[${project.terrablender_version_minimum},${project.terrablender_version_maximum})"
+            strictly "[${project.terrablender_version},)"
             prefer "${project.terrablender_version}"
         }
     }
@@ -106,7 +106,6 @@ dependencies {
 }
 
 repositories {
-    maven { url = "https://jitpack.io" }
     maven { url = "https://maven.blamejared.com" }
     maven { url = "https://maven.theillusivec4.top/" }
     maven { url = "https://api.modrinth.com/maven" }
