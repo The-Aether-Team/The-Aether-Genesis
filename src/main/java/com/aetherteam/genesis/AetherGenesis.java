@@ -26,7 +26,6 @@ import com.aetherteam.genesis.inventory.menu.GenesisMenuTypes;
 import com.aetherteam.genesis.item.GenesisCreativeTabs;
 import com.aetherteam.genesis.item.GenesisDataComponents;
 import com.aetherteam.genesis.item.GenesisItems;
-import com.aetherteam.genesis.loot.entries.GenesisLootPoolEntries;
 import com.aetherteam.genesis.loot.functions.GenesisLootFunctions;
 import com.aetherteam.genesis.loot.modifiers.GenesisLootModifiers;
 import com.aetherteam.genesis.network.packet.GenesisPlayerSyncPacket;
@@ -110,7 +109,6 @@ public class AetherGenesis {
                 GenesisEntityTypes.ENTITY_TYPES,
                 GenesisMenuTypes.MENU_TYPES,
                 GenesisBlockEntityTypes.BLOCK_ENTITY_TYPES,
-                GenesisLootPoolEntries.LOOT_POOL_ENTRY_TYPES,
                 GenesisLootFunctions.LOOT_FUNCTION_TYPES,
                 GenesisLootModifiers.GLOBAL_LOOT_MODIFIERS,
                 GenesisFeatures.FEATURES,
