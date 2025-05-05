@@ -105,7 +105,6 @@ dependencies {
 }
 
 repositories {
-    maven { url = "https://jitpack.io" }
     maven { url = "https://maven.blamejared.com" }
     maven { url = "https://maven.theillusivec4.top/" }
     maven { url = "https://api.modrinth.com/maven" }
