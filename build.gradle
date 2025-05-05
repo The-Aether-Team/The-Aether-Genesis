@@ -94,7 +94,7 @@ dependencies {
 
     jarJar("com.github.glitchfiend:TerraBlender-neoforge:${project.terrablender_version}") {
         version {
-            strictly "[${project.terrablender_version_minimum},${project.terrablender_version_maximum})"
+            strictly "[${project.terrablender_version_minimum},)"
             prefer "${project.terrablender_version}"
         }
     }
