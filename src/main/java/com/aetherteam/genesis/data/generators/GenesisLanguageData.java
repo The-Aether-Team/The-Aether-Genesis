@@ -229,6 +229,9 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addGuiText("slider.message.attack.invalid_item", "Hmm. It's a rock-solid block. My %1$s wouldn't work on this.");
         this.addGuiText("slider.message.attack.invalid_fist", "Hmm. It's a rock-solid block. My fist wouldn't work on this.");
 
+        this.add("config." + this.id + ".startup.gameplay.altar_redesign", "Changes the Altar design and functionality to be like how it was in the Aether II. WARNING: Due to config limitations, this must be the same on both server and client to work properly");
+        this.add("config." + this.id + ".startup.gameplay.altar_redesign.tooltip", "Changes the Altar design and functionality to be like how it was in the Aether II. WARNING: Due to config limitations, this must be the same on both server and client to work properly");
+
         this.addCommonConfig("gameplay", "gold_aercloud_ability", "Changes Gold Aercloud and respective parachute behavior to launch entities downwards");
         this.addCommonConfig("gameplay", "improved_slider_message", "Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe");
         this.addClientConfig("gui", "genesis_menu_layout", "Replaces the menu toggle buttons with the Cumulus' menu switcher");
