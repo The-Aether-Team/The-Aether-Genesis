@@ -135,21 +135,17 @@ public class CogProjectile extends Projectile {
         if (this.isInvulnerableTo(source)) {
             return false;
         } else {
-            if (this.ticksInAir > 20) {
-                this.markHurt();
-                Entity entity = source.getEntity();
-                if (entity != null) {
-                    if (!this.level().isClientSide()) {
-                        Vec3 vec3 = entity.getLookAngle();
-                        this.setDeltaMovement(vec3);
-                        this.xPower = vec3.x() * 0.25;
-                        this.yPower = vec3.y() * 0.15;
-                        this.zPower = vec3.z() * 0.25;
-                    }
-                    return true;
-                } else {
-                    return false;
+            this.markHurt();
+            Entity entity = source.getEntity();
+            if (entity != null) {
+                if (!this.level().isClientSide()) {
+                    Vec3 vec3 = entity.getLookAngle();
+                    this.setDeltaMovement(vec3);
+                    this.xPower = vec3.x() * 0.25;
+                    this.yPower = vec3.y() * 0.15;
+                    this.zPower = vec3.z() * 0.25;
                 }
+                return true;
             } else {
                 return false;
             }
@@ -173,8 +169,13 @@ public class CogProjectile extends Projectile {
     }
 
     @Override
+    public boolean isAttackable() {
+        return this.ticksInAir > 40;
+    }
+
+    @Override
     public boolean isPickable() {
-        return true;
+        return this.ticksInAir > 40;
     }
 
     @Override

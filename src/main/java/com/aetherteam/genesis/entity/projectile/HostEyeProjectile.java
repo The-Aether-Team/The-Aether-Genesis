@@ -258,7 +258,7 @@ public class HostEyeProjectile extends Projectile {
 
     @Override
     public boolean isPickable() {
-        return true;
+        return false;
     }
 
     @Override
