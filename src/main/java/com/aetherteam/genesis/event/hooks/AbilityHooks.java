@@ -66,7 +66,7 @@ public class AbilityHooks {
                     if (companion instanceof NexSpirit nexSpirit) {
                         if (!nexSpirit.isBroken()) {
                             player.setHealth(player.getMaxHealth());
-                            nexSpirit.setCooldown(100); //todo balance
+                            nexSpirit.setCooldown(100); //todo balance and visual flourish
                             if (player instanceof ServerPlayer serverPlayer) {
                                 GenesisAdvancementTriggers.NEX_REVIVE.get().trigger(serverPlayer);
                             }
