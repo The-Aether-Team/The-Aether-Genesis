@@ -34,30 +34,7 @@ The Aether: Genesis has no stable release builds for the latest version of Minec
 If you’re feeling a bit more adventurous or wish to help test the in-development versions, we provide **bleeding edge builds** which are produced on [CircleCI](https://app.circleci.com/pipelines/github/The-Aether-Team/The-Aether-Genesis). These builds are created for every new commit and contain the latest available code. We do not recommend users treat these builds as releases, as they are unfinished and may contain serious issues. If you wish to download these builds, check out [this guide](https://github.com/The-Aether-Team/The-Aether/wiki/CircleCI-Guide).
 
 ### Packages
-To install this mod through GitHub Packages in Gradle for development, you will need the [Gradle Github Packages Plugin](https://github.com/0ffz/gpr-for-gradle). To use it, make sure you have access to the Gradle plugins maven and the plugin as a buildscript dependency:
-
-<details>
-<summary> Buildscript Code</summary>
-
-`settings.gradle`
-```
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-    }
-}
-```
-
-`build.gradle`
-```
-plugins {
-    id 'io.github.0ffz.github-packages' version '[1,2)'
-}
-```
-
-</details>
-
-Then you need to specify the package you want to use in your repository:
+To install this mod through GitHub Packages in Gradle for development, you can use a redirect for the specific project you desire:
 
 <details>
 <summary> Repositories Code</summary>
@@ -65,7 +42,7 @@ Then you need to specify the package you want to use in your repository:
 ```
 repositories {
   ...
-  maven githubPackage.invoke("The-Aether-Team/The-Aether-Genesis")
+  maven { url = "https://packages.aether-mod.net/The-Aether-Genesis" }
 }
 ```
 

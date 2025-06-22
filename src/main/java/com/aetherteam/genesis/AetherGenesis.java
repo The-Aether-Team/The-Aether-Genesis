@@ -1,8 +1,6 @@
 package com.aetherteam.genesis;
 
-import com.aetherteam.aether.data.generators.AetherAdvancementData;
 import com.aetherteam.aether.data.generators.AetherRegistrySets;
-import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonBuilder;
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
@@ -42,7 +40,6 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.DetectedVersion;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.metadata.PackMetadataGenerator;
@@ -68,7 +65,6 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
-import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
@@ -125,6 +121,7 @@ public class AetherGenesis {
             register.register(bus);
         }
 
+        mod.registerConfig(ModConfig.Type.STARTUP, GenesisConfig.STARTUP_SPEC);
         mod.registerConfig(ModConfig.Type.COMMON, GenesisConfig.COMMON_SPEC);
         mod.registerConfig(ModConfig.Type.CLIENT, GenesisConfig.CLIENT_SPEC);
     }
@@ -193,6 +190,7 @@ public class AetherGenesis {
     public void packSetup(AddPackFindersEvent event) {
         // Resource Packs
         this.setupClassicPack(event);
+        this.setupAltarOverridePack(event);
 
         // Data Packs
         this.setupDataOverridePack(event);
@@ -212,6 +210,24 @@ public class AetherGenesis {
                             new Pack.Metadata(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
                             new PackSelectionConfig(false, Pack.Position.TOP, false)
                         )
+                    ));
+        }
+    }
+
+    /**
+     * A built-in resource pack for overriding Altar design.
+     */
+    private void setupAltarOverridePack(AddPackFindersEvent event) {
+        if (GenesisConfig.STARTUP.altar_redesign.get() && event.getPackType() == PackType.CLIENT_RESOURCES) {
+            Path resourcePath = ModList.get().getModFileById(AetherGenesis.MODID).getFile().findResource("packs/altar_override");
+            PackMetadataSection metadata = new PackMetadataSection(Component.translatable("pack.aether_genesis.altar_override.description"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));
+            event.addRepositorySource((source) ->
+                    source.accept(new Pack(
+                                    new PackLocationInfo("builtin/genesis_altar_override", Component.translatable("pack.aether_genesis.altar_override.title"), PackSource.BUILT_IN, Optional.empty()),
+                                    new PathPackResources.PathResourcesSupplier(resourcePath),
+                                    new Pack.Metadata(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
+                                    new PackSelectionConfig(true, Pack.Position.TOP, false)
+                            )
                     ));
         }
     }

@@ -73,6 +73,8 @@
   "config.aether_genesis.common.gameplay.gold_aercloud_ability.tooltip": "Changes Gold Aercloud and respective parachute behavior to launch entities downwards",
   "config.aether_genesis.common.gameplay.improved_slider_message": "Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe",
   "config.aether_genesis.common.gameplay.improved_slider_message.tooltip": "Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe",
+  "config.aether_genesis.startup.gameplay.altar_redesign": "Changes the Altar design and functionality to be like how it was in the Aether II. WARNING: Due to config limitations, this must be the same on both server and client to work properly",
+  "config.aether_genesis.startup.gameplay.altar_redesign.tooltip": "Changes the Altar design and functionality to be like how it was in the Aether II. WARNING: Due to config limitations, this must be the same on both server and client to work properly",
   "entity.aether_genesis.baby_pink_swet": "Baby Pink Swet",
   "entity.aether_genesis.battle_sentry": "Battle Sentry",
   "entity.aether_genesis.carrion_sprout": "Carrion Sprout",
