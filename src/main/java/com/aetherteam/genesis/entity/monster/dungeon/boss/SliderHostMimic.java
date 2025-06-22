@@ -621,7 +621,9 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
 
         @Override
         public void start() {
-            this.sliderHostMimic.playSound(this.sliderHostMimic.getScareSound(), 2.5F, 1.0F / (this.sliderHostMimic.getRandom().nextFloat() * 0.2F + 0.9F));
+//            if (this.sliderHostMimic.tickCount % 100 == 0) { //todo this sound needs to be changed and shortened
+//                this.sliderHostMimic.playSound(this.sliderHostMimic.getScareSound(), 2.5F, 1.0F / (this.sliderHostMimic.getRandom().nextFloat() * 0.2F + 0.9F));
+//            }
             this.sliderHostMimic.getNavigation().moveTo(this.posX, this.posY, this.posZ, 1.5);
         }
 
@@ -719,7 +721,6 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
 
         @Override
         public void start() {
-            this.sliderHostMimic.playSound(this.sliderHostMimic.getScareSound(), 2.5F, 1.0F / (this.sliderHostMimic.getRandom().nextFloat() * 0.2F + 0.9F));
             this.sliderHostMimic.getMoveControl().setWantedPosition(this.posX, this.posY, this.posZ, 1.5);
             this.sliderHostMimic.getNavigation().moveTo(this.posX, this.posY, this.posZ, 1.5);
         }
