@@ -272,14 +272,14 @@ public class GenesisLanguageData extends AetherLanguageProvider {
 
         this.addGuiText("boss.message.projectile", "Hmm... Ranged Weapons will not work here");
 
-        this.addLore(GenesisItems.GOLDEN_SWET_BALL, "A gooey orb that is dropped from Golden Swets. It can be used to fertilize soil. Another use is to put it alongside string to make a lead.");
-        this.addLore(GenesisItems.DARK_SWET_BALL, "A gooey orb that is dropped from Dark Swets. It can be used to fertilize soil. Another use is to put it alongside string to make a lead.");
+        this.addLore(GenesisItems.GOLDEN_SWET_BALL, "A gooey orb that is dropped from Golden Swets. It can be used to fertilize soil. Another use is to put it alongside String to make a Lead.");
+        this.addLore(GenesisItems.DARK_SWET_BALL, "A gooey orb that is dropped from Dark Swets. It can be used to fertilize soil. Another use is to put it alongside String to make a Lead.");
         this.addLore(GenesisItems.CORNSTARCH_BOWL, "A large bowl of ground corn flour found among chests in Bronze and Silver Dungeons. It is a vital ingredient in making Candy Corn.");
         this.addLore(GenesisItems.CONTINUUM_ORB, "An orange crystalline ball of unstable spacetime, breaking it will yield a random item from an unknown point. Maybe it will provide something useful?");
         this.addLore(GenesisItems.BLUE_SWET_JELLY, "A morsel of fluted gelatin made by sweetening Blue Swet Gel with Sugar.");
         this.addLore(GenesisItems.GOLDEN_SWET_JELLY, "A morsel of fluted gelatin made by sweetening Golden Swet Gel with Sugar.");
         this.addLore(GenesisItems.DARK_SWET_JELLY, "A morsel of fluted gelatin made by sweetening Dark Swet Gel with Sugar.");
-        this.addLore(GenesisItems.DARK_GUMMY_SWET, "A gummy with a minty aftertaste, it can be found in random chests in Bronze and Silver Dungeons. It fully restores the Player's hunger when eaten. Very useful for boss fights.");
+        this.addLore(GenesisItems.DARK_GUMMY_SWET, "A gummy with a minty aftertaste that can be found in chests in Bronze and Silver Dungeons. It fully restores the Player's hunger when eaten. Very useful for boss fights.");
         this.addLore(GenesisItems.ICESTONE_POPROCKS, "Powdery Icestone rock candies that pop in your mouth!");
         this.addLore(GenesisItems.COCOATRICE, "A large and solid chocolate, molded into a shape resembling a Cockatrice.");
         this.addLore(GenesisItems.WRAPPED_CHOCOLATES, "An assortment of delicious chocolates wrapped in bits of Aechor Petal.");
