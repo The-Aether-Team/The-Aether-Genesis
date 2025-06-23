@@ -279,7 +279,7 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addLore(GenesisItems.BLUE_SWET_JELLY, "A morsel of fluted gelatin made by sweetening Blue Swet Gel with Sugar.");
         this.addLore(GenesisItems.GOLDEN_SWET_JELLY, "A morsel of fluted gelatin made by sweetening Golden Swet Gel with Sugar.");
         this.addLore(GenesisItems.DARK_SWET_JELLY, "A morsel of fluted gelatin made by sweetening Dark Swet Gel with Sugar.");
-        this.addLore(GenesisItems.DARK_GUMMY_SWET, "A gummy with a minty aftertaste, it can be found in random chests in Bronze and Silver Dungeons. It fully restores the player's hunger when eaten. Very useful for boss fights.");
+        this.addLore(GenesisItems.DARK_GUMMY_SWET, "A gummy with a minty aftertaste, it can be found in random chests in Bronze and Silver Dungeons. It fully restores the Player's hunger when eaten. Very useful for boss fights.");
         this.addLore(GenesisItems.ICESTONE_POPROCKS, "Powdery Icestone rock candies that pop in your mouth!");
         this.addLore(GenesisItems.COCOATRICE, "A large and solid chocolate, molded into a shape resembling a Cockatrice.");
         this.addLore(GenesisItems.WRAPPED_CHOCOLATES, "An assortment of delicious chocolates wrapped in bits of Aechor Petal.");
@@ -312,7 +312,7 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addLore(GenesisItems.BABY_PINK_SWET, "A cute Swet companion that that makes other Swets become friendly towards you, allowing you to ride them.");
         this.addLore(GenesisItems.PHOENIX_DART_SHOOTER, "A Dart Shooter that can shoot any type of dart, and sets them on fire!");
         this.addLore(GenesisItems.CONTINUUM_BOMB, "Harnessing the power of volatile spacetime, you can give yourself a colorful party filled with randomly-sourced rewards!");
-        this.addLore(GenesisItems.CRYSTAL_EXPERIENCE_BOTTLE, "A crystalline bottle that can be used to hold the player's experience points. When interacting, experience will be taken out of the bottle, except when crouching, then experience will be put into the bottle.");
+        this.addLore(GenesisItems.CRYSTAL_EXPERIENCE_BOTTLE, "A crystalline bottle that can be used to hold the Player's experience points. When interacting, experience will be taken out of the bottle, except when crouching, then experience will be put into the bottle.");
         this.addLore(GenesisItems.MUSIC_DISC_AERWHALE, "A music disc that plays \"Aerwhale\" by Aether UK.");
         this.addLore(GenesisItems.MUSIC_DISC_APPROACHES, "A music disc that plays \"Approaches\" by Emile van Krieken.");
         this.addLore(GenesisItems.MUSIC_DISC_DEMISE, "A music disc that plays \"Demise\" by Moorziey.");
@@ -332,7 +332,7 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addLore(GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES, "These leaves generate with Dark Blue Skyroot Trees. They can drop Dark Blue Skyroot Saplings and Skyroot Sticks when decaying.");
         this.addLore(GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES, "Purple Crystal Leaves that are home to White Apples.");
         this.addLore(GenesisBlocks.PURPLE_CRYSTAL_LEAVES, "Leaves that come from Purple Crystal Trees, found amongst wooded areas. Sometimes they have fruit on them that can cure Inebriation.");
-        this.addLore(GenesisBlocks.ORANGE_TREE, "A dwarf Orange Tree, found naturally across the islands of the Aether. It only grows to be as tall as a player!");
+        this.addLore(GenesisBlocks.ORANGE_TREE, "A dwarf Orange Tree, found naturally across the islands of the Aether. It only grows to be as tall as a Player!");
         this.addLore(GenesisBlocks.HOLYSTONE_HEADSTONE, "A decorative variant of Holystone Bricks that can be oriented directionally. The top has rounded carvings resembling a Valkyrie.");
         this.addLore(GenesisBlocks.HOLYSTONE_KEYSTONE, "A decorative variant of Holystone Bricks that can be oriented directionally. Useful for bases or arches in your builds.");
         this.addLore(GenesisBlocks.HOLYSTONE_HIGHLIGHT, "A decorative variant of Holystone Bricks that can be oriented directionally. This block can work for adding variation and accenting among other bricks.");
