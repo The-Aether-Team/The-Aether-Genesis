@@ -220,7 +220,7 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addAdvancement("mouse_ears", "Legally Distinct");
         this.addAdvancement("candies", "Trick or Treat");
         this.addAdvancement("companion", "Man's Best Friend");
-        this.addAdvancement("nex_spirit", "Postmortem");
+        this.addAdvancement("nex_spirit", "It's Alive! It's Alive!!");
 
         this.addAdvancementDesc("kill_zephyroo", "Vanquish a great evil");
         this.addAdvancementDesc("kill_tempest", "Kill a Tempest with its own projectile");
