@@ -346,7 +346,7 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addLore(GenesisBlocks.SKYROOT_CRAFTING_TABLE, "A workbench made of Skyroot, capable of crafting anything you might need.");
         this.addLore(GenesisBlocks.HOLYSTONE_FURNACE, "A furnace constructed from Holystone. This can be used to cook both ores and food while surviving in the Aether.");
         this.addLore(GenesisBlocks.SKYROOT_CHEST, "A Skyroot container that can be used to store all the goods you collect on your adventures.");
-        this.addLore(GenesisBlocks.SKYROOT_LADDER, "A Skyroot ladder. Handy for vertical travel.");
+        this.addLore(GenesisBlocks.SKYROOT_LADDER, "A Skyroot Ladder. Handy for vertical travel.");
         this.addLore(GenesisBlocks.CARVED_PILLAR, "The main part of pillars found in the Bronze Dungeon; they pair well with Carved Stone for building.");
         this.addLore(GenesisBlocks.CARVED_PILLAR_TOP, "The top part of the pillars found in the Bronze Dungeon; their carvings look good and pair well with Carved Stone for building.");
         this.addLore(GenesisBlocks.SKYROOT_CHEST_MIMIC, "It may look like a normal Skyroot Chest, but it really isn't. As soon as you right-click on it, a Chest Mimic will pop out! These appear in Bronze and Silver Dungeons.");
