@@ -104,6 +104,8 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     public static AttributeSupplier.Builder createMobAttributes() {
         return Monster.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 350.0)
+                .add(Attributes.ATTACK_DAMAGE, 5.0)
+                .add(Attributes.ATTACK_KNOCKBACK, 2.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.35)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.5)
                 .add(Attributes.FOLLOW_RANGE, 64.0)
@@ -197,27 +199,6 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         super.customServerAiStep();
         this.bossFight.setProgress(this.getHealth() / this.getMaxHealth());
         this.trackDungeon();
-    }
-
-    @Override
-    public boolean doHurtTarget(Entity entity) {
-        this.attackAnimationTick = 10;
-        this.level().broadcastEntityEvent(this, (byte) 4);
-        boolean flag = entity.hurt(this.damageSources().mobAttack(this), 5 + this.random.nextInt(3));
-        if (flag) {
-            double d2;
-            if (entity instanceof LivingEntity living) {
-                d2 = living.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
-            } else {
-                d2 = 0.0D;
-            }
-            double d0 = d2;
-            double d1 = Math.max(0.0, 1.0 - d0);
-            entity.setDeltaMovement(entity.getDeltaMovement().add(0.0, 0.4 * d1, 0.0));
-            // TODO: [PORTING] FIGURE OUT IF THIS IS STILL NEEDED
-            //this.doEnchantDamageEffects(this, entity);
-        }
-        return flag;
     }
 
     public boolean hurt(DamageSource source, float amount) {
