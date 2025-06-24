@@ -25,7 +25,7 @@ commands:
     steps:
       - checkout
       - gradle/with_cache:
-          cache_key: 'v9'
+          cache_key: 'v10'
           steps:
             - run:
                 name: chmod permissions
