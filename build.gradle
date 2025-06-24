@@ -84,7 +84,7 @@ dependencies {
     implementation "maven.modrinth:aeroblender:${project.aeroblender_version}"
     implementation "com.github.glitchfiend:TerraBlender-neoforge:${project.terrablender_version}"
 
-    jarJar("maven.modrinth:1eaq94ok:${project.aeroblender_version}") {
+    jarJar("maven.modrinth:aeroblender:${project.aeroblender_version}") {
         version {
             strictly "[${project.aeroblender_version},)"
             prefer "${project.aeroblender_version}"
