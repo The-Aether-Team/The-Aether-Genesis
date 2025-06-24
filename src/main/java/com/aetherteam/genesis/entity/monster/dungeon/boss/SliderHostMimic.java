@@ -511,14 +511,10 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     }
 
     @Override
-    public boolean isNoGravity() {
-        return !this.isAwake();
-    }
-
-    @Override
     public boolean shouldDiscardFriction() {
         return !this.isAwake();
     }
+
     @Override
     protected boolean isAffectedByFluids() {
         return !this.isAwake();

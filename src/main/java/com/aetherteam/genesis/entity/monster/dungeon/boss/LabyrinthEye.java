@@ -8,12 +8,12 @@ import com.aetherteam.aether.entity.monster.dungeon.boss.BossNameGenerator;
 import com.aetherteam.aether.event.AetherEventDispatch;
 import com.aetherteam.aether.network.packet.clientbound.BossInfoPacket;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
+import com.aetherteam.genesis.entity.ai.goal.AvoidEnemyGoal;
 import com.aetherteam.genesis.entity.projectile.CogProjectile;
 import com.aetherteam.nitrogen.entity.BossRoomTracker;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -35,14 +35,15 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.Goal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.BowItem;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Block;
@@ -51,7 +52,6 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.apache.commons.lang3.tuple.Pair;
@@ -113,11 +113,13 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new LabyrinthEye.CogAttackGoal(this));
-        this.goalSelector.addGoal(1, new LabyrinthEye.TrackPlayerGoal(this));
-        this.goalSelector.addGoal(2, new LabyrinthEye.LookAroundGoal(this));
-        this.goalSelector.addGoal(3, new LabyrinthEye.StrollGoal(this, 1.0));
-        this.goalSelector.addGoal(4, new LabyrinthEye.InactiveGoal(this));
+        this.goalSelector.addGoal(0, new LabyrinthEye.InactiveGoal(this));
+        this.goalSelector.addGoal(1, new LabyrinthEye.CogAttackGoal(this, 1.25F, 25, 8.0F));
+        this.goalSelector.addGoal(2, new LabyrinthEye.AvoidGoal(this));
+//        this.goalSelector.addGoal(1, new LabyrinthEye.TrackPlayerGoal(this));
+//        this.goalSelector.addGoal(2, new LabyrinthEye.LookAroundGoal(this));
+//        this.goalSelector.addGoal(3, new LabyrinthEye.StrollGoal(this, 1.0));
+//        this.goalSelector.addGoal(2, new LookAtPlayerGoal(this, Player.class, 8.0F));
 
         this.mostDamageTargetGoal = new MostDamageTargetGoal(this);
         this.targetSelector.addGoal(1, this.mostDamageTargetGoal);
@@ -163,6 +165,13 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
         super.customServerAiStep();
         this.bossFight.setProgress(this.getHealth() / this.getMaxHealth());
         this.trackDungeon();
+    }
+
+    @Override
+    public void travel(Vec3 travelVector) {
+        if (this.isAwake()) {
+            super.travel(travelVector);
+        }
     }
 
     @Override
@@ -273,8 +282,13 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
         this.setBossFight(false);
         this.setTarget(null);
         if (this.getDungeon() != null) {
+//            this.setDeltaMovement(Vec3.ZERO);
             this.setPos(this.getDungeon().originCoordinates());
             this.openRoom();
+        }
+        this.setStage(1);
+        for (int i = 0; i < 12; i++) {
+            this.stageDone[i] = false;
         }
         AetherEventDispatch.onBossFightStop(this, this.getDungeon());
     }
@@ -471,11 +485,6 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
     }
 
     @Override
-    public boolean isNoGravity() {
-        return !this.isAwake();
-    }
-
-    @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         this.addBossSaveData(tag, this.registryAccess());
@@ -513,146 +522,25 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
         }
     }
 
-    public static class TrackPlayerGoal extends Goal {
-        private final LabyrinthEye labyrinthEye;
-        private final double speedModifier;
-        private final boolean followingTargetEvenIfNotSeen;
-        private Path path;
-        private double pathedTargetX;
-        private double pathedTargetY;
-        private double pathedTargetZ;
-        private int ticksUntilNextPathRecalculation;
-        private long lastCanUseCheck;
-
-        public TrackPlayerGoal(LabyrinthEye labyrinthEye) {
-            this.labyrinthEye = labyrinthEye;
-            this.speedModifier = 1.0F;
-            this.followingTargetEvenIfNotSeen = true;
-            this.setFlags(EnumSet.of(Goal.Flag.MOVE, Goal.Flag.LOOK));
-        }
-
-        @Override
-        public boolean canUse() {
-            if (this.labyrinthEye.isAwake()) {
-                long i = this.labyrinthEye.level().getGameTime();
-                if (i - this.lastCanUseCheck < 20L) {
-                    return false;
-                } else {
-                    this.lastCanUseCheck = i;
-                    LivingEntity target = this.labyrinthEye.getTarget();
-                    if (target == null) {
-                        return false;
-                    } else if (!target.isAlive()) {
-                        return false;
-                    } else {
-                        this.path = this.labyrinthEye.getNavigation().createPath(target, 0);
-                        return this.path != null;
-                    }
-                }
-            }
-            return false;
-        }
-
-        @Override
-        public boolean canContinueToUse() {
-            if (this.labyrinthEye.isAwake()) {
-                LivingEntity target = this.labyrinthEye.getTarget();
-                if (target == null) {
-                    return false;
-                } else if (!target.isAlive()) {
-                    return false;
-                } else if (!this.followingTargetEvenIfNotSeen) {
-                    return !this.labyrinthEye.getNavigation().isDone();
-                } else if (!this.labyrinthEye.isWithinRestriction(target.blockPosition())) {
-                    return false;
-                } else {
-                    return !(target instanceof Player player) || !target.isSpectator() && !player.isCreative();
-                }
-            }
-            return false;
-        }
-
-        @Override
-        public void start() {
-            this.labyrinthEye.getNavigation().moveTo(this.path, this.speedModifier);
-            this.labyrinthEye.setAggressive(true);
-            this.ticksUntilNextPathRecalculation = 0;
-        }
-
-        @Override
-        public void stop() {
-            LivingEntity livingentity = this.labyrinthEye.getTarget();
-            if (!EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(livingentity)) {
-                this.labyrinthEye.setTarget(null);
-            }
-            this.labyrinthEye.setAggressive(false);
-            this.labyrinthEye.getNavigation().stop();
-        }
-
-        @Override
-        public void tick() {
-            LivingEntity livingentity = this.labyrinthEye.getTarget();
-            if (livingentity != null) {
-                this.labyrinthEye.getLookControl().setLookAt(livingentity, 30.0F, 30.0F);
-                this.ticksUntilNextPathRecalculation = Math.max(this.ticksUntilNextPathRecalculation - 1, 0);
-                if ((this.followingTargetEvenIfNotSeen || this.labyrinthEye.getSensing().hasLineOfSight(livingentity))
-                        && this.ticksUntilNextPathRecalculation <= 0
-                        && (this.pathedTargetX == 0.0 && this.pathedTargetY == 0.0 && this.pathedTargetZ == 0.0
-                        || livingentity.distanceToSqr(this.pathedTargetX, this.pathedTargetY, this.pathedTargetZ) >= 1.0
-                        || this.labyrinthEye.getRandom().nextFloat() < 0.05F)) {
-                    this.pathedTargetX = livingentity.getX();
-                    this.pathedTargetY = livingentity.getY();
-                    this.pathedTargetZ = livingentity.getZ();
-                    this.ticksUntilNextPathRecalculation = 4 + this.labyrinthEye.getRandom().nextInt(7);
-                    double d0 = this.labyrinthEye.distanceToSqr(livingentity);
-                    if (d0 > 1024.0) {
-                        this.ticksUntilNextPathRecalculation += 10;
-                    } else if (d0 > 256.0) {
-                        this.ticksUntilNextPathRecalculation += 5;
-                    }
-                    if (!this.labyrinthEye.getNavigation().moveTo(livingentity, this.speedModifier)) {
-                        this.ticksUntilNextPathRecalculation += 15;
-                    }
-                    this.ticksUntilNextPathRecalculation = this.adjustedTickDelay(this.ticksUntilNextPathRecalculation);
-                }
-            }
-        }
-    }
-
-    public static class LookAroundGoal extends RandomLookAroundGoal {
-        private final LabyrinthEye labyrinthEye;
-
-        public LookAroundGoal(LabyrinthEye labyrinthEye) {
-            super(labyrinthEye);
-            this.labyrinthEye = labyrinthEye;
-        }
-
-        @Override
-        public boolean canUse() {
-            return super.canUse() && this.labyrinthEye.isAwake();
-        }
-    }
-
-    public static class StrollGoal extends WaterAvoidingRandomStrollGoal {
-        private final LabyrinthEye labyrinthEye;
-
-        public StrollGoal(LabyrinthEye labyrinthEye, double speedModifier) {
-            super(labyrinthEye, speedModifier);
-            this.labyrinthEye = labyrinthEye;
-        }
-
-        @Override
-        public boolean canUse() {
-            return super.canUse() && this.labyrinthEye.isAwake();
-        }
-    }
-
     public static class CogAttackGoal extends Goal {
         private final LabyrinthEye labyrinthEye;
-        private int attackTime = -1;
+        private final double speedModifier;
+        private final int attackIntervalMin;
+        private final float attackRadiusSqr;
+        private int attackTime;
+        private int seeTime;
+        private boolean strafingClockwise;
+        private boolean strafingBackwards;
+        private int strafingTime;
 
-        public CogAttackGoal(LabyrinthEye labyrinthEye) {
+        public CogAttackGoal(LabyrinthEye labyrinthEye, double speedModifier, int attackInterval, float attackRadius) {
+            this.attackTime = -1;
+            this.strafingTime = -1;
             this.labyrinthEye = labyrinthEye;
+            this.speedModifier = speedModifier;
+            this.attackIntervalMin = attackInterval;
+            this.attackRadiusSqr = attackRadius * attackRadius;
+            this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK));
         }
 
         @Override
@@ -662,16 +550,19 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
 
         @Override
         public boolean canContinueToUse() {
-            return this.labyrinthEye.isAwake() && this.labyrinthEye.getTarget() != null;
+            return (this.canUse() || !this.labyrinthEye.getNavigation().isDone()) && this.labyrinthEye.isAwake();
         }
 
-        @Override
         public void start() {
-            this.attackTime = 20;
+            super.start();
+            this.labyrinthEye.setAggressive(true);
         }
 
         @Override
         public void stop() {
+            super.stop();
+            this.labyrinthEye.setAggressive(false);
+            this.seeTime = 0;
             this.attackTime = -1;
         }
 
@@ -679,29 +570,90 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
         public void tick() {
             LivingEntity target = this.labyrinthEye.getTarget();
             if (target != null) {
-                if (--this.attackTime == 0) {
-                    CogProjectile cog = new CogProjectile(this.labyrinthEye.level(), this.labyrinthEye, false);
-                    cog.setYRot(this.labyrinthEye.getYRot());
-                    cog.setXRot(this.labyrinthEye.getXRot());
-                    cog.setPos(this.labyrinthEye.getCogPosition());
-                    double x = target.position().x() - cog.getX();
-                    double y = target.position().y() - cog.getY();
-                    double z = target.position().z() - cog.getZ();
-                    float dist = (float) Math.sqrt(x * x + z * z);
-                    float distance = dist * 0.075F;
-                    cog.shoot(x, y + (dist * 0.2F), z, distance, 20.0F);
-                    this.labyrinthEye.playSound(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COG_LOSS.get(), 2.0F, 1.0F);
-                    this.labyrinthEye.playSound(SoundEvents.ITEM_BREAK, 0.8F, 0.8F + this.labyrinthEye.level().getRandom().nextFloat() * 0.4F);
-                    this.labyrinthEye.level().addFreshEntity(cog);
-                } else if (this.attackTime < 0) {
-                    this.attackTime = 25;
+                double distance = this.labyrinthEye.distanceToSqr(target.getX(), target.getY(), target.getZ());
+                boolean canSee = this.labyrinthEye.getSensing().hasLineOfSight(target);
+                boolean hasSeen = this.seeTime > 0;
+
+                if (canSee != hasSeen) {
+                    this.seeTime = 0;
+                }
+                if (canSee) {
+                    ++this.seeTime;
+                } else {
+                    --this.seeTime;
+                }
+                if (distance > this.attackRadiusSqr || this.seeTime < 20) {
+                    this.labyrinthEye.getNavigation().moveTo(target, this.speedModifier);
+                    this.strafingTime = -1;
+                } else {
+                    this.labyrinthEye.getNavigation().stop();
+                    ++this.strafingTime;
+                }
+                if (this.strafingTime >= 20) {
+                    if (this.labyrinthEye.getRandom().nextFloat() < 0.3F) {
+                        this.strafingClockwise = !this.strafingClockwise;
+                    }
+                    if (this.labyrinthEye.getRandom().nextFloat() < 0.3F) {
+                        this.strafingBackwards = !this.strafingBackwards;
+                    }
+                    this.strafingTime = 0;
+                }
+                if (this.strafingTime > -1) {
+                    if (distance > this.attackRadiusSqr * 0.75F) {
+                        this.strafingBackwards = false;
+                    } else if (distance < this.attackRadiusSqr * 0.25F) {
+                        this.strafingBackwards = true;
+                    }
+                    this.labyrinthEye.getMoveControl().strafe(this.strafingBackwards ? -0.75F : 0.75F, this.strafingClockwise ? 0.75F : -0.75F);
+                    this.labyrinthEye.lookAt(target, 30.0F, 30.0F);
+                } else {
+                    this.labyrinthEye.getLookControl().setLookAt(target, 30.0F, 30.0F);
+                }
+                if (--this.attackTime <= 0 && this.seeTime >= -60) {
+                    this.shootCog(target);
+                    this.attackTime = this.attackIntervalMin;
                 }
             }
+        }
+
+        private void shootCog(LivingEntity target) {
+            CogProjectile cog = new CogProjectile(this.labyrinthEye.level(), this.labyrinthEye, false);
+            cog.setYRot(this.labyrinthEye.getYRot());
+            cog.setXRot(this.labyrinthEye.getXRot());
+            cog.setPos(this.labyrinthEye.getCogPosition());
+            double x = target.position().x() - cog.getX();
+            double y = target.position().y() - cog.getY();
+            double z = target.position().z() - cog.getZ();
+            float dist = (float) Math.sqrt(x * x + z * z);
+            float distance = dist * 0.075F;
+            cog.shoot(x, y + (dist * 0.2F), z, distance, 20.0F);
+            this.labyrinthEye.playSound(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COG_LOSS.get(), 2.0F, 1.0F);
+            this.labyrinthEye.playSound(SoundEvents.ITEM_BREAK, 0.8F, 0.8F + this.labyrinthEye.level().getRandom().nextFloat() * 0.4F);
+            this.labyrinthEye.level().addFreshEntity(cog);
         }
 
         @Override
         public boolean requiresUpdateEveryTick() {
             return true;
+        }
+    }
+
+    public static class AvoidGoal extends AvoidEnemyGoal {
+        private final LabyrinthEye labyrinthEye;
+
+        public AvoidGoal(LabyrinthEye labyrinthEye) {
+            super(labyrinthEye, 1.5);
+            this.labyrinthEye = labyrinthEye;
+        }
+
+        @Override
+        public boolean canUse() {
+            return this.labyrinthEye.isAwake() && super.canUse();
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return this.labyrinthEye.isAwake() && super.canContinueToUse();
         }
     }
 
@@ -723,6 +675,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
         public void start() {
             this.labyrinthEye.setDeltaMovement(Vec3.ZERO);
             this.labyrinthEye.setPos(this.labyrinthEye.position().x(), this.labyrinthEye.position().y(), this.labyrinthEye.position().z());
+            this.labyrinthEye.getNavigation().stop();
         }
     }
 }
