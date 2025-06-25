@@ -202,6 +202,14 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         this.trackDungeon();
     }
 
+    @Override
+    public boolean doHurtTarget(Entity entity) {
+        this.attackAnimationTick = 10;
+        this.level().broadcastEntityEvent(this, (byte) 4);
+        return super.doHurtTarget(entity);
+    }
+
+    @Override
     public boolean hurt(DamageSource source, float amount) {
         Optional<LivingEntity> damageResult = this.canDamageSentryGuardian(source);
         if (damageResult.isPresent()) {
@@ -492,7 +500,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         private final SentryGuardian sentryGuardian;
 
         public AttackPlayerGoal(SentryGuardian sentryGuardian) {
-            super(sentryGuardian, 1.0, false);
+            super(sentryGuardian, 0.85, false);
             this.sentryGuardian = sentryGuardian;
         }
 
