@@ -1,0 +1,38 @@
+{
+  "parent": "aether_genesis:slider_host_mimic",
+  "criteria": {
+    "kill_sentry_guardian": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "aether_genesis:sentry_guardian"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.aether_genesis.sentry_guardian.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "aether_genesis:guardian_key"
+    },
+    "title": {
+      "translate": "advancement.aether_genesis.sentry_guardian"
+    }
+  },
+  "requirements": [
+    [
+      "kill_sentry_guardian"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

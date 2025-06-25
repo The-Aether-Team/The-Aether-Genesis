@@ -69,6 +69,8 @@ public class GenesisEntityTagData extends EntityTypeTagsProvider {
         // Vanilla
         this.tag(EntityTypeTags.IMPACT_PROJECTILES)
                 .add(GenesisEntityTypes.PHOENIX_DART.get());
+        this.tag(EntityTypeTags.REDIRECTABLE_PROJECTILE)
+                .add(GenesisEntityTypes.TEMPEST_THUNDERBALL.get());
         this.tag(EntityTypeTags.FROG_FOOD)
                 .add(GenesisEntityTypes.DARK_SWET.get());
         this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(

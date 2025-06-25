@@ -28,6 +28,7 @@ public class GenesisTags {
 
         public static final TagKey<Item> SWET_JELLY = tag("swet_jelly");
         public static final TagKey<Item> DARTS = tag("darts");
+        public static final TagKey<Item> COMPANIONS = tag("companions");
 
         private static TagKey<Item> tag(String name) {
             return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, name));

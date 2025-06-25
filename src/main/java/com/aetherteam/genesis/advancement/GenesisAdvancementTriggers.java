@@ -10,4 +10,5 @@ public class GenesisAdvancementTriggers {
     public static final DeferredRegister<CriterionTrigger<?>> TRIGGERS = DeferredRegister.create(Registries.TRIGGER_TYPE, AetherGenesis.MODID);
 
     public static final DeferredHolder<CriterionTrigger<?>, ContinuumOrbLootTrigger> CONTINUUM_ORB = TRIGGERS.register("continuum_orb", ContinuumOrbLootTrigger::new);
+    public static final DeferredHolder<CriterionTrigger<?>, NexReviveTrigger> NEX_REVIVE = TRIGGERS.register("nex_revive", NexReviveTrigger::new);
 }

@@ -1,0 +1,32 @@
+{
+  "parent": "aether_genesis:continuum_orb",
+  "criteria": {
+    "continuum_bomb": {
+      "conditions": {
+        "item": {
+          "items": "aether_genesis:continuum_bomb"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.aether_genesis.continuum_bomb.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "aether_genesis:continuum_bomb"
+    },
+    "title": {
+      "translate": "advancement.aether_genesis.continuum_bomb"
+    }
+  },
+  "requirements": [
+    [
+      "continuum_bomb"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

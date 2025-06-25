@@ -5,7 +5,7 @@ import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.item.GenesisItems;
 import com.aetherteam.genesis.loot.GenesisLoot;
-import com.aetherteam.genesis.loot.entries.RandomEntry;
+import com.aetherteam.nitrogen.loot.entries.RandomEntry;
 import net.minecraft.data.loot.LootTableSubProvider;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Items;

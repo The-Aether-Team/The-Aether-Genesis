@@ -1,0 +1,33 @@
+{
+  "parent": "aether_genesis:labyrinth_eye",
+  "criteria": {
+    "mouse_ears": {
+      "conditions": {
+        "items": [
+          {
+            "items": "aether_genesis:mouse_ear_cap"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.aether_genesis.mouse_ears.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "aether_genesis:mouse_ear_cap"
+    },
+    "title": {
+      "translate": "advancement.aether_genesis.mouse_ears"
+    }
+  },
+  "requirements": [
+    [
+      "mouse_ears"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

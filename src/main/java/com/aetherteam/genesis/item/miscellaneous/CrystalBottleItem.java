@@ -3,6 +3,7 @@ package com.aetherteam.genesis.item.miscellaneous;
 import com.aetherteam.genesis.item.GenesisDataComponents;
 import net.minecraft.Util;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -72,7 +73,7 @@ public class CrystalBottleItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
         if (stack.has(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT)) {
-            components.add(Component.translatable("aether_genesis.experience.desc", EXPERIENCE_FORMAT.format(stack.get(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT))));
+            components.add(Component.translatable("aether_genesis.experience.desc", EXPERIENCE_FORMAT.format(Mth.abs(stack.get(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT)))));
         }
         super.appendHoverText(stack, context, components, flag);
     }

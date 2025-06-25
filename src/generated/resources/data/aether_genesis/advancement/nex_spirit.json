@@ -1,0 +1,26 @@
+{
+  "parent": "aether_genesis:companion",
+  "criteria": {
+    "resurrect": {
+      "trigger": "aether_genesis:nex_revive"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.aether_genesis.nex_spirit.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "aether_genesis:death_seal"
+    },
+    "title": {
+      "translate": "advancement.aether_genesis.nex_spirit"
+    }
+  },
+  "requirements": [
+    [
+      "resurrect"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

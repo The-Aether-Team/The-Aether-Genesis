@@ -1,0 +1,50 @@
+{
+  "parent": "aether:enchanted_gravitite",
+  "criteria": {
+    "kill_tempest": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "aether_genesis:tempest"
+            }
+          }
+        ],
+        "killing_blow": {
+          "direct_entity": {
+            "type": "aether_genesis:tempest_thunderball"
+          },
+          "tags": [
+            {
+              "expected": true,
+              "id": "minecraft:is_projectile"
+            }
+          ]
+        }
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.aether_genesis.kill_tempest.desc"
+    },
+    "frame": "challenge",
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "aether_genesis:storm_aercloud"
+    },
+    "title": {
+      "translate": "advancement.aether_genesis.kill_tempest"
+    }
+  },
+  "requirements": [
+    [
+      "kill_tempest"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

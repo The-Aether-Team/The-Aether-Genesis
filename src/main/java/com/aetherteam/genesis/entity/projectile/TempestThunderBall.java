@@ -133,11 +133,6 @@ public class TempestThunderBall extends AbstractHurtingProjectile {
 	}
 
 	@Override
-	public boolean isPickable() {
-		return false;
-	}
-
-	@Override
 	public boolean hurt(DamageSource source, float amount) {
 		return false;
 	}

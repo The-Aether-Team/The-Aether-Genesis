@@ -1,5 +1,5 @@
-// 1.21.1	2025-02-03T22:28:07.7889145	Tags for minecraft:item mod id aether_genesis
-330a2f26e92f1bd1695fdccd7ba2749180f2e600 data/aether/tags/item/accessories_capes.json
+// 1.21.1	2025-03-08T15:37:04.7526824	Tags for minecraft:item mod id aether_genesis
+f066d3493e632c009b09dcaa9213459bf3fb0654 data/aether/tags/item/accessories_capes.json
 42d9429c4a2caa607369eda48e154467b6961a23 data/aether/tags/item/accessories_miscellaneous.json
 d1a8d412e7c7c9bcae51c0760965af276c050ebd data/aether/tags/item/accessories_pendants.json
 7c30d78b6d916d4e1b51830e71de008f47a23174 data/aether/tags/item/accessories_rings.json
@@ -20,6 +20,7 @@ f48538930063aff5b41d26facd21331ba0343bae data/aether/tags/item/sentry_blocks.jso
 02cf034bd729e8c7a6ec5b8f896d165a730f115a data/aether/tags/item/swet_balls.json
 9422525eb9d5e84c5ea326a8882a93ac364a19c3 data/aether/tags/item/trapped_dungeon_blocks.json
 11a0385ec3734993a320caf3d189391e9407878d data/aether/tags/item/treasure_doorway_dungeon_blocks.json
+a7325e4ddd038254a83621a20dd57b305828e582 data/aether_genesis/tags/item/companions.json
 321cad0c802b794f364a9ba5a34536ecc36271ec data/aether_genesis/tags/item/darts.json
 336a5cf28e3a807615f25965e0a90c7bf33dd3ac data/aether_genesis/tags/item/holystone_furnace_crafting.json
 1d7eabfa746881c14275fb87c139d44dd7a797ac data/aether_genesis/tags/item/log_walls.json
