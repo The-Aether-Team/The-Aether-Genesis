@@ -4,6 +4,8 @@ import com.aetherteam.aether.loot.AetherLoot;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonPiece;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
+import com.aetherteam.genesis.mixin.mixins.common.accessor.BaseSpawnerAccessor;
+import com.aetherteam.genesis.mixin.mixins.common.accessor.SpawnerBlockEntityAccessor;
 import com.aetherteam.genesis.world.structurepiece.GenesisStructurePieceTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -12,6 +14,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.random.SimpleWeightedRandomList;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.level.BaseSpawner;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Rotation;
@@ -53,6 +56,9 @@ public class GenesisBronzeDungeonRoom extends BronzeDungeonPiece {
                             .build();
                     Optional<EntityType<?>> mob = mobs.getRandomValue(random);
                     mob.ifPresent(entityType -> spawnerBlockEntity.setEntityId(entityType, random));
+                    BaseSpawner spawner = ((SpawnerBlockEntityAccessor) spawnerBlockEntity).aether_genesis$getSpawner();
+                    ((BaseSpawnerAccessor) spawner).aether_genesis$setSpawnCount(1);
+                    ((BaseSpawnerAccessor) spawner).aether_genesis$setMaxNearbyEntities(2);
                 }
             }
         }
