@@ -295,10 +295,10 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addLore(GenesisItems.CANDY_RING, "A patterned ring resembling a Candy Cane, which freezes the process of losing hunger.");
         this.addLore(GenesisItems.SKYROOT_RING, "A wooden ring that gives the rare chance of doubling drops.");
         this.addLore(GenesisItems.LUCKY_BELL, "A red collar with a bell attached to it. When worn, it makes slain enemies occasionally drop Presents.");
-        this.addLore(GenesisItems.SWETTY_PENDANT, "A Pendant with a bauble resembling a Swet attached to it. Moving against vertical surfaces allows the wearer to slide down them without falling.");
-        this.addLore(GenesisItems.DAGGERFROST_LOCKET, "A Pendant that makes Snowballs thrown by the wearer inflict damage. This pairs well with the Frostbound Stone.");
-        this.addLore(GenesisItems.CAPE, "A Cape that is crafted using soft White Wool. It is able to be dyed any color!");
-        this.addLore(GenesisItems.DEXTERITY_CAPE, "An uncommon Cape found in Bronze Dungeons. It makes the wearer's legs stronger, allowing them to run at a faster speed.");
+        this.addLore(GenesisItems.SWETTY_PENDANT, "A pendant with a bauble resembling a Swet attached to it. Moving against vertical surfaces allows the wearer to slide down them without falling.");
+        this.addLore(GenesisItems.DAGGERFROST_LOCKET, "A pendant that makes Snowballs thrown by the wearer inflict damage. This pairs well with the Frostbound Stone.");
+        this.addLore(GenesisItems.CAPE, "A cape that is crafted using soft White Wool. It is able to be dyed any color!");
+        this.addLore(GenesisItems.DEXTERITY_CAPE, "An uncommon cape found in Bronze Dungeons. It makes the wearer's legs stronger, allowing them to run at a faster speed.");
         this.addLore(GenesisItems.MOUSE_EAR_CAP, "A wearable cap that makes it look like you have big mouse ears! It can be dyed any color.");
         this.addLore(GenesisItems.FANGRIN_CAPSULE, "A small round capsule that summons a Fangrin to aide you in battle. This shelled creature has no bark, but it has a strong bite.");
         this.addLore(GenesisItems.KRAISITH_CAPSULE, "A small round capsule that summons a Kraisith to aide you in battle. It will attempt to shoot enchanted needles at a foe from a distance.");
