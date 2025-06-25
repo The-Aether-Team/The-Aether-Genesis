@@ -43,6 +43,17 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 AetherItems.GOLDEN_DART.get(),
                 AetherItems.POISON_DART.get(),
                 AetherItems.ENCHANTED_DART.get());
+        this.tag(GenesisTags.Items.COMPANIONS).add(
+                GenesisItems.FANGRIN_CAPSULE.get(),
+                GenesisItems.KRAISITH_CAPSULE.get(),
+                GenesisItems.FLEETING_STONE.get(),
+                GenesisItems.SOARING_STONE.get(),
+                GenesisItems.ETHEREAL_STONE.get(),
+                GenesisItems.ORB_OF_ARKENZUS.get(),
+                GenesisItems.FROSTPINE_TOTEM.get(),
+                GenesisItems.FROSTBOUND_STONE.get(),
+                GenesisItems.DEATH_SEAL.get(),
+                GenesisItems.BABY_PINK_SWET.get());
 
         // Aether
         this.tag(AetherTags.Items.DUNGEON_BLOCKS).add(
@@ -147,17 +158,8 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.DAGGERFROST_LOCKET.get());
         this.tag(AetherTags.Items.ACCESSORIES_CAPES).add(
                 GenesisItems.CAPE.get(),
-                GenesisItems.DEXTERITY_CAPE.get(),
-                GenesisItems.FANGRIN_CAPSULE.get(), //todo temporary
-                GenesisItems.KRAISITH_CAPSULE.get(),
-                GenesisItems.FLEETING_STONE.get(),
-                GenesisItems.SOARING_STONE.get(),
-                GenesisItems.ETHEREAL_STONE.get(),
-                GenesisItems.ORB_OF_ARKENZUS.get(),
-                GenesisItems.FROSTPINE_TOTEM.get(),
-                GenesisItems.FROSTBOUND_STONE.get(),
-                GenesisItems.DEATH_SEAL.get(),
-                GenesisItems.BABY_PINK_SWET.get());
+                GenesisItems.DEXTERITY_CAPE.get()
+        ).addTag(GenesisTags.Items.COMPANIONS); //todo temp
         this.tag(AetherTags.Items.ACCESSORIES_MISCELLANEOUS).add(GenesisItems.MOUSE_EAR_CAP.get());
 
         // Forge

@@ -5,7 +5,7 @@
       "bonus_rolls": 0.0,
       "entries": [
         {
-          "type": "aether_genesis:random",
+          "type": "nitrogen_internals:random",
           "children": [
             {
               "type": "minecraft:loot_table",

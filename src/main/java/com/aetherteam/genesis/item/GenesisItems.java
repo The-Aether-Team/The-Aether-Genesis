@@ -2,7 +2,6 @@ package com.aetherteam.genesis.item;
 
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.client.AetherSoundEvents;
-import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.item.accessories.cape.CapeItem;
 import com.aetherteam.aether.item.accessories.pendant.PendantItem;
 import com.aetherteam.aether.item.components.AetherDataComponents;

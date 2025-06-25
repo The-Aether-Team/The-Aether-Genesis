@@ -1,6 +1,7 @@
 package com.aetherteam.genesis.event.hooks;
 
 import com.aetherteam.aether.item.EquipmentUtil;
+import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
 import com.aetherteam.genesis.attachment.GenesisPlayerAttachment;
 import com.aetherteam.genesis.block.GenesisBlocks;
@@ -10,6 +11,8 @@ import com.aetherteam.genesis.entity.projectile.DaggerfrostSnowball;
 import com.aetherteam.genesis.entity.projectile.PhoenixDart;
 import com.aetherteam.genesis.item.GenesisItems;
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -63,7 +66,10 @@ public class AbilityHooks {
                     if (companion instanceof NexSpirit nexSpirit) {
                         if (!nexSpirit.isBroken()) {
                             player.setHealth(player.getMaxHealth());
-                            nexSpirit.setCooldown(100); //todo balance
+                            nexSpirit.setCooldown(100); //todo balance and visual flourish
+                            if (player instanceof ServerPlayer serverPlayer) {
+                                GenesisAdvancementTriggers.NEX_REVIVE.get().trigger(serverPlayer);
+                            }
                             return true;
                         }
                     }

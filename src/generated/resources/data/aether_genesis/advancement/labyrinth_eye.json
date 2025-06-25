@@ -1,0 +1,38 @@
+{
+  "parent": "aether_genesis:sentry_guardian",
+  "criteria": {
+    "kill_labyrinth_eye": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "aether_genesis:labyrinth_eye"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.aether_genesis.labyrinth_eye.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "aether_genesis:cog_key"
+    },
+    "title": {
+      "translate": "advancement.aether_genesis.labyrinth_eye"
+    }
+  },
+  "requirements": [
+    [
+      "kill_labyrinth_eye"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

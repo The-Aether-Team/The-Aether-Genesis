@@ -1,0 +1,38 @@
+{
+  "parent": "aether:bronze_dungeon",
+  "criteria": {
+    "kill_slider_host_mimic": {
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "aether_genesis:slider_host_mimic"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:player_killed_entity"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancement.aether_genesis.slider_host_mimic.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "aether_genesis:host_key"
+    },
+    "title": {
+      "translate": "advancement.aether_genesis.slider_host_mimic"
+    }
+  },
+  "requirements": [
+    [
+      "kill_slider_host_mimic"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

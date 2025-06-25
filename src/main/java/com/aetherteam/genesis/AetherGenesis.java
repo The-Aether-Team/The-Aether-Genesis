@@ -1,8 +1,6 @@
 package com.aetherteam.genesis;
 
-import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether.data.generators.AetherRegistrySets;
-import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonBuilder;
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
@@ -26,7 +24,6 @@ import com.aetherteam.genesis.inventory.menu.GenesisMenuTypes;
 import com.aetherteam.genesis.item.GenesisCreativeTabs;
 import com.aetherteam.genesis.item.GenesisDataComponents;
 import com.aetherteam.genesis.item.GenesisItems;
-import com.aetherteam.genesis.loot.entries.GenesisLootPoolEntries;
 import com.aetherteam.genesis.loot.functions.GenesisLootFunctions;
 import com.aetherteam.genesis.loot.modifiers.GenesisLootModifiers;
 import com.aetherteam.genesis.network.packet.GenesisPlayerSyncPacket;
@@ -43,7 +40,6 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.DetectedVersion;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.metadata.PackMetadataGenerator;
@@ -69,7 +65,6 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
-import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
@@ -95,11 +90,11 @@ public class AetherGenesis {
 
         GenesisEntityTypes.listen(bus);
 
-        bus.addListener((ModifyDefaultComponentsEvent event) -> {
-            if (GenesisConfig.COMMON.gold_aercloud_ability.get()) {
-                event.modify(AetherItems.GOLDEN_PARACHUTE, builder -> builder.set(DataComponents.MAX_DAMAGE, 1));
-            }
-        });
+//        bus.addListener((ModifyDefaultComponentsEvent event) -> {
+//            if (GenesisConfig.COMMON.gold_aercloud_ability.get()) {
+//                event.modify(AetherItems.GOLDEN_PARACHUTE, builder -> builder.set(DataComponents.MAX_DAMAGE, 1));
+//            }
+//        });
 
         eventSetup(NeoForge.EVENT_BUS);
 
@@ -110,7 +105,6 @@ public class AetherGenesis {
                 GenesisEntityTypes.ENTITY_TYPES,
                 GenesisMenuTypes.MENU_TYPES,
                 GenesisBlockEntityTypes.BLOCK_ENTITY_TYPES,
-                GenesisLootPoolEntries.LOOT_POOL_ENTRY_TYPES,
                 GenesisLootFunctions.LOOT_FUNCTION_TYPES,
                 GenesisLootModifiers.GLOBAL_LOOT_MODIFIERS,
                 GenesisFeatures.FEATURES,
@@ -173,12 +167,12 @@ public class AetherGenesis {
         generator.addProvider(event.includeClient(), new GenesisLanguageData(packOutput));
         generator.addProvider(event.includeClient(), new GenesisSoundData(packOutput, fileHelper));
 
-
         // Server Data
         generator.addProvider(event.includeServer(), new GenesisRegistrySets(packOutput, new AetherRegistrySets(packOutput, lookupProvider).getRegistryProvider()));
         generator.addProvider(event.includeServer(), new GenesisRecipeData(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), GenesisLootTableData.create(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new GenesisLootModifierData(packOutput, lookupProvider));
+        generator.addProvider(event.includeServer(), new GenesisAdvancementData(packOutput, lookupProvider, fileHelper));
         generator.addProvider(event.includeServer(), new GenesisDataMapData(packOutput, lookupProvider));
         GenesisBlockTagData blockTags = new GenesisBlockTagData(packOutput, lookupProvider, fileHelper);
         generator.addProvider(event.includeServer(), blockTags);

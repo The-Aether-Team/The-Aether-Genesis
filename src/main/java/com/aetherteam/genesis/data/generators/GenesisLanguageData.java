@@ -152,9 +152,9 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addPerItemAbilityTooltip(GenesisItems.DARK_GUMMY_SWET.get(), 1,"\u00A7aBuff:\u00A7r Fills Hunger");
         this.addPerItemAbilityTooltip(GenesisItems.RAINBOW_STRAWBERRY.get(), 1,"\u00A7aBuff:\u00A7r Increases Mining Speed & Resistance");
 
-        this.addPerItemAbilityTooltip(GenesisItems.PURPLE_PARACHUTE.get(), 1,"\u00A79Ability:\u00A7r Directional Descent");
+        this.addPerItemAbilityTooltip(GenesisItems.PURPLE_PARACHUTE.get(), 1,"\u00A79Ability:\u00A7r Forward Descent");
         this.addPerItemAbilityTooltip(GenesisItems.PURPLE_PARACHUTE.get(), 2,"\u00A73Use:\u00A7r Right-Click");
-        this.addPerItemAbilityTooltip(GenesisItems.GREEN_PARACHUTE.get(), 1,"\u00A79Ability:\u00A7r Forward Descent");
+        this.addPerItemAbilityTooltip(GenesisItems.GREEN_PARACHUTE.get(), 1,"\u00A79Ability:\u00A7r Directional Descent");
         this.addPerItemAbilityTooltip(GenesisItems.GREEN_PARACHUTE.get(), 2,"\u00A73Use:\u00A7r Right-Click");
         this.addPerItemAbilityTooltip(GenesisItems.BLUE_PARACHUTE.get(), 1,"\u00A79Ability:\u00A7r Fast Elevation");
         this.addPerItemAbilityTooltip(GenesisItems.BLUE_PARACHUTE.get(), 2,"\u00A73Use:\u00A7r Right-Click");
@@ -210,6 +210,30 @@ public class GenesisLanguageData extends AetherLanguageProvider {
 
         this.addBlock(GenesisBlocks.COLD_FIRE, "Cold Fire");
 
+        this.addAdvancement("kill_zephyroo", "The Pain");
+        this.addAdvancement("kill_tempest", "Cold Blooded");
+        this.addAdvancement("continuum_orb", "Time Warp");
+        this.addAdvancement("continuum_bomb", "Space Time Dance Party");
+        this.addAdvancement("sentry_guardian", "Clobberin' Time");
+        this.addAdvancement("slider_host_mimic", "Fool Me Once");
+        this.addAdvancement("labyrinth_eye", "Always Watching");
+        this.addAdvancement("mouse_ears", "Legally Distinct");
+        this.addAdvancement("candies", "Trick or Treat");
+        this.addAdvancement("companion", "Man's Best Friend");
+        this.addAdvancement("nex_spirit", "It's Alive! It's Alive!!");
+
+        this.addAdvancementDesc("kill_zephyroo", "Vanquish a great evil");
+        this.addAdvancementDesc("kill_tempest", "Kill a Tempest with its own projectile");
+        this.addAdvancementDesc("continuum_orb", "Use a Continuum Orb");
+        this.addAdvancementDesc("continuum_bomb", "Use a Continuum Bomb");
+        this.addAdvancementDesc("sentry_guardian", "Defeat the guardian boss");
+        this.addAdvancementDesc("slider_host_mimic", "Defeat the mimic boss");
+        this.addAdvancementDesc("labyrinth_eye", "Defeat the cog boss");
+        this.addAdvancementDesc("mouse_ears", "Obtain a Mouse Ear Cap");
+        this.addAdvancementDesc("candies", "Collect all the sweets and candies");
+        this.addAdvancementDesc("companion", "Obtain a companion");
+        this.addAdvancementDesc("nex_spirit", "Be resurrected by a Nex Spirit");
+
         //todo missing subtitles
         this.addSubtitle("block", "portal.hum", "Aether Portal hums");
         this.addSubtitle("block", "portal.trigger", "Aether Portal hum intensifies");
@@ -247,5 +271,90 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addGuiText("labyrinth_eye.title", "the Labyrinth's Eye");
 
         this.addGuiText("boss.message.projectile", "Hmm... Ranged Weapons will not work here");
+
+        this.addLore(GenesisItems.GOLDEN_SWET_BALL, "A gooey orb that is dropped from Golden Swets. It can be used to fertilize soil. Another use is to put it alongside String to make a Lead.");
+        this.addLore(GenesisItems.DARK_SWET_BALL, "A gooey orb that is dropped from Dark Swets. It can be used to fertilize soil. Another use is to put it alongside String to make a Lead.");
+        this.addLore(GenesisItems.CORNSTARCH_BOWL, "A large bowl of ground corn flour found among chests in Bronze and Silver Dungeons. It is a vital ingredient in making Candy Corn.");
+        this.addLore(GenesisItems.CONTINUUM_ORB, "An orange crystalline ball of unstable spacetime, breaking it will yield a random item from an unknown point. Maybe it will provide something useful?");
+        this.addLore(GenesisItems.BLUE_SWET_JELLY, "A morsel of fluted gelatin made by sweetening Blue Swet Gel with Sugar.");
+        this.addLore(GenesisItems.GOLDEN_SWET_JELLY, "A morsel of fluted gelatin made by sweetening Golden Swet Gel with Sugar.");
+        this.addLore(GenesisItems.DARK_SWET_JELLY, "A morsel of fluted gelatin made by sweetening Dark Swet Gel with Sugar.");
+        this.addLore(GenesisItems.DARK_GUMMY_SWET, "A gummy with a minty aftertaste that can be found in chests in Bronze and Silver Dungeons. It fully restores the Player's hunger when eaten. Very useful for boss fights.");
+        this.addLore(GenesisItems.ICESTONE_POPROCKS, "Powdery Icestone rock candies that pop in your mouth!");
+        this.addLore(GenesisItems.COCOATRICE, "A large and solid chocolate, molded into a shape resembling a Cockatrice.");
+        this.addLore(GenesisItems.WRAPPED_CHOCOLATES, "An assortment of delicious chocolates wrapped in bits of Aechor Petal.");
+        this.addLore(GenesisItems.BLUEBERRY_LOLLIPOP, "A hard, round sweet candy on a Stick.");
+        this.addLore(GenesisItems.ORANGE_LOLLIPOP, "A hard, round tangy candy on a Stick.");
+        this.addLore(GenesisItems.STOMPER_POP, "A gooey, round candy made from a Baby Pink Swet. It will fill you up, but was it worth it?");
+        this.addLore(GenesisItems.ORANGE, "A tangy Orange, grown from naturally occurring dwarf Orange Trees. These fill more hunger than Blue Berries, but aren't as common.");
+        this.addLore(GenesisItems.WYNDBERRY, "A blue strawberry-like fruit dropped from Carrion Sprouts when killed. Wyndberries are one of the most filling natural fruits in the Aether, and can be enchanted in an Altar to grant additional effects.");
+        this.addLore(GenesisItems.JELLY_PUMPKIN, "A delicious Orange-flavored gelatin. Does not contain real Pumpkin!");
+        this.addLore(GenesisItems.CANDY_CORN, "A piece of pointy, horn-shaped candy made from Sugar and Cornstarch.");
+        this.addLore(GenesisItems.RAINBOW_STRAWBERRY, "A powerful enchanted fruit, good for hunger and saturation as well as a couple seconds of damage resistance and mining speed.");
+        this.addLore(GenesisItems.BONE_RING, "A ring made of bone and carved with spiky protrusions. It grants the wearer extra attack damage.");
+        this.addLore(GenesisItems.CANDY_RING, "A patterned ring resembling a Candy Cane, which freezes the process of losing hunger.");
+        this.addLore(GenesisItems.SKYROOT_RING, "A wooden ring that gives the rare chance of doubling drops.");
+        this.addLore(GenesisItems.LUCKY_BELL, "A red collar with a bell attached to it. When worn, it makes slain enemies occasionally drop Presents.");
+        this.addLore(GenesisItems.SWETTY_PENDANT, "A pendant with a bauble resembling a Swet attached to it. Moving against vertical surfaces allows the wearer to slide down them without falling.");
+        this.addLore(GenesisItems.DAGGERFROST_LOCKET, "A pendant that makes Snowballs thrown by the wearer inflict damage. This pairs well with the Frostbound Stone.");
+        this.addLore(GenesisItems.CAPE, "A cape that is crafted using soft White Wool. It is able to be dyed any color!");
+        this.addLore(GenesisItems.DEXTERITY_CAPE, "An uncommon cape found in Bronze Dungeons. It makes the wearer's legs stronger, allowing them to run at a faster speed.");
+        this.addLore(GenesisItems.MOUSE_EAR_CAP, "A wearable cap that makes it look like you have big mouse ears! It can be dyed any color.");
+        this.addLore(GenesisItems.FANGRIN_CAPSULE, "A small round capsule that summons a Fangrin to aide you in battle. This shelled creature has no bark, but it has a strong bite.");
+        this.addLore(GenesisItems.KRAISITH_CAPSULE, "A small round capsule that summons a Kraisith to aide you in battle. It will attempt to shoot enchanted needles at a foe from a distance.");
+        this.addLore(GenesisItems.FLEETING_STONE, "A stone covered in glowing green runes. It activates into a wisp that makes your legs stronger, allowing you to walk up blocks instantly.");
+        this.addLore(GenesisItems.SOARING_STONE, "A stone covered in glowing blue runes. It activates into a wisp that makes your legs stronger, allowing you to run at a faster speed.");
+        this.addLore(GenesisItems.ETHEREAL_STONE, "A stone covered in glowing purple runes. It activates into a wisp that makes you completely invisible! Since mobs cannot see you, they cannot attack you. Sneak up on your enemies with it!");
+        this.addLore(GenesisItems.ORB_OF_ARKENZUS, "An orb that projects an avatar of Arkenzus, making you lighter than air and able to descend slowly.");
+        this.addLore(GenesisItems.FROSTPINE_TOTEM, "A totem carved with the visages of a Moa, a Gruegar, and a Zephyr. It grants the wearer the ability to see in the dark, which can be useful for finding ores under islands!");
+        this.addLore(GenesisItems.FROSTBOUND_STONE, "A stone covered in frost. It activates into a sprite that generates up to 16 Snowballs in your inventory. This pairs well with the Daggerfrost Locket.");
+        this.addLore(GenesisItems.DEATH_SEAL, "An ancient seal containing a Nex Spirit. This spirit will save you from death and bring you back to full health, but with a slow cooldown.");
+        this.addLore(GenesisItems.BABY_PINK_SWET, "A cute Swet companion that that makes other Swets become friendly towards you, allowing you to ride them.");
+        this.addLore(GenesisItems.PHOENIX_DART_SHOOTER, "A Dart Shooter that can shoot any type of dart, and sets them on fire!");
+        this.addLore(GenesisItems.CONTINUUM_BOMB, "Harnessing the power of volatile spacetime, you can give yourself a colorful party filled with randomly-sourced rewards!");
+        this.addLore(GenesisItems.CRYSTAL_EXPERIENCE_BOTTLE, "A crystalline bottle that can be used to hold the Player's experience points. When interacting, experience will be taken out of the bottle, except when crouching, then experience will be put into the bottle.");
+        this.addLore(GenesisItems.MUSIC_DISC_AERWHALE, "A music disc that plays \"Aerwhale\" by Aether UK.");
+        this.addLore(GenesisItems.MUSIC_DISC_APPROACHES, "A music disc that plays \"Approaches\" by Emile van Krieken.");
+        this.addLore(GenesisItems.MUSIC_DISC_DEMISE, "A music disc that plays \"Demise\" by Moorziey.");
+        this.addLore(GenesisItems.RECORDING_892, "A music disc that plays an eerie recording.");
+        this.addLore(GenesisItems.BLUE_PARACHUTE, "A parachute that can boost you high into the air. It is crafted with Blue Aerclouds and can only be used once.");
+        this.addLore(GenesisItems.GREEN_PARACHUTE, "A parachute that allows you more freedom of movement horizontally during descent. It is crafted with Green Aerclouds and can only be used once.");
+        this.addLore(GenesisItems.PURPLE_PARACHUTE, "A parachute that propels you forward at a high speed. It is crafted with Purple Aerclouds and can only be used once.");
+        this.addLore(GenesisItems.GUARDIAN_KEY, "A blueish pewter key that is dropped from the Sentry Guardian after being defeated. You can use it to claim the treasure you earned!");
+        this.addLore(GenesisItems.HOST_KEY, "A crimson-colored key that is dropped from the Slider Host Mimic after being defeated. You can use it to claim the treasure you earned!");
+        this.addLore(GenesisItems.COG_KEY, "A dark key with a matte look. It is dropped from the Labyrinth Eye after being defeated. You can use it to claim the treasure you earned!");
+        this.addLore(GenesisBlocks.ENCHANTED_GRASS_BLOCK, "A Grass Block that has been enchanted to allow for increasing harvest rates of Blue Berries.");
+        this.addLore(GenesisBlocks.GREEN_AERCLOUD, "A pastel green cloud found across the skies of the Aether. These can bounce you horizontally in any random direction, so be careful to not fly into them with your Moa!");
+        this.addLore(GenesisBlocks.PURPLE_AERCLOUD, "A light purple cloud found at low elevations, emitting directional particles of air. Landing in a Purple Aercloud will launch you in the same direction as the particles, which can be used for momentum during flight.");
+        this.addLore(GenesisBlocks.STORM_AERCLOUD, "A dark, dim cloud found near the bottom of the Aether. Some say this is where Tempests originate from at nightfall.");
+        this.addLore(GenesisBlocks.CONTINUUM_ORE, "A rare ore found in the Aether. It will drop a Continuum Orb when mined with a Gravitite Pickaxe.");
+        this.addLore(GenesisBlocks.BLUE_SKYROOT_LEAVES, "These leaves generate with Blue Skyroot Trees. They can drop Blue Skyroot Saplings and Skyroot Sticks when decaying.");
+        this.addLore(GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES, "These leaves generate with Dark Blue Skyroot Trees. They can drop Dark Blue Skyroot Saplings and Skyroot Sticks when decaying.");
+        this.addLore(GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES, "Purple Crystal Leaves that are home to White Apples.");
+        this.addLore(GenesisBlocks.PURPLE_CRYSTAL_LEAVES, "Leaves that come from Purple Crystal Trees, found amongst wooded areas. Sometimes they bear fruit that can cure Inebriation.");
+        this.addLore(GenesisBlocks.ORANGE_TREE, "A dwarf Orange Tree, found naturally across the islands of the Aether. It only grows to be as tall as a Player!");
+        this.addLore(GenesisBlocks.HOLYSTONE_HEADSTONE, "A decorative variant of Holystone Bricks that can be oriented directionally. The top has rounded carvings resembling a Valkyrie.");
+        this.addLore(GenesisBlocks.HOLYSTONE_KEYSTONE, "A decorative variant of Holystone Bricks that can be oriented directionally. Useful for bases or arches in your builds.");
+        this.addLore(GenesisBlocks.HOLYSTONE_HIGHLIGHT, "A decorative variant of Holystone Bricks that can be oriented directionally. This block can work for adding variation and accenting among other bricks.");
+        this.addLore(GenesisBlocks.BLUE_SKYROOT_SAPLING, "These small blue saplings will grow into Skyroot Trees. They can be grown faster with Bone Meal.");
+        this.addLore(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING, "These dark blue saplings will grow into a towering type of Skyroot Tree. They can be grown faster with Bone Meal.");
+        this.addLore(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING, "These spindly saplings will grow into tall Crystal Trees with purple leaves. They can be grown faster with Bone Meal.");
+        this.addLore(GenesisBlocks.SKYROOT_LOG_WALL, "Crafted from Skyroot Logs. Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
+        this.addLore(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL, "Crafted from Stripped Skyroot Logs. Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
+        this.addLore(GenesisBlocks.SKYROOT_WOOD_WALL, "Crafted from Skyroot Wood. Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
+        this.addLore(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL, "Crafted from Stripped Skyroot Wood. Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
+        this.addLore(GenesisBlocks.SKYROOT_CRAFTING_TABLE, "A workbench made of Skyroot, capable of crafting anything you might need.");
+        this.addLore(GenesisBlocks.HOLYSTONE_FURNACE, "A furnace constructed from Holystone. This can be used to cook both ores and food while surviving in the Aether.");
+        this.addLore(GenesisBlocks.SKYROOT_CHEST, "A Skyroot container that can be used to store all the goods you collect on your adventures.");
+        this.addLore(GenesisBlocks.SKYROOT_LADDER, "A Skyroot Ladder. Handy for vertical travel.");
+        this.addLore(GenesisBlocks.CARVED_PILLAR, "The main part of pillars found in the Bronze Dungeon; they pair well with Carved Stone for building.");
+        this.addLore(GenesisBlocks.CARVED_PILLAR_TOP, "The top part of the pillars found in the Bronze Dungeon; their carvings look good and pair well with Carved Stone for building.");
+        this.addLore(GenesisBlocks.SKYROOT_CHEST_MIMIC, "It may look like a normal Skyroot Chest, but it really isn't. As soon as you right-click on it, a Chest Mimic will pop out! These appear in Bronze and Silver Dungeons.");
+        this.addLore(GenesisBlocks.DIVINE_CARVED_STONE, "Carved Stone that has blue grooves cut between the bricks. A fancy block to decorate with alongside its regular counterpart!");
+        this.addLore(GenesisBlocks.DIVINE_SENTRY_STONE, "Sentry Stone that has blue grooves cut between the bricks. A fancy block to decorate with alongside its regular counterpart!");
+        this.addLore(GenesisBlocks.DIVINE_CARVED_WALL, "Crafted from Mossy Divine Carved Stone. Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
+        this.addLore(GenesisBlocks.DIVINE_CARVED_STAIRS, "Crafted from Divine Carved Stone. Stairs are useful for adding verticality to builds and are often used for decoration too!");
+        this.addLore(GenesisBlocks.DIVINE_CARVED_SLAB, "Crafted from Divine Carved Stone. Slabs are half blocks, versatile for decoration and smooth slopes. Try adding some to a building's roofing!");
+        this.addLore(GenesisBlocks.BLOOD_MOSS_HOLYSTONE, "An unbreakable stone found at the edges of labyrinths, covered in an off-putting red moss.");
     }
 }
