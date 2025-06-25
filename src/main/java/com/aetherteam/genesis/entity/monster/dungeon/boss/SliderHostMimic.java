@@ -629,7 +629,9 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
             if (this.sliderHostMimic.getEyeProjectiles().size() >= 4) {
                 this.sliderHostMimic.getEyeProjectiles().removeFirst().discard();
             }
-            this.sliderHostMimic.spawnHostEye();
+            if (this.sliderHostMimic.random.nextInt(3) > 0) {
+                this.sliderHostMimic.spawnHostEye();
+            }
         }
 
         @Override
