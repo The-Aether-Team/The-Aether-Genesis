@@ -4,7 +4,6 @@ import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.entity.AetherBossMob;
 import com.aetherteam.aether.entity.AetherEntityTypes;
-import com.aetherteam.aether.entity.ai.goal.ContinuousMeleeAttackGoal;
 import com.aetherteam.aether.entity.ai.goal.MostDamageTargetGoal;
 import com.aetherteam.aether.entity.monster.dungeon.Sentry;
 import com.aetherteam.aether.entity.monster.dungeon.boss.BossNameGenerator;
@@ -53,6 +52,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -466,6 +466,11 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
+    protected AABB getAttackBoundingBox() {
+        return super.getAttackBoundingBox().inflate(-0.35, 0.0, -0.35);
+    }
+
+    @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         this.addBossSaveData(tag, this.registryAccess());
@@ -500,7 +505,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         private final SentryGuardian sentryGuardian;
 
         public AttackPlayerGoal(SentryGuardian sentryGuardian) {
-            super(sentryGuardian, 0.85, false);
+            super(sentryGuardian, 1.0, false);
             this.sentryGuardian = sentryGuardian;
         }
 
