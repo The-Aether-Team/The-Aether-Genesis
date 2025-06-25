@@ -274,6 +274,11 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         if (this.getDungeon() != null) {
             this.setPos(this.getDungeon().originCoordinates());
             this.openRoom();
+            for (Entity target : this.level().getEntities(this, this.getDungeon().roomBounds())) {
+                if (target instanceof Sentry sentry) {
+                    sentry.kill();
+                }
+            }
         }
         AetherEventDispatch.onBossFightStop(this, this.getDungeon());
     }
@@ -286,6 +291,11 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
             if (this.getDungeon() != null) {
                 this.getDungeon().grantAdvancements(source);
                 this.tearDownRoom();
+                for (Entity target : this.level().getEntities(this, this.getDungeon().roomBounds())) {
+                    if (target instanceof Sentry sentry) {
+                        sentry.kill();
+                    }
+                }
             }
         }
         super.die(source);
