@@ -4,9 +4,12 @@ import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.entity.monster.dungeon.boss.SliderHostMimic;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
@@ -14,6 +17,7 @@ import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
@@ -226,6 +230,23 @@ public class HostEyeProjectile extends Projectile {
     }
 
     @Override
+    public void remove(RemovalReason reason) {
+        super.remove(reason);
+        if (this.level() instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(
+                new BlockParticleOption(ParticleTypes.BLOCK, Blocks.OBSIDIAN.defaultBlockState()),
+                this.getX(),
+                this.getY(),
+                this.getZ(),
+                25,
+                this.getBbWidth() / 4.0F,
+                this.getBbHeight() / 4.0F,
+                this.getBbWidth() / 4.0F,
+                0.05);
+        }
+    }
+
+    @Override
     public SoundSource getSoundSource() {
         return SoundSource.HOSTILE;
     }
@@ -237,7 +258,7 @@ public class HostEyeProjectile extends Projectile {
 
     @Override
     public boolean isPickable() {
-        return true;
+        return false;
     }
 
     @Override

@@ -21,7 +21,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 
-public class GenesisBronzeBossRoom extends BronzeDungeonPiece {
+public class GenesisBronzeBossRoom extends BronzeDungeonPiece { //todo why is the bounds checking not working for this why is it not being covered in ground
 
     public GenesisBronzeBossRoom(StructureTemplateManager manager, String name, BlockPos pos, Rotation rotation, Holder<StructureProcessorList> processors) {
         super(GenesisStructurePieceTypes.BRONZE_BOSS_ROOM.get(), manager, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "bronze_dungeon/" + name), AetherTemplateStructurePiece.makeSettingsWithPivot(makeSettings(), manager, BronzeDungeonPiece.makeLocation(name), rotation), pos, processors);

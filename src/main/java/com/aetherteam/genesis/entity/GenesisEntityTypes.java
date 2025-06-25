@@ -50,11 +50,11 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.of(SkyrootMimic::new, MobCategory.MONSTER).sized(1.0F, 2.0F).clientTrackingRange(8).build("skyroot_mimic"));
 
     public static final  DeferredHolder<EntityType<?>, EntityType<SentryGuardian>> SENTRY_GUARDIAN = ENTITY_TYPES.register("sentry_guardian",
-            () -> EntityType.Builder.of(SentryGuardian::new, MobCategory.MONSTER).sized(2.25F, 2.5F).fireImmune().clientTrackingRange(10).build("sentry_guardian"));
+            () -> EntityType.Builder.of(SentryGuardian::new, MobCategory.MONSTER).sized(1.85F, 3.0F).fireImmune().clientTrackingRange(10).build("sentry_guardian"));
     public static final  DeferredHolder<EntityType<?>, EntityType<SliderHostMimic>> SLIDER_HOST_MIMIC = ENTITY_TYPES.register("slider_host_mimic",
             () -> EntityType.Builder.of(SliderHostMimic::new, MobCategory.MONSTER).sized(2.1F, 2.5F).clientTrackingRange(10).build("slider_host_mimic"));
     public static final  DeferredHolder<EntityType<?>, EntityType<LabyrinthEye>> LABYRINTH_EYE = ENTITY_TYPES.register("labyrinth_eye",
-            () -> EntityType.Builder.of(LabyrinthEye::new, MobCategory.MONSTER).sized(2.25F, 3.0F).clientTrackingRange(10).build("labyrinth_eye"));
+            () -> EntityType.Builder.of(LabyrinthEye::new, MobCategory.MONSTER).sized(2.0F, 3.0F).clientTrackingRange(10).build("labyrinth_eye"));
 
     // Miscellaneous
     public static final  DeferredHolder<EntityType<?>, EntityType<BlueParachute>> BLUE_PARACHUTE = ENTITY_TYPES.register("blue_parachute",
@@ -104,7 +104,7 @@ public class GenesisEntityTypes {
     public static final  DeferredHolder<EntityType<?>, EntityType<HostEyeProjectile>> HOST_EYE = ENTITY_TYPES.register("host_eye",
             () -> EntityType.Builder.<HostEyeProjectile>of(HostEyeProjectile::new, MobCategory.MISC).sized(0.8F, 0.8F).clientTrackingRange(10).fireImmune().build("host_eye"));
     public static final  DeferredHolder<EntityType<?>, EntityType<CogProjectile>> FLYING_COG = ENTITY_TYPES.register("flying_cog",
-            () -> EntityType.Builder.<CogProjectile>of(CogProjectile::new, MobCategory.MISC).clientTrackingRange(4).updateInterval(10).sized(1.0F, 1.0F).fireImmune().build("flying_Cog"));
+            () -> EntityType.Builder.<CogProjectile>of(CogProjectile::new, MobCategory.MISC).clientTrackingRange(4).updateInterval(10).sized(0.5F, 0.5F).fireImmune().build("flying_Cog"));
 
     public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
         event.register(GenesisEntityTypes.CARRION_SPROUT.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, CarrionSprout::checkCarrionSproutSpawnRules, RegisterSpawnPlacementsEvent.Operation.OR);

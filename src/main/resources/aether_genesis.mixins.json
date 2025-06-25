@@ -13,8 +13,10 @@
     "common.SliderMixin",
     "common.StructurePieceMixin",
     "common.SwetMixin",
+    "common.accessor.BaseSpawnerAccessor",
     "common.accessor.LootPoolEntryContainerAccessor",
     "common.accessor.RegistrySetBuilderAccessor",
+    "common.accessor.SpawnerBlockEntityAccessor",
     "common.accessor.WallBlockAccessor"
   ],
   "client": [

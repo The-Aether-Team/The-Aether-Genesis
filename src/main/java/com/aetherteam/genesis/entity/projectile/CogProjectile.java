@@ -169,8 +169,13 @@ public class CogProjectile extends Projectile {
     }
 
     @Override
+    public boolean isAttackable() {
+        return this.ticksInAir > 40;
+    }
+
+    @Override
     public boolean isPickable() {
-        return true;
+        return this.ticksInAir > 40;
     }
 
     @Override

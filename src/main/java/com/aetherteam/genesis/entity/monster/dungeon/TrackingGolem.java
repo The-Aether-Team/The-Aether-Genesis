@@ -61,7 +61,7 @@ public class TrackingGolem extends Monster {
 				if (!this.getSeenEnemy()) {
 					this.setSeenEnemy(true);
 				}
-				int duration = 250;
+				int duration = 25;
 				if (!this.getTarget().hasEffect(MobEffects.BLINDNESS)
 						|| this.getTarget().getEffect(MobEffects.BLINDNESS).getAmplifier() < this.getTarget().getEffect(MobEffects.BLINDNESS).getAmplifier()
 						|| this.getTarget().getEffect(MobEffects.BLINDNESS).endsWithin(duration - 1)) {
@@ -70,7 +70,7 @@ public class TrackingGolem extends Monster {
 							PacketDistributor.sendToPlayer(serverPlayer, new TrackingGolemWarningPacket(serverPlayer.getId()));
 						}
 					}
-					this.getTarget().addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 350), this);
+					this.getTarget().addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 30), this);
 				}
 			} else {
 				if (this.getSeenEnemy()) {

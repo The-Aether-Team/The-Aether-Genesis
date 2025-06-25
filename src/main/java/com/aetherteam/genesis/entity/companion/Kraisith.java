@@ -1,6 +1,7 @@
 package com.aetherteam.genesis.entity.companion;
 
 import com.aetherteam.aether.client.AetherSoundEvents;
+import com.aetherteam.genesis.entity.ai.goal.AvoidEnemyGoal;
 import com.aetherteam.genesis.entity.ai.goal.CompanionHurtByTargetGoal;
 import com.aetherteam.genesis.entity.ai.goal.CompanionHurtTargetGoal;
 import com.aetherteam.genesis.entity.monster.dungeon.boss.SliderHostMimic;
@@ -36,7 +37,7 @@ public class Kraisith extends CompanionMob implements Combative, RangedAttackMob
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new AvoidEnemyGoal(this));
+        this.goalSelector.addGoal(0, new AvoidEnemyGoal(this, 1.2));
         this.goalSelector.addGoal(1, new RangedAttackGoal(this, 1.0, 60, 10.0F));
         this.targetSelector.addGoal(1, new CompanionHurtByTargetGoal<>(this));
         this.targetSelector.addGoal(2, new CompanionHurtTargetGoal<>(this));
@@ -80,83 +81,4 @@ public class Kraisith extends CompanionMob implements Combative, RangedAttackMob
     }
 
     //todo regeneration
-
-    public static class AvoidEnemyGoal extends Goal {
-        private final Kraisith kraisith;
-        protected double posX;
-        protected double posY;
-        protected double posZ;
-
-        public AvoidEnemyGoal(Kraisith kraisith) {
-            super();
-            this.kraisith = kraisith;
-            this.setFlags(EnumSet.of(Goal.Flag.MOVE));
-        }
-
-        @Override
-        public boolean canUse() {
-            LivingEntity target = this.kraisith.getTarget();
-            if (target != null && target.distanceToSqr(this.kraisith) < 16) {
-                Vec3 vec3 = this.findRandomPosition(target);
-                if (vec3 != null) {
-                    if (target.distanceToSqr(vec3.x, vec3.y, vec3.z) < target.distanceToSqr(this.kraisith)) {
-                        return false;
-                    } else {
-                        this.posX = vec3.x;
-                        this.posY = vec3.y;
-                        this.posZ = vec3.z;
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-
-        protected Vec3 findRandomPosition(LivingEntity entity) {
-            return DefaultRandomPos.getPosAway(this.kraisith, 6, 2, entity.position());
-        }
-
-        @Override
-        public boolean canContinueToUse() {
-            return !this.kraisith.getBoundingBox().contains(new Vec3(this.posX, this.posY, this.posZ))
-                    && !this.kraisith.getNavigation().isDone()
-                    && !this.kraisith.getNavigation().isStuck()
-                    && this.kraisith.getTarget() != null;
-        }
-
-        @Override
-        public void start() {
-            this.kraisith.getNavigation().moveTo(this.posX, this.posY, this.posZ, 1.2);
-        }
-
-        @Override
-        public void stop() {
-            this.kraisith.getNavigation().stop();
-        }
-
-        @Override
-        public void tick() {
-            super.tick();
-            LivingEntity avoid = null;
-            if (this.kraisith.getTarget() != null && this.kraisith.getTarget().distanceToSqr(this.kraisith) < 16) {
-                avoid = this.kraisith.getTarget();
-            }
-            if (avoid != null) {
-                Vec3 vec3 = this.findRandomPosition(avoid);
-                if (vec3 != null) {
-                    if (!(avoid.distanceToSqr(vec3.x, vec3.y, vec3.z) < avoid.distanceToSqr(this.kraisith))) {
-                        this.posX = vec3.x;
-                        this.posY = vec3.y;
-                        this.posZ = vec3.z;
-                        this.kraisith.getNavigation().moveTo(this.posX, this.posY, this.posZ, 1.2);
-                    }
-                }
-            }
-        }
-
-        @Override
-        public boolean requiresUpdateEveryTick() {
-            return true;
-        }
-    }
 }

@@ -4,7 +4,6 @@ import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.entity.AetherBossMob;
 import com.aetherteam.aether.entity.AetherEntityTypes;
-import com.aetherteam.aether.entity.ai.goal.ContinuousMeleeAttackGoal;
 import com.aetherteam.aether.entity.ai.goal.MostDamageTargetGoal;
 import com.aetherteam.aether.entity.monster.dungeon.Sentry;
 import com.aetherteam.aether.entity.monster.dungeon.boss.BossNameGenerator;
@@ -39,6 +38,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -52,6 +52,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.entity.IEntityWithComplexSpawn;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -103,8 +104,10 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
 
     public static AttributeSupplier.Builder createMobAttributes() {
         return Monster.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 350.0)
-                .add(Attributes.MOVEMENT_SPEED, 1.0)
+                .add(Attributes.MAX_HEALTH, 300.0)
+                .add(Attributes.ATTACK_DAMAGE, 5.0)
+                .add(Attributes.ATTACK_KNOCKBACK, 2.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.35)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.5)
                 .add(Attributes.FOLLOW_RANGE, 64.0)
                 .add(Attributes.STEP_HEIGHT, 1.0);
@@ -203,23 +206,10 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     public boolean doHurtTarget(Entity entity) {
         this.attackAnimationTick = 10;
         this.level().broadcastEntityEvent(this, (byte) 4);
-        boolean flag = entity.hurt(this.damageSources().mobAttack(this), 5 + this.random.nextInt(3));
-        if (flag) {
-            double d2;
-            if (entity instanceof LivingEntity living) {
-                d2 = living.getAttributeValue(Attributes.KNOCKBACK_RESISTANCE);
-            } else {
-                d2 = 0.0D;
-            }
-            double d0 = d2;
-            double d1 = Math.max(0.0, 1.0 - d0);
-            entity.setDeltaMovement(entity.getDeltaMovement().add(0.0, 0.4 * d1, 0.0));
-            // TODO: [PORTING] FIGURE OUT IF THIS IS STILL NEEDED
-            //this.doEnchantDamageEffects(this, entity);
-        }
-        return flag;
+        return super.doHurtTarget(entity);
     }
 
+    @Override
     public boolean hurt(DamageSource source, float amount) {
         Optional<LivingEntity> damageResult = this.canDamageSentryGuardian(source);
         if (damageResult.isPresent()) {
@@ -284,6 +274,11 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         if (this.getDungeon() != null) {
             this.setPos(this.getDungeon().originCoordinates());
             this.openRoom();
+            for (Entity target : this.level().getEntities(this, this.getDungeon().roomBounds())) {
+                if (target instanceof Sentry sentry) {
+                    sentry.kill();
+                }
+            }
         }
         AetherEventDispatch.onBossFightStop(this, this.getDungeon());
     }
@@ -296,6 +291,11 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
             if (this.getDungeon() != null) {
                 this.getDungeon().grantAdvancements(source);
                 this.tearDownRoom();
+                for (Entity target : this.level().getEntities(this, this.getDungeon().roomBounds())) {
+                    if (target instanceof Sentry sentry) {
+                        sentry.kill();
+                    }
+                }
             }
         }
         super.die(source);
@@ -476,6 +476,11 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
+    protected AABB getAttackBoundingBox() {
+        return super.getAttackBoundingBox().inflate(-0.35, 0.0, -0.35);
+    }
+
+    @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
         this.addBossSaveData(tag, this.registryAccess());
@@ -506,7 +511,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         }
     }
 
-    public static class AttackPlayerGoal extends ContinuousMeleeAttackGoal {
+    public static class AttackPlayerGoal extends MeleeAttackGoal {
         private final SentryGuardian sentryGuardian;
 
         public AttackPlayerGoal(SentryGuardian sentryGuardian) {

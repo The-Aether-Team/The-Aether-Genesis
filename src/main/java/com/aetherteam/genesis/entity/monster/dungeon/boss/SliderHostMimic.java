@@ -97,7 +97,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
 
     public static AttributeSupplier.Builder createMobAttributes() {
         return Mob.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 400.0)
+                .add(Attributes.MAX_HEALTH, 300.0)
                 .add(Attributes.MOVEMENT_SPEED, 0.25)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.75)
                 .add(Attributes.FOLLOW_RANGE, 64.0)
@@ -158,7 +158,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
             if (!this.level().isClientSide() && source.getEntity() instanceof LivingEntity living) {
                 this.mostDamageTargetGoal.addAggro(living, amount); // AI goal for being hurt.
                 if (this.spawnEyeCooldown <= 0 && this.getEyeProjectiles().size() == 4) {
-                    this.getEyeProjectiles().remove(0).discard();
+                    this.getEyeProjectiles().removeFirst().discard();
                     this.spawnEyeCooldown = 200;
                 }
             }
@@ -170,7 +170,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
                 if (!this.level().isClientSide() && source.getEntity() instanceof LivingEntity living) {
                     this.mostDamageTargetGoal.addAggro(living, amount); // AI goal for being hurt.
                     if (this.spawnEyeCooldown <= 0 && this.getEyeProjectiles().size() == 4) {
-                        this.getEyeProjectiles().remove(0).discard();
+                        this.getEyeProjectiles().removeFirst().discard();
                         this.spawnEyeCooldown = 200;
                     }
                 }
@@ -226,6 +226,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     }
 
     private void start() {
+        this.refreshDimensions();
         if (this.getAwakenSound() != null) {
             this.playSound(this.getAwakenSound(), 2.5F, 1.0F / (this.getRandom().nextFloat() * 0.2F + 0.9F));
         }
@@ -239,6 +240,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     }
 
     public void reset() {
+        this.refreshDimensions();
         this.setDeltaMovement(Vec3.ZERO);
         this.setAwake(false);
         this.setBossFight(false);
@@ -271,6 +273,14 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
             double z = this.position().z() + (double) (this.getRandom().nextFloat() - this.getRandom().nextFloat()) * 1.5;
             this.level().addParticle(ParticleTypes.POOF, x, y, z, 0.0, 0.0, 0.0);
         }
+    }
+
+    private void spawnHostEye() {
+        HostEyeProjectile hostEyeProjectile = new HostEyeProjectile(this.level(), this, this.getDirection());
+        this.level().addFreshEntity(hostEyeProjectile);
+        this.playSound(this.getShootSound(), 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.2F + 0.9F));
+        hostEyeProjectile.setPos(this.position().add(0.0F, (this.getBbHeight() / 2.0F) + 0.2F, 0.0F));
+        this.eyeProjectiles.add(hostEyeProjectile);
     }
 
     @Override
@@ -503,14 +513,10 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     }
 
     @Override
-    public boolean isNoGravity() {
-        return !this.isAwake();
-    }
-
-    @Override
     public boolean shouldDiscardFriction() {
         return !this.isAwake();
     }
+
     @Override
     protected boolean isAffectedByFluids() {
         return !this.isAwake();
@@ -613,13 +619,21 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
 
         @Override
         public void start() {
-            this.sliderHostMimic.playSound(this.sliderHostMimic.getScareSound(), 2.5F, 1.0F / (this.sliderHostMimic.getRandom().nextFloat() * 0.2F + 0.9F));
+//            if (this.sliderHostMimic.tickCount % 100 == 0) { //todo this sound needs to be changed and shortened
+//                this.sliderHostMimic.playSound(this.sliderHostMimic.getScareSound(), 2.5F, 1.0F / (this.sliderHostMimic.getRandom().nextFloat() * 0.2F + 0.9F));
+//            }
             this.sliderHostMimic.getNavigation().moveTo(this.posX, this.posY, this.posZ, 1.5);
         }
 
         @Override
         public void stop() {
             this.sliderHostMimic.getNavigation().stop();
+            if (this.sliderHostMimic.getEyeProjectiles().size() >= 4) {
+                this.sliderHostMimic.getEyeProjectiles().removeFirst().discard();
+            }
+            if (this.sliderHostMimic.random.nextInt(3) > 0) {
+                this.sliderHostMimic.spawnHostEye();
+            }
         }
 
         @Override
@@ -707,7 +721,6 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
 
         @Override
         public void start() {
-            this.sliderHostMimic.playSound(this.sliderHostMimic.getScareSound(), 2.5F, 1.0F / (this.sliderHostMimic.getRandom().nextFloat() * 0.2F + 0.9F));
             this.sliderHostMimic.getMoveControl().setWantedPosition(this.posX, this.posY, this.posZ, 1.5);
             this.sliderHostMimic.getNavigation().moveTo(this.posX, this.posY, this.posZ, 1.5);
         }
@@ -749,16 +762,17 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
             if (livingentity != null) {
                 if (this.sliderHostMimic.eyeProjectiles.size() < 4) {
                     if (this.attackTime <= 0) {
-                        HostEyeProjectile hostEyeProjectile = new HostEyeProjectile(this.sliderHostMimic.level(), this.sliderHostMimic, this.sliderHostMimic.getDirection());
-                        this.sliderHostMimic.level().addFreshEntity(hostEyeProjectile);
-                        this.sliderHostMimic.playSound(this.sliderHostMimic.getShootSound(), 1.0F, 1.0F / (this.sliderHostMimic.getRandom().nextFloat() * 0.2F + 0.9F));
-                        hostEyeProjectile.setPos(this.sliderHostMimic.position().add(0.0F, (this.sliderHostMimic.getBbHeight() / 2.0F) + 0.2F, 0.0F));
-                        this.sliderHostMimic.eyeProjectiles.add(hostEyeProjectile);
+                        this.sliderHostMimic.spawnHostEye();
                         this.attackTime = 30;
                     }
                 }
             }
             --this.attackTime;
+        }
+
+        @Override
+        public boolean requiresUpdateEveryTick() {
+            return true;
         }
     }
 

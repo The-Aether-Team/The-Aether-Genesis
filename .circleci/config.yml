@@ -9,7 +9,7 @@ orbs:
 jobs:
   publish:
     machine:
-      image: ubuntu-2204:2022.07.1
+      image: ubuntu-2204:2024.08.1
     resource_class: large
     environment:
       _JAVA_OPTIONS: -Xmx3200m
@@ -25,7 +25,7 @@ commands:
     steps:
       - checkout
       - gradle/with_cache:
-          cache_key: 'v9'
+          cache_key: 'v11'
           steps:
             - run:
                 name: chmod permissions
@@ -40,7 +40,7 @@ workflows:
       - path-filtering/filter:
           name: filter
           mapping: |
-            src/.* allow-deploy-and-discord-publish true
+            src/.* allow-deploy-and-discord-publish false
           base-revision: << pipeline.git.branch >>
           config-path: .circleci/continue_config.yml
   publish:
