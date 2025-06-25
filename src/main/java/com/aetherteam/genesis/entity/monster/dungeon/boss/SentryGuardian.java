@@ -39,6 +39,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
@@ -487,7 +488,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
         }
     }
 
-    public static class AttackPlayerGoal extends ContinuousMeleeAttackGoal {
+    public static class AttackPlayerGoal extends MeleeAttackGoal {
         private final SentryGuardian sentryGuardian;
 
         public AttackPlayerGoal(SentryGuardian sentryGuardian) {

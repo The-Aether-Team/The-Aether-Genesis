@@ -226,6 +226,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     }
 
     private void start() {
+        this.refreshDimensions();
         if (this.getAwakenSound() != null) {
             this.playSound(this.getAwakenSound(), 2.5F, 1.0F / (this.getRandom().nextFloat() * 0.2F + 0.9F));
         }
@@ -239,6 +240,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
     }
 
     public void reset() {
+        this.refreshDimensions();
         this.setDeltaMovement(Vec3.ZERO);
         this.setAwake(false);
         this.setBossFight(false);
