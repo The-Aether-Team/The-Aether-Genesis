@@ -1,5 +1,5 @@
 {
-  "parent": "aether:enchanted_gravitite",
+  "parent": "aether:enter_aether",
   "criteria": {
     "continuum_orb": {
       "trigger": "aether_genesis:continuum_orb"
@@ -9,6 +9,7 @@
     "description": {
       "translate": "advancement.aether_genesis.continuum_orb.desc"
     },
+    "hidden": true,
     "icon": {
       "count": 1,
       "id": "aether_genesis:continuum_orb"

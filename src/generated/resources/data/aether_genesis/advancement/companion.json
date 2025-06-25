@@ -1,5 +1,5 @@
 {
-  "parent": "aether:bronze_dungeon",
+  "parent": "aether:obtain_petal",
   "criteria": {
     "companion": {
       "conditions": {

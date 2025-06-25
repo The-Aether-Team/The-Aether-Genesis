@@ -1,5 +1,5 @@
 {
-  "parent": "aether:enchanted_gravitite",
+  "parent": "aether_genesis:sentry_guardian",
   "criteria": {
     "kill_labyrinth_eye": {
       "conditions": {

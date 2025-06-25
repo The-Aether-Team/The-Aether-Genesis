@@ -1,5 +1,5 @@
 {
-  "parent": "aether:bronze_dungeon",
+  "parent": "aether_genesis:labyrinth_eye",
   "criteria": {
     "mouse_ears": {
       "conditions": {

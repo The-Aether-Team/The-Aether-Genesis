@@ -1,5 +1,5 @@
 {
-  "parent": "aether:bronze_dungeon",
+  "parent": "aether_genesis:labyrinth_eye",
   "criteria": {
     "blue_gummy_swet": {
       "conditions": {

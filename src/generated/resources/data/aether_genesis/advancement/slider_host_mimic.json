@@ -1,5 +1,5 @@
 {
-  "parent": "aether:enchanted_gravitite",
+  "parent": "aether:bronze_dungeon",
   "criteria": {
     "kill_slider_host_mimic": {
       "conditions": {

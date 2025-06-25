@@ -1,5 +1,5 @@
 {
-  "parent": "aether:enchanted_gravitite",
+  "parent": "aether_genesis:slider_host_mimic",
   "criteria": {
     "kill_sentry_guardian": {
       "conditions": {
