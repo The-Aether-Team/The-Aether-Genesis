@@ -331,7 +331,7 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addLore(GenesisBlocks.BLUE_SKYROOT_LEAVES, "These leaves generate with Blue Skyroot Trees. They can drop Blue Skyroot Saplings and Skyroot Sticks when decaying.");
         this.addLore(GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES, "These leaves generate with Dark Blue Skyroot Trees. They can drop Dark Blue Skyroot Saplings and Skyroot Sticks when decaying.");
         this.addLore(GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES, "Purple Crystal Leaves that are home to White Apples.");
-        this.addLore(GenesisBlocks.PURPLE_CRYSTAL_LEAVES, "Leaves that come from Purple Crystal Trees, found amongst wooded areas. Sometimes they bear fruit on them that can cure Inebriation.");
+        this.addLore(GenesisBlocks.PURPLE_CRYSTAL_LEAVES, "Leaves that come from Purple Crystal Trees, found amongst wooded areas. Sometimes they bear fruit that can cure Inebriation.");
         this.addLore(GenesisBlocks.ORANGE_TREE, "A dwarf Orange Tree, found naturally across the islands of the Aether. It only grows to be as tall as a Player!");
         this.addLore(GenesisBlocks.HOLYSTONE_HEADSTONE, "A decorative variant of Holystone Bricks that can be oriented directionally. The top has rounded carvings resembling a Valkyrie.");
         this.addLore(GenesisBlocks.HOLYSTONE_KEYSTONE, "A decorative variant of Holystone Bricks that can be oriented directionally. Useful for bases or arches in your builds.");
