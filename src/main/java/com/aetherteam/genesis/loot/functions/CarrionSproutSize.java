@@ -2,7 +2,6 @@ package com.aetherteam.genesis.loot.functions;
 
 import com.aetherteam.genesis.entity.passive.CarrionSprout;
 import com.aetherteam.genesis.item.GenesisItems;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.Mth;

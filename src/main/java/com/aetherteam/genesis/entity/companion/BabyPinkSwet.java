@@ -3,7 +3,6 @@ package com.aetherteam.genesis.entity.companion;
 import com.aetherteam.aether.entity.monster.Swet;
 import com.aetherteam.genesis.item.GenesisItems;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;

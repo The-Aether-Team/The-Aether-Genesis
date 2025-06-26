@@ -4,7 +4,6 @@ import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.EquipmentUtil;
 import com.aetherteam.genesis.GenesisTags;
 import com.aetherteam.genesis.item.GenesisItems;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;

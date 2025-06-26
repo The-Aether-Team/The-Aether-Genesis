@@ -4,19 +4,18 @@ import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.genesis.entity.ai.goal.AvoidEnemyGoal;
 import com.aetherteam.genesis.entity.ai.goal.CompanionHurtByTargetGoal;
 import com.aetherteam.genesis.entity.ai.goal.CompanionHurtTargetGoal;
-import com.aetherteam.genesis.entity.monster.dungeon.boss.SliderHostMimic;
 import com.aetherteam.genesis.entity.projectile.EnchantedNeedle;
 import com.aetherteam.genesis.item.GenesisItems;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.RangedAttackGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
-import net.minecraft.world.entity.ai.targeting.TargetingConditions;
-import net.minecraft.world.entity.ai.util.DefaultRandomPos;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.monster.Creeper;
@@ -25,10 +24,6 @@ import net.minecraft.world.entity.monster.RangedAttackMob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
-
-import java.util.EnumSet;
-import java.util.UUID;
 
 public class Kraisith extends CompanionMob implements Combative, RangedAttackMob {
     public Kraisith(EntityType<Kraisith> entityType, Level level) {

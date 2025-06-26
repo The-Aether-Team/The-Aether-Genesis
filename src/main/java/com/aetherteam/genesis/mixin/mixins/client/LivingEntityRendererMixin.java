@@ -1,8 +1,6 @@
 package com.aetherteam.genesis.mixin.mixins.client;
 
 import com.aetherteam.aether.entity.AetherEntityTypes;
-import com.aetherteam.aether.entity.passive.Sheepuff;
-import com.aetherteam.genesis.AetherGenesis;
 import com.llamalad7.mixinextras.sugar.Local;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.entity.LivingEntityRenderer;

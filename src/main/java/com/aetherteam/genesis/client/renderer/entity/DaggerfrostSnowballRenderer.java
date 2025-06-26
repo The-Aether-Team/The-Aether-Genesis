@@ -11,8 +11,6 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
 
 public class DaggerfrostSnowballRenderer extends EntityRenderer<DaggerfrostSnowball> {
     private static final ResourceLocation DAGGERFROST_SNOWBALL_TEXTURE = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/entity/projectile/daggerfrost_snowball.png");

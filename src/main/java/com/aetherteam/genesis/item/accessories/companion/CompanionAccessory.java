@@ -4,7 +4,6 @@ import com.aetherteam.genesis.attachment.GenesisDataAttachments;
 import com.aetherteam.genesis.entity.companion.Companion;
 import io.wispforest.accessories.api.slot.SlotReference;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;

@@ -1,14 +1,9 @@
 package com.aetherteam.genesis.event.listeners.capability;
 
-import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.event.hooks.AttachmentHooks;
-import com.aetherteam.genesis.event.listeners.EntityListener;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.event.entity.living.LivingEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 

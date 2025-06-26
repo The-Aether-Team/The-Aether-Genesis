@@ -11,7 +11,6 @@ import com.aetherteam.genesis.entity.projectile.DaggerfrostSnowball;
 import com.aetherteam.genesis.entity.projectile.PhoenixDart;
 import com.aetherteam.genesis.item.GenesisItems;
 import com.google.common.collect.ImmutableMap;
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;

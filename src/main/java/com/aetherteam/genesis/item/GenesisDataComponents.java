@@ -1,14 +1,11 @@
 package com.aetherteam.genesis.item;
 
-import com.aetherteam.aether.item.materials.SwetBallItem;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.item.components.CandyFoodStuff;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.codec.ByteBufCodecs;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 

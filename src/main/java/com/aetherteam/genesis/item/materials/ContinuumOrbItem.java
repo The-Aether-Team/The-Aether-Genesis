@@ -3,8 +3,6 @@ package com.aetherteam.genesis.item.materials;
 import com.aetherteam.aether.item.miscellaneous.ConsumableItem;
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.loot.GenesisLoot;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;

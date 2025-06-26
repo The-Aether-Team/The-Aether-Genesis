@@ -1,12 +1,10 @@
 package com.aetherteam.genesis.network.packet;
 
-import com.aetherteam.aether.network.packet.AetherPlayerSyncPacket;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
 import com.aetherteam.genesis.attachment.GenesisPlayerAttachment;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
 import com.aetherteam.nitrogen.network.packet.SyncEntityPacket;
-import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
