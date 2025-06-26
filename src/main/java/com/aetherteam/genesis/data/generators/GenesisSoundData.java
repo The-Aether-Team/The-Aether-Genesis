@@ -1,5 +1,6 @@
 package com.aetherteam.genesis.data.generators;
 
+import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import net.minecraft.data.PackOutput;
@@ -14,6 +15,19 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
     @Override
     public void registerSounds() {
         // Items
+        this.add(GenesisSoundEvents.ITEM_MUSIC_DISC_AERWHALE,
+                definition().with(sound("aether_genesis:item/records/aerwhale").stream())
+        );
+        this.add(GenesisSoundEvents.ITEM_MUSIC_DISC_APPROACHES,
+                definition().with(sound("aether_genesis:item/records/approaches").stream())
+        );
+        this.add(GenesisSoundEvents.ITEM_MUSIC_DISC_DEMISE,
+                definition().with(sound("aether_genesis:item/records/demise").stream())
+        );
+        this.add(GenesisSoundEvents.ITEM_RECORDING_892,
+                definition().with(sound("aether_genesis:item/records/chase").stream())
+        );
+
         this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_BONE_RING,
                 definition().with(
                         sound("mob/skeleton/say1"),
@@ -21,7 +35,7 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                         sound("mob/skeleton/say3")
                 ).subtitle("subtitles.aether_genesis.item.accessory.equip_bone_ring")
         );
-        this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_CANDY_RING,
+        this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_CANDY_RING, //todo
                 definition().with(
                         sound("minecraft:item/armor/equip_chain1"),
                         sound("minecraft:item/armor/equip_chain2"),
@@ -39,18 +53,35 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                         sound("dig/wood4")
                 ).subtitle("subtitles.aether_genesis.item.accessory.equip_skyroot_ring")
         );
-
-        this.add(GenesisSoundEvents.ITEM_MUSIC_DISC_AERWHALE,
-                definition().with(sound("aether_genesis:item/records/aerwhale").stream())
+        this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_LUCKY_BELL,
+                definition().with(
+                        sound("minecraft:item/armor/equip_chain1"),
+                        sound("minecraft:item/armor/equip_chain2"),
+                        sound("minecraft:item/armor/equip_chain3"),
+                        sound("minecraft:item/armor/equip_chain4"),
+                        sound("minecraft:item/armor/equip_chain5"),
+                        sound("minecraft:item/armor/equip_chain6")
+                ).subtitle("subtitles.aether_genesis.item.accessory.equip_lucky_bell")
         );
-        this.add(GenesisSoundEvents.ITEM_MUSIC_DISC_APPROACHES,
-                definition().with(sound("aether_genesis:item/records/approaches").stream())
+        this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_SWETTY_PENDANT, //todo
+                definition().with(
+                        sound("minecraft:item/armor/equip_chain1"),
+                        sound("minecraft:item/armor/equip_chain2"),
+                        sound("minecraft:item/armor/equip_chain3"),
+                        sound("minecraft:item/armor/equip_chain4"),
+                        sound("minecraft:item/armor/equip_chain5"),
+                        sound("minecraft:item/armor/equip_chain6")
+                ).subtitle("subtitles.aether_genesis.item.accessory.equip_swetty_pendant")
         );
-        this.add(GenesisSoundEvents.ITEM_MUSIC_DISC_DEMISE,
-                definition().with(sound("aether_genesis:item/records/demise").stream())
-        );
-        this.add(GenesisSoundEvents.ITEM_RECORDING_892,
-                definition().with(sound("aether_genesis:item/records/chase").stream())
+        this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_DAGGERFROST_LOCKET,
+                definition().with(
+                        sound("minecraft:item/armor/equip_chain1"),
+                        sound("minecraft:item/armor/equip_chain2"),
+                        sound("minecraft:item/armor/equip_chain3"),
+                        sound("minecraft:item/armor/equip_chain4"),
+                        sound("minecraft:item/armor/equip_chain5"),
+                        sound("minecraft:item/armor/equip_chain6")
+                ).subtitle("subtitles.aether_genesis.item.accessory.equip_daggerfrost_locket")
         );
 
 
@@ -66,6 +97,7 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                 definition().with(sound("minecraft:damage/fallbig"))
                         .subtitle("subtitles.aether_genesis.entity.carrion_sprout.death")
         );
+        //todo zephyroo sounds
         this.add(GenesisSoundEvents.ENTITY_TEMPEST_SHOOT,
                 definition().with(sound("aether:entity/zephyr/shoot"))
                         .subtitle("subtitles.aether_genesis.entity.tempest.shoot"));
@@ -208,7 +240,7 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
 
         this.add(GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_DEATH,
                 definition().with(sound("aether_genesis:entity/sentry_guardian/death"))
-                        .subtitle("subtitles.aether_genesis.entity.tracking_golem.creepy_seen")
+                        .subtitle("subtitles.aether_genesis.entity.sentry_guardian.death")
         );
         this.add(GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_SUMMON,
                 definition().with(sound("aether_genesis:entity/sentry_guardian/spawn"))

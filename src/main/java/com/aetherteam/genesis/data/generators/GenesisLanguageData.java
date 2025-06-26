@@ -214,16 +214,63 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addAdvancementDesc("companion", "Obtain a companion");
         this.addAdvancementDesc("nex_spirit", "Be resurrected by a Nex Spirit");
 
-        //todo missing subtitles
-        this.addSubtitle("block", "portal.hum", "Aether Portal hums");
-        this.addSubtitle("block", "portal.trigger", "Aether Portal hum intensifies");
+        //todo better subtitles
+        this.addSubtitle("item", "accessory.equip_bone_ring", "Bone Ring rattles");
+        this.addSubtitle("item", "accessory.equip_candy_ring", "Candy Ring jingles");
+        this.addSubtitle("item", "accessory.equip_skyroot_ring", "Skyroot Ring clunks");
+
+        this.addSubtitle("item", "accessory.equip_lucky_bell", "Lucky Bell jingles");
+        this.addSubtitle("item", "accessory.equip_swetty_pendant", "Swetty Pendant jingles");
+        this.addSubtitle("item", "accessory.equip_daggerfrost_locket", "Daggerfrost Locket jingles");
 
         this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");
+
         this.addSubtitle("entity", "tempest.shoot", "Tempest spits");
         this.addSubtitle("entity", "tempest.ambient", "Tempest blows");
         this.addSubtitle("entity", "tempest.death", "Tempest dies");
         this.addSubtitle("entity", "tempest.hurt", "Tempest hurts");
+
+        this.addSubtitle("entity", "battle_sentry.death", "Battle Sentry dies");
+        this.addSubtitle("entity", "battle_sentry.hurt", "Battle Sentry hurts");
+        this.addSubtitle("entity", "battle_sentry.jump", "Battle Sentry squishes");
+        this.addSubtitle("entity", "battle_sentry.squish", "Battle Sentry squishes");
+
+        this.addSubtitle("entity", "sentry_golem.death", "Sentry Golem dies");
+        this.addSubtitle("entity", "sentry_golem.hurt", "Sentry Golem hurts");
+        this.addSubtitle("entity", "sentry_golem.say", "Sentry Golem drones");
+        this.addSubtitle("entity", "sentry_golem.throw_bomb", "Sentry Golem throws explosive");
+
+        this.addSubtitle("entity", "tracking_golem.death", "Tracking Golem dies");
+        this.addSubtitle("entity", "tracking_golem.hurt", "Tracking Golem hurts");
+        this.addSubtitle("entity", "tracking_golem.say", "Tracking Golem drones");
+        this.addSubtitle("entity", "tracking_golem.creepy_seen", "Tracking Golem targets");
+        this.addSubtitle("entity", "tracking_golem.seen_enemy", "Tracking Golem targets");
+
+        this.addSubtitle("entity", "slider_host_mimic.awaken", "Slider Host Mimic awakens");
+        this.addSubtitle("entity", "slider_host_mimic.ambient", "Slider drones");
+        this.addSubtitle("entity", "slider_host_mimic.shoot", "Slider Host Mimic shoots");
+        this.addSubtitle("entity", "slider_host_mimic.scare", "Slider Host Mimic scares");
+        this.addSubtitle("entity", "slider_host_mimic.hurt", "Slider Host Mimic hurts");
+        this.addSubtitle("entity", "slider_host_mimic.death", "Slider Host Mimic breaks");
+
+        this.addSubtitle("entity", "sentry_guardian.death", "Sentry Guardian dies");
+        this.addSubtitle("entity", "sentry_guardian.spawn", "Sentry Guardian summons");
+        this.addSubtitle("entity", "sentry_guardian.ambient", "Sentry Guardian drones");
+        this.addSubtitle("entity", "sentry_guardian.hurt", "Sentry Guardian hurts");
+        this.addSubtitle("entity", "sentry_guardian.attack", "Sentry Guardian attacks");
+
+        this.addSubtitle("entity", "labyrinth_eye.death", "Labyrinth Eye dies");
+        this.addSubtitle("entity", "labyrinth_eye.move", "Labyrinth Eye hovers");
+        this.addSubtitle("entity", "labyrinth_eye.break", "Labyrinth Eye breaks");
+        this.addSubtitle("entity", "labyrinth_eye.cog_loss", "Labyrinth Eye dislodges cog");
+
+        this.addSubtitle("entity", "kraisith.shoot", "Kraisith shoots");
+
+        this.addSubtitle("entity", "continuum_bomb.throw", "Continuum Bomb flies");
+        this.addSubtitle("entity", "reward_item.launch", "Item launches");
+        this.addSubtitle("entity", "host_eye.collide", "Host Eye collides");
+        this.addSubtitle("entity", "cog.break", "Cog breaks");
 
         this.addContainerType(GenesisMenuTypes.HOLYSTONE_FURNACE, "Holystone Furnace");
 
