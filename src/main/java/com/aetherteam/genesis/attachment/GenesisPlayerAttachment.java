@@ -28,9 +28,7 @@ public class GenesisPlayerAttachment implements INBTSynchable {
     );
     private boolean shouldSyncAfterJoin;
 
-    public GenesisPlayerAttachment() {
-
-    }
+    public GenesisPlayerAttachment() { }
 
     public Map<String, Triple<Type, Consumer<Object>, Supplier<Object>>> getSynchableFunctions() {
         return this.synchableFunctions;
@@ -64,7 +62,6 @@ public class GenesisPlayerAttachment implements INBTSynchable {
             this.shouldSyncAfterJoin = false;
         }
     }
-
 
     /**
      * Slowly removes darts that are rendered as stuck on the player by {@link com.aetherteam.aether.client.renderer.player.layer.DartLayer}.

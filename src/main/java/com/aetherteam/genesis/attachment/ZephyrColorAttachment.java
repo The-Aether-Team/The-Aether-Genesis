@@ -25,9 +25,7 @@ public class ZephyrColorAttachment implements INBTSynchable {
             Codec.BOOL.fieldOf("is_tan").forGetter(ZephyrColorAttachment::isTan)
     ).apply(instance, ZephyrColorAttachment::new));
 
-    public ZephyrColorAttachment() {
-
-    }
+    public ZephyrColorAttachment() { }
 
     private ZephyrColorAttachment(boolean isTan) {
         this.isTan = isTan;
