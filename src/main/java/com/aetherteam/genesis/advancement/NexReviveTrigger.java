@@ -22,8 +22,8 @@ public class NexReviveTrigger extends SimpleCriterionTrigger<NexReviveTrigger.In
 
     public record Instance(Optional<ContextAwarePredicate> player) implements SimpleCriterionTrigger.SimpleInstance {
         public static final Codec<NexReviveTrigger.Instance> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                        EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(NexReviveTrigger.Instance::player)
-                ).apply(instance, NexReviveTrigger.Instance::new));
+                EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(NexReviveTrigger.Instance::player)
+        ).apply(instance, NexReviveTrigger.Instance::new));
 
         public static Criterion<NexReviveTrigger.Instance> create() {
             return GenesisAdvancementTriggers.NEX_REVIVE.get().createCriterion(new NexReviveTrigger.Instance(Optional.empty()));

@@ -39,9 +39,9 @@ public class ContinuumOrbLootTrigger extends SimpleCriterionTrigger<ContinuumOrb
 
     public record Instance(Optional<ContextAwarePredicate> player, Optional<ItemPredicate> item) implements SimpleInstance {
         public static final Codec<ContinuumOrbLootTrigger.Instance> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-                        EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(ContinuumOrbLootTrigger.Instance::player),
-                        ItemPredicate.CODEC.optionalFieldOf("item").forGetter(ContinuumOrbLootTrigger.Instance::item))
-                .apply(instance, ContinuumOrbLootTrigger.Instance::new));
+                EntityPredicate.ADVANCEMENT_CODEC.optionalFieldOf("player").forGetter(ContinuumOrbLootTrigger.Instance::player),
+                ItemPredicate.CODEC.optionalFieldOf("item").forGetter(ContinuumOrbLootTrigger.Instance::item)
+        ).apply(instance, ContinuumOrbLootTrigger.Instance::new));
 
         public static Criterion<ContinuumOrbLootTrigger.Instance> forItem(ItemPredicate item) {
             return GenesisAdvancementTriggers.CONTINUUM_ORB.get().createCriterion(new ContinuumOrbLootTrigger.Instance(Optional.empty(), Optional.of(item)));
