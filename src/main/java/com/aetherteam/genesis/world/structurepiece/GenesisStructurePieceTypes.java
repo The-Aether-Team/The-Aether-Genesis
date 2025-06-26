@@ -13,8 +13,8 @@ import java.util.Locale;
 public class GenesisStructurePieceTypes {
     public static final DeferredRegister<StructurePieceType> STRUCTURE_PIECE_TYPES = DeferredRegister.create(Registries.STRUCTURE_PIECE, AetherGenesis.MODID);
 
-    public static final DeferredHolder<StructurePieceType, StructurePieceType> BRONZE_BOSS_ROOM = register("BBossRoom", GenesisBronzeBossRoom::new);
-    public static final DeferredHolder<StructurePieceType, StructurePieceType> BRONZE_DUNGEON_ROOM = register("BDungeonRoom", GenesisBronzeDungeonRoom::new);
+    public static final DeferredHolder<StructurePieceType, StructurePieceType> BRONZE_BOSS_ROOM = register("GBBossRoom", GenesisBronzeBossRoom::new);
+    public static final DeferredHolder<StructurePieceType, StructurePieceType> BRONZE_DUNGEON_ROOM = register("GBDungeonRoom", GenesisBronzeDungeonRoom::new);
 
     private static DeferredHolder<StructurePieceType, StructurePieceType> register(String name, StructurePieceType structurePieceType) {
         return STRUCTURE_PIECE_TYPES.register(name.toLowerCase(Locale.ROOT), () -> structurePieceType);

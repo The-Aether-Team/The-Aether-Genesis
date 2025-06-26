@@ -2,6 +2,7 @@ package com.aetherteam.genesis.world.structurepiece.bronzedungeon;
 
 import com.aetherteam.aether.loot.AetherLoot;
 import com.aetherteam.aether.world.structurepiece.AetherTemplateStructurePiece;
+import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeBossRoom;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonPiece;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.world.structurepiece.GenesisStructurePieceTypes;
@@ -21,8 +22,7 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructurePlac
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorList;
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureTemplateManager;
 
-public class GenesisBronzeBossRoom extends BronzeDungeonPiece { //todo why is the bounds checking not working for this why is it not being covered in ground
-
+public class GenesisBronzeBossRoom extends BronzeBossRoom {
     public GenesisBronzeBossRoom(StructureTemplateManager manager, String name, BlockPos pos, Rotation rotation, Holder<StructureProcessorList> processors) {
         super(GenesisStructurePieceTypes.BRONZE_BOSS_ROOM.get(), manager, ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "bronze_dungeon/" + name), AetherTemplateStructurePiece.makeSettingsWithPivot(makeSettings(), manager, BronzeDungeonPiece.makeLocation(name), rotation), pos, processors);
     }
@@ -31,8 +31,9 @@ public class GenesisBronzeBossRoom extends BronzeDungeonPiece { //todo why is th
         super(GenesisStructurePieceTypes.BRONZE_BOSS_ROOM.get(), context.registryAccess(), tag, context.structureTemplateManager(), (resourceLocation) -> makeSettings());
     }
 
-    static StructurePlaceSettings makeSettings() {
-        return (new StructurePlaceSettings()).setFinalizeEntities(true);
+    private static StructurePlaceSettings makeSettings() {
+        return new StructurePlaceSettings()
+                .setFinalizeEntities(true);
     }
 
     protected void handleDataMarker(String name, BlockPos pos, ServerLevelAccessor level, RandomSource random, BoundingBox box) {
