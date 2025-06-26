@@ -10,19 +10,11 @@ import com.aetherteam.aether.block.natural.LeavesWithParticlesBlock;
 import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.mixin.mixins.common.accessor.FireBlockAccessor;
 import com.aetherteam.genesis.AetherGenesis;
-import com.aetherteam.genesis.block.dungeon.SkyrootChestMimicBlock;
 import com.aetherteam.genesis.block.miscellaneous.ColdFireBlock;
 import com.aetherteam.genesis.block.natural.*;
-import com.aetherteam.genesis.block.utility.HolystoneFurnaceBlock;
-import com.aetherteam.genesis.block.utility.SkyrootChestBlock;
-import com.aetherteam.genesis.block.utility.SkyrootCraftingTableBlock;
-import com.aetherteam.genesis.blockentity.GenesisBlockEntityTypes;
-import com.aetherteam.genesis.blockentity.SkyrootChestBlockEntity;
-import com.aetherteam.genesis.blockentity.SkyrootChestMimicBlockEntity;
 import com.aetherteam.genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.genesis.item.GenesisItems;
 import com.aetherteam.genesis.world.treegrower.GenesisTreeGrowers;
-import com.aetherteam.nitrogen.item.block.EntityBlockItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.entity.EntityType;
@@ -61,10 +53,6 @@ public class GenesisBlocks {
     public static final DeferredBlock<Block> ORANGE_TREE = register("orange_tree", () -> new OrangeTreeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GRASS).pushReaction(PushReaction.DESTROY).noCollission().strength(0.2F).sound(SoundType.GRASS)));
     public static final DeferredBlock<FlowerPotBlock> POTTED_ORANGE_TREE = BLOCKS.register("potted_orange_tree", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, ORANGE_TREE, BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT)));
 
-    public static final DeferredBlock<FacingPillarBlock> HOLYSTONE_HEADSTONE = register("holystone_headstone", () -> new FacingPillarBlock(Block.Properties.of().mapColor(MapColor.WOOL).instrument(NoteBlockInstrument.BASEDRUM).strength(2.0F, 10.0F).requiresCorrectToolForDrops()));
-    public static final DeferredBlock<FacingPillarBlock> HOLYSTONE_KEYSTONE = register("holystone_keystone", () -> new FacingPillarBlock(Block.Properties.of().mapColor(MapColor.WOOL).instrument(NoteBlockInstrument.BASEDRUM).strength(2.0F, 10.0F).requiresCorrectToolForDrops()));
-    public static final DeferredBlock<FacingPillarBlock> HOLYSTONE_HIGHLIGHT = register("holystone_highlight", () -> new FacingPillarBlock(Block.Properties.of().mapColor(MapColor.WOOL).instrument(NoteBlockInstrument.BASEDRUM).strength(2.0F, 10.0F).requiresCorrectToolForDrops()));
-
     public static final DeferredBlock<SaplingBlock> BLUE_SKYROOT_SAPLING = register("blue_skyroot_sapling", () -> new SaplingBlock(GenesisTreeGrowers.BLUE_SKYROOT, Block.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
     public static final DeferredBlock<SaplingBlock> DARK_BLUE_SKYROOT_SAPLING = register("dark_blue_skyroot_sapling", () -> new SaplingBlock(GenesisTreeGrowers.DARK_BLUE_SKYROOT, Block.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
     public static final DeferredBlock<SaplingBlock> PURPLE_CRYSTAL_TREE_SAPLING = register("purple_crystal_tree_sapling", () -> new SaplingBlock(GenesisTreeGrowers.PURPLE_CRYSTAL_TREE, Block.Properties.ofFullCopy(Blocks.OAK_SAPLING)));
@@ -77,15 +65,8 @@ public class GenesisBlocks {
     public static final DeferredBlock<WallBlock> SKYROOT_WOOD_WALL = register("skyroot_wood_wall", () -> new GenesisDoubleDropsWall(Block.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).ignitedByLava().strength(2.0F).sound(SoundType.WOOD)));
     public static final DeferredBlock<WallBlock> STRIPPED_SKYROOT_WOOD_WALL = register("stripped_skyroot_wood_wall", () -> new WallBlock(Block.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).ignitedByLava().strength(2.0F).sound(SoundType.WOOD)));
 
-    public static final DeferredBlock<Block> SKYROOT_CRAFTING_TABLE = register("skyroot_crafting_table", () -> new SkyrootCraftingTableBlock(Block.Properties.ofFullCopy(Blocks.CRAFTING_TABLE)));
-    public static final DeferredBlock<Block> HOLYSTONE_FURNACE = register("holystone_furnace", () -> new HolystoneFurnaceBlock(Block.Properties.ofFullCopy(Blocks.FURNACE)));
-    public static final DeferredBlock<Block> SKYROOT_CHEST = register("skyroot_chest", () -> new SkyrootChestBlock(Block.Properties.ofFullCopy(Blocks.CHEST), GenesisBlockEntityTypes.SKYROOT_CHEST::get));
-    public static final DeferredBlock<LadderBlock> SKYROOT_LADDER = register("skyroot_ladder", () -> new LadderBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LADDER).strength(0.4F).sound(SoundType.LADDER).noOcclusion()));
-
     public static final DeferredBlock<RotatedPillarBlock> CARVED_PILLAR = register("carved_pillar", () -> new RotatedPillarBlock(Block.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
     public static final DeferredBlock<FacingPillarBlock> CARVED_PILLAR_TOP = register("carved_pillar_top", () -> new FacingPillarBlock(Block.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
-
-    public static final DeferredBlock<Block> SKYROOT_CHEST_MIMIC = register("skyroot_chest_mimic", () -> new SkyrootChestMimicBlock(Block.Properties.ofFullCopy(SKYROOT_CHEST.get()).noLootTable()));
 
     public static final DeferredBlock<Block> DIVINE_CARVED_STONE = register("divine_carved_stone", () -> new Block(Block.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
     public static final DeferredBlock<Block> DIVINE_SENTRY_STONE = register("divine_sentry_stone", () -> new Block(Block.Properties.ofFullCopy(DIVINE_CARVED_STONE.get()).lightLevel(GenesisBlocks::lightLevel11)));
@@ -146,13 +127,7 @@ public class GenesisBlocks {
     private static <B extends Block> Supplier<BlockItem> registerBlockItem(final DeferredBlock<B> blockDeferredBlock) {
         return () -> {
             B block = Objects.requireNonNull(blockDeferredBlock.get());
-            if (block == SKYROOT_CHEST.get()) {
-                return new EntityBlockItem(block, SkyrootChestBlockEntity::new, new Item.Properties());
-            }else if (block == SKYROOT_CHEST_MIMIC.get()) {
-                return new EntityBlockItem(block, SkyrootChestMimicBlockEntity::new, new Item.Properties());
-            } else {
-                return new BlockItem(block, new Item.Properties());
-            }
+            return new BlockItem(block, new Item.Properties());
         };
     }
 

@@ -30,9 +30,6 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
         this.dropSelfDouble(GenesisBlocks.PURPLE_AERCLOUD.get());
         this.dropSelfDouble(GenesisBlocks.STORM_AERCLOUD.get());
         this.add(GenesisBlocks.CONTINUUM_ORE.get(), (block) -> this.createOreDrop(block, GenesisItems.CONTINUUM_ORB.get()));
-        this.dropSelf(GenesisBlocks.HOLYSTONE_HEADSTONE.get());
-        this.dropSelf(GenesisBlocks.HOLYSTONE_KEYSTONE.get());
-        this.dropSelf(GenesisBlocks.HOLYSTONE_HIGHLIGHT.get());
         this.add(GenesisBlocks.BLUE_SKYROOT_LEAVES.get(),
                 (leaves) -> droppingWithChancesAndSkyrootSticks(leaves, GenesisBlocks.BLUE_SKYROOT_SAPLING.get(), BlockLootAccessor.aether$getNormalLeavesSaplingChances()));
         this.add(GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get(),
@@ -53,10 +50,6 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
         this.dropSelf(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get());
         this.dropSelfDouble(GenesisBlocks.SKYROOT_WOOD_WALL.get());
         this.dropSelf(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get());
-        this.dropSelf(GenesisBlocks.SKYROOT_CRAFTING_TABLE.get());
-        this.dropSelf(GenesisBlocks.HOLYSTONE_FURNACE.get());
-        this.dropSelf(GenesisBlocks.SKYROOT_CHEST.get());
-        this.dropSelf(GenesisBlocks.SKYROOT_LADDER.get());
 
         this.dropSelf(GenesisBlocks.CARVED_PILLAR_TOP.get());
         this.dropSelf(GenesisBlocks.CARVED_PILLAR.get());

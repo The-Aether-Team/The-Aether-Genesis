@@ -34,15 +34,6 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addBlock(GenesisBlocks.SKYROOT_WOOD_WALL, "Skyroot Wood Wall");
         this.addBlock(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL, "Stripped Skyroot Wood Wall");
 
-        this.addBlock(GenesisBlocks.HOLYSTONE_HEADSTONE, "Holystone Headstone");
-        this.addBlock(GenesisBlocks.HOLYSTONE_KEYSTONE, "Holystone Keystone");
-        this.addBlock(GenesisBlocks.HOLYSTONE_HIGHLIGHT, "Holystone Highlight");
-
-        this.addBlock(GenesisBlocks.SKYROOT_CRAFTING_TABLE, "Skyroot Crafting Table");
-        this.addBlock(GenesisBlocks.HOLYSTONE_FURNACE, "Holystone Furnace");
-        this.addBlock(GenesisBlocks.SKYROOT_CHEST, "Skyroot Chest");
-        this.addBlock(GenesisBlocks.SKYROOT_LADDER, "Skyroot Ladder");
-
         this.addItem(GenesisItems.CONTINUUM_ORB, "Continuum Orb");
         this.addItem(GenesisItems.GOLDEN_SWET_BALL, "Golden Swet Ball");
         this.addItem(GenesisItems.DARK_SWET_BALL, "Dark Swet Ball");
@@ -91,7 +82,6 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addItem(GenesisItems.ZEPHYROO_SPAWN_EGG, "Zephyroo Spawn Egg");
         this.addItem(GenesisItems.DARK_SWET_SPAWN_EGG, "Dark Swet Spawn Egg");
         this.addItem(GenesisItems.TEMPEST_SPAWN_EGG, "Tempest Spawn Egg");
-        this.addItem(GenesisItems.SKYROOT_CHEST_MIMIC_SPAWN_EGG, "Skyroot Chest Mimic Spawn Egg");
         this.addItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG, "Battle Sentry Spawn Egg");
         this.addItem(GenesisItems.SENTRY_GOLEM_SPAWN_EGG, "Sentry Golem Spawn Egg");
         this.addItem(GenesisItems.TRACKING_GOLEM_SPAWN_EGG, "Tracking Golem Spawn Egg");
@@ -170,7 +160,6 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addEntityType(GenesisEntityTypes.BATTLE_SENTRY, "Battle Sentry");
         this.addEntityType(GenesisEntityTypes.SENTRY_GOLEM, "Sentry Golem");
         this.addEntityType(GenesisEntityTypes.TRACKING_GOLEM, "Tracking Golem");
-        this.addEntityType(GenesisEntityTypes.SKYROOT_MIMIC, "Skyroot Mimic");
 
         this.addEntityType(GenesisEntityTypes.FANGRIN, "Fangrin");
         this.addEntityType(GenesisEntityTypes.KRAISITH, "Kraisith");
@@ -191,7 +180,6 @@ public class GenesisLanguageData extends AetherLanguageProvider {
 
         this.addBlock(GenesisBlocks.CARVED_PILLAR_TOP, "Carved Pillar Top");
         this.addBlock(GenesisBlocks.CARVED_PILLAR, "Carved Pillar");
-        this.addBlock(GenesisBlocks.SKYROOT_CHEST_MIMIC, "Skyroot Chest Mimic");
         this.addBlock(GenesisBlocks.DIVINE_CARVED_STONE, "Divine Carved Stone");
         this.addBlock(GenesisBlocks.DIVINE_SENTRY_STONE, "Divine Sentry Stone");
         this.addBlock(GenesisBlocks.LOCKED_DIVINE_CARVED_STONE, "Locked Divine Carved Stone");
@@ -333,9 +321,6 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addLore(GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES, "Purple Crystal Leaves that are home to White Apples.");
         this.addLore(GenesisBlocks.PURPLE_CRYSTAL_LEAVES, "Leaves that come from Purple Crystal Trees, found amongst wooded areas. Sometimes they bear fruit that can cure Inebriation.");
         this.addLore(GenesisBlocks.ORANGE_TREE, "A dwarf Orange Tree, found naturally across the islands of the Aether. It only grows to be as tall as a Player!");
-        this.addLore(GenesisBlocks.HOLYSTONE_HEADSTONE, "A decorative variant of Holystone Bricks that can be oriented directionally. The top has rounded carvings resembling a Valkyrie.");
-        this.addLore(GenesisBlocks.HOLYSTONE_KEYSTONE, "A decorative variant of Holystone Bricks that can be oriented directionally. Useful for bases or arches in your builds.");
-        this.addLore(GenesisBlocks.HOLYSTONE_HIGHLIGHT, "A decorative variant of Holystone Bricks that can be oriented directionally. This block can work for adding variation and accenting among other bricks.");
         this.addLore(GenesisBlocks.BLUE_SKYROOT_SAPLING, "These small blue saplings will grow into Skyroot Trees. They can be grown faster with Bone Meal.");
         this.addLore(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING, "These dark blue saplings will grow into a towering type of Skyroot Tree. They can be grown faster with Bone Meal.");
         this.addLore(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING, "These spindly saplings will grow into tall Crystal Trees with purple leaves. They can be grown faster with Bone Meal.");
@@ -343,13 +328,8 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addLore(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL, "Crafted from Stripped Skyroot Logs. Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
         this.addLore(GenesisBlocks.SKYROOT_WOOD_WALL, "Crafted from Skyroot Wood. Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
         this.addLore(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL, "Crafted from Stripped Skyroot Wood. Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
-        this.addLore(GenesisBlocks.SKYROOT_CRAFTING_TABLE, "A workbench made of Skyroot, capable of crafting anything you might need.");
-        this.addLore(GenesisBlocks.HOLYSTONE_FURNACE, "A furnace constructed from Holystone. This can be used to cook both ores and food while surviving in the Aether.");
-        this.addLore(GenesisBlocks.SKYROOT_CHEST, "A Skyroot container that can be used to store all the goods you collect on your adventures.");
-        this.addLore(GenesisBlocks.SKYROOT_LADDER, "A Skyroot Ladder. Handy for vertical travel.");
         this.addLore(GenesisBlocks.CARVED_PILLAR, "The main part of pillars found in the Bronze Dungeon; they pair well with Carved Stone for building.");
         this.addLore(GenesisBlocks.CARVED_PILLAR_TOP, "The top part of the pillars found in the Bronze Dungeon; their carvings look good and pair well with Carved Stone for building.");
-        this.addLore(GenesisBlocks.SKYROOT_CHEST_MIMIC, "It may look like a normal Skyroot Chest, but it really isn't. As soon as you right-click on it, a Chest Mimic will pop out! These appear in Bronze and Silver Dungeons.");
         this.addLore(GenesisBlocks.DIVINE_CARVED_STONE, "Carved Stone that has blue grooves cut between the bricks. A fancy block to decorate with alongside its regular counterpart!");
         this.addLore(GenesisBlocks.DIVINE_SENTRY_STONE, "Sentry Stone that has blue grooves cut between the bricks. A fancy block to decorate with alongside its regular counterpart!");
         this.addLore(GenesisBlocks.DIVINE_CARVED_WALL, "Crafted from Mossy Divine Carved Stone. Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");

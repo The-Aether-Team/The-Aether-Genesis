@@ -5,7 +5,6 @@ import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonBui
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
 import com.aetherteam.genesis.block.GenesisBlocks;
-import com.aetherteam.genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.genesis.data.generators.*;
@@ -104,7 +103,6 @@ public class AetherGenesis {
                 GenesisItems.ITEMS,
                 GenesisEntityTypes.ENTITY_TYPES,
                 GenesisMenuTypes.MENU_TYPES,
-                GenesisBlockEntityTypes.BLOCK_ENTITY_TYPES,
                 GenesisLootFunctions.LOOT_FUNCTION_TYPES,
                 GenesisLootModifiers.GLOBAL_LOOT_MODIFIERS,
                 GenesisFeatures.FEATURES,

@@ -48,14 +48,12 @@ public class GenesisEntityTagData extends EntityTypeTagsProvider {
                 GenesisEntityTypes.TEMPEST.get(),
                 GenesisEntityTypes.BATTLE_SENTRY.get(),
                 GenesisEntityTypes.TRACKING_GOLEM.get(),
-                GenesisEntityTypes.SKYROOT_MIMIC.get(),
                 GenesisEntityTypes.SENTRY_GUARDIAN.get(),
                 GenesisEntityTypes.SLIDER_HOST_MIMIC.get(),
                 GenesisEntityTypes.LABYRINTH_EYE.get());
         this.tag(AetherTags.Entities.DUNGEON_ENTITIES).add(
                 GenesisEntityTypes.BATTLE_SENTRY.get(),
                 GenesisEntityTypes.TRACKING_GOLEM.get(),
-                GenesisEntityTypes.SKYROOT_MIMIC.get(),
                 GenesisEntityTypes.SENTRY_GUARDIAN.get(),
                 GenesisEntityTypes.SLIDER_HOST_MIMIC.get(),
                 GenesisEntityTypes.LABYRINTH_EYE.get());

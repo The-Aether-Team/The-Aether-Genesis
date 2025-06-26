@@ -163,7 +163,6 @@ public class GenesisItemTagData extends ItemTagsProvider {
         this.tag(AetherTags.Items.ACCESSORIES_MISCELLANEOUS).add(GenesisItems.MOUSE_EAR_CAP.get());
 
         // Forge
-        this.tag(Tags.Items.CHESTS_WOODEN).add(GenesisBlocks.SKYROOT_CHEST.get().asItem());
         this.tag(Tags.Items.ORE_RATES_SINGULAR).add(GenesisBlocks.CONTINUUM_ORE.get().asItem());
         this.tag(Tags.Items.ORES).add(GenesisBlocks.CONTINUUM_ORE.get().asItem());
         this.tag(Tags.Items.MUSIC_DISCS).add(

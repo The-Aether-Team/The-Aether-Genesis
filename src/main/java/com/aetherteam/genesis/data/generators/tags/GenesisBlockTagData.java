@@ -82,9 +82,6 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.DIVINE_CARVED_STAIRS.get(),
                 GenesisBlocks.DIVINE_CARVED_SLAB.get()
         );
-        this.tag(AetherTags.Blocks.NON_BRONZE_DUNGEON_REPLACEABLE).add(
-                GenesisBlocks.SKYROOT_CHEST_MIMIC.get()
-        );
         this.tag(AetherTags.Blocks.TREATED_AS_AETHER_BLOCK).add(
                 GenesisBlocks.GREEN_AERCLOUD.get(),
                 GenesisBlocks.PURPLE_AERCLOUD.get(),
@@ -95,20 +92,12 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.PURPLE_CRYSTAL_LEAVES.get(),
                 GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES.get(),
                 GenesisBlocks.ORANGE_TREE.get(),
-                GenesisBlocks.HOLYSTONE_HEADSTONE.get(),
-                GenesisBlocks.HOLYSTONE_KEYSTONE.get(),
-                GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(),
                 GenesisBlocks.SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get(),
                 GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(),
-                GenesisBlocks.SKYROOT_CRAFTING_TABLE.get(),
-                GenesisBlocks.HOLYSTONE_FURNACE.get(),
-                GenesisBlocks.SKYROOT_CHEST.get(),
-                GenesisBlocks.SKYROOT_LADDER.get(),
                 GenesisBlocks.CARVED_PILLAR.get(),
                 GenesisBlocks.CARVED_PILLAR_TOP.get(),
-                GenesisBlocks.SKYROOT_CHEST_MIMIC.get(),
                 GenesisBlocks.DIVINE_CARVED_STONE.get(),
                 GenesisBlocks.DIVINE_SENTRY_STONE.get(),
                 GenesisBlocks.LOCKED_DIVINE_CARVED_STONE.get(),
@@ -160,24 +149,12 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.ENCHANTED_GRASS_BLOCK.get());
         this.tag(BlockTags.FIRE).add(
                 GenesisBlocks.COLD_FIRE.get());
-        this.tag(BlockTags.CLIMBABLE).add(
-                GenesisBlocks.SKYROOT_LADDER.get());
-        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
-                GenesisBlocks.CONTINUUM_ORE.get(),
-                GenesisBlocks.HOLYSTONE_FURNACE.get(),
-                GenesisBlocks.HOLYSTONE_HEADSTONE.get(),
-                GenesisBlocks.HOLYSTONE_KEYSTONE.get(),
-                GenesisBlocks.HOLYSTONE_HIGHLIGHT.get()
-        );
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(GenesisBlocks.CONTINUUM_ORE.get());
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(
                 GenesisBlocks.SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(),
                 GenesisBlocks.SKYROOT_WOOD_WALL.get(),
-                GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(),
-                GenesisBlocks.SKYROOT_CHEST.get(),
-                GenesisBlocks.SKYROOT_CRAFTING_TABLE.get(),
-                GenesisBlocks.SKYROOT_LADDER.get(),
-                GenesisBlocks.SKYROOT_CHEST_MIMIC.get());
+                GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get());
         this.tag(BlockTags.MINEABLE_WITH_SHOVEL).add(
                 GenesisBlocks.ENCHANTED_GRASS_BLOCK.get());
         this.tag(BlockTags.MINEABLE_WITH_HOE).add(
@@ -201,7 +178,6 @@ public class GenesisBlockTagData extends BlockTagsProvider {
                 GenesisBlocks.ENCHANTED_GRASS_BLOCK.get());
 
         // Forge
-        this.tag(Tags.Blocks.CHESTS_WOODEN).add(GenesisBlocks.SKYROOT_CHEST.get());
         this.tag(Tags.Blocks.ORE_RATES_SINGULAR).add(GenesisBlocks.CONTINUUM_ORE.get());
         this.tag(Tags.Blocks.ORES).add(GenesisBlocks.CONTINUUM_ORE.get());
     }

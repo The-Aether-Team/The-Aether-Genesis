@@ -10,12 +10,9 @@ import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.GenesisConfig;
 import com.aetherteam.genesis.attachment.GenesisPlayerAttachment;
 import com.aetherteam.genesis.block.GenesisBlocks;
-import com.aetherteam.genesis.blockentity.GenesisBlockEntityTypes;
 import com.aetherteam.genesis.client.renderer.accessory.MouseEarCapRenderer;
 import com.aetherteam.genesis.client.renderer.accessory.model.MouseEarCapModel;
 import com.aetherteam.genesis.client.renderer.blockentity.AltarRenderer;
-import com.aetherteam.genesis.client.renderer.blockentity.SkyrootChestMimicRenderer;
-import com.aetherteam.genesis.client.renderer.blockentity.SkyrootChestRenderer;
 import com.aetherteam.genesis.client.renderer.entity.*;
 import com.aetherteam.genesis.client.renderer.entity.model.*;
 import com.aetherteam.genesis.client.renderer.player.layer.PhoenixDartLayer;
@@ -78,8 +75,6 @@ public class GenesisRenderers {
 
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(AetherBlockEntityTypes.ALTAR.get(), AltarRenderer::new);
-        event.registerBlockEntityRenderer(GenesisBlockEntityTypes.SKYROOT_CHEST.get(), SkyrootChestRenderer::new);
-        event.registerBlockEntityRenderer(GenesisBlockEntityTypes.SKYROOT_CHEST_MIMIC.get(), SkyrootChestMimicRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.CARRION_SPROUT.get(), CarrionSproutRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.ZEPHYROO.get(), ZephyrooRenderer::new);
@@ -88,7 +83,6 @@ public class GenesisRenderers {
         event.registerEntityRenderer(GenesisEntityTypes.BATTLE_SENTRY.get(), BattleSentryRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.SENTRY_GOLEM.get(), SentryGolemRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.TRACKING_GOLEM.get(), TrackingGolemRenderer::new);
-        event.registerEntityRenderer(GenesisEntityTypes.SKYROOT_MIMIC.get(), SkyrootMimicRenderer::new);
 
         event.registerEntityRenderer(GenesisEntityTypes.SENTRY_GUARDIAN.get(), SentryGuardianRenderer::new);
         event.registerEntityRenderer(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), HostMimicRenderer::new);

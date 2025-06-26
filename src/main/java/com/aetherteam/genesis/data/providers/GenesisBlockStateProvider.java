@@ -2,11 +2,9 @@ package com.aetherteam.genesis.data.providers;
 
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.block.AetherBlockStateProperties;
-import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.block.miscellaneous.FacingPillarBlock;
 import com.aetherteam.aether.data.providers.AetherBlockStateProvider;
 import com.aetherteam.genesis.AetherGenesis;
-import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.block.miscellaneous.ColdFireBlock;
 import com.aetherteam.genesis.block.natural.OrangeTreeBlock;
 import com.aetherteam.genesis.block.natural.PurpleAercloudBlock;
@@ -181,19 +179,6 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
                 .condition(entry.getValue(), height).condition(WallBlock.UP, hasPost);
     }
 
-    public void skyrootCraftingTable(Block block, Block baseBlock, String location, String modid) {
-        ResourceLocation baseTexture = ResourceLocation.fromNamespaceAndPath(modid, "block/" + location + this.name(baseBlock));
-        ModelFile workbench = this.models().cube(this.name(block),
-                baseTexture,
-                this.extend(this.texture(this.name(block), "utility/"), "_top"),
-                this.extend(this.texture(this.name(block), "utility/"), "_front"),
-                this.extend(this.texture(this.name(block), "utility/"), "_side"),
-                this.extend(this.texture(this.name(block), "utility/"), "_front"),
-                this.extend(this.texture(this.name(block), "utility/"), "_side"))
-                .texture("particle", this.extend(this.texture(this.name(block), "utility/"), "_front"));
-        this.getVariantBuilder(block).partialState().addModels(new ConfiguredModel(workbench));
-    }
-
     public void furnace(Block block) {
         String blockName = this.name(block);
         ResourceLocation side = this.extend(this.texture(this.name(block), "utility/"), "_side");
@@ -238,23 +223,6 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
         });
     }
 
-    public void holystonePillar(FacingPillarBlock block) {
-        ResourceLocation side = this.texture(this.name(block), "construction/");
-        if (block == GenesisBlocks.HOLYSTONE_HEADSTONE.get()) {
-            side = ResourceLocation.fromNamespaceAndPath(Aether.MODID, "block/construction/" + this.name(AetherBlocks.HOLYSTONE_BRICKS.get()));
-        }
-        ResourceLocation end = this.extend(this.texture(this.name(block), "construction/"), "_top");
-        ModelFile vertical = this.models().cubeColumn(this.name(block), side, end);
-        ModelFile horizontal = this.models().cubeColumnHorizontal(this.name(block) + "_horizontal", side, end);
-        this.getVariantBuilder(block)
-                .partialState().with(FacingPillarBlock.FACING, Direction.DOWN).modelForState().modelFile(vertical).rotationX(180).addModel()
-                .partialState().with(FacingPillarBlock.FACING, Direction.EAST).modelForState().modelFile(horizontal).rotationX(90).rotationY(90).addModel()
-                .partialState().with(FacingPillarBlock.FACING, Direction.NORTH).modelForState().modelFile(horizontal).rotationX(90).addModel()
-                .partialState().with(FacingPillarBlock.FACING, Direction.SOUTH).modelForState().modelFile(horizontal).rotationX(90).rotationY(180).addModel()
-                .partialState().with(FacingPillarBlock.FACING, Direction.UP).modelForState().modelFile(vertical).addModel()
-                .partialState().with(FacingPillarBlock.FACING, Direction.WEST).modelForState().modelFile(horizontal).rotationX(90).rotationY(270).addModel();
-    }
-
     public void dungeonPillar(RotatedPillarBlock block) {
         this.axisBlock(block, this.extend(this.texture(this.name(block), "dungeon/"), "_side"), ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "block/dungeon/carved_pillar_top"));
     }
@@ -271,25 +239,6 @@ public abstract class GenesisBlockStateProvider extends AetherBlockStateProvider
                 .partialState().with(FacingPillarBlock.FACING, Direction.SOUTH).modelForState().modelFile(horizontal).rotationX(90).rotationY(180).addModel()
                 .partialState().with(FacingPillarBlock.FACING, Direction.UP).modelForState().modelFile(vertical).addModel()
                 .partialState().with(FacingPillarBlock.FACING, Direction.WEST).modelForState().modelFile(horizontal).rotationX(90).rotationY(270).addModel();
-    }
-
-    public void skyrootChest(Block block) {
-        ModelFile chest = this.models().cubeAll(this.name(block), ResourceLocation.fromNamespaceAndPath(Aether.MODID, "block/construction/skyroot_planks"));
-        this.chest(block, chest);
-    }
-
-    public void skyrootLadder(LadderBlock block) {
-        ResourceLocation location = this.texture(this.name(block), "construction/");
-        ModelFile ladder = models().withExistingParent(this.name(block), this.mcLoc("block/block")).renderType(ResourceLocation.withDefaultNamespace("cutout")).ao(false)
-                .texture("particle", location).texture("texture", location)
-                .element().from(0.0F, 0.0F, 15.2F).to(16.0F, 16.0F, 15.2F).shade(false)
-                .face(Direction.NORTH).uvs(0.0F, 0.0F, 16.0F, 16.0F).texture("#texture").end()
-                .face(Direction.SOUTH).uvs(16.0F, 0.0F, 0.0F, 16.0F).texture("#texture").end()
-                .end();
-        this.getVariantBuilder(block).forAllStatesExcept((state) -> {
-            Direction direction = state.getValue(LadderBlock.FACING);
-            return ConfiguredModel.builder().modelFile(ladder).rotationY((int) (direction.toYRot() + 180) % 360).build();
-        }, LadderBlock.WATERLOGGED);
     }
 
     public void coldFire(ColdFireBlock block) {

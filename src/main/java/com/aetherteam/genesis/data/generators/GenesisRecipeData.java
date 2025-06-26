@@ -1,6 +1,5 @@
 package com.aetherteam.genesis.data.generators;
 
-import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.genesis.AetherGenesis;
@@ -16,7 +15,6 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Blocks;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -41,10 +39,6 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
                 .pattern("##")
                 .unlockedBy("has_wool", has(ItemTags.WOOL)).save(consumer);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.HOLYSTONE_HEADSTONE.get(), 9).define('#', AetherBlocks.HOLYSTONE_BRICKS.get()).pattern("###").pattern("###").pattern("###").unlockedBy(getHasName(AetherBlocks.HOLYSTONE_BRICKS.get()), has(AetherBlocks.HOLYSTONE_BRICKS.get())).save(consumer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), 9).define('#', AetherBlocks.HOLYSTONE_BRICKS.get()).define('H', AetherBlocks.HOLYSTONE.get()).pattern("###").pattern("###").pattern("HHH").unlockedBy(getHasName(AetherBlocks.HOLYSTONE_BRICKS.get()), has(AetherBlocks.HOLYSTONE_BRICKS.get())).save(consumer);
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), 9).define('#', AetherBlocks.HOLYSTONE_BRICKS.get()).define('H', AetherBlocks.HOLYSTONE.get()).pattern("###").pattern("H#H").pattern("H#H").unlockedBy(getHasName(AetherBlocks.HOLYSTONE_BRICKS.get()), has(AetherBlocks.HOLYSTONE_BRICKS.get())).save(consumer);
-
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GenesisItems.ICESTONE_POPROCKS.get(), 3).requires(AetherBlocks.ICESTONE.get()).requires(Items.SUGAR).unlockedBy(getHasName(AetherBlocks.ICESTONE.get()), has(AetherBlocks.ICESTONE.get())).save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GenesisItems.BLUEBERRY_LOLLIPOP.get()).requires(AetherItems.BLUE_BERRY.get()).requires(Items.SUGAR).requires(AetherItems.SKYROOT_STICK.get()).unlockedBy(getHasName(AetherItems.BLUE_BERRY.get()), has(AetherItems.BLUE_BERRY.get())).save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GenesisItems.ORANGE_LOLLIPOP.get()).requires(GenesisItems.ORANGE.get()).requires(Items.SUGAR).requires(AetherItems.SKYROOT_STICK.get()).unlockedBy(getHasName(GenesisItems.ORANGE.get()), has(GenesisItems.ORANGE.get())).save(consumer);
@@ -61,68 +55,9 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
 
         this.oreBlockStorageRecipesRecipesWithCustomUnpacking(consumer, RecipeCategory.MISC, GenesisItems.CONTINUUM_ORB.get(), RecipeCategory.MISC, GenesisItems.CONTINUUM_BOMB.get(), "continuum_orb_from_bomb", "continuum_bomb");
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_CRAFTING_TABLE.get())
-                .define('#', AetherBlocks.SKYROOT_PLANKS.get())
-                .pattern("##")
-                .pattern("##")
-                .unlockedBy(getHasName(GenesisBlocks.SKYROOT_CRAFTING_TABLE.get()), has(AetherTags.Items.PLANKS_CRAFTING))
-                .save(consumer);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_FURNACE.get())
-                .define('#',GenesisTags.Items.HOLYSTONE_FURNACE_CRAFTING)
-                .pattern("###")
-                .pattern("# #")
-                .pattern("###")
-                .unlockedBy(getHasName(GenesisBlocks.HOLYSTONE_FURNACE.get()), has(AetherBlocks.HOLYSTONE.get()))
-                .save(consumer);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.BLAST_FURNACE)
-                .group("minecraft:blast_furnace")
-                .define('#', Blocks.SMOOTH_STONE)
-                .define('X', GenesisBlocks.HOLYSTONE_FURNACE.get())
-                .define('I', Items.IRON_INGOT)
-                .pattern("III")
-                .pattern("IXI")
-                .pattern("###")
-                .unlockedBy("has_smooth_stone", has(Blocks.SMOOTH_STONE))
-                .save(consumer, this.name("holystone_blast_furnace"));
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.SMOKER)
-                .group("minecraft:smoker")
-                .define('#', ItemTags.LOGS)
-                .define('X', GenesisBlocks.HOLYSTONE_FURNACE.get())
-                .pattern(" # ")
-                .pattern("#X#")
-                .pattern(" # ")
-                .unlockedBy(getHasName(GenesisBlocks.HOLYSTONE_FURNACE.get()), has(GenesisBlocks.HOLYSTONE_FURNACE.get()))
-                .save(consumer, this.name("holystone_smoker"));
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_CHEST.get())
-                .define('#', AetherTags.Items.PLANKS_CRAFTING)
-                .pattern("###")
-                .pattern("# #")
-                .pattern("###")
-                .unlockedBy(getHasName(GenesisBlocks.SKYROOT_CHEST.get()), has(AetherTags.Items.PLANKS_CRAFTING))
-                .save(consumer);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_LADDER.get(), 3)
-                .define('#', GenesisTags.Items.SKYROOT_LADDER_CRAFTING)
-                .pattern("# #")
-                .pattern("###")
-                .pattern("# #")
-                .unlockedBy(getHasName(GenesisBlocks.SKYROOT_LADDER.get()), has(AetherTags.Items.SKYROOT_STICKS))
-                .save(consumer);
-
         wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.DIVINE_CARVED_WALL.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
         this.stairs(GenesisBlocks.DIVINE_CARVED_STAIRS, GenesisBlocks.DIVINE_CARVED_STONE).save(consumer);
         slab(consumer, RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.DIVINE_CARVED_SLAB.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());
-
-        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HEADSTONE.get(), AetherBlocks.HOLYSTONE.get());
-        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), AetherBlocks.HOLYSTONE.get());
-        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), AetherBlocks.HOLYSTONE.get());
-
-        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HEADSTONE.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
-        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_KEYSTONE.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
-        this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.HOLYSTONE_HIGHLIGHT.get(), AetherBlocks.HOLYSTONE_BRICKS.get());
 
         this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR_TOP.get(), AetherBlocks.CARVED_STONE.get());
         this.stonecuttingRecipe(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.CARVED_PILLAR_TOP.get(), GenesisBlocks.CARVED_PILLAR.get());

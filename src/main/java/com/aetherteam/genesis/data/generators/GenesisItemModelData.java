@@ -79,7 +79,6 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.eggItem(GenesisItems.ZEPHYROO_SPAWN_EGG.get());
         this.eggItem(GenesisItems.DARK_SWET_SPAWN_EGG.get());
         this.eggItem(GenesisItems.TEMPEST_SPAWN_EGG.get());
-        this.eggItem(GenesisItems.SKYROOT_CHEST_MIMIC_SPAWN_EGG.get());
         this.eggItem(GenesisItems.BATTLE_SENTRY_SPAWN_EGG.get());
         this.eggItem(GenesisItems.SENTRY_GOLEM_SPAWN_EGG.get());
         this.eggItem(GenesisItems.TRACKING_GOLEM_SPAWN_EGG.get());
@@ -101,23 +100,13 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.itemBlockFlat(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.itemBlockFlat(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), "natural/");
 
-        this.itemBlock(GenesisBlocks.HOLYSTONE_HEADSTONE.get());
-        this.itemBlock(GenesisBlocks.HOLYSTONE_KEYSTONE.get());
-        this.itemBlock(GenesisBlocks.HOLYSTONE_HIGHLIGHT.get());
-
         this.itemLogWallBlock(GenesisBlocks.SKYROOT_LOG_WALL.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/", Aether.MODID);
         this.itemLogWallBlock(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/", Aether.MODID);
         this.itemWoodWallBlock(GenesisBlocks.SKYROOT_WOOD_WALL.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/", Aether.MODID);
         this.itemWoodWallBlock(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/", Aether.MODID);
 
-        this.itemBlock(GenesisBlocks.SKYROOT_CRAFTING_TABLE.get());
-        this.itemBlock(GenesisBlocks.HOLYSTONE_FURNACE.get());
-        this.lookalikeBlock(GenesisBlocks.SKYROOT_CHEST.get(), this.mcLoc("item/chest"));
-        this.itemBlockFlat(GenesisBlocks.SKYROOT_LADDER.get(), "construction/");
-
         this.itemBlock(GenesisBlocks.CARVED_PILLAR_TOP.get());
         this.itemBlock(GenesisBlocks.CARVED_PILLAR.get());
-        this.lookalikeBlock(GenesisBlocks.SKYROOT_CHEST_MIMIC.get(), this.mcLoc("item/chest"));
         this.itemBlock(GenesisBlocks.DIVINE_SENTRY_STONE.get());
         this.itemBlock(GenesisBlocks.DIVINE_CARVED_STONE.get());
         this.itemLockedDungeonBlock(GenesisBlocks.LOCKED_DIVINE_CARVED_STONE.get(), GenesisBlocks.DIVINE_CARVED_STONE.get());

@@ -99,8 +99,6 @@ dependencies {
         }
     }
 
-    compileOnly "maven.modrinth:jade:${project.jade_version}"
-
     //runtimeOnly fg.deobf("io.github.flemmli97:debugutils:${project.mc_version}-${project.debugutils_version}-forge")
 }
 

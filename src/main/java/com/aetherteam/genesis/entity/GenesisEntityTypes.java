@@ -46,8 +46,6 @@ public class GenesisEntityTypes {
             () -> EntityType.Builder.of(SentryGolem::new, MobCategory.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build("sentry_golem"));
     public static final  DeferredHolder<EntityType<?>, EntityType<TrackingGolem>> TRACKING_GOLEM = ENTITY_TYPES.register("tracking_golem",
             () -> EntityType.Builder.of(TrackingGolem::new, MobCategory.MONSTER).sized(0.6F, 1.95F).clientTrackingRange(8).build("tracking_golem"));
-    public static final  DeferredHolder<EntityType<?>, EntityType<SkyrootMimic>> SKYROOT_MIMIC = ENTITY_TYPES.register("skyroot_mimic",
-            () -> EntityType.Builder.of(SkyrootMimic::new, MobCategory.MONSTER).sized(1.0F, 2.0F).clientTrackingRange(8).build("skyroot_mimic"));
 
     public static final  DeferredHolder<EntityType<?>, EntityType<SentryGuardian>> SENTRY_GUARDIAN = ENTITY_TYPES.register("sentry_guardian",
             () -> EntityType.Builder.of(SentryGuardian::new, MobCategory.MONSTER).sized(1.85F, 3.0F).fireImmune().clientTrackingRange(10).build("sentry_guardian"));
@@ -121,7 +119,6 @@ public class GenesisEntityTypes {
         event.put(GenesisEntityTypes.BATTLE_SENTRY.get(), BattleSentry.createMobAttributes().build());
         event.put(GenesisEntityTypes.SENTRY_GOLEM.get(), SentryGolem.createMobAttributes().build());
         event.put(GenesisEntityTypes.TRACKING_GOLEM.get(), TrackingGolem.createMobAttributes().build());
-        event.put(GenesisEntityTypes.SKYROOT_MIMIC.get(), Mimic.createMobAttributes().build());
         event.put(GenesisEntityTypes.SENTRY_GUARDIAN.get(), SentryGuardian.createMobAttributes().build());
         event.put(GenesisEntityTypes.SLIDER_HOST_MIMIC.get(), SliderHostMimic.createMobAttributes().build());
         event.put(GenesisEntityTypes.LABYRINTH_EYE.get(), LabyrinthEye.createMobAttributes().build());
