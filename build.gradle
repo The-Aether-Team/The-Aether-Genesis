@@ -77,6 +77,7 @@ configurations {
 dependencies {
 //    implementation "com.aetherteam.aether:aether:${project.aether_version}"
     implementation "blank:aether-1.21.1-1.5.8:neoforge"
+    implementation "blank:aether_beyond_parity-1.21.1-1.0.0:neoforge"
 
     implementation "com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}"
     implementation "com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}"
@@ -137,7 +138,9 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             neo_version_range      : neo_version_range,
             loader_version_range   : loader_version_range,
             aether_version         : aether_version,
-            aether_version_range   : aether_version_range
+            aether_version_range   : aether_version_range,
+            beyond_parity_version         : beyond_parity_version,
+            beyond_parity_version_range   : beyond_parity_version_range
     ]
     inputs.properties replaceProperties
     expand replaceProperties

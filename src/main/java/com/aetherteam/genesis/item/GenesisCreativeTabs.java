@@ -3,6 +3,8 @@ package com.aetherteam.genesis.item;
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherCreativeTabs;
 import com.aetherteam.aether.item.AetherItems;
+import com.aetherteam.beyondparity.block.BeyondParityBlocks;
+import com.aetherteam.beyondparity.item.BeyondParityItems;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
@@ -10,7 +12,6 @@ import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
 public class GenesisCreativeTabs {
-
     public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
         ResourceKey<CreativeModeTab> tab = event.getTabKey();
         if (tab == AetherCreativeTabs.AETHER_DUNGEON_BLOCKS.getKey()) {
@@ -29,7 +30,7 @@ public class GenesisCreativeTabs {
             event.insertAfter(new ItemStack(GenesisBlocks.LOCKED_DIVINE_SENTRY_STONE.get()), new ItemStack(GenesisBlocks.TRAPPED_DIVINE_SENTRY_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(new ItemStack(GenesisBlocks.TRAPPED_DIVINE_SENTRY_STONE.get()), new ItemStack(GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(new ItemStack(GenesisBlocks.BOSS_DOORWAY_DIVINE_SENTRY_STONE.get()), new ItemStack(GenesisBlocks.TREASURE_DOORWAY_DIVINE_SENTRY_STONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-//            event.insertAfter(new ItemStack(GenesisBlocks.SKYROOT_CHEST_MIMIC.get()), new ItemStack(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS); //todo
+            event.insertAfter(new ItemStack(BeyondParityBlocks.SKYROOT_CHEST_MIMIC.get()), new ItemStack(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
         if (tab == AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey()) {
             event.insertAfter(new ItemStack(AetherBlocks.GRAVITITE_ORE.get()), new ItemStack(GenesisBlocks.CONTINUUM_ORE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -100,15 +101,15 @@ public class GenesisCreativeTabs {
         }
         if (tab == AetherCreativeTabs.AETHER_INGREDIENTS.getKey()) {
             event.insertAfter(new ItemStack(AetherBlocks.ENCHANTED_GRAVITITE.get()), new ItemStack(GenesisItems.CONTINUUM_ORB.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-//            event.insertAfter(new ItemStack(GenesisItems.GOLDEN_SWET_BALL.get()), new ItemStack(GenesisItems.DARK_SWET_BALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS); //todo
+            event.insertAfter(new ItemStack(BeyondParityItems.GOLDEN_SWET_BALL.get()), new ItemStack(GenesisItems.DARK_SWET_BALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(new ItemStack(GenesisItems.DARK_SWET_BALL.get()), new ItemStack(GenesisItems.CORNSTARCH_BOWL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             }
         if (tab == AetherCreativeTabs.AETHER_SPAWN_EGGS.getKey()) {
             event.insertAfter(new ItemStack(AetherItems.BLUE_SWET_SPAWN_EGG.get()), new ItemStack(GenesisItems.BATTLE_SENTRY_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertBefore(new ItemStack(AetherItems.COCKATRICE_SPAWN_EGG.get()), new ItemStack(GenesisItems.CARRION_SPROUT_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(new ItemStack(AetherItems.COCKATRICE_SPAWN_EGG.get()), new ItemStack(GenesisItems.DARK_SWET_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-//            event.insertAfter(new ItemStack(GenesisItems.SKYROOT_CHEST_MIMIC_SPAWN_EGG.get()), new ItemStack(GenesisItems.SENTRY_GOLEM_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS); //todo
-//            event.insertAfter(new ItemStack(GenesisItems.SKYROOT_CHEST_MIMIC_SPAWN_EGG.get()), new ItemStack(GenesisItems.TEMPEST_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS); //todo
+            event.insertAfter(new ItemStack(BeyondParityItems.SKYROOT_CHEST_MIMIC_SPAWN_EGG.get()), new ItemStack(GenesisItems.SENTRY_GOLEM_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+            event.insertAfter(new ItemStack(BeyondParityItems.SKYROOT_CHEST_MIMIC_SPAWN_EGG.get()), new ItemStack(GenesisItems.TEMPEST_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(new ItemStack(GenesisItems.TEMPEST_SPAWN_EGG.get()), new ItemStack(GenesisItems.TRACKING_GOLEM_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(new ItemStack(AetherItems.ZEPHYR_SPAWN_EGG.get()), new ItemStack(GenesisItems.ZEPHYROO_SPAWN_EGG.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }

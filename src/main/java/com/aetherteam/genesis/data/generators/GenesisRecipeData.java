@@ -2,6 +2,7 @@ package com.aetherteam.genesis.data.generators;
 
 import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.aether.item.AetherItems;
+import com.aetherteam.beyondparity.item.BeyondParityItems;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.GenesisTags;
 import com.aetherteam.genesis.block.GenesisBlocks;
@@ -26,7 +27,7 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
     @Override
     protected void buildRecipes(RecipeOutput consumer) {
         makeSwetJelly(GenesisItems.BLUE_SWET_JELLY, AetherItems.SWET_BALL).save(consumer);
-//        makeSwetJelly(GenesisItems.GOLDEN_SWET_JELLY, GenesisItems.GOLDEN_SWET_BALL).save(consumer); //TODO
+        makeSwetJelly(GenesisItems.GOLDEN_SWET_JELLY, BeyondParityItems.GOLDEN_SWET_BALL).save(consumer);
         makeSwetJelly(GenesisItems.DARK_SWET_JELLY, GenesisItems.DARK_SWET_BALL).save(consumer);
         twoByTwoPacker(consumer, RecipeCategory.TOOLS, GenesisItems.BLUE_PARACHUTE.get(), AetherBlocks.BLUE_AERCLOUD.get());
         twoByTwoPacker(consumer, RecipeCategory.TOOLS, GenesisItems.GREEN_PARACHUTE.get(), GenesisBlocks.GREEN_AERCLOUD.get());

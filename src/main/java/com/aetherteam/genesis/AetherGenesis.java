@@ -2,6 +2,7 @@ package com.aetherteam.genesis;
 
 import com.aetherteam.aether.data.generators.AetherRegistrySets;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonBuilder;
+import com.aetherteam.beyondparity.mixin.BeyondParityMixinHooks;
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
 import com.aetherteam.genesis.block.GenesisBlocks;
@@ -53,6 +54,7 @@ import net.minecraft.server.packs.repository.PackCompatibility;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.util.InclusiveRange;
 import net.minecraft.world.flag.FeatureFlagSet;
+import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModList;
@@ -84,11 +86,11 @@ public class AetherGenesis {
         bus.addListener(this::dataSetup);
         bus.addListener(this::packSetup);
 
-        bus.addListener(GenesisCreativeTabs::buildCreativeModeTabs);
+        bus.addListener(EventPriority.LOW, GenesisCreativeTabs::buildCreativeModeTabs);
 
         GenesisEntityTypes.listen(bus);
 
-//        bus.addListener((ModifyDefaultComponentsEvent event) -> {
+//        bus.addListener((ModifyDefaultComponentsEvent event) -> { //todo
 //            if (GenesisConfig.COMMON.gold_aercloud_ability.get()) {
 //                event.modify(AetherItems.GOLDEN_PARACHUTE, builder -> builder.set(DataComponents.MAX_DAMAGE, 1));
 //            }
@@ -131,6 +133,8 @@ public class AetherGenesis {
             GenesisItems.registerAccessories();
 
             Regions.register(new GenesisRegion(ResourceLocation.fromNamespaceAndPath(MODID, MODID), GenesisConfig.COMMON.biome_weight.get()));
+
+            BeyondParityMixinHooks.ROOMS_TO_REPLACE_CHESTS_IN.add(GenesisStructurePieceTypes.BRONZE_DUNGEON_ROOM.get());
 
             BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("chest_room").add((manager, pos, rot, processors) -> new GenesisBronzeDungeonRoom(manager, "spawner_room", pos, rot, processors), 3);
             BronzeDungeonBuilder.ROOM_OPTIONS_BUILDER.get("chest_room").add((manager, pos, rot, processors) -> new GenesisBronzeDungeonRoom(manager, "spawner_room_pillars", pos, rot, processors), 2);

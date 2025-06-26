@@ -33,6 +33,12 @@ issueTrackerURL = "${mod_tracker}"
     versionRange = "${aether_version_range}"
     ordering = "NONE"
     side = "BOTH"
+[[dependencies.${mod_id}]]
+    modId = "aether_beyond_parity"
+    type = "required"
+    versionRange = "${beyond_parity_version_range}"
+    ordering = "NONE"
+    side = "BOTH"
 
 [[mixins]]
     config = "${mod_id}.mixins.json"

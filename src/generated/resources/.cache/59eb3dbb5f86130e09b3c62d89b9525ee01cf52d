@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-26T11:39:01.9085568	Loot Tables
+// 1.21.1	2025-06-26T11:45:06.6775002	Loot Tables
 3d21885da350525d99904e208ff6ee4d11d4243b data/aether_genesis/loot_table/blocks/blue_skyroot_leaves.json
 7ecb374e2147a8693b4ded2eb27280a1362ff491 data/aether_genesis/loot_table/blocks/blue_skyroot_sapling.json
 23387232a36e56cbc262b9d327330feb72ea684c data/aether_genesis/loot_table/blocks/boss_doorway_divine_carved_stone.json
@@ -45,7 +45,7 @@ ae06e2da5941e2139cf9568910a0ad3ded959db4 data/aether_genesis/loot_table/entities
 2221fb9f74fee33ce922d500c9e2b484a386c2b6 data/aether_genesis/loot_table/selectors/continuum_orb/books.json
 4976335ab3725fe6efbfb99eea6f6da405690904 data/aether_genesis/loot_table/selectors/continuum_orb/coral.json
 d2d716e7a3e3aa4cfb8fc008df2308ac11b3fd12 data/aether_genesis/loot_table/selectors/continuum_orb/discs.json
-ad9164bee342466d1c8d2509b294f6b73996201a data/aether_genesis/loot_table/selectors/continuum_orb/drops.json
+c31b2fd50639825c908523f271a997256efd8ccf data/aether_genesis/loot_table/selectors/continuum_orb/drops.json
 3a47746db26ddb29feb4503aad62b3f5d0e12a7f data/aether_genesis/loot_table/selectors/continuum_orb/dyes.json
 2c5acf720254af2bd20d2ae7c4d31fc6a3737f89 data/aether_genesis/loot_table/selectors/continuum_orb/farmable.json
 9cea95d27f8208ecc02a58ed225069b08772046e data/aether_genesis/loot_table/selectors/continuum_orb/flower.json

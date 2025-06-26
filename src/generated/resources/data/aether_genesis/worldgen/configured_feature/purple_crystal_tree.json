@@ -59,10 +59,15 @@
       "skinnyTrunkProvider": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "aether:skyroot_log",
+          "Name": "aether_beyond_parity:skyroot_log_wall",
           "Properties": {
-            "axis": "y",
-            "double_drops": "true"
+            "double_drops": "true",
+            "east": "none",
+            "north": "none",
+            "south": "none",
+            "up": "true",
+            "waterlogged": "false",
+            "west": "none"
           }
         }
       }
