@@ -1,6 +1,5 @@
 package com.aetherteam.genesis.data.generators;
 
-import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import net.minecraft.data.PackOutput;
