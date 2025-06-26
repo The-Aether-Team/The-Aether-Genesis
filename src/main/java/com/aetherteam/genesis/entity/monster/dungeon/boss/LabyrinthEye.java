@@ -25,7 +25,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
@@ -249,7 +248,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
                     float distance = dist * 0.075F;
                     cog.shoot(x, y + (dist * 0.2F), z, distance, 1.0F);
                     this.playSound(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COG_LOSS.get(), 2.0F, 1.0F);
-                    this.playSound(SoundEvents.ITEM_BREAK, 0.8F, 0.8F + this.level().getRandom().nextFloat() * 0.4F);
+                    this.playSound(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_BREAK.get(), 0.8F, 0.8F + this.level().getRandom().nextFloat() * 0.4F);
                     this.level().addFreshEntity(cog);
                 }
                 this.stageDone[stage] = true;
@@ -627,7 +626,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
             float distance = dist * 0.075F;
             cog.shoot(x, y + (dist * 0.2F), z, distance, 20.0F);
             this.labyrinthEye.playSound(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COG_LOSS.get(), 2.0F, 1.0F);
-            this.labyrinthEye.playSound(SoundEvents.ITEM_BREAK, 0.8F, 0.8F + this.labyrinthEye.level().getRandom().nextFloat() * 0.4F);
+            this.labyrinthEye.playSound(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_BREAK.get(), 0.8F, 0.8F + this.labyrinthEye.level().getRandom().nextFloat() * 0.4F);
             this.labyrinthEye.level().addFreshEntity(cog);
         }
 

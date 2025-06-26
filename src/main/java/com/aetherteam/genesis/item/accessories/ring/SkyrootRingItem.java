@@ -9,6 +9,6 @@ import static com.aetherteam.aether.item.AetherItems.AETHER_LOOT;
 
 public class SkyrootRingItem extends RingItem implements ChanceDoubleDrop {
     public SkyrootRingItem() {
-        super(GenesisSoundEvents.ITEM_SKYROOT_RING_EQUIP, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT));
+        super(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_SKYROOT_RING, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT));
     }
 }

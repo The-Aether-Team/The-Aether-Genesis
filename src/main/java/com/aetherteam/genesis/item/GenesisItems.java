@@ -1,6 +1,5 @@
 package com.aetherteam.genesis.item;
 
-import com.aetherteam.aether.client.AetherSoundEvents;
 import com.aetherteam.aether.item.accessories.cape.CapeItem;
 import com.aetherteam.aether.item.accessories.pendant.PendantItem;
 import com.aetherteam.aether.item.components.AetherDataComponents;
@@ -11,6 +10,7 @@ import com.aetherteam.aether.item.miscellaneous.ParachuteItem;
 import com.aetherteam.aether.item.miscellaneous.SliderSpawnEggItem;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.client.GenesisJukeboxSounds;
+import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.item.accessories.cape.DexterityCapeItem;
 import com.aetherteam.genesis.item.accessories.companion.*;
@@ -64,9 +64,9 @@ public class GenesisItems {
     public static final DeferredItem<Item> CANDY_RING = ITEMS.register("candy_ring", CandyRingItem::new);
     public static final DeferredItem<Item> SKYROOT_RING = ITEMS.register("skyroot_ring", SkyrootRingItem::new);
 
-    public static final DeferredItem<Item> LUCKY_BELL = ITEMS.register("lucky_bell", () -> new PendantItem(ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "lucky_bell"), AetherSoundEvents.ITEM_ACCESSORY_EQUIP_ICE_PENDANT, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final DeferredItem<Item> LUCKY_BELL = ITEMS.register("lucky_bell", () -> new PendantItem(ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "lucky_bell"), GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_LUCKY_BELL, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final DeferredItem<Item> SWETTY_PENDANT = ITEMS.register("swetty_pendant", SwettyPendantItem::new);
-    public static final DeferredItem<Item> DAGGERFROST_LOCKET = ITEMS.register("daggerfrost_locket", () -> new PendantItem(ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "daggerfrost_locket"), AetherSoundEvents.ITEM_ACCESSORY_EQUIP_ICE_PENDANT, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final DeferredItem<Item> DAGGERFROST_LOCKET = ITEMS.register("daggerfrost_locket", () -> new PendantItem(ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "daggerfrost_locket"), GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_DAGGERFROST_LOCKET, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
 
     public static final DeferredItem<Item> CAPE = ITEMS.register("cape", () -> new CapeItem("white_cape", new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> DEXTERITY_CAPE = ITEMS.register("dexterity_cape", () -> new DexterityCapeItem("dexterity_cape", new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));

@@ -90,7 +90,7 @@ public class AetherGenesis {
 
         GenesisEntityTypes.listen(bus);
 
-//        bus.addListener((ModifyDefaultComponentsEvent event) -> { //todo
+//        bus.addListener((ModifyDefaultComponentsEvent event) -> { //todo startup config?
 //            if (GenesisConfig.COMMON.gold_aercloud_ability.get()) {
 //                event.modify(AetherItems.GOLDEN_PARACHUTE, builder -> builder.set(DataComponents.MAX_DAMAGE, 1));
 //            }

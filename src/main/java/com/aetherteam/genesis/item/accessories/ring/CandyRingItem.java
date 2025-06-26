@@ -13,7 +13,7 @@ import static com.aetherteam.aether.item.AetherItems.AETHER_LOOT;
 
 public class CandyRingItem extends RingItem {
     public CandyRingItem() {
-        super(GenesisSoundEvents.ITEM_CANDY_RING_EQUIP, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT));
+        super(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_CANDY_RING, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT));
     }
 
     /**

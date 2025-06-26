@@ -217,6 +217,7 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         //todo missing subtitles
         this.addSubtitle("block", "portal.hum", "Aether Portal hums");
         this.addSubtitle("block", "portal.trigger", "Aether Portal hum intensifies");
+
         this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");
         this.addSubtitle("entity", "tempest.shoot", "Tempest spits");

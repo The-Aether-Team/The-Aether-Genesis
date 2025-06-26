@@ -20,7 +20,7 @@ public class BoneRingItem extends RingItem {
     private static final ResourceLocation ATTACK_DAMAGE_MODIFIER_LOCATION = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "bone_ring_damage_bonus");
 
     public BoneRingItem() {
-        super(GenesisSoundEvents.ITEM_BONE_RING_EQUIP, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT));
+        super(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_BONE_RING, new Item.Properties().stacksTo(1).rarity(AETHER_LOOT));
     }
 
     /**

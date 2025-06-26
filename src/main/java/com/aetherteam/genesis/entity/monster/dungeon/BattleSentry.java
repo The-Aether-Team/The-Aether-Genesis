@@ -1,7 +1,7 @@
 package com.aetherteam.genesis.entity.monster.dungeon;
 
 import com.aetherteam.aether.block.AetherBlocks;
-import com.aetherteam.aether.client.AetherSoundEvents;
+import com.aetherteam.genesis.client.GenesisSoundEvents;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
@@ -175,22 +175,27 @@ public class BattleSentry extends Slime {
 
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource) {
-        return AetherSoundEvents.ENTITY_SENTRY_HURT.get();
+        return GenesisSoundEvents.ENTITY_BATTLE_SENTRY_HURT.get();
     }
 
     @Override
     protected SoundEvent getDeathSound() {
-        return AetherSoundEvents.ENTITY_SENTRY_DEATH.get();
+        return GenesisSoundEvents.ENTITY_BATTLE_SENTRY_DEATH.get();
     }
     
     @Override
     protected SoundEvent getSquishSound() {
-        return AetherSoundEvents.ENTITY_SENTRY_JUMP.get();
+        return GenesisSoundEvents.ENTITY_BATTLE_SENTRY_JUMP.get();
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return GenesisSoundEvents.ENTITY_BATTLE_SENTRY_AMBIENT.get();
     }
 
     @Override
     protected SoundEvent getJumpSound() {
-        return AetherSoundEvents.ENTITY_SENTRY_JUMP.get();
+        return GenesisSoundEvents.ENTITY_BATTLE_SENTRY_JUMP.get();
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.aetherteam.genesis.data.resources;
 
 import com.aetherteam.aether.block.AetherBlockStateProperties;
-import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.beyondparity.block.BeyondParityBlocks;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import net.minecraft.world.level.block.state.BlockState;

@@ -26,7 +26,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
@@ -137,7 +136,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     public void handleEntityEvent(byte pId) {
         if (pId == 4) {
             this.attackAnimationTick = 10;
-            this.playSound(SoundEvents.IRON_GOLEM_ATTACK, 1.0F, 1.0F);
+            this.playSound(GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
         } else {
             super.handleEntityEvent(pId);
         }
@@ -452,12 +451,12 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_LIVING.get();
+        return GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_AMBIENT.get();
     }
 
     @Override
     protected SoundEvent getHurtSound( DamageSource damageSource) {
-        return GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_HIT.get();
+        return GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_HURT.get();
     }
 
     @Override

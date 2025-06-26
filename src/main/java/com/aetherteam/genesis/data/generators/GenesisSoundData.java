@@ -13,29 +13,15 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
 
     @Override
     public void registerSounds() {
-        // Blocks
-        this.add(GenesisSoundEvents.BLOCK_AETHER_PORTAL_HUM,
-                definition().with(sound("aether_genesis:block/portal/hum"))
-                        .subtitle("subtitles.aether_genesis.block.portal.hum")
-        );
-        this.add(GenesisSoundEvents.BLOCK_AETHER_PORTAL_TRAVEL,
-                definition().with(sound("aether_genesis:block/portal/travel"))
-        );
-        this.add(GenesisSoundEvents.BLOCK_AETHER_PORTAL_TRIGGER,
-                definition().with(sound("aether_genesis:block/portal/trigger"))
-                        .subtitle("subtitles.aether_genesis.block.portal.trigger")
-        );
-
-
         // Items
-        this.add(GenesisSoundEvents.ITEM_BONE_RING_EQUIP,
+        this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_BONE_RING,
                 definition().with(
                         sound("mob/skeleton/say1"),
                         sound( "mob/skeleton/say2"),
                         sound("mob/skeleton/say3")
                 ).subtitle("subtitles.aether_genesis.item.accessory.equip_bone_ring")
         );
-        this.add(GenesisSoundEvents.ITEM_CANDY_RING_EQUIP,
+        this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_CANDY_RING,
                 definition().with(
                         sound("minecraft:item/armor/equip_chain1"),
                         sound("minecraft:item/armor/equip_chain2"),
@@ -45,7 +31,7 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                         sound("minecraft:item/armor/equip_chain6")
                 ).subtitle("subtitles.aether_genesis.item.accessory.equip_candy_ring")
         );
-        this.add(GenesisSoundEvents.ITEM_SKYROOT_RING_EQUIP,
+        this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_SKYROOT_RING,
                 definition().with(
                         sound("dig/wood1"),
                         sound("dig/wood2"),
@@ -95,22 +81,77 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                 definition().with(sound("aether:entity/zephyr/call"))
                         .subtitle("subtitles.aether_genesis.entity.tempest.hurt")
         );
-
+        this.add(GenesisSoundEvents.ENTITY_BATTLE_SENTRY_DEATH,
+                definition().with(
+                        sound("minecraft:mob/slime/big1"),
+                        sound("minecraft:mob/slime/big2"),
+                        sound("minecraft:mob/slime/big3"),
+                        sound("minecraft:mob/slime/big4")
+                ).subtitle("subtitles.aether_genesis.entity.battle_sentry.death")
+        );
+        this.add(GenesisSoundEvents.ENTITY_BATTLE_SENTRY_HURT,
+                definition().with(
+                        sound("minecraft:mob/slime/big1"),
+                        sound("minecraft:mob/slime/big2"),
+                        sound("minecraft:mob/slime/big3"),
+                        sound("minecraft:mob/slime/big4")
+                ).subtitle("subtitles.aether_genesis.entity.battle_sentry.hurt")
+        );
+        this.add(GenesisSoundEvents.ENTITY_BATTLE_SENTRY_JUMP,
+                definition().with(
+                        sound("minecraft:mob/slime/big1"),
+                        sound("minecraft:mob/slime/big2"),
+                        sound("minecraft:mob/slime/big3"),
+                        sound("minecraft:mob/slime/big4")
+                ).subtitle("subtitles.aether_genesis.entity.battle_sentry.jump")
+        );
+        this.add(GenesisSoundEvents.ENTITY_BATTLE_SENTRY_SQUISH,
+                definition().with(
+                        sound("minecraft:mob/slime/big1"),
+                        sound("minecraft:mob/slime/big2"),
+                        sound("minecraft:mob/slime/big3"),
+                        sound("minecraft:mob/slime/big4")
+                ).subtitle("subtitles.aether_genesis.entity.battle_sentry.squish")
+        );
+        this.add(GenesisSoundEvents.ENTITY_SENTRY_GOLEM_DEATH,
+                definition().with(sound("aether_genesis:entity/sentry_golem/death"))
+                        .subtitle("subtitles.aether_genesis.entity.sentry_golem.death")
+        );
+        this.add(GenesisSoundEvents.ENTITY_SENTRY_GOLEM_HURT,
+                definition().with(
+                        sound("aether_genesis:entity/sentry_golem/hurt_1"),
+                        sound("aether_genesis:entity/sentry_golem/hurt_2")
+                ).subtitle("subtitles.aether_genesis.entity.sentry_golem.hurt")
+        );
+        this.add(GenesisSoundEvents.ENTITY_SENTRY_GOLEM_SAY,
+                definition().with(
+                        sound("aether_genesis:entity/sentry_golem/say_1"),
+                        sound("aether_genesis:entity/sentry_golem/say_2")
+                ).subtitle("subtitles.aether_genesis.entity.sentry_golem.say")
+        );
+        this.add(GenesisSoundEvents.ENTITY_SENTRY_GOLEM_THROW_BOMB,
+                definition().with(sound("minecraft:random/bow"))
+                        .subtitle("subtitles.aether_genesis.entity.sentry_golem.throw_bomb")
+        );
         this.add(GenesisSoundEvents.ENTITY_TRACKING_GOLEM_DEATH,
-                definition().with(sound("aether_genesis:entity/tracking_golem/death"))
+                definition().with(sound("aether_genesis:entity/sentry_golem/death"))
                         .subtitle("subtitles.aether_genesis.entity.tracking_golem.death")
+        );
+        this.add(GenesisSoundEvents.ENTITY_TRACKING_GOLEM_HURT,
+                definition().with(
+                        sound("aether_genesis:entity/sentry_golem/hurt_1"),
+                        sound("aether_genesis:entity/sentry_golem/hurt_2")
+                ).subtitle("subtitles.aether_genesis.entity.tracking_golem.hurt")
+        );
+        this.add(GenesisSoundEvents.ENTITY_TRACKING_GOLEM_SAY,
+                definition().with(
+                        sound("aether_genesis:entity/sentry_golem/say_1"),
+                        sound("aether_genesis:entity/sentry_golem/say_2")
+                ).subtitle("subtitles.aether_genesis.entity.tracking_golem.say")
         );
         this.add(GenesisSoundEvents.ENTITY_TRACKING_GOLEM_CREEPY_SEEN,
                 definition().with(sound("aether_genesis:entity/tracking_golem/creepy_seen"))
                         .subtitle("subtitles.aether_genesis.entity.tracking_golem.creepy_seen")
-        );
-        this.add(GenesisSoundEvents.ENTITY_TRACKING_GOLEM_HIT,
-                definition().with(sound("aether_genesis:entity/tracking_golem/hit"))
-                        .subtitle("subtitles.aether_genesis.entity.tracking_golem.hit")
-        );
-        this.add(GenesisSoundEvents.ENTITY_TRACKING_GOLEM_SAY,
-                definition().with(sound("aether_genesis:entity/tracking_golem/say"))
-                        .subtitle("subtitles.aether_genesis.entity.tracking_golem.say")
         );
         this.add(GenesisSoundEvents.ENTITY_TRACKING_GOLEM_SEEN_ENEMY,
                 definition().with(sound("aether_genesis:entity/tracking_golem/seen_enemy"))
@@ -173,29 +214,54 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                 definition().with(sound("aether_genesis:entity/sentry_guardian/spawn"))
                         .subtitle("subtitles.aether_genesis.entity.sentry_guardian.spawn")
         );
-        this.add(GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_LIVING,
-                definition().with(sound("aether_genesis:entity/sentry_guardian/living"))
-                        .subtitle("subtitles.aether_genesis.entity.sentry_guardian.living")
+        this.add(GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_AMBIENT,
+                definition().with(sound("aether_genesis:entity/sentry_guardian/ambient"))
+                        .subtitle("subtitles.aether_genesis.entity.sentry_guardian.ambient")
         );
-        this.add(GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_HIT,
-                definition().with(sound("aether_genesis:entity/sentry_guardian/hit"))
-                        .subtitle("subtitles.aether_genesis.entity.sentry_guardian.hit")
+        this.add(GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_HURT,
+                definition().with(sound("aether_genesis:entity/sentry_guardian/hurt"))
+                        .subtitle("subtitles.aether_genesis.entity.sentry_guardian.hurt")
+        );
+        this.add(GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_ATTACK,
+                definition().with(
+                        sound("minecraft:mob/irongolem/throw")
+                ).subtitle("subtitles.aether_genesis.entity.sentry_guardian.attack")
         );
 
-        this.add(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COG_LOSS,
-                definition().with(sound("aether_genesis:entity/labyrinth_eye/cog_loss"))
-                        .subtitle("subtitles.aether_genesis.entity.labyrinth_eye.cog_loss")
-        );
         this.add(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_DEATH,
                 definition().with(sound("aether_genesis:entity/labyrinth_eye/death"))
                         .subtitle("subtitles.aether_genesis.entity.labyrinth_eye.death")
         );
         this.add(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_MOVE,
-                definition().with(sound("aether_genesis:entity/labyrinth_eye/move_1"),
-                                sound("aether_genesis:entity/labyrinth_eye/move_2"))
-                        .subtitle("subtitles.aether_genesis.entity.labyrinth_eye.move")
+                definition().with(
+                        sound("aether_genesis:entity/labyrinth_eye/move_1"),
+                        sound("aether_genesis:entity/labyrinth_eye/move_2")
+                ).subtitle("subtitles.aether_genesis.entity.labyrinth_eye.move")
+        );
+        this.add(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_BREAK,
+                definition().with(sound("minecraft:random/break"))
+                        .subtitle("subtitles.aether_genesis.entity.labyrinth_eye.break")
+        );
+        this.add(GenesisSoundEvents.ENTITY_LABYRINTH_EYE_COG_LOSS,
+                definition().with(sound("aether_genesis:entity/labyrinth_eye/cog_loss"))
+                        .subtitle("subtitles.aether_genesis.entity.labyrinth_eye.cog_loss")
         );
 
+        this.add(GenesisSoundEvents.ENTITY_KRAISITH_SHOOT,
+                definition().with(sound("minecraft:random/bow"))
+                        .subtitle("subtitles.aether_genesis.entity.kraisith.shoot")
+        );
+
+        this.add(GenesisSoundEvents.ENTITY_CONTINUUM_BOMB_THROW,
+                definition().with(
+                        sound("minecraft:random/bow")
+                ).subtitle("subtitles.aether_genesis.entity.continuum_bomb.throw")
+        );
+        this.add(GenesisSoundEvents.ENTITY_REWARD_ITEM_LAUNCH,
+                definition().with(
+                        sound("minecraft:fireworks/launch1")
+                ).subtitle("subtitles.aether_genesis.entity.reward_item.launch")
+        );
         this.add(GenesisSoundEvents.ENTITY_HOST_EYE_COLLIDE,
                 definition().with(sound("aether:entity/slider/collide"))
                         .subtitle("subtitles.aether_genesis.entity.host_eye.collide")

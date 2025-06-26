@@ -3,7 +3,7 @@ package com.aetherteam.genesis;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
-public class GenesisConfig {
+public class GenesisConfig { //todo config screen
     public static class Startup {
         public final ModConfigSpec.ConfigValue<Boolean> altar_redesign;
 
@@ -22,7 +22,6 @@ public class GenesisConfig {
         public final ModConfigSpec.ConfigValue<Boolean> tan_zephyr_variation;
         public final ModConfigSpec.ConfigValue<Boolean> improved_slider_message;
         public final ModConfigSpec.ConfigValue<Integer> biome_weight;
-        public final ModConfigSpec.ConfigValue<Boolean> aether_ii_portal_sounds;
 
         public Common(ModConfigSpec.Builder builder) { //todo server config
             builder.push("Gameplay");
@@ -44,12 +43,6 @@ public class GenesisConfig {
                     .comment("Determines the biome weight for biome regions.")
                     .translation("config.aether_genesis.common.world_generation.biome_weight")
                     .define("Biome Weight", 15);
-            builder.pop();
-            builder.push("Audio");
-            aether_ii_portal_sounds = builder
-                    .comment("Gives Aether Portals their sounds from the Aether II")
-                    .translation("config.aether_genesis.client.audio.aether_ii_portal_sounds")
-                    .define("Aether II Portal Sounds", true);
             builder.pop();
         }
     }

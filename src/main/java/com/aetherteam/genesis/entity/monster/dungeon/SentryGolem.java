@@ -1,11 +1,14 @@
 package com.aetherteam.genesis.entity.monster.dungeon;
 
+import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.entity.projectile.DetonationProjectile;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -80,7 +83,7 @@ public class SentryGolem extends Monster implements RangedAttackMob {
         double length = Math.sqrt(x * x + z * z);
         bomb.shoot(x, y + (length * 0.2F), z, 0.5F, 8.0F);
         bomb.setYRot(this.yBodyRot);
-//        this.playSound(SoundEvents.SNOW_GOLEM_SHOOT, 1.0F, 0.4F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
+        this.playSound(GenesisSoundEvents.ENTITY_SENTRY_GOLEM_THROW_BOMB.get(), 1.0F, 0.4F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
         this.level().addFreshEntity(bomb);
     }
 
@@ -103,6 +106,21 @@ public class SentryGolem extends Monster implements RangedAttackMob {
     @Override
     protected boolean shouldDespawnInPeaceful() {
         return true;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSource) {
+        return GenesisSoundEvents.ENTITY_SENTRY_GOLEM_HURT.get();
+    }
+
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return GenesisSoundEvents.ENTITY_SENTRY_GOLEM_SAY.get();
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return GenesisSoundEvents.ENTITY_SENTRY_GOLEM_DEATH.get();
     }
 
     @Override

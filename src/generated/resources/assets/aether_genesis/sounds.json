@@ -1,20 +1,39 @@
 {
-  "block.portal.hum": {
+  "entity.battle_sentry.death": {
     "sounds": [
-      "aether_genesis:block/portal/hum"
+      "mob/slime/big1",
+      "mob/slime/big2",
+      "mob/slime/big3",
+      "mob/slime/big4"
     ],
-    "subtitle": "subtitles.aether_genesis.block.portal.hum"
+    "subtitle": "subtitles.aether_genesis.entity.battle_sentry.death"
   },
-  "block.portal.travel": {
+  "entity.battle_sentry.hurt": {
     "sounds": [
-      "aether_genesis:block/portal/travel"
-    ]
-  },
-  "block.portal.trigger": {
-    "sounds": [
-      "aether_genesis:block/portal/trigger"
+      "mob/slime/big1",
+      "mob/slime/big2",
+      "mob/slime/big3",
+      "mob/slime/big4"
     ],
-    "subtitle": "subtitles.aether_genesis.block.portal.trigger"
+    "subtitle": "subtitles.aether_genesis.entity.battle_sentry.hurt"
+  },
+  "entity.battle_sentry.jump": {
+    "sounds": [
+      "mob/slime/big1",
+      "mob/slime/big2",
+      "mob/slime/big3",
+      "mob/slime/big4"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.battle_sentry.jump"
+  },
+  "entity.battle_sentry.squish": {
+    "sounds": [
+      "mob/slime/big1",
+      "mob/slime/big2",
+      "mob/slime/big3",
+      "mob/slime/big4"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.battle_sentry.squish"
   },
   "entity.carrion_sprout.death": {
     "sounds": [
@@ -36,11 +55,29 @@
     ],
     "subtitle": "subtitles.aether_genesis.entity.cog.break"
   },
+  "entity.continuum_bomb.throw": {
+    "sounds": [
+      "random/bow"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.continuum_bomb.throw"
+  },
   "entity.host_eye.collide": {
     "sounds": [
       "aether:entity/slider/collide"
     ],
     "subtitle": "subtitles.aether_genesis.entity.host_eye.collide"
+  },
+  "entity.kraisith.shoot": {
+    "sounds": [
+      "random/bow"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.kraisith.shoot"
+  },
+  "entity.labyrinth_eye.break": {
+    "sounds": [
+      "random/break"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.labyrinth_eye.break"
   },
   "entity.labyrinth_eye.cog_loss": {
     "sounds": [
@@ -61,23 +98,61 @@
     ],
     "subtitle": "subtitles.aether_genesis.entity.labyrinth_eye.move"
   },
+  "entity.reward_item.launch": {
+    "sounds": [
+      "fireworks/launch1"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.reward_item.launch"
+  },
+  "entity.sentry_golem.death": {
+    "sounds": [
+      "aether_genesis:entity/sentry_golem/death"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.sentry_golem.death"
+  },
+  "entity.sentry_golem.hurt": {
+    "sounds": [
+      "aether_genesis:entity/sentry_golem/hurt_1",
+      "aether_genesis:entity/sentry_golem/hurt_2"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.sentry_golem.hurt"
+  },
+  "entity.sentry_golem.say": {
+    "sounds": [
+      "aether_genesis:entity/sentry_golem/say_1",
+      "aether_genesis:entity/sentry_golem/say_2"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.sentry_golem.say"
+  },
+  "entity.sentry_golem.throw_bomb": {
+    "sounds": [
+      "random/bow"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.sentry_golem.throw_bomb"
+  },
+  "entity.sentry_guardian.ambient": {
+    "sounds": [
+      "aether_genesis:entity/sentry_guardian/ambient"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.sentry_guardian.ambient"
+  },
+  "entity.sentry_guardian.attack": {
+    "sounds": [
+      "mob/irongolem/throw"
+    ],
+    "subtitle": "subtitles.aether_genesis.entity.sentry_guardian.attack"
+  },
   "entity.sentry_guardian.death": {
     "sounds": [
       "aether_genesis:entity/sentry_guardian/death"
     ],
     "subtitle": "subtitles.aether_genesis.entity.tracking_golem.creepy_seen"
   },
-  "entity.sentry_guardian.hit": {
+  "entity.sentry_guardian.hurt": {
     "sounds": [
-      "aether_genesis:entity/sentry_guardian/hit"
+      "aether_genesis:entity/sentry_guardian/hurt"
     ],
-    "subtitle": "subtitles.aether_genesis.entity.sentry_guardian.hit"
-  },
-  "entity.sentry_guardian.living": {
-    "sounds": [
-      "aether_genesis:entity/sentry_guardian/living"
-    ],
-    "subtitle": "subtitles.aether_genesis.entity.sentry_guardian.living"
+    "subtitle": "subtitles.aether_genesis.entity.sentry_guardian.hurt"
   },
   "entity.sentry_guardian.summon": {
     "sounds": [
@@ -176,19 +251,21 @@
   },
   "entity.tracking_golem.death": {
     "sounds": [
-      "aether_genesis:entity/tracking_golem/death"
+      "aether_genesis:entity/sentry_golem/death"
     ],
     "subtitle": "subtitles.aether_genesis.entity.tracking_golem.death"
   },
-  "entity.tracking_golem.hit": {
+  "entity.tracking_golem.hurt": {
     "sounds": [
-      "aether_genesis:entity/tracking_golem/hit"
+      "aether_genesis:entity/sentry_golem/hurt_1",
+      "aether_genesis:entity/sentry_golem/hurt_2"
     ],
-    "subtitle": "subtitles.aether_genesis.entity.tracking_golem.hit"
+    "subtitle": "subtitles.aether_genesis.entity.tracking_golem.hurt"
   },
   "entity.tracking_golem.say": {
     "sounds": [
-      "aether_genesis:entity/tracking_golem/say"
+      "aether_genesis:entity/sentry_golem/say_1",
+      "aether_genesis:entity/sentry_golem/say_2"
     ],
     "subtitle": "subtitles.aether_genesis.entity.tracking_golem.say"
   },

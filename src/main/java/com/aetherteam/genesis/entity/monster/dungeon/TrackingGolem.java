@@ -96,7 +96,7 @@ public class TrackingGolem extends Monster {
 
 	@Override
 	protected SoundEvent getHurtSound( DamageSource damageSource) {
-		return GenesisSoundEvents.ENTITY_TRACKING_GOLEM_HIT.get();
+		return GenesisSoundEvents.ENTITY_TRACKING_GOLEM_HURT.get();
 	}
 
 	@Override

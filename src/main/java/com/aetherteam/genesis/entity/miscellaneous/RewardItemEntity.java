@@ -1,9 +1,9 @@
 package com.aetherteam.genesis.entity.miscellaneous;
 
+import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.FastColor;
 import net.minecraft.world.entity.EntityType;
@@ -36,7 +36,7 @@ public class RewardItemEntity extends ItemEntity {
      */
     public void tick() {
         if (this.getAge() == 0) {
-            this.level().playSound(this, this.getOnPos(), SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.AMBIENT, 3.0F, 0.75F + this.random.nextFloat()); //todo custom sound event
+            this.level().playSound(this, this.getOnPos(), GenesisSoundEvents.ENTITY_REWARD_ITEM_LAUNCH.get(), SoundSource.AMBIENT, 3.0F, 0.75F + this.random.nextFloat());
         }
         if (!this.hitGround) {
             if (this.level().isClientSide()) {

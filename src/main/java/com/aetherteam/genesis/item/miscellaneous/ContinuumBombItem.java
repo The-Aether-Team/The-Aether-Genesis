@@ -1,9 +1,9 @@
 package com.aetherteam.genesis.item.miscellaneous;
 
+import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.entity.miscellaneous.ContinuumBomb;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -29,7 +29,7 @@ public class ContinuumBombItem extends Item {
      */
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
-        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), GenesisSoundEvents.ENTITY_CONTINUUM_BOMB_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F));
         if (!level.isClientSide()) {
             ContinuumBomb bomb = new ContinuumBomb(level, player);
             bomb.setItem(itemStack);
