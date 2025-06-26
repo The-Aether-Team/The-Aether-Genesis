@@ -363,7 +363,7 @@ public class GenesisSelectorLoot implements LootTableSubProvider {
                                         LootItem.lootTableItem(Items.PHANTOM_MEMBRANE).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))),
                                         LootItem.lootTableItem(AetherItems.AECHOR_PETAL.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 4.0F))),
                                         LootItem.lootTableItem(AetherItems.SWET_BALL.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))),
-                                        LootItem.lootTableItem(GenesisItems.GOLDEN_SWET_BALL.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))),
+//                                        LootItem.lootTableItem(GenesisItems.GOLDEN_SWET_BALL.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F))), //todo
                                         LootItem.lootTableItem(GenesisItems.DARK_SWET_BALL.get()).apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 9.0F)))
                                 )
                         )

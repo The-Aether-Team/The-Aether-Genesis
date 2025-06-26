@@ -17,7 +17,6 @@ import com.aetherteam.genesis.event.listeners.EntityListener;
 import com.aetherteam.genesis.event.listeners.LevelListener;
 import com.aetherteam.genesis.event.listeners.WeaponAbilityListener;
 import com.aetherteam.genesis.event.listeners.abilities.AccessoryAbilityListener;
-import com.aetherteam.genesis.event.listeners.abilities.ToolAbilityListener;
 import com.aetherteam.genesis.event.listeners.capability.GenesisPlayerListener;
 import com.aetherteam.genesis.inventory.menu.GenesisMenuTypes;
 import com.aetherteam.genesis.item.GenesisCreativeTabs;
@@ -250,7 +249,6 @@ public class AetherGenesis {
 
     public void eventSetup(IEventBus neoBus) {
         AccessoryAbilityListener.listen(neoBus);
-        ToolAbilityListener.listen(neoBus);
 
         GenesisPlayerListener.listen(neoBus);
 

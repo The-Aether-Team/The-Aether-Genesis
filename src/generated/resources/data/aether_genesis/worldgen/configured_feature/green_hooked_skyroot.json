@@ -7,15 +7,10 @@
         "provider": {
           "type": "minecraft:simple_state_provider",
           "state": {
-            "Name": "aether_genesis:skyroot_log_wall",
+            "Name": "aether:skyroot_log",
             "Properties": {
-              "double_drops": "true",
-              "east": "none",
-              "north": "none",
-              "south": "none",
-              "up": "true",
-              "waterlogged": "false",
-              "west": "none"
+              "axis": "y",
+              "double_drops": "true"
             }
           }
         }

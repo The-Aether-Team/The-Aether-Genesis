@@ -40,7 +40,6 @@ import static com.aetherteam.aether.item.AetherItems.AETHER_LOOT;
 public class GenesisItems {
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(AetherGenesis.MODID);
 
-    public static final DeferredItem<Item> GOLDEN_SWET_BALL = ITEMS.register("golden_swet_ball", () -> new SwetBallItem(new Item.Properties()));
     public static final DeferredItem<Item> DARK_SWET_BALL = ITEMS.register("dark_swet_ball", () -> new SwetBallItem(new Item.Properties()));
     public static final DeferredItem<Item> CORNSTARCH_BOWL = ITEMS.register("cornstarch_bowl", () -> new Item(new Item.Properties().craftRemainder(Items.BOWL).stacksTo(1)));
     public static final DeferredItem<Item> CONTINUUM_ORB = ITEMS.register("continuum_orb", () -> new ContinuumOrbItem(new Item.Properties()));

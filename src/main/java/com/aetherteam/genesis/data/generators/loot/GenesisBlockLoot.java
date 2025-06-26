@@ -9,7 +9,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -25,7 +24,6 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
 
     @Override
     public void generate() {
-        this.add(GenesisBlocks.ENCHANTED_GRASS_BLOCK.get(), (block) -> this.createSingleItemTableWithSilkTouch(block, Blocks.DIRT));
         this.dropSelfDouble(GenesisBlocks.GREEN_AERCLOUD.get());
         this.dropSelfDouble(GenesisBlocks.PURPLE_AERCLOUD.get());
         this.dropSelfDouble(GenesisBlocks.STORM_AERCLOUD.get());
@@ -46,10 +44,6 @@ public class GenesisBlockLoot extends GenesisBlockLootSubProvider {
         this.dropPottedContents(GenesisBlocks.POTTED_BLUE_SKYROOT_SAPLING.get());
         this.dropPottedContents(GenesisBlocks.POTTED_DARK_BLUE_SKYROOT_SAPLING.get());
         this.dropPottedContents(GenesisBlocks.POTTED_PURPLE_CRYSTAL_TREE_SAPLING.get());
-        this.dropSelfDouble(GenesisBlocks.SKYROOT_LOG_WALL.get());
-        this.dropSelf(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get());
-        this.dropSelfDouble(GenesisBlocks.SKYROOT_WOOD_WALL.get());
-        this.dropSelf(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get());
 
         this.dropSelf(GenesisBlocks.CARVED_PILLAR_TOP.get());
         this.dropSelf(GenesisBlocks.CARVED_PILLAR.get());

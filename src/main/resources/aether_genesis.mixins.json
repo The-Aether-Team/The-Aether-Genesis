@@ -15,8 +15,7 @@
     "common.accessor.BaseSpawnerAccessor",
     "common.accessor.LootPoolEntryContainerAccessor",
     "common.accessor.RegistrySetBuilderAccessor",
-    "common.accessor.SpawnerBlockEntityAccessor",
-    "common.accessor.WallBlockAccessor"
+    "common.accessor.SpawnerBlockEntityAccessor"
   ],
   "client": [
     "client.CapeLayerMixin",

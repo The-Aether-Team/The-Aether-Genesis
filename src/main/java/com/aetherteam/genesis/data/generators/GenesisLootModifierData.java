@@ -1,7 +1,6 @@
 package com.aetherteam.genesis.data.generators;
 
 import com.aetherteam.aether.AetherTags;
-import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.loot.AetherLoot;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.item.GenesisItems;
@@ -36,16 +35,6 @@ public class GenesisLootModifierData extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        this.add("golden_swet_ball", new AddEntityDropsModifier(
-                new ItemStack(GenesisItems.GOLDEN_SWET_BALL.get()),
-                new LootItemFunction[] {
-                        SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 1.0F)).build(),
-                        EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(0.0F, 1.0F)).build()
-                },
-                new LootItemCondition[] {
-                        LootItemEntityPropertyCondition.hasProperties(LootContext.EntityTarget.THIS, EntityPredicate.Builder.entity().of(AetherEntityTypes.GOLDEN_SWET.get())).build()
-                })
-        );
         this.add("swet_sugar", new AddEntityDropsModifier(
                 new ItemStack(Items.SUGAR),
                 new LootItemFunction[] {

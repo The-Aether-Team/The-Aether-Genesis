@@ -4,13 +4,11 @@ import com.aetherteam.aether.item.EquipmentUtil;
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
 import com.aetherteam.genesis.attachment.GenesisPlayerAttachment;
-import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.entity.companion.NexSpirit;
 import com.aetherteam.genesis.entity.projectile.DaggerfrostSnowball;
 import com.aetherteam.genesis.entity.projectile.PhoenixDart;
 import com.aetherteam.genesis.item.GenesisItems;
-import com.google.common.collect.ImmutableMap;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -19,16 +17,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Snowball;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.common.ItemAbilities;
-import net.neoforged.neoforge.common.ItemAbility;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.neoforged.neoforge.event.level.BlockEvent;
-
-import java.util.Map;
 
 public class AbilityHooks {
     public static class AccessoryHooks {
@@ -75,26 +66,6 @@ public class AbilityHooks {
                 }
             }
             return false;
-        }
-    }
-
-    public static class ToolHooks {
-        public static final Map<Block, Block> STRIPPABLES = (new ImmutableMap.Builder<Block, Block>())
-                .put(GenesisBlocks.SKYROOT_LOG_WALL.get(), GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get())
-                .put(GenesisBlocks.SKYROOT_WOOD_WALL.get(), GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get())
-                .build();
-
-        /**
-         * @see com.aetherteam.genesis.event.listeners.abilities.ToolAbilityListener#setupToolModifications(BlockEvent.BlockToolModificationEvent)
-         */
-        public static BlockState setupToolActions(BlockState old, ItemAbility ability) {
-            Block oldBlock = old.getBlock();
-            if (ability == ItemAbilities.AXE_STRIP) {
-                if (STRIPPABLES.containsKey(oldBlock)) {
-                    return STRIPPABLES.get(oldBlock).withPropertiesOf(old);
-                }
-            }
-            return old;
         }
     }
 

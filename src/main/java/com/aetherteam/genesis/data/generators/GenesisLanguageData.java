@@ -16,7 +16,6 @@ public class GenesisLanguageData extends AetherLanguageProvider {
 
     @Override
     protected void addTranslations() {
-        this.addBlock(GenesisBlocks.ENCHANTED_GRASS_BLOCK, "Enchanted Grass Block");
         this.addBlock(GenesisBlocks.GREEN_AERCLOUD, "Green Aercloud");
         this.addBlock(GenesisBlocks.PURPLE_AERCLOUD, "Purple Aercloud");
         this.addBlock(GenesisBlocks.STORM_AERCLOUD, "Storm Aercloud");
@@ -29,13 +28,8 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addBlock(GenesisBlocks.PURPLE_CRYSTAL_LEAVES, "Purple Crystal Leaves");
         this.addBlock(GenesisBlocks.PURPLE_CRYSTAL_FRUIT_LEAVES, "Purple Crystal Fruit Leaves");
         this.addBlock(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING, "Purple Crystal Tree Sapling");
-        this.addBlock(GenesisBlocks.SKYROOT_LOG_WALL, "Skyroot Log Wall");
-        this.addBlock(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL, "Stripped Skyroot Log Wall");
-        this.addBlock(GenesisBlocks.SKYROOT_WOOD_WALL, "Skyroot Wood Wall");
-        this.addBlock(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL, "Stripped Skyroot Wood Wall");
 
         this.addItem(GenesisItems.CONTINUUM_ORB, "Continuum Orb");
-        this.addItem(GenesisItems.GOLDEN_SWET_BALL, "Golden Swet Ball");
         this.addItem(GenesisItems.DARK_SWET_BALL, "Dark Swet Ball");
         this.addItem(GenesisItems.DARK_GUMMY_SWET, "Dark Gummy Swet");
         this.addItem(GenesisItems.BLUE_SWET_JELLY, "Blue Swet Jelly");
@@ -133,8 +127,6 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addPerItemAbilityTooltip(GenesisItems.FROSTPINE_TOTEM.get(), 1,"\u00A79Ability:\u00A7r Gives Night Vision");
         this.addPerItemAbilityTooltip(GenesisItems.FROSTBOUND_STONE.get(), 1,"\u00A79Ability:\u00A7r Generates Snowballs");
 
-        this.addPerItemAbilityTooltip(GenesisItems.GOLDEN_SWET_BALL.get(), 1,"\u00A79Ability:\u00A7r Grows Grass");
-        this.addPerItemAbilityTooltip(GenesisItems.GOLDEN_SWET_BALL.get(), 2,"\u00A73Use:\u00A7r Right-Click Block");
         this.addPerItemAbilityTooltip(GenesisItems.DARK_SWET_BALL.get(), 1,"\u00A79Ability:\u00A7r Grows Grass");
         this.addPerItemAbilityTooltip(GenesisItems.DARK_SWET_BALL.get(), 2,"\u00A73Use:\u00A7r Right-Click Block");
         this.addPerItemAbilityTooltip(GenesisItems.CONTINUUM_ORB.get(), 1,"\u00A79Ability:\u00A7r Grants Random Item");
@@ -260,7 +252,6 @@ public class GenesisLanguageData extends AetherLanguageProvider {
 
         this.addGuiText("boss.message.projectile", "Hmm... Ranged Weapons will not work here");
 
-        this.addLore(GenesisItems.GOLDEN_SWET_BALL, "A gooey orb that is dropped from Golden Swets. It can be used to fertilize soil. Another use is to put it alongside String to make a Lead.");
         this.addLore(GenesisItems.DARK_SWET_BALL, "A gooey orb that is dropped from Dark Swets. It can be used to fertilize soil. Another use is to put it alongside String to make a Lead.");
         this.addLore(GenesisItems.CORNSTARCH_BOWL, "A large bowl of ground corn flour found among chests in Bronze and Silver Dungeons. It is a vital ingredient in making Candy Corn.");
         this.addLore(GenesisItems.CONTINUUM_ORB, "An orange crystalline ball of unstable spacetime, breaking it will yield a random item from an unknown point. Maybe it will provide something useful?");
@@ -311,7 +302,6 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addLore(GenesisItems.GUARDIAN_KEY, "A blueish pewter key that is dropped from the Sentry Guardian after being defeated. You can use it to claim the treasure you earned!");
         this.addLore(GenesisItems.HOST_KEY, "A crimson-colored key that is dropped from the Slider Host Mimic after being defeated. You can use it to claim the treasure you earned!");
         this.addLore(GenesisItems.COG_KEY, "A dark key with a matte look. It is dropped from the Labyrinth Eye after being defeated. You can use it to claim the treasure you earned!");
-        this.addLore(GenesisBlocks.ENCHANTED_GRASS_BLOCK, "A Grass Block that has been enchanted to allow for increasing harvest rates of Blue Berries.");
         this.addLore(GenesisBlocks.GREEN_AERCLOUD, "A pastel green cloud found across the skies of the Aether. These can bounce you horizontally in any random direction, so be careful to not fly into them with your Moa!");
         this.addLore(GenesisBlocks.PURPLE_AERCLOUD, "A light purple cloud found at low elevations, emitting directional particles of air. Landing in a Purple Aercloud will launch you in the same direction as the particles, which can be used for momentum during flight.");
         this.addLore(GenesisBlocks.STORM_AERCLOUD, "A dark, dim cloud found near the bottom of the Aether. Some say this is where Tempests originate from at nightfall.");
@@ -324,10 +314,6 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addLore(GenesisBlocks.BLUE_SKYROOT_SAPLING, "These small blue saplings will grow into Skyroot Trees. They can be grown faster with Bone Meal.");
         this.addLore(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING, "These dark blue saplings will grow into a towering type of Skyroot Tree. They can be grown faster with Bone Meal.");
         this.addLore(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING, "These spindly saplings will grow into tall Crystal Trees with purple leaves. They can be grown faster with Bone Meal.");
-        this.addLore(GenesisBlocks.SKYROOT_LOG_WALL, "Crafted from Skyroot Logs. Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
-        this.addLore(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL, "Crafted from Stripped Skyroot Logs. Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
-        this.addLore(GenesisBlocks.SKYROOT_WOOD_WALL, "Crafted from Skyroot Wood. Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
-        this.addLore(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL, "Crafted from Stripped Skyroot Wood. Can be used for decorative enclosures and defenses. Great for keeping nasty intruders away!");
         this.addLore(GenesisBlocks.CARVED_PILLAR, "The main part of pillars found in the Bronze Dungeon; they pair well with Carved Stone for building.");
         this.addLore(GenesisBlocks.CARVED_PILLAR_TOP, "The top part of the pillars found in the Bronze Dungeon; their carvings look good and pair well with Carved Stone for building.");
         this.addLore(GenesisBlocks.DIVINE_CARVED_STONE, "Carved Stone that has blue grooves cut between the bricks. A fancy block to decorate with alongside its regular counterpart!");

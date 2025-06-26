@@ -11,7 +11,9 @@ import com.aetherteam.aether.entity.AetherEntityTypes;
 import com.aetherteam.aether.mixin.mixins.common.accessor.FireBlockAccessor;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.block.miscellaneous.ColdFireBlock;
-import com.aetherteam.genesis.block.natural.*;
+import com.aetherteam.genesis.block.natural.GreenAercloudBlock;
+import com.aetherteam.genesis.block.natural.OrangeTreeBlock;
+import com.aetherteam.genesis.block.natural.PurpleAercloudBlock;
 import com.aetherteam.genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.genesis.item.GenesisItems;
 import com.aetherteam.genesis.world.treegrower.GenesisTreeGrowers;
@@ -37,8 +39,6 @@ import java.util.function.Supplier;
 public class GenesisBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(AetherGenesis.MODID);
 
-    public static final DeferredBlock<Block> ENCHANTED_GRASS_BLOCK = register("enchanted_grass_block", () -> new EnchantedGrassBlock(Block.Properties.of().mapColor(MapColor.GOLD).randomTicks().strength(0.2F).sound(SoundType.GRASS)));
-
     public static final DeferredBlock<Block> GREEN_AERCLOUD = register("green_aercloud", () -> new GreenAercloudBlock(Block.Properties.of().mapColor(MapColor.COLOR_LIGHT_GREEN).instrument(NoteBlockInstrument.FLUTE).strength(0.3F).sound(SoundType.WOOL).noOcclusion().dynamicShape().isRedstoneConductor(GenesisBlocks::never).isSuffocating(GenesisBlocks::never).isViewBlocking(GenesisBlocks::never)));
     public static final DeferredBlock<Block> PURPLE_AERCLOUD = register("purple_aercloud", () -> new PurpleAercloudBlock(Block.Properties.of().mapColor(MapColor.COLOR_MAGENTA).instrument(NoteBlockInstrument.FLUTE).strength(0.3F).sound(SoundType.WOOL).noOcclusion().dynamicShape().isRedstoneConductor(GenesisBlocks::never).isSuffocating(GenesisBlocks::never).isViewBlocking(GenesisBlocks::never)));
     public static final DeferredBlock<Block> STORM_AERCLOUD = register("storm_aercloud", () -> new AercloudBlock(Block.Properties.of().mapColor(MapColor.DEEPSLATE).instrument(NoteBlockInstrument.FLUTE).strength(0.3F).sound(SoundType.WOOL).noOcclusion().dynamicShape().isRedstoneConductor(GenesisBlocks::never).isSuffocating(GenesisBlocks::never).isViewBlocking(GenesisBlocks::never)));
@@ -59,11 +59,6 @@ public class GenesisBlocks {
     public static final DeferredBlock<FlowerPotBlock> POTTED_BLUE_SKYROOT_SAPLING = BLOCKS.register("potted_blue_skyroot_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, BLUE_SKYROOT_SAPLING, Block.Properties.ofFullCopy(Blocks.FLOWER_POT)));
     public static final DeferredBlock<FlowerPotBlock> POTTED_DARK_BLUE_SKYROOT_SAPLING = BLOCKS.register("potted_dark_blue_skyroot_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, DARK_BLUE_SKYROOT_SAPLING, Block.Properties.ofFullCopy(Blocks.FLOWER_POT)));
     public static final DeferredBlock<FlowerPotBlock> POTTED_PURPLE_CRYSTAL_TREE_SAPLING = BLOCKS.register("potted_purple_crystal_tree_sapling", () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, PURPLE_CRYSTAL_TREE_SAPLING, Block.Properties.ofFullCopy(Blocks.FLOWER_POT)));
-
-    public static final DeferredBlock<WallBlock> SKYROOT_LOG_WALL = register("skyroot_log_wall", () -> new GenesisDoubleDropsWall(Block.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).ignitedByLava().strength(2.0F).sound(SoundType.WOOD)));
-    public static final DeferredBlock<WallBlock> STRIPPED_SKYROOT_LOG_WALL = register("stripped_skyroot_log_wall", () -> new WallBlock(Block.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).ignitedByLava().strength(2.0F).sound(SoundType.WOOD)));
-    public static final DeferredBlock<WallBlock> SKYROOT_WOOD_WALL = register("skyroot_wood_wall", () -> new GenesisDoubleDropsWall(Block.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).ignitedByLava().strength(2.0F).sound(SoundType.WOOD)));
-    public static final DeferredBlock<WallBlock> STRIPPED_SKYROOT_WOOD_WALL = register("stripped_skyroot_wood_wall", () -> new WallBlock(Block.Properties.of().mapColor(MapColor.WOOD).instrument(NoteBlockInstrument.BASS).ignitedByLava().strength(2.0F).sound(SoundType.WOOD)));
 
     public static final DeferredBlock<RotatedPillarBlock> CARVED_PILLAR = register("carved_pillar", () -> new RotatedPillarBlock(Block.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
     public static final DeferredBlock<FacingPillarBlock> CARVED_PILLAR_TOP = register("carved_pillar_top", () -> new FacingPillarBlock(Block.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(0.5F, 6.0F).requiresCorrectToolForDrops()));
@@ -107,10 +102,6 @@ public class GenesisBlocks {
         FireBlockAccessor fireBlockAccessor = (FireBlockAccessor) Blocks.FIRE;
         fireBlockAccessor.callSetFlammable(GenesisBlocks.BLUE_SKYROOT_LEAVES.get(), 30, 60);
         fireBlockAccessor.callSetFlammable(GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get(), 30, 60);
-        fireBlockAccessor.callSetFlammable(GenesisBlocks.SKYROOT_LOG_WALL.get(), 5, 5);
-        fireBlockAccessor.callSetFlammable(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(), 5, 5);
-        fireBlockAccessor.callSetFlammable(GenesisBlocks.SKYROOT_WOOD_WALL.get(), 5, 5);
-        fireBlockAccessor.callSetFlammable(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(), 5, 5);
     }
 
     private static <T extends Block> DeferredBlock<T> baseRegister(String name, Supplier<? extends T> block, Function<DeferredBlock<T>, Supplier<? extends Item>> item) {

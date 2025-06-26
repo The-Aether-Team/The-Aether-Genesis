@@ -1,7 +1,5 @@
 package com.aetherteam.genesis.data.generators;
 
-import com.aetherteam.aether.Aether;
-import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.data.providers.GenesisItemModelProvider;
@@ -16,7 +14,6 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
 
     @Override
     protected void registerModels() {
-        this.item(GenesisItems.GOLDEN_SWET_BALL.get(), "materials/");
         this.item(GenesisItems.DARK_SWET_BALL.get(), "materials/");
         this.item(GenesisItems.CORNSTARCH_BOWL.get(), "materials/");
         this.item(GenesisItems.CONTINUUM_ORB.get(), "materials/");
@@ -86,7 +83,6 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.eggItem(GenesisItems.SENTRY_GUARDIAN_SPAWN_EGG.get());
         this.eggItem(GenesisItems.LABYRINTH_EYE_SPAWN_EGG.get());
 
-        this.itemBlock(GenesisBlocks.ENCHANTED_GRASS_BLOCK.get());
         this.itemBlock(GenesisBlocks.GREEN_AERCLOUD.get());
         this.itemBlock(GenesisBlocks.PURPLE_AERCLOUD.get());
         this.itemBlock(GenesisBlocks.STORM_AERCLOUD.get());
@@ -99,11 +95,6 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.itemBlockFlat(GenesisBlocks.BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.itemBlockFlat(GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.itemBlockFlat(GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), "natural/");
-
-        this.itemLogWallBlock(GenesisBlocks.SKYROOT_LOG_WALL.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/", Aether.MODID);
-        this.itemLogWallBlock(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/", Aether.MODID);
-        this.itemWoodWallBlock(GenesisBlocks.SKYROOT_WOOD_WALL.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/", Aether.MODID);
-        this.itemWoodWallBlock(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/", Aether.MODID);
 
         this.itemBlock(GenesisBlocks.CARVED_PILLAR_TOP.get());
         this.itemBlock(GenesisBlocks.CARVED_PILLAR.get());

@@ -26,8 +26,6 @@ public class GenesisItemTagData extends ItemTagsProvider {
     @Override
     public void addTags(HolderLookup.Provider provider) {
         // Genesis
-        this.copy(GenesisTags.Blocks.LOG_WALLS, GenesisTags.Items.LOG_WALLS);
-
         this.tag(GenesisTags.Items.SKYROOT_LADDER_CRAFTING).addTag(
                 AetherTags.Items.SKYROOT_STICKS);
         this.tag(GenesisTags.Items.HOLYSTONE_FURNACE_CRAFTING).add(
@@ -96,14 +94,7 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisBlocks.DIVINE_CARVED_SLAB.get().asItem()
         );
 
-        this.tag(AetherTags.Items.CRAFTS_SKYROOT_PLANKS).add(
-                GenesisBlocks.SKYROOT_LOG_WALL.get().asItem(),
-                GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get().asItem(),
-                GenesisBlocks.SKYROOT_WOOD_WALL.get().asItem(),
-                GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get().asItem());
-        this.tag(AetherTags.Items.SWET_BALLS).add(
-                GenesisItems.GOLDEN_SWET_BALL.get(),
-                GenesisItems.DARK_SWET_BALL.get());
+        this.tag(AetherTags.Items.SWET_BALLS).add(GenesisItems.DARK_SWET_BALL.get());
         this.tag(AetherTags.Items.DEPLOYABLE_PARACHUTES).add(
                 GenesisItems.GREEN_PARACHUTE.get(),
                 GenesisItems.PURPLE_PARACHUTE.get());
@@ -176,18 +167,11 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisBlocks.BLUE_SKYROOT_SAPLING.get().asItem(),
                 GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get().asItem(),
                 GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get().asItem());
-        this.tag(ItemTags.LOGS_THAT_BURN).addTag( // Charcoal Recipes
-                GenesisTags.Items.LOG_WALLS);
         this.tag(ItemTags.STAIRS).add(
                 GenesisBlocks.DIVINE_CARVED_STAIRS.get().asItem());
         this.tag(ItemTags.SLABS).add(
                 GenesisBlocks.DIVINE_CARVED_SLAB.get().asItem());
-        this.tag(ItemTags.WALLS).add(
-                GenesisBlocks.SKYROOT_LOG_WALL.get().asItem(),
-                GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get().asItem(),
-                GenesisBlocks.SKYROOT_WOOD_WALL.get().asItem(),
-                GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get().asItem(),
-                GenesisBlocks.DIVINE_CARVED_WALL.get().asItem());
+        this.tag(ItemTags.WALLS).add(GenesisBlocks.DIVINE_CARVED_WALL.get().asItem());
         this.tag(ItemTags.LEAVES).add(
                 GenesisBlocks.BLUE_SKYROOT_LEAVES.get().asItem(),
                 GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get().asItem(),

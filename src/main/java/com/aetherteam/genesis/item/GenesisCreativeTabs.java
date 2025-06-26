@@ -13,12 +13,6 @@ public class GenesisCreativeTabs {
 
     public static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
         ResourceKey<CreativeModeTab> tab = event.getTabKey();
-        if (tab == AetherCreativeTabs.AETHER_BUILDING_BLOCKS.getKey()) {
-            event.insertAfter(new ItemStack(AetherBlocks.SKYROOT_LOG.get()), new ItemStack(GenesisBlocks.SKYROOT_LOG_WALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(new ItemStack(AetherBlocks.STRIPPED_SKYROOT_LOG.get()), new ItemStack(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(new ItemStack(AetherBlocks.SKYROOT_WOOD.get()), new ItemStack(GenesisBlocks.SKYROOT_WOOD_WALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(new ItemStack(AetherBlocks.STRIPPED_SKYROOT_WOOD.get()), new ItemStack(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-        }
         if (tab == AetherCreativeTabs.AETHER_DUNGEON_BLOCKS.getKey()) {
             event.insertAfter(new ItemStack(AetherBlocks.CARVED_WALL.get()), new ItemStack(GenesisBlocks.CARVED_PILLAR.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(new ItemStack(GenesisBlocks.CARVED_PILLAR.get()), new ItemStack(GenesisBlocks.CARVED_PILLAR_TOP.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -38,9 +32,7 @@ public class GenesisCreativeTabs {
 //            event.insertAfter(new ItemStack(GenesisBlocks.SKYROOT_CHEST_MIMIC.get()), new ItemStack(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS); //todo
         }
         if (tab == AetherCreativeTabs.AETHER_NATURAL_BLOCKS.getKey()) {
-            event.insertAfter(new ItemStack(AetherBlocks.ENCHANTED_AETHER_GRASS_BLOCK.get()), new ItemStack(GenesisBlocks.ENCHANTED_GRASS_BLOCK.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(new ItemStack(AetherBlocks.GRAVITITE_ORE.get()), new ItemStack(GenesisBlocks.CONTINUUM_ORE.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(new ItemStack(AetherBlocks.SKYROOT_LOG.get()), new ItemStack(GenesisBlocks.SKYROOT_LOG_WALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(new ItemStack(AetherBlocks.GOLDEN_AERCLOUD.get()), new ItemStack(GenesisBlocks.GREEN_AERCLOUD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(new ItemStack(GenesisBlocks.GREEN_AERCLOUD.get()), new ItemStack(GenesisBlocks.PURPLE_AERCLOUD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             event.insertAfter(new ItemStack(GenesisBlocks.PURPLE_AERCLOUD.get()), new ItemStack(GenesisBlocks.STORM_AERCLOUD.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
@@ -108,8 +100,7 @@ public class GenesisCreativeTabs {
         }
         if (tab == AetherCreativeTabs.AETHER_INGREDIENTS.getKey()) {
             event.insertAfter(new ItemStack(AetherBlocks.ENCHANTED_GRAVITITE.get()), new ItemStack(GenesisItems.CONTINUUM_ORB.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(new ItemStack(AetherItems.SWET_BALL.get()), new ItemStack(GenesisItems.GOLDEN_SWET_BALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
-            event.insertAfter(new ItemStack(GenesisItems.GOLDEN_SWET_BALL.get()), new ItemStack(GenesisItems.DARK_SWET_BALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+//            event.insertAfter(new ItemStack(GenesisItems.GOLDEN_SWET_BALL.get()), new ItemStack(GenesisItems.DARK_SWET_BALL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS); //todo
             event.insertAfter(new ItemStack(GenesisItems.DARK_SWET_BALL.get()), new ItemStack(GenesisItems.CORNSTARCH_BOWL.get()), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
             }
         if (tab == AetherCreativeTabs.AETHER_SPAWN_EGGS.getKey()) {

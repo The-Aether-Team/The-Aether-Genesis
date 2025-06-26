@@ -26,7 +26,7 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
     @Override
     protected void buildRecipes(RecipeOutput consumer) {
         makeSwetJelly(GenesisItems.BLUE_SWET_JELLY, AetherItems.SWET_BALL).save(consumer);
-        makeSwetJelly(GenesisItems.GOLDEN_SWET_JELLY, GenesisItems.GOLDEN_SWET_BALL).save(consumer);
+//        makeSwetJelly(GenesisItems.GOLDEN_SWET_JELLY, GenesisItems.GOLDEN_SWET_BALL).save(consumer); //TODO
         makeSwetJelly(GenesisItems.DARK_SWET_JELLY, GenesisItems.DARK_SWET_BALL).save(consumer);
         twoByTwoPacker(consumer, RecipeCategory.TOOLS, GenesisItems.BLUE_PARACHUTE.get(), AetherBlocks.BLUE_AERCLOUD.get());
         twoByTwoPacker(consumer, RecipeCategory.TOOLS, GenesisItems.GREEN_PARACHUTE.get(), GenesisBlocks.GREEN_AERCLOUD.get());
@@ -47,11 +47,6 @@ public class GenesisRecipeData extends GenesisRecipeProvider {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GenesisItems.WRAPPED_CHOCOLATES.get()).requires(Items.COCOA_BEANS).requires(AetherItems.SKYROOT_MILK_BUCKET.get()).requires(AetherItems.AECHOR_PETAL.get()).requires(Items.SUGAR).unlockedBy(getHasName(AetherItems.AECHOR_PETAL.get()), has(AetherItems.AECHOR_PETAL.get())).save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GenesisItems.JELLY_PUMPKIN.get()).requires(GenesisItems.ORANGE.get()).requires(GenesisTags.Items.SWET_JELLY).requires(Items.SUGAR).unlockedBy(getHasName(GenesisItems.ORANGE.get()), has(GenesisItems.ORANGE.get())).save(consumer);
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GenesisItems.CANDY_CORN.get(), 5).requires(GenesisItems.CORNSTARCH_BOWL.get()).requires(AetherItems.SKYROOT_MILK_BUCKET.get()).requires(AetherItems.SKYROOT_WATER_BUCKET.get()).requires(Items.SUGAR).unlockedBy(getHasName(GenesisItems.CORNSTARCH_BOWL.get()), has(GenesisItems.CORNSTARCH_BOWL.get())).save(consumer);
-
-        wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_LOG_WALL.get(), AetherBlocks.SKYROOT_LOG.get());
-        wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.SKYROOT_WOOD_WALL.get(), AetherBlocks.SKYROOT_WOOD.get());
-        wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get());
-        wall(consumer, RecipeCategory.DECORATIONS, GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_WOOD.get());
 
         this.oreBlockStorageRecipesRecipesWithCustomUnpacking(consumer, RecipeCategory.MISC, GenesisItems.CONTINUUM_ORB.get(), RecipeCategory.MISC, GenesisItems.CONTINUUM_BOMB.get(), "continuum_orb_from_bomb", "continuum_bomb");
 

@@ -1,6 +1,7 @@
 package com.aetherteam.genesis.data.resources;
 
 import com.aetherteam.aether.block.AetherBlockStateProperties;
+import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -13,7 +14,8 @@ public class GenesisFeatureStates {
 
     public static final BlockState ORANGE_TREE = GenesisBlocks.ORANGE_TREE.get().defaultBlockState().setValue(AetherBlockStateProperties.DOUBLE_DROPS, true);
 
-    public static final BlockState SKYROOT_LOG_WALL = GenesisBlocks.SKYROOT_LOG_WALL.get().defaultBlockState().setValue(AetherBlockStateProperties.DOUBLE_DROPS, true);
+//    public static final BlockState SKYROOT_LOG_WALL = GenesisBlocks.SKYROOT_LOG_WALL.get().defaultBlockState().setValue(AetherBlockStateProperties.DOUBLE_DROPS, true); //todo
+    public static final BlockState SKYROOT_LOG_WALL = AetherBlocks.SKYROOT_LOG.get().defaultBlockState().setValue(AetherBlockStateProperties.DOUBLE_DROPS, true);
 
     public static final BlockState BLUE_SKYROOT_LEAVES = GenesisBlocks.BLUE_SKYROOT_LEAVES.get().defaultBlockState().setValue(AetherBlockStateProperties.DOUBLE_DROPS, true);
     public static final BlockState DARK_BLUE_SKYROOT_LEAVES = GenesisBlocks.DARK_BLUE_SKYROOT_LEAVES.get().defaultBlockState().setValue(AetherBlockStateProperties.DOUBLE_DROPS, true);

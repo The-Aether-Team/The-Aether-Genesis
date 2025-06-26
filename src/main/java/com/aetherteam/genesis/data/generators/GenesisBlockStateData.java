@@ -1,14 +1,9 @@
 package com.aetherteam.genesis.data.generators;
 
-import com.aetherteam.aether.Aether;
-import com.aetherteam.aether.block.AetherBlocks;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.data.providers.GenesisBlockStateProvider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.Blocks;
-import net.neoforged.neoforge.client.model.generators.ModelBuilder;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 public class GenesisBlockStateData extends GenesisBlockStateProvider {
@@ -18,7 +13,6 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
 
     @Override
     public void registerStatesAndModels() {
-        this.enchantedVanillaGrass(GenesisBlocks.ENCHANTED_GRASS_BLOCK.get(), Blocks.GRASS_BLOCK, Blocks.DIRT);
         this.translucentBlock(GenesisBlocks.GREEN_AERCLOUD.get(), "natural/");
         this.purpleAercloud(GenesisBlocks.PURPLE_AERCLOUD.get());
         this.translucentBlock(GenesisBlocks.STORM_AERCLOUD.get(), "natural/");
@@ -35,7 +29,6 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
         this.pottedPlant(GenesisBlocks.POTTED_BLUE_SKYROOT_SAPLING.get(), GenesisBlocks.BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.pottedPlant(GenesisBlocks.POTTED_DARK_BLUE_SKYROOT_SAPLING.get(), GenesisBlocks.DARK_BLUE_SKYROOT_SAPLING.get(), "natural/");
         this.pottedPlant(GenesisBlocks.POTTED_PURPLE_CRYSTAL_TREE_SAPLING.get(), GenesisBlocks.PURPLE_CRYSTAL_TREE_SAPLING.get(), "natural/");
-        this.makeLogWalls();
 
         this.dungeonPillar(GenesisBlocks.CARVED_PILLAR.get());
         this.dungeonPillarTop(GenesisBlocks.CARVED_PILLAR_TOP.get());
@@ -58,26 +51,5 @@ public class GenesisBlockStateData extends GenesisBlockStateProvider {
         this.block(GenesisBlocks.BLOOD_MOSS_HOLYSTONE.get(), "dungeon/");
 
         this.coldFire(GenesisBlocks.COLD_FIRE.get());
-    }
-
-    private void makeLogWalls() {
-        ModelFile postBig = this.makeWallPostModel(4, 16, "wooden_post_big");
-        ModelFile postShort = this.makeWallPostModel(3, 14, "wooden_post_short");
-        ModelFile postTall = this.makeWallPostModel(3, 16, "wooden_post_tall");
-
-        ModelFile side = this.makeWallSideModel(5, 14, "wooden_side", ModelBuilder.FaceRotation.CLOCKWISE_90, 0, 5);
-        ModelFile sideAlt = this.makeWallSideModel(5, 14, "wooden_side_alt", ModelBuilder.FaceRotation.COUNTERCLOCKWISE_90, 11, 16);
-        ModelFile sideTall = this.makeWallSideModel(5, 16, "wooden_side_tall", ModelBuilder.FaceRotation.CLOCKWISE_90, 0, 5);
-        ModelFile sideTallAlt = this.makeWallSideModel(5, 16, "wooden_side_tall_alt", ModelBuilder.FaceRotation.COUNTERCLOCKWISE_90, 11, 16);
-
-        ModelFile sideShort = this.makeWallSideModel(4, 14, "wooden_side_short", ModelBuilder.FaceRotation.CLOCKWISE_90, 0, 4);
-        ModelFile sideAltShort = this.makeWallSideModel(4, 14, "wooden_side_alt_short", ModelBuilder.FaceRotation.COUNTERCLOCKWISE_90, 12, 16);
-        ModelFile sideTallShort = this.makeWallSideModel(4, 16, "wooden_side_tall_short", ModelBuilder.FaceRotation.CLOCKWISE_90, 0, 4);
-        ModelFile sideTallAltShort = this.makeWallSideModel(4, 16, "wooden_side_tall_alt_short", ModelBuilder.FaceRotation.COUNTERCLOCKWISE_90, 12, 16);
-
-        this.logWallBlock(GenesisBlocks.SKYROOT_LOG_WALL.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/", Aether.MODID, true, postBig, postShort, postTall, side, sideAlt, sideTall, sideTallAlt, sideShort, sideAltShort, sideTallShort, sideTallAltShort);
-        this.logWallBlock(GenesisBlocks.STRIPPED_SKYROOT_LOG_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/", Aether.MODID, true, postBig, postShort, postTall, side, sideAlt, sideTall, sideTallAlt, sideShort, sideAltShort, sideTallShort, sideTallAltShort);
-        this.logWallBlock(GenesisBlocks.SKYROOT_WOOD_WALL.get(), AetherBlocks.SKYROOT_LOG.get(), "natural/", Aether.MODID, false, postBig, postShort, postTall, side, sideAlt, sideTall, sideTallAlt, sideShort, sideAltShort, sideTallShort, sideTallAltShort);
-        this.logWallBlock(GenesisBlocks.STRIPPED_SKYROOT_WOOD_WALL.get(), AetherBlocks.STRIPPED_SKYROOT_LOG.get(), "natural/", Aether.MODID, false, postBig, postShort, postTall, side, sideAlt, sideTall, sideTallAlt, sideShort, sideAltShort, sideTallShort, sideTallAltShort);
     }
 }

@@ -1,8 +1,0 @@
-{
-  "parent": "aether_genesis:block/wooden_side_alt_short",
-  "textures": {
-    "particle": "aether:block/natural/skyroot_log",
-    "side": "aether:block/natural/skyroot_log",
-    "top": "aether:block/natural/skyroot_log"
-  }
-}

@@ -1,4 +1,4 @@
-// 1.21.1	2024-12-22T17:18:19.6021509	Global Loot Modifiers : aether_genesis
+// 1.21.1	2025-06-26T11:17:56.5603314	Global Loot Modifiers : aether_genesis
 9ff3affa4ae9984178b94ebb10b39cbca29fc348 data/aether_genesis/loot_modifiers/baby_pink_swet.json
 e77795ea324c1009feeb19c79d0345cec323f187 data/aether_genesis/loot_modifiers/bone_ring.json
 9d38ccbbfce91d455ace79f3fb6140cc26690b2d data/aether_genesis/loot_modifiers/bronze_candy_corn.json
@@ -16,7 +16,6 @@ c74e4c4e71b8f051573385591219b9fc9852a223 data/aether_genesis/loot_modifiers/fang
 8c437fa4394bcb0f8cac336ea9cd36f03d548c77 data/aether_genesis/loot_modifiers/fleeting_stone.json
 3732b330121f80eb462e5608e58c37e2c1871b6c data/aether_genesis/loot_modifiers/frostbound_stone.json
 5a2ae91d0346f1a3bf0eaab8b1ae32c8e6a4ba93 data/aether_genesis/loot_modifiers/frostpine_totem.json
-e0dba1ede7f1c73a3cfe998abd335f59dfb4f401 data/aether_genesis/loot_modifiers/golden_swet_ball.json
 8d689a84d25a731aa7eef26ccc4c43d39f923961 data/aether_genesis/loot_modifiers/kraisith_capsule.json
 41b036fb9062d0b5fc8824fe8bff2626865ff293 data/aether_genesis/loot_modifiers/lucky_bell.json
 9fda7bbb7f3460cb0fd2303df2a1f5d49515b4fa data/aether_genesis/loot_modifiers/mouse_ear_cap.json
@@ -33,4 +32,4 @@ f70f132efc9b9971e638bebab089800f443cd40a data/aether_genesis/loot_modifiers/silv
 3f93f88713d6d79a56e4528e0298b2cff2e6e872 data/aether_genesis/loot_modifiers/soaring_stone.json
 c8c8e2e45c7dfd28a5cb1178681eee214dd9b537 data/aether_genesis/loot_modifiers/swetty_pendant.json
 c10fb0f19ceddc66e852297b4e934ade51e44a75 data/aether_genesis/loot_modifiers/swet_sugar.json
-7177959b2e36e7110345d8a76fc5cb003ab5e867 data/neoforge/loot_modifiers/global_loot_modifiers.json
+baab9534be7627660d8d7072cf7a329fdee0d77f data/neoforge/loot_modifiers/global_loot_modifiers.json
