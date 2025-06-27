@@ -35,6 +35,7 @@ import java.util.UUID;
  */
 public class BabyPinkSwet extends Swet implements Companion<BabyPinkSwet> {
     private static final EntityDataAccessor<Optional<UUID>> DATA_OWNER_ID = SynchedEntityData.defineId(BabyPinkSwet.class, EntityDataSerializers.OPTIONAL_UUID);
+    private static final EntityDataAccessor<ItemStack> DATA_ITEM_ID = SynchedEntityData.defineId(BabyPinkSwet.class, EntityDataSerializers.ITEM_STACK);
 
     public BabyPinkSwet(EntityType<? extends Swet> type, Level level) {
         super(type, level);
@@ -54,6 +55,7 @@ public class BabyPinkSwet extends Swet implements Companion<BabyPinkSwet> {
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(DATA_OWNER_ID, Optional.empty());
+        builder.define(DATA_ITEM_ID, ItemStack.EMPTY);
     }
 
     @Override
@@ -69,12 +71,12 @@ public class BabyPinkSwet extends Swet implements Companion<BabyPinkSwet> {
 
     @Override
     public void onEquip(ItemStack itemStack) {
-
+        this.setItem(itemStack); // Stores the summoning item.
     }
 
     @Override
     public void onUnequip(ItemStack itemStack) {
-
+        this.setItem(ItemStack.EMPTY); // Stops storing the summoning item.
     }
 
     @Override
@@ -93,12 +95,40 @@ public class BabyPinkSwet extends Swet implements Companion<BabyPinkSwet> {
 
     }
 
+    /**
+     * @return The {@link UUID} of this companion's owner.
+     */
+    @Override
     public UUID getOwner() {
         return this.getEntityData().get(DATA_OWNER_ID).orElse(null);
     }
 
+    /**
+     * Sets the owner of this companion using the {@link UUID}.
+     *
+     * @param owner The owner's {@link UUID}.
+     */
+    @Override
     public void setOwner(UUID owner) {
         this.getEntityData().set(DATA_OWNER_ID, Optional.ofNullable(owner));
+    }
+
+    /**
+     * @return The {@link ItemStack} that summoned this companion.
+     */
+    @Override
+    public ItemStack getItem() {
+        return this.getEntityData().get(DATA_ITEM_ID);
+    }
+
+    /**
+     * Sets the {@link ItemStack} that summoned this companion.
+     *
+     * @param stack The {@link ItemStack}.
+     */
+    @Override
+    public void setItem(ItemStack stack) {
+        this.getEntityData().set(DATA_ITEM_ID, stack);
     }
 
     @Override

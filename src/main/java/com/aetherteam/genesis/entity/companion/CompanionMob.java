@@ -99,6 +99,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
     /**
      * @return The {@link UUID} of this companion's owner.
      */
+    @Override
     public UUID getOwner() {
         return this.getEntityData().get(DATA_OWNER_ID).orElse(null);
     }
@@ -108,6 +109,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
      *
      * @param owner The owner's {@link UUID}.
      */
+    @Override
     public void setOwner(UUID owner) {
         this.getEntityData().set(DATA_OWNER_ID, Optional.ofNullable(owner));
     }
@@ -115,6 +117,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
     /**
      * @return The {@link ItemStack} that summoned this companion.
      */
+    @Override
     public ItemStack getItem() {
         return this.getEntityData().get(DATA_ITEM_ID);
     }
@@ -124,6 +127,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
      *
      * @param stack The {@link ItemStack}.
      */
+    @Override
     public void setItem(ItemStack stack) {
         this.getEntityData().set(DATA_ITEM_ID, stack);
     }
@@ -131,6 +135,7 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
     /**
      * @return The summoning {@link ItemStack} for the companion.
      */
+    @Override
     public ItemStack getSummonItem() {
         return this.summoningItem.get();
     }

@@ -28,5 +28,8 @@ public interface Companion<T extends Mob & Companion<T>> {
     UUID getOwner();
     void setOwner(UUID owner);
 
+    ItemStack getItem();
+    void setItem(ItemStack stack);
+
     ItemStack getSummonItem();
 }

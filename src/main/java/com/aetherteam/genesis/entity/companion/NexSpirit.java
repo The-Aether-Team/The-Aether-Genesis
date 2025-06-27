@@ -34,7 +34,7 @@ public class NexSpirit extends FloatingCompanion {
             if (this.tickCount % 10 == 0) {
                 this.setCooldown(this.getCooldown() - 1);
             }
-        } else {
+        } else if (this.isBroken()) {
             this.setBroken(false);
         }
         if (!this.getItem().isEmpty()) {
@@ -47,6 +47,7 @@ public class NexSpirit extends FloatingCompanion {
 
     @Override
     public void onEquip(ItemStack itemStack) {
+        super.onEquip(itemStack);
         Integer itemCooldown = this.getItem().get(GenesisDataComponents.NEX_SPIRIT_COOLDOWN);
         if (itemCooldown != null) {
             if (itemCooldown > 0) {
@@ -54,7 +55,6 @@ public class NexSpirit extends FloatingCompanion {
                 this.setBroken(true);
             }
         }
-        super.onEquip(itemStack);
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.aetherteam.genesis.event.hooks;
 
 import com.aetherteam.aether.item.EquipmentUtil;
+import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
 import com.aetherteam.genesis.attachment.GenesisPlayerAttachment;
