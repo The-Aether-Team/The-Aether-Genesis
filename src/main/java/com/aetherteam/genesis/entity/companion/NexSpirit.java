@@ -1,7 +1,7 @@
 package com.aetherteam.genesis.entity.companion;
 
-import com.aetherteam.genesis.item.GenesisDataComponents;
 import com.aetherteam.genesis.item.GenesisItems;
+import com.aetherteam.genesis.item.components.GenesisDataComponents;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;

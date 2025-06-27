@@ -21,8 +21,8 @@ import com.aetherteam.genesis.event.listeners.abilities.AccessoryAbilityListener
 import com.aetherteam.genesis.event.listeners.capability.GenesisPlayerListener;
 import com.aetherteam.genesis.inventory.menu.GenesisMenuTypes;
 import com.aetherteam.genesis.item.GenesisCreativeTabs;
-import com.aetherteam.genesis.item.GenesisDataComponents;
 import com.aetherteam.genesis.item.GenesisItems;
+import com.aetherteam.genesis.item.components.GenesisDataComponents;
 import com.aetherteam.genesis.loot.functions.GenesisLootFunctions;
 import com.aetherteam.genesis.loot.modifiers.GenesisLootModifiers;
 import com.aetherteam.genesis.network.clientbound.NexResurrectionEffectPacket;

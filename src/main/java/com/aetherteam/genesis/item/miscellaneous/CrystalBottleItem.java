@@ -1,6 +1,6 @@
 package com.aetherteam.genesis.item.miscellaneous;
 
-import com.aetherteam.genesis.item.GenesisDataComponents;
+import com.aetherteam.genesis.item.components.GenesisDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.network.chat.Component;

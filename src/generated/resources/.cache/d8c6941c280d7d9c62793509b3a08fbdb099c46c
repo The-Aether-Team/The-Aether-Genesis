@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-26T11:39:01.9175535	Item Models: aether_genesis
+// 1.21.1	2025-06-27T15:30:37.6670309	Item Models: aether_genesis
 a1f4e59bd85e14a40e0f96656878f1d867da93d8 assets/aether_genesis/models/item/baby_pink_swet.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/battle_sentry_spawn_egg.json
 b951ae61814ccb898428dd794f3adf77d4e02a6c assets/aether_genesis/models/item/blood_moss_holystone.json
@@ -30,7 +30,8 @@ c6c6149bfb02ea6cb5376060a9a37dd0f65852cf assets/aether_genesis/models/item/dark_
 16da46d84276e50dbd0807026902a5f05d41d008 assets/aether_genesis/models/item/dark_swet_ball.json
 b60b899aad4e1d0591a2a6c3d6cf32eee41a9c37 assets/aether_genesis/models/item/dark_swet_jelly.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/aether_genesis/models/item/dark_swet_spawn_egg.json
-43e228b537a09b0b0fc69a7fa662616718123982 assets/aether_genesis/models/item/death_seal.json
+7ae4dc66adb3a2d5b7bed4a43a10d3f9c5be9e15 assets/aether_genesis/models/item/death_seal.json
+a6b6d75ff6eb59ebad2a159520c8613043ea051f assets/aether_genesis/models/item/death_seal_broken.json
 811b0a5a780db13728564dd840be57cdc3d02d0a assets/aether_genesis/models/item/dexterity_cape.json
 92e2307b58e0e270f19a6a7fc09e86e71f59dcf0 assets/aether_genesis/models/item/divine_carved_slab.json
 63d8baa7add2b003feab0d7e77ed4a26ecb64808 assets/aether_genesis/models/item/divine_carved_stairs.json

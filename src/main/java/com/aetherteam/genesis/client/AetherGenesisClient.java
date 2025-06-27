@@ -10,9 +10,13 @@ import com.aetherteam.genesis.client.gui.screen.inventory.HolystoneFurnaceScreen
 import com.aetherteam.genesis.client.particle.GenesisParticleTypes;
 import com.aetherteam.genesis.client.renderer.GenesisRenderers;
 import com.aetherteam.genesis.inventory.menu.GenesisMenuTypes;
+import com.aetherteam.genesis.item.GenesisItems;
+import com.aetherteam.genesis.item.components.GenesisDataComponents;
 import com.aetherteam.nitrogen.event.listeners.TooltipListeners;
+import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.contents.TranslatableContents;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -44,6 +48,7 @@ public class AetherGenesisClient {
             if (GenesisConfig.CLIENT.night_music_tracks.get()) {
                 AetherConfig.CLIENT.disable_music_manager.set(true);
             }
+            registerItemModelProperties();
             registerTooltipOverrides();
         });
     }
@@ -57,6 +62,11 @@ public class AetherGenesisClient {
 
     public static void registerGuiFactories(RegisterMenuScreensEvent event) {
         event.register(GenesisMenuTypes.HOLYSTONE_FURNACE.get(), HolystoneFurnaceScreen::new);
+    }
+
+    public static void registerItemModelProperties() {
+        ItemProperties.register(GenesisItems.DEATH_SEAL.get(), ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "broken"),
+                (stack, world, living, i) -> stack.has(GenesisDataComponents.NEX_SPIRIT_COOLDOWN) && stack.get(GenesisDataComponents.NEX_SPIRIT_COOLDOWN) > 0 ? 1.0F : 0.0F);
     }
 
     public static void registerTooltipOverrides() {

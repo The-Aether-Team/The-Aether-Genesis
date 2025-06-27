@@ -2,6 +2,7 @@ package com.aetherteam.genesis.data.providers;
 
 import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.data.providers.AetherItemModelProvider;
+import com.aetherteam.genesis.AetherGenesis;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -17,6 +18,12 @@ public abstract class GenesisItemModelProvider extends AetherItemModelProvider {
 
     public void dyeableCape(Item item) {
         this.withExistingParent(this.itemName(item), this.mcLoc("item/generated")).texture("layer0", ResourceLocation.fromNamespaceAndPath(Aether.MODID, "item/accessories/white_cape"));
+    }
+
+    public void deathSeal(Item item, String location) {
+        this.withExistingParent(this.itemName(item) + "_broken", this.mcLoc("item/generated")).texture("layer0", this.modLoc("item/" + location + this.itemName(item) + "_broken"));
+        this.withExistingParent(this.itemName(item), this.mcLoc("item/generated")).texture("layer0", this.modLoc("item/" + location + this.itemName(item)))
+                .override().predicate(ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "broken"), 1.0F).model(this.getExistingFile(this.modLoc("item/" + this.itemName(item) + "_broken"))).end();
     }
 
     public void orangeTree(Block block) {

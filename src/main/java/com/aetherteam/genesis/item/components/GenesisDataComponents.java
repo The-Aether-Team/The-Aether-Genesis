@@ -1,7 +1,6 @@
-package com.aetherteam.genesis.item;
+package com.aetherteam.genesis.item.components;
 
 import com.aetherteam.genesis.AetherGenesis;
-import com.aetherteam.genesis.item.components.HungerTracker;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;

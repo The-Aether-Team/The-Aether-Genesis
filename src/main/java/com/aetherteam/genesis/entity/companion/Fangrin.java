@@ -22,6 +22,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
+//todo
+//  cooldown system so that when the companion runs out of health, a data component for a cooldown is set on the stack, it can be ticked by the player attachment, and also the unequip code is run to disable the companion. and when the cooldown ticks back up, the equip code can be run to restore teh companion
 public class Fangrin extends CompanionMob implements Combative {
     public Fangrin(EntityType<Fangrin> entityType, Level level) {
         super(entityType, level, () -> new ItemStack(GenesisItems.FANGRIN_CAPSULE.get()), false);

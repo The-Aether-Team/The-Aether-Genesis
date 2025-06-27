@@ -2,7 +2,7 @@ package com.aetherteam.genesis.item.accessories.companion;
 
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.entity.companion.NexSpirit;
-import com.aetherteam.genesis.item.GenesisDataComponents;
+import com.aetherteam.genesis.item.components.GenesisDataComponents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;

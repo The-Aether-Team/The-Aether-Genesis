@@ -2,7 +2,7 @@ package com.aetherteam.genesis.item.accessories.ring;
 
 import com.aetherteam.aether.item.accessories.ring.RingItem;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
-import com.aetherteam.genesis.item.GenesisDataComponents;
+import com.aetherteam.genesis.item.components.GenesisDataComponents;
 import com.aetherteam.genesis.item.components.HungerTracker;
 import io.wispforest.accessories.api.slot.SlotReference;
 import net.minecraft.world.entity.player.Player;

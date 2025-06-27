@@ -61,7 +61,7 @@ public class GenesisItemModelData extends GenesisItemModelProvider {
         this.item(GenesisItems.ORB_OF_ARKENZUS.get(), "accessories/");
         this.item(GenesisItems.FROSTPINE_TOTEM.get(), "accessories/");
         this.item(GenesisItems.FROSTBOUND_STONE.get(), "accessories/");
-        this.item(GenesisItems.DEATH_SEAL.get(), "accessories/");
+        this.deathSeal(GenesisItems.DEATH_SEAL.get(), "accessories/");
         this.item(GenesisItems.BABY_PINK_SWET.get(), "accessories/");
 
         this.item(GenesisItems.MUSIC_DISC_AERWHALE.get(), "miscellaneous/");
