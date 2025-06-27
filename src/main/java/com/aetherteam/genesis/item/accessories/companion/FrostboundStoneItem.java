@@ -24,7 +24,7 @@ public class FrostboundStoneItem extends CompanionItem<FrostboundSprite> {
                 } else {
                     ItemStack snowball = player.getInventory().getItem(i);
                     if (snowball.getCount() < snowball.getMaxStackSize()) {
-                        snowball.setCount(snowball.getCount() + 1); //todo why does this run immediately after when the snowball is added.
+                        snowball.setCount(snowball.getCount() + 1);
                     }
                 }
             }
