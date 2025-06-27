@@ -44,17 +44,17 @@ public class Kraisith extends CompanionMob implements Combative, RangedAttackMob
     }
 
     @Override
-    public boolean wantsToAttack(LivingEntity target, LivingEntity owner) { //todo
+    public boolean wantsToAttack(LivingEntity target, LivingEntity owner) {
         if (target instanceof Creeper || target instanceof Ghast) {
             return false;
         } else if (target instanceof Wolf wolf) {
             return !wolf.isTame() || wolf.getOwner() != owner;
-        } else if (target instanceof Player && owner instanceof Player && !((Player)owner).canHarmPlayer((Player)target)) {
+        } else if (target instanceof Player playerTarget && owner instanceof Player playerOwner && !playerOwner.canHarmPlayer(playerTarget)) {
             return false;
-        } else if (target instanceof AbstractHorse && ((AbstractHorse)target).isTamed()) {
+        } else if (target instanceof AbstractHorse horseTarget && horseTarget.isTamed()) {
             return false;
         } else {
-            return !(target instanceof TamableAnimal) || !((TamableAnimal)target).isTame();
+            return !(target instanceof TamableAnimal animalTarget) || !animalTarget.isTame();
         }
     }
 
@@ -62,11 +62,11 @@ public class Kraisith extends CompanionMob implements Combative, RangedAttackMob
     public void performRangedAttack(LivingEntity target, float distanceFactor) {
         EnchantedNeedle needle = new EnchantedNeedle(this.level(), this);
         double d0 = target.getX() - this.getX();
-        double d1 = target.getY(0.3333333333333333) - needle.getY();
+        double d1 = target.getY(0.33) - needle.getY();
         double d2 = target.getZ() - this.getZ();
         double d3 = Math.sqrt(d0 * d0 + d2 * d2);
-        needle.shoot(d0, d1 + d3 * (double)0.2F, d2, 1.6F, (float)(14 - this.level().getDifficulty().getId() * 4));
-        this.playSound(GenesisSoundEvents.ENTITY_KRAISITH_SHOOT.get(), 2.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F)); //todo sound
+        needle.shoot(d0, d1 + d3 * 0.2F, d2, 1.6F, 14.0F - this.level().getDifficulty().getId() * 4.0F);
+        this.playSound(GenesisSoundEvents.ENTITY_KRAISITH_SHOOT.get(), 2.0F, 1.0F / (this.getRandom().nextFloat() * 0.4F + 0.8F));
         this.level().addFreshEntity(needle);
     }
 

@@ -101,7 +101,7 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addDiscDesc(GenesisItems.RECORDING_892, "Emile van Krieken - ???");
 
         this.addGeneric("experience.desc", "Experience (%s inside)");
-        this.addGeneric("death_seal.desc", "Repairing Seal: %s%");
+        this.addGeneric("death_seal.desc", "Repairing Seal: %s");
 
         this.addPerItemAbilityTooltip(GenesisItems.PHOENIX_DART_SHOOTER.get(), 1,"\u00A77Shoots:\u00A7r All Dart Types");
 

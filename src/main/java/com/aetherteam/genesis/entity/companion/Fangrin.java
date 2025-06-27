@@ -38,21 +38,25 @@ public class Fangrin extends CompanionMob implements Combative {
     }
 
     public static AttributeSupplier.Builder createAttributes() {
-        return Mob.createMobAttributes().add(Attributes.MAX_HEALTH, 50.0).add(Attributes.MOVEMENT_SPEED, 0.3).add(Attributes.ATTACK_DAMAGE, 4.0).add(Attributes.FOLLOW_RANGE, 48.0);
+        return Mob.createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 50.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.3)
+                .add(Attributes.ATTACK_DAMAGE, 4.0)
+                .add(Attributes.FOLLOW_RANGE, 48.0);
     }
 
     @Override
-    public boolean wantsToAttack(LivingEntity target, LivingEntity owner) { //todo
+    public boolean wantsToAttack(LivingEntity target, LivingEntity owner) {
         if (target instanceof Creeper || target instanceof Ghast) {
             return false;
         } else if (target instanceof Wolf wolf) {
             return !wolf.isTame() || wolf.getOwner() != owner;
-        } else if (target instanceof Player && owner instanceof Player && !((Player)owner).canHarmPlayer((Player)target)) {
+        } else if (target instanceof Player playerTarget && owner instanceof Player playerOwner && !playerOwner.canHarmPlayer(playerTarget)) {
             return false;
-        } else if (target instanceof AbstractHorse && ((AbstractHorse)target).isTamed()) {
+        } else if (target instanceof AbstractHorse horseTarget && horseTarget.isTamed()) {
             return false;
         } else {
-            return !(target instanceof TamableAnimal) || !((TamableAnimal)target).isTame();
+            return !(target instanceof TamableAnimal animalTarget) || !animalTarget.isTame();
         }
     }
 

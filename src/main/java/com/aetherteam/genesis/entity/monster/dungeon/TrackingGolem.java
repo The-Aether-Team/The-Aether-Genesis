@@ -2,12 +2,13 @@ package com.aetherteam.genesis.entity.monster.dungeon;
 
 import com.aetherteam.aether.entity.ai.goal.ContinuousMeleeAttackGoal;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
-import com.aetherteam.genesis.network.packet.clientbound.TrackingGolemWarningPacket;
+import com.aetherteam.genesis.client.particle.GenesisParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -22,13 +23,20 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.neoforged.neoforge.network.PacketDistributor;
 
 public class TrackingGolem extends Monster {
 	public static final EntityDataAccessor<Boolean> DATA_CAN_SEE_ENEMY_ID = SynchedEntityData.defineId(TrackingGolem.class, EntityDataSerializers.BOOLEAN);
 
 	public TrackingGolem(EntityType<? extends TrackingGolem> type, Level level) {
 		super(type, level);
+	}
+
+	public static AttributeSupplier.Builder createMobAttributes() {
+		return Monster.createMobAttributes()
+				.add(Attributes.MAX_HEALTH, 20.0)
+				.add(Attributes.ATTACK_DAMAGE, 3.0)
+				.add(Attributes.MOVEMENT_SPEED, 0.28)
+				.add(Attributes.FOLLOW_RANGE, 8.0);
 	}
 
 	@Override
@@ -47,12 +55,16 @@ public class TrackingGolem extends Monster {
 		builder.define(DATA_CAN_SEE_ENEMY_ID, false);
 	}
 
-	public static AttributeSupplier.Builder createMobAttributes() {
-		return Monster.createMobAttributes()
-				.add(Attributes.MAX_HEALTH, 20.0)
-				.add(Attributes.ATTACK_DAMAGE, 3.0)
-				.add(Attributes.MOVEMENT_SPEED, 0.28)
-				.add(Attributes.FOLLOW_RANGE, 8.0);
+	@Override
+	public void handleEntityEvent(byte id) {
+		if (id == 100) {
+			if (this.getTarget() instanceof Player player) {
+				player.level().addParticle(GenesisParticleTypes.TRACKING_GOLEM_WARNING.get(), player.getX(), player.getY(), player.getZ(), 0.0, 0.0, 0.0);
+				player.level().playSound(player, player.getX(), player.getY(), player.getZ(), GenesisSoundEvents.ENTITY_TRACKING_GOLEM_SEEN_ENEMY.get(), SoundSource.HOSTILE, 1.0F, 1.0F);
+			}
+		} else {
+			super.handleEntityEvent(id);
+		}
 	}
 
 	public void tick() {
@@ -62,12 +74,10 @@ public class TrackingGolem extends Monster {
 					this.setSeenEnemy(true);
 				}
 				int duration = 25;
-				if (!this.getTarget().hasEffect(MobEffects.BLINDNESS)
-						|| this.getTarget().getEffect(MobEffects.BLINDNESS).getAmplifier() < this.getTarget().getEffect(MobEffects.BLINDNESS).getAmplifier()
-						|| this.getTarget().getEffect(MobEffects.BLINDNESS).endsWithin(duration - 1)) {
+				if (!this.getTarget().hasEffect(MobEffects.BLINDNESS) || this.getTarget().getEffect(MobEffects.BLINDNESS).endsWithin(duration - 1)) {
 					if (!this.getTarget().hasEffect(MobEffects.BLINDNESS)) {
-						if (this.getTarget() instanceof ServerPlayer serverPlayer) {
-							PacketDistributor.sendToPlayer(serverPlayer, new TrackingGolemWarningPacket(serverPlayer.getId()));
+						if (this.getTarget() instanceof ServerPlayer) {
+							this.level().broadcastEntityEvent(this, (byte) 100);
 						}
 					}
 					this.getTarget().addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 30), this);

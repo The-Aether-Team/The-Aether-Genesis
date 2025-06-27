@@ -133,12 +133,12 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
     }
 
     @Override
-    public void handleEntityEvent(byte pId) {
-        if (pId == 4) {
+    public void handleEntityEvent(byte id) {
+        if (id == 4) {
             this.attackAnimationTick = 10;
             this.playSound(GenesisSoundEvents.ENTITY_SENTRY_GUARDIAN_ATTACK.get(), 1.0F, 1.0F);
         } else {
-            super.handleEntityEvent(pId);
+            super.handleEntityEvent(id);
         }
     }
 

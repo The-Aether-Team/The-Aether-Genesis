@@ -27,7 +27,6 @@ import com.aetherteam.genesis.loot.functions.GenesisLootFunctions;
 import com.aetherteam.genesis.loot.modifiers.GenesisLootModifiers;
 import com.aetherteam.genesis.network.packet.GenesisPlayerSyncPacket;
 import com.aetherteam.genesis.network.packet.ZephyrColorSyncPacket;
-import com.aetherteam.genesis.network.packet.clientbound.TrackingGolemWarningPacket;
 import com.aetherteam.genesis.world.GenesisRegion;
 import com.aetherteam.genesis.world.feature.GenesisFeatures;
 import com.aetherteam.genesis.world.structurepiece.GenesisStructurePieceTypes;
@@ -149,7 +148,6 @@ public class AetherGenesis {
         var registrar = event.registrar(MODID).versioned("1.0.0").optional();
 
         // CLIENTBOUND
-        registrar.playToClient(TrackingGolemWarningPacket.TYPE, TrackingGolemWarningPacket.STREAM_CODEC, TrackingGolemWarningPacket::execute);
 
         // BOTH
         registrar.playBidirectional(GenesisPlayerSyncPacket.TYPE, GenesisPlayerSyncPacket.STREAM_CODEC, GenesisPlayerSyncPacket::execute);
