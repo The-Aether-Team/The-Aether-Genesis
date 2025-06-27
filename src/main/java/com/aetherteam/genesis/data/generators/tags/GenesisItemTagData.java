@@ -102,6 +102,7 @@ public class GenesisItemTagData extends ItemTagsProvider {
                 GenesisItems.COG_KEY.get(),
                 GenesisItems.GUARDIAN_KEY.get(),
                 GenesisItems.HOST_KEY.get());
+        this.tag(AetherTags.Items.PACIFIES_SWETS).add(GenesisItems.BABY_PINK_SWET.get());
         this.tag(AetherTags.Items.BRONZE_DUNGEON_LOOT).add(
                 GenesisItems.DARK_GUMMY_SWET.get(),
                 GenesisItems.FROSTPINE_TOTEM.get(),

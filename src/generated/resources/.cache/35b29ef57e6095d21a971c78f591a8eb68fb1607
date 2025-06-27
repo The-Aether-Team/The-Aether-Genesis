@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-26T11:39:01.9115531	Tags for minecraft:item mod id aether_genesis
+// 1.21.1	2025-06-27T10:29:20.6063208	Tags for minecraft:item mod id aether_genesis
 f066d3493e632c009b09dcaa9213459bf3fb0654 data/aether/tags/item/accessories_capes.json
 42d9429c4a2caa607369eda48e154467b6961a23 data/aether/tags/item/accessories_miscellaneous.json
 d1a8d412e7c7c9bcae51c0760965af276c050ebd data/aether/tags/item/accessories_pendants.json
@@ -12,6 +12,7 @@ a3eac039548e1059b71778bc8e17558b8f2aea4f data/aether/tags/item/dungeon_keys.json
 7238fc566ecc944690f0e6fbcbffb28b3022d09a data/aether/tags/item/flying_cow_temptation_items.json
 033effccfd047e284a1308ebe504746e668e4fe7 data/aether/tags/item/gold_dungeon_loot.json
 3dcf10b82a2080a9bd10b8d2b5d01a41fb6bd7b8 data/aether/tags/item/locked_dungeon_blocks.json
+38edd4ce518650304738852edc8bc857c0fcb866 data/aether/tags/item/pacifies_swets.json
 7238fc566ecc944690f0e6fbcbffb28b3022d09a data/aether/tags/item/phyg_temptation_items.json
 f48538930063aff5b41d26facd21331ba0343bae data/aether/tags/item/sentry_blocks.json
 7238fc566ecc944690f0e6fbcbffb28b3022d09a data/aether/tags/item/sheepuff_temptation_items.json

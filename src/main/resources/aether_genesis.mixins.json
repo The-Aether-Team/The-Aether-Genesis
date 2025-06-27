@@ -10,7 +10,6 @@
     "common.BlockBehaviourMixin",
     "common.ParachuteMixin",
     "common.SliderMixin",
-    "common.SwetMixin",
     "common.accessor.BaseSpawnerAccessor",
     "common.accessor.LootPoolEntryContainerAccessor",
     "common.accessor.RegistrySetBuilderAccessor",
