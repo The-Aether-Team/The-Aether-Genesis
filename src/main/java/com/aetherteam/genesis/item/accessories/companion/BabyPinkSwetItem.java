@@ -9,9 +9,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
 
-/**
- * Behavior is handled in {@link com.aetherteam.genesis.mixin.mixins.common.SwetMixin}.
- */
 public class BabyPinkSwetItem extends AccessoryItem implements CompanionAccessory<BabyPinkSwet> {
     public BabyPinkSwetItem() {
         super(new Item.Properties().stacksTo(1));

@@ -122,12 +122,12 @@ public class GenesisBlocks {
         };
     }
 
-    private static boolean never(BlockState p_test_1_, BlockGetter p_test_2_, BlockPos p_test_3_) {
+    private static boolean never(BlockState state, BlockGetter level, BlockPos pos) {
         return false;
     }
 
-    private static boolean ocelotOrParrot(BlockState p_235441_0_, BlockGetter p_235441_1_, BlockPos p_235441_2_, EntityType<?> p_235441_3_) {
-        return p_235441_3_ == EntityType.OCELOT || p_235441_3_ == EntityType.PARROT;
+    private static boolean ocelotOrParrot(BlockState state, BlockGetter level, BlockPos pos, EntityType<?> entityType) {
+        return entityType == EntityType.OCELOT || entityType == EntityType.PARROT;
     }
 
     private static int lightLevel11(BlockState state) {

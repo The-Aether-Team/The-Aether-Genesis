@@ -1,6 +1,7 @@
 package com.aetherteam.genesis.item.miscellaneous;
 
 import com.aetherteam.genesis.item.GenesisDataComponents;
+import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
@@ -19,7 +20,7 @@ import java.util.Locale;
 
 import static com.aetherteam.aether.item.AetherItems.AETHER_LOOT;
 
-public class CrystalBottleItem extends Item { //todo storing experience on death when equipped as accessory?
+public class CrystalBottleItem extends Item {
     private static final DecimalFormat EXPERIENCE_FORMAT = Util.make(new DecimalFormat("#.#"), (format) -> format.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
 
     public CrystalBottleItem() {
@@ -71,8 +72,9 @@ public class CrystalBottleItem extends Item { //todo storing experience on death
      */
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
-        if (stack.has(GenesisDataComponents.STORED_EXPERIENCE_AMOUNT)) { //todo styling
-            components.add(Component.translatable("aether_genesis.experience.desc", EXPERIENCE_FORMAT.format(Mth.abs(stack.get(GenesisDataComponents.STORED_EXPERIENCE_AMOUNT)))));
+        Float experience = stack.get(GenesisDataComponents.STORED_EXPERIENCE_AMOUNT);
+        if (experience != null) {
+            components.add(Component.translatable("aether_genesis.experience.desc", EXPERIENCE_FORMAT.format(Mth.abs(experience))).withStyle(ChatFormatting.GRAY));
         }
         super.appendHoverText(stack, context, components, flag);
     }

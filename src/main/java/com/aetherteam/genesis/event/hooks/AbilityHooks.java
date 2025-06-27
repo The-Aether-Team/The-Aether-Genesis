@@ -9,6 +9,7 @@ import com.aetherteam.genesis.entity.companion.NexSpirit;
 import com.aetherteam.genesis.entity.projectile.DaggerfrostSnowball;
 import com.aetherteam.genesis.entity.projectile.PhoenixDart;
 import com.aetherteam.genesis.item.GenesisItems;
+import com.aetherteam.genesis.network.clientbound.NexResurrectionEffectPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public class AbilityHooks {
     public static class AccessoryHooks {
@@ -54,11 +56,12 @@ public class AbilityHooks {
                 GenesisPlayerAttachment attachment = player.getData(GenesisDataAttachments.GENESIS_PLAYER);
                 for (Entity companion : attachment.getCompanions()) {
                     if (companion instanceof NexSpirit nexSpirit) {
-                        if (!nexSpirit.isBroken()) {
+                        if (!nexSpirit.isBroken()) { //todo for some reason this doesnt activate properly sometimes
                             player.setHealth(player.getMaxHealth());
-                            nexSpirit.setCooldown(100); //todo balance and visual flourish
+                            nexSpirit.setCooldown(100); //todo balance
                             if (player instanceof ServerPlayer serverPlayer) {
                                 GenesisAdvancementTriggers.NEX_REVIVE.get().trigger(serverPlayer);
+                                PacketDistributor.sendToPlayer(serverPlayer, new NexResurrectionEffectPacket());
                             }
                             return true;
                         }

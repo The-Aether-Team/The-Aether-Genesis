@@ -25,6 +25,7 @@ import com.aetherteam.genesis.item.GenesisDataComponents;
 import com.aetherteam.genesis.item.GenesisItems;
 import com.aetherteam.genesis.loot.functions.GenesisLootFunctions;
 import com.aetherteam.genesis.loot.modifiers.GenesisLootModifiers;
+import com.aetherteam.genesis.network.clientbound.NexResurrectionEffectPacket;
 import com.aetherteam.genesis.network.packet.GenesisPlayerSyncPacket;
 import com.aetherteam.genesis.network.packet.ZephyrColorSyncPacket;
 import com.aetherteam.genesis.world.GenesisRegion;
@@ -148,6 +149,7 @@ public class AetherGenesis {
         var registrar = event.registrar(MODID).versioned("1.0.0").optional();
 
         // CLIENTBOUND
+        registrar.playToClient(NexResurrectionEffectPacket.TYPE, NexResurrectionEffectPacket.STREAM_CODEC, NexResurrectionEffectPacket::execute);
 
         // BOTH
         registrar.playBidirectional(GenesisPlayerSyncPacket.TYPE, GenesisPlayerSyncPacket.STREAM_CODEC, GenesisPlayerSyncPacket::execute);
