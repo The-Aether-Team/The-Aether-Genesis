@@ -102,14 +102,10 @@ public class TempestThunderBall extends AbstractHurtingProjectile {
 	@Override
 	protected void onHitEntity(EntityHitResult result) {
 		super.onHitEntity(result);
-		if (!this.level().isClientSide) {
+		if (!this.level().isClientSide()) {
 			Entity entity = result.getEntity();
 			Entity entity1 = this.getOwner();
 			entity.hurt(this.damageSources().indirectMagic(this, entity1), 4.0F);
-			if (entity1 instanceof LivingEntity) {
-				// TODO: [PORTING] FIGURE OUT IF THIS IS STILL NEEDED
-				//this.doEnchantDamageEffects((LivingEntity)entity1, entity);
-			}
 		}
 	}
 

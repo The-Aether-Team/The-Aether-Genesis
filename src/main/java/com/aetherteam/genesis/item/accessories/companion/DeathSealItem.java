@@ -2,26 +2,22 @@ package com.aetherteam.genesis.item.accessories.companion;
 
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.entity.companion.NexSpirit;
+import com.aetherteam.genesis.item.GenesisDataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 
-public class DeathSealItem extends CompanionItem<NexSpirit> { //todo tooltip
+import java.util.List;
+
+public class DeathSealItem extends CompanionItem<NexSpirit> {
     public DeathSealItem(Properties properties) {
         super(GenesisEntityTypes.NEX_SPIRIT, properties);
     }
 
-//    @Override
-//    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
-//        Player player = Minecraft.getInstance().player;
-//        if (player != null) {
-//            GenesisPlayerAttachment attachment = player.getData(GenesisDataAttachments.GENESIS_PLAYER);
-//            for (Entity entity : attachment.getCompanions()) { //it doesnt know this on the client.
-//                if (entity instanceof NexSpirit nexSpirit) {
-//                    ItemStack summonItem = nexSpirit.getItem();
-//                    if (ItemStack.isSameItemSameTags(stack, summonItem)) {
-//                        components.add(Component.translatable("aether_genesis.death_seal.desc", 100 - nexSpirit.getCooldown()));
-//                    }
-//                }
-//            }
-//        }
-//        super.appendHoverText(stack, level, components, flag);
-//    }
+    @Override
+    public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        if (stack.has(GenesisDataComponents.NEX_SPIRIT_COOLDOWN)) { //todo styling
+            tooltipComponents.add(Component.translatable("aether_genesis.death_seal.desc", 100 - stack.get(GenesisDataComponents.NEX_SPIRIT_COOLDOWN)).append("%"));
+        }
+    }
 }

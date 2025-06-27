@@ -37,37 +37,24 @@ public class NexSpirit extends FloatingCompanion {
         } else {
             this.setBroken(false);
         }
+        if (!this.getItem().isEmpty()) {
+            Integer itemCooldown = this.getItem().get(GenesisDataComponents.NEX_SPIRIT_COOLDOWN);
+            if (itemCooldown == null || itemCooldown != this.getCooldown()) {
+                this.getItem().set(GenesisDataComponents.NEX_SPIRIT_COOLDOWN, this.getCooldown());
+            }
+        }
     }
 
     @Override
     public void onEquip(ItemStack itemStack) {
-        if (itemStack.has(GenesisDataComponents.NEX_SPIRIT_COOLDOWN)) {
-            int cooldown = itemStack.get(GenesisDataComponents.NEX_SPIRIT_COOLDOWN);
-            if (cooldown > 0) {
-                this.setCooldown(cooldown); // Set cooldown tag that was stored with the Death Seal to the Nex Spirit
+        Integer itemCooldown = this.getItem().get(GenesisDataComponents.NEX_SPIRIT_COOLDOWN);
+        if (itemCooldown != null) {
+            if (itemCooldown > 0) {
+                this.setCooldown(itemCooldown); // Set cooldown tag that was stored with the Death Seal to the Nex Spirit
                 this.setBroken(true);
             }
-            itemStack.remove(GenesisDataComponents.NEX_SPIRIT_COOLDOWN); // Remove cooldown tag from Death Seal after transfer.
         }
         super.onEquip(itemStack);
-    }
-
-    @Override
-    public void onUnequip(ItemStack itemStack) {
-        this.setItemCooldown(); // Set item cooldown if it is unequipped.
-        super.onUnequip(itemStack);
-    }
-
-    @Override
-    public void remove(RemovalReason reason) {
-        this.setItemCooldown(); // Set item cooldown when the Nex Spirit is removed.
-        super.remove(reason);
-    }
-
-    private void setItemCooldown() {
-        if (this.getCooldown() > 0) { // Apply the current cooldown value to the Death Seal.
-            this.getItem().set(GenesisDataComponents.NEX_SPIRIT_COOLDOWN, this.getCooldown());
-        }
     }
 
     /**

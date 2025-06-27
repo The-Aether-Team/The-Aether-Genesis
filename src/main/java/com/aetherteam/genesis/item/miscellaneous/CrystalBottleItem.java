@@ -19,7 +19,7 @@ import java.util.Locale;
 
 import static com.aetherteam.aether.item.AetherItems.AETHER_LOOT;
 
-public class CrystalBottleItem extends Item {
+public class CrystalBottleItem extends Item { //todo storing experience on death when equipped as accessory?
     private static final DecimalFormat EXPERIENCE_FORMAT = Util.make(new DecimalFormat("#.#"), (format) -> format.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
 
     public CrystalBottleItem() {
@@ -37,24 +37,24 @@ public class CrystalBottleItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand)  {
         ItemStack heldItem = player.getItemInHand(hand);
-        float exp = heldItem.getOrDefault(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT, 0f);
+        float exp = heldItem.getOrDefault(GenesisDataComponents.STORED_EXPERIENCE_AMOUNT, 0f);
         if (player.isShiftKeyDown()) { // Store experience to the bottle.
             if (player.experienceProgress > 0.0F) {
-                heldItem.set(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT, exp + 0.1F);
+                heldItem.set(GenesisDataComponents.STORED_EXPERIENCE_AMOUNT, exp + 0.1F);
                 player.experienceProgress -= 0.1F;
                 return InteractionResultHolder.success(heldItem);
             } else if (player.experienceLevel > 0) {
-                heldItem.set(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT, exp + 1.0F);
+                heldItem.set(GenesisDataComponents.STORED_EXPERIENCE_AMOUNT, exp + 1.0F);
                 player.experienceLevel--;
                 player.experienceProgress = 1;
                 return InteractionResultHolder.success(heldItem);
             }
         } else if (exp > 0.0F) { // Extract experience from the bottle.
             if (player.experienceProgress < 1.0F) {
-                heldItem.set(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT, exp - 0.1F);
+                heldItem.set(GenesisDataComponents.STORED_EXPERIENCE_AMOUNT, exp - 0.1F);
                 player.experienceProgress += 0.1F;
             } else {
-                heldItem.set(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT, exp - 1.0F);
+                heldItem.set(GenesisDataComponents.STORED_EXPERIENCE_AMOUNT, exp - 1.0F);
                 player.experienceLevel = (int) (player.experienceLevel + 1.0F);
                 player.experienceProgress = 0;
             }
@@ -71,8 +71,8 @@ public class CrystalBottleItem extends Item {
      */
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> components, TooltipFlag flag) {
-        if (stack.has(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT)) {
-            components.add(Component.translatable("aether_genesis.experience.desc", EXPERIENCE_FORMAT.format(Mth.abs(stack.get(GenesisDataComponents.CRYSTAL_BOTTLE_AMOUNT)))));
+        if (stack.has(GenesisDataComponents.STORED_EXPERIENCE_AMOUNT)) { //todo styling
+            components.add(Component.translatable("aether_genesis.experience.desc", EXPERIENCE_FORMAT.format(Mth.abs(stack.get(GenesisDataComponents.STORED_EXPERIENCE_AMOUNT)))));
         }
         super.appendHoverText(stack, context, components, flag);
     }

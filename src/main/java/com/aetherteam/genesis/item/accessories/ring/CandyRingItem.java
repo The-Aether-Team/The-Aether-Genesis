@@ -3,7 +3,7 @@ package com.aetherteam.genesis.item.accessories.ring;
 import com.aetherteam.aether.item.accessories.ring.RingItem;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.item.GenesisDataComponents;
-import com.aetherteam.genesis.item.components.CandyFoodStuff;
+import com.aetherteam.genesis.item.components.HungerTracker;
 import io.wispforest.accessories.api.slot.SlotReference;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -25,7 +25,7 @@ public class CandyRingItem extends RingItem {
     @Override
     public void onEquip(ItemStack stack, SlotReference reference) {
         if (reference.entity() instanceof Player player) {
-            stack.set(GenesisDataComponents.CANDY_RING_FOODSTUFF, new CandyFoodStuff(player.getFoodData().getExhaustionLevel(), player.getFoodData().getSaturationLevel()));
+            stack.set(GenesisDataComponents.STORED_HUNGER_VALUES, new HungerTracker(player.getFoodData().getExhaustionLevel(), player.getFoodData().getSaturationLevel()));
         }
     }
 
@@ -38,8 +38,8 @@ public class CandyRingItem extends RingItem {
     @Override
     public void tick(ItemStack stack, SlotReference reference) {
         if (!reference.entity().level().isClientSide()) {
-            if (reference.entity() instanceof Player player && stack.has(GenesisDataComponents.CANDY_RING_FOODSTUFF)) {
-                CandyFoodStuff foodStuff = stack.get(GenesisDataComponents.CANDY_RING_FOODSTUFF);
+            if (reference.entity() instanceof Player player && stack.has(GenesisDataComponents.STORED_HUNGER_VALUES)) {
+                HungerTracker foodStuff = stack.get(GenesisDataComponents.STORED_HUNGER_VALUES);
                 float exhaustionLevel = foodStuff.exhaustionLevel();
                 float saturationLevel = foodStuff.saturationLevel();
                 if (player.getFoodData().getExhaustionLevel() > exhaustionLevel) { // Reduce exhaustion to stored level if it goes up.
