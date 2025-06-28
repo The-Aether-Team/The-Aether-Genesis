@@ -50,6 +50,7 @@ public interface CompanionAccessory<T extends Entity> {
                     if (entity instanceof Companion<?> companion) {
                         companion.onUnequip(itemStack);
                     }
+                    entity.discard();
                     return true;
                 }
                 return false;

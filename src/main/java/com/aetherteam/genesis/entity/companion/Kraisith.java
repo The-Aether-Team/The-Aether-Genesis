@@ -6,6 +6,7 @@ import com.aetherteam.genesis.entity.ai.goal.CompanionHurtByTargetGoal;
 import com.aetherteam.genesis.entity.ai.goal.CompanionHurtTargetGoal;
 import com.aetherteam.genesis.entity.projectile.EnchantedNeedle;
 import com.aetherteam.genesis.item.GenesisItems;
+import com.aetherteam.genesis.item.components.GenesisDataComponents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -44,6 +45,14 @@ public class Kraisith extends CompanionMob implements Combative, RangedAttackMob
     }
 
     @Override
+    public void tick() {
+        super.tick();
+        if (!this.isDeadOrDying() && this.getHealth() < this.getMaxHealth() && this.tickCount % 100 == 0) {
+            this.setHealth(Math.min(this.getHealth() + 1.0F, this.getMaxHealth()));
+        }
+    }
+
+    @Override
     public boolean wantsToAttack(LivingEntity target, LivingEntity owner) {
         if (target instanceof Creeper || target instanceof Ghast) {
             return false;
@@ -72,8 +81,15 @@ public class Kraisith extends CompanionMob implements Combative, RangedAttackMob
 
     @Override
     public boolean isInvulnerableTo(DamageSource source) {
-        return this.isRemoved() || source.is(DamageTypeTags.IS_FALL) || (this.getOwner() != null && source.getEntity() instanceof Player player && this.getOwner().equals(player.getUUID()));
+        return !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) && (source.is(DamageTypeTags.IS_FALL) || (this.getOwner() != null && source.getEntity() instanceof Player player && this.getOwner().equals(player.getUUID())));
     }
 
-    //todo regeneration
+    @Override
+    public void die(DamageSource damageSource) {
+        ItemStack adjustedStack = this.getItem();
+        adjustedStack.set(GenesisDataComponents.COMPANION_DOWNED, true);
+        adjustedStack.set(GenesisDataComponents.COMPANION_HEALTH, 0);
+        adjustedStack.set(GenesisDataComponents.COMPANION_MAX_HEALTH, (int) this.getMaxHealth());
+        super.die(damageSource);
+    }
 }

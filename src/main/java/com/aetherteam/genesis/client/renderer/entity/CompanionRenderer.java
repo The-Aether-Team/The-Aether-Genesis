@@ -20,7 +20,7 @@ public abstract class CompanionRenderer<T extends CompanionMob, S extends Entity
     public void render(T companion, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         super.render(companion, entityYaw, partialTicks, poseStack, buffer, packedLight);
         if (this.shouldShowName(companion)) {
-            this.renderDisplayItem(companion, poseStack, buffer, this.entityRenderDispatcher, this.itemRenderer);
+            this.renderDisplayItem(companion, poseStack, buffer, this.entityRenderDispatcher, this.itemRenderer, packedLight);
         }
     }
 }

@@ -23,12 +23,19 @@ public class GenesisEntityTagData extends EntityTypeTagsProvider {
     public void addTags(HolderLookup.Provider provider) {
         // Genesis
         this.tag(GenesisTags.Entities.COMPANIONS).add(
+                GenesisEntityTypes.FANGRIN.get(),
+                GenesisEntityTypes.KRAISITH.get(),
                 GenesisEntityTypes.FLEETING_WISP.get(),
                 GenesisEntityTypes.SOARING_WISP.get(),
                 GenesisEntityTypes.ETHEREAL_WISP.get(),
                 GenesisEntityTypes.SHADE_OF_ARKENZUS.get(),
                 GenesisEntityTypes.FROSTPINE_TOTEM.get(),
+                GenesisEntityTypes.FROSTBOUND_SPRITE.get(),
+                GenesisEntityTypes.NEX_SPIRIT.get(),
                 GenesisEntityTypes.BABY_PINK_SWET.get());
+        this.tag(GenesisTags.Entities.COMBAT_COMPANIONS).add(
+                GenesisEntityTypes.FANGRIN.get(),
+                GenesisEntityTypes.KRAISITH.get());
         this.tag(GenesisTags.Entities.NO_PRESENT_DROPS);
 
         // Aether

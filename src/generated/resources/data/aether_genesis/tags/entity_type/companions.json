@@ -1,10 +1,14 @@
 {
   "values": [
+    "aether_genesis:fangrin",
+    "aether_genesis:kraisith",
     "aether_genesis:fleeting_wisp",
     "aether_genesis:soaring_wisp",
     "aether_genesis:ethereal_wisp",
     "aether_genesis:shade_of_arkenzus",
     "aether_genesis:frostpine_totem",
+    "aether_genesis:frostbound_sprite",
+    "aether_genesis:nex_spirit",
     "aether_genesis:baby_pink_swet"
   ]
 }

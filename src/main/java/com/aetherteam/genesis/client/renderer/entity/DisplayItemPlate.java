@@ -2,7 +2,6 @@ package com.aetherteam.genesis.client.renderer.entity;
 
 import com.aetherteam.genesis.entity.companion.Companion;
 import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
@@ -17,7 +16,7 @@ import net.neoforged.neoforge.client.ClientHooks;
 import javax.annotation.Nullable;
 
 public interface DisplayItemPlate<T extends Mob & Companion<T>> {
-    default void renderDisplayItem(T entity, PoseStack poseStack, MultiBufferSource buffer, EntityRenderDispatcher entityRenderDispatcher, ItemRenderer itemRenderer) {
+    default void renderDisplayItem(T entity, PoseStack poseStack, MultiBufferSource buffer, EntityRenderDispatcher entityRenderDispatcher, ItemRenderer itemRenderer, int packedLight) {
         double distance = entityRenderDispatcher.distanceToSqr(entity);
         if (ClientHooks.isNameplateInRenderDistance(entity, distance)) {
             float height = entity.getBbHeight() + 0.5F;
@@ -26,7 +25,7 @@ public interface DisplayItemPlate<T extends Mob & Companion<T>> {
             poseStack.mulPose(entityRenderDispatcher.cameraOrientation());
             poseStack.translate(0.0F, 0.3, 0.0F);
             poseStack.scale(0.5F, 0.5F, 0.1F);
-            this.renderItem(itemRenderer, entity.getItem(), LightTexture.FULL_BRIGHT, OverlayTexture.NO_OVERLAY, poseStack, buffer, entity.level(), entity.getId());
+            this.renderItem(itemRenderer, entity.getItem(), packedLight, OverlayTexture.NO_OVERLAY, poseStack, buffer, entity.level(), entity.getId());
             poseStack.popPose();
         }
     }

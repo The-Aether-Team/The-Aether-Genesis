@@ -102,6 +102,7 @@ public class GenesisLanguageData extends AetherLanguageProvider {
 
         this.addGeneric("experience.desc", "Orbs Stored: %s");
         this.addGeneric("death_seal.desc", "Repairing Seal: %s");
+        this.addGeneric("companion_health.desc", "Companion Health: %1$s/%2$s");
 
         this.addPerItemAbilityTooltip(GenesisItems.PHOENIX_DART_SHOOTER.get(), 1,"\u00A77Shoots:\u00A7r All Dart Types");
 

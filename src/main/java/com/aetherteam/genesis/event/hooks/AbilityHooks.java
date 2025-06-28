@@ -1,7 +1,6 @@
 package com.aetherteam.genesis.event.hooks;
 
 import com.aetherteam.aether.item.EquipmentUtil;
-import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
 import com.aetherteam.genesis.attachment.GenesisDataAttachments;
 import com.aetherteam.genesis.attachment.GenesisPlayerAttachment;
@@ -57,7 +56,7 @@ public class AbilityHooks {
                 GenesisPlayerAttachment attachment = player.getData(GenesisDataAttachments.GENESIS_PLAYER);
                 for (Entity companion : attachment.getCompanions()) {
                     if (companion instanceof NexSpirit nexSpirit) {
-                        if (!nexSpirit.isBroken()) { //todo for some reason this doesnt activate properly sometimes
+                        if (!nexSpirit.isBroken()) { //todo for some reason this will occasionally re-equip the accessory due to the slot being marked as flagged to update?
                             player.setHealth(player.getMaxHealth());
                             nexSpirit.setCooldown(100); //todo balance
                             if (player instanceof ServerPlayer serverPlayer) {

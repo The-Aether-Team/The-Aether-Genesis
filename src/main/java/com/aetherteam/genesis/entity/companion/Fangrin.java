@@ -3,6 +3,7 @@ package com.aetherteam.genesis.entity.companion;
 import com.aetherteam.genesis.entity.ai.goal.CompanionHurtByTargetGoal;
 import com.aetherteam.genesis.entity.ai.goal.CompanionHurtTargetGoal;
 import com.aetherteam.genesis.item.GenesisItems;
+import com.aetherteam.genesis.item.components.GenesisDataComponents;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
@@ -22,8 +23,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-//todo
-//  cooldown system so that when the companion runs out of health, a data component for a cooldown is set on the stack, it can be ticked by the player attachment, and also the unequip code is run to disable the companion. and when the cooldown ticks back up, the equip code can be run to restore teh companiont
 public class Fangrin extends CompanionMob implements Combative {
     public Fangrin(EntityType<Fangrin> entityType, Level level) {
         super(entityType, level, () -> new ItemStack(GenesisItems.FANGRIN_CAPSULE.get()), false);
@@ -48,6 +47,14 @@ public class Fangrin extends CompanionMob implements Combative {
     }
 
     @Override
+    public void tick() {
+        super.tick();
+        if (!this.isDeadOrDying() && this.getHealth() < this.getMaxHealth() && this.tickCount % 100 == 0) {
+            this.setHealth(Math.min(this.getHealth() + 1.0F, this.getMaxHealth()));
+        }
+    }
+
+    @Override
     public boolean wantsToAttack(LivingEntity target, LivingEntity owner) {
         if (target instanceof Creeper || target instanceof Ghast) {
             return false;
@@ -64,8 +71,15 @@ public class Fangrin extends CompanionMob implements Combative {
 
     @Override
     public boolean isInvulnerableTo(DamageSource source) {
-        return this.isRemoved() || source.is(DamageTypeTags.IS_FALL) || (this.getOwner() != null && source.getEntity() instanceof Player player && this.getOwner().equals(player.getUUID()));
+        return !source.is(DamageTypeTags.BYPASSES_INVULNERABILITY) && (source.is(DamageTypeTags.IS_FALL) || (this.getOwner() != null && source.getEntity() instanceof Player player && this.getOwner().equals(player.getUUID())));
     }
 
-    //todo regeneration
+    @Override
+    public void die(DamageSource damageSource) {
+        ItemStack adjustedStack = this.getItem();
+        adjustedStack.set(GenesisDataComponents.COMPANION_DOWNED, true);
+        adjustedStack.set(GenesisDataComponents.COMPANION_HEALTH, 0);
+        adjustedStack.set(GenesisDataComponents.COMPANION_MAX_HEALTH, (int) this.getMaxHealth());
+        super.die(damageSource);
+    }
 }

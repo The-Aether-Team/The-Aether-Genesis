@@ -54,6 +54,7 @@ public class GenesisPlayerAttachment implements INBTSynchable {
     public void onUpdate(Player player) {
         this.syncAfterJoin(player);
         this.handleRemoveDarts(player);
+        this.trackCompanions();
     }
 
     private void syncAfterJoin(Player player) {
@@ -81,6 +82,12 @@ public class GenesisPlayerAttachment implements INBTSynchable {
         }
     }
 
+    private void trackCompanions() {
+        if (!this.getCompanions().isEmpty()) {
+            this.getCompanions().removeIf(Entity::isRemoved);
+        }
+    }
+
     public void setCompanions(Player player, List<Entity> companions) {
         companions.stream().filter((entity) -> entity instanceof Companion<?>).forEach((entity) -> ((Companion<?>) entity).setOwner(player.getUUID()));
         this.companions = companions;
@@ -94,7 +101,6 @@ public class GenesisPlayerAttachment implements INBTSynchable {
     }
 
     public void removeCompanion(Predicate<Entity> companionCheck) {
-        this.companions.stream().filter(companionCheck).findFirst().ifPresent(Entity::discard);
         this.companions.removeIf(companionCheck);
     }
 
