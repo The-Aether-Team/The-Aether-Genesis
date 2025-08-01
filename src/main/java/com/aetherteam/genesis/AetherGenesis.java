@@ -19,7 +19,6 @@ import com.aetherteam.genesis.event.listeners.LevelListener;
 import com.aetherteam.genesis.event.listeners.WeaponAbilityListener;
 import com.aetherteam.genesis.event.listeners.abilities.AccessoryAbilityListener;
 import com.aetherteam.genesis.event.listeners.capability.GenesisPlayerListener;
-import com.aetherteam.genesis.inventory.menu.GenesisMenuTypes;
 import com.aetherteam.genesis.item.GenesisCreativeTabs;
 import com.aetherteam.genesis.item.GenesisItems;
 import com.aetherteam.genesis.item.components.GenesisDataComponents;
@@ -103,7 +102,6 @@ public class AetherGenesis {
                 GenesisBlocks.BLOCKS,
                 GenesisItems.ITEMS,
                 GenesisEntityTypes.ENTITY_TYPES,
-                GenesisMenuTypes.MENU_TYPES,
                 GenesisLootFunctions.LOOT_FUNCTION_TYPES,
                 GenesisLootModifiers.GLOBAL_LOOT_MODIFIERS,
                 GenesisFeatures.FEATURES,

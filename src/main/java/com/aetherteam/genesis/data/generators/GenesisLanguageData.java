@@ -5,7 +5,6 @@ import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.block.GenesisBlocks;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
-import com.aetherteam.genesis.inventory.menu.GenesisMenuTypes;
 import com.aetherteam.genesis.item.GenesisItems;
 import net.minecraft.data.PackOutput;
 
@@ -272,8 +271,6 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addSubtitle("entity", "reward_item.launch", "Item launches");
         this.addSubtitle("entity", "host_eye.collide", "Host Eye collides");
         this.addSubtitle("entity", "cog.break", "Cog breaks");
-
-        this.addContainerType(GenesisMenuTypes.HOLYSTONE_FURNACE, "Holystone Furnace");
 
         this.addContainerType("host_treasure_chest", "Host Treasure Chest");
         this.addContainerType("guardian_treasure_chest", "Guardian Treasure Chest");
