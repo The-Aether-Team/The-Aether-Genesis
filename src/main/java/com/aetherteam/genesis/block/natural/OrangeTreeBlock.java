@@ -51,10 +51,6 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
         builder.add(AetherBlockStateProperties.DOUBLE_DROPS, HALF, AGE);
     }
 
-    /**
-     * Warning for "deprecation" is suppressed because the method is fine to override.
-     */
-    @SuppressWarnings("deprecation")
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         int age = state.getValue(AGE);
@@ -105,9 +101,7 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
 
     /**
      * Ages the Orange Tree up a state with a chance from a random tick.<br><br>
-     * Warning for "deprecation" is suppressed because the method is fine to override.
      */
-    @SuppressWarnings("deprecation")
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         DoubleBlockHalf doubleBlockHalf = state.getValue(HALF);

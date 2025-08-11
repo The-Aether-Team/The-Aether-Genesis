@@ -35,9 +35,7 @@ import java.util.stream.Collectors;
 /**
  * [CODE COPY] - {@link net.minecraft.world.level.block.FireBlock}.<br><br>
  * Unable to spread like normal fire.<br><br>
- * Warning for "deprecation" is suppressed for methods that are fine to override.
  */
-@SuppressWarnings("deprecation")
 public class ColdFireBlock extends BaseFireBlock {
     public static final MapCodec<ColdFireBlock> CODEC = simpleCodec(ColdFireBlock::new);
     public static final IntegerProperty AGE = BlockStateProperties.AGE_15;
