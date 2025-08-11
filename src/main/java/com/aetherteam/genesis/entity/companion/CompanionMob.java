@@ -24,7 +24,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Supplier;
 
-public abstract class CompanionMob extends PathfinderMob implements Companion<CompanionMob> { //todo companions need to teleport when the player changes dimension
+public abstract class CompanionMob extends PathfinderMob implements Companion<CompanionMob> {
     private static final EntityDataAccessor<Optional<UUID>> DATA_OWNER_ID = SynchedEntityData.defineId(CompanionMob.class, EntityDataSerializers.OPTIONAL_UUID);
     private static final EntityDataAccessor<ItemStack> DATA_ITEM_ID = SynchedEntityData.defineId(CompanionMob.class, EntityDataSerializers.ITEM_STACK);
 
