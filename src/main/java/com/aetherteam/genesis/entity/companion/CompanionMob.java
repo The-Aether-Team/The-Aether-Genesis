@@ -187,4 +187,9 @@ public abstract class CompanionMob extends PathfinderMob implements Companion<Co
     public ItemStack getPickResult() {
         return this.getSummonItem();
     }
+
+    @Override
+    public boolean canUsePortal(boolean allowPassengers) {
+        return false;
+    }
 }

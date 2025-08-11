@@ -23,6 +23,14 @@ public class AttachmentHooks {
         }
 
         /**
+         *
+         * @see com.aetherteam.genesis.event.listeners.capability.GenesisPlayerListener#onPlayerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent)
+         */
+        public static void changeDimension(Player player) {
+            player.getData(GenesisDataAttachments.GENESIS_PLAYER).onChangeDimension(player);
+        }
+
+        /**
          * @see com.aetherteam.genesis.event.listeners.capability.GenesisPlayerListener#onPlayerUpdate(EntityTickEvent.Post)
          */
         public static void update(LivingEntity entity) {

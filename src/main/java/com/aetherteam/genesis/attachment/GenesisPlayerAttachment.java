@@ -1,9 +1,14 @@
 package com.aetherteam.genesis.attachment;
 
+import com.aetherteam.aether.Aether;
+import com.aetherteam.aether.item.EquipmentUtil;
 import com.aetherteam.genesis.entity.companion.Companion;
+import com.aetherteam.genesis.entity.companion.CompanionMob;
+import com.aetherteam.genesis.item.accessories.companion.CompanionAccessory;
 import com.aetherteam.genesis.network.packet.GenesisPlayerSyncPacket;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
 import com.aetherteam.nitrogen.network.packet.SyncPacket;
+import io.wispforest.accessories.api.AccessoriesCapability;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import org.apache.commons.lang3.tuple.Triple;
@@ -46,6 +51,13 @@ public class GenesisPlayerAttachment implements INBTSynchable {
      */
     public void onLogin() {
         this.shouldSyncAfterJoin = true;
+    }
+
+    public void onChangeDimension(Player player) {
+        AccessoriesCapability accessories = AccessoriesCapability.get(player);
+        if (accessories != null) {
+            accessories.getEquipped((itemStack) -> itemStack.getItem() instanceof CompanionAccessory<?>).forEach((slot) -> ((CompanionAccessory<?>) slot.stack().getItem()).equip(slot.stack(), slot.reference()));
+        }
     }
 
     /**
@@ -94,7 +106,7 @@ public class GenesisPlayerAttachment implements INBTSynchable {
     }
 
     public void addCompanion(Player player, Entity companion) {
-        if (companion instanceof Companion companionEntity) {
+        if (companion instanceof Companion<?> companionEntity) {
             companionEntity.setOwner(player.getUUID());
         }
         this.companions.add(companion);

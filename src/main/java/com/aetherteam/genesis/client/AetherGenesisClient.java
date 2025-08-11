@@ -24,7 +24,6 @@ import net.neoforged.neoforge.common.NeoForge;
 
 @Mod(value = AetherGenesis.MODID, dist = Dist.CLIENT)
 public class AetherGenesisClient {
-
     public AetherGenesisClient(ModContainer mod, IEventBus bus) {
         bus.addListener(AetherGenesisClient::clientSetup);
 

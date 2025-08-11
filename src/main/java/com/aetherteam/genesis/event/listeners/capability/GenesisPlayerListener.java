@@ -8,11 +8,11 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
 
 public class GenesisPlayerListener {
-
     public static void listen(IEventBus bus) {
         bus.addListener(GenesisPlayerListener::onPlayerLogin);
         bus.addListener(GenesisPlayerListener::onPlayerLogout);
         bus.addListener(GenesisPlayerListener::onPlayerUpdate);
+        bus.addListener(GenesisPlayerListener::onPlayerChangedDimension);
     }
 
     /**
@@ -38,5 +38,13 @@ public class GenesisPlayerListener {
         if (event.getEntity() instanceof LivingEntity livingEntity) {
             AttachmentHooks.GenesisPlayerHooks.update(livingEntity);
         }
+    }
+
+    /**
+     * @see AttachmentHooks.GenesisPlayerHooks#changeDimension(Player)
+     */
+    public static void onPlayerChangedDimension(PlayerEvent.PlayerChangedDimensionEvent event) {
+        Player player = event.getEntity();
+        AttachmentHooks.GenesisPlayerHooks.changeDimension(player);
     }
 }
