@@ -65,6 +65,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.slf4j.Logger;
 import terrablender.api.Regions;
@@ -144,7 +145,7 @@ public class AetherGenesis {
     }
 
     public void registerPackets(RegisterPayloadHandlersEvent event) {
-        var registrar = event.registrar(MODID).versioned("1.0.0").optional();
+        PayloadRegistrar registrar = event.registrar("1.0.0").optional();
 
         // CLIENTBOUND
         registrar.playToClient(NexResurrectionEffectPacket.TYPE, NexResurrectionEffectPacket.STREAM_CODEC, NexResurrectionEffectPacket::execute);
