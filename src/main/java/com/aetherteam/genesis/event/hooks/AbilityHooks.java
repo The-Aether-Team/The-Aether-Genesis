@@ -56,7 +56,7 @@ public class AbilityHooks {
                 GenesisPlayerAttachment attachment = player.getData(GenesisDataAttachments.GENESIS_PLAYER);
                 for (Entity companion : attachment.getCompanions()) {
                     if (companion instanceof NexSpirit nexSpirit) {
-                        if (!nexSpirit.isBroken()) { //todo for some reason this will occasionally re-equip the accessory due to the slot being marked as flagged to update?
+                        if (!nexSpirit.isBroken()) {
                             player.setHealth(player.getMaxHealth());
                             nexSpirit.setCooldown(100); //todo balance
                             if (player instanceof ServerPlayer serverPlayer) {
