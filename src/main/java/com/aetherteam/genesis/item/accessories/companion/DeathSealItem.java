@@ -11,6 +11,8 @@ import net.minecraft.world.item.TooltipFlag;
 import java.util.List;
 
 public class DeathSealItem extends CompanionItem<NexSpirit> {
+    public static int COOLDOWN_MAX = 2400; //todo
+
     public DeathSealItem(Properties properties) {
         super(GenesisEntityTypes.NEX_SPIRIT, properties);
     }
@@ -19,7 +21,7 @@ public class DeathSealItem extends CompanionItem<NexSpirit> {
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         Integer cooldown = stack.get(GenesisDataComponents.NEX_SPIRIT_COOLDOWN);
         if (cooldown != null && cooldown > 0) {
-            tooltipComponents.add(Component.translatable("aether_genesis.death_seal.desc", 100 - cooldown).append("%").withStyle(ChatFormatting.GRAY));
+            tooltipComponents.add(Component.translatable("aether_genesis.death_seal.desc", COOLDOWN_MAX - cooldown).append("%").withStyle(ChatFormatting.GRAY));
         }
     }
 }

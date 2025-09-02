@@ -9,6 +9,7 @@ import com.aetherteam.genesis.entity.companion.NexSpirit;
 import com.aetherteam.genesis.entity.projectile.DaggerfrostSnowball;
 import com.aetherteam.genesis.entity.projectile.PhoenixDart;
 import com.aetherteam.genesis.item.GenesisItems;
+import com.aetherteam.genesis.item.accessories.companion.DeathSealItem;
 import com.aetherteam.genesis.network.clientbound.NexResurrectionEffectPacket;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
@@ -58,7 +59,7 @@ public class AbilityHooks {
                     if (companion instanceof NexSpirit nexSpirit) {
                         if (!nexSpirit.isBroken()) {
                             player.setHealth(player.getMaxHealth());
-                            nexSpirit.setCooldown(2400); //todo balance
+                            nexSpirit.setCooldown(DeathSealItem.COOLDOWN_MAX);
                             if (player instanceof ServerPlayer serverPlayer) {
                                 GenesisAdvancementTriggers.NEX_REVIVE.get().trigger(serverPlayer);
                                 PacketDistributor.sendToPlayer(serverPlayer, new NexResurrectionEffectPacket());
