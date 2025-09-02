@@ -11,7 +11,7 @@ import net.minecraft.world.item.TooltipFlag;
 import java.util.List;
 
 public class DeathSealItem extends CompanionItem<NexSpirit> {
-    public static int COOLDOWN_MAX = 2400; //todo
+    public static int COOLDOWN_MAX = 6000;
 
     public DeathSealItem(Properties properties) {
         super(GenesisEntityTypes.NEX_SPIRIT, properties);
