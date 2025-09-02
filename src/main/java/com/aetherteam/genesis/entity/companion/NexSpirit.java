@@ -31,9 +31,7 @@ public class NexSpirit extends FloatingCompanion {
             if (!this.isBroken()) {
                 this.setBroken(true);
             }
-            if (this.tickCount % 10 == 0) {
-                this.setCooldown(this.getCooldown() - 1);
-            }
+            this.setCooldown(this.getCooldown() - 1);
         } else if (this.isBroken()) {
             this.setBroken(false);
         }
