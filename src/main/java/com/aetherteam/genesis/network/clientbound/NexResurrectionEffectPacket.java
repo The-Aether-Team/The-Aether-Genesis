@@ -32,14 +32,14 @@ public record NexResurrectionEffectPacket() implements CustomPacketPayload {
     }
 
     public static void execute(NexResurrectionEffectPacket payload, IPayloadContext context) {
-        if (Minecraft.getInstance().player != null && Minecraft.getInstance().level != null) {
-            Minecraft minecraft = Minecraft.getInstance();
-            minecraft.particleEngine.createTrackingEmitter(Minecraft.getInstance().player, GenesisParticleTypes.NEX_SPIRIT_RESURRECTION.get(), 30);
-            Minecraft.getInstance().player.level().playLocalSound(
-                    Minecraft.getInstance().player.getX(),
-                    Minecraft.getInstance().player.getY(),
-                    Minecraft.getInstance().player.getZ(),
-                    SoundEvents.TOTEM_USE, Minecraft.getInstance().player.getSoundSource(), 1.0F, 1.0F, false);
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft.level != null && minecraft.level.isClientSide()) {
+            minecraft.particleEngine.createTrackingEmitter(context.player(), GenesisParticleTypes.NEX_SPIRIT_RESURRECTION.get(), 30);
+            context.player().level().playLocalSound(
+                    context.player().getX(),
+                    context.player().getY(),
+                    context.player().getZ(),
+                    SoundEvents.TOTEM_USE, context.player().getSoundSource(), 1.0F, 1.0F, false);
             minecraft.gameRenderer.displayItemActivation(new ItemStack(GenesisItems.DEATH_SEAL.get()));
         }
     }
