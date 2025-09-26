@@ -277,20 +277,27 @@
   },
   "item.accessory.equip_bone_ring": {
     "sounds": [
-      "mob/skeleton/say1",
-      "mob/skeleton/say2",
-      "mob/skeleton/say3"
+      "mob/skeleton/step1",
+      "mob/skeleton/step2",
+      "mob/skeleton/step3",
+      "mob/skeleton/step4"
     ],
     "subtitle": "subtitles.aether_genesis.item.accessory.equip_bone_ring"
   },
   "item.accessory.equip_candy_ring": {
     "sounds": [
-      "item/armor/equip_chain1",
-      "item/armor/equip_chain2",
-      "item/armor/equip_chain3",
-      "item/armor/equip_chain4",
-      "item/armor/equip_chain5",
-      "item/armor/equip_chain6"
+      {
+        "name": "mob/turtle/armor",
+        "pitch": 2.0
+      },
+      {
+        "name": "mob/turtle/armor",
+        "pitch": 1.925
+      },
+      {
+        "name": "mob/turtle/armor",
+        "pitch": 1.85
+      }
     ],
     "subtitle": "subtitles.aether_genesis.item.accessory.equip_candy_ring"
   },
@@ -318,21 +325,39 @@
   },
   "item.accessory.equip_skyroot_ring": {
     "sounds": [
-      "dig/wood1",
-      "dig/wood2",
-      "dig/wood3",
-      "dig/wood4"
+      {
+        "name": "mob/turtle/armor",
+        "pitch": 1.15
+      },
+      {
+        "name": "mob/turtle/armor",
+        "pitch": 1.1
+      },
+      {
+        "name": "mob/turtle/armor",
+        "pitch": 1.05
+      }
     ],
     "subtitle": "subtitles.aether_genesis.item.accessory.equip_skyroot_ring"
   },
   "item.accessory.equip_swetty_pendant": {
     "sounds": [
-      "item/armor/equip_chain1",
-      "item/armor/equip_chain2",
-      "item/armor/equip_chain3",
-      "item/armor/equip_chain4",
-      "item/armor/equip_chain5",
-      "item/armor/equip_chain6"
+      {
+        "name": "mob/slime/attack1",
+        "pitch": 1.5
+      },
+      {
+        "name": "mob/slime/attack1",
+        "pitch": 1.4
+      },
+      {
+        "name": "mob/slime/attack2",
+        "pitch": 1.5
+      },
+      {
+        "name": "mob/slime/attack2",
+        "pitch": 1.4
+      }
     ],
     "subtitle": "subtitles.aether_genesis.item.accessory.equip_swetty_pendant"
   },
