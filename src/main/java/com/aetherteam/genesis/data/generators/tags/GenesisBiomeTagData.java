@@ -19,7 +19,7 @@ public class GenesisBiomeTagData extends BiomeTagsProvider {
     }
 
     @Override
-    public void addTags(HolderLookup.Provider provider) {
+    public void addTags(HolderLookup.Provider provider) { //todo should probably make these use is_aether by default
         this.tag(GenesisTags.Biomes.HAS_GREEN_AERCLOUDS)
                 .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
                 .addOptional(AetherBiomes.SKYROOT_GROVE.location())

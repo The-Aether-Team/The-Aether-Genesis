@@ -19,7 +19,7 @@ public class EntityHooks {
      * @see com.aetherteam.genesis.event.listeners.EntityListener#onJoin(EntityJoinLevelEvent)
      */
     public static void setZephyrColor(Entity entity) {
-        if (GenesisConfig.COMMON.tan_zephyr_variation.get()) {
+        if (GenesisConfig.SERVER.tan_zephyr_variation.get()) {
             if (entity.getType() == AetherEntityTypes.ZEPHYR.get() && entity instanceof Zephyr zephyr) {
                 if (zephyr.getRandom().nextInt(10) == 0) {
                     zephyr.getData(GenesisDataAttachments.ZEPHYR_COLOR).setTan(true);

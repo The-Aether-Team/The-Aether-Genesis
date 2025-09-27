@@ -279,12 +279,34 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addGuiText("slider.message.attack.invalid_item", "Hmm. It's a rock-solid block. My %1$s wouldn't work on this.");
         this.addGuiText("slider.message.attack.invalid_fist", "Hmm. It's a rock-solid block. My fist wouldn't work on this.");
 
-        this.add("config." + this.id + ".startup.gameplay.altar_redesign", "Changes the Altar design and functionality to be like how it was in the Aether II. WARNING: Due to config limitations, this must be the same on both server and client to work properly");
-        this.add("config." + this.id + ".startup.gameplay.altar_redesign.tooltip", "Changes the Altar design and functionality to be like how it was in the Aether II. WARNING: Due to config limitations, this must be the same on both server and client to work properly");
+        this.addConfig("title", "The Aether: Genesis Configuration");
+        this.addConfig("section.aether.common.toml", "Common Settings");
+        this.addConfig("section.aether.common.toml.title", "The Aether: Genesis Common Configuration");
+        this.addConfig("section.aether.client.toml", "Client Settings");
+        this.addConfig("section.aether.client.toml.title", "The Aether: Genesis Client Configuration");
+        this.addConfig("section.aether.server.toml", "Server Settings");
+        this.addConfig("section.aether.server.toml.title", "The Aether: Genesis Server Configuration");
 
+        this.addConfig("World Generation", "World Generation");
+        this.addConfig("World Generation.tooltip", "Config options that affect the mod's world generation");
+        this.addConfig("World Generation.button", "Options");
+
+        this.addConfig("Audio", "Audio");
+        this.addConfig("Audio.tooltip", "Config options for some audio-related features in the mod");
+        this.addConfig("Audio.button", "Options");
+
+        this.addConfig("Gameplay", "Gameplay");
+        this.addConfig("Gameplay.tooltip", "Config options that affect gameplay mechanics in the mod");
+        this.addConfig("Gameplay.button", "Options");
+
+        this.addCommonConfig("gameplay", "altar_redesign", "Changes the Altar design and functionality to be like how it was in the Aether II. WARNING: Due to config limitations, this must be the same on both server and client to work properly");
         this.addCommonConfig("gameplay", "gold_aercloud_ability", "Changes Gold Aercloud and respective parachute behavior to launch entities downwards");
-        this.addCommonConfig("gameplay", "improved_slider_message", "Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe");
-        this.addClientConfig("gui", "genesis_menu_layout", "Replaces the menu toggle buttons with the Cumulus' menu switcher");
+
+        this.addServerConfig("gameplay", "improved_slider_message", "Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe");
+        this.addServerConfig("gameplay", "tan_zephyr_variation", "Allows a smaller, tan variation of Zephyrs to spawn");
+
+        this.addCommonConfig("world_generation", "biome_weight", "Determines the biome weight for biome regions");
+
         this.addClientConfig("audio", "night_music_tracks", "Adds some nice night tracks to the Aether's music selection. Also disables the default music manager for the Aether, to prevent overlap");
 
         this.addPackTitle("classic", "Genesis of the Void Textures");

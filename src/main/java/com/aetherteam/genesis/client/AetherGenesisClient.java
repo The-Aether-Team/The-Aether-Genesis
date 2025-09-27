@@ -2,7 +2,6 @@ package com.aetherteam.genesis.client;
 
 import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether.item.AetherItems;
-import com.aetherteam.cumulus.CumulusConfig;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.GenesisConfig;
 import com.aetherteam.genesis.client.event.listeners.GenesisAudioListener;
@@ -36,7 +35,6 @@ public class AetherGenesisClient {
     }
 
     public static void clientSetup(FMLClientSetupEvent event) {
-        setupMenuButtons();
         GenesisRenderers.registerCuriosRenderers();
         event.enqueueWork(() -> {
             if (GenesisConfig.CLIENT.night_music_tracks.get()) {
@@ -47,13 +45,6 @@ public class AetherGenesisClient {
         });
     }
 
-    public static void setupMenuButtons() {
-        if (GenesisConfig.CLIENT.genesis_menu_layout.get()) {
-            CumulusConfig.CLIENT.enable_menu_list_button.set(true);
-            CumulusConfig.CLIENT.enable_menu_list_button.save();
-        }
-    }
-
     public static void registerItemModelProperties() {
         ItemProperties.register(GenesisItems.DEATH_SEAL.get(), ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "broken"),
                 (stack, world, living, i) -> stack.has(GenesisDataComponents.NEX_SPIRIT_COOLDOWN) && stack.get(GenesisDataComponents.NEX_SPIRIT_COOLDOWN) > 0 ? 1.0F : 0.0F);
@@ -61,7 +52,7 @@ public class AetherGenesisClient {
 
     public static void registerTooltipOverrides() {
         TooltipListeners.PREDICATES.put(AetherItems.GOLDEN_PARACHUTE, (player, stack, components, ctx, component) -> {
-            if (GenesisConfig.COMMON.gold_aercloud_ability.get() && component.getContents() instanceof TranslatableContents contents && contents.getKey().endsWith(".1")) {
+            if (GenesisConfig.STARTUP.gold_aercloud_ability.get() && component.getContents() instanceof TranslatableContents contents && contents.getKey().endsWith(".1")) {
                 return Component.translatable(contents.getKey() + ".genesis");
             } else {
                 return component;

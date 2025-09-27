@@ -20,7 +20,7 @@ public class ParachuteMixin {
     @Inject(at = @At(value = "INVOKE", target = "Lcom/aetherteam/aether/entity/miscellaneous/Parachute;setYRot(F)V", shift = At.Shift.BEFORE), method = "moveParachute(Lnet/minecraft/world/entity/LivingEntity;)V", cancellable = true)
     private void moveParachute(LivingEntity passenger, CallbackInfo ci) {
         Parachute parachute = (Parachute) (Object) this;
-        if (parachute.getType() == AetherEntityTypes.GOLDEN_PARACHUTE.get() && GenesisConfig.COMMON.gold_aercloud_ability.get()) {
+        if (parachute.getType() == AetherEntityTypes.GOLDEN_PARACHUTE.get() && GenesisConfig.STARTUP.gold_aercloud_ability.get()) {
             parachute.setYRot(passenger.getYRot());
             parachute.yRotO = parachute.getYRot();
             parachute.setXRot(passenger.getXRot() * 0.5F);

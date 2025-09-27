@@ -21,7 +21,7 @@ public class SliderMixin {
      */
     @WrapOperation(method = "sendInvalidToolMessage(Lnet/minecraft/world/entity/LivingEntity;)Ljava/util/Optional;", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;sendSystemMessage(Lnet/minecraft/network/chat/Component;)V"))
     public void sendInvalidToolMessage(Player player, Component component, Operation<Void> original) {
-        if (GenesisConfig.COMMON.improved_slider_message.get()) {
+        if (GenesisConfig.SERVER.improved_slider_message.get()) {
             ItemStack stack = player.getMainHandItem();
             if (stack.getItem() != Blocks.AIR.asItem()) {
                 MutableComponent mutablecomponent = Component.empty().append(stack.getHoverName());
