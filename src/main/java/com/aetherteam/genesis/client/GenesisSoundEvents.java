@@ -7,13 +7,8 @@ import net.minecraft.sounds.SoundEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-public class GenesisSoundEvents { //todo improve ordering and naming of sound events
+public class GenesisSoundEvents {
     public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, AetherGenesis.MODID);
-
-    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_AERWHALE = register("music_disc.aerwhale");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_APPROACHES = register("music_disc.approaches");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_DEMISE = register("music_disc.demise");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_RECORDING_892 = register("music_disc.recording_892");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_ACCESSORY_EQUIP_BONE_RING = register("item.accessory.equip_bone_ring");
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_ACCESSORY_EQUIP_CANDY_RING = register("item.accessory.equip_candy_ring");
@@ -22,6 +17,11 @@ public class GenesisSoundEvents { //todo improve ordering and naming of sound ev
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_ACCESSORY_EQUIP_LUCKY_BELL = register("item.accessory.equip_lucky_bell");
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_ACCESSORY_EQUIP_SWETTY_PENDANT = register("item.accessory.equip_swetty_pendant");
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_ACCESSORY_EQUIP_DAGGERFROST_LOCKET = register("item.accessory.equip_daggerfrost_locket");
+
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_AERWHALE = register("music_disc.aerwhale");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_APPROACHES = register("music_disc.approaches");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_DEMISE = register("music_disc.demise");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_RECORDING_892 = register("music_disc.recording_892");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_CARRION_SPROUT_HURT = register("entity.carrion_sprout.hurt");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_CARRION_SPROUT_DEATH = register("entity.carrion_sprout.death");
@@ -53,18 +53,18 @@ public class GenesisSoundEvents { //todo improve ordering and naming of sound ev
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_TRACKING_GOLEM_SEEN_ENEMY = register("entity.tracking_golem.seen_enemy");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_TRACKING_GOLEM_CREEPY_SEEN = register("entity.tracking_golem.creepy_seen"); //todo this isnt even used where is it used
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SENTRY_GUARDIAN_DEATH = register("entity.sentry_guardian.death");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SENTRY_GUARDIAN_SUMMON = register("entity.sentry_guardian.summon");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SENTRY_GUARDIAN_HURT = register("entity.sentry_guardian.hurt");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SENTRY_GUARDIAN_AMBIENT = register("entity.sentry_guardian.ambient");
+    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SENTRY_GUARDIAN_ATTACK = register("entity.sentry_guardian.attack");
+
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SLIDER_HOST_MIMIC_AWAKEN = register("entity.slider_host_mimic.awaken");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SLIDER_HOST_MIMIC_AMBIENT = register("entity.slider_host_mimic.ambient");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SLIDER_HOST_MIMIC_SHOOT = register("entity.slider_host_mimic.shoot");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SLIDER_HOST_MIMIC_SCARE = register("entity.slider_host_mimic.scare");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SLIDER_HOST_MIMIC_HURT = register("entity.slider_host_mimic.hurt");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SLIDER_HOST_MIMIC_DEATH = register("entity.slider_host_mimic.death");
-
-    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SENTRY_GUARDIAN_DEATH = register("entity.sentry_guardian.death");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SENTRY_GUARDIAN_SUMMON = register("entity.sentry_guardian.summon");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SENTRY_GUARDIAN_HURT = register("entity.sentry_guardian.hurt");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SENTRY_GUARDIAN_AMBIENT = register("entity.sentry_guardian.ambient");
-    public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_SENTRY_GUARDIAN_ATTACK = register("entity.sentry_guardian.attack");
 
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_LABYRINTH_EYE_MOVE = register("entity.labyrinth_eye.move");
     public static final DeferredHolder<SoundEvent, SoundEvent> ENTITY_LABYRINTH_EYE_DEATH = register("entity.labyrinth_eye.death");
