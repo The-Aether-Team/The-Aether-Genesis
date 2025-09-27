@@ -216,12 +216,14 @@ public class GenesisLanguageData extends AetherLanguageProvider {
 
         //todo better subtitles
         this.addSubtitle("item", "accessory.equip_bone_ring", "Bone Ring rattles");
-        this.addSubtitle("item", "accessory.equip_candy_ring", "Candy Ring jingles");
+        this.addSubtitle("item", "accessory.equip_candy_ring", "Candy Ring clunks");
         this.addSubtitle("item", "accessory.equip_skyroot_ring", "Skyroot Ring clunks");
 
         this.addSubtitle("item", "accessory.equip_lucky_bell", "Lucky Bell jingles");
-        this.addSubtitle("item", "accessory.equip_swetty_pendant", "Swetty Pendant jingles");
+        this.addSubtitle("item", "accessory.equip_swetty_pendant", "Swetty Pendant splats");
         this.addSubtitle("item", "accessory.equip_daggerfrost_locket", "Daggerfrost Locket jingles");
+
+        this.addSubtitle("item", "accessory.equip_mouse_ear_cap", "Mouse Ear Cap rustles");
 
         this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");

@@ -77,6 +77,16 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                         sound("minecraft:item/armor/equip_chain6")
                 ).subtitle("subtitles.aether_genesis.item.accessory.equip_daggerfrost_locket")
         );
+        this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_MOUSE_EAR_CAP,
+                definition().with(
+                        sound("minecraft:item/armor/equip_leather1"),
+                        sound("minecraft:item/armor/equip_leather2"),
+                        sound("minecraft:item/armor/equip_leather3"),
+                        sound("minecraft:item/armor/equip_leather4"),
+                        sound("minecraft:item/armor/equip_leather5"),
+                        sound("minecraft:item/armor/equip_leather6")
+                ).subtitle("subtitles.aether_genesis.item.accessory.equip_mouse_ear_cap")
+        );
 
 
         // Entities

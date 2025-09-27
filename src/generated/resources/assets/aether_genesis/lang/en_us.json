@@ -326,9 +326,10 @@
   "subtitles.aether_genesis.entity.tracking_golem.say": "Tracking Golem drones",
   "subtitles.aether_genesis.entity.tracking_golem.seen_enemy": "Tracking Golem targets",
   "subtitles.aether_genesis.item.accessory.equip_bone_ring": "Bone Ring rattles",
-  "subtitles.aether_genesis.item.accessory.equip_candy_ring": "Candy Ring jingles",
+  "subtitles.aether_genesis.item.accessory.equip_candy_ring": "Candy Ring clunks",
   "subtitles.aether_genesis.item.accessory.equip_daggerfrost_locket": "Daggerfrost Locket jingles",
   "subtitles.aether_genesis.item.accessory.equip_lucky_bell": "Lucky Bell jingles",
+  "subtitles.aether_genesis.item.accessory.equip_mouse_ear_cap": "Mouse Ear Cap rustles",
   "subtitles.aether_genesis.item.accessory.equip_skyroot_ring": "Skyroot Ring clunks",
-  "subtitles.aether_genesis.item.accessory.equip_swetty_pendant": "Swetty Pendant jingles"
+  "subtitles.aether_genesis.item.accessory.equip_swetty_pendant": "Swetty Pendant splats"
 }

@@ -18,6 +18,8 @@ public class GenesisSoundEvents {
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_ACCESSORY_EQUIP_SWETTY_PENDANT = register("item.accessory.equip_swetty_pendant");
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_ACCESSORY_EQUIP_DAGGERFROST_LOCKET = register("item.accessory.equip_daggerfrost_locket");
 
+    public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_ACCESSORY_EQUIP_MOUSE_EAR_CAP = register("item.accessory.equip_mouse_ear_cap");
+
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_AERWHALE = register("music_disc.aerwhale");
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_APPROACHES = register("music_disc.approaches");
     public static final DeferredHolder<SoundEvent, SoundEvent> ITEM_MUSIC_DISC_DEMISE = register("music_disc.demise");

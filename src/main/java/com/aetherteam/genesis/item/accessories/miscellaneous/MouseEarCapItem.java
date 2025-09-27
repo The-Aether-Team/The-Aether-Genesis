@@ -2,14 +2,15 @@ package com.aetherteam.genesis.item.accessories.miscellaneous;
 
 import com.aetherteam.aether.item.accessories.AccessoryItem;
 import com.aetherteam.genesis.AetherGenesis;
+import com.aetherteam.genesis.client.GenesisSoundEvents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 
-public class MouseEarCapItem extends AccessoryItem { //todo this sound should be leather not chain
+public class MouseEarCapItem extends AccessoryItem {
     private final ResourceLocation EARS_LOCATION = ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/models/accessory/ears/mouse_ear_cap_accessory.png");
 
     public MouseEarCapItem() {
-        super(new Item.Properties().stacksTo(1));
+        super(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_MOUSE_EAR_CAP, new Item.Properties().stacksTo(1));
     }
 
     public ResourceLocation getEarsTexture() {

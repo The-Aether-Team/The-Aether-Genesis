@@ -323,6 +323,17 @@
     ],
     "subtitle": "subtitles.aether_genesis.item.accessory.equip_lucky_bell"
   },
+  "item.accessory.equip_mouse_ear_cap": {
+    "sounds": [
+      "item/armor/equip_leather1",
+      "item/armor/equip_leather2",
+      "item/armor/equip_leather3",
+      "item/armor/equip_leather4",
+      "item/armor/equip_leather5",
+      "item/armor/equip_leather6"
+    ],
+    "subtitle": "subtitles.aether_genesis.item.accessory.equip_mouse_ear_cap"
+  },
   "item.accessory.equip_skyroot_ring": {
     "sounds": [
       {
