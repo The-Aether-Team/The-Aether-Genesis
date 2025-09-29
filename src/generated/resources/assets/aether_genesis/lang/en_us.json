@@ -79,6 +79,8 @@
   "config.aether_genesis.common.world_generation.biome_weight.tooltip": "Determines the biome weight for biome regions",
   "config.aether_genesis.server.gameplay.improved_slider_message": "Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe",
   "config.aether_genesis.server.gameplay.improved_slider_message.tooltip": "Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe",
+  "config.aether_genesis.server.gameplay.orange_tree_consistency": "Makes Orange Trees behave consistently with Sweet Berry Bushes",
+  "config.aether_genesis.server.gameplay.orange_tree_consistency.tooltip": "Makes Orange Trees behave consistently with Sweet Berry Bushes",
   "config.aether_genesis.server.gameplay.tan_zephyr_variation": "Allows a smaller, tan variation of Zephyrs to spawn",
   "config.aether_genesis.server.gameplay.tan_zephyr_variation.tooltip": "Allows a smaller, tan variation of Zephyrs to spawn",
   "entity.aether_genesis.baby_pink_swet": "Baby Pink Swet",

@@ -304,6 +304,7 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addCommonConfig("gameplay", "altar_redesign", "Changes the Altar design and functionality to be like how it was in the Aether II. WARNING: Due to config limitations, this must be the same on both server and client to work properly");
         this.addCommonConfig("gameplay", "gold_aercloud_ability", "Changes Gold Aercloud and respective parachute behavior to launch entities downwards");
 
+        this.addServerConfig("gameplay", "orange_tree_consistency", "Makes Orange Trees behave consistently with Sweet Berry Bushes");
         this.addServerConfig("gameplay", "improved_slider_message", "Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe");
         this.addServerConfig("gameplay", "tan_zephyr_variation", "Allows a smaller, tan variation of Zephyrs to spawn");
 

@@ -23,11 +23,16 @@ public class GenesisConfig {
     }
 
     public static class Server {
+        public final ModConfigSpec.ConfigValue<Boolean> orange_tree_consistency;
         public final ModConfigSpec.ConfigValue<Boolean> tan_zephyr_variation;
         public final ModConfigSpec.ConfigValue<Boolean> improved_slider_message;
 
         public Server(ModConfigSpec.Builder builder) {
             builder.push("Gameplay");
+            orange_tree_consistency = builder
+                    .comment("Makes Orange Trees behave consistently with Sweet Berry Bushes")
+                    .translation("config.aether_genesis.server.gameplay.orange_tree_consistency")
+                    .define("Orange Tree consistency", false);
             improved_slider_message = builder
                     .comment("Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe")
                     .translation("config.aether_genesis.server.gameplay.improved_slider_message")
