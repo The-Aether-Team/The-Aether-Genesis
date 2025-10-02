@@ -19,94 +19,22 @@ public class GenesisBiomeTagData extends BiomeTagsProvider {
     }
 
     @Override
-    public void addTags(HolderLookup.Provider provider) { //todo should probably make these use is_aether by default
-        this.tag(GenesisTags.Biomes.HAS_GREEN_AERCLOUDS)
-                .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
-                .addOptional(AetherBiomes.SKYROOT_GROVE.location())
-                .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
-                .add(GenesisBiomes.VIBRANT_MEADOW)
-                .add(GenesisBiomes.VIBRANT_GROVE)
-                .add(GenesisBiomes.VIBRANT_WOODLAND)
-                .add(GenesisBiomes.VIBRANT_FOREST);
-        this.tag(GenesisTags.Biomes.HAS_PURPLE_AERCLOUDS)
-                .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
-                .addOptional(AetherBiomes.SKYROOT_GROVE.location())
-                .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
-                .add(GenesisBiomes.VIBRANT_MEADOW)
-                .add(GenesisBiomes.VIBRANT_GROVE)
-                .add(GenesisBiomes.VIBRANT_WOODLAND)
-                .add(GenesisBiomes.VIBRANT_FOREST);
-        this.tag(GenesisTags.Biomes.HAS_STORM_AERCLOUDS)
-                .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
-                .addOptional(AetherBiomes.SKYROOT_GROVE.location())
-                .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
-                .add(GenesisBiomes.VIBRANT_MEADOW)
-                .add(GenesisBiomes.VIBRANT_GROVE)
-                .add(GenesisBiomes.VIBRANT_WOODLAND)
-                .add(GenesisBiomes.VIBRANT_FOREST);
-        this.tag(GenesisTags.Biomes.HAS_ORANGE_TREES)
-                .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
-                .addOptional(AetherBiomes.SKYROOT_GROVE.location())
-                .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
-                .add(GenesisBiomes.VIBRANT_MEADOW)
-                .add(GenesisBiomes.VIBRANT_GROVE)
-                .add(GenesisBiomes.VIBRANT_WOODLAND)
-                .add(GenesisBiomes.VIBRANT_FOREST);
+    public void addTags(HolderLookup.Provider provider) {
+        this.tag(GenesisTags.Biomes.HAS_GREEN_AERCLOUDS).addTag(AetherTags.Biomes.IS_AETHER);
+        this.tag(GenesisTags.Biomes.HAS_PURPLE_AERCLOUDS).addTag(AetherTags.Biomes.IS_AETHER);
+        this.tag(GenesisTags.Biomes.HAS_STORM_AERCLOUDS).addTag(AetherTags.Biomes.IS_AETHER);
+        this.tag(GenesisTags.Biomes.HAS_ORANGE_TREES).addTag(AetherTags.Biomes.IS_AETHER);
         this.tag(GenesisTags.Biomes.HAS_GROVE_TREES)
                 .addOptional(AetherBiomes.SKYROOT_GROVE.location());
         this.tag(GenesisTags.Biomes.HAS_WOODLAND_TREES)
                 .addOptional(AetherBiomes.SKYROOT_WOODLAND.location());
         this.tag(GenesisTags.Biomes.HAS_FOREST_TREES)
                 .addOptional(AetherBiomes.SKYROOT_FOREST.location());
-        this.tag(GenesisTags.Biomes.HAS_CONTINUUM_ORE)
-                .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
-                .addOptional(AetherBiomes.SKYROOT_GROVE.location())
-                .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
-                .add(GenesisBiomes.VIBRANT_MEADOW)
-                .add(GenesisBiomes.VIBRANT_GROVE)
-                .add(GenesisBiomes.VIBRANT_WOODLAND)
-                .add(GenesisBiomes.VIBRANT_FOREST);
-        this.tag(GenesisTags.Biomes.HAS_CARRION_SPROUT)
-                .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
-                .addOptional(AetherBiomes.SKYROOT_GROVE.location())
-                .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
-                .add(GenesisBiomes.VIBRANT_MEADOW)
-                .add(GenesisBiomes.VIBRANT_GROVE)
-                .add(GenesisBiomes.VIBRANT_WOODLAND)
-                .add(GenesisBiomes.VIBRANT_FOREST);
-        this.tag(GenesisTags.Biomes.HAS_ZEPHYROO)
-                .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
-                .addOptional(AetherBiomes.SKYROOT_GROVE.location())
-                .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
-                .add(GenesisBiomes.VIBRANT_MEADOW)
-                .add(GenesisBiomes.VIBRANT_GROVE)
-                .add(GenesisBiomes.VIBRANT_WOODLAND)
-                .add(GenesisBiomes.VIBRANT_FOREST);
-        this.tag(GenesisTags.Biomes.HAS_DARK_SWET)
-                .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
-                .addOptional(AetherBiomes.SKYROOT_GROVE.location())
-                .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
-                .add(GenesisBiomes.VIBRANT_MEADOW)
-                .add(GenesisBiomes.VIBRANT_GROVE)
-                .add(GenesisBiomes.VIBRANT_WOODLAND)
-                .add(GenesisBiomes.VIBRANT_FOREST);
-        this.tag(GenesisTags.Biomes.HAS_TEMPEST)
-                .addOptional(AetherBiomes.SKYROOT_MEADOW.location())
-                .addOptional(AetherBiomes.SKYROOT_GROVE.location())
-                .addOptional(AetherBiomes.SKYROOT_WOODLAND.location())
-                .addOptional(AetherBiomes.SKYROOT_FOREST.location())
-                .add(GenesisBiomes.VIBRANT_MEADOW)
-                .add(GenesisBiomes.VIBRANT_GROVE)
-                .add(GenesisBiomes.VIBRANT_WOODLAND)
-                .add(GenesisBiomes.VIBRANT_FOREST);
+        this.tag(GenesisTags.Biomes.HAS_CONTINUUM_ORE).addTag(AetherTags.Biomes.IS_AETHER);
+        this.tag(GenesisTags.Biomes.HAS_CARRION_SPROUT).addTag(AetherTags.Biomes.IS_AETHER);
+        this.tag(GenesisTags.Biomes.HAS_ZEPHYROO).addTag(AetherTags.Biomes.IS_AETHER);
+        this.tag(GenesisTags.Biomes.HAS_DARK_SWET).addTag(AetherTags.Biomes.IS_AETHER);
+        this.tag(GenesisTags.Biomes.HAS_TEMPEST).addTag(AetherTags.Biomes.IS_AETHER);
 
         this.tag(AetherTags.Biomes.IS_AETHER)
                 .add(GenesisBiomes.VIBRANT_MEADOW)

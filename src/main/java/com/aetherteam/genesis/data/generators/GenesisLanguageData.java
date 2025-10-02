@@ -214,7 +214,6 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addAdvancementDesc("companion", "Obtain a companion");
         this.addAdvancementDesc("nex_spirit", "Be resurrected by a Nex Spirit");
 
-        //todo better subtitles
         this.addSubtitle("item", "accessory.equip_bone_ring", "Bone Ring rattles");
         this.addSubtitle("item", "accessory.equip_candy_ring", "Candy Ring clunks");
         this.addSubtitle("item", "accessory.equip_skyroot_ring", "Skyroot Ring clunks");
