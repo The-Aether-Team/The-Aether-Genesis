@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-26T11:45:06.6815008	Recipes
+// 1.21.1	2025-10-02T15:35:37.4502441	Recipes
 1d8cb3cf0f6d22d37dfb193fb5e8c2675ab082f1 data/aether_genesis/advancement/recipes/building_blocks/divine_carved_slab.json
 ec31f53d5f38f0e543f8ff5e5d908c11f814c204 data/aether_genesis/advancement/recipes/building_blocks/divine_carved_stairs.json
 d6d6c34cfbe349035681a5208cdc9d4c67445f4b data/aether_genesis/advancement/recipes/building_blocks/green_aercloud_enchanting.json
@@ -22,7 +22,7 @@ fd5979118c393b8062bcc5226b574e32aaad1745 data/aether_genesis/advancement/recipes
 fbb009032f6a22d99787d1e194c5be48168f4687 data/aether_genesis/advancement/recipes/food/blueberry_lollipop.json
 31d17eed7fe726102a048610970e2efcf6336110 data/aether_genesis/advancement/recipes/food/blue_swet_jelly.json
 07821bcbfc30c98733e2942863b7e6f6d703d5ab data/aether_genesis/advancement/recipes/food/candy_corn.json
-1e03f53ba8201ec25bc6b001e51048e2171d56ff data/aether_genesis/advancement/recipes/food/cocoatrice.json
+fda063026561d03a217e6cfc9751fb35ccbb8383 data/aether_genesis/advancement/recipes/food/cocoatrice.json
 8c9c1031d0996f9eca5ef6a3d7230fd94c114b80 data/aether_genesis/advancement/recipes/food/dark_swet_jelly.json
 73996d7cdba4c58b8aa1fc1946d67dc806c7a81b data/aether_genesis/advancement/recipes/food/golden_swet_jelly.json
 a90530c71b25e2e2c4a41c27703a5235d472cfd8 data/aether_genesis/advancement/recipes/food/icestone_poprocks.json
@@ -30,7 +30,7 @@ a90530c71b25e2e2c4a41c27703a5235d472cfd8 data/aether_genesis/advancement/recipes
 d8b8cb8094f6bb6921124e00320a94e5b7540d8f data/aether_genesis/advancement/recipes/food/orange_lollipop.json
 c30f80d063d63e308fd26d37b0724e1adeb15c33 data/aether_genesis/advancement/recipes/food/rainbow_strawberry_enchanting.json
 9e650ee97c051d29a316b8f4ddbd8aeadc982bd2 data/aether_genesis/advancement/recipes/food/stomper_pop.json
-13d955eb426d744527946e3690b0a274aa330394 data/aether_genesis/advancement/recipes/food/wrapped_chocolates.json
+76b3257d523c0f7877d69219b54b50e4a447dbf9 data/aether_genesis/advancement/recipes/food/wrapped_chocolates.json
 92e8613deb84cfb3d1afe4650db5c0787b065fbf data/aether_genesis/advancement/recipes/misc/continuum_bomb.json
 8c619e42205e520422e4b768eba6d8bde3d8bc75 data/aether_genesis/advancement/recipes/misc/continuum_orb_from_bomb.json
 be7b559dd7c9767f2863bfb0fe2d5a40130dde4e data/aether_genesis/advancement/recipes/tools/blue_parachute.json

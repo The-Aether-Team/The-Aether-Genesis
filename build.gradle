@@ -76,7 +76,7 @@ configurations {
 
 dependencies {
 //    implementation "com.aetherteam.aether:aether:${project.aether_version}"
-    implementation "blank:aether-1.21.1-1.5.8:neoforge"
+    implementation "blank:aether-1.21.1-1.5.10:neoforge"
     implementation "blank:aether_beyond_parity-1.21.1-1.0.0:neoforge"
 
     implementation "com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}"

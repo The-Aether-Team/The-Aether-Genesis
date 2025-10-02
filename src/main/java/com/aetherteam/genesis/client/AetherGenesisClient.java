@@ -1,6 +1,8 @@
 package com.aetherteam.genesis.client;
 
+import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.AetherConfig;
+import com.aetherteam.aether.client.AetherClient;
 import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.GenesisConfig;
@@ -48,6 +50,11 @@ public class AetherGenesisClient {
     public static void registerItemModelProperties() {
         ItemProperties.register(GenesisItems.DEATH_SEAL.get(), ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "broken"),
                 (stack, world, living, i) -> stack.has(GenesisDataComponents.NEX_SPIRIT_COOLDOWN) && stack.get(GenesisDataComponents.NEX_SPIRIT_COOLDOWN) > 0 ? 1.0F : 0.0F);
+
+        AetherClient.CAPE_SECRETS.put((stack) -> stack.getHoverName().getString().equalsIgnoreCase("aercloud cape"), ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/models/accessory/capes/aercloud_cape_accessory.png"));
+        AetherClient.CAPE_SECRETS.put((stack) -> stack.getHoverName().getString().equalsIgnoreCase("kingbdogz' cape"), ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/models/accessory/capes/kingbdogz_cape_accessory.png"));
+        AetherClient.CAPE_SECRETS.put((stack) -> stack.getHoverName().getString().equalsIgnoreCase("lunerequinox's cape"), ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/models/accessory/capes/lunerequinox_cape_accessory.png"));
+        AetherClient.CAPE_SECRETS.put((stack) -> stack.getHoverName().getString().equalsIgnoreCase("slider cape"), ResourceLocation.fromNamespaceAndPath(AetherGenesis.MODID, "textures/models/accessory/capes/slider_cape_accessory.png"));
     }
 
     public static void registerTooltipOverrides() {
