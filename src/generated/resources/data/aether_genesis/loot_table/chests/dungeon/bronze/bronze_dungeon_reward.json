@@ -1,0 +1,44 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:frostpine_totem"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:dexterity_cape"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:fangrin_capsule"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:soaring_stone"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:fleeting_stone"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:baby_pink_swet"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:mouse_ear_cap"
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 5.0,
+        "min": 3.0
+      }
+    }
+  ],
+  "random_sequence": "aether_genesis:chests/dungeon/bronze/bronze_dungeon_reward"
+}

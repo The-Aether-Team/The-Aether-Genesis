@@ -4,7 +4,9 @@ import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.loot.AetherLoot;
 import com.aetherteam.genesis.AetherGenesis;
 import com.aetherteam.genesis.item.GenesisItems;
+import com.aetherteam.genesis.loot.GenesisLoot;
 import com.aetherteam.genesis.loot.modifiers.ChanceDoubleDropsModifier;
+import com.aetherteam.genesis.loot.modifiers.DungeonLootModifier;
 import com.aetherteam.genesis.loot.modifiers.PresentDropsModifier;
 import com.aetherteam.nitrogen.loot.modifiers.AddDungeonLootModifier;
 import com.aetherteam.nitrogen.loot.modifiers.AddEntityDropsModifier;
@@ -49,6 +51,16 @@ public class GenesisLootModifierData extends GlobalLootModifierProvider {
         this.add("chance_double_drops", new ChanceDoubleDropsModifier(new LootItemCondition[]{ }));
         this.add("present_drops", new PresentDropsModifier(new LootItemCondition[]{ }));
 
+
+        this.add("loot_test", new DungeonLootModifier(
+                new LootItemCondition[] {
+                        LootTableIdCondition.builder(AetherLoot.BRONZE_DUNGEON.location()).build()
+                },
+                GenesisLoot.BRONZE_DUNGEON_REWARD
+        ));
+
+
+        /*
         this.add("bronze_dark_gummy_swet", new AddDungeonLootModifier(
                 new LootItemCondition[] {
                         LootTableIdCondition.builder(AetherLoot.BRONZE_DUNGEON_REWARD.location()).build()
@@ -262,5 +274,7 @@ public class GenesisLootModifierData extends GlobalLootModifierProvider {
                 List.of(WeightedEntry.wrap(new ItemStack(GenesisItems.CONTINUUM_BOMB.get()), 8)),
                 UniformInt.of(1, 1))
         );
+
+         */
     }
 }

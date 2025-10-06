@@ -12,4 +12,5 @@ public class GenesisLootModifiers {
 
     public static final DeferredHolder<MapCodec<? extends IGlobalLootModifier>, MapCodec<ChanceDoubleDropsModifier>> CHANCE_DOUBLE_DROPS = GLOBAL_LOOT_MODIFIERS.register("chance_double_drops", () -> ChanceDoubleDropsModifier.CODEC);
     public static final DeferredHolder<MapCodec<? extends IGlobalLootModifier>, MapCodec<PresentDropsModifier>> PRESENT_DROPS = GLOBAL_LOOT_MODIFIERS.register("present_drops", () -> PresentDropsModifier.CODEC);
+    public static final DeferredHolder<MapCodec<? extends IGlobalLootModifier>, MapCodec<DungeonLootModifier>> DUNGEON_LOOT = GLOBAL_LOOT_MODIFIERS.register("dungeon_loot", () -> DungeonLootModifier.CODEC);
 }

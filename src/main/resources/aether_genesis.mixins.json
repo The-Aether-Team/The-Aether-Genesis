@@ -12,6 +12,7 @@
     "common.SliderMixin",
     "common.accessor.BaseSpawnerAccessor",
     "common.accessor.LootPoolEntryContainerAccessor",
+    "common.accessor.LootTableAccessor",
     "common.accessor.RegistrySetBuilderAccessor",
     "common.accessor.SpawnerBlockEntityAccessor"
   ],

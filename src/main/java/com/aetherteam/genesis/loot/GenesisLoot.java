@@ -14,6 +14,8 @@ public class GenesisLoot {
     private static final Set<ResourceKey<LootTable>> LOOT_TABLES = new HashSet<>();
     public static final Set<ResourceKey<LootTable>> IMMUTABLE_LOOT_TABLES = Collections.unmodifiableSet(LOOT_TABLES);
 
+    public static final ResourceKey<LootTable> BRONZE_DUNGEON_REWARD = register("chests/dungeon/bronze/bronze_dungeon_reward");
+
     public static final ResourceKey<LootTable> CONTINUUM_ORB = register("selectors/continuum_orb");
     public static final ResourceKey<LootTable> CONTINUUM_ORB_WOOD = register("selectors/continuum_orb/wood");
     public static final ResourceKey<LootTable> CONTINUUM_ORB_STONE = register("selectors/continuum_orb/stone");

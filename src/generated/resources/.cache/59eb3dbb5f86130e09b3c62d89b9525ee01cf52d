@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-26T11:45:06.6775002	Loot Tables
+// 1.21.1	2025-10-06T11:50:13.8178493	Loot Tables
 3d21885da350525d99904e208ff6ee4d11d4243b data/aether_genesis/loot_table/blocks/blue_skyroot_leaves.json
 7ecb374e2147a8693b4ded2eb27280a1362ff491 data/aether_genesis/loot_table/blocks/blue_skyroot_sapling.json
 23387232a36e56cbc262b9d327330feb72ea684c data/aether_genesis/loot_table/blocks/boss_doorway_divine_carved_stone.json
@@ -31,6 +31,7 @@ ec0cbce6cad27057e85af81b43d119789564ee5d data/aether_genesis/loot_table/blocks/t
 355c27d3c478fa4a8891c9ac7f676897eb887b5c data/aether_genesis/loot_table/blocks/trapped_divine_sentry_stone.json
 fadec43460fe319579d1cea6c6078a22d7586451 data/aether_genesis/loot_table/blocks/treasure_doorway_divine_carved_stone.json
 44efe0406ad88ab33aeb3d3e43d0466d9c2d1091 data/aether_genesis/loot_table/blocks/treasure_doorway_divine_sentry_stone.json
+8ea62acd0a235970f124fae28e585b7e2a7a7838 data/aether_genesis/loot_table/chests/dungeon/bronze/bronze_dungeon_reward.json
 6551c79b643ccbd50787bd3929c766a5e33bd1c0 data/aether_genesis/loot_table/entities/battle_sentry.json
 f47d06e0e828062c63c779e70fa03884a1d9f95a data/aether_genesis/loot_table/entities/carrion_sprout.json
 be999d1cab322cfd954a50f113d9655192244065 data/aether_genesis/loot_table/entities/dark_swet.json
