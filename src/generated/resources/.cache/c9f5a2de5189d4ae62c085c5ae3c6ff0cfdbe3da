@@ -1,6 +1,10 @@
-// 1.21.1	2025-10-06T13:11:15.901378	Global Loot Modifiers : aether_genesis
+// 1.21.1	2025-10-07T23:56:36.7533622	Global Loot Modifiers : aether_genesis
+6c9a58a7aac34c2a7589cd33b1dbd14b6c1aaa6b data/aether_genesis/loot_modifiers/bronze_boss_genesis.json
+8bb2000f3fa8368717a162d46ff32b40bffc8ba8 data/aether_genesis/loot_modifiers/bronze_dungeon_genesis.json
 e772f51aa4708cdc9782caff0b2e83cff464a202 data/aether_genesis/loot_modifiers/chance_double_drops.json
-9d82eb9094dfe9f06a5ac29c48a7d621e1bfc1ad data/aether_genesis/loot_modifiers/loot_test.json
+ba6ab2678050ac4718f9a86fe446a80765f122d5 data/aether_genesis/loot_modifiers/gold_boss_genesis.json
 93d2dd9ae6fd809ef1f2f22e43eae4bc743b4bff data/aether_genesis/loot_modifiers/present_drops.json
+de9fdc2fba1c136c4a51d827549b72da58074693 data/aether_genesis/loot_modifiers/silver_boss_genesis.json
+3746664e4e0e8dc2c3b676b765902eab78842bce data/aether_genesis/loot_modifiers/silver_dungeon_genesis.json
 c10fb0f19ceddc66e852297b4e934ade51e44a75 data/aether_genesis/loot_modifiers/swet_sugar.json
-b63e5ee1fcc9c369641f5b8f6af6d4dd4a30bf9a data/neoforge/loot_modifiers/global_loot_modifiers.json
+da8060345c577a3f22cc28346e8fa9c34f537524 data/neoforge/loot_modifiers/global_loot_modifiers.json

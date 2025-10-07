@@ -1,9 +1,13 @@
 {
   "entries": [
-    "aether_genesis:loot_test",
+    "aether_genesis:silver_boss_genesis",
     "aether_genesis:swet_sugar",
     "aether_genesis:chance_double_drops",
-    "aether_genesis:present_drops"
+    "aether_genesis:bronze_dungeon_genesis",
+    "aether_genesis:gold_boss_genesis",
+    "aether_genesis:present_drops",
+    "aether_genesis:silver_dungeon_genesis",
+    "aether_genesis:bronze_boss_genesis"
   ],
   "replace": false
 }

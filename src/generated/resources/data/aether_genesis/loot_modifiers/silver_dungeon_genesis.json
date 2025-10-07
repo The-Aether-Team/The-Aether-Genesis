@@ -1,0 +1,10 @@
+{
+  "type": "aether_genesis:dungeon_loot",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "aether:chests/dungeon/silver/silver_dungeon"
+    }
+  ],
+  "overlapping_loot": "aether_genesis:chests/dungeon/silver/silver_dungeon"
+}

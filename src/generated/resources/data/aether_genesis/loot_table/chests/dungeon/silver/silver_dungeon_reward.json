@@ -25,45 +25,7 @@
         {
           "type": "minecraft:item",
           "name": "aether_genesis:continuum_orb",
-          "weight": 2
-        }
-      ],
-      "rolls": {
-        "type": "minecraft:uniform",
-        "max": 4.0,
-        "min": 1.0
-      }
-    },
-    {
-      "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "aether_genesis:frostpine_totem"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "aether_genesis:dexterity_cape"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "aether_genesis:fangrin_capsule"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "aether_genesis:kraisith_capsule"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "aether_genesis:soaring_stone"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "aether_genesis:fleeting_stone"
-        },
-        {
-          "type": "minecraft:item",
-          "name": "aether_genesis:mouse_ear_cap"
+          "weight": 4
         }
       ],
       "rolls": {
@@ -77,36 +39,98 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "aether_genesis:frostpine_totem"
+          "name": "aether_genesis:phoenix_dart_shooter",
+          "weight": 3
         },
         {
           "type": "minecraft:item",
-          "name": "aether_genesis:dexterity_cape"
+          "name": "aether_genesis:skyroot_ring",
+          "weight": 2
         },
         {
           "type": "minecraft:item",
-          "name": "aether_genesis:fangrin_capsule"
+          "name": "aether_genesis:swetty_pendant",
+          "weight": 3
         },
         {
           "type": "minecraft:item",
-          "name": "aether_genesis:kraisith_capsule"
+          "name": "aether_genesis:lucky_bell",
+          "weight": 3
         },
         {
           "type": "minecraft:item",
-          "name": "aether_genesis:soaring_stone"
+          "name": "aether_genesis:frostbound_stone",
+          "weight": 3
         },
         {
           "type": "minecraft:item",
-          "name": "aether_genesis:fleeting_stone"
+          "name": "aether_genesis:orb_of_arkenzus",
+          "weight": 3
         },
         {
           "type": "minecraft:item",
-          "name": "aether_genesis:mouse_ear_cap"
+          "name": "aether_genesis:ethereal_stone",
+          "weight": 3
         },
         {
           "type": "minecraft:item",
-          "name": "aether_genesis:music_disc_demise",
-          "weight": 9
+          "name": "aether_genesis:crystal_experience_bottle",
+          "weight": 2
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 4.0,
+        "min": 2.0
+      }
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:phoenix_dart_shooter",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:skyroot_ring",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:swetty_pendant",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:lucky_bell",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:frostbound_stone",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:orb_of_arkenzus",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:ethereal_stone",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:crystal_experience_bottle",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:music_disc_approaches",
+          "weight": 10
         }
       ],
       "rolls": {
@@ -116,5 +140,5 @@
       }
     }
   ],
-  "random_sequence": "aether_genesis:chests/dungeon/bronze/bronze_dungeon_reward"
+  "random_sequence": "aether_genesis:chests/dungeon/silver/silver_dungeon_reward"
 }

@@ -52,11 +52,35 @@ public class GenesisLootModifierData extends GlobalLootModifierProvider {
         this.add("present_drops", new PresentDropsModifier(new LootItemCondition[]{ }));
 
 
-        this.add("loot_test", new DungeonLootModifier(
+        this.add("bronze_dungeon_genesis", new DungeonLootModifier(
                 new LootItemCondition[] {
                         LootTableIdCondition.builder(AetherLoot.BRONZE_DUNGEON.location()).build()
                 },
+                GenesisLoot.BRONZE_DUNGEON
+        ));
+        this.add("bronze_boss_genesis", new DungeonLootModifier(
+                new LootItemCondition[] {
+                        LootTableIdCondition.builder(AetherLoot.BRONZE_DUNGEON_REWARD.location()).build()
+                },
                 GenesisLoot.BRONZE_DUNGEON_REWARD
+        ));
+        this.add("silver_dungeon_genesis", new DungeonLootModifier(
+                new LootItemCondition[] {
+                        LootTableIdCondition.builder(AetherLoot.SILVER_DUNGEON.location()).build()
+                },
+                GenesisLoot.SILVER_DUNGEON
+        ));
+        this.add("silver_boss_genesis", new DungeonLootModifier(
+                new LootItemCondition[] {
+                        LootTableIdCondition.builder(AetherLoot.SILVER_DUNGEON_REWARD.location()).build()
+                },
+                GenesisLoot.SILVER_DUNGEON_REWARD
+        ));
+        this.add("gold_boss_genesis", new DungeonLootModifier(
+                new LootItemCondition[] {
+                        LootTableIdCondition.builder(AetherLoot.GOLD_DUNGEON_REWARD.location()).build()
+                },
+                GenesisLoot.GOLD_DUNGEON_REWARD
         ));
 
 

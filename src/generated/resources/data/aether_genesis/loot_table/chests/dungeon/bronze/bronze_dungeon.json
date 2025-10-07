@@ -1,0 +1,83 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:dark_gummy_swet",
+          "weight": 5
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "aether_genesis:cornstarch_bowl",
+          "weight": 6
+        },
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "add": false,
+              "count": {
+                "type": "minecraft:uniform",
+                "max": 3.0,
+                "min": 1.0
+              },
+              "function": "minecraft:set_count"
+            }
+          ],
+          "name": "aether_genesis:candy_corn",
+          "weight": 4
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 5.0,
+        "min": 1.0
+      }
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:dark_gummy_swet",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:cornstarch_bowl",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:candy_corn",
+          "weight": 2
+        },
+        {
+          "type": "minecraft:item",
+          "name": "aether_genesis:baby_pink_swet",
+          "weight": 3
+        }
+      ],
+      "rolls": {
+        "type": "minecraft:uniform",
+        "max": 1.0,
+        "min": 1.0
+      }
+    }
+  ],
+  "random_sequence": "aether_genesis:chests/dungeon/bronze/bronze_dungeon"
+}

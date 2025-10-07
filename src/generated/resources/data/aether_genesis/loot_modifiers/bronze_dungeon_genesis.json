@@ -6,5 +6,5 @@
       "loot_table_id": "aether:chests/dungeon/bronze/bronze_dungeon"
     }
   ],
-  "overlapping_loot": "aether_genesis:chests/dungeon/bronze/bronze_dungeon_reward"
+  "overlapping_loot": "aether_genesis:chests/dungeon/bronze/bronze_dungeon"
 }
