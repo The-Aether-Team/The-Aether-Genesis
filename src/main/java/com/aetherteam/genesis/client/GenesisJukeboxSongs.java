@@ -6,8 +6,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.JukeboxSong;
 
-public class GenesisJukeboxSounds {
-
+public class GenesisJukeboxSongs {
     public static final ResourceKey<JukeboxSong> AERWHALE = create("aerwhale");
     public static final ResourceKey<JukeboxSong> APPROACHES = create("approaches");
     public static final ResourceKey<JukeboxSong> DEMISE = create("demise");

@@ -1,6 +1,5 @@
 package com.aetherteam.genesis.item;
 
-import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.item.accessories.cape.CapeItem;
 import com.aetherteam.aether.item.accessories.pendant.PendantItem;
 import com.aetherteam.aether.item.components.AetherDataComponents;
@@ -10,7 +9,7 @@ import com.aetherteam.aether.item.materials.SwetBallItem;
 import com.aetherteam.aether.item.miscellaneous.ParachuteItem;
 import com.aetherteam.aether.item.miscellaneous.SliderSpawnEggItem;
 import com.aetherteam.genesis.AetherGenesis;
-import com.aetherteam.genesis.client.GenesisJukeboxSounds;
+import com.aetherteam.genesis.client.GenesisJukeboxSongs;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.item.accessories.cape.DexterityCapeItem;
@@ -89,10 +88,10 @@ public class GenesisItems {
     public static final DeferredItem<Item> CONTINUUM_BOMB = ITEMS.register("continuum_bomb", ContinuumBombItem::new);
     public static final DeferredItem<Item> CRYSTAL_EXPERIENCE_BOTTLE = ITEMS.register("crystal_experience_bottle", CrystalBottleItem::new);
 
-    public static final DeferredItem<Item> MUSIC_DISC_AERWHALE = ITEMS.register("music_disc_aerwhale", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSounds.AERWHALE)));
-    public static final DeferredItem<Item> MUSIC_DISC_APPROACHES = ITEMS.register("music_disc_approaches", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSounds.APPROACHES)));
-    public static final DeferredItem<Item> MUSIC_DISC_DEMISE = ITEMS.register("music_disc_demise", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSounds.DEMISE)));
-    public static final DeferredItem<Item> RECORDING_892 = ITEMS.register("recording_892", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSounds.RECORDING_892)));
+    public static final DeferredItem<Item> MUSIC_DISC_AERWHALE = ITEMS.register("music_disc_aerwhale", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSongs.AERWHALE)));
+    public static final DeferredItem<Item> MUSIC_DISC_APPROACHES = ITEMS.register("music_disc_approaches", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSongs.APPROACHES)));
+    public static final DeferredItem<Item> MUSIC_DISC_DEMISE = ITEMS.register("music_disc_demise", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSongs.DEMISE)));
+    public static final DeferredItem<Item> RECORDING_892 = ITEMS.register("recording_892", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSongs.RECORDING_892)));
 
     public static final DeferredItem<Item> BLUE_PARACHUTE = ITEMS.register("blue_parachute", () -> new ParachuteItem(GenesisEntityTypes.BLUE_PARACHUTE, new Item.Properties().durability(1)));
     public static final DeferredItem<Item> GREEN_PARACHUTE = ITEMS.register("green_parachute", () -> new ParachuteItem(GenesisEntityTypes.GREEN_PARACHUTE, new Item.Properties().durability(1)));

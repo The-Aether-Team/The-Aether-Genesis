@@ -91,19 +91,15 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addItem(GenesisItems.COG_KEY, "Cog Key");
 
         this.addItem(GenesisItems.MUSIC_DISC_AERWHALE, "Aerwhale Music Disc");
-        this.addDiscDesc(GenesisItems.MUSIC_DISC_AERWHALE, "Aether UK - Aerwhale");
         this.addItem(GenesisItems.MUSIC_DISC_APPROACHES, "Moa Music Disc");
-        this.addDiscDesc(GenesisItems.MUSIC_DISC_APPROACHES, "Emile van Krieken - Approaches");
         this.addItem(GenesisItems.MUSIC_DISC_DEMISE, "Labyrinth Music Disc");
-        this.addDiscDesc(GenesisItems.MUSIC_DISC_DEMISE, "Moorziey - Demise");
         this.addItem(GenesisItems.RECORDING_892, "Recording #892");
-        this.addDiscDesc(GenesisItems.RECORDING_892, "Emile van Krieken - ???");
 
         this.addGeneric("experience.desc", "Orbs Stored: %s");
         this.addGeneric("death_seal.desc", "Repairing Seal: %s");
         this.addGeneric("companion_health.desc", "Companion Health: %1$s/%2$s");
 
-        this.addPerItemAbilityTooltip(GenesisItems.PHOENIX_DART_SHOOTER.get(), 1,"\u00A77Shoots:\u00A7r All Dart Types");
+        this.addPerItemAbilityTooltip(GenesisItems.PHOENIX_DART_SHOOTER.get(), 1,"\u00A77Shoots:\u00A7r All Dart Types"); //todo resource pack for these or automatically enabling aether tooltips when genesis is loaded
 
         this.addPerItemAbilityTooltip(GenesisItems.MOUSE_EAR_CAP.get(), 1,"\u00A7eCosmetic");
         this.addPerItemAbilityTooltip(GenesisItems.MOUSE_EAR_CAP.get(), 2,"\u00A76Dyable");
@@ -144,6 +140,11 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addPerItemAbilityTooltip(GenesisItems.CONTINUUM_BOMB.get(), 2,"\u00A73Use:\u00A7r Right-Click");
 
         this.addPerItemAbilityTooltip(AetherItems.GOLDEN_PARACHUTE.get(), 1, "genesis", "\u00A79Ability:\u00A7r Fast Descent");
+
+        this.addJukeboxSong("aerwhale", "Aether UK - Aerwhale");
+        this.addJukeboxSong("approaches", "Emile van Krieken - Approaches");
+        this.addJukeboxSong("demise", "Moorziey - Demise");
+        this.addJukeboxSong("recording_892", "Emile van Krieken - ???");
 
         this.addEntityType(GenesisEntityTypes.CARRION_SPROUT, "Carrion Sprout");
         this.addEntityType(GenesisEntityTypes.ZEPHYROO, "Zephyroo");
@@ -279,6 +280,10 @@ public class GenesisLanguageData extends AetherLanguageProvider {
 
         this.addGuiText("slider.message.attack.invalid_item", "Hmm. It's a rock-solid block. My %1$s wouldn't work on this.");
         this.addGuiText("slider.message.attack.invalid_fist", "Hmm. It's a rock-solid block. My fist wouldn't work on this.");
+
+        this.addGeneric("host_treasure_chest_locked", "This Treasure Chest must be unlocked with a Host Key.");
+        this.addGeneric("guardian_treasure_chest_locked", "This Treasure Chest must be unlocked with a Guardian Key.");
+        this.addGeneric("cog_treasure_chest_locked", "This Treasure Chest must be unlocked with a Cog Key.");
 
         this.addConfig("title", "The Aether: Genesis Configuration");
         this.addConfig("section.aether.common.toml", "Common Settings");

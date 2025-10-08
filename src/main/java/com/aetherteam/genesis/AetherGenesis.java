@@ -231,12 +231,12 @@ public class AetherGenesis {
     private void setupAltarOverridePack(AddPackFindersEvent event) {
         if (GenesisConfig.STARTUP.altar_redesign.get() && event.getPackType() == PackType.CLIENT_RESOURCES) {
             Path resourcePath = ModList.get().getModFileById(AetherGenesis.MODID).getFile().findResource("packs/altar_override");
-            PackMetadataSection metadata = new PackMetadataSection(Component.translatable("pack.aether_genesis.altar_override.description"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));
+            PackMetadataSection metadata = new PackMetadataSection(Component.literal(""), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));
             event.addRepositorySource((source) ->
                     source.accept(new Pack(
-                                    new PackLocationInfo("builtin/genesis_altar_override", Component.translatable("pack.aether_genesis.altar_override.title"), PackSource.BUILT_IN, Optional.empty()),
+                                    new PackLocationInfo("builtin/genesis_altar_override", Component.literal(""), PackSource.BUILT_IN, Optional.empty()),
                                     new PathPackResources.PathResourcesSupplier(resourcePath),
-                                    new Pack.Metadata(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
+                                    new Pack.Metadata(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), true),
                                     new PackSelectionConfig(true, Pack.Position.TOP, false)
                             )
                     ));
