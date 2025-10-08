@@ -58,8 +58,20 @@ public class ContinuumOrbItem extends Item implements ConsumableItem {
         LootTable lootTable = ((ServerLevel) player.level()).getServer().reloadableRegistries().getLootTable(GenesisLoot.CONTINUUM_ORB);
         List<ItemStack> list = lootTable.getRandomItems(parameters);
         for (ItemStack itemStack : list) {
-            if (!player.addItem(itemStack)) {
-                player.drop(itemStack, false);
+            boolean addToInventory = true;
+            for (int i = 0; i < 9; i++) {
+                ItemStack stackInSlot = player.getInventory().getItem(i);
+                if (stackInSlot.isEmpty() || (ItemStack.isSameItemSameComponents(stackInSlot, itemStack) && stackInSlot.isStackable() && stackInSlot.getCount() < this.getMaxStackSize(stackInSlot))) {
+                    if (player.getInventory().add(i, itemStack)) {
+                        addToInventory = false;
+                        break;
+                    }
+                }
+            }
+            if (addToInventory) {
+                if (!player.addItem(itemStack)) {
+                    player.drop(itemStack, false);
+                }
             }
             lootItems.add(itemStack);
         }
