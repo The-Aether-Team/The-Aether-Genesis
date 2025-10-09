@@ -9,7 +9,7 @@ import com.aetherteam.aether.item.materials.SwetBallItem;
 import com.aetherteam.aether.item.miscellaneous.ParachuteItem;
 import com.aetherteam.aether.item.miscellaneous.SliderSpawnEggItem;
 import com.aetherteam.genesis.AetherGenesis;
-import com.aetherteam.genesis.client.GenesisJukeboxSounds;
+import com.aetherteam.genesis.client.GenesisJukeboxSongs;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
 import com.aetherteam.genesis.item.accessories.cape.DexterityCapeItem;
@@ -73,14 +73,14 @@ public class GenesisItems {
 
     public static final DeferredItem<Item> MOUSE_EAR_CAP = ITEMS.register("mouse_ear_cap", MouseEarCapItem::new);
 
-    public static final DeferredItem<Item> FANGRIN_CAPSULE = ITEMS.register("fangrin_capsule", () -> new FangrinCapsuleItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> KRAISITH_CAPSULE = ITEMS.register("kraisith_capsule", () -> new KraisithCapsuleItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> FLEETING_STONE = ITEMS.register("fleeting_stone", () -> new FleetingStoneItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> SOARING_STONE = ITEMS.register("soaring_stone", () -> new SoaringStoneItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> ETHEREAL_STONE = ITEMS.register("ethereal_stone", () -> new EtherealStoneItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> ORB_OF_ARKENZUS = ITEMS.register("orb_of_arkenzus", () -> new OrbOfArkenzusItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> FROSTPINE_TOTEM = ITEMS.register("frostpine_totem", () -> new FrostpineTotemItem(new Item.Properties().stacksTo(1)));
-    public static final DeferredItem<Item> FROSTBOUND_STONE = ITEMS.register("frostbound_stone", () -> new FrostboundStoneItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> FANGRIN_CAPSULE = ITEMS.register("fangrin_capsule", () -> new FangrinCapsuleItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final DeferredItem<Item> KRAISITH_CAPSULE = ITEMS.register("kraisith_capsule", () -> new KraisithCapsuleItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final DeferredItem<Item> FLEETING_STONE = ITEMS.register("fleeting_stone", () -> new FleetingStoneItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final DeferredItem<Item> SOARING_STONE = ITEMS.register("soaring_stone", () -> new SoaringStoneItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final DeferredItem<Item> ETHEREAL_STONE = ITEMS.register("ethereal_stone", () -> new EtherealStoneItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final DeferredItem<Item> ORB_OF_ARKENZUS = ITEMS.register("orb_of_arkenzus", () -> new OrbOfArkenzusItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final DeferredItem<Item> FROSTPINE_TOTEM = ITEMS.register("frostpine_totem", () -> new FrostpineTotemItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
+    public static final DeferredItem<Item> FROSTBOUND_STONE = ITEMS.register("frostbound_stone", () -> new FrostboundStoneItem(new Item.Properties().stacksTo(1).rarity(AETHER_LOOT)));
     public static final DeferredItem<Item> DEATH_SEAL = ITEMS.register("death_seal", () -> new DeathSealItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> BABY_PINK_SWET = ITEMS.register("baby_pink_swet", BabyPinkSwetItem::new);
 
@@ -88,10 +88,10 @@ public class GenesisItems {
     public static final DeferredItem<Item> CONTINUUM_BOMB = ITEMS.register("continuum_bomb", ContinuumBombItem::new);
     public static final DeferredItem<Item> CRYSTAL_EXPERIENCE_BOTTLE = ITEMS.register("crystal_experience_bottle", CrystalBottleItem::new);
 
-    public static final DeferredItem<Item> MUSIC_DISC_AERWHALE = ITEMS.register("music_disc_aerwhale", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSounds.AERWHALE)));
-    public static final DeferredItem<Item> MUSIC_DISC_APPROACHES = ITEMS.register("music_disc_approaches", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSounds.APPROACHES)));
-    public static final DeferredItem<Item> MUSIC_DISC_DEMISE = ITEMS.register("music_disc_demise", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSounds.DEMISE)));
-    public static final DeferredItem<Item> RECORDING_892 = ITEMS.register("recording_892", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSounds.RECORDING_892)));
+    public static final DeferredItem<Item> MUSIC_DISC_AERWHALE = ITEMS.register("music_disc_aerwhale", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSongs.AERWHALE)));
+    public static final DeferredItem<Item> MUSIC_DISC_APPROACHES = ITEMS.register("music_disc_approaches", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSongs.APPROACHES)));
+    public static final DeferredItem<Item> MUSIC_DISC_DEMISE = ITEMS.register("music_disc_demise", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSongs.DEMISE)));
+    public static final DeferredItem<Item> RECORDING_892 = ITEMS.register("recording_892", () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(GenesisJukeboxSongs.RECORDING_892)));
 
     public static final DeferredItem<Item> BLUE_PARACHUTE = ITEMS.register("blue_parachute", () -> new ParachuteItem(GenesisEntityTypes.BLUE_PARACHUTE, new Item.Properties().durability(1)));
     public static final DeferredItem<Item> GREEN_PARACHUTE = ITEMS.register("green_parachute", () -> new ParachuteItem(GenesisEntityTypes.GREEN_PARACHUTE, new Item.Properties().durability(1)));

@@ -1,6 +1,7 @@
 package com.aetherteam.genesis;
 
 import com.aetherteam.aether.data.generators.AetherRegistrySets;
+import com.aetherteam.aether.item.AetherItems;
 import com.aetherteam.aether.world.structurepiece.bronzedungeon.BronzeDungeonBuilder;
 import com.aetherteam.beyondparity.mixin.BeyondParityMixinHooks;
 import com.aetherteam.genesis.advancement.GenesisAdvancementTriggers;
@@ -38,6 +39,7 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.DetectedVersion;
 import net.minecraft.SharedConstants;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.metadata.PackMetadataGenerator;
@@ -53,6 +55,7 @@ import net.minecraft.server.packs.repository.PackCompatibility;
 import net.minecraft.server.packs.repository.PackSource;
 import net.minecraft.util.InclusiveRange;
 import net.minecraft.world.flag.FeatureFlagSet;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -60,10 +63,13 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.gui.ConfigurationScreen;
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 import net.neoforged.neoforge.event.AddPackFindersEvent;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -80,7 +86,7 @@ public class AetherGenesis {
     public static final String MODID = "aether_genesis";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public AetherGenesis(ModContainer mod, IEventBus bus) {
+    public AetherGenesis(ModContainer mod, IEventBus bus, Dist dist) {
         bus.addListener(this::commonSetup);
         bus.addListener(this::registerPackets);
         bus.addListener(this::dataSetup);
@@ -90,11 +96,11 @@ public class AetherGenesis {
 
         GenesisEntityTypes.listen(bus);
 
-//        bus.addListener((ModifyDefaultComponentsEvent event) -> { //todo startup config?
-//            if (GenesisConfig.COMMON.gold_aercloud_ability.get()) {
-//                event.modify(AetherItems.GOLDEN_PARACHUTE, builder -> builder.set(DataComponents.MAX_DAMAGE, 1));
-//            }
-//        });
+        bus.addListener((ModifyDefaultComponentsEvent event) -> {
+            if (GenesisConfig.STARTUP.gold_aercloud_ability.get()) {
+                event.modify(AetherItems.GOLDEN_PARACHUTE, builder -> builder.set(DataComponents.MAX_DAMAGE, 1));
+            }
+        });
 
         eventSetup(NeoForge.EVENT_BUS);
 
@@ -121,7 +127,12 @@ public class AetherGenesis {
 
         mod.registerConfig(ModConfig.Type.STARTUP, GenesisConfig.STARTUP_SPEC);
         mod.registerConfig(ModConfig.Type.COMMON, GenesisConfig.COMMON_SPEC);
+        mod.registerConfig(ModConfig.Type.SERVER, GenesisConfig.SERVER_SPEC);
         mod.registerConfig(ModConfig.Type.CLIENT, GenesisConfig.CLIENT_SPEC);
+
+        if (dist == Dist.CLIENT) {
+            mod.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
+        }
     }
 
     public void commonSetup(FMLCommonSetupEvent event) {
@@ -220,12 +231,12 @@ public class AetherGenesis {
     private void setupAltarOverridePack(AddPackFindersEvent event) {
         if (GenesisConfig.STARTUP.altar_redesign.get() && event.getPackType() == PackType.CLIENT_RESOURCES) {
             Path resourcePath = ModList.get().getModFileById(AetherGenesis.MODID).getFile().findResource("packs/altar_override");
-            PackMetadataSection metadata = new PackMetadataSection(Component.translatable("pack.aether_genesis.altar_override.description"), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));
+            PackMetadataSection metadata = new PackMetadataSection(Component.literal(""), SharedConstants.getCurrentVersion().getPackVersion(PackType.CLIENT_RESOURCES));
             event.addRepositorySource((source) ->
                     source.accept(new Pack(
-                                    new PackLocationInfo("builtin/genesis_altar_override", Component.translatable("pack.aether_genesis.altar_override.title"), PackSource.BUILT_IN, Optional.empty()),
+                                    new PackLocationInfo("builtin/genesis_altar_override", Component.literal(""), PackSource.BUILT_IN, Optional.empty()),
                                     new PathPackResources.PathResourcesSupplier(resourcePath),
-                                    new Pack.Metadata(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), false),
+                                    new Pack.Metadata(metadata.description(), PackCompatibility.COMPATIBLE, FeatureFlagSet.of(), List.of(), true),
                                     new PackSelectionConfig(true, Pack.Position.TOP, false)
                             )
                     ));

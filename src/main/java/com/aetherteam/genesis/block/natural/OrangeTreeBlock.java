@@ -2,11 +2,15 @@ package com.aetherteam.genesis.block.natural;
 
 import com.aetherteam.aether.block.AetherBlockStateProperties;
 import com.aetherteam.aether.block.natural.AetherBushBlock;
+import com.aetherteam.genesis.GenesisConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.*;
@@ -22,6 +26,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.common.CommonHooks;
@@ -49,6 +54,23 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(AetherBlockStateProperties.DOUBLE_DROPS, HALF, AGE);
+    }
+
+    @Override
+    public InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hit) {
+        DoubleBlockHalf doubleBlockHalf = state.getValue(HALF);
+        int age = state.getValue(AGE);
+        if (GenesisConfig.SERVER.orange_tree_consistency.get() && doubleBlockHalf == DoubleBlockHalf.LOWER && age == 4) {
+            Block.dropResources(state, level, pos.above(), null, player, ItemStack.EMPTY);
+            level.playSound(null, pos, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1.0F, 0.8F + level.getRandom().nextFloat() * 0.4F);
+            OrangeTreeBlock.placeAt(level, state.setValue(AetherBlockStateProperties.DOUBLE_DROPS, state.getValue(AetherBlockStateProperties.DOUBLE_DROPS)).setValue(AGE, age - 1), pos, 2);
+            level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, state));
+            return InteractionResult.sidedSuccess(level.isClientSide());
+        } else if (GenesisConfig.SERVER.orange_tree_consistency.get() && doubleBlockHalf == DoubleBlockHalf.UPPER && age == 4) {
+            return this.useWithoutItem(level.getBlockState(pos.below()), level, pos.below(), player, hit.withPosition(pos.below()));
+        } else {
+            return super.useWithoutItem(state, level, pos, player, hit);
+        }
     }
 
     @Override
@@ -250,7 +272,7 @@ public class OrangeTreeBlock extends AetherBushBlock implements BonemealableBloc
      */
     @Override
     public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
-        return true; //todo balance
+        return random.nextFloat() <= 0.45F;
     }
 
     /**

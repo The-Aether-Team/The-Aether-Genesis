@@ -1,23 +1,23 @@
 package com.aetherteam.genesis.entity.passive;
 
 import com.aetherteam.aether.entity.ai.goal.EatAetherGrassGoal;
-import com.aetherteam.aether.entity.passive.AetherAnimal;
+import com.aetherteam.aether.entity.passive.MountableAnimal;
 import com.aetherteam.genesis.GenesisTags;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
 import com.aetherteam.genesis.entity.GenesisEntityTypes;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.AgeableMob;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.JumpControl;
 import net.minecraft.world.entity.ai.control.MoveControl;
 import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -27,7 +27,9 @@ import net.minecraft.world.level.pathfinder.Path;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
-public class Zephyroo extends AetherAnimal {
+import java.util.UUID;
+
+public class Zephyroo extends MountableAnimal {
     private EatAetherGrassGoal eatBlockGoal;
     private int eatAnimationTick = 0;
     private int jumpTicks;
@@ -56,7 +58,10 @@ public class Zephyroo extends AetherAnimal {
     }
 
     public static AttributeSupplier.Builder createZephyrooAttributes() {
-        return createMobAttributes().add(Attributes.MAX_HEALTH, 20).add(Attributes.MOVEMENT_SPEED, 0.2);
+        return createMobAttributes()
+                .add(Attributes.MAX_HEALTH, 20.0)
+                .add(Attributes.MOVEMENT_SPEED, 0.2)
+                .add(Attributes.SAFE_FALL_DISTANCE, 10.0);
     }
 
     @Override
@@ -84,6 +89,37 @@ public class Zephyroo extends AetherAnimal {
             this.jumpTicks = 0;
             this.jumpDuration = 0;
             this.setJumping(false);
+        }
+
+        boolean foundPlayer = false;
+        Component name = Component.literal("pls lov me clashy <3");
+        UUID target = UUID.fromString("8d945389-6105-4a8d-8be7-088da387d173"); // ClashJTM
+        if (this.level().getPlayerByUUID(target) != null) {
+            for (Player player : this.level().getNearbyPlayers(TargetingConditions.forNonCombat().ignoreLineOfSight(), this, this.getBoundingBox().inflate(5.5F, 1.75F, 5.5F))) {
+                if (player.getUUID().equals(target)) {
+                    foundPlayer = true;
+                    if (this.distanceToSqr(player) > 5.0F) {
+                        this.moveControl.setWantedPosition(player.getX(), player.getY(), player.getZ(), 2.75F);
+                    } else if (this.onGround()) {
+                        this.startJumping();
+                    }
+                    this.lookControl.setLookAt(player);
+                    double d0 = this.random.nextGaussian() * 0.02;
+                    double d1 = this.random.nextGaussian() * 0.02;
+                    double d2 = this.random.nextGaussian() * 0.02;
+                    this.level().addParticle(ParticleTypes.HEART, this.getRandomX(0.5), this.getRandomY() + 0.75, this.getRandomZ(0.5), d0, d1, d2);
+                    if (!this.getDisplayName().getString().equals(name.getString())) {
+                        this.setCustomName(name);
+                    } else {
+                        this.setCustomNameVisible(true);
+                    }
+                }
+            }
+        }
+        if (!foundPlayer) {
+            if (this.getDisplayName().getString().equals(name.getString())) {
+                this.setCustomName(Component.empty());
+            }
         }
     }
 
@@ -117,6 +153,19 @@ public class Zephyroo extends AetherAnimal {
         this.wasOnGround = this.onGround();
     }
 
+    @Override
+    public void travel(Vec3 vector) {
+        this.travel(this, vector);
+        if (this.isAlive()) {
+            LivingEntity entity = this.getControllingPassenger();
+            if (this.isVehicle() && entity != null) {
+                if (this.onGround() && !this.getPlayerJumped() && (entity.xxa != 0.0F || entity.zza != 0.0F)) {
+                    this.startJumping();
+                }
+            }
+        }
+    }
+
     private void facePoint(double x, double z) {
         this.setYRot((float) (Mth.atan2(z - this.getZ(), x - this.getX()) * 180.0 / Mth.PI) - 90.0F);
     }
@@ -134,6 +183,11 @@ public class Zephyroo extends AetherAnimal {
         if (!this.level().isClientSide()) {
             this.level().broadcastEntityEvent(this, (byte) 1);
         }
+    }
+
+    @Override
+    public void onJump(Mob vehicle) {
+        this.startJumping();
     }
 
     @Override
@@ -195,9 +249,19 @@ public class Zephyroo extends AetherAnimal {
         ((ZephyrooJumpControl) this.jumpControl).setCanJump(false);
     }
 
+    @Override
+    public double getMountJumpStrength() {
+        return 0.8;
+    }
+
     public void setSpeedModifier(double speedModifier) {
         this.getNavigation().setSpeedModifier(speedModifier);
         this.moveControl.setWantedPosition(this.moveControl.getWantedX(), this.moveControl.getWantedY(), this.moveControl.getWantedZ(), speedModifier);
+    }
+
+    @Override
+    public float getSteeringSpeed() {
+        return (float) this.getAttributeValue(Attributes.MOVEMENT_SPEED) * 0.65F;
     }
 
     public float getHeadEatAngleScale(float partialTick) {
@@ -210,9 +274,22 @@ public class Zephyroo extends AetherAnimal {
     }
 
     @Override
+    protected void dropEquipment() { }
+
+    @Override
     protected EntityDimensions getDefaultDimensions(Pose pose) {
         EntityDimensions dimensions = super.getDefaultDimensions(pose);
         return dimensions.withEyeHeight(this.isBaby() ? dimensions.height() * 0.8F : 1.1F);
+    }
+
+    @Override
+    public boolean isSaddled() {
+        return true;
+    }
+
+    @Override
+    public boolean isSaddleable() {
+        return false;
     }
 
     @Override

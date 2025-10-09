@@ -29,27 +29,24 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
 
         this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_BONE_RING,
                 definition().with(
-                        sound("mob/skeleton/say1"),
-                        sound( "mob/skeleton/say2"),
-                        sound("mob/skeleton/say3")
+                        sound("mob/skeleton/step1"),
+                        sound("mob/skeleton/step2"),
+                        sound("mob/skeleton/step3"),
+                        sound("mob/skeleton/step4")
                 ).subtitle("subtitles.aether_genesis.item.accessory.equip_bone_ring")
         );
-        this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_CANDY_RING, //todo
+        this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_CANDY_RING,
                 definition().with(
-                        sound("minecraft:item/armor/equip_chain1"),
-                        sound("minecraft:item/armor/equip_chain2"),
-                        sound("minecraft:item/armor/equip_chain3"),
-                        sound("minecraft:item/armor/equip_chain4"),
-                        sound("minecraft:item/armor/equip_chain5"),
-                        sound("minecraft:item/armor/equip_chain6")
+                        sound("minecraft:mob/turtle/armor").pitch(2.0F),
+                        sound("minecraft:mob/turtle/armor").pitch(1.925F),
+                        sound("minecraft:mob/turtle/armor").pitch(1.85F)
                 ).subtitle("subtitles.aether_genesis.item.accessory.equip_candy_ring")
         );
         this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_SKYROOT_RING,
                 definition().with(
-                        sound("dig/wood1"),
-                        sound("dig/wood2"),
-                        sound("dig/wood3"),
-                        sound("dig/wood4")
+                        sound("minecraft:mob/turtle/armor").pitch(1.15F),
+                        sound("minecraft:mob/turtle/armor").pitch(1.1F),
+                        sound("minecraft:mob/turtle/armor").pitch(1.05F)
                 ).subtitle("subtitles.aether_genesis.item.accessory.equip_skyroot_ring")
         );
         this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_LUCKY_BELL,
@@ -62,14 +59,12 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                         sound("minecraft:item/armor/equip_chain6")
                 ).subtitle("subtitles.aether_genesis.item.accessory.equip_lucky_bell")
         );
-        this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_SWETTY_PENDANT, //todo
+        this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_SWETTY_PENDANT,
                 definition().with(
-                        sound("minecraft:item/armor/equip_chain1"),
-                        sound("minecraft:item/armor/equip_chain2"),
-                        sound("minecraft:item/armor/equip_chain3"),
-                        sound("minecraft:item/armor/equip_chain4"),
-                        sound("minecraft:item/armor/equip_chain5"),
-                        sound("minecraft:item/armor/equip_chain6")
+                        sound("minecraft:mob/slime/attack1").pitch(1.5F),
+                        sound("minecraft:mob/slime/attack1").pitch(1.4F),
+                        sound("minecraft:mob/slime/attack2").pitch(1.5F),
+                        sound("minecraft:mob/slime/attack2").pitch(1.4F)
                 ).subtitle("subtitles.aether_genesis.item.accessory.equip_swetty_pendant")
         );
         this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_DAGGERFROST_LOCKET,
@@ -81,6 +76,16 @@ public class GenesisSoundData extends SoundDefinitionsProvider {
                         sound("minecraft:item/armor/equip_chain5"),
                         sound("minecraft:item/armor/equip_chain6")
                 ).subtitle("subtitles.aether_genesis.item.accessory.equip_daggerfrost_locket")
+        );
+        this.add(GenesisSoundEvents.ITEM_ACCESSORY_EQUIP_MOUSE_EAR_CAP,
+                definition().with(
+                        sound("minecraft:item/armor/equip_leather1"),
+                        sound("minecraft:item/armor/equip_leather2"),
+                        sound("minecraft:item/armor/equip_leather3"),
+                        sound("minecraft:item/armor/equip_leather4"),
+                        sound("minecraft:item/armor/equip_leather5"),
+                        sound("minecraft:item/armor/equip_leather6")
+                ).subtitle("subtitles.aether_genesis.item.accessory.equip_mouse_ear_cap")
         );
 
 

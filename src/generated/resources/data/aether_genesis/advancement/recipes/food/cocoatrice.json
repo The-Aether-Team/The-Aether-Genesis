@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cocoa_beans": {
+    "has_skyroot_milk_bucket": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:cocoa_beans"
+            "items": "aether:skyroot_milk_bucket"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cocoa_beans"
+      "has_skyroot_milk_bucket"
     ]
   ],
   "rewards": {

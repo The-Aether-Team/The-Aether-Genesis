@@ -91,19 +91,15 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addItem(GenesisItems.COG_KEY, "Cog Key");
 
         this.addItem(GenesisItems.MUSIC_DISC_AERWHALE, "Aerwhale Music Disc");
-        this.addDiscDesc(GenesisItems.MUSIC_DISC_AERWHALE, "Aether UK - Aerwhale");
         this.addItem(GenesisItems.MUSIC_DISC_APPROACHES, "Moa Music Disc");
-        this.addDiscDesc(GenesisItems.MUSIC_DISC_APPROACHES, "Emile van Krieken - Approaches");
         this.addItem(GenesisItems.MUSIC_DISC_DEMISE, "Labyrinth Music Disc");
-        this.addDiscDesc(GenesisItems.MUSIC_DISC_DEMISE, "Moorziey - Demise");
         this.addItem(GenesisItems.RECORDING_892, "Recording #892");
-        this.addDiscDesc(GenesisItems.RECORDING_892, "Emile van Krieken - ???");
 
         this.addGeneric("experience.desc", "Orbs Stored: %s");
         this.addGeneric("death_seal.desc", "Repairing Seal: %s");
         this.addGeneric("companion_health.desc", "Companion Health: %1$s/%2$s");
 
-        this.addPerItemAbilityTooltip(GenesisItems.PHOENIX_DART_SHOOTER.get(), 1,"\u00A77Shoots:\u00A7r All Dart Types");
+        this.addPerItemAbilityTooltip(GenesisItems.PHOENIX_DART_SHOOTER.get(), 1,"\u00A77Shoots:\u00A7r All Dart Types"); //todo resource pack for these or automatically enabling aether tooltips when genesis is loaded
 
         this.addPerItemAbilityTooltip(GenesisItems.MOUSE_EAR_CAP.get(), 1,"\u00A7eCosmetic");
         this.addPerItemAbilityTooltip(GenesisItems.MOUSE_EAR_CAP.get(), 2,"\u00A76Dyable");
@@ -144,6 +140,11 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addPerItemAbilityTooltip(GenesisItems.CONTINUUM_BOMB.get(), 2,"\u00A73Use:\u00A7r Right-Click");
 
         this.addPerItemAbilityTooltip(AetherItems.GOLDEN_PARACHUTE.get(), 1, "genesis", "\u00A79Ability:\u00A7r Fast Descent");
+
+        this.addJukeboxSong("aerwhale", "Aether UK - Aerwhale");
+        this.addJukeboxSong("approaches", "Emile van Krieken - Approaches");
+        this.addJukeboxSong("demise", "Moorziey - Demise");
+        this.addJukeboxSong("recording_892", "Emile van Krieken - ???");
 
         this.addEntityType(GenesisEntityTypes.CARRION_SPROUT, "Carrion Sprout");
         this.addEntityType(GenesisEntityTypes.ZEPHYROO, "Zephyroo");
@@ -214,14 +215,15 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addAdvancementDesc("companion", "Obtain a companion");
         this.addAdvancementDesc("nex_spirit", "Be resurrected by a Nex Spirit");
 
-        //todo better subtitles
         this.addSubtitle("item", "accessory.equip_bone_ring", "Bone Ring rattles");
-        this.addSubtitle("item", "accessory.equip_candy_ring", "Candy Ring jingles");
+        this.addSubtitle("item", "accessory.equip_candy_ring", "Candy Ring clunks");
         this.addSubtitle("item", "accessory.equip_skyroot_ring", "Skyroot Ring clunks");
 
         this.addSubtitle("item", "accessory.equip_lucky_bell", "Lucky Bell jingles");
-        this.addSubtitle("item", "accessory.equip_swetty_pendant", "Swetty Pendant jingles");
+        this.addSubtitle("item", "accessory.equip_swetty_pendant", "Swetty Pendant splats");
         this.addSubtitle("item", "accessory.equip_daggerfrost_locket", "Daggerfrost Locket jingles");
+
+        this.addSubtitle("item", "accessory.equip_mouse_ear_cap", "Mouse Ear Cap rustles");
 
         this.addSubtitle("entity", "carrion_sprout.hurt", "Carrion Sprout hurts");
         this.addSubtitle("entity", "carrion_sprout.death", "Carrion Sprout dies");
@@ -279,12 +281,39 @@ public class GenesisLanguageData extends AetherLanguageProvider {
         this.addGuiText("slider.message.attack.invalid_item", "Hmm. It's a rock-solid block. My %1$s wouldn't work on this.");
         this.addGuiText("slider.message.attack.invalid_fist", "Hmm. It's a rock-solid block. My fist wouldn't work on this.");
 
-        this.add("config." + this.id + ".startup.gameplay.altar_redesign", "Changes the Altar design and functionality to be like how it was in the Aether II. WARNING: Due to config limitations, this must be the same on both server and client to work properly");
-        this.add("config." + this.id + ".startup.gameplay.altar_redesign.tooltip", "Changes the Altar design and functionality to be like how it was in the Aether II. WARNING: Due to config limitations, this must be the same on both server and client to work properly");
+        this.addGeneric("host_treasure_chest_locked", "This Treasure Chest must be unlocked with a Host Key.");
+        this.addGeneric("guardian_treasure_chest_locked", "This Treasure Chest must be unlocked with a Guardian Key.");
+        this.addGeneric("cog_treasure_chest_locked", "This Treasure Chest must be unlocked with a Cog Key.");
 
+        this.addConfig("title", "The Aether: Genesis Configuration");
+        this.addConfig("section.aether.common.toml", "Common Settings");
+        this.addConfig("section.aether.common.toml.title", "The Aether: Genesis Common Configuration");
+        this.addConfig("section.aether.client.toml", "Client Settings");
+        this.addConfig("section.aether.client.toml.title", "The Aether: Genesis Client Configuration");
+        this.addConfig("section.aether.server.toml", "Server Settings");
+        this.addConfig("section.aether.server.toml.title", "The Aether: Genesis Server Configuration");
+
+        this.addConfig("World Generation", "World Generation");
+        this.addConfig("World Generation.tooltip", "Config options that affect the mod's world generation");
+        this.addConfig("World Generation.button", "Options");
+
+        this.addConfig("Audio", "Audio");
+        this.addConfig("Audio.tooltip", "Config options for some audio-related features in the mod");
+        this.addConfig("Audio.button", "Options");
+
+        this.addConfig("Gameplay", "Gameplay");
+        this.addConfig("Gameplay.tooltip", "Config options that affect gameplay mechanics in the mod");
+        this.addConfig("Gameplay.button", "Options");
+
+        this.addCommonConfig("gameplay", "altar_redesign", "Changes the Altar design and functionality to be like how it was in the Aether II. WARNING: Due to config limitations, this must be the same on both server and client to work properly");
         this.addCommonConfig("gameplay", "gold_aercloud_ability", "Changes Gold Aercloud and respective parachute behavior to launch entities downwards");
-        this.addCommonConfig("gameplay", "improved_slider_message", "Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe");
-        this.addClientConfig("gui", "genesis_menu_layout", "Replaces the menu toggle buttons with the Cumulus' menu switcher");
+
+        this.addServerConfig("gameplay", "orange_tree_consistency", "Makes Orange Trees behave consistently with Sweet Berry Bushes");
+        this.addServerConfig("gameplay", "improved_slider_message", "Changes the message sent on attacking the Slider with an incorrect item to an alternate version which more subtly implies that you need a pickaxe");
+        this.addServerConfig("gameplay", "tan_zephyr_variation", "Allows a smaller, tan variation of Zephyrs to spawn");
+
+        this.addCommonConfig("world_generation", "biome_weight", "Determines the biome weight for biome regions");
+
         this.addClientConfig("audio", "night_music_tracks", "Adds some nice night tracks to the Aether's music selection. Also disables the default music manager for the Aether, to prevent overlap");
 
         this.addPackTitle("classic", "Genesis of the Void Textures");

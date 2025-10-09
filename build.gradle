@@ -76,9 +76,9 @@ configurations {
 
 dependencies {
 //    implementation "com.aetherteam.aether:aether:${project.aether_version}"
-    implementation "blank:aether-1.21.1-1.5.8:neoforge"
-    implementation "blank:aether_beyond_parity-1.21.1-1.0.0:neoforge"
+    implementation "blank:aether-1.21.1-1.5.10:neoforge"
 
+    implementation "com.aetherteam.beyondparity:aether_beyond_parity:${project.beyond_parity_version}"
     implementation "com.aetherteam.nitrogen:nitrogen_internals:${project.nitrogen_version}"
     implementation "com.aetherteam.cumulus:cumulus_menus:${project.cumulus_version}"
     implementation "io.wispforest:accessories-neoforge:${project.accessories_version}+${project.minecraft_version}"
@@ -113,6 +113,7 @@ repositories {
     maven { url = "https://maven.fabricmc.net" }
     maven { url = "https://maven.su5ed.dev/releases" }
     maven { url = "https://packages.aether-mod.net/The-Aether" }
+    maven { url = "https://packages.aether-mod.net/Beyond-Parity" }
     maven { url = "https://packages.aether-mod.net/Nitrogen" }
     maven { url = "https://packages.aether-mod.net/Cumulus" }
     flatDir {
