@@ -137,9 +137,4 @@ public class TempestThunderBall extends AbstractHurtingProjectile {
 	protected boolean shouldBurn() {
 		return false;
 	}
-
-//	@Override
-//	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-//		return NetworkHooks.getEntitySpawningPacket(this);
-//	}
 }

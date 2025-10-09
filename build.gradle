@@ -21,8 +21,6 @@ base {
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
-//minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
-
 neoForge {
     version = project.neo_version
 
@@ -75,7 +73,7 @@ configurations {
 }
 
 dependencies {
-//    implementation "com.aetherteam.aether:aether:${project.aether_version}"
+    //implementation "com.aetherteam.aether:aether:${project.aether_version}"
     implementation "blank:aether-1.21.1-1.5.10:neoforge"
 
     implementation "com.aetherteam.beyondparity:aether_beyond_parity:${project.beyond_parity_version}"

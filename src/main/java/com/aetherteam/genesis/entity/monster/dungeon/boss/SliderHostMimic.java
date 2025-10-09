@@ -32,7 +32,15 @@ import net.minecraft.world.BossEvent;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityDimensions;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.PathfinderMob;
+import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
@@ -54,7 +62,13 @@ import net.neoforged.neoforge.network.PacketDistributor;
 import org.apache.commons.lang3.tuple.Pair;
 
 import javax.annotation.Nullable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Function;
 
 public class SliderHostMimic extends PathfinderMob implements AetherBossMob<SliderHostMimic>, Enemy, IEntityWithComplexSpawn {
@@ -155,29 +169,27 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
         Optional<LivingEntity> damageResult = this.canDamageSliderHostMimic(source);
         if (source.is(DamageTypeTags.BYPASSES_INVULNERABILITY)) {
             super.hurt(source, amount);
-            if (!this.level().isClientSide() && source.getEntity() instanceof LivingEntity living) {
-                this.mostDamageTargetGoal.addAggro(living, amount); // AI goal for being hurt.
-                if (this.spawnEyeCooldown <= 0 && this.getEyeProjectiles().size() == 4) {
-                    this.getEyeProjectiles().removeFirst().discard();
-                    this.spawnEyeCooldown = 200;
-                }
-            }
+            this.handleHurtBehaviour(source, amount);
         } else if (damageResult.isPresent()) {
             if (super.hurt(source, amount) && this.getHealth() > 0) {
                 if (!this.isBossFight()) {
                     this.start();
                 }
-                if (!this.level().isClientSide() && source.getEntity() instanceof LivingEntity living) {
-                    this.mostDamageTargetGoal.addAggro(living, amount); // AI goal for being hurt.
-                    if (this.spawnEyeCooldown <= 0 && this.getEyeProjectiles().size() == 4) {
-                        this.getEyeProjectiles().removeFirst().discard();
-                        this.spawnEyeCooldown = 200;
-                    }
-                }
+                this.handleHurtBehaviour(source, amount);
                 return true;
             }
         }
         return false;
+    }
+
+    private void handleHurtBehaviour(DamageSource source, float amount) {
+        if (!this.level().isClientSide() && source.getEntity() instanceof LivingEntity living) {
+            this.mostDamageTargetGoal.addAggro(living, amount); // AI goal for being hurt.
+            if (this.spawnEyeCooldown <= 0 && this.getEyeProjectiles().size() == 4) {
+                this.getEyeProjectiles().removeFirst().discard();
+                this.spawnEyeCooldown = 200;
+            }
+        }
     }
 
     private Optional<LivingEntity> canDamageSliderHostMimic(DamageSource source) {
@@ -201,6 +213,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
         return Optional.empty();
     }
 
+    // Is this going to be used?
     private Optional<LivingEntity> sendInvalidToolMessage(LivingEntity attacker) {
         if (!this.level().isClientSide() && attacker instanceof Player player) {
             if (this.getChatCooldown() <= 0) {
