@@ -14,7 +14,11 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.FlyingMob;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.MoveControl;
@@ -105,35 +109,21 @@ public class Tempest extends Zephyr {
             this.parentEntity = tempest;
         }
 
-        /**
-         * Returns whether execution should begin. You can also read and cache
-         * any state necessary for execution in this method as well.
-         */
         @Override
         public boolean canUse() {
             return this.parentEntity.getTarget() != null;
         }
 
-        /**
-         * Execute a one shot task or start executing a continuous task
-         */
         @Override
         public void start() {
             this.parentEntity.setChargeTime(0);
         }
 
-        /**
-         * Reset the task's internal state. Called when this task is interrupted
-         * by another one
-         */
         @Override
         public void stop() {
             this.parentEntity.setChargeTime(0);
         }
 
-        /**
-         * Keep ticking a continuous task that has already been started
-         */
         @Override
         public void tick() {
             LivingEntity target = this.parentEntity.getTarget();

@@ -1,9 +1,6 @@
 package com.aetherteam.genesis.attachment;
 
-import com.aetherteam.aether.Aether;
-import com.aetherteam.aether.item.EquipmentUtil;
 import com.aetherteam.genesis.entity.companion.Companion;
-import com.aetherteam.genesis.entity.companion.CompanionMob;
 import com.aetherteam.genesis.item.accessories.companion.CompanionAccessory;
 import com.aetherteam.genesis.network.packet.GenesisPlayerSyncPacket;
 import com.aetherteam.nitrogen.attachment.INBTSynchable;
