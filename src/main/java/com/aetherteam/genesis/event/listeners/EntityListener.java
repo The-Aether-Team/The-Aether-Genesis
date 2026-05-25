@@ -84,10 +84,11 @@ public class EntityListener {
                     player.swing(hand);
                     if (altarBlockEntity.getItem(i).isEmpty()) {
                         altarBlockEntity.setItem(i, stack.copyWithCount(1));
+                        stack.shrink(1);
                     } else if (altarBlockEntity.getItem(i).is(stack.getItem()) && altarBlockEntity.getItem(i).getCount() < altarBlockEntity.getItem(i).getMaxStackSize()) {
                         altarBlockEntity.getItem(i).setCount(altarBlockEntity.getItem(i).getCount() + 1);
+                        stack.shrink(1);
                     }
-                    stack.shrink(1);
                     event.setUseBlock(TriState.FALSE);
                     event.setUseItem(TriState.FALSE);
                 }
