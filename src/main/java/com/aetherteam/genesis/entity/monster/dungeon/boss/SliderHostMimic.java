@@ -277,9 +277,9 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
 
     private void spawnHostEye() {
         HostEyeProjectile hostEyeProjectile = new HostEyeProjectile(this.level(), this, this.getDirection());
-        this.level().addFreshEntity(hostEyeProjectile);
         this.playSound(this.getShootSound(), 1.0F, 1.0F / (this.getRandom().nextFloat() * 0.2F + 0.9F));
         hostEyeProjectile.setPos(this.position().add(0.0F, (this.getBbHeight() / 2.0F) + 0.2F, 0.0F));
+        this.level().addFreshEntity(hostEyeProjectile);
         this.eyeProjectiles.add(hostEyeProjectile);
     }
 
