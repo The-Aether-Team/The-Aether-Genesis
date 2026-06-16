@@ -80,10 +80,12 @@ public class BabyPinkSwet extends Swet implements Companion<BabyPinkSwet> {
     }
 
     @Override
-    public void consumePassenger(LivingEntity livingEntity) { }
+    public void consumePassenger(LivingEntity livingEntity) {
+    }
 
     @Override
-    public void spawnDissolveParticles() { }
+    public void spawnDissolveParticles() {
+    }
 
     @Override
     public float getWaterDamageScale() {
@@ -179,6 +181,10 @@ public class BabyPinkSwet extends Swet implements Companion<BabyPinkSwet> {
 
         @Override
         public boolean canUse() {
+            if (this.swet.getOwner() == null) {
+                return false;
+            }
+
             Player player = this.swet.level().getPlayerByUUID(this.swet.getOwner());
             if (player == null) {
                 return false;
