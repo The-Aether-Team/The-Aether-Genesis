@@ -1,6 +1,5 @@
 package com.aetherteam.genesis.entity.passive;
 
-import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.entity.monster.AechorPlant;
 import com.aetherteam.genesis.GenesisTags;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
@@ -299,6 +298,12 @@ public class CarrionSprout extends Mob {
             this.setColor(tag.getString("Color"));
         }
     }
+
+    @Override
+    public boolean removeWhenFarAway(double distanceToClosestPlayer) {
+        return true;
+    }
+
 }
 
 
