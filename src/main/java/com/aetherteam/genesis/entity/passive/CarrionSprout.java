@@ -301,7 +301,7 @@ public class CarrionSprout extends Mob {
 
     @Override
     public boolean removeWhenFarAway(double distanceToClosestPlayer) {
-        return true;
+        return false;
     }
 
 }
