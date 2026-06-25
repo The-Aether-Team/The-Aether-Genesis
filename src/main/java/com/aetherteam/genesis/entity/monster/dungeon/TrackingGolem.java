@@ -6,6 +6,7 @@ import com.aetherteam.genesis.client.particle.GenesisParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
@@ -55,7 +56,10 @@ public class TrackingGolem extends Monster {
 		builder.define(DATA_CAN_SEE_ENEMY_ID, false);
 	}
 
-	@Override
+	/**
+	 * getTarget() on client side will never find target.
+	 * */
+	/*@Override
 	public void handleEntityEvent(byte id) {
 		if (id == 100) {
 			if (this.getTarget() instanceof Player player) {
@@ -65,7 +69,7 @@ public class TrackingGolem extends Monster {
 		} else {
 			super.handleEntityEvent(id);
 		}
-	}
+	}*/
 
 	public void tick() {
 		if (!this.level().isClientSide()) {
@@ -74,10 +78,12 @@ public class TrackingGolem extends Monster {
 					this.setSeenEnemy(true);
 				}
 				int duration = 25;
-				if (!this.getTarget().hasEffect(MobEffects.BLINDNESS) || this.getTarget().getEffect(MobEffects.BLINDNESS).endsWithin(duration - 1)) {
+				boolean shouldRefreshBlindness = !this.getTarget().hasEffect(MobEffects.BLINDNESS) || this.getTarget().getEffect(MobEffects.BLINDNESS).endsWithin(duration - 1);
+				if (shouldRefreshBlindness) {
 					if (!this.getTarget().hasEffect(MobEffects.BLINDNESS)) {
-						if (this.getTarget() instanceof ServerPlayer) {
-							this.level().broadcastEntityEvent(this, (byte) 100);
+						if (this.getTarget() instanceof ServerPlayer player && this.level() instanceof ServerLevel serverLevel) {
+							serverLevel.sendParticles(player, GenesisParticleTypes.TRACKING_GOLEM_WARNING.get(), true, player.getX(), player.getY(), player.getZ(), 1, 0.0D, 0.0D, 0.0D, 0.0D);
+							player.playNotifySound(GenesisSoundEvents.ENTITY_TRACKING_GOLEM_SEEN_ENEMY.get(), SoundSource.HOSTILE, 1.0F, 1.0F);
 						}
 					}
 					this.getTarget().addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 30), this);

@@ -84,7 +84,7 @@ public class LabyrinthEye extends PathfinderMob implements AetherBossMob<Labyrin
 
     public LabyrinthEye(EntityType<? extends LabyrinthEye> entityType, Level level) {
         super(entityType, level);
-        this.bossFight = new ServerBossEvent(this.getBossName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS);
+        this.bossFight = (ServerBossEvent) new ServerBossEvent(this.getBossName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS).setPlayBossMusic(true);
         this.bossFight.setVisible(false);
         this.xpReward = XP_REWARD_BOSS;
         this.setPersistenceRequired();
