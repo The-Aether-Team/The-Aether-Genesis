@@ -82,7 +82,7 @@ public class SliderHostMimic extends PathfinderMob implements AetherBossMob<Slid
 
     public SliderHostMimic(EntityType<? extends SliderHostMimic> entityType, Level level) {
         super(entityType, level);
-        this.bossFight = (ServerBossEvent) new ServerBossEvent(this.getBossName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS).setPlayBossMusic(true);
+        this.bossFight = new ServerBossEvent(this.getBossName(), BossEvent.BossBarColor.BLUE, BossEvent.BossBarOverlay.PROGRESS);
         this.setBossFight(false);
         this.xpReward = XP_REWARD_BOSS;
         this.setPersistenceRequired();

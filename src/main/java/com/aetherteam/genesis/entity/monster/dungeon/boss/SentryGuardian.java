@@ -88,7 +88,7 @@ public class SentryGuardian extends PathfinderMob implements AetherBossMob<Sentr
 
     public SentryGuardian(EntityType<? extends SentryGuardian> entityType, Level level) {
         super(entityType, level);
-        this.bossFight = (ServerBossEvent) new ServerBossEvent(this.getBossName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS).setPlayBossMusic(true);
+        this.bossFight = new ServerBossEvent(this.getBossName(), BossEvent.BossBarColor.RED, BossEvent.BossBarOverlay.PROGRESS);
         this.bossFight.setVisible(false);
         this.xpReward = XP_REWARD_BOSS;
         this.setPersistenceRequired();
