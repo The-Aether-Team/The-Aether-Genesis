@@ -1,6 +1,5 @@
 package com.aetherteam.genesis.client;
 
-import com.aetherteam.aether.Aether;
 import com.aetherteam.aether.AetherConfig;
 import com.aetherteam.aether.client.AetherClient;
 import com.aetherteam.aether.item.AetherItems;

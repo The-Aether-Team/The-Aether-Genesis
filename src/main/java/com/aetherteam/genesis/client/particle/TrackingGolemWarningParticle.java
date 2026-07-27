@@ -43,14 +43,14 @@ public class TrackingGolemWarningParticle extends Particle {
         float f1 = 0.05F + 0.5F * Mth.sin(f * (float) Math.PI);
         PoseStack posestack = new PoseStack();
         posestack.mulPose(pRenderInfo.rotation());
-        posestack.mulPose(Axis.XP.rotationDegrees(150.0F * f - 20.0F));
-        posestack.scale(-1.0F, -1.0F, 1.0F);
+        posestack.mulPose(Axis.XP.rotationDegrees(- 150.0F * f - 20.0F));
+        posestack.scale(1.0F, -1.0F, -1.0F);
         posestack.translate(0.0F, -0.5F, 1.9F);
         posestack.mulPose(Axis.XP.rotationDegrees(45));
         posestack.scale(1.5F, 1.5F, 1.5F);
         MultiBufferSource.BufferSource multibuffersource$buffersource = Minecraft.getInstance().renderBuffers().bufferSource();
         VertexConsumer vertexconsumer = multibuffersource$buffersource.getBuffer(this.renderType);
-        this.model.head.render(posestack, vertexconsumer, 15728880, OverlayTexture.NO_OVERLAY, FastColor.ARGB32.colorFromFloat(1.0F, 1.0F, 1.0F, f1));
+        this.model.head.render(posestack, vertexconsumer, 15728880, OverlayTexture.NO_OVERLAY, FastColor.ARGB32.colorFromFloat(f1, 1.0F, 1.0F, 1.0F));
         multibuffersource$buffersource.endBatch();
     }
 

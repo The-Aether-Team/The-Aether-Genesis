@@ -6,6 +6,7 @@
   "refmap": "aether_genesis.refmap.json",
   "mixins": [
     "common.AbstractFurnaceBlockMixin",
+    "common.AercloudBlockMixin",
     "common.AltarBlockMixin",
     "common.BlockBehaviourMixin",
     "common.ParachuteMixin",

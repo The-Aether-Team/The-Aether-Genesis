@@ -1,6 +1,5 @@
 package com.aetherteam.genesis.entity.passive;
 
-import com.aetherteam.aether.AetherTags;
 import com.aetherteam.aether.entity.monster.AechorPlant;
 import com.aetherteam.genesis.GenesisTags;
 import com.aetherteam.genesis.client.GenesisSoundEvents;
@@ -117,7 +116,7 @@ public class CarrionSprout extends Mob {
     @Override
     public void tick() {
         super.tick();
-        if (!this.level().getBlockState(this.blockPosition().below()).is(AetherTags.Blocks.AECHOR_PLANT_SPAWNABLE_ON) && !this.isPassenger()) {
+        if (!this.level().getBlockState(this.blockPosition().below()).is(GenesisTags.Blocks.CARRION_SPROUT_SPAWNABLE_ON) && !this.isPassenger()) {
             this.kill();
         }
         if (!this.level().isClientSide()) {
@@ -299,6 +298,12 @@ public class CarrionSprout extends Mob {
             this.setColor(tag.getString("Color"));
         }
     }
+
+    @Override
+    public boolean removeWhenFarAway(double distanceToClosestPlayer) {
+        return false;
+    }
+
 }
 
 
